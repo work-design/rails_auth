@@ -1,6 +1,17 @@
 # coding: utf-8
 require 'warden'
 
+Rails.configuration.middleware.insert_after ActionDispatch::Session::CookieStore, Warden::Manager do |manager|
+  manager.default_strategies  :password  # 就写最常用的鉴权方式
+  manager.failure_app = Auth::UserSessionsController
+  manager.scope_defaults(
+    :email,
+    :strategies => [:password],
+    :store => false,
+    :action => "new_test"
+  )
+end
+
 Warden::Manager.serialize_into_session do |user|
   user.id
 end
