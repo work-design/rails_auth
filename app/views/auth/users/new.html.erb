@@ -1,0 +1,46 @@
+<div class="row">
+<div class="col-md-9">
+
+<%= form_for resource, :as => resource_name, :url => registration_path(resource_name), :html => {:class=> "well form-horizontal"} do |f| %>
+
+    <%= render "shared/error_messages", :target => resource %>
+
+  <fieldset>
+    <legend>用户注册</legend>
+    <div class="form-group">
+      <%= f.label :email, "邮箱：", :class => "col-md-2 control-label" %>
+      <div class="col-md-5"><%= f.email_field :email, :class => "form-control" %></div>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :password, "密码：", :class => "col-md-2 control-label" %>
+      <div class="col-md-5"><%= f.password_field :password, :class => "form-control" %></div>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :password_confirmation, "密码确认：", :class => "col-md-2 control-label" %>
+      <div class="col-md-5"><%= f.password_field :password_confirmation, :class => "form-control" %></div>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :invite_token, "邀请码：", :class => "col-md-2 control-label" %>
+      <div class="col-md-5"><%= f.text_field :invite_token, :class => "form-control" %></div>
+    </div>
+
+    <div class="form-group">
+      <div class="col-md-offset-2 col-md-5">
+        <%= f.submit "注册", :class => "btn btn-primary btn-lg" %>
+      </div>
+    </div>
+  </fieldset>
+
+<% end %>
+
+<%= render "devise/shared/links" %>
+
+</div>
+
+</div>
+
+
+
