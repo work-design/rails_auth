@@ -1,12 +1,7 @@
 module Auth
-  class ApplicationController < ::ApplicationController
+  class ApplicationController < ApplicationController
     layout 'layouts/application'
 
-    def current_user
-      env['warden'].authenticate
-      @current_user ||= env['warden'].user
-      @current_user
-    end
 
     def store_location(path = nil)
       session[:return_to] = path || request.fullpath

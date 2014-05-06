@@ -16,7 +16,7 @@ class UserSessionsController < ApplicationController
 
     if user
       remember_me if params[:remember_me]
-      redirect_back_or_default root_path
+      redirect_back_or_default main_app.root_path
     else
       flash[:error] = '用户名或密码不正确'
       redirect_to login_url
