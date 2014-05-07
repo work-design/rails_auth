@@ -4,15 +4,15 @@ module Auth
   class UsersController < ApplicationController
 
     def new
-      @user = User.new :password => 1 # force client side validation patch
-      referrer = request.headers['X-XHR-Referer'] || request.referrer
-      store_location referrer if referrer.present?
+      @user = Auth::User.new :password => '' # force client side validation patch
+      referer = request.headers['X-XHR-Referer'] || request.referer
+      store_location referer if referer.present?
     end
 
     def create
-      @user = User.new user_params
+      @user = Auth::User.new user_params
       if @user.save
-        login_as @user
+        env['warden'].set_user(@user)
       end
     end
 
