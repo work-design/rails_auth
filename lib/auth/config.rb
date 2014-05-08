@@ -1,7 +1,7 @@
 module Auth
 
   def self.configure(&block)
-    yield @config ||= TheRole::Configuration.new
+    yield @config ||= Auth::Configuration.new
   end
 
   def self.config
