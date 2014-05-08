@@ -1,8 +1,8 @@
 PATH
   remote: .
   specs:
-    auth (0.0.1)
-      rails (~> 4.1.0)
+    the_auth (0.0.1)
+      rails (>= 3, < 5)
       rails_warden
 
 GEM
@@ -45,7 +45,7 @@ GEM
       treetop (~> 1.4.8)
     mime-types (1.25.1)
     minitest (5.3.3)
-    multi_json (1.9.3)
+    multi_json (1.10.0)
     polyglot (0.3.4)
     rack (1.5.2)
     rack-test (0.6.2)
@@ -68,7 +68,7 @@ GEM
       rake (>= 0.8.7)
       thor (>= 0.18.1, < 2.0)
     rake (10.3.1)
-    sprockets (2.12.1)
+    sprockets (2.11.0)
       hike (~> 1.2)
       multi_json (~> 1.0)
       rack (~> 1.0)
@@ -93,5 +93,5 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  auth!
   sqlite3
+  the_auth!

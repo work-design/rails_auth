@@ -1,6 +1,6 @@
 require 'test_helper'
 
-module Auth
+module TheAuth
   class RoleTest < ActiveSupport::TestCase
     # test "the truth" do
     #   assert true

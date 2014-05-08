@@ -1,6 +1,6 @@
-module Auth
+module TheAuth
   class ApplicationController < ::ApplicationController
-    layout  Auth.config.layout.to_s
+    layout  TheAuth.config.layout.to_s
 
 
     def store_location(path = nil)

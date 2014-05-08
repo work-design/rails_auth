@@ -1,6 +1,6 @@
 require 'test_helper'
 
-module Auth
+module TheAuth
   class RolesHelperTest < ActionView::TestCase
   end
 end

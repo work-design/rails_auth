@@ -1,7 +1,7 @@
 require 'test_helper'
 
-class AuthTest < ActiveSupport::TestCase
+class TheAuthTest < ActiveSupport::TestCase
   test "truth" do
-    assert_kind_of Module, Auth
+    assert_kind_of Module, TheAuth
   end
 end

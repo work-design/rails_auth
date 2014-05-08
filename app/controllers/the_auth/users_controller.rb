@@ -1,16 +1,16 @@
-require_dependency "auth/application_controller"
+require_dependency "the_auth/application_controller"
 
-module Auth
+module TheAuth
   class UsersController < ApplicationController
 
     def new
-      @user = Auth::User.new :password => '' # force client side validation patch
+      @user = TheAuth::User.new :password => '' # force client side validation patch
       referer = request.headers['X-XHR-Referer'] || request.referer
       store_location referer if referer.present?
     end
 
     def create
-      @user = Auth::User.new user_params
+      @user = TheAuth::User.new user_params
       if @user.save
         env['warden'].set_user(@user)
       end

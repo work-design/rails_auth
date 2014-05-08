@@ -1,4 +1,4 @@
-module Auth
+module TheAuth
   class User
 
   end

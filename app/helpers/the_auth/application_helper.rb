@@ -1,4 +1,4 @@
-module Auth
+module TheAuth
   module ApplicationHelper
 
     def method_missing(method, *args, &block)

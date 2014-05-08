@@ -1,4 +1,4 @@
 Rails.application.routes.draw do
 
-  mount Auth::Engine => "/auth"
+  mount TheAuth::Engine => "/auth"
 end

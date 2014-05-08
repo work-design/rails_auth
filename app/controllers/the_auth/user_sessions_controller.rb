@@ -1,5 +1,5 @@
-require_dependency "auth/application_controller"
-module Auth
+require_dependency "the_auth/application_controller"
+module TheAuth
   class UserSessionsController < ApplicationController
 
     after_filter :inc_ip_count, :only => :create
@@ -7,7 +7,7 @@ module Auth
 
     def new
       store_location request.referrer if request.referrer.present?
-      @session = Auth::User.new
+      @session = TheAuth::User.new
     end
 
     def create

@@ -1,6 +1,6 @@
-require_dependency "auth/application_controller"
+require_dependency "the_auth/application_controller"
 
-module Auth
+module TheAuth
   class RolesController < ApplicationController
     before_action :set_role, only: [:show, :edit, :update, :destroy]
 

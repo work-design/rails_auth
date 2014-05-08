@@ -1,5 +1,5 @@
-require_dependency "auth/application_controller"
-module Auth
+require_dependency "the_auth/application_controller"
+module TheAuth
 class PasswordsController < ApplicationController
   before_action :set_password, only: [:show, :edit, :update, :destroy]
 

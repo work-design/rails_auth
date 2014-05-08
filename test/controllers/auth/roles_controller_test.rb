@@ -1,6 +1,6 @@
 require 'test_helper'
 
-module Auth
+module TheAuth
   class RolesControllerTest < ActionController::TestCase
     setup do
       @role = roles(:one)

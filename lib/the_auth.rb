@@ -2,7 +2,7 @@ require 'auth/engine'
 require 'auth/version'
 require 'auth/config'
 
-module Auth
+module TheAuth
 
 
   class Engine < Rails::Engine
