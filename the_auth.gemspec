@@ -7,7 +7,7 @@ Gem::Specification.new do |s|
   s.version     = TheAuth::VERSION
   s.authors     = ["qinmingyuan"]
   s.email       = ["mingyuan0715@foxmail.com"]
-  s.homepage    = "https://github.com/qinmingyuan/auth"
+  s.homepage    = "https://github.com/qinmingyuan/the_auth"
   s.summary     = "understandable auth"
   s.description = "更容易理解的auth"
   s.license     = "MIT"

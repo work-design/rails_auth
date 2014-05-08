@@ -1,6 +1,6 @@
-require 'auth/engine'
-require 'auth/version'
-require 'auth/config'
+require 'the_auth/engine'
+require 'the_auth/version'
+require 'the_auth/config'
 
 module TheAuth
 
