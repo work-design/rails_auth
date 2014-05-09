@@ -10,8 +10,6 @@ class PasswordsController < ApplicationController
   def edit
   end
 
-  # POST /passwords
-  # POST /passwords.json
   def create
     @password = Password.new(password_params)
 
@@ -26,8 +24,6 @@ class PasswordsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /passwords/1
-  # PATCH/PUT /passwords/1.json
   def update
     respond_to do |format|
       if @password.update(password_params)
@@ -40,8 +36,6 @@ class PasswordsController < ApplicationController
     end
   end
 
-  # DELETE /passwords/1
-  # DELETE /passwords/1.json
   def destroy
     @password.destroy
     respond_to do |format|

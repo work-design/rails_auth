@@ -23,5 +23,11 @@ module TheAuth
         :httponly => true
       }
     end
+
+    private
+    def resource
+      @user_class = TheAuth.config.default_user_class.constantize
+    end
+
   end
 end

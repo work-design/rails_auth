@@ -7,7 +7,7 @@ module TheAuth
 
     def new
       store_location request.referrer if request.referrer.present?
-      @session = TheAuth::User.new
+      @session = resource.new
     end
 
     def create

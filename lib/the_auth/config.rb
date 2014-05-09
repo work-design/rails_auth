@@ -13,7 +13,7 @@ module TheAuth
     include ActiveSupport::Configurable
     config_accessor :layout,
                     :destroy_strategy,
-                    :default_user_role,
+                    :default_user_class,
                     :access_denied_method,
                     :login_required_method,
                     :first_user_should_be_admin
@@ -21,7 +21,7 @@ module TheAuth
 
   configure do |config|
     config.layout                     = :application
-    config.default_user_role          = nil
+    config.default_user_class          = nil
     config.first_user_should_be_admin = false
     config.access_denied_method       = :access_denied
     config.login_required_method      = :authenticate_user!
