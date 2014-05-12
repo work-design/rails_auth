@@ -22,7 +22,7 @@ module TheAuth
     private
 
     def user_params
-      params.require(:user).permit(:name, :email, :password, :password_confirmation)
+      params.require(resource_name).permit(:name, :email, :password, :password_confirmation)
     end
 
   end
