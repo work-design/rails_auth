@@ -21,7 +21,11 @@ Warden::Manager.serialize_into_session do |user|
 end
 
 Warden::Manager.serialize_from_session do |id|
-  resource_class.find id['$oid']
+  if id.kind_of?(Hash)
+    resource_class.find id['$oid']
+  else
+    resource_class.find id
+  end
 end
 
 # 使用密码登陆
