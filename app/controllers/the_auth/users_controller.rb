@@ -13,7 +13,7 @@ module TheAuth
       @user = resource.new user_params
       if @user.save
         env['warden'].set_user(@user)
-        redirect_to root_url
+        redirect_to main_app.root_url
       else
         render :new, :error => @user.errors.full_messages
       end

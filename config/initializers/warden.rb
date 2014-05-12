@@ -1,6 +1,10 @@
 # coding: utf-8
 require 'warden'
 
+def resource_class
+ @user_class = TheAuth.config.default_user_class.constantize
+end
+
 Rails.configuration.middleware.insert_after ActionDispatch::Session::CookieStore, Warden::Manager do |manager|
   manager.default_strategies  :password  # 就写最常用的鉴权方式
   manager.failure_app = TheAuth::UserSessionsController
@@ -17,7 +21,7 @@ Warden::Manager.serialize_into_session do |user|
 end
 
 Warden::Manager.serialize_from_session do |id|
-  User.find id
+  resource_class.find id['$oid']
 end
 
 # 使用密码登陆
@@ -29,9 +33,9 @@ Warden::Strategies.add(:password) do
 
     login = params['user']['email']
     if login.include?('@')
-      u = User.find_by(:email => login)
+      u = resource_class.find_by(:email => login)
     else
-      u = User.find_by(:mobile => login)
+      u = resource_class.find_by(:mobile => login)
     end
 
     if u.nil?
@@ -61,28 +65,11 @@ Warden::Strategies.add(:access_token) do
     env['HTTP_ACCESS_TOKEN']
   end
   def authenticate!
-    u = User.find_by(access_token: env['HTTP_ACCESS_TOKEN'])
+    u = resource_class.find_by(access_token: env['HTTP_ACCESS_TOKEN'])
     if u.nil?
       fail! "access_token 授权失败"  # 客户端需处理并转到密码登陆界面
       errors.add :code, 429
       errors.add :info, 'access_token 授权失败'
-    else
-      success!(u)
-    end
-  end
-end
-
-# 使用 open_id 验证用户
-Warden::Strategies.add(:open_id) do
-  def valid?
-    params['open_id']
-  end
-  def authenticate!
-    u = UserWeibo.find_by(open_id: params['open_id']).try(:user)
-    if u.nil?
-      fail!("第三方授权失败")   # 客户端需处理并转到密码登陆界面
-      errors.add :open_id, '微博用户不存在，请完成注册'
-      errors.add :code, 432
     else
       success!(u)
     end
