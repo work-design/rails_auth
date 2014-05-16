@@ -25,6 +25,7 @@ module TheAuth
 
     def destroy
       env['warden'].logout
+      redirect_to main_app.root_url
     end
 
     private
