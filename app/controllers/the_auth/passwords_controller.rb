@@ -4,7 +4,7 @@ class PasswordsController < ApplicationController
   before_action :set_password, only: [:show, :edit, :update, :destroy]
 
   def new
-    @password = Password.new
+    @user = source.new
   end
 
   def edit
