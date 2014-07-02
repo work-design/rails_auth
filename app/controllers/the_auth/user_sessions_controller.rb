@@ -11,13 +11,11 @@ module TheAuth
     end
 
     def create
-      env['warden'].authenticate!
+      env['warden'].authenticate
       user = env['warden'].user
 
-      binding.pry
-
       if user
-        remember_me if params[:remember_me]
+        remember_me if params[:user][:remember_me] == '1'
         redirect_back_or_default main_app.root_path
       else
         flash[:error] = '用户名或密码不正确'

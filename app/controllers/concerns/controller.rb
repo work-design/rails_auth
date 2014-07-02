@@ -13,8 +13,6 @@ module TheAuth
     def current_user
       request.env['warden'].authenticate
       @current_user ||= env['warden'].user
-      @current_user = resource.find_by(email: "mingyuan0715@foxmail.com") if `hostname`.strip =~ /qinde/
-      @current_user
     end
 
     def current_user=(value)
