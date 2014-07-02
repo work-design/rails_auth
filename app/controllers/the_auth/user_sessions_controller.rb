@@ -14,6 +14,8 @@ module TheAuth
       env['warden'].authenticate!
       user = env['warden'].user
 
+      binding.pry
+
       if user
         remember_me if params[:remember_me]
         redirect_back_or_default main_app.root_path

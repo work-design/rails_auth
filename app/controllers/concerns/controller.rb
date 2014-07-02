@@ -11,10 +11,9 @@ module TheAuth
     end
 
     def current_user
-      @current_user ||= (login_from_session || login_from_openid(session[:open_id]))
-
-      @current_user = source.find_by(email: "mingyuan0715@foxmail.com") if `hostname`.strip =~ /qinde/
-
+      request.env['warden'].authenticate
+      @current_user ||= env['warden'].user
+      @current_user = resource.find_by(email: "mingyuan0715@foxmail.com") if `hostname`.strip =~ /qinde/
       @current_user
     end
 

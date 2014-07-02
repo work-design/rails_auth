@@ -20,11 +20,11 @@ module TheAuth
   end
 
   configure do |config|
-    config.layout                     = :application
-    config.default_user_class          = nil
+    config.layout = :application
+    config.default_user_class = nil
     config.first_user_should_be_admin = false
-    config.access_denied_method       = :access_denied
-    config.login_required_method      = :authenticate_user!
-    config.destroy_strategy           = :restrict_with_exception # can be nil
+    config.access_denied_method = :access_denied
+    config.login_required_method = :authenticate_user!
+    config.destroy_strategy = :restrict_with_exception # can be nil
   end
 end
