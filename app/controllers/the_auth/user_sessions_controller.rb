@@ -1,8 +1,7 @@
 require_dependency "the_auth/application_controller"
 module TheAuth
   class UserSessionsController < ApplicationController
-
-    after_filter :inc_ip_count, :only => :create
+    before_action :require_no_logined, only: [:new]
 
     def new
       store_location request.referrer if request.referrer.present?

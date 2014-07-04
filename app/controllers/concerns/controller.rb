@@ -10,6 +10,12 @@ module TheAuth
       end
     end
 
+    def require_no_logined
+      if current_user
+        redirect_to main_app.root_url
+      end
+    end
+
     def current_user
       request.env['warden'].authenticate
       @current_user ||= env['warden'].user
