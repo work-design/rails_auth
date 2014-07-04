@@ -6,7 +6,6 @@ module TheAuth
       store_location request.referer if request.referer.present?
       @session = resource.new
 
-      binding.pry
       message = env['warden'].message
       if message.present?
         flash[:error] = message
