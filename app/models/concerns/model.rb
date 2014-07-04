@@ -1,5 +1,5 @@
 module TheAuth
-  module User
+  module Model
     extend ActiveSupport::Concern
 
     included do
