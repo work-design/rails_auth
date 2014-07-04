@@ -1,12 +1,12 @@
 require_dependency "the_auth/application_controller"
 module TheAuth
   class UserSessionsController < ApplicationController
-    before_action :require_no_logined, only: [:new]
 
     def new
-      store_location request.referrer if request.referrer.present?
+      store_location request.referer if request.referer.present?
       @session = resource.new
 
+      binding.pry
       message = env['warden'].message
       if message.present?
         flash[:error] = message

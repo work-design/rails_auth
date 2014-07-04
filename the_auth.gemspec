@@ -16,7 +16,7 @@ Gem::Specification.new do |s|
   s.test_files = Dir["test/**/*"]
 
   s.add_dependency "rails", ['>= 3', '< 5']
-  s.add_dependency 'rails_warden'
+  s.add_dependency 'warden'
 
   s.add_development_dependency "sqlite3"
 end

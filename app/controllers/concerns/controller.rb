@@ -10,12 +10,6 @@ module TheAuth
       end
     end
 
-    def require_no_logined
-      if current_user
-        redirect_to main_app.root_url
-      end
-    end
-
     def current_user
       request.env['warden'].authenticate
       @current_user ||= env['warden'].user
@@ -31,9 +25,7 @@ module TheAuth
       end
     end
 
-    #
     #--- 获取用户 ---
-    #
     def login_from_session
       logger.info "session user： #{session[:user_id]}"
       if session[:user_id].present?
@@ -63,7 +55,11 @@ module TheAuth
 
 
     def store_location(path = nil)
-      session[:return_to] = path || request.fullpath
+      if [login_url, user_session_url].include? path
+        session[:return_to] = main_app.root_url
+      else
+        session[:return_to] = path || request.fullpath
+      end
     end
 
 
