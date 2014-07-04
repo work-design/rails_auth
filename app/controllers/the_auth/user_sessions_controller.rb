@@ -3,15 +3,20 @@ module TheAuth
   class UserSessionsController < ApplicationController
 
     after_filter :inc_ip_count, :only => :create
-    helper_method :require_recaptcha?
 
     def new
       store_location request.referrer if request.referrer.present?
       @session = resource.new
+
+      flash[:error] = env['warden'].message
+
+      if request.format.to_sym == :js
+        render mime_type: Mime::Type["text/html"]
+      end
     end
 
     def create
-      env['warden'].authenticate
+      env['warden'].authenticate!
       user = env['warden'].user
 
       if user
