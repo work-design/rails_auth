@@ -8,7 +8,10 @@ module TheAuth
       store_location request.referrer if request.referrer.present?
       @session = resource.new
 
-      flash[:error] = env['warden'].message
+      message = env['warden'].message
+      if message.present?
+        flash[:error] = message
+      end
 
       if request.format.to_sym == :js
         render mime_type: Mime::Type["text/html"]
