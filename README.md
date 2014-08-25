@@ -13,7 +13,7 @@ include相应的模块进来即可。
 想扩展的话，只需要简单地覆盖掉相应地方法，想自定义view，直接覆盖响应的view就可以，真是随心所欲。
 
 - 基于`warden`：
-`warden`是一个优秀的鉴权相关的middleware，其功能主要有三块比较符合需要，1、session缓存，2、登陆回调，3、scope的鉴权策略配置；
+`warden`是一个优秀的鉴权相关的middleware，其功能主要有三块比较强大，1、session缓存，2、登陆回调，3、scope的鉴权策略配置；
 
 - 基于`ActiveModel::SecurePassword`：
 `rails`自带，只需要一行代码就搞定密码验证，且提供的是比较前沿和安全的方案；

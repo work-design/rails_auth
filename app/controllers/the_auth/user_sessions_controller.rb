@@ -10,10 +10,6 @@ module TheAuth
       if message.present?
         flash[:error] = message
       end
-
-      if request.format.to_sym == :js
-        render mime_type: Mime::Type["text/html"]
-      end
     end
 
     def create
@@ -51,6 +47,7 @@ module TheAuth
     def session_params
       params[:user].permit(:email, :password, :remember_me)
     end
+
   end
 end
 
