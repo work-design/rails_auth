@@ -27,4 +27,5 @@ module TheAuth
     config.login_required_method = :authenticate_user!
     config.destroy_strategy = :restrict_with_exception # can be nil
   end
+
 end
