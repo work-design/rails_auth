@@ -1,5 +1,4 @@
-require_dependency "the_auth/application_controller"
-class TheAuth::UserSessionsController < TheAuth::ApplicationController
+class TheAuth::UserSessionsController < TheAuth::BaseController
 
   def new
     store_location request.referer if request.referer.present?

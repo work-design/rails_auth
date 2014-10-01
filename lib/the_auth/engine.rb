@@ -1,5 +1,5 @@
 class TheAuth::Engine < Rails::Engine
-  isolate_namespace TheAuth
+
     # initializer "TheRole precompile hook", group: :all do |app|
     #   app.config.assets.precompile += %w( x.js y.css )
     # end

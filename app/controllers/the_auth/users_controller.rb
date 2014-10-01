@@ -1,7 +1,4 @@
-require_dependency "the_auth/application_controller"
-
-module TheAuth
-  class UsersController < ApplicationController
+class TheAuth::UsersController < TheAuth::BaseController
 
     def new
       @user = resource.new :password => '' # force client side validation patch
@@ -25,5 +22,4 @@ module TheAuth
       params.require(resource_name).permit(:name, :email, :password, :password_confirmation)
     end
 
-  end
 end
