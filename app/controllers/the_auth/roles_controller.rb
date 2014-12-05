@@ -1,6 +1,4 @@
-require_dependency "the_auth/application_controller"
-
-class TheAuth::RolesController < TheAuth::ApplicationController
+class TheAuth::RolesController < TheAuth::BaseController
   before_action :set_role, only: [:show, :edit, :update, :destroy]
 
   # GET /roles

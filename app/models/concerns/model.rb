@@ -4,7 +4,20 @@ module TheAuth
 
     included do
       include ActiveModel::SecurePassword
+      attr_accessor :remember_me
       has_secure_password validations: false
+
+      validates :email, uniqueness: true
+      before_save :auto_set_value
+    end
+
+
+    private
+
+    def auto_set_value
+      if self.name.blank?
+        self.name = self.email.split("@").first
+      end
     end
 
   end
