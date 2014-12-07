@@ -1,5 +1,5 @@
 
-`the_auth`是更容易使用的鉴权功能，基于`rails engine` 和 `warden`创建。
+`the_auth`是更容易使用的鉴权功能。
 鉴权的gem很多，我写这个gem主要出于以下考虑：
 
 - 更容易理解和学习：
@@ -12,10 +12,7 @@ include相应的模块进来即可。
 - 更容易覆盖：
 想扩展的话，只需要简单地覆盖掉相应地方法，想自定义view，直接覆盖响应的view就可以，真是随心所欲。
 
-- 基于`warden`：
-`warden`是一个优秀的鉴权相关的middleware，其功能主要有三块比较强大，1、session缓存，2、登陆回调，3、scope的鉴权策略配置；
-
-- 基于`ActiveModel::SecurePassword`：
+- 使用了`ActiveModel::SecurePassword`：
 `rails`自带，只需要一行代码就搞定密码验证，且提供的是比较前沿和安全的方案；
 
 ## 使用说明
@@ -30,11 +27,6 @@ TheAuth.configure do |config|
   config.login_required_method = :authenticate_user!  # devise auth method
 end
 ```
-
-#### 配置`warden`
-
-参考 example 文件夹下地代码示例
-更多参见warden的wiki，[warden](https://github.com/hassox/warden/wiki)
 
 
 #### 配置`routes`

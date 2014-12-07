@@ -2,30 +2,30 @@ class TheAuth::UserSessionsController < TheAuth::BaseController
 
   def new
     store_location request.referer if request.referer.present?
-    @session = resource.new
-
-    message = env['warden'].message
-    if message.present?
-      flash[:error] = message
-    end
   end
 
   def create
-    env['warden'].authenticate!
-    user = env['warden'].user
+    login = params[:login]
 
-    if user
-      remember_me if params[:user][:remember_me] == '1'
-      redirect_back_or_default main_app.root_path
+    if login.include?('@')
+      user = resource_class.find_by(:email => login)
     else
-      flash[:error] = '用户名或密码不正确'
-      redirect_to login_url
+      user = resource_class.find_by(:mobile => login)
+    end
+
+    if user && user.authenticate(params[:password])
+      login_as user
+      remember_me if params[:remember_me]
+
+      redirect_back_or_default
+    else
+      flash[:error] = I18n.t('errors.messages.wrong_name_or_password')
     end
   end
 
   def destroy
-    env['warden'].logout
-    redirect_to main_app.root_url
+    logout
+    redirect_to root_url
   end
 
   private
@@ -40,10 +40,6 @@ class TheAuth::UserSessionsController < TheAuth::BaseController
 
   def require_recaptcha?
     ip_count >= 3
-  end
-
-  def session_params
-    params[:user].permit(:email, :password, :remember_me)
   end
 
 end
