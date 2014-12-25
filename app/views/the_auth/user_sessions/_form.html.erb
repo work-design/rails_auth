@@ -2,7 +2,7 @@
 <h4 class="ui block top attached header">请登录</h4>
 
 
-<%= form_tag user_session_path, :html => { :class => 'ui form segment' } do %>
+<%= form_tag user_session_path, class: 'ui form segment' do %>
 
   <div class="inline field">
     <%= label_tag :login, '账号：', class: 'six wide field' %>
@@ -15,7 +15,9 @@
   </div>
 
   <div class="inline field">
-    <%= check_box_tag :remember_me %><%= label_tag "保持登录状态" %>
+    <label class="six wide field"></label>
+    <%= check_box_tag :remember_me %>
+    <%= label_tag "保持登录状态" %>
   </div>
 
   <div class="inline field">
