@@ -1,7 +1,5 @@
-require_dependency "the_auth/application_controller"
-
-class TheAuth::PasswordsController < TheAuth::ApplicationController
-  before_action :set_password, only: [:show, :edit, :update, :destroy]
+class TheAuth::PasswordsController < TheAuth::BaseController
+  before_action :set_password, only: [:edit, :update, :destroy]
 
   def new
     @user = source.new
