@@ -35,7 +35,7 @@ module TheAuthController
   end
 
   #--- 返回 ---
-  def redirect_back_or_default(default = root_path)
+  def redirect_back_or_default(default = root_url)
     redirect_to(session[:return_to] || default)
     session[:return_to] = nil
   end
@@ -59,7 +59,10 @@ module TheAuthController
     }
   end
 
-
+  def logout
+    session.delete(:user_id)
+    @current_user = nil
+  end
 
 
 end
