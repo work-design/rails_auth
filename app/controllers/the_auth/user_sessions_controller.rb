@@ -8,9 +8,9 @@ class TheAuth::UserSessionsController < TheAuth::BaseController
     login = params[:login]
 
     if login.include?('@')
-      user = resource_class.find_by(:email => login)
+      user = User.find_by(:email => login)
     else
-      user = resource_class.find_by(:mobile => login)
+      user = User.find_by(:mobile => login)
     end
 
     if user && user.authenticate(params[:password])

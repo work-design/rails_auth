@@ -2,7 +2,7 @@ class TheAuth::PasswordsController < TheAuth::BaseController
   before_action :set_password, only: [:edit, :update, :destroy]
 
   def new
-    @user = source.new
+    @user = User.new
   end
 
   def edit

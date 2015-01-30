@@ -8,16 +8,5 @@ module TheAuthBaseHelper
     end
   end
 
-  private
-
-  def resource_class
-    @user_class = TheAuth.default_user_class.constantize
-  end
-
-
-  def resource_name
-    @user_name = TheAuth.default_user_class.underscore
-  end
-
 
 end

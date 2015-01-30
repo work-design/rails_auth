@@ -1,7 +1,6 @@
 class TheAuth::RolesController < TheAuth::BaseController
   before_action :set_role, only: [:show, :edit, :update, :destroy]
 
-  # GET /roles
   def index
     @roles = Role.all
   end
