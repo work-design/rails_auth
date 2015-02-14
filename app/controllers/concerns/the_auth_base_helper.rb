@@ -8,5 +8,4 @@ module TheAuthBaseHelper
     end
   end
 
-
 end

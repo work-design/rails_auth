@@ -1,12 +1,4 @@
-require 'the_auth/version'
-require 'the_auth/config'
+require "the_auth/engine"
 
 module TheAuth
-
-  class Engine < Rails::Engine
-
-  end
-
 end
-
-

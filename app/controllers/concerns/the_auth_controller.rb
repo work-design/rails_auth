@@ -45,8 +45,6 @@ module TheAuthController
     @current_user = user
   end
 
-
-
   def forget_me
     cookies.delete(:remember_token)
   end
