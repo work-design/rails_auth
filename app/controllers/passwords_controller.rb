@@ -1,4 +1,4 @@
-class TheAuth::PasswordsController < TheAuth::BaseController
+class PasswordsController < ApplicationController
   before_action :set_password, only: [:edit, :update, :destroy]
 
   def new

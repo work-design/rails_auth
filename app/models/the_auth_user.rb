@@ -1,15 +1,14 @@
-module TheAuthModel
+module TheAuthUser
   extend ActiveSupport::Concern
 
   included do
     include ActiveModel::SecurePassword
     attr_accessor :remember_me
-    has_secure_password validations: false
 
     validates :email, uniqueness: true
+    has_secure_password validations: false
     before_save :auto_set_value, if: :email_changed?
   end
-
 
   private
 
@@ -20,3 +19,4 @@ module TheAuthModel
   end
 
 end
+

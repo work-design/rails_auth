@@ -1,4 +1,4 @@
-class TheAuth::UserSessionsController < TheAuth::BaseController
+class UserSessionsController < ApplicationController
 
   def new
     store_location request.referer if request.referer.present?
