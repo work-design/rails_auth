@@ -3,7 +3,6 @@ class User < ActiveRecord::Base
 
   mount_uploader :avatar, AvatarUploader
 
-
   has_many :posts
   has_many :wikis
   has_many :photos
