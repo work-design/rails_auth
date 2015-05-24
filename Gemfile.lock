@@ -104,4 +104,5 @@ PLATFORMS
 
 DEPENDENCIES
   bcrypt
+  rails (= 4.2.1)
   the_auth!

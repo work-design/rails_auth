@@ -19,7 +19,7 @@ class UserSessionsController < ApplicationController
 
       redirect_back_or_default
     else
-      flash[:error] = I18n.t('errors.messages.wrong_name_or_password')
+      redirect_to :back
     end
   end
 
