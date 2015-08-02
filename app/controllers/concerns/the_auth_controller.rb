@@ -26,7 +26,7 @@ module TheAuthController
   end
 
   def login_from_session
-    resource_class.find_by id: session[:user_id]
+    User.find_by id: session[:user_id]
   end
 
   def require_user_from_open(provider="wechat")
