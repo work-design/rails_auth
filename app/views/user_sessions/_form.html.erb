@@ -2,26 +2,26 @@
 <h4 class="ui block top attached header">请登录</h4>
 
 
-<%= form_tag user_session_path, class: 'ui form segment' do %>
+<%= form_tag user_session_path, class: 'ui attached form segment' do %>
 
-  <div class="inline field">
-    <%= label_tag :login, '账号：', class: 'six wide field' %>
-    <%= text_field_tag :login, nil, class: 'nine wide field' %>
+  <div class="inline fields">
+    <%= label_tag :login, '账号：', class: 'four wide field' %>
+    <%= text_field_tag :login, nil %>
   </div>
 
-  <div class="inline field">
-    <%= label_tag :password, '密码：', class: 'six wide field' %>
-    <%= password_field_tag :password, nil, class: 'nine wide field' %>
+  <div class="inline fields">
+    <%= label_tag :password, '密码：', class: 'four wide field' %>
+    <%= password_field_tag :password, nil %>
   </div>
 
-  <div class="inline field">
-    <label class="six wide field"></label>
+  <div class="inline fields">
+    <label class="four wide field"></label>
     <%= check_box_tag :remember_me %>
     <%= label_tag "保持登录状态" %>
   </div>
 
-  <div class="inline field">
-    <label class="six wide field"></label>
+  <div class="inline fields">
+    <label class="four wide field"></label>
     <%= submit_tag '登陆', class: 'ui button' %>
   </div>
 

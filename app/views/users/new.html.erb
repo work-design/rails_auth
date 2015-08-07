@@ -1,25 +1,27 @@
-<div class="ui grid page">
-<div class="sixteen wide column">
+<div class="centered row">
+<div class="six wide column">
 
-<%= form_for @user, :url => user_path, :html => {:class=> "ui form segment"} do |f| %>
+  <h4 class="ui block top attached header">请注册</h4>
 
-  <div class="inline field">
-    <%= f.label :email, "邮箱：", :class => "six wide field" %>
-    <%= f.email_field :email, :class => "nine wide field" %>
+<%= form_for @user, url: user_path, html: { class: "ui attached form segment" } do |f| %>
+
+  <div class="inline fields">
+    <%= f.label :email, "邮箱：", class: 'five wide field' %>
+    <%= f.email_field :email %>
   </div>
 
-  <div class="inline field">
-    <%= f.label :password, "密码：", class: "six wide field" %>
-    <%= f.password_field :password, class: "nine wide field" %>
+  <div class="inline fields">
+    <%= f.label :password, "密码：", class: 'five wide field' %>
+    <%= f.password_field :password %>
   </div>
 
-  <div class="inline field">
-    <%= f.label :password_confirmation, "密码确认：", :class => "six wide field" %>
-    <%= f.password_field :password_confirmation, :class => "nine wide field" %>
+  <div class="inline fields">
+    <%= f.label :password_confirmation, "密码确认：", class: 'five wide field' %>
+    <%= f.password_field :password_confirmation %>
   </div>
 
-  <div class="inline field">
-    <label class="six wide field"></label>
+  <div class="inline fields">
+    <label class="four wide field"></label>
     <%= submit_tag '注册', class: 'ui button' %>
   </div>
 
@@ -27,6 +29,4 @@
 
 </div>
 </div>
-
-
 
