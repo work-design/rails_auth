@@ -103,6 +103,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  bcrypt
-  rails (= 4.2.1)
   the_auth!
+
+BUNDLED WITH
+   1.10.6

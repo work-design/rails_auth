@@ -7,3 +7,4 @@ TheAuth::Engine.config.paths['config/locales'].expanded.each do |path|
 end
 
 User.include TheAuthUser
+ApplicationController.include TheAuthController
