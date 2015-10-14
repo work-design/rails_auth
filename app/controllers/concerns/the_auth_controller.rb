@@ -1,14 +1,11 @@
-require 'the_auth_base_helper'
-
 module TheAuthController
   extend ActiveSupport::Concern
-  include TheAuthBaseHelper
 
   included do
     helper_method :current_user
   end
 
-  def require_logined
+  def login_required
     unless current_user
       store_location
       redirect_to login_url
@@ -60,6 +57,14 @@ module TheAuthController
   def logout
     session.delete(:user_id)
     @current_user = nil
+  end
+
+  def store_location(path = nil)
+    if [login_url, user_session_url].include? path
+      session[:return_to] = main_app.root_url
+    else
+      session[:return_to] = path || request.fullpath
+    end
   end
 
 
