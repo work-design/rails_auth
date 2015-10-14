@@ -5,11 +5,10 @@ module TheAuthController
     helper_method :current_user
   end
 
-  def login_required
-    unless current_user
-      store_location
-      redirect_to login_url
-    end
+  def require_login
+    return if current_user
+    store_location
+    redirect_to login_url
   end
 
   def current_user
@@ -23,7 +22,7 @@ module TheAuthController
   end
 
   def login_from_session
-    User.find_by id: session[:user_id]
+    User.find_by(id: session[:user_id])
   end
 
   def require_user_from_open(provider="wechat")
