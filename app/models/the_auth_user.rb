@@ -5,7 +5,7 @@ module TheAuthUser
     include ActiveModel::SecurePassword
     attr_accessor :remember_me
 
-    validates :email, uniqueness: true
+    validates :email, uniqueness: true, if: -> { email.present? }
     has_secure_password validations: false
     before_save :auto_set_value, if: :email_changed?
   end
