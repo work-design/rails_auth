@@ -8,9 +8,9 @@ class UserSessionsController < ApplicationController
     login = params[:login]
 
     if login.include?('@')
-      user = User.find_by(:email => login)
+      user = User.find_by(email: login)
     else
-      user = User.find_by(:mobile => login)
+      user = User.find_by(mobile: login)
     end
 
     if user && user.authenticate(params[:password])
