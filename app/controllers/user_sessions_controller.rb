@@ -15,7 +15,6 @@ class UserSessionsController < ApplicationController
 
     if user && user.authenticate(params[:password])
       login_as user
-      remember_me if params[:remember_me]
 
       redirect_back_or_default
     else

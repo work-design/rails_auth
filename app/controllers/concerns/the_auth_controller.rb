@@ -30,7 +30,6 @@ module TheAuthController
     redirect_to "/auth/#{provider}"  # 使用oauth2去拿open_id
   end
 
-  #--- 返回 ---
   def redirect_back_or_default(default = root_url)
     redirect_to(session[:return_to] || default)
     session[:return_to] = nil
@@ -39,18 +38,6 @@ module TheAuthController
   def login_as(user)
     session[:user_id] = user.id
     @current_user = user
-  end
-
-  def forget_me
-    cookies.delete(:remember_token)
-  end
-
-  def remember_me
-    cookies[:remember_token] = {
-      :value   => current_user.remember_token,
-      :expires => 2.weeks.from_now,
-      :httponly => true
-    }
   end
 
   def logout
