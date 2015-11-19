@@ -1,4 +1,4 @@
-Rails.application.routes.draw do
+TheAuth::Engine.routes.draw do
 
   get 'signup' => 'users#new', as: :signup
   get 'login' => 'user_sessions#new', as: :login

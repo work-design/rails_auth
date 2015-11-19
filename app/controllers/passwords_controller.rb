@@ -1,4 +1,4 @@
-class PasswordsController < ApplicationController
+class PasswordsController < ::ApplicationController
   before_action :set_password, only: [:edit, :update, :destroy]
 
   def new
