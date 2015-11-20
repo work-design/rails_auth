@@ -2,7 +2,7 @@
 <h4 class="ui block top attached header">请登录</h4>
 
 
-<%= form_tag user_session_path, class: 'ui attached form segment' do %>
+<%= form_tag the_auth.user_session_path, class: 'ui attached form segment' do %>
 
   <div class="inline fields">
     <%= label_tag :login, '账号：', class: 'four wide field' %>

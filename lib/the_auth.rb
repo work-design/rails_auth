@@ -1,6 +1,2 @@
-require "the_auth/engine"
-
-module TheAuth
-end
-
-autoload :CeshiUser, 'auth/ceshi_user'
+module TheAuth; end
+require 'the_auth/engine'

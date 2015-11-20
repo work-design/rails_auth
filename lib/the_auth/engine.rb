@@ -1,7 +1,3 @@
-module TheAuth
-  class Engine < ::Rails::Engine
-
-
-
-  end
+class TheAuth::Engine < Rails::Engine
+  engine_name 'the_auth'
 end

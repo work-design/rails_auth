@@ -16,7 +16,7 @@ module TheAuthController
   def require_login
     return if current_user
     store_location
-    redirect_to login_url
+    redirect_to the_auth.login_url
   end
 
   def check_current_user
@@ -46,7 +46,7 @@ module TheAuthController
   end
 
   def store_location(path = nil)
-    if [login_url, user_session_url].include? path
+    if [the_auth.login_url, the_auth.user_session_url].include? path
       session[:return_to] = main_app.root_url
     else
       session[:return_to] = path || request.fullpath
