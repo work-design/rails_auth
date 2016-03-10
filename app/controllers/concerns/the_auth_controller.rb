@@ -19,17 +19,6 @@ module TheAuthController
     redirect_to login_url
   end
 
-  def check_current_user
-    unless current_user
-      require_user_from_open('weixin')
-    end
-  end
-
-  def require_user_from_open(provider="wechat")
-    store_location
-    redirect_to "/auth/#{provider}"  # 使用oauth2去拿open_id
-  end
-
   def redirect_back_or_default(default = root_url)
     redirect_to(session[:return_to] || default)
     session[:return_to] = nil
@@ -52,6 +41,5 @@ module TheAuthController
       session[:return_to] = path || request.fullpath
     end
   end
-
 
 end
