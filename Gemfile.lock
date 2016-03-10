@@ -6,7 +6,7 @@ PATH
       rails (>= 4.2)
 
 GEM
-  remote: http://ruby.taobao.org/
+  remote: https://rubygems.org/
   specs:
     actionmailer (4.2.5)
       actionpack (= 4.2.5)
@@ -106,4 +106,4 @@ DEPENDENCIES
   the_auth!
 
 BUNDLED WITH
-   1.10.6
+   1.11.2
