@@ -18,7 +18,7 @@ class UserSessionsController < ApplicationController
 
       redirect_back_or_default
     else
-      redirect_to :back
+      redirect_back fallback_location: login_url
     end
   end
 
