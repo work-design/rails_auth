@@ -7,15 +7,6 @@ module TheAuthUser
 
     validates :email, uniqueness: true, if: -> { email.present? }
     has_secure_password validations: false
-    before_save :auto_set_value, if: :email_changed?
-  end
-
-  private
-
-  def auto_set_value
-    if self.name.blank?
-      self.name = self.email.split("@").first
-    end
   end
 
 end
