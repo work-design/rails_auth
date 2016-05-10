@@ -1,0 +1,9 @@
+<h2>Resend confirmation instructions</h2>
+
+<%= form_for @user, url: confirmation_path(@user), html: { method: :post } do |f| %>
+
+  <div><%= f.label :email %><br />
+  <%= f.email_field :email %></div>
+
+  <div><%= f.submit "Resend confirmation instructions" %></div>
+<% end %>

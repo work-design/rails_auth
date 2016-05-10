@@ -1,18 +1,10 @@
-class UserSessionsController < ApplicationController
+class TheAuth::LoginController < TheAuth::BaseController
 
-  def new
+  def login
     store_location request.referer if request.referer.present?
   end
 
-  def create
-    login = params[:login]
-
-    if login.include?('@')
-      user = User.find_by(email: login)
-    else
-      user = User.find_by(mobile: login)
-    end
-
+  def update_login
     if user && user.authenticate(params[:password])
       login_as user
 
@@ -28,6 +20,13 @@ class UserSessionsController < ApplicationController
   end
 
   private
+  def set_user
+    if params[:login].include?('@')
+      user = User.find_by(email: login)
+    else
+      user = User.find_by(mobile: login)
+    end
+  end
 
   def inc_ip_count
     Rails.cache.write "login/#{request.remote_ip}", ip_count + 1, :expires_in => 60.seconds
@@ -41,5 +40,13 @@ class UserSessionsController < ApplicationController
     ip_count >= 3
   end
 
-end
 
+  private
+  def user_params
+    params.require(:user).permit(:name,
+                                 :email,
+                                 :password,
+                                 :password_confirmation)
+  end
+
+end
