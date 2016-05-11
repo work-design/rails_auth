@@ -1,9 +1,6 @@
-class UsersController < ApplicationController
-  include TheAuthController
+class TheAuth::PasswordController < TheAuth::BaseController
 
-  def new
-    @user = User.new(password: '')
-    store_location request.referer if request.referer.present?
+  def reset
   end
 
   def create
@@ -38,9 +35,9 @@ class UsersController < ApplicationController
   private
   def set_user
     if params[:login].include?('@')
-      user = User.find_by(email: login)
+      @user = User.find_by(email: login)
     else
-      user = User.find_by(mobile: login)
+      @user = User.find_by(mobile: login)
     end
   end
 

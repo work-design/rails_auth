@@ -11,7 +11,7 @@ class TheAuth::JoinController < TheAuth::BaseController
       login_as @user
       redirect_back_or_default
     else
-      render :new, error: @user.errors.full_messages
+      render :join, error: @user.errors.full_messages
     end
   end
 
@@ -31,10 +31,10 @@ class TheAuth::JoinController < TheAuth::BaseController
 
   private
   def user_params
-    params.require(:user).permit(:name,
-                                 :email,
-                                 :password,
-                                 :password_confirmation)
+    params.fetch(:user, {}).permit(:name,
+                                   :email,
+                                   :password,
+                                   :password_confirmation)
   end
 
 end

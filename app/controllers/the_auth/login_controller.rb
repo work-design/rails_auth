@@ -1,12 +1,12 @@
 class TheAuth::LoginController < TheAuth::BaseController
 
-  def login
+  def new
     store_location request.referer if request.referer.present?
   end
 
-  def update_login
-    if user && user.authenticate(params[:password])
-      login_as user
+  def create
+    if @user && @user.authenticate(params[:password])
+      login_as @user
 
       redirect_back_or_default
     else
@@ -22,9 +22,9 @@ class TheAuth::LoginController < TheAuth::BaseController
   private
   def set_user
     if params[:login].include?('@')
-      user = User.find_by(email: login)
+      @user = User.find_by(email: login)
     else
-      user = User.find_by(mobile: login)
+      @user = User.find_by(mobile: login)
     end
   end
 
