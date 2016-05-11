@@ -1,11 +1,17 @@
 <h2>Forgot your password?</h2>
 
-<%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post }) do |f| %>
-  <%= devise_error_messages! %>
+<%= form_tag password_forget_url, class: 'ui attached form segment' do %>
 
-  <div><%= f.label :email %><br />
-  <%= f.email_field :email %></div>
+    <div class="inline fields">
+      <%= label_tag :login, '账号：', class: 'four wide field' %>
+      <%= text_field_tag :login, nil %>
+    </div>
 
-  <div><%= f.submit "Send me reset password instructions" %></div>
+    <div class="inline fields">
+      <label class="four wide field"></label>
+      <%= submit_tag 'Send me reset password instructions', class: 'ui button' %>
+    </div>
+
 <% end %>
+
 

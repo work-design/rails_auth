@@ -12,10 +12,10 @@ Rails.application.routes.draw do
   end
 
   scope module: :the_auth, controller: :password, path: :password do
-    get 'reset', action: 'reset'
-    post 'reset', action: 'update_reset'
-    get 'confirm/:token', action: 'confirm', as: 'password_confirm'
-    post 'confirm', action: 'update_confirm', as: 'password_update_confirm'
+    get 'forget', action: 'new', as: 'password_forget'
+    post 'forget', action: 'create'
+    get 'reset/:token', action: 'edit', as: 'password_reset'
+    post 'confirm', action: 'update', as: 'password_confirm'
   end
 
   scope module: :the_auth, controller: :confirm, path: :confirm do

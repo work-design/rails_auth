@@ -1,35 +1,22 @@
 class TheAuth::PasswordController < TheAuth::BaseController
 
-  def reset
+  def new
   end
 
   def create
-    @user = User.new(user_params)
-    if @user.save
-      login_as @user
-      redirect_back_or_default
+    if @user
+
+
     else
       render :new, error: @user.errors.full_messages
     end
   end
 
-  def login
-    store_location request.referer if request.referer.present?
+  def edit
   end
 
-  def update_login
-    if user && user.authenticate(params[:password])
-      login_as user
+  def update
 
-      redirect_back_or_default
-    else
-      redirect_back fallback_location: login_url
-    end
-  end
-
-  def destroy
-    logout
-    redirect_to root_url
   end
 
   private

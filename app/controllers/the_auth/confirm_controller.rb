@@ -1,4 +1,4 @@
-class TheAuth::UsersController < TheAuth::BasicController
+class TheAuth::UsersController < TheAuth::BaseController
 
   def new
     @user = User.new(password: '')

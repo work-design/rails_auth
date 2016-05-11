@@ -11,7 +11,7 @@ class TheAuth::JoinController < TheAuth::BaseController
       login_as @user
       redirect_back_or_default
     else
-      render :join, error: @user.errors.full_messages
+      render :new, error: @user.errors.full_messages
     end
   end
 
