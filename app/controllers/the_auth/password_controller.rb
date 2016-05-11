@@ -1,4 +1,5 @@
 class TheAuth::PasswordController < TheAuth::BaseController
+  before_action :set_user, only: [:create]
 
   def new
   end
@@ -22,9 +23,9 @@ class TheAuth::PasswordController < TheAuth::BaseController
   private
   def set_user
     if params[:login].include?('@')
-      @user = User.find_by(email: login)
+      @user = User.find_by(email: params[:login])
     else
-      @user = User.find_by(mobile: login)
+      @user = User.find_by(mobile: params[:login])
     end
   end
 

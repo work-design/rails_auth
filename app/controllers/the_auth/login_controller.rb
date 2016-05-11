@@ -1,4 +1,5 @@
 class TheAuth::LoginController < TheAuth::BaseController
+  before_action :set_user, only: [:create]
 
   def new
     store_location request.referer if request.referer.present?
@@ -22,9 +23,9 @@ class TheAuth::LoginController < TheAuth::BaseController
   private
   def set_user
     if params[:login].include?('@')
-      @user = User.find_by(email: login)
+      @user = User.find_by(email: params[:login])
     else
-      @user = User.find_by(mobile: login)
+      @user = User.find_by(mobile: params[:login])
     end
   end
 
