@@ -16,18 +16,9 @@ module TheAuthUser
     self.reset_token_expired_at = 10.minutes.since
   end
 
-  def self.verify_reset_token?(token, now = Time.now)
-    return false if token.blank?
-
-    user = self.find_by(reset_token: token)
-
-    if user
-      unless now <= self.auth_code_expired_at
-        self.errors.add(:auth_code, '验证码已过期')
-        return false
-      end
-    else
-      errors.add(:auth_code, 'can not find user')
+  def verify_reset_token?(now = Time.now)
+    unless now <= self.auth_code_expired_at
+      self.errors.add(:auth_code, '验证码已过期')
       return false
     end
 

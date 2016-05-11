@@ -5,18 +5,18 @@ class TheAuth::PasswordController < TheAuth::BaseController
 
   def create
     if @user
-
-
+      UserMailer.password_reset(@user).deliver_now
     else
       render :new, error: @user.errors.full_messages
     end
   end
 
   def edit
+    @user = User.find_by(reset_token: params[:token])
+    @user.clear_reset_token!
   end
 
   def update
-
   end
 
   private
