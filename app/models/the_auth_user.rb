@@ -14,14 +14,20 @@ module TheAuthUser
   def update_reset_token
     self.reset_token = SecureRandom.uuid
     self.reset_token_expired_at = 10.minutes.since
+    save
   end
 
   def verify_reset_token?(now = Time.now)
-    unless now <= self.auth_code_expired_at
-      self.errors.add(:auth_code, '验证码已过期')
+    self.reset_token_expired_at ||= Time.now
+    if now > self.reset_token_expired_at
+      self.errors.add(:reset_token, 'Reset Token has expired')
       return false
     end
 
+    true
+  end
+
+  def clear_reset_token!
     update(reset_token: '')
   end
 

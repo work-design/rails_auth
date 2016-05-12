@@ -15,7 +15,7 @@ Rails.application.routes.draw do
     get 'forget', action: 'new', as: 'password_forget'
     post 'forget', action: 'create'
     get 'reset/:token', action: 'edit', as: 'password_reset'
-    post 'confirm', action: 'update', as: 'password_confirm'
+    post 'reset/:token', action: 'update'
   end
 
   scope module: :the_auth, controller: :confirm, path: :confirm do
