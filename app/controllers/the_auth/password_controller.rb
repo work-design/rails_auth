@@ -5,7 +5,7 @@ class TheAuth::PasswordController < TheAuth::BaseController
 
   def create
     if @user.update_reset_token
-      UserMailer.password_reset(@user).deliver_now
+      UserMailer.password_reset(@user).deliver_later
     else
       render :new, error: @user.errors.full_messages
     end
