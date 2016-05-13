@@ -23,7 +23,7 @@ class TheAuth::PasswordController < TheAuth::BaseController
     @user.clear_reset_token!
     @user.update(password: params[:password], password_confirmation: params[:password_confirmation])
 
-    redirect_to root_url
+    redirect_to login_url
   end
 
 end
