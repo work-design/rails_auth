@@ -1,20 +1,25 @@
-<h2>Reset your password!</h2>
+<div class="centered row">
+  <div class="six wide column">
+    <h2 class="ui header">Reset your password!</h2>
 
-<%= form_tag password_reset_url(params[:token]), class: 'ui attached form segment' do %>
+    <%= form_tag password_reset_url(params[:token]), class: 'ui attached form segment' do %>
 
-    <div class="inline fields">
-      <%= label_tag :password, 'Password：', class: 'four wide field' %>
-      <%= password_field_tag :password, nil %>
-    </div>
+        <div class="inline fields">
+          <%= label_tag :password, 'Password：', class: 'four wide field' %>
+          <%= password_field_tag :password, nil %>
+        </div>
 
-    <div class="inline fields">
-      <%= label_tag :password_confirmation, 'Password：', class: 'four wide field' %>
-      <%= password_field_tag :password_confirmation, nil %>
-    </div>
+        <div class="inline fields">
+          <%= label_tag :password_confirmation, 'Password：', class: 'four wide field' %>
+          <%= password_field_tag :password_confirmation, nil %>
+        </div>
 
-    <div class="inline fields">
-      <label class="four wide field"></label>
-      <%= submit_tag 'confirm', class: 'ui button' %>
-    </div>
+        <div class="inline fields">
+          <label class="four wide field"></label>
+          <%= submit_tag 'confirm', class: 'ui button' %>
+        </div>
 
-<% end %>
+    <% end %>
+  </div>
+</div>
+

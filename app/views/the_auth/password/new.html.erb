@@ -1,17 +1,25 @@
-<h2>Forgot your password?</h2>
 
-<%= form_tag password_forget_url, class: 'ui attached form segment' do %>
+<div class="centered row">
 
-    <div class="inline fields">
-      <%= label_tag :login, '账号：', class: 'four wide field' %>
-      <%= text_field_tag :login, nil %>
-    </div>
+  <div class="six wide column">
+    <h2 class="ui header">Reset Password?</h2>
 
-    <div class="inline fields">
-      <label class="four wide field"></label>
-      <%= submit_tag 'Send me reset password instructions', class: 'ui button' %>
-    </div>
+    <%= form_tag password_forget_url, class: 'ui attached form segment' do %>
+      <div class="inline fields">
+        <%= label_tag :login, '账号：', class: 'four wide field' %>
+        <%= text_field_tag :login, nil %>
+      </div>
+      <div class="inline fields">
+        <label class="four wide field"></label>
+        <%= submit_tag 'Send me reset password instructions', class: 'ui button' %>
+      </div>
+    <% end %>
 
-<% end %>
+  </div>
+
+
+</div>
+
+
 
 
