@@ -5,7 +5,7 @@ class TheAuth::PasswordController < TheAuth::BaseController
 
   def create
     @user = User.find_by email: params[:login]
-    if @user && @user.update_reset_token
+    if @user
       UserMailer.password_reset(@user).deliver_later
     elsif @user.blank?
       render :new, error: '用户不存在'

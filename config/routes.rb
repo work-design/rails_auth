@@ -19,8 +19,8 @@ Rails.application.routes.draw do
   end
 
   scope module: :the_auth, controller: :confirm, path: :confirm do
-    get 'email/:token', action: 'email', as: 'confirm'
-    get 'new', action: 'new'
+    get 'email/:token', action: 'edit', as: 'confirm'
+    post 'email/:token', action: 'update'
   end
 
 end
