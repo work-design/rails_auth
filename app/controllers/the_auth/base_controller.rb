@@ -10,5 +10,4 @@ class TheAuth::BaseController < ApplicationController
     @current_user = nil
   end
 
-
 end

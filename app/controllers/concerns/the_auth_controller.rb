@@ -16,7 +16,7 @@ module TheAuthController
   end
 
   def login_from_session
-    User.find_by(id: session[:user_id])
+    User.find_by(id: session[:user_id]) if session[:user_id]
   end
 
   def store_location(path = nil)
