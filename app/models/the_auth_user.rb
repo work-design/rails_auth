@@ -50,6 +50,5 @@ module TheAuthUser
     update(reset_token: '')
   end
 
-
 end
 

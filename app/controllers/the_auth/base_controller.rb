@@ -2,6 +2,7 @@ class TheAuth::BaseController < ApplicationController
 
   def login_as(user)
     session[:user_id] = user.id
+    user.update(last_login_at: Time.now)
     @current_user = user
   end
 
