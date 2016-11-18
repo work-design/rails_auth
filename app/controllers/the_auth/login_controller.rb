@@ -41,13 +41,4 @@ class TheAuth::LoginController < TheAuth::BaseController
     ip_count >= 3
   end
 
-
-  private
-  def user_params
-    params.require(:user).permit(:name,
-                                 :email,
-                                 :password,
-                                 :password_confirmation)
-  end
-
 end
