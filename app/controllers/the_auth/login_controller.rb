@@ -30,7 +30,7 @@ class TheAuth::LoginController < TheAuth::BaseController
   end
 
   def inc_ip_count
-    Rails.cache.write "login/#{request.remote_ip}", ip_count + 1, :expires_in => 60.seconds
+    Rails.cache.write "login/#{request.remote_ip}", ip_count + 1, expires_in: 60.seconds
   end
 
   def ip_count
