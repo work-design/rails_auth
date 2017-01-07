@@ -1,0 +1,17 @@
+<div class="three wide column">
+  <%= render 'admin/base/nav_users' %>
+</div>
+
+<div class="thirteen wide column">
+
+  <div class="ui breadcrumb">
+    <%= link_to '返回', admin_users_path, class: 'section' %>
+    <div class="divider"> / </div>
+    <div class="active section">编辑</div>
+  </div>
+
+  <div class="ui segment">
+    <%= render 'form' %>
+  </div>
+
+</div>

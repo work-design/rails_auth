@@ -23,4 +23,10 @@ Rails.application.routes.draw do
     post 'email/:token', action: 'update'
   end
 
+  namespace :admin do
+    resources :users do
+      patch :toggle, on: :member
+    end
+  end
+
 end

@@ -1,0 +1,63 @@
+<div class="three wide column">
+  <%= render 'admin/base/nav_users' %>
+</div>
+
+<div class="thirteen wide column">
+
+  <div class="ui top attached menu borderless">
+    <div class="item"><strong>用户列表</strong></div>
+  </div>
+
+  <div class="ui segment bottom attached">
+    <%= render 'search_form' %>
+  </div>
+
+  <div class="ui segment top attached">
+    <%= link_to '新建', new_admin_user_path, class: 'ui teal button' %>
+  </div>
+
+  <table class="ui bottom attached table">
+    <thead>
+    <tr>
+      <th>ID</th>
+      <th>Email</th>
+      <th>电话</th>
+      <th>注册时间</th>
+      <th>上次登录时间</th>
+	    <th>禁用</th>
+      <th></th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= user.id %></td>
+        <td><%= user.email %></td>
+        <td><%= user.mobile %></td>
+        <td><span class="local_time"><%= user.created_at.to_s %></span></td>
+        <td><%= user.last_login_at.to_s if user.last_login_at %></td>
+	      <td>
+          <%= form_tag toggle_admin_user_path(user), method: :patch do %>
+            <span class="ui toggle checkbox">
+              <label></label>
+              <%= check_box_tag :disabled, 1, user.disabled, onChange: 'this.form.submit()', id: nil %>
+            </span>
+          <% end %>
+        </td>
+        <td>
+          <%= link_to '详细', admin_user_path(user), class: 'ui blue label' %>
+          <%= link_to '编辑', edit_admin_user_path(user), class: 'ui pink label' %>
+          <%= link_to '删除', admin_user_path(user), method: :delete, data: { confirm: 'Are you sure?' }, class: 'ui red label' %>
+        </td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+
+  <%= paginate @users %>
+</div>
+
+<script>
+  $('.ui.toggle.checkbox').checkbox();
+</script>

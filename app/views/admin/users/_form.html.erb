@@ -1,0 +1,8 @@
+<%= default_form_for [:admin, @user] do |f| %>
+  <%= f.text_field :name, label: '昵称：' %>
+  <%= f.text_field :email, label: '邮箱：' %>
+  <%= f.text_field :mobile, label: '电话号：' %>
+  <%= f.text_field :password, label: 'Password：' %>
+	<%= f.check_box :disabled, label: 'Disabled: ' %>
+  <%= f.submit %>
+<% end %>
