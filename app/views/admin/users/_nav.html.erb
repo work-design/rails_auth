@@ -3,7 +3,6 @@
     <span class="header">用户</span>
     <div class="menu">
       <%= link_to '个人资料', admin_user_path(@user), class: active_page(id: @user.id) %>
-      <%= link_to '通知列表', admin_user_notifications_path(@user), class: active_controller('user_notifications') %>
     </div>
   </div>
 </div>
