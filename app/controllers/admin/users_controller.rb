@@ -6,7 +6,7 @@ class Admin::UsersController < Admin::BaseController
                                   :destroy]
 
   def index
-    @users = User.order(created_at: :desc).default_where(params[:q]).page(params[:page])
+    @users = User.order(created_at: :desc).default_where(search_params).page(params[:page])
   end
 
   def new
@@ -53,6 +53,10 @@ class Admin::UsersController < Admin::BaseController
   private
   def set_user
     @user = User.find(params[:id])
+  end
+
+  def search_params
+    params.fetch(:q, {}).permit(:name, :mobile, :email)
   end
 
   def user_params

@@ -58,6 +58,4 @@
   <%= paginate @users %>
 </div>
 
-<script>
-  $('.ui.toggle.checkbox').checkbox();
-</script>
+<%= js_load(root: TheAuth::Engine.root) %>

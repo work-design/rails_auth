@@ -13,4 +13,8 @@ class TheAuth::Engine < Rails::Engine
     }
   end
 
+  initializer 'the_auth.assets.precompile' do |app|
+    app.config.assets.precompile += ['the_auth_manifest.js']
+  end
+
 end
