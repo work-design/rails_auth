@@ -5,6 +5,8 @@
 
 <%= form_for @user, url: join_path, html: { class: "ui attached form segment" } do |f| %>
 
+  <%= render 'shared/error_messages', target: @user %>
+
   <div class="inline fields">
     <%= f.label :email, "邮箱：", class: 'five wide field' %>
     <%= f.email_field :email %>
