@@ -5,20 +5,24 @@ class TheAuth::PasswordController < TheAuth::BaseController
 
   def create
     @user = User.find_by email: params[:login]
+    @login = params[:login]
     if @user
       UserMailer.password_reset(@user.id).deliver_later
-    elsif @user.blank?
-      render :new, error: '用户不存在'
-    else
-      render :new, error: @user.errors.full_messages
     end
   end
 
   def edit
     reset_token = ResetToken.find_by(token: params[:token])
-    @user = reset_token.user
-    unless reset_token.verify_token?
-      render :new, error: @user.errors.full_messages
+
+    if reset_token
+      @user = reset_token.user
+      unless reset_token.verify_token?
+        @error_message = '重置Token 已失效, 请重新申请'
+        render :edit_error
+      end
+    else
+      @error_message = '重置Token无效'
+      render :edit_error
     end
   end
 
