@@ -1,10 +1,11 @@
 class VerifyToken < ApplicationRecord
   belongs_to :user
 
+  before_create :update_token
+
   def update_token
     self.token = SecureRandom.uuid
     self.expired_at = 14.days.since
-    save
   end
 
   def verify_token?(now = Time.now)
@@ -18,7 +19,7 @@ class VerifyToken < ApplicationRecord
   end
 
   def clear_token!
-    update(token: '')
+    self.destroy
   end
 
 end
