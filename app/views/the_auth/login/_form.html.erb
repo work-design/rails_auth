@@ -1,22 +1,13 @@
-<h4 class="ui block top attached header">请登录</h4>
-
-<%= form_tag login_path, class: 'ui attached form segment' do %>
-
-  <div class="inline fields">
-    <%= label_tag :login, '账号：', class: 'four wide field' %>
-    <%= text_field_tag :login, nil %>
+<%= form_tag login_path, class: 'ui large form', id: 'login' do %>
+  <div class="field">
+    <%= text_field_tag :login, nil, placeholder: 'Email or Mobile' %>
   </div>
-
-  <div class="inline fields">
-    <%= label_tag :password, '密码：', class: 'four wide field' %>
-    <%= password_field_tag :password, nil %>
+  <div class="field">
+    <%= password_field_tag :password, nil, placeholder: 'Password' %>
   </div>
-
-  <div class="inline fields">
-    <label class="four wide field"></label>
-    <%= submit_tag '登陆', class: 'ui button' %>
+  <div class="field">
+    <%= submit_tag 'Submit', class: 'ui button' %>
   </div>
-
 <% end %>
 
 

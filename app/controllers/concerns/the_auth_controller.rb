@@ -12,7 +12,11 @@ module TheAuthController
   def require_login
     return if current_user
     store_location
-    redirect_to login_url
+    if params[:form_id]
+      redirect_to login_url(form_id: params[:form_id])
+    else
+      redirect_to login_url
+    end
   end
 
   def login_from_session

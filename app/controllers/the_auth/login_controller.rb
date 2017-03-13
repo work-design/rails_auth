@@ -3,16 +3,24 @@ class TheAuth::LoginController < TheAuth::BaseController
 
   def new
     store_location request.referer if request.referer.present?
+    @remote = true if params[:form_id]
   end
 
   def create
     if @user && @user.authenticate(params[:password])
       login_as @user
 
-      redirect_back_or_default
+      respond_to do |format|
+        format.html { redirect_back_or_default }
+        format.js
+      end
     else
-      redirect_back fallback_location: login_url
+      respond_to do |format|
+        format.html { redirect_back fallback_location: login_url }
+        format.js
+      end
     end
+
   end
 
   def destroy
@@ -42,3 +50,5 @@ class TheAuth::LoginController < TheAuth::BaseController
   end
 
 end
+
+
