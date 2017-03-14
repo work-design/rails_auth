@@ -7,7 +7,7 @@
     <%= form_tag login_path, class: 'ui large form', remote: @remote do %>
       <%= hidden_field_tag :form_id, params[:form_id] %>
       <div class="field">
-        <%= text_field_tag :login, nil, placeholder: 'Email or Mobile' %>
+        <%= text_field_tag :login, params[:login], placeholder: 'Email or Mobile' %>
       </div>
       <div class="field">
         <%= password_field_tag :password, nil, placeholder: 'Password' %>
