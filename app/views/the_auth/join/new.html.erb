@@ -3,31 +3,7 @@
 
   <h4 class="ui block top attached header">请注册</h4>
 
-<%= form_for @user, url: join_path, html: { class: "ui attached form segment" } do |f| %>
-
-  <%= render 'shared/error_messages', target: @user %>
-
-  <div class="inline fields">
-    <%= f.label :email, "邮箱：", class: 'five wide field' %>
-    <%= f.email_field :email %>
-  </div>
-
-  <div class="inline fields">
-    <%= f.label :password, "密码：", class: 'five wide field' %>
-    <%= f.password_field :password %>
-  </div>
-
-  <div class="inline fields">
-    <%= f.label :password_confirmation, "密码确认：", class: 'five wide field' %>
-    <%= f.password_field :password_confirmation %>
-  </div>
-
-  <div class="inline fields">
-    <label class="four wide field"></label>
-    <%= submit_tag '注册', class: 'ui button' %>
-  </div>
-
-<% end %>
+  <%= render 'form' %>
 
 </div>
 </div>

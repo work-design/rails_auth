@@ -13,7 +13,7 @@ module TheAuthController
     return if current_user
     store_location
     if params[:form_id]
-      redirect_to login_url(form_id: params[:form_id])
+      redirect_to login_url(form_id: params[:form_id], login: params[:login])
     else
       redirect_to login_url
     end
