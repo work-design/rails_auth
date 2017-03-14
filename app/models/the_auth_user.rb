@@ -4,8 +4,8 @@ module TheAuthUser
   included do
     include ActiveModel::SecurePassword
 
-    validates :email, uniqueness: true, if: -> { email.present? }
-    validates :mobile, uniqueness: true, if: -> { mobile.present? }
+    validates :email, uniqueness: true, if: -> { email.present? && email_changed? }
+    validates :mobile, uniqueness: true, if: -> { mobile.present? && mobile_changed? }
     has_secure_password validations: false
 
     has_one :confirm_token
