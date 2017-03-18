@@ -7,7 +7,7 @@ class TheAuth::JoinController < TheAuth::BaseController
 
   def create
     @user = User.new(user_params)
-    if @user.save
+    if @user.join
       login_as @user
       redirect_back_or_default
     else
@@ -30,7 +30,7 @@ class TheAuth::JoinController < TheAuth::BaseController
 
   private
   def user_params
-    params.fetch(:user, {}).permit(:name, :email, :password, :password_confirmation)
+    params.fetch(:user, {}).permit!
   end
 
 end

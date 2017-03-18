@@ -17,5 +17,9 @@ module TheAuthUser
     update(email_confirm: true)
   end
 
+  def join
+    save
+  end
+
 end
 
