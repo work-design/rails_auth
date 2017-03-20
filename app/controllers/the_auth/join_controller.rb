@@ -29,7 +29,7 @@ class TheAuth::JoinController < TheAuth::BaseController
   end
 
   def user_params
-    params.fetch(:user, {}).permit(:name, :email, :password, :password_confirmation)
+    params.fetch(:user, {}).permit(:name, :email, :mobile, :password, :password_confirmation)
   end
 
 end
