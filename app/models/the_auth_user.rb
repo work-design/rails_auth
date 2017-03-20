@@ -17,7 +17,7 @@ module TheAuthUser
     update(email_confirm: true)
   end
 
-  def join
+  def join(params)
     save
   end
 
