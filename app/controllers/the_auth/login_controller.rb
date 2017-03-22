@@ -15,6 +15,12 @@ class TheAuth::LoginController < TheAuth::BaseController
         format.js
       end
     else
+      if @user
+        flash[:error] = @user.errors.full_messages
+      else
+        flash[:error] = 'Account or Password error'
+      end
+
       respond_to do |format|
         format.html { redirect_back fallback_location: login_url }
         format.js { render :new }
