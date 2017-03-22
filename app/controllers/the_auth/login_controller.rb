@@ -17,7 +17,7 @@ class TheAuth::LoginController < TheAuth::BaseController
     else
       respond_to do |format|
         format.html { redirect_back fallback_location: login_url }
-        format.js
+        format.js { render :new }
       end
     end
 
