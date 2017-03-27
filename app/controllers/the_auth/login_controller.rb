@@ -16,9 +16,9 @@ class TheAuth::LoginController < TheAuth::BaseController
       end
     else
       if @user
-        flash[:error] = @user.errors.full_messages
+        flash[:error] = 'Incorrect email or password.'
       else
-        flash[:error] = 'Account or Password error'
+        flash[:error] = 'Incorrect email or password.'
       end
 
       respond_to do |format|

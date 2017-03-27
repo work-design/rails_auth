@@ -17,7 +17,7 @@ class TheAuth::PasswordController < TheAuth::BaseController
     if reset_token
       @user = reset_token.user
       unless reset_token.verify_token?
-        @error_message = '重置Token 已失效, 请重新申请'
+        @error_message = 'Reset Token 已失效, 请重新申请'
         render :edit_error
       end
     else
