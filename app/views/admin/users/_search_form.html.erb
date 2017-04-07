@@ -1,9 +1,9 @@
 <%= search_form_for :q do |f| %>
   <div class="fields">
-  <%= f.text_field :name,  placeholder: "用户名：" %>
-  <%= f.text_field :mobile, placeholder: "手机号：" %>
-  <%= f.text_field :email, placeholder: "hola@123.com" %>
-  <%= f.submit "查询", class: 'ui green small button' %>
+  <%= f.text_field :name, placeholder: 'Input Name' %>
+  <%= f.text_field :mobile, placeholder: 'Input Mobile' %>
+  <%= f.text_field :email, placeholder: 'abc@123.com' %>
+  <%= f.submit 'Search' %>
   </div>
 <% end %>
 
