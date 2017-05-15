@@ -21,5 +21,19 @@ module TheAuthUser
     save
   end
 
+  def can_login?(params)
+    if self.disabled?
+      errors.add :login, 'The account has been disabled!'
+      return false
+    end
+
+    if authenticate(params[:password])
+      self
+    else
+      errors.add :login, 'Incorrect email or password.'
+      false
+    end
+  end
+
 end
 
