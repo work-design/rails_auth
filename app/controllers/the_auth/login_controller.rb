@@ -7,7 +7,7 @@ class TheAuth::LoginController < TheAuth::BaseController
   end
 
   def create
-    if @user && @user.can_login?(params[:password])
+    if @user && @user.can_login?(params)
       login_as @user
 
       respond_to do |format|
@@ -16,7 +16,7 @@ class TheAuth::LoginController < TheAuth::BaseController
       end
     else
       if @user
-        flash[:error] = @user.errors.full_messages.join(' ')
+        flash[:error] = @user.errors.messages.values.flatten.join(' ')
       else
         flash[:error] = 'Incorrect email or password.'
       end
