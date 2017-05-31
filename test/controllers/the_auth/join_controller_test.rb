@@ -3,29 +3,19 @@ require 'test_helper'
 class TheAuth::JoinControllerTest < ActionDispatch::IntegrationTest
 
   setup do
-    @user = create :user
+    #binding.pry
+    #@user = create :user
   end
 
-  test "should get index" do
-    get testsses_url
+  test 'new' do
+    get join_url
     assert_response :success
   end
 
-
-  test "should create testss" do
-    assert_difference('Testss.count') do
-      post testsses_url, params: { testss: {  } }
+  test 'create' do
+    assert_difference('User.count') do
+      post join_url, params: { user: { login: 'mingyuan0715@foxmail.com', password: '111' } }
     end
-
-    assert_redirected_to testss_url(Testss.last)
   end
 
-
-  test "should destroy testss" do
-    assert_difference('Testss.count', -1) do
-      delete testss_url(@testss)
-    end
-
-    assert_redirected_to testsses_url
-  end
 end

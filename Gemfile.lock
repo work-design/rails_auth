@@ -4,6 +4,7 @@ PATH
     the_auth (1.0.4)
       bcrypt
       rails (>= 5.0)
+      rails_com
 
 GEM
   remote: https://rubygems.org/
@@ -70,6 +71,7 @@ GEM
     mime-types-data (3.2016.0521)
     mini_portile2 (2.1.0)
     minitest (5.10.2)
+    mysql2 (0.4.6)
     nio4r (2.0.0)
     nokogiri (1.7.2)
       mini_portile2 (~> 2.1.0)
@@ -99,6 +101,8 @@ GEM
       nokogiri (>= 1.6)
     rails-html-sanitizer (1.0.3)
       loofah (~> 2.0)
+    rails_com (1.0.0)
+      rails (>= 5.0.1)
     railties (5.1.1)
       actionpack (= 5.1.1)
       activesupport (= 5.1.1)
@@ -128,6 +132,7 @@ PLATFORMS
 DEPENDENCIES
   byebug
   factory_girl_rails
+  mysql2
   pry-rails
   the_auth!
 
