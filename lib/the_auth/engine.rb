@@ -1,4 +1,4 @@
-class TheAuth::Engine < Rails::Engine
+class TheAuth::Engine < ::Rails::Engine
 
   config.generators do |g|
     g.rails = {
