@@ -31,7 +31,7 @@
         <td><%= user.id %></td>
         <td><%= user.email %></td>
         <td><%= user.mobile %></td>
-        <td><span class="local_time"><%= user.created_at.to_s %></span></td>
+        <td><%= user.created_at.to_s %></td>
         <td><%= user.last_login_at.to_s if user.last_login_at %></td>
 	      <td>
           <%= form_tag toggle_admin_user_path(user), method: :patch do %>
