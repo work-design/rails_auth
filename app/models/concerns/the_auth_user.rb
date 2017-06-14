@@ -25,12 +25,15 @@ module TheAuthUser
 
 
   def get_access_token
-    self.class.transaction do
-      access_token.destroy
-      create_access_token
+    if self.access_token&.verify_token?
+      self.access_token.token
+    else
+      self.class.transaction do
+        self.access_token&.destroy
+        create_access_token.token
+      end
     end
   end
-
 
   def email_confirm_update!
     update(email_confirm: true)

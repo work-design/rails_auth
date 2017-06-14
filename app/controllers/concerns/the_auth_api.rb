@@ -12,7 +12,7 @@ module TheAuthApi
   end
 
   def set_auth_token
-    headers['Auth-Token'] = current_user.access_token&.token if current_user
+    headers['Auth-Token'] = current_user.get_access_token if current_user
   end
 
   def login_as user
@@ -25,7 +25,7 @@ module TheAuthApi
       @access_token = AccessToken.find_by token: request.headers['HTTP_AUTH_TOKEN']
     end
     if @access_token
-      @current_user ||= token.user
+      @current_user ||= @access_token.user
     end
   end
 
@@ -38,8 +38,6 @@ module TheAuthApi
     begin
       password_digest = User.find_by(id: payload['iss']).password_digest
       JWT.decode(token, password_digest, true, {'sub' => 'auth', verify_sub: true})
-
-      binding.pry
     rescue => e
       render(json: { error: e.message }, status: 500) and return
     end
@@ -49,7 +47,6 @@ module TheAuthApi
   def decode_without_verification(token)
     begin
       payload, _ = JWT.decode(token, nil, false, verify_expiration: false)
-      binding.pry
     rescue => e
       render(json: { error: e.message }, status: 500) and return
     end

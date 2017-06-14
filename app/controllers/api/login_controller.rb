@@ -3,13 +3,12 @@ class Api::LoginController < Api::TheAuthController
   before_action :set_user, only: [:create]
 
   def create
-    binding.pry
     if @user && @user.can_login?(params)
       login_as @user
 
       render json: { status: 200 }
     else
-      #render json: { error: @user.errors.messages }
+      render json: { error: @user.errors.messages }
     end
   end
 

@@ -12,7 +12,7 @@ module JwtToken
   # identifier   比如 id,  AppID
   # password_digest 比如 AppSecret
   # sub: 'auth'
-  # exp: auth_token_expired_at
+  # exp: auth_token_expired_at, should be int
   def generate_auth_token(options = {})
     payload = {
       iss: identifier,
