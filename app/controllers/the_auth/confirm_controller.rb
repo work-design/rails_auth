@@ -1,7 +1,7 @@
 class TheAuth::ConfirmController < TheAuth::BaseController
 
   def edit
-    @user = User.find_by(confirm_token: params[:token])
+    token = ConfirmToken.find_by(token: params[:token])
 
     if @user.blank?
       redirect_back(fallback_location: root_url, error: '用户不存在')

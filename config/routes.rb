@@ -29,4 +29,11 @@ Rails.application.routes.draw do
     end
   end
 
+  namespace :api do
+    resource :me
+    controller :login do
+      post 'login', action: 'create'
+    end
+  end
+
 end
