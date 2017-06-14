@@ -1,5 +1,7 @@
 class TheAuth::Engine < ::Rails::Engine
 
+  config.eager_load_paths += Dir["#{config.root}/app/models/verify_tokens"]
+
   config.generators do |g|
     g.rails = {
       assets: false,
