@@ -18,4 +18,5 @@ Gem::Specification.new do |s|
   s.add_dependency 'rails', '>= 5.0'
   s.add_dependency 'bcrypt'
   s.add_dependency 'rails_com'
+  s.add_dependency 'omniauth-facebook'
 end

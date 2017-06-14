@@ -10,5 +10,5 @@ gem 'sprockets', '~> 4.0.0.beta4'
 gem 'jquery-rails'
 gem 'turbolinks'
 
-
+gem 'omniauth-facebook'
 
