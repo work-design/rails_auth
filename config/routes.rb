@@ -34,6 +34,7 @@ Rails.application.routes.draw do
     controller :login do
       post 'login', action: 'create'
     end
+    resources :oauth_users, only: [:create]
   end
 
 end

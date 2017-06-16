@@ -1,7 +1,13 @@
 class FacebookUser < OauthUser
 
 
+  def save_info(info_params)
+    self.name = info_params['name']
+  end
 
+  def init_email
+
+  end
 
 
   def stray
