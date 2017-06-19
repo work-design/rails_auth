@@ -37,7 +37,7 @@ module TheAuthApi
     return unless payload
 
     begin
-      password_digest = User.find_by(id: payload['iss']).password_digest
+      password_digest = User.find_by(id: payload['iss']).password_digest.to_s
       JWT.decode(token, password_digest, true, {'sub' => 'auth', verify_sub: true})
     rescue => e
       render(json: { error: e.message }, status: 500) and return
