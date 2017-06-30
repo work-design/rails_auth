@@ -21,6 +21,7 @@
       <th>Created At</th>
       <th>Last Login At</th>
 	    <th>Disable</th>
+      <th>Oauth Users</th>
       <th></th>
     </tr>
     </thead>
@@ -39,6 +40,11 @@
               <label></label>
               <%= check_box_tag :disabled, 1, user.disabled, onChange: 'this.form.submit()', id: nil %>
             </span>
+          <% end %>
+        </td>
+        <td class="ui blue labels">
+          <% user.oauth_users.each do |oauth_user| %>
+            <%= link_to oauth_user.type, admin_oauth_users_path(user_id: user.id), class: 'ui label' %>
           <% end %>
         </td>
         <td>

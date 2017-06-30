@@ -21,8 +21,9 @@ module TheAuthUser
 
     has_one  :access_token
     has_many :access_tokens
-  end
 
+    has_many :oauth_users, dependent: :nullify
+  end
 
   def get_access_token
     if self.access_token&.verify_token?

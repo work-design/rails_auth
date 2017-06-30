@@ -27,6 +27,7 @@ Rails.application.routes.draw do
     resources :users do
       patch :toggle, on: :member
     end
+    resources :oauth_users
   end
 
   namespace :api do

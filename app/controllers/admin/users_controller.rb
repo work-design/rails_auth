@@ -1,9 +1,5 @@
 class Admin::UsersController < Admin::BaseController
-  before_action :set_user, only: [:show,
-                                  :edit,
-                                  :update,
-                                  :toggle,
-                                  :destroy]
+  before_action :set_user, only: [:show, :edit, :update, :toggle, :destroy]
 
   def index
     @users = User.order(created_at: :desc).default_where(search_params).page(params[:page])

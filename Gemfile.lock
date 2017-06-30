@@ -11,6 +11,7 @@ PATH
   specs:
     the_auth (1.0.4)
       bcrypt
+      omniauth-facebook
       rails (>= 5.0)
       rails_com
 
