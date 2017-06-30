@@ -2,9 +2,14 @@ module TheAuthApi
   extend ActiveSupport::Concern
 
   included do
-    before_action :login_from_token
+    before_action :require_login
     after_action :set_auth_token
     helper_method :current_user
+  end
+
+  def require_login
+    return if current_user
+    render json: { error: 'no user' }, status: 401
   end
 
   def current_user
@@ -22,11 +27,14 @@ module TheAuthApi
 
   def login_from_token
     return if request.headers['HTTP_AUTH_TOKEN'].blank?
+
     if verify_auth_token
       @access_token = AccessToken.find_by token: request.headers['HTTP_AUTH_TOKEN']
     end
     if @access_token
       @current_user ||= @access_token.user
+    else
+      render(json: { error: flash[:error] || 'not a valid user!' }, status: 401)
     end
   end
 
@@ -40,7 +48,7 @@ module TheAuthApi
       password_digest = User.find_by(id: payload['iss']).password_digest.to_s
       JWT.decode(token, password_digest, true, {'sub' => 'auth', verify_sub: true})
     rescue => e
-      render(json: { error: e.message }, status: 500) and return
+      flash[:error] = e.message
     end
   end
 
@@ -49,7 +57,7 @@ module TheAuthApi
     begin
       payload, _ = JWT.decode(token, nil, false, verify_expiration: false)
     rescue => e
-      render(json: { error: e.message }, status: 500) and return
+      flash[:error] = e.message
     end
 
     payload

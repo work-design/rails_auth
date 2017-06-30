@@ -1,4 +1,5 @@
 class Api::OauthUsersController < Api::TheAuthController
+  skip_before_action :require_login
 
   def create
     @oauth_user = OauthUser.find_or_initialize_by(type: oauth_user_params[:type], uid: oauth_user_params[:uid])
@@ -10,6 +11,7 @@ class Api::OauthUsersController < Api::TheAuthController
       render json: {status: 200,  notice: 'Oauth user 创建成功', oauth_user: @oauth_user.as_json} if @oauth_user.save
     else
       @oauth_user.init_user
+
       if @oauth_user.save
         login_as @oauth_user.user
         render json: {status: 200,  notice: 'Oauth user 创建成功', oauth_user: @oauth_user.as_json}
