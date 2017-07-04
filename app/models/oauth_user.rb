@@ -1,8 +1,6 @@
 class OauthUser < ApplicationRecord
   belongs_to :user, autosave: true
 
-
-
   def init_user
     unless user
       _user = self.build_user
@@ -11,6 +9,9 @@ class OauthUser < ApplicationRecord
     end
   end
 
+  def init_email
+    email
+  end
 
 
 end

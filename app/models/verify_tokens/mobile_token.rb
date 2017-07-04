@@ -5,4 +5,11 @@ class MobileToken < VerifyToken
     self.expired_at = 10.minutes.since
   end
 
+
+  def auth_code_message
+    str = "验证码：#{auth_code}，请完成验证（如非本人操作，请忽略本短信）"
+    require 'open-uri'
+    URI.encode(str)
+  end
+
 end
