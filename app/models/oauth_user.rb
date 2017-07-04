@@ -13,5 +13,8 @@ class OauthUser < ApplicationRecord
     email
   end
 
+  def save_info(info_params)
+  end
+
 
 end
