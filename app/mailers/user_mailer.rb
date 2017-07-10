@@ -2,7 +2,7 @@ class UserMailer < ApplicationMailer
 
   def password_reset(user_id)
     @user = User.find(user_id)
-    @user.create_reset_token
+    @user.
     mail(to: @user.email, subject: 'Reset Your Password')
   end
 

@@ -36,6 +36,28 @@ module TheAuthUser
     end
   end
 
+  def get_reset_token
+    if self.reset_token&.verify_token?
+      self.reset_token.token
+    else
+      self.class.transaction do
+        self.reset_token&.destroy
+        create_reset_token.token
+      end
+    end
+  end
+
+  def get_confirm_token
+    if self.confirm_token&.verify_token?
+      self.confirm_token.token
+    else
+      self.class.transaction do
+        self.confirm_token&.destroy
+        create_confirm_token.token
+      end
+    end
+  end
+
   def email_confirm_update!
     update(email_confirm: true)
   end
