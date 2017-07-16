@@ -1,7 +1,6 @@
 class TheAuth::Engine < ::Rails::Engine
 
   config.eager_load_paths += Dir["#{config.root}/app/models/verify_tokens"]
-  config.eager_load_paths += Dir["#{config.root}/app/models/oauth_users"]
 
   config.generators do |g|
     g.rails = {
