@@ -2,6 +2,7 @@ class FacebookUser < OauthUser
 
 
   def save_info(info_params)
+    self.provider = 'facebook'
     self.name = info_params['name']
   end
 
