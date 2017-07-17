@@ -34,6 +34,7 @@ module TheAuthApi
     if @access_token
       @current_user ||= @access_token.user
     else
+      binding.pry
       render(json: { error: flash[:error] || 'not a valid user!' }, status: 401)
     end
   end
