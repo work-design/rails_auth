@@ -26,19 +26,12 @@ TheAuth.configure do |config|
 end
 ```
 
-#### Config Routes
+#### Overwrite Routes
 
 add the in the file: `config/routes.rb`
 
 ```ruby
-scope module: :the_auth do
-  get 'signup' => 'users#new', as: :signup  
-  get 'login' => 'user_sessions#new', as: :login  
-  delete 'logout' => 'user_sessions#destroy', as: :logout
-  resource :user
-  resource :user_session, :only => [:create]
-  resource :password
-end
+
 ```
 
 #### include in Controller
@@ -47,7 +40,7 @@ end
 
 ```ruby
 class ApplicationController < ActionController::Base
-  include TheAuth::Controller
+  include TheAuthController
 end
 ```
 
@@ -55,7 +48,7 @@ end
 
 ```ruby
 class User
-  include TheAuth::Model
+  include TheAuthUser
 end
 ```
 
