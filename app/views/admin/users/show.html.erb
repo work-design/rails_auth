@@ -1,16 +1,10 @@
-<div class="sixteen wide column">
-  <div class="ui breadcrumb">
+<div>
+
+  <div class="ui segment breadcrumb">
     <%= link_to '返回', admin_users_path, class: 'section' %>
     <div class="divider"> / </div>
     <div class="active section">详细</div>
   </div>
-</div>
-
-<div class="three wide column">
-  <%= render 'nav' %>
-</div>
-
-<div class="thirteen wide column">
 
   <div class="ui very relaxed divided list segment">
     <div class="item"><%= @user.name %></div>
