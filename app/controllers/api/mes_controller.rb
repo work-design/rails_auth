@@ -2,7 +2,7 @@ class Api::MesController < Api::TheAuthController
 
 
   def show
-    render json: current_user.as_json
+    render json: current_user.as_json(include: [:oauth_users], methods: [:avatar_url])
   end
 
   def edit
