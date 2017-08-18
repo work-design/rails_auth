@@ -9,7 +9,7 @@ module TheAuthApi
 
   def require_login
     return if current_user
-    render json: { error: 'no user' }, status: 401
+    render(json: { error: flash[:error] || 'no user!' }, status: 401)
   end
 
   def current_user
@@ -17,7 +17,7 @@ module TheAuthApi
   end
 
   def set_auth_token
-    headers['Auth-Token'] = current_user.get_access_token if current_user
+    headers['Auth-Token'] = @current_user.get_access_token if @current_user
   end
 
   def login_as user
@@ -33,9 +33,6 @@ module TheAuthApi
     end
     if @access_token
       @current_user ||= @access_token.user
-    else
-      binding.pry
-      render(json: { error: flash[:error] || 'not a valid user!' }, status: 401)
     end
   end
 
