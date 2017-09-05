@@ -1,9 +1,9 @@
 <div>
 
   <div class="ui segment breadcrumb">
-    <%= link_to '返回', admin_users_path, class: 'section' %>
+    <%= link_to t('.back'), admin_users_path, class: 'section' %>
     <div class="divider"> / </div>
-    <div class="active section">详细</div>
+    <div class="active section"><%= t('.show') %></div>
   </div>
 
   <div class="ui very relaxed divided list segment">

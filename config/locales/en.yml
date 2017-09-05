@@ -1,0 +1,11 @@
+en:
+  admin:
+    users:
+      index:
+      show:
+        back: Users List
+        show: User Info
+
+  errors:
+    messages:
+      wrong_name_or_password: '账号或者密码错误'
