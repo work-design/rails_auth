@@ -29,7 +29,7 @@
         <td><%= oauth_user.type %></td>
         <td><%= oauth_user.uid %></td>
         <td><%= oauth_user.name %></td>
-        <td><%= oauth_user.created_at.to_s %></td>
+        <td><%= oauth_user.created_at.to_s(:admin) %></td>
         <td>
           <%= link_to 'Delete', admin_oauth_user_path(oauth_user), method: :delete, data: { confirm: 'Are you sure?' }, class: 'ui red label' %>
         </td>
