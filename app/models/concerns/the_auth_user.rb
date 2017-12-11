@@ -11,16 +11,16 @@ module TheAuthUser
     has_secure_password validations: false
 
     has_one  :confirm_token
-    has_many :confirm_tokens
+    has_many :confirm_tokens, dependent: :delete_all
 
     has_one  :reset_token
-    has_many :reset_tokens
+    has_many :reset_tokens, dependent: :delete_all
 
     has_one  :mobile_token
-    has_many :mobile_tokens
+    has_many :mobile_tokens, dependent: :delete_all
 
     has_one  :access_token
-    has_many :access_tokens
+    has_many :access_tokens, dependent: :delete_all
 
     has_many :oauth_users, dependent: :nullify
   end
