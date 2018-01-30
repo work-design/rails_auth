@@ -30,7 +30,7 @@ Rails.application.routes.draw do
     resources :oauth_users
   end
 
-  namespace :api do
+  scope module: 'the_auth_api', path: 'api' do
     resource :me
     controller :login do
       post 'login', action: 'create'

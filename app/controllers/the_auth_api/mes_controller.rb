@@ -1,4 +1,4 @@
-class Api::MesController < Api::TheAuthController
+class TheAuthApi::MesController < TheAuthApi::BaseController
 
 
   def show

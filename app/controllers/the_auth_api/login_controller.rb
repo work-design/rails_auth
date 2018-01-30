@@ -1,5 +1,5 @@
-class Api::LoginController < Api::TheAuthController
-  skip_before_action :require_login, only: [:create]
+class TheAuthApi::LoginController < TheAuthApi::BaseController
+  skip_before_action :require_login_from_token, only: [:create]
   before_action :set_user, only: [:create]
 
   def create

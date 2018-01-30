@@ -1,5 +1,5 @@
-class Api::OauthUsersController < Api::TheAuthController
-  skip_before_action :require_login
+class TheAuthApi::OauthUsersController < TheAuthApi::BaseController
+  skip_before_action :require_login_from_token
 
   def create
     @oauth_user = OauthUser.find_or_initialize_by(type: oauth_user_params[:type], uid: oauth_user_params[:uid])

@@ -8,7 +8,7 @@ module TheAuthApi
   end
 
   def require_login_from_token
-    return if current_user && login_from_token
+    return if current_user || login_from_token
 
     render(json: { error: flash[:error] || 'no user!' }, status: 401)
   end

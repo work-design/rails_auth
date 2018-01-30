@@ -7,7 +7,7 @@ module TheAuthController
   end
 
   def require_login_from_session
-    return if current_user && login_from_session
+    return if current_user || login_from_session
 
     store_location
     if params[:form_id]

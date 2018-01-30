@@ -1,4 +1,4 @@
-class TheAuth::BaseController < ApplicationController
+class TheAuth::BaseController < ActionController::Base
 
   def login_as(user)
     session[:user_id] = user.id
