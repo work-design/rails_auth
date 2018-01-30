@@ -1,0 +1,35 @@
+<header class="ui borderless menu">
+  <div class="ui container">
+
+    <% if current_user %>
+      <%= link_to index_path, class: 'item header' do %>
+        <span>One Work</span>
+      <% end %>
+    <% else %>
+      <%= link_to 'One Work', root_path, class: 'item header' %>
+    <% end %>
+
+    <div class="right menu">
+      <% if current_user %>
+        <%= render 'my/base/worker_form' %>
+        <div class="ui simple dropdown item" id="navbar_dropdown">
+          <%= image_tag current_user.avatar_url, class: 'ui avatar image' %>
+          <%= current_user.name %>
+          <i class="dropdown icon"></i>
+          <div class="menu">
+            <%= link_to 'Profile', '/my/profile', class: active_helper(controllers: ['profile']) %>
+            <%= link_to 'Admin', '/admin', class: 'item' %>
+            <%= link_to '退出', logout_path, data: { confirm: '确认退出' }, class: 'item' %>
+          </div>
+        </div>
+      <% else %>
+        <%= link_to login_path, class: 'item' do %>
+          <i class="icon-user"></i> 登陆/注册
+        <% end %>
+      <% end %>
+    </div>
+
+  </div>
+</header>
+
+
