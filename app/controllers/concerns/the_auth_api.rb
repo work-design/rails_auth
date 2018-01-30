@@ -1,37 +1,16 @@
 module TheAuthApi
   extend ActiveSupport::Concern
+  include TheAuthCommon
 
   included do
-    before_action :require_login
+    before_action :require_login_from_token, if: -> { !request.format.html? }
     after_action :set_auth_token
-    helper_method :current_user
   end
 
-  def require_login
-    if current_user
-      return
-    else
-      if request.format.html?
-        login_from_session
-      else
-        login_from_token
-      end
-    end
+  def require_login_from_token
+    return if current_user && login_from_token
 
     render(json: { error: flash[:error] || 'no user!' }, status: 401)
-  end
-
-  def current_user
-    @current_user ||= login_from_token
-  end
-
-  def set_auth_token
-    headers['Auth-Token'] = @current_user.get_access_token if @current_user
-  end
-
-  def login_as user
-    user.update(last_login_at: Time.now)
-    @current_user = user
   end
 
   def login_from_token
@@ -43,6 +22,11 @@ module TheAuthApi
     if @access_token
       @current_user ||= @access_token.user
     end
+  end
+
+  private
+  def set_auth_token
+    headers['Auth-Token'] = @current_user.get_access_token if @current_user
   end
 
   def verify_auth_token
@@ -59,7 +43,6 @@ module TheAuthApi
     end
   end
 
-  private
   def decode_without_verification(token)
     begin
       payload, _ = JWT.decode(token, nil, false, verify_expiration: false)
