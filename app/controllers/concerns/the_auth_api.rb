@@ -3,7 +3,7 @@ module TheAuthApi
   include TheAuthCommon
 
   included do
-    before_action :require_login_from_token, if: -> { !request.format.html? }
+    before_action :require_login_from_token, if: -> { request.headers['HTTP_AUTH_TOKEN'].present? }
     after_action :set_auth_token
   end
 

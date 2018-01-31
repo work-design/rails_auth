@@ -3,7 +3,7 @@ module TheAuthController
   include TheAuthCommon
 
   included do
-    before_action :require_login_from_session, if: -> { request.format.html? }
+    before_action :require_login_from_session
   end
 
   def require_login_from_session
