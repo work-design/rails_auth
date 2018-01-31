@@ -21,12 +21,4 @@ module TheAuthController
     @current_user = User.find_by(id: session[:user_id]) if session[:user_id]
   end
 
-  def store_location(path = nil)
-    if [login_url, password_forget_url].include? path
-      session[:return_to] = root_url
-    else
-      session[:return_to] = path || request.fullpath
-    end
-  end
-
 end
