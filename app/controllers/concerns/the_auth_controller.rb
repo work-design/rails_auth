@@ -2,10 +2,6 @@ module TheAuthController
   extend ActiveSupport::Concern
   include TheAuthCommon
 
-  included do
-    before_action :require_login_from_session
-  end
-
   def require_login_from_session
     return if current_user || login_from_session
 
@@ -19,6 +15,15 @@ module TheAuthController
 
   def login_from_session
     @current_user = User.find_by(id: session[:user_id]) if session[:user_id]
+  end
+
+  def store_location(path = nil)
+    path = path || request.fullpath
+    if [login_url, password_forget_url].include? path
+      session[:return_to] = root_url
+    else
+      session[:return_to] = path
+    end
   end
 
 end
