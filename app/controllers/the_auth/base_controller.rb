@@ -1,5 +1,5 @@
 class TheAuth::BaseController < TheAuth.config.app_class.constantize
-  include TheAuthCommon
+  include TheAuthController
 
   def redirect_back_or_default(default = root_url)
     redirect_to session[:return_to] || default
