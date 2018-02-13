@@ -1,9 +1,8 @@
 module TheAuthController
   extend ActiveSupport::Concern
-  include TheAuthCommon
 
   def require_login_from_session
-    return if current_user || login_from_session
+    return if login_from_session
 
     store_location
     if params[:form_id]
@@ -14,7 +13,7 @@ module TheAuthController
   end
 
   def login_from_session
-    @current_user = User.find_by(id: session[:user_id]) if session[:user_id]
+    @current_user ||= User.find_by(id: session[:user_id]) if session[:user_id]
   end
 
   def store_location(path = nil)
