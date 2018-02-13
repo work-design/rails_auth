@@ -1,6 +1,15 @@
 module TheAuthController
   extend ActiveSupport::Concern
 
+  included do
+    helper_method :current_user
+  end
+
+  def current_user
+    @current_user ||= login_from_session
+  end
+
+
   def require_login_from_session
     return if login_from_session
 
