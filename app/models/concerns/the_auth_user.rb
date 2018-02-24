@@ -67,8 +67,7 @@ module TheAuthUser
   end
 
   def can_login?(params)
-    if self.disabled?
-      errors.add :login, 'The account has been disabled!'
+    if verified_status?
       return false
     end
 
@@ -76,6 +75,15 @@ module TheAuthUser
       self
     else
       errors.add :login, 'Incorrect email or password.'
+      false
+    end
+  end
+
+  def verified_status?
+    if self.disabled?
+      errors.add :login, 'The account has been disabled!'
+      true
+    else
       false
     end
   end
