@@ -47,7 +47,7 @@
             <%= link_to oauth_user.type, admin_oauth_users_path(user_id: user.id), class: 'ui label' %>
           <% end %>
         </td>
-        <td>
+        <td class="ui labels">
           <%= link_to 'Show', admin_user_path(user), class: 'ui blue label' %>
           <%= link_to 'Edit', edit_admin_user_path(user), class: 'ui pink label' %>
           <%= link_to 'Delete', admin_user_path(user), method: :delete, data: { confirm: 'Are you sure?' }, class: 'ui red label' %>

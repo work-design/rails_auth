@@ -22,7 +22,6 @@ add this under `config/initializers`
 
 ```ruby
 TheAuth.configure do |config|
-  config.layout = :application  # the_auth view 的layout
 end
 ```
 
