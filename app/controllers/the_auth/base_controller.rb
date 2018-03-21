@@ -12,9 +12,4 @@ class TheAuth::BaseController < TheAuth.config.app_class.constantize
     @current_user = user
   end
 
-  def logout
-    session.delete(:user_id)
-    @current_user = nil
-  end
-
 end

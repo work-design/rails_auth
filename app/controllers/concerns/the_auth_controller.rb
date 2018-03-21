@@ -9,6 +9,10 @@ module TheAuthController
     @current_user ||= login_from_session
   end
 
+  def logout
+    session.delete(:user_id)
+    @current_user = nil
+  end
 
   def require_login_from_session
     return if login_from_session
