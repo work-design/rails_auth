@@ -1,5 +1,13 @@
 class TheAuth::ConfirmController < TheAuth::BaseController
 
+  def email
+
+  end
+
+  def mobile
+
+  end
+
   def update
     @token = ConfirmToken.find_by(token: params[:token])
 
