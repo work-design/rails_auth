@@ -1,12 +1,12 @@
 class TheAuth::ConfirmController < TheAuth::BaseController
 
-  def edit
-    token = ConfirmToken.find_by(token: params[:token])
+  def update
+    @token = ConfirmToken.find_by(token: params[:token])
 
-    if @user.blank?
+    if @token.verify_token?
+      redirect_back(fallback_location: root_url, error: @token.errors.full_messages)
+    else
       redirect_back(fallback_location: root_url, error: '用户不存在')
-    elsif @user.verify_confirm_token? && @user.email_confirm_update!
-      redirect_back(fallback_location: root_url, error: @user.errors.full_messages)
     end
   end
 

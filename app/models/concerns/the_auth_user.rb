@@ -57,7 +57,7 @@ module TheAuthUser
       end
     end
   end
-  
+
   def get_mobile_token
     if self.mobile_token&.verify_token?
       self.mobile_token.token
@@ -69,18 +69,9 @@ module TheAuthUser
     end
   end
 
-
-  def email_confirm_update!
-    update(email_confirm: true)
-  end
-
   def join(params = nil)
     self.errors.add(:password, :blank) unless record.password_digest.present?
     save
-  end
-  
-  def xx
-  
   end
 
   def can_login?(params)
