@@ -6,9 +6,11 @@ module TheAuthUser
     include JwtToken
     alias_attribute :identifier, :id
 
+    has_secure_password validations: false
+
     validates :email, uniqueness: true, if: -> { email.present? && email_changed? }
     validates :mobile, uniqueness: true, if: -> { mobile.present? && mobile_changed? }
-    has_secure_password validations: false
+    validates :password, confirmation: true, length: { in: 6..72 }, allow_blank: true
 
     has_one  :confirm_token
     has_many :confirm_tokens, dependent: :delete_all
@@ -70,7 +72,7 @@ module TheAuthUser
   end
 
   def join(params = nil)
-    self.errors.add(:password, :blank) unless record.password_digest.present?
+    self.errors.add(:password, :blank) unless self.password_digest.present?
     save
   end
 
