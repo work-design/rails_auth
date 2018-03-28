@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 gemspec
 
+gem 'rails', '5.2.0.rc2'
 gem 'pry-rails'
 gem 'mysql2'
 gem 'byebug'
