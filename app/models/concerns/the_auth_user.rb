@@ -21,7 +21,7 @@ module TheAuthUser
     has_one  :mobile_token
     has_many :mobile_tokens, dependent: :delete_all
 
-    has_one  :access_token
+    has_one  :access_token, -> { where('expired_at >= ?', Time.now) }
     has_many :access_tokens, dependent: :delete_all
 
     has_many :oauth_users, dependent: :nullify
