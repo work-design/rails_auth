@@ -20,8 +20,14 @@ class TheAuth::JoinController < TheAuth::BaseController
   end
 
   def mobile_confirm
-    @mobile_token = MobileToken.new(account: params[:mobile])
-    @mobile_token.save
+    @user = User.find_by(mobile: params[:mobile])
+
+    if @user
+      @mobile_token = @user.create_mobile_token
+    else
+      @mobile_token = MobileToken.new(account: params[:mobile])
+      @mobile_token.save
+    end
 
     render json: { token: @mobile_token.token }
   end
