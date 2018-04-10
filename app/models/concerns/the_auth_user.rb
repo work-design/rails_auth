@@ -12,13 +12,13 @@ module TheAuthUser
     validates :mobile, uniqueness: true, if: -> { mobile.present? && mobile_changed? }
     validates :password, confirmation: true, length: { in: 6..72 }, allow_blank: true
 
-    has_one  :confirm_token
+    has_one  :confirm_token, -> { where('expired_at >= ?', Time.now) }
     has_many :confirm_tokens, dependent: :delete_all
 
-    has_one  :reset_token
+    has_one  :reset_token, -> { where('expired_at >= ?', Time.now) }
     has_many :reset_tokens, dependent: :delete_all
 
-    has_one  :mobile_token
+    has_one  :mobile_token, -> { where('expired_at >= ?', Time.now) }
     has_many :mobile_tokens, dependent: :delete_all
 
     has_one  :access_token, -> { where('expired_at >= ?', Time.now) }
@@ -28,46 +28,38 @@ module TheAuthUser
   end
 
   def get_access_token
-    if self.access_token&.verify_token?
+    if self.access_token
       self.access_token.token
     else
-      self.class.transaction do
-        self.access_token&.destroy
-        create_access_token.token
-      end
+      self.access_tokens.delete_all
+      create_access_token.token
     end
   end
 
   def get_reset_token
-    if self.reset_token&.verify_token?
+    if self.reset_token
       self.reset_token.token
     else
-      self.class.transaction do
-        self.reset_token&.destroy
-        create_reset_token.token
-      end
+      self.reset_tokens.delete_all
+      create_reset_token.token
     end
   end
 
   def get_confirm_token
-    if self.confirm_token&.verify_token?
+    if self.confirm_token
       self.confirm_token.token
     else
-      self.class.transaction do
-        self.confirm_token&.destroy
-        create_confirm_token.token
-      end
+      self.confirm_tokens.delete_all
+      create_confirm_token.token
     end
   end
 
   def get_mobile_token
-    if self.mobile_token&.verify_token?
+    if self.mobile_token
       self.mobile_token.token
     else
-      self.class.transaction do
-        self.mobile_token&.destroy
-        create_mobile_token
-      end
+      self.mobile_tokens.delete_all
+      create_mobile_token.token
     end
   end
 
