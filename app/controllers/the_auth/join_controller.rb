@@ -33,7 +33,18 @@ class TheAuth::JoinController < TheAuth::BaseController
   end
 
   def create_mobile
-
+    @user = User.find_or_initialize_by(mobile: user_params[:mobile])
+    @mobile_token = MobileToken.where(token: params[:token])
+    if @mobile_token.verify_token?
+      @user.mobile_confirm = true
+    end
+    
+    if @user.join(params)
+      login_as @user
+      redirect_back_or_default
+    else
+      render :new, error: @user.errors.full_messages
+    end
   end
 
   private
