@@ -20,6 +20,7 @@ class TheAuthInit < ActiveRecord::Migration[5.1]
       t.string :type, limit: 100
       t.string :token
       t.datetime :expired_at
+      t.string :account
       t.integer :access_counter, default: 0
       t.timestamps
     end

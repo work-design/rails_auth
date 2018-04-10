@@ -3,6 +3,9 @@ Rails.application.routes.draw do
   scope module: :the_auth, controller: :join do
     get 'join', action: 'new'
     post 'join', action: 'create'
+    get 'mobile' => :new_mobile
+    post 'mobile' => :create_mobile
+    get :mobile_confirm
   end
 
   scope module: :the_auth, controller: :login do

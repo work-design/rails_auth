@@ -15,6 +15,21 @@ class TheAuth::JoinController < TheAuth::BaseController
     end
   end
 
+  def new_mobile
+    @user = User.new(password: '')
+  end
+
+  def mobile_confirm
+    @mobile_token = MobileToken.new(account: params[:mobile])
+    @mobile_token.save
+
+    render json: { token: @mobile_token.token }
+  end
+
+  def create_mobile
+
+  end
+
   private
   def user_params
     params.fetch(:user, {}).permit(:name, :email, :mobile, :password, :password_confirmation)

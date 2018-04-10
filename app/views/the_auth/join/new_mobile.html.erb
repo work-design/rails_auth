@@ -1,0 +1,27 @@
+<div class="ui centered middle aligned grid">
+<div class="six wide column">
+
+  <h4 class="ui block top attached header">请注册</h4>
+
+  <div class="ui bottom attached segment">
+    <%= form_with model: @user, url: join_path, html: {class: 'ui form'} do |f| %>
+      <%= render 'shared/error_messages', target: @user %>
+      <div class="inline field">
+        <%= f.email_field :mobile, placeholder: 'Mobile' %>
+        <%= link_to 'Mobile Confirm', mobile_confirm_path, remote: true %>
+      </div>
+      <div class="field">
+        <%= f.password_field :password, placeholder: 'Password' %>
+      </div>
+      <div class="field">
+        <%= f.password_field :password_confirmation, placeholder: 'Password confirm' %>
+      </div>
+      <div class="field">
+        <%= submit_tag 'submit', class: 'ui button' %>
+      </div>
+    <% end %>
+  </div>
+
+</div>
+</div>
+
