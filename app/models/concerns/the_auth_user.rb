@@ -12,16 +12,16 @@ module TheAuthUser
     validates :mobile, uniqueness: true, if: -> { mobile.present? && mobile_changed? }
     validates :password, confirmation: true, length: { in: 6..72 }, allow_blank: true
 
-    has_one  :confirm_token, -> { where('expired_at >= ?', Time.now) }
+    has_one  :confirm_token, -> { valid }
     has_many :confirm_tokens, dependent: :delete_all
 
-    has_one  :reset_token, -> { where('expired_at >= ?', Time.now) }
+    has_one  :reset_token, -> { valid }
     has_many :reset_tokens, dependent: :delete_all
 
-    has_one  :mobile_token, -> { where('expired_at >= ?', Time.now) }
+    has_one  :mobile_token, -> { valid }
     has_many :mobile_tokens, dependent: :delete_all
 
-    has_one  :access_token, -> { where('expired_at >= ?', Time.now) }
+    has_one  :access_token, -> { valid }
     has_many :access_tokens, dependent: :delete_all
 
     has_many :oauth_users, dependent: :nullify
