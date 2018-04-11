@@ -4,14 +4,14 @@
   <h4 class="ui block top attached header">请注册</h4>
 
   <div class="ui bottom attached segment">
-    <%= form_with model: @user, url: join_path, html: {class: 'ui form'} do |f| %>
+    <%= form_with model: @user, url: mobile_path, html: {class: 'ui form'} do |f| %>
       <%= render 'shared/error_messages', target: @user %>
       <div class="inline field">
-        <%= f.email_field :mobile, placeholder: 'Mobile' %>
+        <%= text_field_tag :mobile, nil, placeholder: 'Mobile' %>
         <%= link_to 'Mobile Confirm', mobile_confirm_path, remote: true, id: 'mobile_confirm' %>
       </div>
       <div class="field">
-        <%= f.text_field :token, placeholder: 'Mobile Token' %>
+        <%= text_field_tag :token, nil, placeholder: 'Mobile Token' %>
       </div>
       <div class="field">
         <%= submit_tag 'submit', class: 'ui button' %>
