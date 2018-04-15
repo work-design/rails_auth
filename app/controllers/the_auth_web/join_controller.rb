@@ -1,4 +1,4 @@
-class TheAuth::JoinController < TheAuth::BaseController
+class TheAuthWeb::JoinController < TheAuthWeb::BaseController
 
   def new
     @user = User.new(password: '')
@@ -26,10 +26,10 @@ class TheAuth::JoinController < TheAuth::BaseController
       @mobile_token = @user.create_mobile_token
     else
       @mobile_token = MobileToken.new(account: params[:mobile])
-      @mobile_token.save
+      @mobile_token.save_with_send
     end
 
-    render json: { token: @mobile_token.token }
+    render json: { code: 200, messages: 'Validation code has been sent!' }
   end
 
   def create_mobile

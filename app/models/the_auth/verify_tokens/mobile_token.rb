@@ -15,4 +15,8 @@ class MobileToken < VerifyToken
     user.update(mobile_confirm: true)
   end
 
+  def save_with_send
+    save
+  end
+
 end

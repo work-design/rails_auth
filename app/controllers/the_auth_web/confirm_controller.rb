@@ -1,4 +1,4 @@
-class TheAuth::ConfirmController < TheAuth::BaseController
+class TheAuthWeb::ConfirmController < TheAuthWeb::BaseController
 
   def email
 

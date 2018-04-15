@@ -1,4 +1,4 @@
-class TheAuth::BaseController < TheAuth.config.app_class.constantize
+class TheAuthWeb::BaseController < TheAuth.config.app_class.constantize
   include TheAuthController
 
   def redirect_back_or_default(default = root_url)
