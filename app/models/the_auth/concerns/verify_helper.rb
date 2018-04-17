@@ -17,6 +17,16 @@ module VerifyHelper
     @user
   end
 
+  def mobile_reset_user(params = {})
+    @user = User.find_by(mobile: params[:mobile])
+    if @user
+      @mobile_token = @user.mobile_tokens.valid.find_by(token: params[:token])
+      return true if @mobile_token
+    else
+      false
+    end
+  end
+
 end
 
 
