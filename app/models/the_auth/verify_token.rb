@@ -1,9 +1,7 @@
 class VerifyToken < ApplicationRecord
   belongs_to :user, optional: true
 
-
   scope :valid, -> { where('expired_at >= ?', Time.now).order(access_counter: :asc) }
-  before_create :update_token
 
   def update_token
     self.token = SecureRandom.uuid

@@ -1,4 +1,5 @@
 class EmailToken < VerifyToken
+  before_create :update_token
 
   def update_token
     self.token = rand(10000..999999)
