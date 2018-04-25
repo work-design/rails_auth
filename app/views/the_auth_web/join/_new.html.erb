@@ -4,20 +4,12 @@
     Join
   </div>
   <div class="content">
-    <%= form_for @user, url: join_path, remote: @remote, html: { class: 'ui form' } do |f| %>
-        <%= render 'shared/error_messages', target: @user %>
-        <div class="field">
-          <%= f.email_field :email, placeholder: 'Email' %>
-        </div>
-        <div class="field">
-          <%= f.password_field :password, placeholder: 'Password' %>
-        </div>
-        <div class="field">
-          <%= f.password_field :password_confirmation, placeholder: 'Password confirm' %>
-        </div>
-        <div class="field">
-          <%= submit_tag 'submit', class: 'ui button' %>
-        </div>
+    <%= form_with model: @user, scope: :user, url: join_path, remote: @remote do |f| %>
+      <%= render 'shared/error_messages', target: @user %>
+      <%= f.email_field :email, placeholder: 'Email' %>
+      <%= f.password_field :password, placeholder: 'Password' %>
+      <%= f.password_field :password_confirmation, placeholder: 'Password confirm' %>
+      <%= submit_tag 'submit' %>
     <% end %>
   </div>
 </div>

@@ -1,5 +1,8 @@
 class TheAuthWeb::BaseController < TheAuth.config.app_class.constantize
   include TheAuthController
+  default_form_builder 'TheAuthWebBuilder' do
+
+  end
 
   def redirect_back_or_default(default = root_url)
     redirect_to session[:return_to] || default

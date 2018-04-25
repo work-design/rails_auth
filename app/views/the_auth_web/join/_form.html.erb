@@ -1,15 +1,7 @@
-<%= form_for @user, url: join_path, html: { class: 'ui form' } do |f| %>
+<%= form_with model: @user, scope: :user, url: join_path, on: { wrapper_input: false } do |f| %>
   <%= render 'shared/error_messages', target: @user %>
-  <div class="field">
-    <%= f.email_field :email, placeholder: 'Email' %>
-  </div>
-  <div class="field">
-    <%= f.password_field :password, placeholder: 'Password' %>
-  </div>
-  <div class="field">
-    <%= f.password_field :password_confirmation, placeholder: 'Password confirm' %>
-  </div>
-  <div class="field">
-    <%= submit_tag 'submit', class: 'ui button' %>
-  </div>
+  <%= f.email_field :email, placeholder: 'Email', label: false %>
+  <%= f.password_field :password, placeholder: 'Password', label: false %>
+  <%= f.password_field :password_confirmation, placeholder: 'Password confirm', label: false %>
+  <%= f.submit 'submit' %>
 <% end %>

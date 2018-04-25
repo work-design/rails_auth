@@ -31,7 +31,7 @@ module TheAuthController
 
   def store_location(path = nil)
     path = path || request.fullpath
-    if [login_url, password_forget_url].include? path
+    if ['the_auth_web/login', 'the_auth_web/password'].include? request.params['controller']
       session[:return_to] = root_url
     else
       session[:return_to] = path
