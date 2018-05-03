@@ -14,27 +14,27 @@ Rails.application.routes.draw do
     get 'logout', action: 'destroy'
   end
 
-  scope module: :the_auth_web, controller: :password, path: :password do
+  scope :password, module: :the_auth_web, controller: :password do
     get 'forget', action: 'new', as: 'password_forget'
     post 'forget', action: 'create'
     get 'reset/:token', action: 'edit', as: 'password_reset'
     post 'reset/:token', action: 'update'
   end
 
-  scope module: :the_auth_web, controller: :confirm, path: :confirm do
+  scope :confirm, module: :the_auth_web, controller: :confirm do
     post 'email', action: 'email'
     post 'mobile', action: 'mobile'
     post 'confirm/:token', action: 'update'
   end
 
-  scope :admin, module: :the_auth_admin, as: :admin do
+  scope :admin, module: :the_auth_admin do
     resources :users do
       patch :toggle, on: :member
     end
     resources :oauth_users
   end
 
-  scope module: 'the_auth_api', path: 'api' do
+  scope :api, module: 'the_auth_api' do
     resource :me
     controller :login do
       post 'login', action: 'create'
