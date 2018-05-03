@@ -1,4 +1,4 @@
-class Admin::UsersController < Admin::BaseController
+class TheAuthAdmin::UsersController < TheAuthAdmin::BaseController
   before_action :set_user, only: [:show, :edit, :update, :toggle, :destroy]
 
   def index
@@ -56,12 +56,13 @@ class Admin::UsersController < Admin::BaseController
   end
 
   def user_params
-    params[:user].permit(:name,
-                         :avatar,
-                         :email,
-                         :mobile,
-                         :password,
-                         :disabled
+    params[:user].permit(
+      :name,
+      :avatar,
+      :email,
+      :mobile,
+      :password,
+      :disabled
     )
   end
 

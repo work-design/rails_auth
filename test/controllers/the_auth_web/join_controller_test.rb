@@ -4,7 +4,6 @@ class TheAuth::JoinControllerTest < ActionDispatch::IntegrationTest
 
   setup do
     ApplicationController.include TheAuthController
-    #binding.pry
     #@user = create :user
   end
 

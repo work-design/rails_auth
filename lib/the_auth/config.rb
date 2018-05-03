@@ -6,6 +6,7 @@ module TheAuth
   configure do |config|
     config.app_class = 'ApplicationController'
     config.my_class = 'My::BaseController'
+    config.admin_class = 'Admin::BaseController'
   end
 
 end
