@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 gemspec
 
 gem 'rails', '5.2.0'
-gem 'pry-rails'
+
 gem 'mysql2'
 gem 'byebug'
 gem 'factory_bot_rails'
@@ -13,3 +13,5 @@ gem 'turbolinks'
 
 gem 'omniauth-facebook'
 
+gem 'pry-rails'
+gem 'awesome_print'
