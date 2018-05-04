@@ -27,7 +27,7 @@ Rails.application.routes.draw do
     post 'confirm/:token', action: 'update'
   end
 
-  scope :admin, module: :the_auth_admin do
+  scope :admin, module: :the_auth_admin, as: :admin do
     resources :users do
       patch :toggle, on: :member
     end
