@@ -4,7 +4,7 @@ class TheAuth::JoinControllerTest < ActionDispatch::IntegrationTest
 
   setup do
     ApplicationController.include TheAuthController
-    #@user = create :user
+    User.include TheAuthUser
   end
 
   test 'new' do
@@ -14,7 +14,7 @@ class TheAuth::JoinControllerTest < ActionDispatch::IntegrationTest
 
   test 'create' do
     assert_difference('User.count') do
-      post join_url, params: { user: { login: 'mingyuan0715@foxmail.com', password: '111' } }
+      post join_url, params: { user: { email: 'mingyuan0715@foxmail.com', password: '111111' } }
     end
   end
 
