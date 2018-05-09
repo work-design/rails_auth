@@ -35,6 +35,7 @@ Rails.application.routes.draw do
   end
 
   scope :my, module: 'the_auth_my', as: 'my' do
+    resource :user
     resources :oauth_users
   end
 
