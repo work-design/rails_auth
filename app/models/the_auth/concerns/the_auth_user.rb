@@ -90,5 +90,9 @@ module TheAuthUser
     end
   end
 
+  def oauth_providers
+    OauthUser.options_i18n(:provider).values.map(&:to_s) - oauth_users.pluck(:provider).compact
+  end
+
 end
 

@@ -12,20 +12,21 @@
     <tr>
       <td><%= oauth_user.provider %></td>
       <td><%= oauth_user.uid %></td>
-      <td><%= oauth_user.access_token %></td>
-      <td><%= link_to '解绑', my_oauth_user_path(oauth_user), method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      <td>
-        <%= link_to 'update token', "/auth/#{oauth_user.provider}", class: 'ui blue button' %>
+      <td><%= truncate(oauth_user.access_token) %></td>
+      <td class="ui labels">
+        <%= link_to '解绑', my_oauth_user_path(oauth_user), method: :delete, data: { confirm: 'Are you sure?' }, class: 'ui yellow label' %>
+        <%= link_to 'update token', "/auth/#{oauth_user.provider}", class: 'ui blue label' %>
       </td>
     </tr>
   <% end %>
   <% current_user.oauth_providers.each do |provider| %>
-  <tr>
-    <td><%= provider %></td>
-    <td></td>
-    <td><%= link_to '绑定', "/auth/#{provider}", class: 'ui blue button' %></td>
-    <td></td>
-  </tr>
+    <tr>
+      <td><%= provider %></td>
+      <td colspan="2"></td>
+      <td class="ui labels">
+        <%= link_to '绑定', "/auth/#{provider}", class: 'ui blue label' %>
+      </td>
+    </tr>
   <% end %>
   </tbody>
 </table>
