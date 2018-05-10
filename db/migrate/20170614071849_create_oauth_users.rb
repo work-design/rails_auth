@@ -10,6 +10,7 @@ class CreateOauthUsers < ActiveRecord::Migration[5.1]
       t.string :state
       t.string :code
       t.string :access_token, limit: 1024
+      t.datetime :expires_at
       t.timestamps
     end
   end
