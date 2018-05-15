@@ -23,7 +23,6 @@ Gem::Specification.new do |s|
   s.add_dependency 'bcrypt'
   s.add_dependency 'rails_com'
   s.add_dependency 'default_form'
-  s.add_dependency 'omniauth-facebook'
 
   s.add_development_dependency 'mysql2'
   s.add_development_dependency 'default_form'
