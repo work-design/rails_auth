@@ -4,6 +4,11 @@ class TheAuthWeb::LoginController < TheAuthWeb::BaseController
   def new
     store_location request.referer if request.referer.present?
     @remote = true if params[:form_id]
+
+    respond_to do |format|
+      format.html.phone
+      format.html
+    end
   end
 
   def create
