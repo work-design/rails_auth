@@ -27,7 +27,9 @@ class TheAuthMy::UsersController < TheAuthMy::BaseController
       if @user.save
         format.js
         format.html { redirect_to my_user_url }
-        format.json { render json: { user: @user.as_json, filename: url_for(@user.avatar) } }
+        format.json {
+          render json: { user: @user.as_json, filename: url_for(@user.avatar) }
+        }
       else
         format.html { render action: 'edit' }
         format.json { render json: @user.errors, status: :unprocessable_entity }
