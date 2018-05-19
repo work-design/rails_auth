@@ -15,6 +15,7 @@
   <thead>
   <tr>
     <th>ID</th>
+    <th><%= User.human_attribute_name(:name) %></th>
     <th>Email</th>
     <th>Mobile</th>
     <th>Created At</th>
@@ -29,6 +30,17 @@
   <% @users.each do |user| %>
     <tr>
       <td><%= user.id %></td>
+      <td>
+        <% if user.avatar.attached? %>
+          <%= link_to admin_user_path(user.id) do %>
+            <%= image_tag user.avatar.variant(resize: '35x35'), class: 'ui avatar image' %>
+          <% end %>
+        <% else %>
+          <%= link_to admin_user_path(user.id) do %>
+            <%= image_tag 'default_avatar.jpg', size: '35x35', class: 'ui avatar image' %>
+          <% end %>
+        <% end %>
+      </td>
       <td><%= user.email %></td>
       <td><%= user.mobile %></td>
       <td><time><%= user.updated_at.to_s(:rfc822) %></time></td>

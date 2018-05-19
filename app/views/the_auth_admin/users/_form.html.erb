@@ -1,15 +1,8 @@
 <%= form_with model: [:admin, @user] do |f| %>
   <%= f.text_field :name %>
   <%= f.text_field :email %>
-  <div class="inline fields">
-    <%= f.label :avatar %>
-    <div class="six wide field">
-    <%= f.file_field :avatar, direct_upload: true, on: { wrapper_all: false, wrapper_input: false }, label: false %>
-    <% if @user.avatar.attached? %>
-      <%= image_tag @user.avatar, size: '30x30' %>
-    <% end %>
-    </div>
-  </div>
+  <%= f.file_field :avatar, direct_upload: true %>
+  <%= render 'active_storage/attachments/list', target: @user.avatar %>
   <%= f.text_field :mobile %>
   <%= f.text_field :password %>
 	<%= f.check_box :disabled %>
