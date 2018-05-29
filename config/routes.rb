@@ -28,7 +28,7 @@ Rails.application.routes.draw do
   end
 
   scope :admin, module: 'the_auth_admin', as: 'admin' do
-    resources :users 
+    resources :users
     resources :oauth_users
   end
 
