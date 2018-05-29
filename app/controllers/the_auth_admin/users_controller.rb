@@ -1,5 +1,5 @@
 class TheAuthAdmin::UsersController < TheAuthAdmin::BaseController
-  before_action :set_user, only: [:show, :edit, :update, :toggle, :destroy]
+  before_action :set_user, only: [:show, :edit, :update, :destroy]
 
   def index
     @users = User.includes(:oauth_users).order(created_at: :desc).default_where(search_params).page(params[:page])
@@ -30,14 +30,6 @@ class TheAuthAdmin::UsersController < TheAuthAdmin::BaseController
       redirect_to admin_users_url, notice: 'User was successfully updated.'
     else
       render :edit
-    end
-  end
-
-  def toggle
-    if params[:disabled] == '1'
-      @user.update(disabled: true)
-    else
-      @user.update(disabled: false)
     end
   end
 

@@ -46,11 +46,8 @@
       <td><time><%= user.updated_at.to_s(:rfc822) %></time></td>
       <td><time><%= user.last_login_at.to_s(:rfc822) if user.last_login_at %></time></td>
       <td>
-        <%= form_tag toggle_admin_user_path(user), method: :patch do %>
-          <span class="ui toggle checkbox">
-            <label></label>
-            <%= check_box_tag :disabled, 1, user.disabled, onChange: 'this.form.submit()', id: nil %>
-          </span>
+        <%= form_with model: user, url: admin_user_path(user), method: :patch, remote: true do %>
+          <%= f.check_box :disabled, onChange: "Rails.fire(this.form, 'submit')", label: false, on: { wrapper_all: false, offset: false } %>
         <% end %>
       </td>
       <td class="ui blue labels">
