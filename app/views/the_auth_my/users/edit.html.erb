@@ -5,7 +5,7 @@
       <%= form_tag my_user_path, method: :patch, id: 'edit_user' %>
     </th>
     <th>
-      <%= link_to '返回', my_user_path, class: 'ui mini blue right floated button' %>
+      <%= link_to 'back', my_user_path, class: 'ui mini blue right floated button' %>
     </th>
   </tr>
   </thead>
@@ -44,8 +44,8 @@
   <tr>
     <td></td>
     <td>
-      <%= submit_tag '存储', form: 'edit_user', class: 'ui blue button' %>
-      <%= link_to '返回', my_user_path, class: 'ui gray button' %>
+      <%= submit_tag form: 'edit_user', class: 'ui blue button' %>
+      <%= link_to 'back', my_user_path, class: 'ui gray button' %>
     </td>
   </tr>
   </tbody>
