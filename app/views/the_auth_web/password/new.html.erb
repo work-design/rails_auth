@@ -1,24 +1,7 @@
-<div class="ui centered grid">
-
-  <div class="six wide column">
-    <h2 class="ui header">Reset Password?</h2>
-
-    <%= form_tag password_forget_url, class: 'ui attached form segment' do %>
-      <div class="inline fields">
-        <%= label_tag :login, '账号：', class: 'four wide field' %>
-        <%= text_field_tag :login, nil %>
-      </div>
-      <div class="inline fields">
-        <label class="four wide field"></label>
-        <%= submit_tag 'Send me reset password instructions', class: 'ui button' %>
-      </div>
-    <% end %>
-
-  </div>
-
-
+<div class="column ui segment">
+  <h2 class="ui header">Reset Password?</h2>
+  <%= form_with scope: nil, url: password_forget_url, local: true, class: 'ui large form', on: { label: false, wrapper_all: false, wrapper_input: false } do |f| %>
+    <%= f.text_field :login, placeholder: 'Email/Mobile' %>
+    <%= f.submit 'Send me reset password instructions' %>
+  <% end %>
 </div>
-
-
-
-
