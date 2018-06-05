@@ -1,13 +1,11 @@
-<div class="ui centered grid">
-  <div class="six wide column">
-    <h2 class="ui header">Reset your password!</h2>
+<div class="six wide column">
+  <h2 class="ui header">Reset your password!</h2>
 
-    <%= form_with model: User.new, scope: '', url: password_reset_url(params[:token]), class: 'ui attached form segment'  do |f| %>
-      <%= f.password_field :password, css: { wrapper_input: 'ten wide column' } %>
-      <%= f.password_field :password_confirmation, css: { wrapper_input: 'ten wide column' } %>
-      <%= f.submit 'confirm' %>
-    <% end %>
-    
-  </div>
+  <%= form_with model: User.new, scope: '', url: password_reset_url(params[:token]), class: 'ui attached form segment'  do |f| %>
+    <%= f.password_field :password, css: { wrapper_input: 'ten wide column' } %>
+    <%= f.password_field :password_confirmation, css: { wrapper_input: 'ten wide column' } %>
+    <%= f.submit 'confirm' %>
+  <% end %>
+  
 </div>
 
