@@ -41,7 +41,7 @@ class TheAuthMy::UsersController < TheAuthMy::BaseController
     @user.destroy
 
     respond_to do |format|
-      format.html { redirect_to people_url }
+      format.html { redirect_to my_user_url }
       format.json { head :no_content }
     end
   end
@@ -52,7 +52,13 @@ class TheAuthMy::UsersController < TheAuthMy::BaseController
   end
 
   def user_params
-    params.fetch(:user, {}).permit(:email, :name, :mobile, :avatar)
+    params.fetch(:user, {}).permit(
+      :email,
+      :name,
+      :mobile,
+      :avatar,
+      :timezone
+    )
   end
 
 end
