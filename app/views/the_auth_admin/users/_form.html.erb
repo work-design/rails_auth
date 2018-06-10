@@ -2,7 +2,7 @@
   <%= f.text_field :name %>
   <%= f.text_field :email %>
   <%= f.file_field :avatar, direct_upload: true %>
-  <%= render 'active_storage/attachments/list', target: @user.avatar %>
+  <%= render 'active_storage/attachments/list_form', target: @user.avatar %>
   <%= f.text_field :mobile %>
   <%= f.text_field :password %>
 	<%= f.check_box :disabled %>
