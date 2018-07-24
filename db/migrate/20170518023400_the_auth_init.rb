@@ -12,6 +12,8 @@ class TheAuthInit < ActiveRecord::Migration[5.1]
       t.datetime :last_login_at
       t.string :last_login_ip
       t.boolean :disabled, default: false
+      t.string :timezone
+      t.string :locale
       t.timestamps
     end
 
