@@ -2,6 +2,9 @@ class TheAuthApi::LoginController < TheAuthApi::BaseController
   skip_before_action :require_login_from_token, only: [:create]
   before_action :set_user, only: [:create]
 
+  #**
+  #
+  #*
   def create
     if @user && @user.can_login?(params)
       login_as @user
