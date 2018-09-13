@@ -24,7 +24,7 @@ module TheAuthUser
     has_one  :access_token, -> { valid }
     has_many :access_tokens, dependent: :delete_all
 
-    has_many :verify_tokens, dependent: :delete_all
+    has_many :verify_tokens, autosave: true, dependent: :delete_all
     has_many :oauth_users, dependent: :nullify
   end
 
