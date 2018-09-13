@@ -6,14 +6,14 @@ module TheAuthApi
     after_action :set_auth_token
   end
 
-  def current_user
-    @current_user ||= login_from_token
-  end
-
   def require_login_from_token
     return if login_from_token
 
-    render(json: { error: 'no user!' }, status: 401)
+    render(json: { error: @error || 'no user!' }, status: 401)
+  end
+
+  def current_user
+    @current_user ||= login_from_token
   end
 
   def login_from_token
@@ -42,7 +42,7 @@ module TheAuthApi
       password_digest = User.find_by(id: payload['iss']).password_digest.to_s
       JWT.decode(token, password_digest, true, {'sub' => 'auth', verify_sub: true})
     rescue => e
-      flash[:error] = e.message
+      @error = e.message
     end
   end
 
@@ -50,7 +50,7 @@ module TheAuthApi
     begin
       payload, _ = JWT.decode(token, nil, false, verify_expiration: false)
     rescue => e
-      flash[:error] = e.message
+      @error = e.message
     end
 
     payload

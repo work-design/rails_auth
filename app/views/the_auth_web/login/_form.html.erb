@@ -1,6 +1,6 @@
 <%= form_with scope: nil, url: login_path, local: true, class: 'ui large form' do %>
   <div class="field">
-    <%= text_field_tag :login, params[:login], placeholder: 'Email or Mobile' %>
+    <%= text_field_tag :account, params[:account], placeholder: 'Email or Mobile' %>
   </div>
   <div class="field">
     <%= password_field_tag :password, nil, placeholder: 'Password', autocomplete: false %>
