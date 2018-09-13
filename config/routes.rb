@@ -37,10 +37,17 @@ Rails.application.routes.draw do
     resources :oauth_users
   end
 
-  scope :api, module: 'the_auth_api' do
+end
+
+TheAuth::Engine.routes.draw do
+
+  scope '', module: 'the_auth_api' do
     resource :me
     controller :login do
       post 'login', action: 'create'
+    end
+    controller :join do
+      post 'join', action: 'create'
     end
     resources :oauth_users, only: [:create]
   end

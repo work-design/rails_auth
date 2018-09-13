@@ -57,7 +57,13 @@ class TheAuthWeb::JoinController < TheAuthWeb::BaseController
 
   private
   def user_params
-    params.fetch(:user, {}).permit(:name, :email, :mobile, :password, :password_confirmation)
+    params.fetch(:user, {}).permit(
+      :name,
+      :email,
+      :mobile,
+      :password,
+      :password_confirmation
+    )
   end
 
 end
