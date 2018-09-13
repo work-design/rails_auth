@@ -47,7 +47,8 @@ TheAuth::Engine.routes.draw do
       post 'login', action: 'create'
     end
     controller :join do
-      post 'join', action: 'create'
+      get 'join', action: 'new_verify'
+      post 'join', action: 'create_verify'
     end
     resources :oauth_users, only: [:create]
   end

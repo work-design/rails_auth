@@ -6,6 +6,12 @@ class TheAuthApi::JoinController < TheAuthApi::BaseController
   # @apiGroup User
   #
   # @apiParam {String} account Email or Mobile number
+  # @apiSuccessExample {json} Success-Response:
+  #       HTTP/1.1 200 OK
+  #      {
+  #       "firstname": "John",
+  #        "lastname": "Doe"
+  #       }
   #*
   def new_verify
     if params[:account].include?('@')
@@ -29,15 +35,15 @@ class TheAuthApi::JoinController < TheAuthApi::BaseController
   end
 
   #**
-  # @api {post} /verify Verify
+  # @api {post} /verify_join Verify
   # @apiName verify
   # @apiGroup User
   #
-  # @apiParam {String} mobile User mobile number
+  # @apiParam {String} account User mobile number
   # @apiParam {String} token Mobile verify token
   #*
   def create_verify
-    @user = User.find_or_initialize_by(mobile: params[:mobile])
+    @user = User.find_or_initialize_by(mobile: params[:account])
     if @user.persisted?
       @mobile_token = @user.mobile_tokens.valid.find_by(token: params[:token])
     else
@@ -48,14 +54,14 @@ class TheAuthApi::JoinController < TheAuthApi::BaseController
     if @mobile_token
       @user.mobile_confirm = true
     else
-      render :new, error: 'Token is invalid' and return
+      render json: { code: 401, messages: 'Token is invalid' } and return
     end
 
     if @user.save
       login_as @user
-      redirect_back_or_default
+      render json: { auth_token: @user.access_token.token }
     else
-      render :new, error: @user.errors.full_messages
+      render json: { code: 401, messages:  @user.errors.full_messages }
     end
   end
 
@@ -72,9 +78,9 @@ class TheAuthApi::JoinController < TheAuthApi::BaseController
     @user = User.new(user_params)
     if @user.join(params)
       login_as @user
-      redirect_back_or_default
+      render json: { auth_token: @user.access_token.token }
     else
-      render :new, error: @user.errors.full_messages
+      render json: { code: 401, error: @user.errors.full_messages }
     end
   end
 

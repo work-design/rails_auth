@@ -2,5 +2,6 @@
   "name": "TheAuth",
   "version": "1.0.0",
   "description": "Login",
-  "title": "Auth & login"
+  "title": "Auth & login",
+  "sampleUrl": "http://localhost:3000"
 }
