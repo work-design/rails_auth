@@ -15,4 +15,8 @@ class EmailToken < VerifyToken
     user.update(email_confirm: true)
   end
 
+  def save_with_send
+    save
+  end
+
 end

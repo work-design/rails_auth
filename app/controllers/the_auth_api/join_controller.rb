@@ -1,6 +1,34 @@
 class TheAuthApi::JoinController < TheAuthApi::BaseController
 
   #**
+  # @api {get} /verify get verify
+  # @apiName get verify
+  # @apiGroup User
+  #
+  # @apiParam {String} account Email or Mobile number
+  #*
+  def new_verify
+    if params[:account].include?('@')
+      @user = User.find_by(email: params[:account])
+      if @user
+        @verify_token = @user.email_token
+      else
+        @verify_token = EmailToken.valid.find_or_initialize_by(account: params[:account])
+      end
+    else
+      @user = User.find_by(mobile: params[:account])
+      if @user
+        @verify_token = @user.mobile_token
+      else
+        @verify_token = MobileToken.valid.find_or_initialize_by(account: params[:mobile])
+      end
+    end
+
+    @verify_token.save_with_send
+    render json: { code: 200, messages: 'Validation code has been sent!' }
+  end
+
+  #**
   # @api {post} /verify Verify
   # @apiName verify
   # @apiGroup User
@@ -8,28 +36,7 @@ class TheAuthApi::JoinController < TheAuthApi::BaseController
   # @apiParam {String} mobile User mobile number
   # @apiParam {String} token Mobile verify token
   #*
-  def mobile_confirm
-    @user = User.find_by(mobile: params[:mobile])
-
-    if @user
-      @mobile_token = @user.create_mobile_token
-    else
-      @mobile_token = MobileToken.new(account: params[:mobile])
-      @mobile_token.save_with_send
-    end
-
-    render json: { code: 200, messages: 'Validation code has been sent!' }
-  end
-
-  #**
-  # @api {get} /verify get verify
-  # @apiName get verify
-  # @apiGroup User
-  #
-  # @apiParam {String="MobileToken","EmailToken"} type User mobile number
-  # @apiParam {String} account Email or Mobile number
-  #*
-  def create_mobile
+  def create_verify
     @user = User.find_or_initialize_by(mobile: params[:mobile])
     if @user.persisted?
       @mobile_token = @user.mobile_tokens.valid.find_by(token: params[:token])
@@ -72,6 +79,14 @@ class TheAuthApi::JoinController < TheAuthApi::BaseController
   end
 
   private
+  def set_user
+    if params[:account].include?('@')
+      @user = User.find_by(email: params[:account])
+    else
+      @user = User.find_by(mobile: params[:account])
+    end
+  end
+
   def user_params
     params.fetch(:user, {}).permit(
       :name,

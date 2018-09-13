@@ -1,4 +1,12 @@
 class MobileToken < VerifyToken
+  validates :account, presence: true
+
+  after_initialize do
+    if self.user
+      self.account = self.user.mobile
+    end
+  end
+  before_create :update_token
 
   def update_token
     self.token = rand(10000..999999)

@@ -24,42 +24,43 @@ module TheAuthUser
     has_one  :access_token, -> { valid }
     has_many :access_tokens, dependent: :delete_all
 
+    has_many :verify_tokens, dependent: :delete_all
     has_many :oauth_users, dependent: :nullify
   end
 
-  def get_access_token
-    if self.access_token
-      self.access_token.token
+  def access_token
+    if super
+      super
     else
       self.access_tokens.delete_all
-      create_access_token.token
+      create_access_token
     end
   end
 
-  def get_reset_token
-    if self.reset_token
-      self.reset_token.token
+  def reset_token
+    if super
+      super
     else
       self.reset_tokens.delete_all
-      create_reset_token.token
+      create_reset_token
     end
   end
 
-  def get_confirm_token
-    if self.confirm_token
-      self.confirm_token.token
+  def confirm_token
+    if super
+      super
     else
       self.confirm_tokens.delete_all
-      create_confirm_token.token
+      create_confirm_token
     end
   end
 
-  def get_mobile_token
-    if self.mobile_token
-      self.mobile_token.token
+  def mobile_token
+    if super
+      super
     else
       self.mobile_tokens.delete_all
-      create_mobile_token.token
+      create_mobile_token
     end
   end
 
