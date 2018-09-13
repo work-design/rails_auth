@@ -3,7 +3,6 @@ module TheAuthApi
 
   included do
     helper_method :current_user
-    before_action :require_login_from_token, if: -> { request.headers['HTTP_AUTH_TOKEN'].present? }
     after_action :set_auth_token
   end
 
@@ -14,7 +13,7 @@ module TheAuthApi
   def require_login_from_token
     return if login_from_token
 
-    render(json: { error: flash[:error] || 'no user!' }, status: 401)
+    render(json: { error: 'no user!' }, status: 401)
   end
 
   def login_from_token
