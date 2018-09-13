@@ -1,5 +1,4 @@
 class TheAuthApi::LoginController < TheAuthApi::BaseController
-  skip_before_action :require_login_from_token, only: [:create]
   before_action :set_user, only: [:create]
 
   #**
@@ -9,7 +8,7 @@ class TheAuthApi::LoginController < TheAuthApi::BaseController
     if @user && @user.can_login?(params)
       login_as @user
 
-      render json: { status: 200 }
+      render json: { status: 200, auth_token: @user.access_token.token }
     else
       render json: { error: @user.errors.messages }
     end
@@ -17,10 +16,10 @@ class TheAuthApi::LoginController < TheAuthApi::BaseController
 
   private
   def set_user
-    if params[:login].include?('@')
-      @user = User.find_by(email: params[:login])
+    if params[:account].include?('@')
+      @user = User.find_by(email: params[:account])
     else
-      @user = User.find_by(mobile: params[:login])
+      @user = User.find_by(mobile: params[:account])
     end
   end
 
