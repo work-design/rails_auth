@@ -26,12 +26,15 @@ class TheAuthApi::JoinController < TheAuthApi::BaseController
       if @user
         @verify_token = @user.mobile_token
       else
-        @verify_token = MobileToken.valid.find_or_initialize_by(account: params[:mobile])
+        @verify_token = MobileToken.valid.find_or_initialize_by(account: params[:account])
       end
     end
 
-    @verify_token.save_with_send
-    render json: { code: 200, messages: 'Validation code has been sent!' }
+    if @verify_token.save_with_send
+      render json: { code: 200, messages: 'Validation code has been sent!' }
+    else
+      render json: { code: 401, messages: 'Token is invalid' }
+    end
   end
 
   #**
@@ -41,14 +44,15 @@ class TheAuthApi::JoinController < TheAuthApi::BaseController
   #
   # @apiParam {String} account User mobile number
   # @apiParam {String} token Mobile verify token
+  # @apiParam {String} password Password
   #*
   def create_verify
     @user = User.find_or_initialize_by(mobile: params[:account])
     if @user.persisted?
       @mobile_token = @user.mobile_tokens.valid.find_by(token: params[:token])
     else
-      @mobile_token = MobileToken.valid.find_by(token: params[:token], mobile: params[:mobile])
-      @user = @mobile_token.build_user if @mobile_token
+      @mobile_token = MobileToken.valid.find_by(token: params[:token], account: params[:account])
+      @user = @mobile_token.build_user(mobile: params[:account]) if @mobile_token
     end
 
     if @mobile_token
@@ -57,6 +61,7 @@ class TheAuthApi::JoinController < TheAuthApi::BaseController
       render json: { code: 401, messages: 'Token is invalid' } and return
     end
 
+    @user.password = params[:password]
     if @user.save
       login_as @user
       render json: { auth_token: @user.access_token.token }

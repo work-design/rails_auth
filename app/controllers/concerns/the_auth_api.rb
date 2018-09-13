@@ -30,7 +30,7 @@ module TheAuthApi
 
   private
   def set_auth_token
-    headers['Auth-Token'] = @current_user.get_access_token if @current_user
+    headers['Auth-Token'] = @current_user.access_token.token if @current_user
   end
 
   def verify_auth_token
