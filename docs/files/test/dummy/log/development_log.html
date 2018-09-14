@@ -1,0 +1,3102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>development.log</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="../../../../css/reset.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../../../../css/main.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../../../../css/github.css" type="text/css" media="screen" />
+<script src="../../../../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../../../js/main.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../../../js/highlight.pack.js" type="text/javascript" charset="utf-8"></script>
+
+</head>
+
+<body>
+    <div class="banner">
+        
+        <h1>
+            development.log
+        </h1>
+        <ul class="files">
+            <li>test/dummy/log/development.log</li>
+            <li>Last modified: 2018-05-04 09:51:45 +0800</li>
+        </ul>
+    </div>
+
+    <div id="bodyContent">
+        <div id="content">
+  
+    <div class="description">
+      
+<pre><code>[1m[35m (2.9ms)[0m  [1m[35mSET  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, &#39;,STRICT_ALL_TABLES&#39;), &#39;,NO_AUTO_VALUE_ON_ZERO&#39;),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+[1m[35m (14.5ms)[0m  [1m[35mCREATE DATABASE `dummy_test` DEFAULT CHARACTER SET `utf8`[0m
+</code></pre>
+
+<p>Started GET “/” for ::1 at 2018-04-21 23:10:04 +0800</p>
+
+<pre><code>[1m[35m (1.9ms)[0m  [1m[35mSET  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, &#39;,STRICT_ALL_TABLES&#39;), &#39;,NO_AUTO_VALUE_ON_ZERO&#39;),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+</code></pre>
+
+<p>Processing by <a
+href="../../../../classes/HomeController.html#method-i-index">HomeController#index</a>
+as HTML Completed 204 No Content in 11ms (ActiveRecord: 0.0ms)</p>
+
+<p>Started GET “/” for ::1 at 2018-04-21 23:10:08 +0800 Processing by <a
+href="../../../../classes/HomeController.html#method-i-index">HomeController#index</a>
+as HTML Completed 204 No Content in 6ms (ActiveRecord: 0.0ms)</p>
+
+<p>Started GET “/join” for ::1 at 2018-04-21 23:10:53 +0800 Processing by <a
+href="../../../../classes/TheAuthWeb/JoinController.html#method-i-new">TheAuthWeb::JoinController#new</a>
+as HTML Completed 500 Internal Server Error in 78ms (ActiveRecord: 0.0ms)</p>
+
+<p>NameError (uninitialized constant User::TheRole):</p>
+
+<p>app/models/user.rb:2:in `&lt;class:User&gt;&#39; app/models/user.rb:1:in
+`&lt;top (required)&gt;&#39; Started GET “/join” for ::1 at 2018-04-22
+00:42:37 +0800</p>
+
+<pre><code>[1m[35m (2.3ms)[0m  [1m[35mSET  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, &#39;,STRICT_ALL_TABLES&#39;), &#39;,NO_AUTO_VALUE_ON_ZERO&#39;),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+</code></pre>
+
+<p>Processing by <a
+href="../../../../classes/TheAuthWeb/JoinController.html#method-i-new">TheAuthWeb::JoinController#new</a>
+as HTML Completed 500 Internal Server Error in 10ms (ActiveRecord: 4.0ms)</p>
+
+<p>ActiveRecord::StatementInvalid (Mysql2::Error: No database selected: SHOW
+FULL FIELDS FROM `users`):</p>
+
+<p>mysql2 (0.5.0) lib/mysql2/client.rb:131:in `_query&#39; mysql2 (0.5.0)
+lib/mysql2/client.rb:131:in `block in query&#39; mysql2 (0.5.0)
+lib/mysql2/client.rb:130:in `handle_interrupt&#39; mysql2 (0.5.0)
+lib/mysql2/client.rb:130:in `query&#39; activerecord (5.2.0)
+lib/active_record/connection_adapters/abstract_mysql_adapter.rb:187:in
+`block (2 levels) in execute&#39; activesupport (5.2.0)
+lib/active_support/dependencies/interlock.rb:48:in `block in
+permit_concurrent_loads&#39; activesupport (5.2.0)
+lib/active_support/concurrency/share_lock.rb:187:in `yield_shares&#39;
+activesupport (5.2.0) lib/active_support/dependencies/interlock.rb:47:in
+`permit_concurrent_loads&#39; activerecord (5.2.0)
+lib/active_record/connection_adapters/abstract_mysql_adapter.rb:186:in
+`block in execute&#39; activerecord (5.2.0)
+lib/active_record/connection_adapters/abstract_adapter.rb:579:in `block (2
+levels) in log&#39;
+/Users/qin/.rbenv/versions/2.5.0/lib/ruby/2.5.0/monitor.rb:226:in
+`mon_synchronize&#39; activerecord (5.2.0)
+lib/active_record/connection_adapters/abstract_adapter.rb:578:in `block in
+log&#39; activesupport (5.2.0)
+lib/active_support/notifications/instrumenter.rb:23:in `instrument&#39;
+activerecord (5.2.0)
+lib/active_record/connection_adapters/abstract_adapter.rb:569:in `log&#39;
+activerecord (5.2.0)
+lib/active_record/connection_adapters/abstract_mysql_adapter.rb:185:in
+`execute&#39; activerecord (5.2.0)
+lib/active_record/connection_adapters/mysql/database_statements.rb:28:in
+`execute&#39; activerecord (5.2.0)
+lib/active_record/connection_adapters/abstract_mysql_adapter.rb:196:in
+`execute_and_free&#39; activerecord (5.2.0)
+lib/active_record/connection_adapters/abstract_mysql_adapter.rb:804:in
+`column_definitions&#39; activerecord (5.2.0)
+lib/active_record/connection_adapters/abstract/schema_statements.rb:113:in
+`columns&#39; activerecord (5.2.0)
+lib/active_record/connection_adapters/schema_cache.rb:69:in `columns&#39;
+activerecord (5.2.0)
+lib/active_record/connection_adapters/schema_cache.rb:75:in
+`columns_hash&#39; activerecord (5.2.0)
+lib/active_record/model_schema.rb:466:in `load_schema!&#39; activerecord
+(5.2.0) lib/active_record/attributes.rb:234:in `load_schema!&#39;
+activerecord (5.2.0) lib/active_record/attribute_decorators.rb:51:in
+`load_schema!&#39; activerecord (5.2.0)
+lib/active_record/model_schema.rb:459:in `block in load_schema&#39;
+/Users/qin/.rbenv/versions/2.5.0/lib/ruby/2.5.0/monitor.rb:226:in
+`mon_synchronize&#39; activerecord (5.2.0)
+lib/active_record/model_schema.rb:456:in `load_schema&#39; activerecord
+(5.2.0) lib/active_record/model_schema.rb:346:in `attribute_types&#39;
+activerecord (5.2.0) lib/active_record/attribute_methods.rb:230:in
+`has_attribute?&#39; activerecord (5.2.0)
+lib/active_record/inheritance.rb:55:in `new&#39;
+/Users/qin/work/engine/the_auth/app/controllers/the_auth_web/join_controller.rb:4:in
+`new&#39; actionpack (5.2.0)
+lib/action_controller/metal/basic_implicit_render.rb:6:in `send_action&#39;
+actionpack (5.2.0) lib/abstract_controller/base.rb:194:in
+`process_action&#39; actionpack (5.2.0)
+lib/action_controller/metal/rendering.rb:30:in `process_action&#39;
+actionpack (5.2.0) lib/abstract_controller/callbacks.rb:42:in `block in
+process_action&#39; activesupport (5.2.0)
+lib/active_support/callbacks.rb:132:in `run_callbacks&#39; actionpack
+(5.2.0) lib/abstract_controller/callbacks.rb:41:in `process_action&#39;
+actionpack (5.2.0) lib/action_controller/metal/rescue.rb:22:in
+`process_action&#39; actionpack (5.2.0)
+lib/action_controller/metal/instrumentation.rb:34:in `block in
+process_action&#39; activesupport (5.2.0)
+lib/active_support/notifications.rb:168:in `block in instrument&#39;
+activesupport (5.2.0)
+lib/active_support/notifications/instrumenter.rb:23:in `instrument&#39;
+activesupport (5.2.0) lib/active_support/notifications.rb:168:in
+`instrument&#39; actionpack (5.2.0)
+lib/action_controller/metal/instrumentation.rb:32:in `process_action&#39;
+actionpack (5.2.0) lib/action_controller/metal/params_wrapper.rb:256:in
+`process_action&#39; activerecord (5.2.0)
+lib/active_record/railties/controller_runtime.rb:24:in `process_action&#39;
+actionpack (5.2.0) lib/abstract_controller/base.rb:134:in `process&#39;
+actionview (5.2.0) lib/action_view/rendering.rb:32:in `process&#39;
+actionpack (5.2.0) lib/action_controller/metal.rb:191:in `dispatch&#39;
+actionpack (5.2.0) lib/action_controller/metal.rb:252:in `dispatch&#39;
+actionpack (5.2.0) lib/action_dispatch/routing/route_set.rb:52:in
+`dispatch&#39; actionpack (5.2.0)
+lib/action_dispatch/routing/route_set.rb:34:in `serve&#39; actionpack
+(5.2.0) lib/action_dispatch/journey/router.rb:52:in `block in serve&#39;
+actionpack (5.2.0) lib/action_dispatch/journey/router.rb:35:in `each&#39;
+actionpack (5.2.0) lib/action_dispatch/journey/router.rb:35:in `serve&#39;
+actionpack (5.2.0) lib/action_dispatch/routing/route_set.rb:840:in
+`call&#39; omniauth (1.8.1) lib/omniauth/strategy.rb:190:in `call!&#39;
+omniauth (1.8.1) lib/omniauth/strategy.rb:168:in `call&#39; omniauth
+(1.8.1) lib/omniauth/strategy.rb:190:in `call!&#39; omniauth (1.8.1)
+lib/omniauth/strategy.rb:168:in `call&#39; omniauth (1.8.1)
+lib/omniauth/builder.rb:63:in `call&#39; rack (2.0.4)
+lib/rack/tempfile_reaper.rb:15:in `call&#39; rack (2.0.4)
+lib/rack/etag.rb:25:in `call&#39; rack (2.0.4)
+lib/rack/conditional_get.rb:25:in `call&#39; rack (2.0.4)
+lib/rack/head.rb:12:in `call&#39; actionpack (5.2.0)
+lib/action_dispatch/http/content_security_policy.rb:18:in `call&#39; rack
+(2.0.4) lib/rack/session/abstract/id.rb:232:in `context&#39; rack (2.0.4)
+lib/rack/session/abstract/id.rb:226:in `call&#39; actionpack (5.2.0)
+lib/action_dispatch/middleware/cookies.rb:670:in `call&#39; activerecord
+(5.2.0) lib/active_record/migration.rb:559:in `call&#39; actionpack (5.2.0)
+lib/action_dispatch/middleware/callbacks.rb:28:in `block in call&#39;
+activesupport (5.2.0) lib/active_support/callbacks.rb:98:in
+`run_callbacks&#39; actionpack (5.2.0)
+lib/action_dispatch/middleware/callbacks.rb:26:in `call&#39; actionpack
+(5.2.0) lib/action_dispatch/middleware/executor.rb:14:in `call&#39;
+actionpack (5.2.0) lib/action_dispatch/middleware/debug_exceptions.rb:61:in
+`call&#39; actionpack (5.2.0)
+lib/action_dispatch/middleware/show_exceptions.rb:33:in `call&#39; railties
+(5.2.0) lib/rails/rack/logger.rb:38:in `call_app&#39; railties (5.2.0)
+lib/rails/rack/logger.rb:26:in `block in call&#39; activesupport (5.2.0)
+lib/active_support/tagged_logging.rb:71:in `block in tagged&#39;
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:28:in
+`tagged&#39; activesupport (5.2.0)
+lib/active_support/tagged_logging.rb:71:in `tagged&#39; railties (5.2.0)
+lib/rails/rack/logger.rb:26:in `call&#39; sprockets-rails (3.2.1)
+lib/sprockets/rails/quiet_assets.rb:13:in `call&#39; actionpack (5.2.0)
+lib/action_dispatch/middleware/remote_ip.rb:81:in `call&#39; actionpack
+(5.2.0) lib/action_dispatch/middleware/request_id.rb:27:in `call&#39; rack
+(2.0.4) lib/rack/method_override.rb:22:in `call&#39; rack (2.0.4)
+lib/rack/runtime.rb:22:in `call&#39; activesupport (5.2.0)
+lib/active_support/cache/strategy/local_cache_middleware.rb:29:in
+`call&#39; actionpack (5.2.0)
+lib/action_dispatch/middleware/executor.rb:14:in `call&#39; actionpack
+(5.2.0) lib/action_dispatch/middleware/static.rb:127:in `call&#39; rack
+(2.0.4) lib/rack/sendfile.rb:111:in `call&#39; railties (5.2.0)
+lib/rails/engine.rb:524:in `call&#39; rack (2.0.4)
+lib/rack/handler/webrick.rb:86:in `service&#39;
+/Users/qin/.rbenv/versions/2.5.0/lib/ruby/2.5.0/webrick/httpserver.rb:140:in
+`service&#39;
+/Users/qin/.rbenv/versions/2.5.0/lib/ruby/2.5.0/webrick/httpserver.rb:96:in
+`run&#39;
+/Users/qin/.rbenv/versions/2.5.0/lib/ruby/2.5.0/webrick/server.rb:307:in
+`block in start_thread&#39; Started GET “/cable” for 127.0.0.1 at
+2018-04-22 08:56:59 +0800</p>
+
+<pre><code>[1m[35m (2.7ms)[0m  [1m[35mSET  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, &#39;,STRICT_ALL_TABLES&#39;), &#39;,NO_AUTO_VALUE_ON_ZERO&#39;),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+</code></pre>
+
+<p>Started GET “/cable/” [WebSocket] for 127.0.0.1 at 2018-04-22 08:57:00
++0800 Successfully upgraded to WebSocket (REQUEST_METHOD: GET,
+HTTP_CONNECTION: keep-alive, Upgrade, HTTP_UPGRADE: websocket)</p>
+
+<p>NotImplementedError (only partial hijack is supported.):</p>
+
+<p>rack (2.0.4) lib/rack/handler/webrick.rb:74:in `block in service&#39;
+actioncable (5.2.0) lib/action_cable/connection/stream.rb:101:in
+`hijack_rack_socket&#39; actioncable (5.2.0)
+lib/action_cable/connection/client_socket.rb:59:in `start_driver&#39;
+actioncable (5.2.0) lib/action_cable/connection/client_socket.rb:70:in
+`rack_response&#39; actioncable (5.2.0)
+lib/action_cable/connection/web_socket.rb:34:in `rack_response&#39;
+actioncable (5.2.0) lib/action_cable/connection/base.rb:213:in
+`respond_to_successful_request&#39; actioncable (5.2.0)
+lib/action_cable/connection/base.rb:73:in `process&#39; actioncable (5.2.0)
+lib/action_cable/server/base.rb:30:in `call&#39; actionpack (5.2.0)
+lib/action_dispatch/routing/mapper.rb:19:in `block in
+&lt;class:Constraints&gt;&#39; actionpack (5.2.0)
+lib/action_dispatch/routing/mapper.rb:48:in `serve&#39; actionpack (5.2.0)
+lib/action_dispatch/journey/router.rb:52:in `block in serve&#39; actionpack
+(5.2.0) lib/action_dispatch/journey/router.rb:35:in `each&#39; actionpack
+(5.2.0) lib/action_dispatch/journey/router.rb:35:in `serve&#39; actionpack
+(5.2.0) lib/action_dispatch/routing/route_set.rb:840:in `call&#39; omniauth
+(1.8.1) lib/omniauth/strategy.rb:190:in `call!&#39; omniauth (1.8.1)
+lib/omniauth/strategy.rb:168:in `call&#39; omniauth (1.8.1)
+lib/omniauth/strategy.rb:190:in `call!&#39; omniauth (1.8.1)
+lib/omniauth/strategy.rb:168:in `call&#39; omniauth (1.8.1)
+lib/omniauth/builder.rb:63:in `call&#39; rack (2.0.4)
+lib/rack/tempfile_reaper.rb:15:in `call&#39; rack (2.0.4)
+lib/rack/etag.rb:25:in `call&#39; rack (2.0.4)
+lib/rack/conditional_get.rb:25:in `call&#39; rack (2.0.4)
+lib/rack/head.rb:12:in `call&#39; actionpack (5.2.0)
+lib/action_dispatch/http/content_security_policy.rb:18:in `call&#39; rack
+(2.0.4) lib/rack/session/abstract/id.rb:232:in `context&#39; rack (2.0.4)
+lib/rack/session/abstract/id.rb:226:in `call&#39; actionpack (5.2.0)
+lib/action_dispatch/middleware/cookies.rb:670:in `call&#39; activerecord
+(5.2.0) lib/active_record/migration.rb:559:in `call&#39; actionpack (5.2.0)
+lib/action_dispatch/middleware/callbacks.rb:28:in `block in call&#39;
+activesupport (5.2.0) lib/active_support/callbacks.rb:98:in
+`run_callbacks&#39; actionpack (5.2.0)
+lib/action_dispatch/middleware/callbacks.rb:26:in `call&#39; actionpack
+(5.2.0) lib/action_dispatch/middleware/executor.rb:14:in `call&#39;
+actionpack (5.2.0) lib/action_dispatch/middleware/debug_exceptions.rb:61:in
+`call&#39; actionpack (5.2.0)
+lib/action_dispatch/middleware/show_exceptions.rb:33:in `call&#39; railties
+(5.2.0) lib/rails/rack/logger.rb:38:in `call_app&#39; railties (5.2.0)
+lib/rails/rack/logger.rb:26:in `block in call&#39; activesupport (5.2.0)
+lib/active_support/tagged_logging.rb:71:in `block in tagged&#39;
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:28:in
+`tagged&#39; activesupport (5.2.0)
+lib/active_support/tagged_logging.rb:71:in `tagged&#39; railties (5.2.0)
+lib/rails/rack/logger.rb:26:in `call&#39; sprockets-rails (3.2.1)
+lib/sprockets/rails/quiet_assets.rb:13:in `call&#39; actionpack (5.2.0)
+lib/action_dispatch/middleware/remote_ip.rb:81:in `call&#39; actionpack
+(5.2.0) lib/action_dispatch/middleware/request_id.rb:27:in `call&#39; rack
+(2.0.4) lib/rack/method_override.rb:22:in `call&#39; rack (2.0.4)
+lib/rack/runtime.rb:22:in `call&#39; activesupport (5.2.0)
+lib/active_support/cache/strategy/local_cache_middleware.rb:29:in
+`call&#39; actionpack (5.2.0)
+lib/action_dispatch/middleware/executor.rb:14:in `call&#39; actionpack
+(5.2.0) lib/action_dispatch/middleware/static.rb:127:in `call&#39; rack
+(2.0.4) lib/rack/sendfile.rb:111:in `call&#39; railties (5.2.0)
+lib/rails/engine.rb:524:in `call&#39; rack (2.0.4)
+lib/rack/handler/webrick.rb:86:in `service&#39;
+/Users/qin/.rbenv/versions/2.5.0/lib/ruby/2.5.0/webrick/httpserver.rb:140:in
+`service&#39;
+/Users/qin/.rbenv/versions/2.5.0/lib/ruby/2.5.0/webrick/httpserver.rb:96:in
+`run&#39;
+/Users/qin/.rbenv/versions/2.5.0/lib/ruby/2.5.0/webrick/server.rb:307:in
+`block in start_thread&#39; Started GET “/cable” for ::1 at 2018-04-22
+08:57:01 +0800 Started GET “/cable/” [WebSocket] for ::1 at 2018-04-22
+08:57:01 +0800 Successfully upgraded to WebSocket (REQUEST_METHOD: GET,
+HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)</p>
+
+<p>NotImplementedError (only partial hijack is supported.):</p>
+
+<p>rack (2.0.4) lib/rack/handler/webrick.rb:74:in `block in service&#39;
+actioncable (5.2.0) lib/action_cable/connection/stream.rb:101:in
+`hijack_rack_socket&#39; actioncable (5.2.0)
+lib/action_cable/connection/client_socket.rb:59:in `start_driver&#39;
+actioncable (5.2.0) lib/action_cable/connection/client_socket.rb:70:in
+`rack_response&#39; actioncable (5.2.0)
+lib/action_cable/connection/web_socket.rb:34:in `rack_response&#39;
+actioncable (5.2.0) lib/action_cable/connection/base.rb:213:in
+`respond_to_successful_request&#39; actioncable (5.2.0)
+lib/action_cable/connection/base.rb:73:in `process&#39; actioncable (5.2.0)
+lib/action_cable/server/base.rb:30:in `call&#39; actionpack (5.2.0)
+lib/action_dispatch/routing/mapper.rb:19:in `block in
+&lt;class:Constraints&gt;&#39; actionpack (5.2.0)
+lib/action_dispatch/routing/mapper.rb:48:in `serve&#39; actionpack (5.2.0)
+lib/action_dispatch/journey/router.rb:52:in `block in serve&#39; actionpack
+(5.2.0) lib/action_dispatch/journey/router.rb:35:in `each&#39; actionpack
+(5.2.0) lib/action_dispatch/journey/router.rb:35:in `serve&#39; actionpack
+(5.2.0) lib/action_dispatch/routing/route_set.rb:840:in `call&#39; omniauth
+(1.8.1) lib/omniauth/strategy.rb:190:in `call!&#39; omniauth (1.8.1)
+lib/omniauth/strategy.rb:168:in `call&#39; omniauth (1.8.1)
+lib/omniauth/strategy.rb:190:in `call!&#39; omniauth (1.8.1)
+lib/omniauth/strategy.rb:168:in `call&#39; omniauth (1.8.1)
+lib/omniauth/builder.rb:63:in `call&#39; rack (2.0.4)
+lib/rack/tempfile_reaper.rb:15:in `call&#39; rack (2.0.4)
+lib/rack/etag.rb:25:in `call&#39; rack (2.0.4)
+lib/rack/conditional_get.rb:25:in `call&#39; rack (2.0.4)
+lib/rack/head.rb:12:in `call&#39; actionpack (5.2.0)
+lib/action_dispatch/http/content_security_policy.rb:18:in `call&#39; rack
+(2.0.4) lib/rack/session/abstract/id.rb:232:in `context&#39; rack (2.0.4)
+lib/rack/session/abstract/id.rb:226:in `call&#39; actionpack (5.2.0)
+lib/action_dispatch/middleware/cookies.rb:670:in `call&#39; activerecord
+(5.2.0) lib/active_record/migration.rb:559:in `call&#39; actionpack (5.2.0)
+lib/action_dispatch/middleware/callbacks.rb:28:in `block in call&#39;
+activesupport (5.2.0) lib/active_support/callbacks.rb:98:in
+`run_callbacks&#39; actionpack (5.2.0)
+lib/action_dispatch/middleware/callbacks.rb:26:in `call&#39; actionpack
+(5.2.0) lib/action_dispatch/middleware/executor.rb:14:in `call&#39;
+actionpack (5.2.0) lib/action_dispatch/middleware/debug_exceptions.rb:61:in
+`call&#39; actionpack (5.2.0)
+lib/action_dispatch/middleware/show_exceptions.rb:33:in `call&#39; railties
+(5.2.0) lib/rails/rack/logger.rb:38:in `call_app&#39; railties (5.2.0)
+lib/rails/rack/logger.rb:26:in `block in call&#39; activesupport (5.2.0)
+lib/active_support/tagged_logging.rb:71:in `block in tagged&#39;
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:28:in
+`tagged&#39; activesupport (5.2.0)
+lib/active_support/tagged_logging.rb:71:in `tagged&#39; railties (5.2.0)
+lib/rails/rack/logger.rb:26:in `call&#39; sprockets-rails (3.2.1)
+lib/sprockets/rails/quiet_assets.rb:13:in `call&#39; actionpack (5.2.0)
+lib/action_dispatch/middleware/remote_ip.rb:81:in `call&#39; actionpack
+(5.2.0) lib/action_dispatch/middleware/request_id.rb:27:in `call&#39; rack
+(2.0.4) lib/rack/method_override.rb:22:in `call&#39; rack (2.0.4)
+lib/rack/runtime.rb:22:in `call&#39; activesupport (5.2.0)
+lib/active_support/cache/strategy/local_cache_middleware.rb:29:in
+`call&#39; actionpack (5.2.0)
+lib/action_dispatch/middleware/executor.rb:14:in `call&#39; actionpack
+(5.2.0) lib/action_dispatch/middleware/static.rb:127:in `call&#39; rack
+(2.0.4) lib/rack/sendfile.rb:111:in `call&#39; railties (5.2.0)
+lib/rails/engine.rb:524:in `call&#39; rack (2.0.4)
+lib/rack/handler/webrick.rb:86:in `service&#39;
+/Users/qin/.rbenv/versions/2.5.0/lib/ruby/2.5.0/webrick/httpserver.rb:140:in
+`service&#39;
+/Users/qin/.rbenv/versions/2.5.0/lib/ruby/2.5.0/webrick/httpserver.rb:96:in
+`run&#39;
+/Users/qin/.rbenv/versions/2.5.0/lib/ruby/2.5.0/webrick/server.rb:307:in
+`block in start_thread&#39; Started GET “/cable” for 127.0.0.1 at
+2018-04-22 08:57:03 +0800 Started GET “/cable/” [WebSocket] for 127.0.0.1
+at 2018-04-22 08:57:03 +0800 Successfully upgraded to WebSocket
+(REQUEST_METHOD: GET, HTTP_CONNECTION: keep-alive, Upgrade, HTTP_UPGRADE:
+websocket)</p>
+
+<p>NotImplementedError (only partial hijack is supported.):</p>
+
+<p>rack (2.0.4) lib/rack/handler/webrick.rb:74:in `block in service&#39;
+actioncable (5.2.0) lib/action_cable/connection/stream.rb:101:in
+`hijack_rack_socket&#39; actioncable (5.2.0)
+lib/action_cable/connection/client_socket.rb:59:in `start_driver&#39;
+actioncable (5.2.0) lib/action_cable/connection/client_socket.rb:70:in
+`rack_response&#39; actioncable (5.2.0)
+lib/action_cable/connection/web_socket.rb:34:in `rack_response&#39;
+actioncable (5.2.0) lib/action_cable/connection/base.rb:213:in
+`respond_to_successful_request&#39; actioncable (5.2.0)
+lib/action_cable/connection/base.rb:73:in `process&#39; actioncable (5.2.0)
+lib/action_cable/server/base.rb:30:in `call&#39; actionpack (5.2.0)
+lib/action_dispatch/routing/mapper.rb:19:in `block in
+&lt;class:Constraints&gt;&#39; actionpack (5.2.0)
+lib/action_dispatch/routing/mapper.rb:48:in `serve&#39; actionpack (5.2.0)
+lib/action_dispatch/journey/router.rb:52:in `block in serve&#39; actionpack
+(5.2.0) lib/action_dispatch/journey/router.rb:35:in `each&#39; actionpack
+(5.2.0) lib/action_dispatch/journey/router.rb:35:in `serve&#39; actionpack
+(5.2.0) lib/action_dispatch/routing/route_set.rb:840:in `call&#39; omniauth
+(1.8.1) lib/omniauth/strategy.rb:190:in `call!&#39; omniauth (1.8.1)
+lib/omniauth/strategy.rb:168:in `call&#39; omniauth (1.8.1)
+lib/omniauth/strategy.rb:190:in `call!&#39; omniauth (1.8.1)
+lib/omniauth/strategy.rb:168:in `call&#39; omniauth (1.8.1)
+lib/omniauth/builder.rb:63:in `call&#39; rack (2.0.4)
+lib/rack/tempfile_reaper.rb:15:in `call&#39; rack (2.0.4)
+lib/rack/etag.rb:25:in `call&#39; rack (2.0.4)
+lib/rack/conditional_get.rb:25:in `call&#39; rack (2.0.4)
+lib/rack/head.rb:12:in `call&#39; actionpack (5.2.0)
+lib/action_dispatch/http/content_security_policy.rb:18:in `call&#39; rack
+(2.0.4) lib/rack/session/abstract/id.rb:232:in `context&#39; rack (2.0.4)
+lib/rack/session/abstract/id.rb:226:in `call&#39; actionpack (5.2.0)
+lib/action_dispatch/middleware/cookies.rb:670:in `call&#39; activerecord
+(5.2.0) lib/active_record/migration.rb:559:in `call&#39; actionpack (5.2.0)
+lib/action_dispatch/middleware/callbacks.rb:28:in `block in call&#39;
+activesupport (5.2.0) lib/active_support/callbacks.rb:98:in
+`run_callbacks&#39; actionpack (5.2.0)
+lib/action_dispatch/middleware/callbacks.rb:26:in `call&#39; actionpack
+(5.2.0) lib/action_dispatch/middleware/executor.rb:14:in `call&#39;
+actionpack (5.2.0) lib/action_dispatch/middleware/debug_exceptions.rb:61:in
+`call&#39; actionpack (5.2.0)
+lib/action_dispatch/middleware/show_exceptions.rb:33:in `call&#39; railties
+(5.2.0) lib/rails/rack/logger.rb:38:in `call_app&#39; railties (5.2.0)
+lib/rails/rack/logger.rb:26:in `block in call&#39; activesupport (5.2.0)
+lib/active_support/tagged_logging.rb:71:in `block in tagged&#39;
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:28:in
+`tagged&#39; activesupport (5.2.0)
+lib/active_support/tagged_logging.rb:71:in `tagged&#39; railties (5.2.0)
+lib/rails/rack/logger.rb:26:in `call&#39; sprockets-rails (3.2.1)
+lib/sprockets/rails/quiet_assets.rb:13:in `call&#39; actionpack (5.2.0)
+lib/action_dispatch/middleware/remote_ip.rb:81:in `call&#39; actionpack
+(5.2.0) lib/action_dispatch/middleware/request_id.rb:27:in `call&#39; rack
+(2.0.4) lib/rack/method_override.rb:22:in `call&#39; rack (2.0.4)
+lib/rack/runtime.rb:22:in `call&#39; activesupport (5.2.0)
+lib/active_support/cache/strategy/local_cache_middleware.rb:29:in
+`call&#39; actionpack (5.2.0)
+lib/action_dispatch/middleware/executor.rb:14:in `call&#39; actionpack
+(5.2.0) lib/action_dispatch/middleware/static.rb:127:in `call&#39; rack
+(2.0.4) lib/rack/sendfile.rb:111:in `call&#39; railties (5.2.0)
+lib/rails/engine.rb:524:in `call&#39; rack (2.0.4)
+lib/rack/handler/webrick.rb:86:in `service&#39;
+/Users/qin/.rbenv/versions/2.5.0/lib/ruby/2.5.0/webrick/httpserver.rb:140:in
+`service&#39;
+/Users/qin/.rbenv/versions/2.5.0/lib/ruby/2.5.0/webrick/httpserver.rb:96:in
+`run&#39;
+/Users/qin/.rbenv/versions/2.5.0/lib/ruby/2.5.0/webrick/server.rb:307:in
+`block in start_thread&#39; Started GET “/cable” for 127.0.0.1 at
+2018-04-22 08:57:10 +0800 Started GET “/cable/” [WebSocket] for 127.0.0.1
+at 2018-04-22 08:57:12 +0800 Successfully upgraded to WebSocket
+(REQUEST_METHOD: GET, HTTP_CONNECTION: keep-alive, Upgrade, HTTP_UPGRADE:
+websocket)</p>
+
+<p>NotImplementedError (only partial hijack is supported.):</p>
+
+<p>rack (2.0.4) lib/rack/handler/webrick.rb:74:in `block in service&#39;
+actioncable (5.2.0) lib/action_cable/connection/stream.rb:101:in
+`hijack_rack_socket&#39; actioncable (5.2.0)
+lib/action_cable/connection/client_socket.rb:59:in `start_driver&#39;
+actioncable (5.2.0) lib/action_cable/connection/client_socket.rb:70:in
+`rack_response&#39; actioncable (5.2.0)
+lib/action_cable/connection/web_socket.rb:34:in `rack_response&#39;
+actioncable (5.2.0) lib/action_cable/connection/base.rb:213:in
+`respond_to_successful_request&#39; actioncable (5.2.0)
+lib/action_cable/connection/base.rb:73:in `process&#39; actioncable (5.2.0)
+lib/action_cable/server/base.rb:30:in `call&#39; actionpack (5.2.0)
+lib/action_dispatch/routing/mapper.rb:19:in `block in
+&lt;class:Constraints&gt;&#39; actionpack (5.2.0)
+lib/action_dispatch/routing/mapper.rb:48:in `serve&#39; actionpack (5.2.0)
+lib/action_dispatch/journey/router.rb:52:in `block in serve&#39; actionpack
+(5.2.0) lib/action_dispatch/journey/router.rb:35:in `each&#39; actionpack
+(5.2.0) lib/action_dispatch/journey/router.rb:35:in `serve&#39; actionpack
+(5.2.0) lib/action_dispatch/routing/route_set.rb:840:in `call&#39; omniauth
+(1.8.1) lib/omniauth/strategy.rb:190:in `call!&#39; omniauth (1.8.1)
+lib/omniauth/strategy.rb:168:in `call&#39; omniauth (1.8.1)
+lib/omniauth/strategy.rb:190:in `call!&#39; omniauth (1.8.1)
+lib/omniauth/strategy.rb:168:in `call&#39; omniauth (1.8.1)
+lib/omniauth/builder.rb:63:in `call&#39; rack (2.0.4)
+lib/rack/tempfile_reaper.rb:15:in `call&#39; rack (2.0.4)
+lib/rack/etag.rb:25:in `call&#39; rack (2.0.4)
+lib/rack/conditional_get.rb:25:in `call&#39; rack (2.0.4)
+lib/rack/head.rb:12:in `call&#39; actionpack (5.2.0)
+lib/action_dispatch/http/content_security_policy.rb:18:in `call&#39; rack
+(2.0.4) lib/rack/session/abstract/id.rb:232:in `context&#39; rack (2.0.4)
+lib/rack/session/abstract/id.rb:226:in `call&#39; actionpack (5.2.0)
+lib/action_dispatch/middleware/cookies.rb:670:in `call&#39; activerecord
+(5.2.0) lib/active_record/migration.rb:559:in `call&#39; actionpack (5.2.0)
+lib/action_dispatch/middleware/callbacks.rb:28:in `block in call&#39;
+activesupport (5.2.0) lib/active_support/callbacks.rb:98:in
+`run_callbacks&#39; actionpack (5.2.0)
+lib/action_dispatch/middleware/callbacks.rb:26:in `call&#39; actionpack
+(5.2.0) lib/action_dispatch/middleware/executor.rb:14:in `call&#39;
+actionpack (5.2.0) lib/action_dispatch/middleware/debug_exceptions.rb:61:in
+`call&#39; actionpack (5.2.0)
+lib/action_dispatch/middleware/show_exceptions.rb:33:in `call&#39; railties
+(5.2.0) lib/rails/rack/logger.rb:38:in `call_app&#39; railties (5.2.0)
+lib/rails/rack/logger.rb:26:in `block in call&#39; activesupport (5.2.0)
+lib/active_support/tagged_logging.rb:71:in `block in tagged&#39;
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:28:in
+`tagged&#39; activesupport (5.2.0)
+lib/active_support/tagged_logging.rb:71:in `tagged&#39; railties (5.2.0)
+lib/rails/rack/logger.rb:26:in `call&#39; sprockets-rails (3.2.1)
+lib/sprockets/rails/quiet_assets.rb:13:in `call&#39; actionpack (5.2.0)
+lib/action_dispatch/middleware/remote_ip.rb:81:in `call&#39; actionpack
+(5.2.0) lib/action_dispatch/middleware/request_id.rb:27:in `call&#39; rack
+(2.0.4) lib/rack/method_override.rb:22:in `call&#39; rack (2.0.4)
+lib/rack/runtime.rb:22:in `call&#39; activesupport (5.2.0)
+lib/active_support/cache/strategy/local_cache_middleware.rb:29:in
+`call&#39; actionpack (5.2.0)
+lib/action_dispatch/middleware/executor.rb:14:in `call&#39; actionpack
+(5.2.0) lib/action_dispatch/middleware/static.rb:127:in `call&#39; rack
+(2.0.4) lib/rack/sendfile.rb:111:in `call&#39; railties (5.2.0)
+lib/rails/engine.rb:524:in `call&#39; rack (2.0.4)
+lib/rack/handler/webrick.rb:86:in `service&#39;
+/Users/qin/.rbenv/versions/2.5.0/lib/ruby/2.5.0/webrick/httpserver.rb:140:in
+`service&#39;
+/Users/qin/.rbenv/versions/2.5.0/lib/ruby/2.5.0/webrick/httpserver.rb:96:in
+`run&#39;
+/Users/qin/.rbenv/versions/2.5.0/lib/ruby/2.5.0/webrick/server.rb:307:in
+`block in start_thread&#39; Started GET “/cable” for 127.0.0.1 at
+2018-04-22 08:57:15 +0800</p>
+
+<pre><code>[1m[35m (469.9ms)[0m  [1m[35mSET  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, &#39;,STRICT_ALL_TABLES&#39;), &#39;,NO_AUTO_VALUE_ON_ZERO&#39;),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+</code></pre>
+
+<p>Started GET “/cable/” [WebSocket] for 127.0.0.1 at 2018-04-22 08:57:17
++0800 Successfully upgraded to WebSocket (REQUEST_METHOD: GET,
+HTTP_CONNECTION: keep-alive, Upgrade, HTTP_UPGRADE: websocket)</p>
+
+<p>NotImplementedError (only partial hijack is supported.):</p>
+
+<p>rack (2.0.4) lib/rack/handler/webrick.rb:74:in `block in service&#39;
+actioncable (5.2.0) lib/action_cable/connection/stream.rb:101:in
+`hijack_rack_socket&#39; actioncable (5.2.0)
+lib/action_cable/connection/client_socket.rb:59:in `start_driver&#39;
+actioncable (5.2.0) lib/action_cable/connection/client_socket.rb:70:in
+`rack_response&#39; actioncable (5.2.0)
+lib/action_cable/connection/web_socket.rb:34:in `rack_response&#39;
+actioncable (5.2.0) lib/action_cable/connection/base.rb:213:in
+`respond_to_successful_request&#39; actioncable (5.2.0)
+lib/action_cable/connection/base.rb:73:in `process&#39; actioncable (5.2.0)
+lib/action_cable/server/base.rb:30:in `call&#39; actionpack (5.2.0)
+lib/action_dispatch/routing/mapper.rb:19:in `block in
+&lt;class:Constraints&gt;&#39; actionpack (5.2.0)
+lib/action_dispatch/routing/mapper.rb:48:in `serve&#39; actionpack (5.2.0)
+lib/action_dispatch/journey/router.rb:52:in `block in serve&#39; actionpack
+(5.2.0) lib/action_dispatch/journey/router.rb:35:in `each&#39; actionpack
+(5.2.0) lib/action_dispatch/journey/router.rb:35:in `serve&#39; actionpack
+(5.2.0) lib/action_dispatch/routing/route_set.rb:840:in `call&#39; omniauth
+(1.8.1) lib/omniauth/strategy.rb:190:in `call!&#39; omniauth (1.8.1)
+lib/omniauth/strategy.rb:168:in `call&#39; omniauth (1.8.1)
+lib/omniauth/strategy.rb:190:in `call!&#39; omniauth (1.8.1)
+lib/omniauth/strategy.rb:168:in `call&#39; omniauth (1.8.1)
+lib/omniauth/builder.rb:63:in `call&#39; rack (2.0.4)
+lib/rack/tempfile_reaper.rb:15:in `call&#39; rack (2.0.4)
+lib/rack/etag.rb:25:in `call&#39; rack (2.0.4)
+lib/rack/conditional_get.rb:25:in `call&#39; rack (2.0.4)
+lib/rack/head.rb:12:in `call&#39; actionpack (5.2.0)
+lib/action_dispatch/http/content_security_policy.rb:18:in `call&#39; rack
+(2.0.4) lib/rack/session/abstract/id.rb:232:in `context&#39; rack (2.0.4)
+lib/rack/session/abstract/id.rb:226:in `call&#39; actionpack (5.2.0)
+lib/action_dispatch/middleware/cookies.rb:670:in `call&#39; activerecord
+(5.2.0) lib/active_record/migration.rb:559:in `call&#39; actionpack (5.2.0)
+lib/action_dispatch/middleware/callbacks.rb:28:in `block in call&#39;
+activesupport (5.2.0) lib/active_support/callbacks.rb:98:in
+`run_callbacks&#39; actionpack (5.2.0)
+lib/action_dispatch/middleware/callbacks.rb:26:in `call&#39; actionpack
+(5.2.0) lib/action_dispatch/middleware/executor.rb:14:in `call&#39;
+actionpack (5.2.0) lib/action_dispatch/middleware/debug_exceptions.rb:61:in
+`call&#39; actionpack (5.2.0)
+lib/action_dispatch/middleware/show_exceptions.rb:33:in `call&#39; railties
+(5.2.0) lib/rails/rack/logger.rb:38:in `call_app&#39; railties (5.2.0)
+lib/rails/rack/logger.rb:26:in `block in call&#39; activesupport (5.2.0)
+lib/active_support/tagged_logging.rb:71:in `block in tagged&#39;
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:28:in
+`tagged&#39; activesupport (5.2.0)
+lib/active_support/tagged_logging.rb:71:in `tagged&#39; railties (5.2.0)
+lib/rails/rack/logger.rb:26:in `call&#39; sprockets-rails (3.2.1)
+lib/sprockets/rails/quiet_assets.rb:13:in `call&#39; actionpack (5.2.0)
+lib/action_dispatch/middleware/remote_ip.rb:81:in `call&#39; actionpack
+(5.2.0) lib/action_dispatch/middleware/request_id.rb:27:in `call&#39; rack
+(2.0.4) lib/rack/method_override.rb:22:in `call&#39; rack (2.0.4)
+lib/rack/runtime.rb:22:in `call&#39; activesupport (5.2.0)
+lib/active_support/cache/strategy/local_cache_middleware.rb:29:in
+`call&#39; actionpack (5.2.0)
+lib/action_dispatch/middleware/executor.rb:14:in `call&#39; actionpack
+(5.2.0) lib/action_dispatch/middleware/static.rb:127:in `call&#39; rack
+(2.0.4) lib/rack/sendfile.rb:111:in `call&#39; railties (5.2.0)
+lib/rails/engine.rb:524:in `call&#39; rack (2.0.4)
+lib/rack/handler/webrick.rb:86:in `service&#39;
+/Users/qin/.rbenv/versions/2.5.0/lib/ruby/2.5.0/webrick/httpserver.rb:140:in
+`service&#39;
+/Users/qin/.rbenv/versions/2.5.0/lib/ruby/2.5.0/webrick/httpserver.rb:96:in
+`run&#39;
+/Users/qin/.rbenv/versions/2.5.0/lib/ruby/2.5.0/webrick/server.rb:307:in
+`block in start_thread&#39; Started GET “/cable” for ::1 at 2018-04-22
+08:57:21 +0800 Started GET “/cable” for ::1 at 2018-04-22 08:57:21 +0800</p>
+
+<pre><code>[1m[35m (2324.2ms)[0m  [1m[35mSET  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, &#39;,STRICT_ALL_TABLES&#39;), &#39;,NO_AUTO_VALUE_ON_ZERO&#39;),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+</code></pre>
+
+<p>Started GET “/cable/” [WebSocket] for ::1 at 2018-04-22 08:57:24 +0800
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION:
+Upgrade, HTTP_UPGRADE: websocket)</p>
+
+<p>NotImplementedError (only partial hijack is supported.):</p>
+
+<p>rack (2.0.4) lib/rack/handler/webrick.rb:74:in `block in service&#39;
+actioncable (5.2.0) lib/action_cable/connection/stream.rb:101:in
+`hijack_rack_socket&#39; actioncable (5.2.0)
+lib/action_cable/connection/client_socket.rb:59:in `start_driver&#39;
+actioncable (5.2.0) lib/action_cable/connection/client_socket.rb:70:in
+`rack_response&#39; actioncable (5.2.0)
+lib/action_cable/connection/web_socket.rb:34:in `rack_response&#39;
+actioncable (5.2.0) lib/action_cable/connection/base.rb:213:in
+`respond_to_successful_request&#39; actioncable (5.2.0)
+lib/action_cable/connection/base.rb:73:in `process&#39; actioncable (5.2.0)
+lib/action_cable/server/base.rb:30:in `call&#39; actionpack (5.2.0)
+lib/action_dispatch/routing/mapper.rb:19:in `block in
+&lt;class:Constraints&gt;&#39; actionpack (5.2.0)
+lib/action_dispatch/routing/mapper.rb:48:in `serve&#39; actionpack (5.2.0)
+lib/action_dispatch/journey/router.rb:52:in `block in serve&#39; actionpack
+(5.2.0) lib/action_dispatch/journey/router.rb:35:in `each&#39; actionpack
+(5.2.0) lib/action_dispatch/journey/router.rb:35:in `serve&#39; actionpack
+(5.2.0) lib/action_dispatch/routing/route_set.rb:840:in `call&#39; omniauth
+(1.8.1) lib/omniauth/strategy.rb:190:in `call!&#39; omniauth (1.8.1)
+lib/omniauth/strategy.rb:168:in `call&#39; omniauth (1.8.1)
+lib/omniauth/strategy.rb:190:in `call!&#39; omniauth (1.8.1)
+lib/omniauth/strategy.rb:168:in `call&#39; omniauth (1.8.1)
+lib/omniauth/builder.rb:63:in `call&#39; rack (2.0.4)
+lib/rack/tempfile_reaper.rb:15:in `call&#39; rack (2.0.4)
+lib/rack/etag.rb:25:in `call&#39; rack (2.0.4)
+lib/rack/conditional_get.rb:25:in `call&#39; rack (2.0.4)
+lib/rack/head.rb:12:in `call&#39; actionpack (5.2.0)
+lib/action_dispatch/http/content_security_policy.rb:18:in `call&#39; rack
+(2.0.4) lib/rack/session/abstract/id.rb:232:in `context&#39; rack (2.0.4)
+lib/rack/session/abstract/id.rb:226:in `call&#39; actionpack (5.2.0)
+lib/action_dispatch/middleware/cookies.rb:670:in `call&#39; activerecord
+(5.2.0) lib/active_record/migration.rb:559:in `call&#39; actionpack (5.2.0)
+lib/action_dispatch/middleware/callbacks.rb:28:in `block in call&#39;
+activesupport (5.2.0) lib/active_support/callbacks.rb:98:in
+`run_callbacks&#39; actionpack (5.2.0)
+lib/action_dispatch/middleware/callbacks.rb:26:in `call&#39; actionpack
+(5.2.0) lib/action_dispatch/middleware/executor.rb:14:in `call&#39;
+actionpack (5.2.0) lib/action_dispatch/middleware/debug_exceptions.rb:61:in
+`call&#39; actionpack (5.2.0)
+lib/action_dispatch/middleware/show_exceptions.rb:33:in `call&#39; railties
+(5.2.0) lib/rails/rack/logger.rb:38:in `call_app&#39; railties (5.2.0)
+lib/rails/rack/logger.rb:26:in `block in call&#39; activesupport (5.2.0)
+lib/active_support/tagged_logging.rb:71:in `block in tagged&#39;
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:28:in
+`tagged&#39; activesupport (5.2.0)
+lib/active_support/tagged_logging.rb:71:in `tagged&#39; railties (5.2.0)
+lib/rails/rack/logger.rb:26:in `call&#39; sprockets-rails (3.2.1)
+lib/sprockets/rails/quiet_assets.rb:13:in `call&#39; actionpack (5.2.0)
+lib/action_dispatch/middleware/remote_ip.rb:81:in `call&#39; actionpack
+(5.2.0) lib/action_dispatch/middleware/request_id.rb:27:in `call&#39; rack
+(2.0.4) lib/rack/method_override.rb:22:in `call&#39; rack (2.0.4)
+lib/rack/runtime.rb:22:in `call&#39; activesupport (5.2.0)
+lib/active_support/cache/strategy/local_cache_middleware.rb:29:in
+`call&#39; actionpack (5.2.0)
+lib/action_dispatch/middleware/executor.rb:14:in `call&#39; actionpack
+(5.2.0) lib/action_dispatch/middleware/static.rb:127:in `call&#39; rack
+(2.0.4) lib/rack/sendfile.rb:111:in `call&#39; railties (5.2.0)
+lib/rails/engine.rb:524:in `call&#39; rack (2.0.4)
+lib/rack/handler/webrick.rb:86:in `service&#39;
+/Users/qin/.rbenv/versions/2.5.0/lib/ruby/2.5.0/webrick/httpserver.rb:140:in
+`service&#39;
+/Users/qin/.rbenv/versions/2.5.0/lib/ruby/2.5.0/webrick/httpserver.rb:96:in
+`run&#39;
+/Users/qin/.rbenv/versions/2.5.0/lib/ruby/2.5.0/webrick/server.rb:307:in
+`block in start_thread&#39; Started GET “/cable” for 127.0.0.1 at
+2018-04-22 08:57:24 +0800</p>
+
+<pre><code>[1m[35m (6.6ms)[0m  [1m[35mSET  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, &#39;,STRICT_ALL_TABLES&#39;), &#39;,NO_AUTO_VALUE_ON_ZERO&#39;),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+</code></pre>
+
+<p>Started GET “/cable/” [WebSocket] for ::1 at 2018-04-22 08:57:25 +0800
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION:
+Upgrade, HTTP_UPGRADE: websocket)</p>
+
+<p>NotImplementedError (only partial hijack is supported.):</p>
+
+<p>rack (2.0.4) lib/rack/handler/webrick.rb:74:in `block in service&#39;
+actioncable (5.2.0) lib/action_cable/connection/stream.rb:101:in
+`hijack_rack_socket&#39; actioncable (5.2.0)
+lib/action_cable/connection/client_socket.rb:59:in `start_driver&#39;
+actioncable (5.2.0) lib/action_cable/connection/client_socket.rb:70:in
+`rack_response&#39; actioncable (5.2.0)
+lib/action_cable/connection/web_socket.rb:34:in `rack_response&#39;
+actioncable (5.2.0) lib/action_cable/connection/base.rb:213:in
+`respond_to_successful_request&#39; actioncable (5.2.0)
+lib/action_cable/connection/base.rb:73:in `process&#39; actioncable (5.2.0)
+lib/action_cable/server/base.rb:30:in `call&#39; actionpack (5.2.0)
+lib/action_dispatch/routing/mapper.rb:19:in `block in
+&lt;class:Constraints&gt;&#39; actionpack (5.2.0)
+lib/action_dispatch/routing/mapper.rb:48:in `serve&#39; actionpack (5.2.0)
+lib/action_dispatch/journey/router.rb:52:in `block in serve&#39; actionpack
+(5.2.0) lib/action_dispatch/journey/router.rb:35:in `each&#39; actionpack
+(5.2.0) lib/action_dispatch/journey/router.rb:35:in `serve&#39; actionpack
+(5.2.0) lib/action_dispatch/routing/route_set.rb:840:in `call&#39; omniauth
+(1.8.1) lib/omniauth/strategy.rb:190:in `call!&#39; omniauth (1.8.1)
+lib/omniauth/strategy.rb:168:in `call&#39; omniauth (1.8.1)
+lib/omniauth/strategy.rb:190:in `call!&#39; omniauth (1.8.1)
+lib/omniauth/strategy.rb:168:in `call&#39; omniauth (1.8.1)
+lib/omniauth/builder.rb:63:in `call&#39; rack (2.0.4)
+lib/rack/tempfile_reaper.rb:15:in `call&#39; rack (2.0.4)
+lib/rack/etag.rb:25:in `call&#39; rack (2.0.4)
+lib/rack/conditional_get.rb:25:in `call&#39; rack (2.0.4)
+lib/rack/head.rb:12:in `call&#39; actionpack (5.2.0)
+lib/action_dispatch/http/content_security_policy.rb:18:in `call&#39; rack
+(2.0.4) lib/rack/session/abstract/id.rb:232:in `context&#39; rack (2.0.4)
+lib/rack/session/abstract/id.rb:226:in `call&#39; actionpack (5.2.0)
+lib/action_dispatch/middleware/cookies.rb:670:in `call&#39; activerecord
+(5.2.0) lib/active_record/migration.rb:559:in `call&#39; actionpack (5.2.0)
+lib/action_dispatch/middleware/callbacks.rb:28:in `block in call&#39;
+activesupport (5.2.0) lib/active_support/callbacks.rb:98:in
+`run_callbacks&#39; actionpack (5.2.0)
+lib/action_dispatch/middleware/callbacks.rb:26:in `call&#39; actionpack
+(5.2.0) lib/action_dispatch/middleware/executor.rb:14:in `call&#39;
+actionpack (5.2.0) lib/action_dispatch/middleware/debug_exceptions.rb:61:in
+`call&#39; actionpack (5.2.0)
+lib/action_dispatch/middleware/show_exceptions.rb:33:in `call&#39; railties
+(5.2.0) lib/rails/rack/logger.rb:38:in `call_app&#39; railties (5.2.0)
+lib/rails/rack/logger.rb:26:in `block in call&#39; activesupport (5.2.0)
+lib/active_support/tagged_logging.rb:71:in `block in tagged&#39;
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:28:in
+`tagged&#39; activesupport (5.2.0)
+lib/active_support/tagged_logging.rb:71:in `tagged&#39; railties (5.2.0)
+lib/rails/rack/logger.rb:26:in `call&#39; sprockets-rails (3.2.1)
+lib/sprockets/rails/quiet_assets.rb:13:in `call&#39; actionpack (5.2.0)
+lib/action_dispatch/middleware/remote_ip.rb:81:in `call&#39; actionpack
+(5.2.0) lib/action_dispatch/middleware/request_id.rb:27:in `call&#39; rack
+(2.0.4) lib/rack/method_override.rb:22:in `call&#39; rack (2.0.4)
+lib/rack/runtime.rb:22:in `call&#39; activesupport (5.2.0)
+lib/active_support/cache/strategy/local_cache_middleware.rb:29:in
+`call&#39; actionpack (5.2.0)
+lib/action_dispatch/middleware/executor.rb:14:in `call&#39; actionpack
+(5.2.0) lib/action_dispatch/middleware/static.rb:127:in `call&#39; rack
+(2.0.4) lib/rack/sendfile.rb:111:in `call&#39; railties (5.2.0)
+lib/rails/engine.rb:524:in `call&#39; rack (2.0.4)
+lib/rack/handler/webrick.rb:86:in `service&#39;
+/Users/qin/.rbenv/versions/2.5.0/lib/ruby/2.5.0/webrick/httpserver.rb:140:in
+`service&#39;
+/Users/qin/.rbenv/versions/2.5.0/lib/ruby/2.5.0/webrick/httpserver.rb:96:in
+`run&#39;
+/Users/qin/.rbenv/versions/2.5.0/lib/ruby/2.5.0/webrick/server.rb:307:in
+`block in start_thread&#39;</p>
+
+<pre><code>[1m[35m (7.1ms)[0m  [1m[35mSET  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, &#39;,STRICT_ALL_TABLES&#39;), &#39;,NO_AUTO_VALUE_ON_ZERO&#39;),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+</code></pre>
+
+<p>Started GET “/cable/” [WebSocket] for 127.0.0.1 at 2018-04-22 08:57:27
++0800 Successfully upgraded to WebSocket (REQUEST_METHOD: GET,
+HTTP_CONNECTION: keep-alive, Upgrade, HTTP_UPGRADE: websocket)</p>
+
+<p>NotImplementedError (only partial hijack is supported.):</p>
+
+<p>rack (2.0.4) lib/rack/handler/webrick.rb:74:in `block in service&#39;
+actioncable (5.2.0) lib/action_cable/connection/stream.rb:101:in
+`hijack_rack_socket&#39; actioncable (5.2.0)
+lib/action_cable/connection/client_socket.rb:59:in `start_driver&#39;
+actioncable (5.2.0) lib/action_cable/connection/client_socket.rb:70:in
+`rack_response&#39; actioncable (5.2.0)
+lib/action_cable/connection/web_socket.rb:34:in `rack_response&#39;
+actioncable (5.2.0) lib/action_cable/connection/base.rb:213:in
+`respond_to_successful_request&#39; actioncable (5.2.0)
+lib/action_cable/connection/base.rb:73:in `process&#39; actioncable (5.2.0)
+lib/action_cable/server/base.rb:30:in `call&#39; actionpack (5.2.0)
+lib/action_dispatch/routing/mapper.rb:19:in `block in
+&lt;class:Constraints&gt;&#39; actionpack (5.2.0)
+lib/action_dispatch/routing/mapper.rb:48:in `serve&#39; actionpack (5.2.0)
+lib/action_dispatch/journey/router.rb:52:in `block in serve&#39; actionpack
+(5.2.0) lib/action_dispatch/journey/router.rb:35:in `each&#39; actionpack
+(5.2.0) lib/action_dispatch/journey/router.rb:35:in `serve&#39; actionpack
+(5.2.0) lib/action_dispatch/routing/route_set.rb:840:in `call&#39; omniauth
+(1.8.1) lib/omniauth/strategy.rb:190:in `call!&#39; omniauth (1.8.1)
+lib/omniauth/strategy.rb:168:in `call&#39; omniauth (1.8.1)
+lib/omniauth/strategy.rb:190:in `call!&#39; omniauth (1.8.1)
+lib/omniauth/strategy.rb:168:in `call&#39; omniauth (1.8.1)
+lib/omniauth/builder.rb:63:in `call&#39; rack (2.0.4)
+lib/rack/tempfile_reaper.rb:15:in `call&#39; rack (2.0.4)
+lib/rack/etag.rb:25:in `call&#39; rack (2.0.4)
+lib/rack/conditional_get.rb:25:in `call&#39; rack (2.0.4)
+lib/rack/head.rb:12:in `call&#39; actionpack (5.2.0)
+lib/action_dispatch/http/content_security_policy.rb:18:in `call&#39; rack
+(2.0.4) lib/rack/session/abstract/id.rb:232:in `context&#39; rack (2.0.4)
+lib/rack/session/abstract/id.rb:226:in `call&#39; actionpack (5.2.0)
+lib/action_dispatch/middleware/cookies.rb:670:in `call&#39; activerecord
+(5.2.0) lib/active_record/migration.rb:559:in `call&#39; actionpack (5.2.0)
+lib/action_dispatch/middleware/callbacks.rb:28:in `block in call&#39;
+activesupport (5.2.0) lib/active_support/callbacks.rb:98:in
+`run_callbacks&#39; actionpack (5.2.0)
+lib/action_dispatch/middleware/callbacks.rb:26:in `call&#39; actionpack
+(5.2.0) lib/action_dispatch/middleware/executor.rb:14:in `call&#39;
+actionpack (5.2.0) lib/action_dispatch/middleware/debug_exceptions.rb:61:in
+`call&#39; actionpack (5.2.0)
+lib/action_dispatch/middleware/show_exceptions.rb:33:in `call&#39; railties
+(5.2.0) lib/rails/rack/logger.rb:38:in `call_app&#39; railties (5.2.0)
+lib/rails/rack/logger.rb:26:in `block in call&#39; activesupport (5.2.0)
+lib/active_support/tagged_logging.rb:71:in `block in tagged&#39;
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:28:in
+`tagged&#39; activesupport (5.2.0)
+lib/active_support/tagged_logging.rb:71:in `tagged&#39; railties (5.2.0)
+lib/rails/rack/logger.rb:26:in `call&#39; sprockets-rails (3.2.1)
+lib/sprockets/rails/quiet_assets.rb:13:in `call&#39; actionpack (5.2.0)
+lib/action_dispatch/middleware/remote_ip.rb:81:in `call&#39; actionpack
+(5.2.0) lib/action_dispatch/middleware/request_id.rb:27:in `call&#39; rack
+(2.0.4) lib/rack/method_override.rb:22:in `call&#39; rack (2.0.4)
+lib/rack/runtime.rb:22:in `call&#39; activesupport (5.2.0)
+lib/active_support/cache/strategy/local_cache_middleware.rb:29:in
+`call&#39; actionpack (5.2.0)
+lib/action_dispatch/middleware/executor.rb:14:in `call&#39; actionpack
+(5.2.0) lib/action_dispatch/middleware/static.rb:127:in `call&#39; rack
+(2.0.4) lib/rack/sendfile.rb:111:in `call&#39; railties (5.2.0)
+lib/rails/engine.rb:524:in `call&#39; rack (2.0.4)
+lib/rack/handler/webrick.rb:86:in `service&#39;
+/Users/qin/.rbenv/versions/2.5.0/lib/ruby/2.5.0/webrick/httpserver.rb:140:in
+`service&#39;
+/Users/qin/.rbenv/versions/2.5.0/lib/ruby/2.5.0/webrick/httpserver.rb:96:in
+`run&#39;
+/Users/qin/.rbenv/versions/2.5.0/lib/ruby/2.5.0/webrick/server.rb:307:in
+`block in start_thread&#39; Started GET “/cable” for ::1 at 2018-04-22
+08:57:31 +0800 Started GET “/cable” for 127.0.0.1 at 2018-04-22 08:57:32
++0800 Started GET “/cable/” [WebSocket] for ::1 at 2018-04-22 08:57:41
++0800 Successfully upgraded to WebSocket (REQUEST_METHOD: GET,
+HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)</p>
+
+<p>NotImplementedError (only partial hijack is supported.):</p>
+
+<p>rack (2.0.4) lib/rack/handler/webrick.rb:74:in `block in service&#39;
+actioncable (5.2.0) lib/action_cable/connection/stream.rb:101:in
+`hijack_rack_socket&#39; actioncable (5.2.0)
+lib/action_cable/connection/client_socket.rb:59:in `start_driver&#39;
+actioncable (5.2.0) lib/action_cable/connection/client_socket.rb:70:in
+`rack_response&#39; actioncable (5.2.0)
+lib/action_cable/connection/web_socket.rb:34:in `rack_response&#39;
+actioncable (5.2.0) lib/action_cable/connection/base.rb:213:in
+`respond_to_successful_request&#39; actioncable (5.2.0)
+lib/action_cable/connection/base.rb:73:in `process&#39; actioncable (5.2.0)
+lib/action_cable/server/base.rb:30:in `call&#39; actionpack (5.2.0)
+lib/action_dispatch/routing/mapper.rb:19:in `block in
+&lt;class:Constraints&gt;&#39; actionpack (5.2.0)
+lib/action_dispatch/routing/mapper.rb:48:in `serve&#39; actionpack (5.2.0)
+lib/action_dispatch/journey/router.rb:52:in `block in serve&#39; actionpack
+(5.2.0) lib/action_dispatch/journey/router.rb:35:in `each&#39; actionpack
+(5.2.0) lib/action_dispatch/journey/router.rb:35:in `serve&#39; actionpack
+(5.2.0) lib/action_dispatch/routing/route_set.rb:840:in `call&#39; omniauth
+(1.8.1) lib/omniauth/strategy.rb:190:in `call!&#39; omniauth (1.8.1)
+lib/omniauth/strategy.rb:168:in `call&#39; omniauth (1.8.1)
+lib/omniauth/strategy.rb:190:in `call!&#39; omniauth (1.8.1)
+lib/omniauth/strategy.rb:168:in `call&#39; omniauth (1.8.1)
+lib/omniauth/builder.rb:63:in `call&#39; rack (2.0.4)
+lib/rack/tempfile_reaper.rb:15:in `call&#39; rack (2.0.4)
+lib/rack/etag.rb:25:in `call&#39; rack (2.0.4)
+lib/rack/conditional_get.rb:25:in `call&#39; rack (2.0.4)
+lib/rack/head.rb:12:in `call&#39; actionpack (5.2.0)
+lib/action_dispatch/http/content_security_policy.rb:18:in `call&#39; rack
+(2.0.4) lib/rack/session/abstract/id.rb:232:in `context&#39; rack (2.0.4)
+lib/rack/session/abstract/id.rb:226:in `call&#39; actionpack (5.2.0)
+lib/action_dispatch/middleware/cookies.rb:670:in `call&#39; activerecord
+(5.2.0) lib/active_record/migration.rb:559:in `call&#39; actionpack (5.2.0)
+lib/action_dispatch/middleware/callbacks.rb:28:in `block in call&#39;
+activesupport (5.2.0) lib/active_support/callbacks.rb:98:in
+`run_callbacks&#39; actionpack (5.2.0)
+lib/action_dispatch/middleware/callbacks.rb:26:in `call&#39; actionpack
+(5.2.0) lib/action_dispatch/middleware/executor.rb:14:in `call&#39;
+actionpack (5.2.0) lib/action_dispatch/middleware/debug_exceptions.rb:61:in
+`call&#39; actionpack (5.2.0)
+lib/action_dispatch/middleware/show_exceptions.rb:33:in `call&#39; railties
+(5.2.0) lib/rails/rack/logger.rb:38:in `call_app&#39; railties (5.2.0)
+lib/rails/rack/logger.rb:26:in `block in call&#39; activesupport (5.2.0)
+lib/active_support/tagged_logging.rb:71:in `block in tagged&#39;
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:28:in
+`tagged&#39; activesupport (5.2.0)
+lib/active_support/tagged_logging.rb:71:in `tagged&#39; railties (5.2.0)
+lib/rails/rack/logger.rb:26:in `call&#39; sprockets-rails (3.2.1)
+lib/sprockets/rails/quiet_assets.rb:13:in `call&#39; actionpack (5.2.0)
+lib/action_dispatch/middleware/remote_ip.rb:81:in `call&#39; actionpack
+(5.2.0) lib/action_dispatch/middleware/request_id.rb:27:in `call&#39; rack
+(2.0.4) lib/rack/method_override.rb:22:in `call&#39; rack (2.0.4)
+lib/rack/runtime.rb:22:in `call&#39; activesupport (5.2.0)
+lib/active_support/cache/strategy/local_cache_middleware.rb:29:in
+`call&#39; actionpack (5.2.0)
+lib/action_dispatch/middleware/executor.rb:14:in `call&#39; actionpack
+(5.2.0) lib/action_dispatch/middleware/static.rb:127:in `call&#39; rack
+(2.0.4) lib/rack/sendfile.rb:111:in `call&#39; railties (5.2.0)
+lib/rails/engine.rb:524:in `call&#39; rack (2.0.4)
+lib/rack/handler/webrick.rb:86:in `service&#39;
+/Users/qin/.rbenv/versions/2.5.0/lib/ruby/2.5.0/webrick/httpserver.rb:140:in
+`service&#39;
+/Users/qin/.rbenv/versions/2.5.0/lib/ruby/2.5.0/webrick/httpserver.rb:96:in
+`run&#39;
+/Users/qin/.rbenv/versions/2.5.0/lib/ruby/2.5.0/webrick/server.rb:307:in
+`block in start_thread&#39; Started GET “/cable” for ::1 at 2018-04-22
+08:57:41 +0800 Started GET “/cable” for 127.0.0.1 at 2018-04-22 08:57:43
++0800 Started GET “/cable/” [WebSocket] for 127.0.0.1 at 2018-04-22
+08:57:43 +0800 Successfully upgraded to WebSocket (REQUEST_METHOD: GET,
+HTTP_CONNECTION: keep-alive, Upgrade, HTTP_UPGRADE: websocket)</p>
+
+<p>NotImplementedError (only partial hijack is supported.):</p>
+
+<p>rack (2.0.4) lib/rack/handler/webrick.rb:74:in `block in service&#39;
+actioncable (5.2.0) lib/action_cable/connection/stream.rb:101:in
+`hijack_rack_socket&#39; actioncable (5.2.0)
+lib/action_cable/connection/client_socket.rb:59:in `start_driver&#39;
+actioncable (5.2.0) lib/action_cable/connection/client_socket.rb:70:in
+`rack_response&#39; actioncable (5.2.0)
+lib/action_cable/connection/web_socket.rb:34:in `rack_response&#39;
+actioncable (5.2.0) lib/action_cable/connection/base.rb:213:in
+`respond_to_successful_request&#39; actioncable (5.2.0)
+lib/action_cable/connection/base.rb:73:in `process&#39; actioncable (5.2.0)
+lib/action_cable/server/base.rb:30:in `call&#39; actionpack (5.2.0)
+lib/action_dispatch/routing/mapper.rb:19:in `block in
+&lt;class:Constraints&gt;&#39; actionpack (5.2.0)
+lib/action_dispatch/routing/mapper.rb:48:in `serve&#39; actionpack (5.2.0)
+lib/action_dispatch/journey/router.rb:52:in `block in serve&#39; actionpack
+(5.2.0) lib/action_dispatch/journey/router.rb:35:in `each&#39; actionpack
+(5.2.0) lib/action_dispatch/journey/router.rb:35:in `serve&#39; actionpack
+(5.2.0) lib/action_dispatch/routing/route_set.rb:840:in `call&#39; omniauth
+(1.8.1) lib/omniauth/strategy.rb:190:in `call!&#39; omniauth (1.8.1)
+lib/omniauth/strategy.rb:168:in `call&#39; omniauth (1.8.1)
+lib/omniauth/strategy.rb:190:in `call!&#39; omniauth (1.8.1)
+lib/omniauth/strategy.rb:168:in `call&#39; omniauth (1.8.1)
+lib/omniauth/builder.rb:63:in `call&#39; rack (2.0.4)
+lib/rack/tempfile_reaper.rb:15:in `call&#39; rack (2.0.4)
+lib/rack/etag.rb:25:in `call&#39; rack (2.0.4)
+lib/rack/conditional_get.rb:25:in `call&#39; rack (2.0.4)
+lib/rack/head.rb:12:in `call&#39; actionpack (5.2.0)
+lib/action_dispatch/http/content_security_policy.rb:18:in `call&#39; rack
+(2.0.4) lib/rack/session/abstract/id.rb:232:in `context&#39; rack (2.0.4)
+lib/rack/session/abstract/id.rb:226:in `call&#39; actionpack (5.2.0)
+lib/action_dispatch/middleware/cookies.rb:670:in `call&#39; activerecord
+(5.2.0) lib/active_record/migration.rb:559:in `call&#39; actionpack (5.2.0)
+lib/action_dispatch/middleware/callbacks.rb:28:in `block in call&#39;
+activesupport (5.2.0) lib/active_support/callbacks.rb:98:in
+`run_callbacks&#39; actionpack (5.2.0)
+lib/action_dispatch/middleware/callbacks.rb:26:in `call&#39; actionpack
+(5.2.0) lib/action_dispatch/middleware/executor.rb:14:in `call&#39;
+actionpack (5.2.0) lib/action_dispatch/middleware/debug_exceptions.rb:61:in
+`call&#39; actionpack (5.2.0)
+lib/action_dispatch/middleware/show_exceptions.rb:33:in `call&#39; railties
+(5.2.0) lib/rails/rack/logger.rb:38:in `call_app&#39; railties (5.2.0)
+lib/rails/rack/logger.rb:26:in `block in call&#39; activesupport (5.2.0)
+lib/active_support/tagged_logging.rb:71:in `block in tagged&#39;
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:28:in
+`tagged&#39; activesupport (5.2.0)
+lib/active_support/tagged_logging.rb:71:in `tagged&#39; railties (5.2.0)
+lib/rails/rack/logger.rb:26:in `call&#39; sprockets-rails (3.2.1)
+lib/sprockets/rails/quiet_assets.rb:13:in `call&#39; actionpack (5.2.0)
+lib/action_dispatch/middleware/remote_ip.rb:81:in `call&#39; actionpack
+(5.2.0) lib/action_dispatch/middleware/request_id.rb:27:in `call&#39; rack
+(2.0.4) lib/rack/method_override.rb:22:in `call&#39; rack (2.0.4)
+lib/rack/runtime.rb:22:in `call&#39; activesupport (5.2.0)
+lib/active_support/cache/strategy/local_cache_middleware.rb:29:in
+`call&#39; actionpack (5.2.0)
+lib/action_dispatch/middleware/executor.rb:14:in `call&#39; actionpack
+(5.2.0) lib/action_dispatch/middleware/static.rb:127:in `call&#39; rack
+(2.0.4) lib/rack/sendfile.rb:111:in `call&#39; railties (5.2.0)
+lib/rails/engine.rb:524:in `call&#39; rack (2.0.4)
+lib/rack/handler/webrick.rb:86:in `service&#39;
+/Users/qin/.rbenv/versions/2.5.0/lib/ruby/2.5.0/webrick/httpserver.rb:140:in
+`service&#39;
+/Users/qin/.rbenv/versions/2.5.0/lib/ruby/2.5.0/webrick/httpserver.rb:96:in
+`run&#39;
+/Users/qin/.rbenv/versions/2.5.0/lib/ruby/2.5.0/webrick/server.rb:307:in
+`block in start_thread&#39; Started GET “/cable/” [WebSocket] for ::1 at
+2018-04-22 08:57:47 +0800 Successfully upgraded to WebSocket
+(REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)</p>
+
+<p>NotImplementedError (only partial hijack is supported.):</p>
+
+<p>rack (2.0.4) lib/rack/handler/webrick.rb:74:in `block in service&#39;
+actioncable (5.2.0) lib/action_cable/connection/stream.rb:101:in
+`hijack_rack_socket&#39; actioncable (5.2.0)
+lib/action_cable/connection/client_socket.rb:59:in `start_driver&#39;
+actioncable (5.2.0) lib/action_cable/connection/client_socket.rb:70:in
+`rack_response&#39; actioncable (5.2.0)
+lib/action_cable/connection/web_socket.rb:34:in `rack_response&#39;
+actioncable (5.2.0) lib/action_cable/connection/base.rb:213:in
+`respond_to_successful_request&#39; actioncable (5.2.0)
+lib/action_cable/connection/base.rb:73:in `process&#39; actioncable (5.2.0)
+lib/action_cable/server/base.rb:30:in `call&#39; actionpack (5.2.0)
+lib/action_dispatch/routing/mapper.rb:19:in `block in
+&lt;class:Constraints&gt;&#39; actionpack (5.2.0)
+lib/action_dispatch/routing/mapper.rb:48:in `serve&#39; actionpack (5.2.0)
+lib/action_dispatch/journey/router.rb:52:in `block in serve&#39; actionpack
+(5.2.0) lib/action_dispatch/journey/router.rb:35:in `each&#39; actionpack
+(5.2.0) lib/action_dispatch/journey/router.rb:35:in `serve&#39; actionpack
+(5.2.0) lib/action_dispatch/routing/route_set.rb:840:in `call&#39; omniauth
+(1.8.1) lib/omniauth/strategy.rb:190:in `call!&#39; omniauth (1.8.1)
+lib/omniauth/strategy.rb:168:in `call&#39; omniauth (1.8.1)
+lib/omniauth/strategy.rb:190:in `call!&#39; omniauth (1.8.1)
+lib/omniauth/strategy.rb:168:in `call&#39; omniauth (1.8.1)
+lib/omniauth/builder.rb:63:in `call&#39; rack (2.0.4)
+lib/rack/tempfile_reaper.rb:15:in `call&#39; rack (2.0.4)
+lib/rack/etag.rb:25:in `call&#39; rack (2.0.4)
+lib/rack/conditional_get.rb:25:in `call&#39; rack (2.0.4)
+lib/rack/head.rb:12:in `call&#39; actionpack (5.2.0)
+lib/action_dispatch/http/content_security_policy.rb:18:in `call&#39; rack
+(2.0.4) lib/rack/session/abstract/id.rb:232:in `context&#39; rack (2.0.4)
+lib/rack/session/abstract/id.rb:226:in `call&#39; actionpack (5.2.0)
+lib/action_dispatch/middleware/cookies.rb:670:in `call&#39; activerecord
+(5.2.0) lib/active_record/migration.rb:559:in `call&#39; actionpack (5.2.0)
+lib/action_dispatch/middleware/callbacks.rb:28:in `block in call&#39;
+activesupport (5.2.0) lib/active_support/callbacks.rb:98:in
+`run_callbacks&#39; actionpack (5.2.0)
+lib/action_dispatch/middleware/callbacks.rb:26:in `call&#39; actionpack
+(5.2.0) lib/action_dispatch/middleware/executor.rb:14:in `call&#39;
+actionpack (5.2.0) lib/action_dispatch/middleware/debug_exceptions.rb:61:in
+`call&#39; actionpack (5.2.0)
+lib/action_dispatch/middleware/show_exceptions.rb:33:in `call&#39; railties
+(5.2.0) lib/rails/rack/logger.rb:38:in `call_app&#39; railties (5.2.0)
+lib/rails/rack/logger.rb:26:in `block in call&#39; activesupport (5.2.0)
+lib/active_support/tagged_logging.rb:71:in `block in tagged&#39;
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:28:in
+`tagged&#39; activesupport (5.2.0)
+lib/active_support/tagged_logging.rb:71:in `tagged&#39; railties (5.2.0)
+lib/rails/rack/logger.rb:26:in `call&#39; sprockets-rails (3.2.1)
+lib/sprockets/rails/quiet_assets.rb:13:in `call&#39; actionpack (5.2.0)
+lib/action_dispatch/middleware/remote_ip.rb:81:in `call&#39; actionpack
+(5.2.0) lib/action_dispatch/middleware/request_id.rb:27:in `call&#39; rack
+(2.0.4) lib/rack/method_override.rb:22:in `call&#39; rack (2.0.4)
+lib/rack/runtime.rb:22:in `call&#39; activesupport (5.2.0)
+lib/active_support/cache/strategy/local_cache_middleware.rb:29:in
+`call&#39; actionpack (5.2.0)
+lib/action_dispatch/middleware/executor.rb:14:in `call&#39; actionpack
+(5.2.0) lib/action_dispatch/middleware/static.rb:127:in `call&#39; rack
+(2.0.4) lib/rack/sendfile.rb:111:in `call&#39; railties (5.2.0)
+lib/rails/engine.rb:524:in `call&#39; rack (2.0.4)
+lib/rack/handler/webrick.rb:86:in `service&#39;
+/Users/qin/.rbenv/versions/2.5.0/lib/ruby/2.5.0/webrick/httpserver.rb:140:in
+`service&#39;
+/Users/qin/.rbenv/versions/2.5.0/lib/ruby/2.5.0/webrick/httpserver.rb:96:in
+`run&#39;
+/Users/qin/.rbenv/versions/2.5.0/lib/ruby/2.5.0/webrick/server.rb:307:in
+`block in start_thread&#39; Started GET “/cable/” [WebSocket] for 127.0.0.1
+at 2018-04-22 08:57:47 +0800 Successfully upgraded to WebSocket
+(REQUEST_METHOD: GET, HTTP_CONNECTION: keep-alive, Upgrade, HTTP_UPGRADE:
+websocket)</p>
+
+<p>NotImplementedError (only partial hijack is supported.):</p>
+
+<p>rack (2.0.4) lib/rack/handler/webrick.rb:74:in `block in service&#39;
+actioncable (5.2.0) lib/action_cable/connection/stream.rb:101:in
+`hijack_rack_socket&#39; actioncable (5.2.0)
+lib/action_cable/connection/client_socket.rb:59:in `start_driver&#39;
+actioncable (5.2.0) lib/action_cable/connection/client_socket.rb:70:in
+`rack_response&#39; actioncable (5.2.0)
+lib/action_cable/connection/web_socket.rb:34:in `rack_response&#39;
+actioncable (5.2.0) lib/action_cable/connection/base.rb:213:in
+`respond_to_successful_request&#39; actioncable (5.2.0)
+lib/action_cable/connection/base.rb:73:in `process&#39; actioncable (5.2.0)
+lib/action_cable/server/base.rb:30:in `call&#39; actionpack (5.2.0)
+lib/action_dispatch/routing/mapper.rb:19:in `block in
+&lt;class:Constraints&gt;&#39; actionpack (5.2.0)
+lib/action_dispatch/routing/mapper.rb:48:in `serve&#39; actionpack (5.2.0)
+lib/action_dispatch/journey/router.rb:52:in `block in serve&#39; actionpack
+(5.2.0) lib/action_dispatch/journey/router.rb:35:in `each&#39; actionpack
+(5.2.0) lib/action_dispatch/journey/router.rb:35:in `serve&#39; actionpack
+(5.2.0) lib/action_dispatch/routing/route_set.rb:840:in `call&#39; omniauth
+(1.8.1) lib/omniauth/strategy.rb:190:in `call!&#39; omniauth (1.8.1)
+lib/omniauth/strategy.rb:168:in `call&#39; omniauth (1.8.1)
+lib/omniauth/strategy.rb:190:in `call!&#39; omniauth (1.8.1)
+lib/omniauth/strategy.rb:168:in `call&#39; omniauth (1.8.1)
+lib/omniauth/builder.rb:63:in `call&#39; rack (2.0.4)
+lib/rack/tempfile_reaper.rb:15:in `call&#39; rack (2.0.4)
+lib/rack/etag.rb:25:in `call&#39; rack (2.0.4)
+lib/rack/conditional_get.rb:25:in `call&#39; rack (2.0.4)
+lib/rack/head.rb:12:in `call&#39; actionpack (5.2.0)
+lib/action_dispatch/http/content_security_policy.rb:18:in `call&#39; rack
+(2.0.4) lib/rack/session/abstract/id.rb:232:in `context&#39; rack (2.0.4)
+lib/rack/session/abstract/id.rb:226:in `call&#39; actionpack (5.2.0)
+lib/action_dispatch/middleware/cookies.rb:670:in `call&#39; activerecord
+(5.2.0) lib/active_record/migration.rb:559:in `call&#39; actionpack (5.2.0)
+lib/action_dispatch/middleware/callbacks.rb:28:in `block in call&#39;
+activesupport (5.2.0) lib/active_support/callbacks.rb:98:in
+`run_callbacks&#39; actionpack (5.2.0)
+lib/action_dispatch/middleware/callbacks.rb:26:in `call&#39; actionpack
+(5.2.0) lib/action_dispatch/middleware/executor.rb:14:in `call&#39;
+actionpack (5.2.0) lib/action_dispatch/middleware/debug_exceptions.rb:61:in
+`call&#39; actionpack (5.2.0)
+lib/action_dispatch/middleware/show_exceptions.rb:33:in `call&#39; railties
+(5.2.0) lib/rails/rack/logger.rb:38:in `call_app&#39; railties (5.2.0)
+lib/rails/rack/logger.rb:26:in `block in call&#39; activesupport (5.2.0)
+lib/active_support/tagged_logging.rb:71:in `block in tagged&#39;
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:28:in
+`tagged&#39; activesupport (5.2.0)
+lib/active_support/tagged_logging.rb:71:in `tagged&#39; railties (5.2.0)
+lib/rails/rack/logger.rb:26:in `call&#39; sprockets-rails (3.2.1)
+lib/sprockets/rails/quiet_assets.rb:13:in `call&#39; actionpack (5.2.0)
+lib/action_dispatch/middleware/remote_ip.rb:81:in `call&#39; actionpack
+(5.2.0) lib/action_dispatch/middleware/request_id.rb:27:in `call&#39; rack
+(2.0.4) lib/rack/method_override.rb:22:in `call&#39; rack (2.0.4)
+lib/rack/runtime.rb:22:in `call&#39; activesupport (5.2.0)
+lib/active_support/cache/strategy/local_cache_middleware.rb:29:in
+`call&#39; actionpack (5.2.0)
+lib/action_dispatch/middleware/executor.rb:14:in `call&#39; actionpack
+(5.2.0) lib/action_dispatch/middleware/static.rb:127:in `call&#39; rack
+(2.0.4) lib/rack/sendfile.rb:111:in `call&#39; railties (5.2.0)
+lib/rails/engine.rb:524:in `call&#39; rack (2.0.4)
+lib/rack/handler/webrick.rb:86:in `service&#39;
+/Users/qin/.rbenv/versions/2.5.0/lib/ruby/2.5.0/webrick/httpserver.rb:140:in
+`service&#39;
+/Users/qin/.rbenv/versions/2.5.0/lib/ruby/2.5.0/webrick/httpserver.rb:96:in
+`run&#39;
+/Users/qin/.rbenv/versions/2.5.0/lib/ruby/2.5.0/webrick/server.rb:307:in
+`block in start_thread&#39; Started GET “/cable” for 127.0.0.1 at
+2018-04-22 08:57:53 +0800 Started GET “/cable” for ::1 at 2018-04-22
+08:57:53 +0800 Started GET “/cable/” [WebSocket] for 127.0.0.1 at
+2018-04-22 08:57:55 +0800 Successfully upgraded to WebSocket
+(REQUEST_METHOD: GET, HTTP_CONNECTION: keep-alive, Upgrade, HTTP_UPGRADE:
+websocket)</p>
+
+<p>NotImplementedError (only partial hijack is supported.):</p>
+
+<p>rack (2.0.4) lib/rack/handler/webrick.rb:74:in `block in service&#39;
+actioncable (5.2.0) lib/action_cable/connection/stream.rb:101:in
+`hijack_rack_socket&#39; actioncable (5.2.0)
+lib/action_cable/connection/client_socket.rb:59:in `start_driver&#39;
+actioncable (5.2.0) lib/action_cable/connection/client_socket.rb:70:in
+`rack_response&#39; actioncable (5.2.0)
+lib/action_cable/connection/web_socket.rb:34:in `rack_response&#39;
+actioncable (5.2.0) lib/action_cable/connection/base.rb:213:in
+`respond_to_successful_request&#39; actioncable (5.2.0)
+lib/action_cable/connection/base.rb:73:in `process&#39; actioncable (5.2.0)
+lib/action_cable/server/base.rb:30:in `call&#39; actionpack (5.2.0)
+lib/action_dispatch/routing/mapper.rb:19:in `block in
+&lt;class:Constraints&gt;&#39; actionpack (5.2.0)
+lib/action_dispatch/routing/mapper.rb:48:in `serve&#39; actionpack (5.2.0)
+lib/action_dispatch/journey/router.rb:52:in `block in serve&#39; actionpack
+(5.2.0) lib/action_dispatch/journey/router.rb:35:in `each&#39; actionpack
+(5.2.0) lib/action_dispatch/journey/router.rb:35:in `serve&#39; actionpack
+(5.2.0) lib/action_dispatch/routing/route_set.rb:840:in `call&#39; omniauth
+(1.8.1) lib/omniauth/strategy.rb:190:in `call!&#39; omniauth (1.8.1)
+lib/omniauth/strategy.rb:168:in `call&#39; omniauth (1.8.1)
+lib/omniauth/strategy.rb:190:in `call!&#39; omniauth (1.8.1)
+lib/omniauth/strategy.rb:168:in `call&#39; omniauth (1.8.1)
+lib/omniauth/builder.rb:63:in `call&#39; rack (2.0.4)
+lib/rack/tempfile_reaper.rb:15:in `call&#39; rack (2.0.4)
+lib/rack/etag.rb:25:in `call&#39; rack (2.0.4)
+lib/rack/conditional_get.rb:25:in `call&#39; rack (2.0.4)
+lib/rack/head.rb:12:in `call&#39; actionpack (5.2.0)
+lib/action_dispatch/http/content_security_policy.rb:18:in `call&#39; rack
+(2.0.4) lib/rack/session/abstract/id.rb:232:in `context&#39; rack (2.0.4)
+lib/rack/session/abstract/id.rb:226:in `call&#39; actionpack (5.2.0)
+lib/action_dispatch/middleware/cookies.rb:670:in `call&#39; activerecord
+(5.2.0) lib/active_record/migration.rb:559:in `call&#39; actionpack (5.2.0)
+lib/action_dispatch/middleware/callbacks.rb:28:in `block in call&#39;
+activesupport (5.2.0) lib/active_support/callbacks.rb:98:in
+`run_callbacks&#39; actionpack (5.2.0)
+lib/action_dispatch/middleware/callbacks.rb:26:in `call&#39; actionpack
+(5.2.0) lib/action_dispatch/middleware/executor.rb:14:in `call&#39;
+actionpack (5.2.0) lib/action_dispatch/middleware/debug_exceptions.rb:61:in
+`call&#39; actionpack (5.2.0)
+lib/action_dispatch/middleware/show_exceptions.rb:33:in `call&#39; railties
+(5.2.0) lib/rails/rack/logger.rb:38:in `call_app&#39; railties (5.2.0)
+lib/rails/rack/logger.rb:26:in `block in call&#39; activesupport (5.2.0)
+lib/active_support/tagged_logging.rb:71:in `block in tagged&#39;
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:28:in
+`tagged&#39; activesupport (5.2.0)
+lib/active_support/tagged_logging.rb:71:in `tagged&#39; railties (5.2.0)
+lib/rails/rack/logger.rb:26:in `call&#39; sprockets-rails (3.2.1)
+lib/sprockets/rails/quiet_assets.rb:13:in `call&#39; actionpack (5.2.0)
+lib/action_dispatch/middleware/remote_ip.rb:81:in `call&#39; actionpack
+(5.2.0) lib/action_dispatch/middleware/request_id.rb:27:in `call&#39; rack
+(2.0.4) lib/rack/method_override.rb:22:in `call&#39; rack (2.0.4)
+lib/rack/runtime.rb:22:in `call&#39; activesupport (5.2.0)
+lib/active_support/cache/strategy/local_cache_middleware.rb:29:in
+`call&#39; actionpack (5.2.0)
+lib/action_dispatch/middleware/executor.rb:14:in `call&#39; actionpack
+(5.2.0) lib/action_dispatch/middleware/static.rb:127:in `call&#39; rack
+(2.0.4) lib/rack/sendfile.rb:111:in `call&#39; railties (5.2.0)
+lib/rails/engine.rb:524:in `call&#39; rack (2.0.4)
+lib/rack/handler/webrick.rb:86:in `service&#39;
+/Users/qin/.rbenv/versions/2.5.0/lib/ruby/2.5.0/webrick/httpserver.rb:140:in
+`service&#39;
+/Users/qin/.rbenv/versions/2.5.0/lib/ruby/2.5.0/webrick/httpserver.rb:96:in
+`run&#39;
+/Users/qin/.rbenv/versions/2.5.0/lib/ruby/2.5.0/webrick/server.rb:307:in
+`block in start_thread&#39; Started GET “/cable/” [WebSocket] for ::1 at
+2018-04-22 08:57:56 +0800 Successfully upgraded to WebSocket
+(REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)</p>
+
+<p>NotImplementedError (only partial hijack is supported.):</p>
+
+<p>rack (2.0.4) lib/rack/handler/webrick.rb:74:in `block in service&#39;
+actioncable (5.2.0) lib/action_cable/connection/stream.rb:101:in
+`hijack_rack_socket&#39; actioncable (5.2.0)
+lib/action_cable/connection/client_socket.rb:59:in `start_driver&#39;
+actioncable (5.2.0) lib/action_cable/connection/client_socket.rb:70:in
+`rack_response&#39; actioncable (5.2.0)
+lib/action_cable/connection/web_socket.rb:34:in `rack_response&#39;
+actioncable (5.2.0) lib/action_cable/connection/base.rb:213:in
+`respond_to_successful_request&#39; actioncable (5.2.0)
+lib/action_cable/connection/base.rb:73:in `process&#39; actioncable (5.2.0)
+lib/action_cable/server/base.rb:30:in `call&#39; actionpack (5.2.0)
+lib/action_dispatch/routing/mapper.rb:19:in `block in
+&lt;class:Constraints&gt;&#39; actionpack (5.2.0)
+lib/action_dispatch/routing/mapper.rb:48:in `serve&#39; actionpack (5.2.0)
+lib/action_dispatch/journey/router.rb:52:in `block in serve&#39; actionpack
+(5.2.0) lib/action_dispatch/journey/router.rb:35:in `each&#39; actionpack
+(5.2.0) lib/action_dispatch/journey/router.rb:35:in `serve&#39; actionpack
+(5.2.0) lib/action_dispatch/routing/route_set.rb:840:in `call&#39; omniauth
+(1.8.1) lib/omniauth/strategy.rb:190:in `call!&#39; omniauth (1.8.1)
+lib/omniauth/strategy.rb:168:in `call&#39; omniauth (1.8.1)
+lib/omniauth/strategy.rb:190:in `call!&#39; omniauth (1.8.1)
+lib/omniauth/strategy.rb:168:in `call&#39; omniauth (1.8.1)
+lib/omniauth/builder.rb:63:in `call&#39; rack (2.0.4)
+lib/rack/tempfile_reaper.rb:15:in `call&#39; rack (2.0.4)
+lib/rack/etag.rb:25:in `call&#39; rack (2.0.4)
+lib/rack/conditional_get.rb:25:in `call&#39; rack (2.0.4)
+lib/rack/head.rb:12:in `call&#39; actionpack (5.2.0)
+lib/action_dispatch/http/content_security_policy.rb:18:in `call&#39; rack
+(2.0.4) lib/rack/session/abstract/id.rb:232:in `context&#39; rack (2.0.4)
+lib/rack/session/abstract/id.rb:226:in `call&#39; actionpack (5.2.0)
+lib/action_dispatch/middleware/cookies.rb:670:in `call&#39; activerecord
+(5.2.0) lib/active_record/migration.rb:559:in `call&#39; actionpack (5.2.0)
+lib/action_dispatch/middleware/callbacks.rb:28:in `block in call&#39;
+activesupport (5.2.0) lib/active_support/callbacks.rb:98:in
+`run_callbacks&#39; actionpack (5.2.0)
+lib/action_dispatch/middleware/callbacks.rb:26:in `call&#39; actionpack
+(5.2.0) lib/action_dispatch/middleware/executor.rb:14:in `call&#39;
+actionpack (5.2.0) lib/action_dispatch/middleware/debug_exceptions.rb:61:in
+`call&#39; actionpack (5.2.0)
+lib/action_dispatch/middleware/show_exceptions.rb:33:in `call&#39; railties
+(5.2.0) lib/rails/rack/logger.rb:38:in `call_app&#39; railties (5.2.0)
+lib/rails/rack/logger.rb:26:in `block in call&#39; activesupport (5.2.0)
+lib/active_support/tagged_logging.rb:71:in `block in tagged&#39;
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:28:in
+`tagged&#39; activesupport (5.2.0)
+lib/active_support/tagged_logging.rb:71:in `tagged&#39; railties (5.2.0)
+lib/rails/rack/logger.rb:26:in `call&#39; sprockets-rails (3.2.1)
+lib/sprockets/rails/quiet_assets.rb:13:in `call&#39; actionpack (5.2.0)
+lib/action_dispatch/middleware/remote_ip.rb:81:in `call&#39; actionpack
+(5.2.0) lib/action_dispatch/middleware/request_id.rb:27:in `call&#39; rack
+(2.0.4) lib/rack/method_override.rb:22:in `call&#39; rack (2.0.4)
+lib/rack/runtime.rb:22:in `call&#39; activesupport (5.2.0)
+lib/active_support/cache/strategy/local_cache_middleware.rb:29:in
+`call&#39; actionpack (5.2.0)
+lib/action_dispatch/middleware/executor.rb:14:in `call&#39; actionpack
+(5.2.0) lib/action_dispatch/middleware/static.rb:127:in `call&#39; rack
+(2.0.4) lib/rack/sendfile.rb:111:in `call&#39; railties (5.2.0)
+lib/rails/engine.rb:524:in `call&#39; rack (2.0.4)
+lib/rack/handler/webrick.rb:86:in `service&#39;
+/Users/qin/.rbenv/versions/2.5.0/lib/ruby/2.5.0/webrick/httpserver.rb:140:in
+`service&#39;
+/Users/qin/.rbenv/versions/2.5.0/lib/ruby/2.5.0/webrick/httpserver.rb:96:in
+`run&#39;
+/Users/qin/.rbenv/versions/2.5.0/lib/ruby/2.5.0/webrick/server.rb:307:in
+`block in start_thread&#39; Started GET “/cable” for ::1 at 2018-04-22
+08:58:04 +0800 Started GET “/cable/” [WebSocket] for ::1 at 2018-04-22
+08:58:04 +0800 Successfully upgraded to WebSocket (REQUEST_METHOD: GET,
+HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)</p>
+
+<p>NotImplementedError (only partial hijack is supported.):</p>
+
+<p>rack (2.0.4) lib/rack/handler/webrick.rb:74:in `block in service&#39;
+actioncable (5.2.0) lib/action_cable/connection/stream.rb:101:in
+`hijack_rack_socket&#39; actioncable (5.2.0)
+lib/action_cable/connection/client_socket.rb:59:in `start_driver&#39;
+actioncable (5.2.0) lib/action_cable/connection/client_socket.rb:70:in
+`rack_response&#39; actioncable (5.2.0)
+lib/action_cable/connection/web_socket.rb:34:in `rack_response&#39;
+actioncable (5.2.0) lib/action_cable/connection/base.rb:213:in
+`respond_to_successful_request&#39; actioncable (5.2.0)
+lib/action_cable/connection/base.rb:73:in `process&#39; actioncable (5.2.0)
+lib/action_cable/server/base.rb:30:in `call&#39; actionpack (5.2.0)
+lib/action_dispatch/routing/mapper.rb:19:in `block in
+&lt;class:Constraints&gt;&#39; actionpack (5.2.0)
+lib/action_dispatch/routing/mapper.rb:48:in `serve&#39; actionpack (5.2.0)
+lib/action_dispatch/journey/router.rb:52:in `block in serve&#39; actionpack
+(5.2.0) lib/action_dispatch/journey/router.rb:35:in `each&#39; actionpack
+(5.2.0) lib/action_dispatch/journey/router.rb:35:in `serve&#39; actionpack
+(5.2.0) lib/action_dispatch/routing/route_set.rb:840:in `call&#39; omniauth
+(1.8.1) lib/omniauth/strategy.rb:190:in `call!&#39; omniauth (1.8.1)
+lib/omniauth/strategy.rb:168:in `call&#39; omniauth (1.8.1)
+lib/omniauth/strategy.rb:190:in `call!&#39; omniauth (1.8.1)
+lib/omniauth/strategy.rb:168:in `call&#39; omniauth (1.8.1)
+lib/omniauth/builder.rb:63:in `call&#39; rack (2.0.4)
+lib/rack/tempfile_reaper.rb:15:in `call&#39; rack (2.0.4)
+lib/rack/etag.rb:25:in `call&#39; rack (2.0.4)
+lib/rack/conditional_get.rb:25:in `call&#39; rack (2.0.4)
+lib/rack/head.rb:12:in `call&#39; actionpack (5.2.0)
+lib/action_dispatch/http/content_security_policy.rb:18:in `call&#39; rack
+(2.0.4) lib/rack/session/abstract/id.rb:232:in `context&#39; rack (2.0.4)
+lib/rack/session/abstract/id.rb:226:in `call&#39; actionpack (5.2.0)
+lib/action_dispatch/middleware/cookies.rb:670:in `call&#39; activerecord
+(5.2.0) lib/active_record/migration.rb:559:in `call&#39; actionpack (5.2.0)
+lib/action_dispatch/middleware/callbacks.rb:28:in `block in call&#39;
+activesupport (5.2.0) lib/active_support/callbacks.rb:98:in
+`run_callbacks&#39; actionpack (5.2.0)
+lib/action_dispatch/middleware/callbacks.rb:26:in `call&#39; actionpack
+(5.2.0) lib/action_dispatch/middleware/executor.rb:14:in `call&#39;
+actionpack (5.2.0) lib/action_dispatch/middleware/debug_exceptions.rb:61:in
+`call&#39; actionpack (5.2.0)
+lib/action_dispatch/middleware/show_exceptions.rb:33:in `call&#39; railties
+(5.2.0) lib/rails/rack/logger.rb:38:in `call_app&#39; railties (5.2.0)
+lib/rails/rack/logger.rb:26:in `block in call&#39; activesupport (5.2.0)
+lib/active_support/tagged_logging.rb:71:in `block in tagged&#39;
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:28:in
+`tagged&#39; activesupport (5.2.0)
+lib/active_support/tagged_logging.rb:71:in `tagged&#39; railties (5.2.0)
+lib/rails/rack/logger.rb:26:in `call&#39; sprockets-rails (3.2.1)
+lib/sprockets/rails/quiet_assets.rb:13:in `call&#39; actionpack (5.2.0)
+lib/action_dispatch/middleware/remote_ip.rb:81:in `call&#39; actionpack
+(5.2.0) lib/action_dispatch/middleware/request_id.rb:27:in `call&#39; rack
+(2.0.4) lib/rack/method_override.rb:22:in `call&#39; rack (2.0.4)
+lib/rack/runtime.rb:22:in `call&#39; activesupport (5.2.0)
+lib/active_support/cache/strategy/local_cache_middleware.rb:29:in
+`call&#39; actionpack (5.2.0)
+lib/action_dispatch/middleware/executor.rb:14:in `call&#39; actionpack
+(5.2.0) lib/action_dispatch/middleware/static.rb:127:in `call&#39; rack
+(2.0.4) lib/rack/sendfile.rb:111:in `call&#39; railties (5.2.0)
+lib/rails/engine.rb:524:in `call&#39; rack (2.0.4)
+lib/rack/handler/webrick.rb:86:in `service&#39;
+/Users/qin/.rbenv/versions/2.5.0/lib/ruby/2.5.0/webrick/httpserver.rb:140:in
+`service&#39;
+/Users/qin/.rbenv/versions/2.5.0/lib/ruby/2.5.0/webrick/httpserver.rb:96:in
+`run&#39;
+/Users/qin/.rbenv/versions/2.5.0/lib/ruby/2.5.0/webrick/server.rb:307:in
+`block in start_thread&#39; Started GET “/cable” for 127.0.0.1 at
+2018-04-22 08:58:07 +0800 Started GET “/cable/” [WebSocket] for 127.0.0.1
+at 2018-04-22 08:58:07 +0800 Successfully upgraded to WebSocket
+(REQUEST_METHOD: GET, HTTP_CONNECTION: keep-alive, Upgrade, HTTP_UPGRADE:
+websocket)</p>
+
+<p>NotImplementedError (only partial hijack is supported.):</p>
+
+<p>rack (2.0.4) lib/rack/handler/webrick.rb:74:in `block in service&#39;
+actioncable (5.2.0) lib/action_cable/connection/stream.rb:101:in
+`hijack_rack_socket&#39; actioncable (5.2.0)
+lib/action_cable/connection/client_socket.rb:59:in `start_driver&#39;
+actioncable (5.2.0) lib/action_cable/connection/client_socket.rb:70:in
+`rack_response&#39; actioncable (5.2.0)
+lib/action_cable/connection/web_socket.rb:34:in `rack_response&#39;
+actioncable (5.2.0) lib/action_cable/connection/base.rb:213:in
+`respond_to_successful_request&#39; actioncable (5.2.0)
+lib/action_cable/connection/base.rb:73:in `process&#39; actioncable (5.2.0)
+lib/action_cable/server/base.rb:30:in `call&#39; actionpack (5.2.0)
+lib/action_dispatch/routing/mapper.rb:19:in `block in
+&lt;class:Constraints&gt;&#39; actionpack (5.2.0)
+lib/action_dispatch/routing/mapper.rb:48:in `serve&#39; actionpack (5.2.0)
+lib/action_dispatch/journey/router.rb:52:in `block in serve&#39; actionpack
+(5.2.0) lib/action_dispatch/journey/router.rb:35:in `each&#39; actionpack
+(5.2.0) lib/action_dispatch/journey/router.rb:35:in `serve&#39; actionpack
+(5.2.0) lib/action_dispatch/routing/route_set.rb:840:in `call&#39; omniauth
+(1.8.1) lib/omniauth/strategy.rb:190:in `call!&#39; omniauth (1.8.1)
+lib/omniauth/strategy.rb:168:in `call&#39; omniauth (1.8.1)
+lib/omniauth/strategy.rb:190:in `call!&#39; omniauth (1.8.1)
+lib/omniauth/strategy.rb:168:in `call&#39; omniauth (1.8.1)
+lib/omniauth/builder.rb:63:in `call&#39; rack (2.0.4)
+lib/rack/tempfile_reaper.rb:15:in `call&#39; rack (2.0.4)
+lib/rack/etag.rb:25:in `call&#39; rack (2.0.4)
+lib/rack/conditional_get.rb:25:in `call&#39; rack (2.0.4)
+lib/rack/head.rb:12:in `call&#39; actionpack (5.2.0)
+lib/action_dispatch/http/content_security_policy.rb:18:in `call&#39; rack
+(2.0.4) lib/rack/session/abstract/id.rb:232:in `context&#39; rack (2.0.4)
+lib/rack/session/abstract/id.rb:226:in `call&#39; actionpack (5.2.0)
+lib/action_dispatch/middleware/cookies.rb:670:in `call&#39; activerecord
+(5.2.0) lib/active_record/migration.rb:559:in `call&#39; actionpack (5.2.0)
+lib/action_dispatch/middleware/callbacks.rb:28:in `block in call&#39;
+activesupport (5.2.0) lib/active_support/callbacks.rb:98:in
+`run_callbacks&#39; actionpack (5.2.0)
+lib/action_dispatch/middleware/callbacks.rb:26:in `call&#39; actionpack
+(5.2.0) lib/action_dispatch/middleware/executor.rb:14:in `call&#39;
+actionpack (5.2.0) lib/action_dispatch/middleware/debug_exceptions.rb:61:in
+`call&#39; actionpack (5.2.0)
+lib/action_dispatch/middleware/show_exceptions.rb:33:in `call&#39; railties
+(5.2.0) lib/rails/rack/logger.rb:38:in `call_app&#39; railties (5.2.0)
+lib/rails/rack/logger.rb:26:in `block in call&#39; activesupport (5.2.0)
+lib/active_support/tagged_logging.rb:71:in `block in tagged&#39;
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:28:in
+`tagged&#39; activesupport (5.2.0)
+lib/active_support/tagged_logging.rb:71:in `tagged&#39; railties (5.2.0)
+lib/rails/rack/logger.rb:26:in `call&#39; sprockets-rails (3.2.1)
+lib/sprockets/rails/quiet_assets.rb:13:in `call&#39; actionpack (5.2.0)
+lib/action_dispatch/middleware/remote_ip.rb:81:in `call&#39; actionpack
+(5.2.0) lib/action_dispatch/middleware/request_id.rb:27:in `call&#39; rack
+(2.0.4) lib/rack/method_override.rb:22:in `call&#39; rack (2.0.4)
+lib/rack/runtime.rb:22:in `call&#39; activesupport (5.2.0)
+lib/active_support/cache/strategy/local_cache_middleware.rb:29:in
+`call&#39; actionpack (5.2.0)
+lib/action_dispatch/middleware/executor.rb:14:in `call&#39; actionpack
+(5.2.0) lib/action_dispatch/middleware/static.rb:127:in `call&#39; rack
+(2.0.4) lib/rack/sendfile.rb:111:in `call&#39; railties (5.2.0)
+lib/rails/engine.rb:524:in `call&#39; rack (2.0.4)
+lib/rack/handler/webrick.rb:86:in `service&#39;
+/Users/qin/.rbenv/versions/2.5.0/lib/ruby/2.5.0/webrick/httpserver.rb:140:in
+`service&#39;
+/Users/qin/.rbenv/versions/2.5.0/lib/ruby/2.5.0/webrick/httpserver.rb:96:in
+`run&#39;
+/Users/qin/.rbenv/versions/2.5.0/lib/ruby/2.5.0/webrick/server.rb:307:in
+`block in start_thread&#39; Started GET “/cable” for 127.0.0.1 at
+2018-04-22 08:58:14 +0800 Started GET “/cable/” [WebSocket] for 127.0.0.1
+at 2018-04-22 08:58:14 +0800 Successfully upgraded to WebSocket
+(REQUEST_METHOD: GET, HTTP_CONNECTION: keep-alive, Upgrade, HTTP_UPGRADE:
+websocket)</p>
+
+<p>NotImplementedError (only partial hijack is supported.):</p>
+
+<p>rack (2.0.4) lib/rack/handler/webrick.rb:74:in `block in service&#39;
+actioncable (5.2.0) lib/action_cable/connection/stream.rb:101:in
+`hijack_rack_socket&#39; actioncable (5.2.0)
+lib/action_cable/connection/client_socket.rb:59:in `start_driver&#39;
+actioncable (5.2.0) lib/action_cable/connection/client_socket.rb:70:in
+`rack_response&#39; actioncable (5.2.0)
+lib/action_cable/connection/web_socket.rb:34:in `rack_response&#39;
+actioncable (5.2.0) lib/action_cable/connection/base.rb:213:in
+`respond_to_successful_request&#39; actioncable (5.2.0)
+lib/action_cable/connection/base.rb:73:in `process&#39; actioncable (5.2.0)
+lib/action_cable/server/base.rb:30:in `call&#39; actionpack (5.2.0)
+lib/action_dispatch/routing/mapper.rb:19:in `block in
+&lt;class:Constraints&gt;&#39; actionpack (5.2.0)
+lib/action_dispatch/routing/mapper.rb:48:in `serve&#39; actionpack (5.2.0)
+lib/action_dispatch/journey/router.rb:52:in `block in serve&#39; actionpack
+(5.2.0) lib/action_dispatch/journey/router.rb:35:in `each&#39; actionpack
+(5.2.0) lib/action_dispatch/journey/router.rb:35:in `serve&#39; actionpack
+(5.2.0) lib/action_dispatch/routing/route_set.rb:840:in `call&#39; omniauth
+(1.8.1) lib/omniauth/strategy.rb:190:in `call!&#39; omniauth (1.8.1)
+lib/omniauth/strategy.rb:168:in `call&#39; omniauth (1.8.1)
+lib/omniauth/strategy.rb:190:in `call!&#39; omniauth (1.8.1)
+lib/omniauth/strategy.rb:168:in `call&#39; omniauth (1.8.1)
+lib/omniauth/builder.rb:63:in `call&#39; rack (2.0.4)
+lib/rack/tempfile_reaper.rb:15:in `call&#39; rack (2.0.4)
+lib/rack/etag.rb:25:in `call&#39; rack (2.0.4)
+lib/rack/conditional_get.rb:25:in `call&#39; rack (2.0.4)
+lib/rack/head.rb:12:in `call&#39; actionpack (5.2.0)
+lib/action_dispatch/http/content_security_policy.rb:18:in `call&#39; rack
+(2.0.4) lib/rack/session/abstract/id.rb:232:in `context&#39; rack (2.0.4)
+lib/rack/session/abstract/id.rb:226:in `call&#39; actionpack (5.2.0)
+lib/action_dispatch/middleware/cookies.rb:670:in `call&#39; activerecord
+(5.2.0) lib/active_record/migration.rb:559:in `call&#39; actionpack (5.2.0)
+lib/action_dispatch/middleware/callbacks.rb:28:in `block in call&#39;
+activesupport (5.2.0) lib/active_support/callbacks.rb:98:in
+`run_callbacks&#39; actionpack (5.2.0)
+lib/action_dispatch/middleware/callbacks.rb:26:in `call&#39; actionpack
+(5.2.0) lib/action_dispatch/middleware/executor.rb:14:in `call&#39;
+actionpack (5.2.0) lib/action_dispatch/middleware/debug_exceptions.rb:61:in
+`call&#39; actionpack (5.2.0)
+lib/action_dispatch/middleware/show_exceptions.rb:33:in `call&#39; railties
+(5.2.0) lib/rails/rack/logger.rb:38:in `call_app&#39; railties (5.2.0)
+lib/rails/rack/logger.rb:26:in `block in call&#39; activesupport (5.2.0)
+lib/active_support/tagged_logging.rb:71:in `block in tagged&#39;
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:28:in
+`tagged&#39; activesupport (5.2.0)
+lib/active_support/tagged_logging.rb:71:in `tagged&#39; railties (5.2.0)
+lib/rails/rack/logger.rb:26:in `call&#39; sprockets-rails (3.2.1)
+lib/sprockets/rails/quiet_assets.rb:13:in `call&#39; actionpack (5.2.0)
+lib/action_dispatch/middleware/remote_ip.rb:81:in `call&#39; actionpack
+(5.2.0) lib/action_dispatch/middleware/request_id.rb:27:in `call&#39; rack
+(2.0.4) lib/rack/method_override.rb:22:in `call&#39; rack (2.0.4)
+lib/rack/runtime.rb:22:in `call&#39; activesupport (5.2.0)
+lib/active_support/cache/strategy/local_cache_middleware.rb:29:in
+`call&#39; actionpack (5.2.0)
+lib/action_dispatch/middleware/executor.rb:14:in `call&#39; actionpack
+(5.2.0) lib/action_dispatch/middleware/static.rb:127:in `call&#39; rack
+(2.0.4) lib/rack/sendfile.rb:111:in `call&#39; railties (5.2.0)
+lib/rails/engine.rb:524:in `call&#39; rack (2.0.4)
+lib/rack/handler/webrick.rb:86:in `service&#39;
+/Users/qin/.rbenv/versions/2.5.0/lib/ruby/2.5.0/webrick/httpserver.rb:140:in
+`service&#39;
+/Users/qin/.rbenv/versions/2.5.0/lib/ruby/2.5.0/webrick/httpserver.rb:96:in
+`run&#39;
+/Users/qin/.rbenv/versions/2.5.0/lib/ruby/2.5.0/webrick/server.rb:307:in
+`block in start_thread&#39; Started GET “/cable” for ::1 at 2018-04-22
+08:58:17 +0800 Started GET “/cable/” [WebSocket] for ::1 at 2018-04-22
+08:58:18 +0800 Successfully upgraded to WebSocket (REQUEST_METHOD: GET,
+HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)</p>
+
+<p>NotImplementedError (only partial hijack is supported.):</p>
+
+<p>rack (2.0.4) lib/rack/handler/webrick.rb:74:in `block in service&#39;
+actioncable (5.2.0) lib/action_cable/connection/stream.rb:101:in
+`hijack_rack_socket&#39; actioncable (5.2.0)
+lib/action_cable/connection/client_socket.rb:59:in `start_driver&#39;
+actioncable (5.2.0) lib/action_cable/connection/client_socket.rb:70:in
+`rack_response&#39; actioncable (5.2.0)
+lib/action_cable/connection/web_socket.rb:34:in `rack_response&#39;
+actioncable (5.2.0) lib/action_cable/connection/base.rb:213:in
+`respond_to_successful_request&#39; actioncable (5.2.0)
+lib/action_cable/connection/base.rb:73:in `process&#39; actioncable (5.2.0)
+lib/action_cable/server/base.rb:30:in `call&#39; actionpack (5.2.0)
+lib/action_dispatch/routing/mapper.rb:19:in `block in
+&lt;class:Constraints&gt;&#39; actionpack (5.2.0)
+lib/action_dispatch/routing/mapper.rb:48:in `serve&#39; actionpack (5.2.0)
+lib/action_dispatch/journey/router.rb:52:in `block in serve&#39; actionpack
+(5.2.0) lib/action_dispatch/journey/router.rb:35:in `each&#39; actionpack
+(5.2.0) lib/action_dispatch/journey/router.rb:35:in `serve&#39; actionpack
+(5.2.0) lib/action_dispatch/routing/route_set.rb:840:in `call&#39; omniauth
+(1.8.1) lib/omniauth/strategy.rb:190:in `call!&#39; omniauth (1.8.1)
+lib/omniauth/strategy.rb:168:in `call&#39; omniauth (1.8.1)
+lib/omniauth/strategy.rb:190:in `call!&#39; omniauth (1.8.1)
+lib/omniauth/strategy.rb:168:in `call&#39; omniauth (1.8.1)
+lib/omniauth/builder.rb:63:in `call&#39; rack (2.0.4)
+lib/rack/tempfile_reaper.rb:15:in `call&#39; rack (2.0.4)
+lib/rack/etag.rb:25:in `call&#39; rack (2.0.4)
+lib/rack/conditional_get.rb:25:in `call&#39; rack (2.0.4)
+lib/rack/head.rb:12:in `call&#39; actionpack (5.2.0)
+lib/action_dispatch/http/content_security_policy.rb:18:in `call&#39; rack
+(2.0.4) lib/rack/session/abstract/id.rb:232:in `context&#39; rack (2.0.4)
+lib/rack/session/abstract/id.rb:226:in `call&#39; actionpack (5.2.0)
+lib/action_dispatch/middleware/cookies.rb:670:in `call&#39; activerecord
+(5.2.0) lib/active_record/migration.rb:559:in `call&#39; actionpack (5.2.0)
+lib/action_dispatch/middleware/callbacks.rb:28:in `block in call&#39;
+activesupport (5.2.0) lib/active_support/callbacks.rb:98:in
+`run_callbacks&#39; actionpack (5.2.0)
+lib/action_dispatch/middleware/callbacks.rb:26:in `call&#39; actionpack
+(5.2.0) lib/action_dispatch/middleware/executor.rb:14:in `call&#39;
+actionpack (5.2.0) lib/action_dispatch/middleware/debug_exceptions.rb:61:in
+`call&#39; actionpack (5.2.0)
+lib/action_dispatch/middleware/show_exceptions.rb:33:in `call&#39; railties
+(5.2.0) lib/rails/rack/logger.rb:38:in `call_app&#39; railties (5.2.0)
+lib/rails/rack/logger.rb:26:in `block in call&#39; activesupport (5.2.0)
+lib/active_support/tagged_logging.rb:71:in `block in tagged&#39;
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:28:in
+`tagged&#39; activesupport (5.2.0)
+lib/active_support/tagged_logging.rb:71:in `tagged&#39; railties (5.2.0)
+lib/rails/rack/logger.rb:26:in `call&#39; sprockets-rails (3.2.1)
+lib/sprockets/rails/quiet_assets.rb:13:in `call&#39; actionpack (5.2.0)
+lib/action_dispatch/middleware/remote_ip.rb:81:in `call&#39; actionpack
+(5.2.0) lib/action_dispatch/middleware/request_id.rb:27:in `call&#39; rack
+(2.0.4) lib/rack/method_override.rb:22:in `call&#39; rack (2.0.4)
+lib/rack/runtime.rb:22:in `call&#39; activesupport (5.2.0)
+lib/active_support/cache/strategy/local_cache_middleware.rb:29:in
+`call&#39; actionpack (5.2.0)
+lib/action_dispatch/middleware/executor.rb:14:in `call&#39; actionpack
+(5.2.0) lib/action_dispatch/middleware/static.rb:127:in `call&#39; rack
+(2.0.4) lib/rack/sendfile.rb:111:in `call&#39; railties (5.2.0)
+lib/rails/engine.rb:524:in `call&#39; rack (2.0.4)
+lib/rack/handler/webrick.rb:86:in `service&#39;
+/Users/qin/.rbenv/versions/2.5.0/lib/ruby/2.5.0/webrick/httpserver.rb:140:in
+`service&#39;
+/Users/qin/.rbenv/versions/2.5.0/lib/ruby/2.5.0/webrick/httpserver.rb:96:in
+`run&#39;
+/Users/qin/.rbenv/versions/2.5.0/lib/ruby/2.5.0/webrick/server.rb:307:in
+`block in start_thread&#39; Started GET “/cable” for 127.0.0.1 at
+2018-04-22 08:58:26 +0800 Started GET “/cable/” [WebSocket] for 127.0.0.1
+at 2018-04-22 08:58:26 +0800 Successfully upgraded to WebSocket
+(REQUEST_METHOD: GET, HTTP_CONNECTION: keep-alive, Upgrade, HTTP_UPGRADE:
+websocket)</p>
+
+<p>NotImplementedError (only partial hijack is supported.):</p>
+
+<p>rack (2.0.4) lib/rack/handler/webrick.rb:74:in `block in service&#39;
+actioncable (5.2.0) lib/action_cable/connection/stream.rb:101:in
+`hijack_rack_socket&#39; actioncable (5.2.0)
+lib/action_cable/connection/client_socket.rb:59:in `start_driver&#39;
+actioncable (5.2.0) lib/action_cable/connection/client_socket.rb:70:in
+`rack_response&#39; actioncable (5.2.0)
+lib/action_cable/connection/web_socket.rb:34:in `rack_response&#39;
+actioncable (5.2.0) lib/action_cable/connection/base.rb:213:in
+`respond_to_successful_request&#39; actioncable (5.2.0)
+lib/action_cable/connection/base.rb:73:in `process&#39; actioncable (5.2.0)
+lib/action_cable/server/base.rb:30:in `call&#39; actionpack (5.2.0)
+lib/action_dispatch/routing/mapper.rb:19:in `block in
+&lt;class:Constraints&gt;&#39; actionpack (5.2.0)
+lib/action_dispatch/routing/mapper.rb:48:in `serve&#39; actionpack (5.2.0)
+lib/action_dispatch/journey/router.rb:52:in `block in serve&#39; actionpack
+(5.2.0) lib/action_dispatch/journey/router.rb:35:in `each&#39; actionpack
+(5.2.0) lib/action_dispatch/journey/router.rb:35:in `serve&#39; actionpack
+(5.2.0) lib/action_dispatch/routing/route_set.rb:840:in `call&#39; omniauth
+(1.8.1) lib/omniauth/strategy.rb:190:in `call!&#39; omniauth (1.8.1)
+lib/omniauth/strategy.rb:168:in `call&#39; omniauth (1.8.1)
+lib/omniauth/strategy.rb:190:in `call!&#39; omniauth (1.8.1)
+lib/omniauth/strategy.rb:168:in `call&#39; omniauth (1.8.1)
+lib/omniauth/builder.rb:63:in `call&#39; rack (2.0.4)
+lib/rack/tempfile_reaper.rb:15:in `call&#39; rack (2.0.4)
+lib/rack/etag.rb:25:in `call&#39; rack (2.0.4)
+lib/rack/conditional_get.rb:25:in `call&#39; rack (2.0.4)
+lib/rack/head.rb:12:in `call&#39; actionpack (5.2.0)
+lib/action_dispatch/http/content_security_policy.rb:18:in `call&#39; rack
+(2.0.4) lib/rack/session/abstract/id.rb:232:in `context&#39; rack (2.0.4)
+lib/rack/session/abstract/id.rb:226:in `call&#39; actionpack (5.2.0)
+lib/action_dispatch/middleware/cookies.rb:670:in `call&#39; activerecord
+(5.2.0) lib/active_record/migration.rb:559:in `call&#39; actionpack (5.2.0)
+lib/action_dispatch/middleware/callbacks.rb:28:in `block in call&#39;
+activesupport (5.2.0) lib/active_support/callbacks.rb:98:in
+`run_callbacks&#39; actionpack (5.2.0)
+lib/action_dispatch/middleware/callbacks.rb:26:in `call&#39; actionpack
+(5.2.0) lib/action_dispatch/middleware/executor.rb:14:in `call&#39;
+actionpack (5.2.0) lib/action_dispatch/middleware/debug_exceptions.rb:61:in
+`call&#39; actionpack (5.2.0)
+lib/action_dispatch/middleware/show_exceptions.rb:33:in `call&#39; railties
+(5.2.0) lib/rails/rack/logger.rb:38:in `call_app&#39; railties (5.2.0)
+lib/rails/rack/logger.rb:26:in `block in call&#39; activesupport (5.2.0)
+lib/active_support/tagged_logging.rb:71:in `block in tagged&#39;
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:28:in
+`tagged&#39; activesupport (5.2.0)
+lib/active_support/tagged_logging.rb:71:in `tagged&#39; railties (5.2.0)
+lib/rails/rack/logger.rb:26:in `call&#39; sprockets-rails (3.2.1)
+lib/sprockets/rails/quiet_assets.rb:13:in `call&#39; actionpack (5.2.0)
+lib/action_dispatch/middleware/remote_ip.rb:81:in `call&#39; actionpack
+(5.2.0) lib/action_dispatch/middleware/request_id.rb:27:in `call&#39; rack
+(2.0.4) lib/rack/method_override.rb:22:in `call&#39; rack (2.0.4)
+lib/rack/runtime.rb:22:in `call&#39; activesupport (5.2.0)
+lib/active_support/cache/strategy/local_cache_middleware.rb:29:in
+`call&#39; actionpack (5.2.0)
+lib/action_dispatch/middleware/executor.rb:14:in `call&#39; actionpack
+(5.2.0) lib/action_dispatch/middleware/static.rb:127:in `call&#39; rack
+(2.0.4) lib/rack/sendfile.rb:111:in `call&#39; railties (5.2.0)
+lib/rails/engine.rb:524:in `call&#39; rack (2.0.4)
+lib/rack/handler/webrick.rb:86:in `service&#39;
+/Users/qin/.rbenv/versions/2.5.0/lib/ruby/2.5.0/webrick/httpserver.rb:140:in
+`service&#39;
+/Users/qin/.rbenv/versions/2.5.0/lib/ruby/2.5.0/webrick/httpserver.rb:96:in
+`run&#39;
+/Users/qin/.rbenv/versions/2.5.0/lib/ruby/2.5.0/webrick/server.rb:307:in
+`block in start_thread&#39; Started GET “/cable” for ::1 at 2018-04-22
+08:58:27 +0800 Started GET “/cable/” [WebSocket] for ::1 at 2018-04-22
+08:58:28 +0800 Successfully upgraded to WebSocket (REQUEST_METHOD: GET,
+HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)</p>
+
+<p>NotImplementedError (only partial hijack is supported.):</p>
+
+<p>rack (2.0.4) lib/rack/handler/webrick.rb:74:in `block in service&#39;
+actioncable (5.2.0) lib/action_cable/connection/stream.rb:101:in
+`hijack_rack_socket&#39; actioncable (5.2.0)
+lib/action_cable/connection/client_socket.rb:59:in `start_driver&#39;
+actioncable (5.2.0) lib/action_cable/connection/client_socket.rb:70:in
+`rack_response&#39; actioncable (5.2.0)
+lib/action_cable/connection/web_socket.rb:34:in `rack_response&#39;
+actioncable (5.2.0) lib/action_cable/connection/base.rb:213:in
+`respond_to_successful_request&#39; actioncable (5.2.0)
+lib/action_cable/connection/base.rb:73:in `process&#39; actioncable (5.2.0)
+lib/action_cable/server/base.rb:30:in `call&#39; actionpack (5.2.0)
+lib/action_dispatch/routing/mapper.rb:19:in `block in
+&lt;class:Constraints&gt;&#39; actionpack (5.2.0)
+lib/action_dispatch/routing/mapper.rb:48:in `serve&#39; actionpack (5.2.0)
+lib/action_dispatch/journey/router.rb:52:in `block in serve&#39; actionpack
+(5.2.0) lib/action_dispatch/journey/router.rb:35:in `each&#39; actionpack
+(5.2.0) lib/action_dispatch/journey/router.rb:35:in `serve&#39; actionpack
+(5.2.0) lib/action_dispatch/routing/route_set.rb:840:in `call&#39; omniauth
+(1.8.1) lib/omniauth/strategy.rb:190:in `call!&#39; omniauth (1.8.1)
+lib/omniauth/strategy.rb:168:in `call&#39; omniauth (1.8.1)
+lib/omniauth/strategy.rb:190:in `call!&#39; omniauth (1.8.1)
+lib/omniauth/strategy.rb:168:in `call&#39; omniauth (1.8.1)
+lib/omniauth/builder.rb:63:in `call&#39; rack (2.0.4)
+lib/rack/tempfile_reaper.rb:15:in `call&#39; rack (2.0.4)
+lib/rack/etag.rb:25:in `call&#39; rack (2.0.4)
+lib/rack/conditional_get.rb:25:in `call&#39; rack (2.0.4)
+lib/rack/head.rb:12:in `call&#39; actionpack (5.2.0)
+lib/action_dispatch/http/content_security_policy.rb:18:in `call&#39; rack
+(2.0.4) lib/rack/session/abstract/id.rb:232:in `context&#39; rack (2.0.4)
+lib/rack/session/abstract/id.rb:226:in `call&#39; actionpack (5.2.0)
+lib/action_dispatch/middleware/cookies.rb:670:in `call&#39; activerecord
+(5.2.0) lib/active_record/migration.rb:559:in `call&#39; actionpack (5.2.0)
+lib/action_dispatch/middleware/callbacks.rb:28:in `block in call&#39;
+activesupport (5.2.0) lib/active_support/callbacks.rb:98:in
+`run_callbacks&#39; actionpack (5.2.0)
+lib/action_dispatch/middleware/callbacks.rb:26:in `call&#39; actionpack
+(5.2.0) lib/action_dispatch/middleware/executor.rb:14:in `call&#39;
+actionpack (5.2.0) lib/action_dispatch/middleware/debug_exceptions.rb:61:in
+`call&#39; actionpack (5.2.0)
+lib/action_dispatch/middleware/show_exceptions.rb:33:in `call&#39; railties
+(5.2.0) lib/rails/rack/logger.rb:38:in `call_app&#39; railties (5.2.0)
+lib/rails/rack/logger.rb:26:in `block in call&#39; activesupport (5.2.0)
+lib/active_support/tagged_logging.rb:71:in `block in tagged&#39;
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:28:in
+`tagged&#39; activesupport (5.2.0)
+lib/active_support/tagged_logging.rb:71:in `tagged&#39; railties (5.2.0)
+lib/rails/rack/logger.rb:26:in `call&#39; sprockets-rails (3.2.1)
+lib/sprockets/rails/quiet_assets.rb:13:in `call&#39; actionpack (5.2.0)
+lib/action_dispatch/middleware/remote_ip.rb:81:in `call&#39; actionpack
+(5.2.0) lib/action_dispatch/middleware/request_id.rb:27:in `call&#39; rack
+(2.0.4) lib/rack/method_override.rb:22:in `call&#39; rack (2.0.4)
+lib/rack/runtime.rb:22:in `call&#39; activesupport (5.2.0)
+lib/active_support/cache/strategy/local_cache_middleware.rb:29:in
+`call&#39; actionpack (5.2.0)
+lib/action_dispatch/middleware/executor.rb:14:in `call&#39; actionpack
+(5.2.0) lib/action_dispatch/middleware/static.rb:127:in `call&#39; rack
+(2.0.4) lib/rack/sendfile.rb:111:in `call&#39; railties (5.2.0)
+lib/rails/engine.rb:524:in `call&#39; rack (2.0.4)
+lib/rack/handler/webrick.rb:86:in `service&#39;
+/Users/qin/.rbenv/versions/2.5.0/lib/ruby/2.5.0/webrick/httpserver.rb:140:in
+`service&#39;
+/Users/qin/.rbenv/versions/2.5.0/lib/ruby/2.5.0/webrick/httpserver.rb:96:in
+`run&#39;
+/Users/qin/.rbenv/versions/2.5.0/lib/ruby/2.5.0/webrick/server.rb:307:in
+`block in start_thread&#39; Started GET “/cable” for 127.0.0.1 at
+2018-04-22 08:58:39 +0800 Started GET “/cable/” [WebSocket] for 127.0.0.1
+at 2018-04-22 08:58:39 +0800 Successfully upgraded to WebSocket
+(REQUEST_METHOD: GET, HTTP_CONNECTION: keep-alive, Upgrade, HTTP_UPGRADE:
+websocket)</p>
+
+<p>NotImplementedError (only partial hijack is supported.):</p>
+
+<p>rack (2.0.4) lib/rack/handler/webrick.rb:74:in `block in service&#39;
+actioncable (5.2.0) lib/action_cable/connection/stream.rb:101:in
+`hijack_rack_socket&#39; actioncable (5.2.0)
+lib/action_cable/connection/client_socket.rb:59:in `start_driver&#39;
+actioncable (5.2.0) lib/action_cable/connection/client_socket.rb:70:in
+`rack_response&#39; actioncable (5.2.0)
+lib/action_cable/connection/web_socket.rb:34:in `rack_response&#39;
+actioncable (5.2.0) lib/action_cable/connection/base.rb:213:in
+`respond_to_successful_request&#39; actioncable (5.2.0)
+lib/action_cable/connection/base.rb:73:in `process&#39; actioncable (5.2.0)
+lib/action_cable/server/base.rb:30:in `call&#39; actionpack (5.2.0)
+lib/action_dispatch/routing/mapper.rb:19:in `block in
+&lt;class:Constraints&gt;&#39; actionpack (5.2.0)
+lib/action_dispatch/routing/mapper.rb:48:in `serve&#39; actionpack (5.2.0)
+lib/action_dispatch/journey/router.rb:52:in `block in serve&#39; actionpack
+(5.2.0) lib/action_dispatch/journey/router.rb:35:in `each&#39; actionpack
+(5.2.0) lib/action_dispatch/journey/router.rb:35:in `serve&#39; actionpack
+(5.2.0) lib/action_dispatch/routing/route_set.rb:840:in `call&#39; omniauth
+(1.8.1) lib/omniauth/strategy.rb:190:in `call!&#39; omniauth (1.8.1)
+lib/omniauth/strategy.rb:168:in `call&#39; omniauth (1.8.1)
+lib/omniauth/strategy.rb:190:in `call!&#39; omniauth (1.8.1)
+lib/omniauth/strategy.rb:168:in `call&#39; omniauth (1.8.1)
+lib/omniauth/builder.rb:63:in `call&#39; rack (2.0.4)
+lib/rack/tempfile_reaper.rb:15:in `call&#39; rack (2.0.4)
+lib/rack/etag.rb:25:in `call&#39; rack (2.0.4)
+lib/rack/conditional_get.rb:25:in `call&#39; rack (2.0.4)
+lib/rack/head.rb:12:in `call&#39; actionpack (5.2.0)
+lib/action_dispatch/http/content_security_policy.rb:18:in `call&#39; rack
+(2.0.4) lib/rack/session/abstract/id.rb:232:in `context&#39; rack (2.0.4)
+lib/rack/session/abstract/id.rb:226:in `call&#39; actionpack (5.2.0)
+lib/action_dispatch/middleware/cookies.rb:670:in `call&#39; activerecord
+(5.2.0) lib/active_record/migration.rb:559:in `call&#39; actionpack (5.2.0)
+lib/action_dispatch/middleware/callbacks.rb:28:in `block in call&#39;
+activesupport (5.2.0) lib/active_support/callbacks.rb:98:in
+`run_callbacks&#39; actionpack (5.2.0)
+lib/action_dispatch/middleware/callbacks.rb:26:in `call&#39; actionpack
+(5.2.0) lib/action_dispatch/middleware/executor.rb:14:in `call&#39;
+actionpack (5.2.0) lib/action_dispatch/middleware/debug_exceptions.rb:61:in
+`call&#39; actionpack (5.2.0)
+lib/action_dispatch/middleware/show_exceptions.rb:33:in `call&#39; railties
+(5.2.0) lib/rails/rack/logger.rb:38:in `call_app&#39; railties (5.2.0)
+lib/rails/rack/logger.rb:26:in `block in call&#39; activesupport (5.2.0)
+lib/active_support/tagged_logging.rb:71:in `block in tagged&#39;
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:28:in
+`tagged&#39; activesupport (5.2.0)
+lib/active_support/tagged_logging.rb:71:in `tagged&#39; railties (5.2.0)
+lib/rails/rack/logger.rb:26:in `call&#39; sprockets-rails (3.2.1)
+lib/sprockets/rails/quiet_assets.rb:13:in `call&#39; actionpack (5.2.0)
+lib/action_dispatch/middleware/remote_ip.rb:81:in `call&#39; actionpack
+(5.2.0) lib/action_dispatch/middleware/request_id.rb:27:in `call&#39; rack
+(2.0.4) lib/rack/method_override.rb:22:in `call&#39; rack (2.0.4)
+lib/rack/runtime.rb:22:in `call&#39; activesupport (5.2.0)
+lib/active_support/cache/strategy/local_cache_middleware.rb:29:in
+`call&#39; actionpack (5.2.0)
+lib/action_dispatch/middleware/executor.rb:14:in `call&#39; actionpack
+(5.2.0) lib/action_dispatch/middleware/static.rb:127:in `call&#39; rack
+(2.0.4) lib/rack/sendfile.rb:111:in `call&#39; railties (5.2.0)
+lib/rails/engine.rb:524:in `call&#39; rack (2.0.4)
+lib/rack/handler/webrick.rb:86:in `service&#39;
+/Users/qin/.rbenv/versions/2.5.0/lib/ruby/2.5.0/webrick/httpserver.rb:140:in
+`service&#39;
+/Users/qin/.rbenv/versions/2.5.0/lib/ruby/2.5.0/webrick/httpserver.rb:96:in
+`run&#39;
+/Users/qin/.rbenv/versions/2.5.0/lib/ruby/2.5.0/webrick/server.rb:307:in
+`block in start_thread&#39; Started GET “/cable” for ::1 at 2018-04-22
+08:58:41 +0800 Started GET “/cable/” [WebSocket] for ::1 at 2018-04-22
+08:58:41 +0800 Successfully upgraded to WebSocket (REQUEST_METHOD: GET,
+HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)</p>
+
+<p>NotImplementedError (only partial hijack is supported.):</p>
+
+<p>rack (2.0.4) lib/rack/handler/webrick.rb:74:in `block in service&#39;
+actioncable (5.2.0) lib/action_cable/connection/stream.rb:101:in
+`hijack_rack_socket&#39; actioncable (5.2.0)
+lib/action_cable/connection/client_socket.rb:59:in `start_driver&#39;
+actioncable (5.2.0) lib/action_cable/connection/client_socket.rb:70:in
+`rack_response&#39; actioncable (5.2.0)
+lib/action_cable/connection/web_socket.rb:34:in `rack_response&#39;
+actioncable (5.2.0) lib/action_cable/connection/base.rb:213:in
+`respond_to_successful_request&#39; actioncable (5.2.0)
+lib/action_cable/connection/base.rb:73:in `process&#39; actioncable (5.2.0)
+lib/action_cable/server/base.rb:30:in `call&#39; actionpack (5.2.0)
+lib/action_dispatch/routing/mapper.rb:19:in `block in
+&lt;class:Constraints&gt;&#39; actionpack (5.2.0)
+lib/action_dispatch/routing/mapper.rb:48:in `serve&#39; actionpack (5.2.0)
+lib/action_dispatch/journey/router.rb:52:in `block in serve&#39; actionpack
+(5.2.0) lib/action_dispatch/journey/router.rb:35:in `each&#39; actionpack
+(5.2.0) lib/action_dispatch/journey/router.rb:35:in `serve&#39; actionpack
+(5.2.0) lib/action_dispatch/routing/route_set.rb:840:in `call&#39; omniauth
+(1.8.1) lib/omniauth/strategy.rb:190:in `call!&#39; omniauth (1.8.1)
+lib/omniauth/strategy.rb:168:in `call&#39; omniauth (1.8.1)
+lib/omniauth/strategy.rb:190:in `call!&#39; omniauth (1.8.1)
+lib/omniauth/strategy.rb:168:in `call&#39; omniauth (1.8.1)
+lib/omniauth/builder.rb:63:in `call&#39; rack (2.0.4)
+lib/rack/tempfile_reaper.rb:15:in `call&#39; rack (2.0.4)
+lib/rack/etag.rb:25:in `call&#39; rack (2.0.4)
+lib/rack/conditional_get.rb:25:in `call&#39; rack (2.0.4)
+lib/rack/head.rb:12:in `call&#39; actionpack (5.2.0)
+lib/action_dispatch/http/content_security_policy.rb:18:in `call&#39; rack
+(2.0.4) lib/rack/session/abstract/id.rb:232:in `context&#39; rack (2.0.4)
+lib/rack/session/abstract/id.rb:226:in `call&#39; actionpack (5.2.0)
+lib/action_dispatch/middleware/cookies.rb:670:in `call&#39; activerecord
+(5.2.0) lib/active_record/migration.rb:559:in `call&#39; actionpack (5.2.0)
+lib/action_dispatch/middleware/callbacks.rb:28:in `block in call&#39;
+activesupport (5.2.0) lib/active_support/callbacks.rb:98:in
+`run_callbacks&#39; actionpack (5.2.0)
+lib/action_dispatch/middleware/callbacks.rb:26:in `call&#39; actionpack
+(5.2.0) lib/action_dispatch/middleware/executor.rb:14:in `call&#39;
+actionpack (5.2.0) lib/action_dispatch/middleware/debug_exceptions.rb:61:in
+`call&#39; actionpack (5.2.0)
+lib/action_dispatch/middleware/show_exceptions.rb:33:in `call&#39; railties
+(5.2.0) lib/rails/rack/logger.rb:38:in `call_app&#39; railties (5.2.0)
+lib/rails/rack/logger.rb:26:in `block in call&#39; activesupport (5.2.0)
+lib/active_support/tagged_logging.rb:71:in `block in tagged&#39;
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:28:in
+`tagged&#39; activesupport (5.2.0)
+lib/active_support/tagged_logging.rb:71:in `tagged&#39; railties (5.2.0)
+lib/rails/rack/logger.rb:26:in `call&#39; sprockets-rails (3.2.1)
+lib/sprockets/rails/quiet_assets.rb:13:in `call&#39; actionpack (5.2.0)
+lib/action_dispatch/middleware/remote_ip.rb:81:in `call&#39; actionpack
+(5.2.0) lib/action_dispatch/middleware/request_id.rb:27:in `call&#39; rack
+(2.0.4) lib/rack/method_override.rb:22:in `call&#39; rack (2.0.4)
+lib/rack/runtime.rb:22:in `call&#39; activesupport (5.2.0)
+lib/active_support/cache/strategy/local_cache_middleware.rb:29:in
+`call&#39; actionpack (5.2.0)
+lib/action_dispatch/middleware/executor.rb:14:in `call&#39; actionpack
+(5.2.0) lib/action_dispatch/middleware/static.rb:127:in `call&#39; rack
+(2.0.4) lib/rack/sendfile.rb:111:in `call&#39; railties (5.2.0)
+lib/rails/engine.rb:524:in `call&#39; rack (2.0.4)
+lib/rack/handler/webrick.rb:86:in `service&#39;
+/Users/qin/.rbenv/versions/2.5.0/lib/ruby/2.5.0/webrick/httpserver.rb:140:in
+`service&#39;
+/Users/qin/.rbenv/versions/2.5.0/lib/ruby/2.5.0/webrick/httpserver.rb:96:in
+`run&#39;
+/Users/qin/.rbenv/versions/2.5.0/lib/ruby/2.5.0/webrick/server.rb:307:in
+`block in start_thread&#39; Started GET “/cable” for 127.0.0.1 at
+2018-04-22 08:58:51 +0800 Started GET “/cable/” [WebSocket] for 127.0.0.1
+at 2018-04-22 08:58:52 +0800 Successfully upgraded to WebSocket
+(REQUEST_METHOD: GET, HTTP_CONNECTION: keep-alive, Upgrade, HTTP_UPGRADE:
+websocket)</p>
+
+<p>NotImplementedError (only partial hijack is supported.):</p>
+
+<p>rack (2.0.4) lib/rack/handler/webrick.rb:74:in `block in service&#39;
+actioncable (5.2.0) lib/action_cable/connection/stream.rb:101:in
+`hijack_rack_socket&#39; actioncable (5.2.0)
+lib/action_cable/connection/client_socket.rb:59:in `start_driver&#39;
+actioncable (5.2.0) lib/action_cable/connection/client_socket.rb:70:in
+`rack_response&#39; actioncable (5.2.0)
+lib/action_cable/connection/web_socket.rb:34:in `rack_response&#39;
+actioncable (5.2.0) lib/action_cable/connection/base.rb:213:in
+`respond_to_successful_request&#39; actioncable (5.2.0)
+lib/action_cable/connection/base.rb:73:in `process&#39; actioncable (5.2.0)
+lib/action_cable/server/base.rb:30:in `call&#39; actionpack (5.2.0)
+lib/action_dispatch/routing/mapper.rb:19:in `block in
+&lt;class:Constraints&gt;&#39; actionpack (5.2.0)
+lib/action_dispatch/routing/mapper.rb:48:in `serve&#39; actionpack (5.2.0)
+lib/action_dispatch/journey/router.rb:52:in `block in serve&#39; actionpack
+(5.2.0) lib/action_dispatch/journey/router.rb:35:in `each&#39; actionpack
+(5.2.0) lib/action_dispatch/journey/router.rb:35:in `serve&#39; actionpack
+(5.2.0) lib/action_dispatch/routing/route_set.rb:840:in `call&#39; omniauth
+(1.8.1) lib/omniauth/strategy.rb:190:in `call!&#39; omniauth (1.8.1)
+lib/omniauth/strategy.rb:168:in `call&#39; omniauth (1.8.1)
+lib/omniauth/strategy.rb:190:in `call!&#39; omniauth (1.8.1)
+lib/omniauth/strategy.rb:168:in `call&#39; omniauth (1.8.1)
+lib/omniauth/builder.rb:63:in `call&#39; rack (2.0.4)
+lib/rack/tempfile_reaper.rb:15:in `call&#39; rack (2.0.4)
+lib/rack/etag.rb:25:in `call&#39; rack (2.0.4)
+lib/rack/conditional_get.rb:25:in `call&#39; rack (2.0.4)
+lib/rack/head.rb:12:in `call&#39; actionpack (5.2.0)
+lib/action_dispatch/http/content_security_policy.rb:18:in `call&#39; rack
+(2.0.4) lib/rack/session/abstract/id.rb:232:in `context&#39; rack (2.0.4)
+lib/rack/session/abstract/id.rb:226:in `call&#39; actionpack (5.2.0)
+lib/action_dispatch/middleware/cookies.rb:670:in `call&#39; activerecord
+(5.2.0) lib/active_record/migration.rb:559:in `call&#39; actionpack (5.2.0)
+lib/action_dispatch/middleware/callbacks.rb:28:in `block in call&#39;
+activesupport (5.2.0) lib/active_support/callbacks.rb:98:in
+`run_callbacks&#39; actionpack (5.2.0)
+lib/action_dispatch/middleware/callbacks.rb:26:in `call&#39; actionpack
+(5.2.0) lib/action_dispatch/middleware/executor.rb:14:in `call&#39;
+actionpack (5.2.0) lib/action_dispatch/middleware/debug_exceptions.rb:61:in
+`call&#39; actionpack (5.2.0)
+lib/action_dispatch/middleware/show_exceptions.rb:33:in `call&#39; railties
+(5.2.0) lib/rails/rack/logger.rb:38:in `call_app&#39; railties (5.2.0)
+lib/rails/rack/logger.rb:26:in `block in call&#39; activesupport (5.2.0)
+lib/active_support/tagged_logging.rb:71:in `block in tagged&#39;
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:28:in
+`tagged&#39; activesupport (5.2.0)
+lib/active_support/tagged_logging.rb:71:in `tagged&#39; railties (5.2.0)
+lib/rails/rack/logger.rb:26:in `call&#39; sprockets-rails (3.2.1)
+lib/sprockets/rails/quiet_assets.rb:13:in `call&#39; actionpack (5.2.0)
+lib/action_dispatch/middleware/remote_ip.rb:81:in `call&#39; actionpack
+(5.2.0) lib/action_dispatch/middleware/request_id.rb:27:in `call&#39; rack
+(2.0.4) lib/rack/method_override.rb:22:in `call&#39; rack (2.0.4)
+lib/rack/runtime.rb:22:in `call&#39; activesupport (5.2.0)
+lib/active_support/cache/strategy/local_cache_middleware.rb:29:in
+`call&#39; actionpack (5.2.0)
+lib/action_dispatch/middleware/executor.rb:14:in `call&#39; actionpack
+(5.2.0) lib/action_dispatch/middleware/static.rb:127:in `call&#39; rack
+(2.0.4) lib/rack/sendfile.rb:111:in `call&#39; railties (5.2.0)
+lib/rails/engine.rb:524:in `call&#39; rack (2.0.4)
+lib/rack/handler/webrick.rb:86:in `service&#39;
+/Users/qin/.rbenv/versions/2.5.0/lib/ruby/2.5.0/webrick/httpserver.rb:140:in
+`service&#39;
+/Users/qin/.rbenv/versions/2.5.0/lib/ruby/2.5.0/webrick/httpserver.rb:96:in
+`run&#39;
+/Users/qin/.rbenv/versions/2.5.0/lib/ruby/2.5.0/webrick/server.rb:307:in
+`block in start_thread&#39; Started GET “/cable” for ::1 at 2018-04-22
+08:58:56 +0800 Started GET “/cable/” [WebSocket] for ::1 at 2018-04-22
+08:58:56 +0800 Successfully upgraded to WebSocket (REQUEST_METHOD: GET,
+HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)</p>
+
+<p>NotImplementedError (only partial hijack is supported.):</p>
+
+<p>rack (2.0.4) lib/rack/handler/webrick.rb:74:in `block in service&#39;
+actioncable (5.2.0) lib/action_cable/connection/stream.rb:101:in
+`hijack_rack_socket&#39; actioncable (5.2.0)
+lib/action_cable/connection/client_socket.rb:59:in `start_driver&#39;
+actioncable (5.2.0) lib/action_cable/connection/client_socket.rb:70:in
+`rack_response&#39; actioncable (5.2.0)
+lib/action_cable/connection/web_socket.rb:34:in `rack_response&#39;
+actioncable (5.2.0) lib/action_cable/connection/base.rb:213:in
+`respond_to_successful_request&#39; actioncable (5.2.0)
+lib/action_cable/connection/base.rb:73:in `process&#39; actioncable (5.2.0)
+lib/action_cable/server/base.rb:30:in `call&#39; actionpack (5.2.0)
+lib/action_dispatch/routing/mapper.rb:19:in `block in
+&lt;class:Constraints&gt;&#39; actionpack (5.2.0)
+lib/action_dispatch/routing/mapper.rb:48:in `serve&#39; actionpack (5.2.0)
+lib/action_dispatch/journey/router.rb:52:in `block in serve&#39; actionpack
+(5.2.0) lib/action_dispatch/journey/router.rb:35:in `each&#39; actionpack
+(5.2.0) lib/action_dispatch/journey/router.rb:35:in `serve&#39; actionpack
+(5.2.0) lib/action_dispatch/routing/route_set.rb:840:in `call&#39; omniauth
+(1.8.1) lib/omniauth/strategy.rb:190:in `call!&#39; omniauth (1.8.1)
+lib/omniauth/strategy.rb:168:in `call&#39; omniauth (1.8.1)
+lib/omniauth/strategy.rb:190:in `call!&#39; omniauth (1.8.1)
+lib/omniauth/strategy.rb:168:in `call&#39; omniauth (1.8.1)
+lib/omniauth/builder.rb:63:in `call&#39; rack (2.0.4)
+lib/rack/tempfile_reaper.rb:15:in `call&#39; rack (2.0.4)
+lib/rack/etag.rb:25:in `call&#39; rack (2.0.4)
+lib/rack/conditional_get.rb:25:in `call&#39; rack (2.0.4)
+lib/rack/head.rb:12:in `call&#39; actionpack (5.2.0)
+lib/action_dispatch/http/content_security_policy.rb:18:in `call&#39; rack
+(2.0.4) lib/rack/session/abstract/id.rb:232:in `context&#39; rack (2.0.4)
+lib/rack/session/abstract/id.rb:226:in `call&#39; actionpack (5.2.0)
+lib/action_dispatch/middleware/cookies.rb:670:in `call&#39; activerecord
+(5.2.0) lib/active_record/migration.rb:559:in `call&#39; actionpack (5.2.0)
+lib/action_dispatch/middleware/callbacks.rb:28:in `block in call&#39;
+activesupport (5.2.0) lib/active_support/callbacks.rb:98:in
+`run_callbacks&#39; actionpack (5.2.0)
+lib/action_dispatch/middleware/callbacks.rb:26:in `call&#39; actionpack
+(5.2.0) lib/action_dispatch/middleware/executor.rb:14:in `call&#39;
+actionpack (5.2.0) lib/action_dispatch/middleware/debug_exceptions.rb:61:in
+`call&#39; actionpack (5.2.0)
+lib/action_dispatch/middleware/show_exceptions.rb:33:in `call&#39; railties
+(5.2.0) lib/rails/rack/logger.rb:38:in `call_app&#39; railties (5.2.0)
+lib/rails/rack/logger.rb:26:in `block in call&#39; activesupport (5.2.0)
+lib/active_support/tagged_logging.rb:71:in `block in tagged&#39;
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:28:in
+`tagged&#39; activesupport (5.2.0)
+lib/active_support/tagged_logging.rb:71:in `tagged&#39; railties (5.2.0)
+lib/rails/rack/logger.rb:26:in `call&#39; sprockets-rails (3.2.1)
+lib/sprockets/rails/quiet_assets.rb:13:in `call&#39; actionpack (5.2.0)
+lib/action_dispatch/middleware/remote_ip.rb:81:in `call&#39; actionpack
+(5.2.0) lib/action_dispatch/middleware/request_id.rb:27:in `call&#39; rack
+(2.0.4) lib/rack/method_override.rb:22:in `call&#39; rack (2.0.4)
+lib/rack/runtime.rb:22:in `call&#39; activesupport (5.2.0)
+lib/active_support/cache/strategy/local_cache_middleware.rb:29:in
+`call&#39; actionpack (5.2.0)
+lib/action_dispatch/middleware/executor.rb:14:in `call&#39; actionpack
+(5.2.0) lib/action_dispatch/middleware/static.rb:127:in `call&#39; rack
+(2.0.4) lib/rack/sendfile.rb:111:in `call&#39; railties (5.2.0)
+lib/rails/engine.rb:524:in `call&#39; rack (2.0.4)
+lib/rack/handler/webrick.rb:86:in `service&#39;
+/Users/qin/.rbenv/versions/2.5.0/lib/ruby/2.5.0/webrick/httpserver.rb:140:in
+`service&#39;
+/Users/qin/.rbenv/versions/2.5.0/lib/ruby/2.5.0/webrick/httpserver.rb:96:in
+`run&#39;
+/Users/qin/.rbenv/versions/2.5.0/lib/ruby/2.5.0/webrick/server.rb:307:in
+`block in start_thread&#39; Started GET “/cable” for 127.0.0.1 at
+2018-04-22 08:59:05 +0800 Started GET “/cable/” [WebSocket] for 127.0.0.1
+at 2018-04-22 08:59:05 +0800 Successfully upgraded to WebSocket
+(REQUEST_METHOD: GET, HTTP_CONNECTION: keep-alive, Upgrade, HTTP_UPGRADE:
+websocket)</p>
+
+<p>NotImplementedError (only partial hijack is supported.):</p>
+
+<p>rack (2.0.4) lib/rack/handler/webrick.rb:74:in `block in service&#39;
+actioncable (5.2.0) lib/action_cable/connection/stream.rb:101:in
+`hijack_rack_socket&#39; actioncable (5.2.0)
+lib/action_cable/connection/client_socket.rb:59:in `start_driver&#39;
+actioncable (5.2.0) lib/action_cable/connection/client_socket.rb:70:in
+`rack_response&#39; actioncable (5.2.0)
+lib/action_cable/connection/web_socket.rb:34:in `rack_response&#39;
+actioncable (5.2.0) lib/action_cable/connection/base.rb:213:in
+`respond_to_successful_request&#39; actioncable (5.2.0)
+lib/action_cable/connection/base.rb:73:in `process&#39; actioncable (5.2.0)
+lib/action_cable/server/base.rb:30:in `call&#39; actionpack (5.2.0)
+lib/action_dispatch/routing/mapper.rb:19:in `block in
+&lt;class:Constraints&gt;&#39; actionpack (5.2.0)
+lib/action_dispatch/routing/mapper.rb:48:in `serve&#39; actionpack (5.2.0)
+lib/action_dispatch/journey/router.rb:52:in `block in serve&#39; actionpack
+(5.2.0) lib/action_dispatch/journey/router.rb:35:in `each&#39; actionpack
+(5.2.0) lib/action_dispatch/journey/router.rb:35:in `serve&#39; actionpack
+(5.2.0) lib/action_dispatch/routing/route_set.rb:840:in `call&#39; omniauth
+(1.8.1) lib/omniauth/strategy.rb:190:in `call!&#39; omniauth (1.8.1)
+lib/omniauth/strategy.rb:168:in `call&#39; omniauth (1.8.1)
+lib/omniauth/strategy.rb:190:in `call!&#39; omniauth (1.8.1)
+lib/omniauth/strategy.rb:168:in `call&#39; omniauth (1.8.1)
+lib/omniauth/builder.rb:63:in `call&#39; rack (2.0.4)
+lib/rack/tempfile_reaper.rb:15:in `call&#39; rack (2.0.4)
+lib/rack/etag.rb:25:in `call&#39; rack (2.0.4)
+lib/rack/conditional_get.rb:25:in `call&#39; rack (2.0.4)
+lib/rack/head.rb:12:in `call&#39; actionpack (5.2.0)
+lib/action_dispatch/http/content_security_policy.rb:18:in `call&#39; rack
+(2.0.4) lib/rack/session/abstract/id.rb:232:in `context&#39; rack (2.0.4)
+lib/rack/session/abstract/id.rb:226:in `call&#39; actionpack (5.2.0)
+lib/action_dispatch/middleware/cookies.rb:670:in `call&#39; activerecord
+(5.2.0) lib/active_record/migration.rb:559:in `call&#39; actionpack (5.2.0)
+lib/action_dispatch/middleware/callbacks.rb:28:in `block in call&#39;
+activesupport (5.2.0) lib/active_support/callbacks.rb:98:in
+`run_callbacks&#39; actionpack (5.2.0)
+lib/action_dispatch/middleware/callbacks.rb:26:in `call&#39; actionpack
+(5.2.0) lib/action_dispatch/middleware/executor.rb:14:in `call&#39;
+actionpack (5.2.0) lib/action_dispatch/middleware/debug_exceptions.rb:61:in
+`call&#39; actionpack (5.2.0)
+lib/action_dispatch/middleware/show_exceptions.rb:33:in `call&#39; railties
+(5.2.0) lib/rails/rack/logger.rb:38:in `call_app&#39; railties (5.2.0)
+lib/rails/rack/logger.rb:26:in `block in call&#39; activesupport (5.2.0)
+lib/active_support/tagged_logging.rb:71:in `block in tagged&#39;
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:28:in
+`tagged&#39; activesupport (5.2.0)
+lib/active_support/tagged_logging.rb:71:in `tagged&#39; railties (5.2.0)
+lib/rails/rack/logger.rb:26:in `call&#39; sprockets-rails (3.2.1)
+lib/sprockets/rails/quiet_assets.rb:13:in `call&#39; actionpack (5.2.0)
+lib/action_dispatch/middleware/remote_ip.rb:81:in `call&#39; actionpack
+(5.2.0) lib/action_dispatch/middleware/request_id.rb:27:in `call&#39; rack
+(2.0.4) lib/rack/method_override.rb:22:in `call&#39; rack (2.0.4)
+lib/rack/runtime.rb:22:in `call&#39; activesupport (5.2.0)
+lib/active_support/cache/strategy/local_cache_middleware.rb:29:in
+`call&#39; actionpack (5.2.0)
+lib/action_dispatch/middleware/executor.rb:14:in `call&#39; actionpack
+(5.2.0) lib/action_dispatch/middleware/static.rb:127:in `call&#39; rack
+(2.0.4) lib/rack/sendfile.rb:111:in `call&#39; railties (5.2.0)
+lib/rails/engine.rb:524:in `call&#39; rack (2.0.4)
+lib/rack/handler/webrick.rb:86:in `service&#39;
+/Users/qin/.rbenv/versions/2.5.0/lib/ruby/2.5.0/webrick/httpserver.rb:140:in
+`service&#39;
+/Users/qin/.rbenv/versions/2.5.0/lib/ruby/2.5.0/webrick/httpserver.rb:96:in
+`run&#39;
+/Users/qin/.rbenv/versions/2.5.0/lib/ruby/2.5.0/webrick/server.rb:307:in
+`block in start_thread&#39; Started GET “/cable” for ::1 at 2018-04-22
+08:59:11 +0800 Started GET “/cable/” [WebSocket] for ::1 at 2018-04-22
+08:59:11 +0800 Successfully upgraded to WebSocket (REQUEST_METHOD: GET,
+HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)</p>
+
+<p>NotImplementedError (only partial hijack is supported.):</p>
+
+<p>rack (2.0.4) lib/rack/handler/webrick.rb:74:in `block in service&#39;
+actioncable (5.2.0) lib/action_cable/connection/stream.rb:101:in
+`hijack_rack_socket&#39; actioncable (5.2.0)
+lib/action_cable/connection/client_socket.rb:59:in `start_driver&#39;
+actioncable (5.2.0) lib/action_cable/connection/client_socket.rb:70:in
+`rack_response&#39; actioncable (5.2.0)
+lib/action_cable/connection/web_socket.rb:34:in `rack_response&#39;
+actioncable (5.2.0) lib/action_cable/connection/base.rb:213:in
+`respond_to_successful_request&#39; actioncable (5.2.0)
+lib/action_cable/connection/base.rb:73:in `process&#39; actioncable (5.2.0)
+lib/action_cable/server/base.rb:30:in `call&#39; actionpack (5.2.0)
+lib/action_dispatch/routing/mapper.rb:19:in `block in
+&lt;class:Constraints&gt;&#39; actionpack (5.2.0)
+lib/action_dispatch/routing/mapper.rb:48:in `serve&#39; actionpack (5.2.0)
+lib/action_dispatch/journey/router.rb:52:in `block in serve&#39; actionpack
+(5.2.0) lib/action_dispatch/journey/router.rb:35:in `each&#39; actionpack
+(5.2.0) lib/action_dispatch/journey/router.rb:35:in `serve&#39; actionpack
+(5.2.0) lib/action_dispatch/routing/route_set.rb:840:in `call&#39; omniauth
+(1.8.1) lib/omniauth/strategy.rb:190:in `call!&#39; omniauth (1.8.1)
+lib/omniauth/strategy.rb:168:in `call&#39; omniauth (1.8.1)
+lib/omniauth/strategy.rb:190:in `call!&#39; omniauth (1.8.1)
+lib/omniauth/strategy.rb:168:in `call&#39; omniauth (1.8.1)
+lib/omniauth/builder.rb:63:in `call&#39; rack (2.0.4)
+lib/rack/tempfile_reaper.rb:15:in `call&#39; rack (2.0.4)
+lib/rack/etag.rb:25:in `call&#39; rack (2.0.4)
+lib/rack/conditional_get.rb:25:in `call&#39; rack (2.0.4)
+lib/rack/head.rb:12:in `call&#39; actionpack (5.2.0)
+lib/action_dispatch/http/content_security_policy.rb:18:in `call&#39; rack
+(2.0.4) lib/rack/session/abstract/id.rb:232:in `context&#39; rack (2.0.4)
+lib/rack/session/abstract/id.rb:226:in `call&#39; actionpack (5.2.0)
+lib/action_dispatch/middleware/cookies.rb:670:in `call&#39; activerecord
+(5.2.0) lib/active_record/migration.rb:559:in `call&#39; actionpack (5.2.0)
+lib/action_dispatch/middleware/callbacks.rb:28:in `block in call&#39;
+activesupport (5.2.0) lib/active_support/callbacks.rb:98:in
+`run_callbacks&#39; actionpack (5.2.0)
+lib/action_dispatch/middleware/callbacks.rb:26:in `call&#39; actionpack
+(5.2.0) lib/action_dispatch/middleware/executor.rb:14:in `call&#39;
+actionpack (5.2.0) lib/action_dispatch/middleware/debug_exceptions.rb:61:in
+`call&#39; actionpack (5.2.0)
+lib/action_dispatch/middleware/show_exceptions.rb:33:in `call&#39; railties
+(5.2.0) lib/rails/rack/logger.rb:38:in `call_app&#39; railties (5.2.0)
+lib/rails/rack/logger.rb:26:in `block in call&#39; activesupport (5.2.0)
+lib/active_support/tagged_logging.rb:71:in `block in tagged&#39;
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:28:in
+`tagged&#39; activesupport (5.2.0)
+lib/active_support/tagged_logging.rb:71:in `tagged&#39; railties (5.2.0)
+lib/rails/rack/logger.rb:26:in `call&#39; sprockets-rails (3.2.1)
+lib/sprockets/rails/quiet_assets.rb:13:in `call&#39; actionpack (5.2.0)
+lib/action_dispatch/middleware/remote_ip.rb:81:in `call&#39; actionpack
+(5.2.0) lib/action_dispatch/middleware/request_id.rb:27:in `call&#39; rack
+(2.0.4) lib/rack/method_override.rb:22:in `call&#39; rack (2.0.4)
+lib/rack/runtime.rb:22:in `call&#39; activesupport (5.2.0)
+lib/active_support/cache/strategy/local_cache_middleware.rb:29:in
+`call&#39; actionpack (5.2.0)
+lib/action_dispatch/middleware/executor.rb:14:in `call&#39; actionpack
+(5.2.0) lib/action_dispatch/middleware/static.rb:127:in `call&#39; rack
+(2.0.4) lib/rack/sendfile.rb:111:in `call&#39; railties (5.2.0)
+lib/rails/engine.rb:524:in `call&#39; rack (2.0.4)
+lib/rack/handler/webrick.rb:86:in `service&#39;
+/Users/qin/.rbenv/versions/2.5.0/lib/ruby/2.5.0/webrick/httpserver.rb:140:in
+`service&#39;
+/Users/qin/.rbenv/versions/2.5.0/lib/ruby/2.5.0/webrick/httpserver.rb:96:in
+`run&#39;
+/Users/qin/.rbenv/versions/2.5.0/lib/ruby/2.5.0/webrick/server.rb:307:in
+`block in start_thread&#39; Started GET “/cable” for 127.0.0.1 at
+2018-04-22 08:59:18 +0800 Started GET “/cable/” [WebSocket] for 127.0.0.1
+at 2018-04-22 08:59:18 +0800 Successfully upgraded to WebSocket
+(REQUEST_METHOD: GET, HTTP_CONNECTION: keep-alive, Upgrade, HTTP_UPGRADE:
+websocket)</p>
+
+<p>NotImplementedError (only partial hijack is supported.):</p>
+
+<p>rack (2.0.4) lib/rack/handler/webrick.rb:74:in `block in service&#39;
+actioncable (5.2.0) lib/action_cable/connection/stream.rb:101:in
+`hijack_rack_socket&#39; actioncable (5.2.0)
+lib/action_cable/connection/client_socket.rb:59:in `start_driver&#39;
+actioncable (5.2.0) lib/action_cable/connection/client_socket.rb:70:in
+`rack_response&#39; actioncable (5.2.0)
+lib/action_cable/connection/web_socket.rb:34:in `rack_response&#39;
+actioncable (5.2.0) lib/action_cable/connection/base.rb:213:in
+`respond_to_successful_request&#39; actioncable (5.2.0)
+lib/action_cable/connection/base.rb:73:in `process&#39; actioncable (5.2.0)
+lib/action_cable/server/base.rb:30:in `call&#39; actionpack (5.2.0)
+lib/action_dispatch/routing/mapper.rb:19:in `block in
+&lt;class:Constraints&gt;&#39; actionpack (5.2.0)
+lib/action_dispatch/routing/mapper.rb:48:in `serve&#39; actionpack (5.2.0)
+lib/action_dispatch/journey/router.rb:52:in `block in serve&#39; actionpack
+(5.2.0) lib/action_dispatch/journey/router.rb:35:in `each&#39; actionpack
+(5.2.0) lib/action_dispatch/journey/router.rb:35:in `serve&#39; actionpack
+(5.2.0) lib/action_dispatch/routing/route_set.rb:840:in `call&#39; omniauth
+(1.8.1) lib/omniauth/strategy.rb:190:in `call!&#39; omniauth (1.8.1)
+lib/omniauth/strategy.rb:168:in `call&#39; omniauth (1.8.1)
+lib/omniauth/strategy.rb:190:in `call!&#39; omniauth (1.8.1)
+lib/omniauth/strategy.rb:168:in `call&#39; omniauth (1.8.1)
+lib/omniauth/builder.rb:63:in `call&#39; rack (2.0.4)
+lib/rack/tempfile_reaper.rb:15:in `call&#39; rack (2.0.4)
+lib/rack/etag.rb:25:in `call&#39; rack (2.0.4)
+lib/rack/conditional_get.rb:25:in `call&#39; rack (2.0.4)
+lib/rack/head.rb:12:in `call&#39; actionpack (5.2.0)
+lib/action_dispatch/http/content_security_policy.rb:18:in `call&#39; rack
+(2.0.4) lib/rack/session/abstract/id.rb:232:in `context&#39; rack (2.0.4)
+lib/rack/session/abstract/id.rb:226:in `call&#39; actionpack (5.2.0)
+lib/action_dispatch/middleware/cookies.rb:670:in `call&#39; activerecord
+(5.2.0) lib/active_record/migration.rb:559:in `call&#39; actionpack (5.2.0)
+lib/action_dispatch/middleware/callbacks.rb:28:in `block in call&#39;
+activesupport (5.2.0) lib/active_support/callbacks.rb:98:in
+`run_callbacks&#39; actionpack (5.2.0)
+lib/action_dispatch/middleware/callbacks.rb:26:in `call&#39; actionpack
+(5.2.0) lib/action_dispatch/middleware/executor.rb:14:in `call&#39;
+actionpack (5.2.0) lib/action_dispatch/middleware/debug_exceptions.rb:61:in
+`call&#39; actionpack (5.2.0)
+lib/action_dispatch/middleware/show_exceptions.rb:33:in `call&#39; railties
+(5.2.0) lib/rails/rack/logger.rb:38:in `call_app&#39; railties (5.2.0)
+lib/rails/rack/logger.rb:26:in `block in call&#39; activesupport (5.2.0)
+lib/active_support/tagged_logging.rb:71:in `block in tagged&#39;
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:28:in
+`tagged&#39; activesupport (5.2.0)
+lib/active_support/tagged_logging.rb:71:in `tagged&#39; railties (5.2.0)
+lib/rails/rack/logger.rb:26:in `call&#39; sprockets-rails (3.2.1)
+lib/sprockets/rails/quiet_assets.rb:13:in `call&#39; actionpack (5.2.0)
+lib/action_dispatch/middleware/remote_ip.rb:81:in `call&#39; actionpack
+(5.2.0) lib/action_dispatch/middleware/request_id.rb:27:in `call&#39; rack
+(2.0.4) lib/rack/method_override.rb:22:in `call&#39; rack (2.0.4)
+lib/rack/runtime.rb:22:in `call&#39; activesupport (5.2.0)
+lib/active_support/cache/strategy/local_cache_middleware.rb:29:in
+`call&#39; actionpack (5.2.0)
+lib/action_dispatch/middleware/executor.rb:14:in `call&#39; actionpack
+(5.2.0) lib/action_dispatch/middleware/static.rb:127:in `call&#39; rack
+(2.0.4) lib/rack/sendfile.rb:111:in `call&#39; railties (5.2.0)
+lib/rails/engine.rb:524:in `call&#39; rack (2.0.4)
+lib/rack/handler/webrick.rb:86:in `service&#39;
+/Users/qin/.rbenv/versions/2.5.0/lib/ruby/2.5.0/webrick/httpserver.rb:140:in
+`service&#39;
+/Users/qin/.rbenv/versions/2.5.0/lib/ruby/2.5.0/webrick/httpserver.rb:96:in
+`run&#39;
+/Users/qin/.rbenv/versions/2.5.0/lib/ruby/2.5.0/webrick/server.rb:307:in
+`block in start_thread&#39; Started GET “/cable” for ::1 at 2018-04-22
+08:59:26 +0800 Started GET “/cable/” [WebSocket] for ::1 at 2018-04-22
+08:59:26 +0800 Successfully upgraded to WebSocket (REQUEST_METHOD: GET,
+HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)</p>
+
+<p>NotImplementedError (only partial hijack is supported.):</p>
+
+<p>rack (2.0.4) lib/rack/handler/webrick.rb:74:in `block in service&#39;
+actioncable (5.2.0) lib/action_cable/connection/stream.rb:101:in
+`hijack_rack_socket&#39; actioncable (5.2.0)
+lib/action_cable/connection/client_socket.rb:59:in `start_driver&#39;
+actioncable (5.2.0) lib/action_cable/connection/client_socket.rb:70:in
+`rack_response&#39; actioncable (5.2.0)
+lib/action_cable/connection/web_socket.rb:34:in `rack_response&#39;
+actioncable (5.2.0) lib/action_cable/connection/base.rb:213:in
+`respond_to_successful_request&#39; actioncable (5.2.0)
+lib/action_cable/connection/base.rb:73:in `process&#39; actioncable (5.2.0)
+lib/action_cable/server/base.rb:30:in `call&#39; actionpack (5.2.0)
+lib/action_dispatch/routing/mapper.rb:19:in `block in
+&lt;class:Constraints&gt;&#39; actionpack (5.2.0)
+lib/action_dispatch/routing/mapper.rb:48:in `serve&#39; actionpack (5.2.0)
+lib/action_dispatch/journey/router.rb:52:in `block in serve&#39; actionpack
+(5.2.0) lib/action_dispatch/journey/router.rb:35:in `each&#39; actionpack
+(5.2.0) lib/action_dispatch/journey/router.rb:35:in `serve&#39; actionpack
+(5.2.0) lib/action_dispatch/routing/route_set.rb:840:in `call&#39; omniauth
+(1.8.1) lib/omniauth/strategy.rb:190:in `call!&#39; omniauth (1.8.1)
+lib/omniauth/strategy.rb:168:in `call&#39; omniauth (1.8.1)
+lib/omniauth/strategy.rb:190:in `call!&#39; omniauth (1.8.1)
+lib/omniauth/strategy.rb:168:in `call&#39; omniauth (1.8.1)
+lib/omniauth/builder.rb:63:in `call&#39; rack (2.0.4)
+lib/rack/tempfile_reaper.rb:15:in `call&#39; rack (2.0.4)
+lib/rack/etag.rb:25:in `call&#39; rack (2.0.4)
+lib/rack/conditional_get.rb:25:in `call&#39; rack (2.0.4)
+lib/rack/head.rb:12:in `call&#39; actionpack (5.2.0)
+lib/action_dispatch/http/content_security_policy.rb:18:in `call&#39; rack
+(2.0.4) lib/rack/session/abstract/id.rb:232:in `context&#39; rack (2.0.4)
+lib/rack/session/abstract/id.rb:226:in `call&#39; actionpack (5.2.0)
+lib/action_dispatch/middleware/cookies.rb:670:in `call&#39; activerecord
+(5.2.0) lib/active_record/migration.rb:559:in `call&#39; actionpack (5.2.0)
+lib/action_dispatch/middleware/callbacks.rb:28:in `block in call&#39;
+activesupport (5.2.0) lib/active_support/callbacks.rb:98:in
+`run_callbacks&#39; actionpack (5.2.0)
+lib/action_dispatch/middleware/callbacks.rb:26:in `call&#39; actionpack
+(5.2.0) lib/action_dispatch/middleware/executor.rb:14:in `call&#39;
+actionpack (5.2.0) lib/action_dispatch/middleware/debug_exceptions.rb:61:in
+`call&#39; actionpack (5.2.0)
+lib/action_dispatch/middleware/show_exceptions.rb:33:in `call&#39; railties
+(5.2.0) lib/rails/rack/logger.rb:38:in `call_app&#39; railties (5.2.0)
+lib/rails/rack/logger.rb:26:in `block in call&#39; activesupport (5.2.0)
+lib/active_support/tagged_logging.rb:71:in `block in tagged&#39;
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:28:in
+`tagged&#39; activesupport (5.2.0)
+lib/active_support/tagged_logging.rb:71:in `tagged&#39; railties (5.2.0)
+lib/rails/rack/logger.rb:26:in `call&#39; sprockets-rails (3.2.1)
+lib/sprockets/rails/quiet_assets.rb:13:in `call&#39; actionpack (5.2.0)
+lib/action_dispatch/middleware/remote_ip.rb:81:in `call&#39; actionpack
+(5.2.0) lib/action_dispatch/middleware/request_id.rb:27:in `call&#39; rack
+(2.0.4) lib/rack/method_override.rb:22:in `call&#39; rack (2.0.4)
+lib/rack/runtime.rb:22:in `call&#39; activesupport (5.2.0)
+lib/active_support/cache/strategy/local_cache_middleware.rb:29:in
+`call&#39; actionpack (5.2.0)
+lib/action_dispatch/middleware/executor.rb:14:in `call&#39; actionpack
+(5.2.0) lib/action_dispatch/middleware/static.rb:127:in `call&#39; rack
+(2.0.4) lib/rack/sendfile.rb:111:in `call&#39; railties (5.2.0)
+lib/rails/engine.rb:524:in `call&#39; rack (2.0.4)
+lib/rack/handler/webrick.rb:86:in `service&#39;
+/Users/qin/.rbenv/versions/2.5.0/lib/ruby/2.5.0/webrick/httpserver.rb:140:in
+`service&#39;
+/Users/qin/.rbenv/versions/2.5.0/lib/ruby/2.5.0/webrick/httpserver.rb:96:in
+`run&#39;
+/Users/qin/.rbenv/versions/2.5.0/lib/ruby/2.5.0/webrick/server.rb:307:in
+`block in start_thread&#39; Started GET “/cable” for 127.0.0.1 at
+2018-04-22 08:59:32 +0800 Started GET “/cable/” [WebSocket] for 127.0.0.1
+at 2018-04-22 08:59:32 +0800 Successfully upgraded to WebSocket
+(REQUEST_METHOD: GET, HTTP_CONNECTION: keep-alive, Upgrade, HTTP_UPGRADE:
+websocket)</p>
+
+<p>NotImplementedError (only partial hijack is supported.):</p>
+
+<p>rack (2.0.4) lib/rack/handler/webrick.rb:74:in `block in service&#39;
+actioncable (5.2.0) lib/action_cable/connection/stream.rb:101:in
+`hijack_rack_socket&#39; actioncable (5.2.0)
+lib/action_cable/connection/client_socket.rb:59:in `start_driver&#39;
+actioncable (5.2.0) lib/action_cable/connection/client_socket.rb:70:in
+`rack_response&#39; actioncable (5.2.0)
+lib/action_cable/connection/web_socket.rb:34:in `rack_response&#39;
+actioncable (5.2.0) lib/action_cable/connection/base.rb:213:in
+`respond_to_successful_request&#39; actioncable (5.2.0)
+lib/action_cable/connection/base.rb:73:in `process&#39; actioncable (5.2.0)
+lib/action_cable/server/base.rb:30:in `call&#39; actionpack (5.2.0)
+lib/action_dispatch/routing/mapper.rb:19:in `block in
+&lt;class:Constraints&gt;&#39; actionpack (5.2.0)
+lib/action_dispatch/routing/mapper.rb:48:in `serve&#39; actionpack (5.2.0)
+lib/action_dispatch/journey/router.rb:52:in `block in serve&#39; actionpack
+(5.2.0) lib/action_dispatch/journey/router.rb:35:in `each&#39; actionpack
+(5.2.0) lib/action_dispatch/journey/router.rb:35:in `serve&#39; actionpack
+(5.2.0) lib/action_dispatch/routing/route_set.rb:840:in `call&#39; omniauth
+(1.8.1) lib/omniauth/strategy.rb:190:in `call!&#39; omniauth (1.8.1)
+lib/omniauth/strategy.rb:168:in `call&#39; omniauth (1.8.1)
+lib/omniauth/strategy.rb:190:in `call!&#39; omniauth (1.8.1)
+lib/omniauth/strategy.rb:168:in `call&#39; omniauth (1.8.1)
+lib/omniauth/builder.rb:63:in `call&#39; rack (2.0.4)
+lib/rack/tempfile_reaper.rb:15:in `call&#39; rack (2.0.4)
+lib/rack/etag.rb:25:in `call&#39; rack (2.0.4)
+lib/rack/conditional_get.rb:25:in `call&#39; rack (2.0.4)
+lib/rack/head.rb:12:in `call&#39; actionpack (5.2.0)
+lib/action_dispatch/http/content_security_policy.rb:18:in `call&#39; rack
+(2.0.4) lib/rack/session/abstract/id.rb:232:in `context&#39; rack (2.0.4)
+lib/rack/session/abstract/id.rb:226:in `call&#39; actionpack (5.2.0)
+lib/action_dispatch/middleware/cookies.rb:670:in `call&#39; activerecord
+(5.2.0) lib/active_record/migration.rb:559:in `call&#39; actionpack (5.2.0)
+lib/action_dispatch/middleware/callbacks.rb:28:in `block in call&#39;
+activesupport (5.2.0) lib/active_support/callbacks.rb:98:in
+`run_callbacks&#39; actionpack (5.2.0)
+lib/action_dispatch/middleware/callbacks.rb:26:in `call&#39; actionpack
+(5.2.0) lib/action_dispatch/middleware/executor.rb:14:in `call&#39;
+actionpack (5.2.0) lib/action_dispatch/middleware/debug_exceptions.rb:61:in
+`call&#39; actionpack (5.2.0)
+lib/action_dispatch/middleware/show_exceptions.rb:33:in `call&#39; railties
+(5.2.0) lib/rails/rack/logger.rb:38:in `call_app&#39; railties (5.2.0)
+lib/rails/rack/logger.rb:26:in `block in call&#39; activesupport (5.2.0)
+lib/active_support/tagged_logging.rb:71:in `block in tagged&#39;
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:28:in
+`tagged&#39; activesupport (5.2.0)
+lib/active_support/tagged_logging.rb:71:in `tagged&#39; railties (5.2.0)
+lib/rails/rack/logger.rb:26:in `call&#39; sprockets-rails (3.2.1)
+lib/sprockets/rails/quiet_assets.rb:13:in `call&#39; actionpack (5.2.0)
+lib/action_dispatch/middleware/remote_ip.rb:81:in `call&#39; actionpack
+(5.2.0) lib/action_dispatch/middleware/request_id.rb:27:in `call&#39; rack
+(2.0.4) lib/rack/method_override.rb:22:in `call&#39; rack (2.0.4)
+lib/rack/runtime.rb:22:in `call&#39; activesupport (5.2.0)
+lib/active_support/cache/strategy/local_cache_middleware.rb:29:in
+`call&#39; actionpack (5.2.0)
+lib/action_dispatch/middleware/executor.rb:14:in `call&#39; actionpack
+(5.2.0) lib/action_dispatch/middleware/static.rb:127:in `call&#39; rack
+(2.0.4) lib/rack/sendfile.rb:111:in `call&#39; railties (5.2.0)
+lib/rails/engine.rb:524:in `call&#39; rack (2.0.4)
+lib/rack/handler/webrick.rb:86:in `service&#39;
+/Users/qin/.rbenv/versions/2.5.0/lib/ruby/2.5.0/webrick/httpserver.rb:140:in
+`service&#39;
+/Users/qin/.rbenv/versions/2.5.0/lib/ruby/2.5.0/webrick/httpserver.rb:96:in
+`run&#39;
+/Users/qin/.rbenv/versions/2.5.0/lib/ruby/2.5.0/webrick/server.rb:307:in
+`block in start_thread&#39; Started GET “/cable” for ::1 at 2018-04-22
+08:59:41 +0800 Started GET “/cable/” [WebSocket] for ::1 at 2018-04-22
+08:59:41 +0800 Successfully upgraded to WebSocket (REQUEST_METHOD: GET,
+HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)</p>
+
+<p>NotImplementedError (only partial hijack is supported.):</p>
+
+<p>rack (2.0.4) lib/rack/handler/webrick.rb:74:in `block in service&#39;
+actioncable (5.2.0) lib/action_cable/connection/stream.rb:101:in
+`hijack_rack_socket&#39; actioncable (5.2.0)
+lib/action_cable/connection/client_socket.rb:59:in `start_driver&#39;
+actioncable (5.2.0) lib/action_cable/connection/client_socket.rb:70:in
+`rack_response&#39; actioncable (5.2.0)
+lib/action_cable/connection/web_socket.rb:34:in `rack_response&#39;
+actioncable (5.2.0) lib/action_cable/connection/base.rb:213:in
+`respond_to_successful_request&#39; actioncable (5.2.0)
+lib/action_cable/connection/base.rb:73:in `process&#39; actioncable (5.2.0)
+lib/action_cable/server/base.rb:30:in `call&#39; actionpack (5.2.0)
+lib/action_dispatch/routing/mapper.rb:19:in `block in
+&lt;class:Constraints&gt;&#39; actionpack (5.2.0)
+lib/action_dispatch/routing/mapper.rb:48:in `serve&#39; actionpack (5.2.0)
+lib/action_dispatch/journey/router.rb:52:in `block in serve&#39; actionpack
+(5.2.0) lib/action_dispatch/journey/router.rb:35:in `each&#39; actionpack
+(5.2.0) lib/action_dispatch/journey/router.rb:35:in `serve&#39; actionpack
+(5.2.0) lib/action_dispatch/routing/route_set.rb:840:in `call&#39; omniauth
+(1.8.1) lib/omniauth/strategy.rb:190:in `call!&#39; omniauth (1.8.1)
+lib/omniauth/strategy.rb:168:in `call&#39; omniauth (1.8.1)
+lib/omniauth/strategy.rb:190:in `call!&#39; omniauth (1.8.1)
+lib/omniauth/strategy.rb:168:in `call&#39; omniauth (1.8.1)
+lib/omniauth/builder.rb:63:in `call&#39; rack (2.0.4)
+lib/rack/tempfile_reaper.rb:15:in `call&#39; rack (2.0.4)
+lib/rack/etag.rb:25:in `call&#39; rack (2.0.4)
+lib/rack/conditional_get.rb:25:in `call&#39; rack (2.0.4)
+lib/rack/head.rb:12:in `call&#39; actionpack (5.2.0)
+lib/action_dispatch/http/content_security_policy.rb:18:in `call&#39; rack
+(2.0.4) lib/rack/session/abstract/id.rb:232:in `context&#39; rack (2.0.4)
+lib/rack/session/abstract/id.rb:226:in `call&#39; actionpack (5.2.0)
+lib/action_dispatch/middleware/cookies.rb:670:in `call&#39; activerecord
+(5.2.0) lib/active_record/migration.rb:559:in `call&#39; actionpack (5.2.0)
+lib/action_dispatch/middleware/callbacks.rb:28:in `block in call&#39;
+activesupport (5.2.0) lib/active_support/callbacks.rb:98:in
+`run_callbacks&#39; actionpack (5.2.0)
+lib/action_dispatch/middleware/callbacks.rb:26:in `call&#39; actionpack
+(5.2.0) lib/action_dispatch/middleware/executor.rb:14:in `call&#39;
+actionpack (5.2.0) lib/action_dispatch/middleware/debug_exceptions.rb:61:in
+`call&#39; actionpack (5.2.0)
+lib/action_dispatch/middleware/show_exceptions.rb:33:in `call&#39; railties
+(5.2.0) lib/rails/rack/logger.rb:38:in `call_app&#39; railties (5.2.0)
+lib/rails/rack/logger.rb:26:in `block in call&#39; activesupport (5.2.0)
+lib/active_support/tagged_logging.rb:71:in `block in tagged&#39;
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:28:in
+`tagged&#39; activesupport (5.2.0)
+lib/active_support/tagged_logging.rb:71:in `tagged&#39; railties (5.2.0)
+lib/rails/rack/logger.rb:26:in `call&#39; sprockets-rails (3.2.1)
+lib/sprockets/rails/quiet_assets.rb:13:in `call&#39; actionpack (5.2.0)
+lib/action_dispatch/middleware/remote_ip.rb:81:in `call&#39; actionpack
+(5.2.0) lib/action_dispatch/middleware/request_id.rb:27:in `call&#39; rack
+(2.0.4) lib/rack/method_override.rb:22:in `call&#39; rack (2.0.4)
+lib/rack/runtime.rb:22:in `call&#39; activesupport (5.2.0)
+lib/active_support/cache/strategy/local_cache_middleware.rb:29:in
+`call&#39; actionpack (5.2.0)
+lib/action_dispatch/middleware/executor.rb:14:in `call&#39; actionpack
+(5.2.0) lib/action_dispatch/middleware/static.rb:127:in `call&#39; rack
+(2.0.4) lib/rack/sendfile.rb:111:in `call&#39; railties (5.2.0)
+lib/rails/engine.rb:524:in `call&#39; rack (2.0.4)
+lib/rack/handler/webrick.rb:86:in `service&#39;
+/Users/qin/.rbenv/versions/2.5.0/lib/ruby/2.5.0/webrick/httpserver.rb:140:in
+`service&#39;
+/Users/qin/.rbenv/versions/2.5.0/lib/ruby/2.5.0/webrick/httpserver.rb:96:in
+`run&#39;
+/Users/qin/.rbenv/versions/2.5.0/lib/ruby/2.5.0/webrick/server.rb:307:in
+`block in start_thread&#39; Started GET “/cable” for 127.0.0.1 at
+2018-04-22 08:59:49 +0800 Started GET “/cable/” [WebSocket] for 127.0.0.1
+at 2018-04-22 08:59:49 +0800 Successfully upgraded to WebSocket
+(REQUEST_METHOD: GET, HTTP_CONNECTION: keep-alive, Upgrade, HTTP_UPGRADE:
+websocket)</p>
+
+<p>NotImplementedError (only partial hijack is supported.):</p>
+
+<p>rack (2.0.4) lib/rack/handler/webrick.rb:74:in `block in service&#39;
+actioncable (5.2.0) lib/action_cable/connection/stream.rb:101:in
+`hijack_rack_socket&#39; actioncable (5.2.0)
+lib/action_cable/connection/client_socket.rb:59:in `start_driver&#39;
+actioncable (5.2.0) lib/action_cable/connection/client_socket.rb:70:in
+`rack_response&#39; actioncable (5.2.0)
+lib/action_cable/connection/web_socket.rb:34:in `rack_response&#39;
+actioncable (5.2.0) lib/action_cable/connection/base.rb:213:in
+`respond_to_successful_request&#39; actioncable (5.2.0)
+lib/action_cable/connection/base.rb:73:in `process&#39; actioncable (5.2.0)
+lib/action_cable/server/base.rb:30:in `call&#39; actionpack (5.2.0)
+lib/action_dispatch/routing/mapper.rb:19:in `block in
+&lt;class:Constraints&gt;&#39; actionpack (5.2.0)
+lib/action_dispatch/routing/mapper.rb:48:in `serve&#39; actionpack (5.2.0)
+lib/action_dispatch/journey/router.rb:52:in `block in serve&#39; actionpack
+(5.2.0) lib/action_dispatch/journey/router.rb:35:in `each&#39; actionpack
+(5.2.0) lib/action_dispatch/journey/router.rb:35:in `serve&#39; actionpack
+(5.2.0) lib/action_dispatch/routing/route_set.rb:840:in `call&#39; omniauth
+(1.8.1) lib/omniauth/strategy.rb:190:in `call!&#39; omniauth (1.8.1)
+lib/omniauth/strategy.rb:168:in `call&#39; omniauth (1.8.1)
+lib/omniauth/strategy.rb:190:in `call!&#39; omniauth (1.8.1)
+lib/omniauth/strategy.rb:168:in `call&#39; omniauth (1.8.1)
+lib/omniauth/builder.rb:63:in `call&#39; rack (2.0.4)
+lib/rack/tempfile_reaper.rb:15:in `call&#39; rack (2.0.4)
+lib/rack/etag.rb:25:in `call&#39; rack (2.0.4)
+lib/rack/conditional_get.rb:25:in `call&#39; rack (2.0.4)
+lib/rack/head.rb:12:in `call&#39; actionpack (5.2.0)
+lib/action_dispatch/http/content_security_policy.rb:18:in `call&#39; rack
+(2.0.4) lib/rack/session/abstract/id.rb:232:in `context&#39; rack (2.0.4)
+lib/rack/session/abstract/id.rb:226:in `call&#39; actionpack (5.2.0)
+lib/action_dispatch/middleware/cookies.rb:670:in `call&#39; activerecord
+(5.2.0) lib/active_record/migration.rb:559:in `call&#39; actionpack (5.2.0)
+lib/action_dispatch/middleware/callbacks.rb:28:in `block in call&#39;
+activesupport (5.2.0) lib/active_support/callbacks.rb:98:in
+`run_callbacks&#39; actionpack (5.2.0)
+lib/action_dispatch/middleware/callbacks.rb:26:in `call&#39; actionpack
+(5.2.0) lib/action_dispatch/middleware/executor.rb:14:in `call&#39;
+actionpack (5.2.0) lib/action_dispatch/middleware/debug_exceptions.rb:61:in
+`call&#39; actionpack (5.2.0)
+lib/action_dispatch/middleware/show_exceptions.rb:33:in `call&#39; railties
+(5.2.0) lib/rails/rack/logger.rb:38:in `call_app&#39; railties (5.2.0)
+lib/rails/rack/logger.rb:26:in `block in call&#39; activesupport (5.2.0)
+lib/active_support/tagged_logging.rb:71:in `block in tagged&#39;
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:28:in
+`tagged&#39; activesupport (5.2.0)
+lib/active_support/tagged_logging.rb:71:in `tagged&#39; railties (5.2.0)
+lib/rails/rack/logger.rb:26:in `call&#39; sprockets-rails (3.2.1)
+lib/sprockets/rails/quiet_assets.rb:13:in `call&#39; actionpack (5.2.0)
+lib/action_dispatch/middleware/remote_ip.rb:81:in `call&#39; actionpack
+(5.2.0) lib/action_dispatch/middleware/request_id.rb:27:in `call&#39; rack
+(2.0.4) lib/rack/method_override.rb:22:in `call&#39; rack (2.0.4)
+lib/rack/runtime.rb:22:in `call&#39; activesupport (5.2.0)
+lib/active_support/cache/strategy/local_cache_middleware.rb:29:in
+`call&#39; actionpack (5.2.0)
+lib/action_dispatch/middleware/executor.rb:14:in `call&#39; actionpack
+(5.2.0) lib/action_dispatch/middleware/static.rb:127:in `call&#39; rack
+(2.0.4) lib/rack/sendfile.rb:111:in `call&#39; railties (5.2.0)
+lib/rails/engine.rb:524:in `call&#39; rack (2.0.4)
+lib/rack/handler/webrick.rb:86:in `service&#39;
+/Users/qin/.rbenv/versions/2.5.0/lib/ruby/2.5.0/webrick/httpserver.rb:140:in
+`service&#39;
+/Users/qin/.rbenv/versions/2.5.0/lib/ruby/2.5.0/webrick/httpserver.rb:96:in
+`run&#39;
+/Users/qin/.rbenv/versions/2.5.0/lib/ruby/2.5.0/webrick/server.rb:307:in
+`block in start_thread&#39; Started GET “/cable” for ::1 at 2018-04-22
+08:59:58 +0800 Started GET “/cable/” [WebSocket] for ::1 at 2018-04-22
+08:59:58 +0800 Successfully upgraded to WebSocket (REQUEST_METHOD: GET,
+HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)</p>
+
+<p>NotImplementedError (only partial hijack is supported.):</p>
+
+<p>rack (2.0.4) lib/rack/handler/webrick.rb:74:in `block in service&#39;
+actioncable (5.2.0) lib/action_cable/connection/stream.rb:101:in
+`hijack_rack_socket&#39; actioncable (5.2.0)
+lib/action_cable/connection/client_socket.rb:59:in `start_driver&#39;
+actioncable (5.2.0) lib/action_cable/connection/client_socket.rb:70:in
+`rack_response&#39; actioncable (5.2.0)
+lib/action_cable/connection/web_socket.rb:34:in `rack_response&#39;
+actioncable (5.2.0) lib/action_cable/connection/base.rb:213:in
+`respond_to_successful_request&#39; actioncable (5.2.0)
+lib/action_cable/connection/base.rb:73:in `process&#39; actioncable (5.2.0)
+lib/action_cable/server/base.rb:30:in `call&#39; actionpack (5.2.0)
+lib/action_dispatch/routing/mapper.rb:19:in `block in
+&lt;class:Constraints&gt;&#39; actionpack (5.2.0)
+lib/action_dispatch/routing/mapper.rb:48:in `serve&#39; actionpack (5.2.0)
+lib/action_dispatch/journey/router.rb:52:in `block in serve&#39; actionpack
+(5.2.0) lib/action_dispatch/journey/router.rb:35:in `each&#39; actionpack
+(5.2.0) lib/action_dispatch/journey/router.rb:35:in `serve&#39; actionpack
+(5.2.0) lib/action_dispatch/routing/route_set.rb:840:in `call&#39; omniauth
+(1.8.1) lib/omniauth/strategy.rb:190:in `call!&#39; omniauth (1.8.1)
+lib/omniauth/strategy.rb:168:in `call&#39; omniauth (1.8.1)
+lib/omniauth/strategy.rb:190:in `call!&#39; omniauth (1.8.1)
+lib/omniauth/strategy.rb:168:in `call&#39; omniauth (1.8.1)
+lib/omniauth/builder.rb:63:in `call&#39; rack (2.0.4)
+lib/rack/tempfile_reaper.rb:15:in `call&#39; rack (2.0.4)
+lib/rack/etag.rb:25:in `call&#39; rack (2.0.4)
+lib/rack/conditional_get.rb:25:in `call&#39; rack (2.0.4)
+lib/rack/head.rb:12:in `call&#39; actionpack (5.2.0)
+lib/action_dispatch/http/content_security_policy.rb:18:in `call&#39; rack
+(2.0.4) lib/rack/session/abstract/id.rb:232:in `context&#39; rack (2.0.4)
+lib/rack/session/abstract/id.rb:226:in `call&#39; actionpack (5.2.0)
+lib/action_dispatch/middleware/cookies.rb:670:in `call&#39; activerecord
+(5.2.0) lib/active_record/migration.rb:559:in `call&#39; actionpack (5.2.0)
+lib/action_dispatch/middleware/callbacks.rb:28:in `block in call&#39;
+activesupport (5.2.0) lib/active_support/callbacks.rb:98:in
+`run_callbacks&#39; actionpack (5.2.0)
+lib/action_dispatch/middleware/callbacks.rb:26:in `call&#39; actionpack
+(5.2.0) lib/action_dispatch/middleware/executor.rb:14:in `call&#39;
+actionpack (5.2.0) lib/action_dispatch/middleware/debug_exceptions.rb:61:in
+`call&#39; actionpack (5.2.0)
+lib/action_dispatch/middleware/show_exceptions.rb:33:in `call&#39; railties
+(5.2.0) lib/rails/rack/logger.rb:38:in `call_app&#39; railties (5.2.0)
+lib/rails/rack/logger.rb:26:in `block in call&#39; activesupport (5.2.0)
+lib/active_support/tagged_logging.rb:71:in `block in tagged&#39;
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:28:in
+`tagged&#39; activesupport (5.2.0)
+lib/active_support/tagged_logging.rb:71:in `tagged&#39; railties (5.2.0)
+lib/rails/rack/logger.rb:26:in `call&#39; sprockets-rails (3.2.1)
+lib/sprockets/rails/quiet_assets.rb:13:in `call&#39; actionpack (5.2.0)
+lib/action_dispatch/middleware/remote_ip.rb:81:in `call&#39; actionpack
+(5.2.0) lib/action_dispatch/middleware/request_id.rb:27:in `call&#39; rack
+(2.0.4) lib/rack/method_override.rb:22:in `call&#39; rack (2.0.4)
+lib/rack/runtime.rb:22:in `call&#39; activesupport (5.2.0)
+lib/active_support/cache/strategy/local_cache_middleware.rb:29:in
+`call&#39; actionpack (5.2.0)
+lib/action_dispatch/middleware/executor.rb:14:in `call&#39; actionpack
+(5.2.0) lib/action_dispatch/middleware/static.rb:127:in `call&#39; rack
+(2.0.4) lib/rack/sendfile.rb:111:in `call&#39; railties (5.2.0)
+lib/rails/engine.rb:524:in `call&#39; rack (2.0.4)
+lib/rack/handler/webrick.rb:86:in `service&#39;
+/Users/qin/.rbenv/versions/2.5.0/lib/ruby/2.5.0/webrick/httpserver.rb:140:in
+`service&#39;
+/Users/qin/.rbenv/versions/2.5.0/lib/ruby/2.5.0/webrick/httpserver.rb:96:in
+`run&#39;
+/Users/qin/.rbenv/versions/2.5.0/lib/ruby/2.5.0/webrick/server.rb:307:in
+`block in start_thread&#39; Started GET “/cable” for ::1 at 2018-04-22
+09:00:13 +0800 Started GET “/cable/” [WebSocket] for ::1 at 2018-04-22
+09:00:13 +0800 Successfully upgraded to WebSocket (REQUEST_METHOD: GET,
+HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)</p>
+
+<p>NotImplementedError (only partial hijack is supported.):</p>
+
+<p>rack (2.0.4) lib/rack/handler/webrick.rb:74:in `block in service&#39;
+actioncable (5.2.0) lib/action_cable/connection/stream.rb:101:in
+`hijack_rack_socket&#39; actioncable (5.2.0)
+lib/action_cable/connection/client_socket.rb:59:in `start_driver&#39;
+actioncable (5.2.0) lib/action_cable/connection/client_socket.rb:70:in
+`rack_response&#39; actioncable (5.2.0)
+lib/action_cable/connection/web_socket.rb:34:in `rack_response&#39;
+actioncable (5.2.0) lib/action_cable/connection/base.rb:213:in
+`respond_to_successful_request&#39; actioncable (5.2.0)
+lib/action_cable/connection/base.rb:73:in `process&#39; actioncable (5.2.0)
+lib/action_cable/server/base.rb:30:in `call&#39; actionpack (5.2.0)
+lib/action_dispatch/routing/mapper.rb:19:in `block in
+&lt;class:Constraints&gt;&#39; actionpack (5.2.0)
+lib/action_dispatch/routing/mapper.rb:48:in `serve&#39; actionpack (5.2.0)
+lib/action_dispatch/journey/router.rb:52:in `block in serve&#39; actionpack
+(5.2.0) lib/action_dispatch/journey/router.rb:35:in `each&#39; actionpack
+(5.2.0) lib/action_dispatch/journey/router.rb:35:in `serve&#39; actionpack
+(5.2.0) lib/action_dispatch/routing/route_set.rb:840:in `call&#39; omniauth
+(1.8.1) lib/omniauth/strategy.rb:190:in `call!&#39; omniauth (1.8.1)
+lib/omniauth/strategy.rb:168:in `call&#39; omniauth (1.8.1)
+lib/omniauth/strategy.rb:190:in `call!&#39; omniauth (1.8.1)
+lib/omniauth/strategy.rb:168:in `call&#39; omniauth (1.8.1)
+lib/omniauth/builder.rb:63:in `call&#39; rack (2.0.4)
+lib/rack/tempfile_reaper.rb:15:in `call&#39; rack (2.0.4)
+lib/rack/etag.rb:25:in `call&#39; rack (2.0.4)
+lib/rack/conditional_get.rb:25:in `call&#39; rack (2.0.4)
+lib/rack/head.rb:12:in `call&#39; actionpack (5.2.0)
+lib/action_dispatch/http/content_security_policy.rb:18:in `call&#39; rack
+(2.0.4) lib/rack/session/abstract/id.rb:232:in `context&#39; rack (2.0.4)
+lib/rack/session/abstract/id.rb:226:in `call&#39; actionpack (5.2.0)
+lib/action_dispatch/middleware/cookies.rb:670:in `call&#39; activerecord
+(5.2.0) lib/active_record/migration.rb:559:in `call&#39; actionpack (5.2.0)
+lib/action_dispatch/middleware/callbacks.rb:28:in `block in call&#39;
+activesupport (5.2.0) lib/active_support/callbacks.rb:98:in
+`run_callbacks&#39; actionpack (5.2.0)
+lib/action_dispatch/middleware/callbacks.rb:26:in `call&#39; actionpack
+(5.2.0) lib/action_dispatch/middleware/executor.rb:14:in `call&#39;
+actionpack (5.2.0) lib/action_dispatch/middleware/debug_exceptions.rb:61:in
+`call&#39; actionpack (5.2.0)
+lib/action_dispatch/middleware/show_exceptions.rb:33:in `call&#39; railties
+(5.2.0) lib/rails/rack/logger.rb:38:in `call_app&#39; railties (5.2.0)
+lib/rails/rack/logger.rb:26:in `block in call&#39; activesupport (5.2.0)
+lib/active_support/tagged_logging.rb:71:in `block in tagged&#39;
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:28:in
+`tagged&#39; activesupport (5.2.0)
+lib/active_support/tagged_logging.rb:71:in `tagged&#39; railties (5.2.0)
+lib/rails/rack/logger.rb:26:in `call&#39; sprockets-rails (3.2.1)
+lib/sprockets/rails/quiet_assets.rb:13:in `call&#39; actionpack (5.2.0)
+lib/action_dispatch/middleware/remote_ip.rb:81:in `call&#39; actionpack
+(5.2.0) lib/action_dispatch/middleware/request_id.rb:27:in `call&#39; rack
+(2.0.4) lib/rack/method_override.rb:22:in `call&#39; rack (2.0.4)
+lib/rack/runtime.rb:22:in `call&#39; activesupport (5.2.0)
+lib/active_support/cache/strategy/local_cache_middleware.rb:29:in
+`call&#39; actionpack (5.2.0)
+lib/action_dispatch/middleware/executor.rb:14:in `call&#39; actionpack
+(5.2.0) lib/action_dispatch/middleware/static.rb:127:in `call&#39; rack
+(2.0.4) lib/rack/sendfile.rb:111:in `call&#39; railties (5.2.0)
+lib/rails/engine.rb:524:in `call&#39; rack (2.0.4)
+lib/rack/handler/webrick.rb:86:in `service&#39;
+/Users/qin/.rbenv/versions/2.5.0/lib/ruby/2.5.0/webrick/httpserver.rb:140:in
+`service&#39;
+/Users/qin/.rbenv/versions/2.5.0/lib/ruby/2.5.0/webrick/httpserver.rb:96:in
+`run&#39;
+/Users/qin/.rbenv/versions/2.5.0/lib/ruby/2.5.0/webrick/server.rb:307:in
+`block in start_thread&#39; Started GET “/cable” for 127.0.0.1 at
+2018-04-22 09:00:13 +0800 Started GET “/cable/” [WebSocket] for 127.0.0.1
+at 2018-04-22 09:00:14 +0800 Successfully upgraded to WebSocket
+(REQUEST_METHOD: GET, HTTP_CONNECTION: keep-alive, Upgrade, HTTP_UPGRADE:
+websocket)</p>
+
+<p>NotImplementedError (only partial hijack is supported.):</p>
+
+<p>rack (2.0.4) lib/rack/handler/webrick.rb:74:in `block in service&#39;
+actioncable (5.2.0) lib/action_cable/connection/stream.rb:101:in
+`hijack_rack_socket&#39; actioncable (5.2.0)
+lib/action_cable/connection/client_socket.rb:59:in `start_driver&#39;
+actioncable (5.2.0) lib/action_cable/connection/client_socket.rb:70:in
+`rack_response&#39; actioncable (5.2.0)
+lib/action_cable/connection/web_socket.rb:34:in `rack_response&#39;
+actioncable (5.2.0) lib/action_cable/connection/base.rb:213:in
+`respond_to_successful_request&#39; actioncable (5.2.0)
+lib/action_cable/connection/base.rb:73:in `process&#39; actioncable (5.2.0)
+lib/action_cable/server/base.rb:30:in `call&#39; actionpack (5.2.0)
+lib/action_dispatch/routing/mapper.rb:19:in `block in
+&lt;class:Constraints&gt;&#39; actionpack (5.2.0)
+lib/action_dispatch/routing/mapper.rb:48:in `serve&#39; actionpack (5.2.0)
+lib/action_dispatch/journey/router.rb:52:in `block in serve&#39; actionpack
+(5.2.0) lib/action_dispatch/journey/router.rb:35:in `each&#39; actionpack
+(5.2.0) lib/action_dispatch/journey/router.rb:35:in `serve&#39; actionpack
+(5.2.0) lib/action_dispatch/routing/route_set.rb:840:in `call&#39; omniauth
+(1.8.1) lib/omniauth/strategy.rb:190:in `call!&#39; omniauth (1.8.1)
+lib/omniauth/strategy.rb:168:in `call&#39; omniauth (1.8.1)
+lib/omniauth/strategy.rb:190:in `call!&#39; omniauth (1.8.1)
+lib/omniauth/strategy.rb:168:in `call&#39; omniauth (1.8.1)
+lib/omniauth/builder.rb:63:in `call&#39; rack (2.0.4)
+lib/rack/tempfile_reaper.rb:15:in `call&#39; rack (2.0.4)
+lib/rack/etag.rb:25:in `call&#39; rack (2.0.4)
+lib/rack/conditional_get.rb:25:in `call&#39; rack (2.0.4)
+lib/rack/head.rb:12:in `call&#39; actionpack (5.2.0)
+lib/action_dispatch/http/content_security_policy.rb:18:in `call&#39; rack
+(2.0.4) lib/rack/session/abstract/id.rb:232:in `context&#39; rack (2.0.4)
+lib/rack/session/abstract/id.rb:226:in `call&#39; actionpack (5.2.0)
+lib/action_dispatch/middleware/cookies.rb:670:in `call&#39; activerecord
+(5.2.0) lib/active_record/migration.rb:559:in `call&#39; actionpack (5.2.0)
+lib/action_dispatch/middleware/callbacks.rb:28:in `block in call&#39;
+activesupport (5.2.0) lib/active_support/callbacks.rb:98:in
+`run_callbacks&#39; actionpack (5.2.0)
+lib/action_dispatch/middleware/callbacks.rb:26:in `call&#39; actionpack
+(5.2.0) lib/action_dispatch/middleware/executor.rb:14:in `call&#39;
+actionpack (5.2.0) lib/action_dispatch/middleware/debug_exceptions.rb:61:in
+`call&#39; actionpack (5.2.0)
+lib/action_dispatch/middleware/show_exceptions.rb:33:in `call&#39; railties
+(5.2.0) lib/rails/rack/logger.rb:38:in `call_app&#39; railties (5.2.0)
+lib/rails/rack/logger.rb:26:in `block in call&#39; activesupport (5.2.0)
+lib/active_support/tagged_logging.rb:71:in `block in tagged&#39;
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:28:in
+`tagged&#39; activesupport (5.2.0)
+lib/active_support/tagged_logging.rb:71:in `tagged&#39; railties (5.2.0)
+lib/rails/rack/logger.rb:26:in `call&#39; sprockets-rails (3.2.1)
+lib/sprockets/rails/quiet_assets.rb:13:in `call&#39; actionpack (5.2.0)
+lib/action_dispatch/middleware/remote_ip.rb:81:in `call&#39; actionpack
+(5.2.0) lib/action_dispatch/middleware/request_id.rb:27:in `call&#39; rack
+(2.0.4) lib/rack/method_override.rb:22:in `call&#39; rack (2.0.4)
+lib/rack/runtime.rb:22:in `call&#39; activesupport (5.2.0)
+lib/active_support/cache/strategy/local_cache_middleware.rb:29:in
+`call&#39; actionpack (5.2.0)
+lib/action_dispatch/middleware/executor.rb:14:in `call&#39; actionpack
+(5.2.0) lib/action_dispatch/middleware/static.rb:127:in `call&#39; rack
+(2.0.4) lib/rack/sendfile.rb:111:in `call&#39; railties (5.2.0)
+lib/rails/engine.rb:524:in `call&#39; rack (2.0.4)
+lib/rack/handler/webrick.rb:86:in `service&#39;
+/Users/qin/.rbenv/versions/2.5.0/lib/ruby/2.5.0/webrick/httpserver.rb:140:in
+`service&#39;
+/Users/qin/.rbenv/versions/2.5.0/lib/ruby/2.5.0/webrick/httpserver.rb:96:in
+`run&#39;
+/Users/qin/.rbenv/versions/2.5.0/lib/ruby/2.5.0/webrick/server.rb:307:in
+`block in start_thread&#39; Started GET “/cable” for ::1 at 2018-04-22
+09:00:30 +0800 Started GET “/cable/” [WebSocket] for ::1 at 2018-04-22
+09:00:30 +0800 Successfully upgraded to WebSocket (REQUEST_METHOD: GET,
+HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)</p>
+
+<p>NotImplementedError (only partial hijack is supported.):</p>
+
+<p>rack (2.0.4) lib/rack/handler/webrick.rb:74:in `block in service&#39;
+actioncable (5.2.0) lib/action_cable/connection/stream.rb:101:in
+`hijack_rack_socket&#39; actioncable (5.2.0)
+lib/action_cable/connection/client_socket.rb:59:in `start_driver&#39;
+actioncable (5.2.0) lib/action_cable/connection/client_socket.rb:70:in
+`rack_response&#39; actioncable (5.2.0)
+lib/action_cable/connection/web_socket.rb:34:in `rack_response&#39;
+actioncable (5.2.0) lib/action_cable/connection/base.rb:213:in
+`respond_to_successful_request&#39; actioncable (5.2.0)
+lib/action_cable/connection/base.rb:73:in `process&#39; actioncable (5.2.0)
+lib/action_cable/server/base.rb:30:in `call&#39; actionpack (5.2.0)
+lib/action_dispatch/routing/mapper.rb:19:in `block in
+&lt;class:Constraints&gt;&#39; actionpack (5.2.0)
+lib/action_dispatch/routing/mapper.rb:48:in `serve&#39; actionpack (5.2.0)
+lib/action_dispatch/journey/router.rb:52:in `block in serve&#39; actionpack
+(5.2.0) lib/action_dispatch/journey/router.rb:35:in `each&#39; actionpack
+(5.2.0) lib/action_dispatch/journey/router.rb:35:in `serve&#39; actionpack
+(5.2.0) lib/action_dispatch/routing/route_set.rb:840:in `call&#39; omniauth
+(1.8.1) lib/omniauth/strategy.rb:190:in `call!&#39; omniauth (1.8.1)
+lib/omniauth/strategy.rb:168:in `call&#39; omniauth (1.8.1)
+lib/omniauth/strategy.rb:190:in `call!&#39; omniauth (1.8.1)
+lib/omniauth/strategy.rb:168:in `call&#39; omniauth (1.8.1)
+lib/omniauth/builder.rb:63:in `call&#39; rack (2.0.4)
+lib/rack/tempfile_reaper.rb:15:in `call&#39; rack (2.0.4)
+lib/rack/etag.rb:25:in `call&#39; rack (2.0.4)
+lib/rack/conditional_get.rb:25:in `call&#39; rack (2.0.4)
+lib/rack/head.rb:12:in `call&#39; actionpack (5.2.0)
+lib/action_dispatch/http/content_security_policy.rb:18:in `call&#39; rack
+(2.0.4) lib/rack/session/abstract/id.rb:232:in `context&#39; rack (2.0.4)
+lib/rack/session/abstract/id.rb:226:in `call&#39; actionpack (5.2.0)
+lib/action_dispatch/middleware/cookies.rb:670:in `call&#39; activerecord
+(5.2.0) lib/active_record/migration.rb:559:in `call&#39; actionpack (5.2.0)
+lib/action_dispatch/middleware/callbacks.rb:28:in `block in call&#39;
+activesupport (5.2.0) lib/active_support/callbacks.rb:98:in
+`run_callbacks&#39; actionpack (5.2.0)
+lib/action_dispatch/middleware/callbacks.rb:26:in `call&#39; actionpack
+(5.2.0) lib/action_dispatch/middleware/executor.rb:14:in `call&#39;
+actionpack (5.2.0) lib/action_dispatch/middleware/debug_exceptions.rb:61:in
+`call&#39; actionpack (5.2.0)
+lib/action_dispatch/middleware/show_exceptions.rb:33:in `call&#39; railties
+(5.2.0) lib/rails/rack/logger.rb:38:in `call_app&#39; railties (5.2.0)
+lib/rails/rack/logger.rb:26:in `block in call&#39; activesupport (5.2.0)
+lib/active_support/tagged_logging.rb:71:in `block in tagged&#39;
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:28:in
+`tagged&#39; activesupport (5.2.0)
+lib/active_support/tagged_logging.rb:71:in `tagged&#39; railties (5.2.0)
+lib/rails/rack/logger.rb:26:in `call&#39; sprockets-rails (3.2.1)
+lib/sprockets/rails/quiet_assets.rb:13:in `call&#39; actionpack (5.2.0)
+lib/action_dispatch/middleware/remote_ip.rb:81:in `call&#39; actionpack
+(5.2.0) lib/action_dispatch/middleware/request_id.rb:27:in `call&#39; rack
+(2.0.4) lib/rack/method_override.rb:22:in `call&#39; rack (2.0.4)
+lib/rack/runtime.rb:22:in `call&#39; activesupport (5.2.0)
+lib/active_support/cache/strategy/local_cache_middleware.rb:29:in
+`call&#39; actionpack (5.2.0)
+lib/action_dispatch/middleware/executor.rb:14:in `call&#39; actionpack
+(5.2.0) lib/action_dispatch/middleware/static.rb:127:in `call&#39; rack
+(2.0.4) lib/rack/sendfile.rb:111:in `call&#39; railties (5.2.0)
+lib/rails/engine.rb:524:in `call&#39; rack (2.0.4)
+lib/rack/handler/webrick.rb:86:in `service&#39;
+/Users/qin/.rbenv/versions/2.5.0/lib/ruby/2.5.0/webrick/httpserver.rb:140:in
+`service&#39;
+/Users/qin/.rbenv/versions/2.5.0/lib/ruby/2.5.0/webrick/httpserver.rb:96:in
+`run&#39;
+/Users/qin/.rbenv/versions/2.5.0/lib/ruby/2.5.0/webrick/server.rb:307:in
+`block in start_thread&#39; Started GET “/cable” for ::1 at 2018-04-22
+09:00:46 +0800 Started GET “/cable/” [WebSocket] for ::1 at 2018-04-22
+09:00:46 +0800 Successfully upgraded to WebSocket (REQUEST_METHOD: GET,
+HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)</p>
+
+<p>NotImplementedError (only partial hijack is supported.):</p>
+
+<p>rack (2.0.4) lib/rack/handler/webrick.rb:74:in `block in service&#39;
+actioncable (5.2.0) lib/action_cable/connection/stream.rb:101:in
+`hijack_rack_socket&#39; actioncable (5.2.0)
+lib/action_cable/connection/client_socket.rb:59:in `start_driver&#39;
+actioncable (5.2.0) lib/action_cable/connection/client_socket.rb:70:in
+`rack_response&#39; actioncable (5.2.0)
+lib/action_cable/connection/web_socket.rb:34:in `rack_response&#39;
+actioncable (5.2.0) lib/action_cable/connection/base.rb:213:in
+`respond_to_successful_request&#39; actioncable (5.2.0)
+lib/action_cable/connection/base.rb:73:in `process&#39; actioncable (5.2.0)
+lib/action_cable/server/base.rb:30:in `call&#39; actionpack (5.2.0)
+lib/action_dispatch/routing/mapper.rb:19:in `block in
+&lt;class:Constraints&gt;&#39; actionpack (5.2.0)
+lib/action_dispatch/routing/mapper.rb:48:in `serve&#39; actionpack (5.2.0)
+lib/action_dispatch/journey/router.rb:52:in `block in serve&#39; actionpack
+(5.2.0) lib/action_dispatch/journey/router.rb:35:in `each&#39; actionpack
+(5.2.0) lib/action_dispatch/journey/router.rb:35:in `serve&#39; actionpack
+(5.2.0) lib/action_dispatch/routing/route_set.rb:840:in `call&#39; omniauth
+(1.8.1) lib/omniauth/strategy.rb:190:in `call!&#39; omniauth (1.8.1)
+lib/omniauth/strategy.rb:168:in `call&#39; omniauth (1.8.1)
+lib/omniauth/strategy.rb:190:in `call!&#39; omniauth (1.8.1)
+lib/omniauth/strategy.rb:168:in `call&#39; omniauth (1.8.1)
+lib/omniauth/builder.rb:63:in `call&#39; rack (2.0.4)
+lib/rack/tempfile_reaper.rb:15:in `call&#39; rack (2.0.4)
+lib/rack/etag.rb:25:in `call&#39; rack (2.0.4)
+lib/rack/conditional_get.rb:25:in `call&#39; rack (2.0.4)
+lib/rack/head.rb:12:in `call&#39; actionpack (5.2.0)
+lib/action_dispatch/http/content_security_policy.rb:18:in `call&#39; rack
+(2.0.4) lib/rack/session/abstract/id.rb:232:in `context&#39; rack (2.0.4)
+lib/rack/session/abstract/id.rb:226:in `call&#39; actionpack (5.2.0)
+lib/action_dispatch/middleware/cookies.rb:670:in `call&#39; activerecord
+(5.2.0) lib/active_record/migration.rb:559:in `call&#39; actionpack (5.2.0)
+lib/action_dispatch/middleware/callbacks.rb:28:in `block in call&#39;
+activesupport (5.2.0) lib/active_support/callbacks.rb:98:in
+`run_callbacks&#39; actionpack (5.2.0)
+lib/action_dispatch/middleware/callbacks.rb:26:in `call&#39; actionpack
+(5.2.0) lib/action_dispatch/middleware/executor.rb:14:in `call&#39;
+actionpack (5.2.0) lib/action_dispatch/middleware/debug_exceptions.rb:61:in
+`call&#39; actionpack (5.2.0)
+lib/action_dispatch/middleware/show_exceptions.rb:33:in `call&#39; railties
+(5.2.0) lib/rails/rack/logger.rb:38:in `call_app&#39; railties (5.2.0)
+lib/rails/rack/logger.rb:26:in `block in call&#39; activesupport (5.2.0)
+lib/active_support/tagged_logging.rb:71:in `block in tagged&#39;
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:28:in
+`tagged&#39; activesupport (5.2.0)
+lib/active_support/tagged_logging.rb:71:in `tagged&#39; railties (5.2.0)
+lib/rails/rack/logger.rb:26:in `call&#39; sprockets-rails (3.2.1)
+lib/sprockets/rails/quiet_assets.rb:13:in `call&#39; actionpack (5.2.0)
+lib/action_dispatch/middleware/remote_ip.rb:81:in `call&#39; actionpack
+(5.2.0) lib/action_dispatch/middleware/request_id.rb:27:in `call&#39; rack
+(2.0.4) lib/rack/method_override.rb:22:in `call&#39; rack (2.0.4)
+lib/rack/runtime.rb:22:in `call&#39; activesupport (5.2.0)
+lib/active_support/cache/strategy/local_cache_middleware.rb:29:in
+`call&#39; actionpack (5.2.0)
+lib/action_dispatch/middleware/executor.rb:14:in `call&#39; actionpack
+(5.2.0) lib/action_dispatch/middleware/static.rb:127:in `call&#39; rack
+(2.0.4) lib/rack/sendfile.rb:111:in `call&#39; railties (5.2.0)
+lib/rails/engine.rb:524:in `call&#39; rack (2.0.4)
+lib/rack/handler/webrick.rb:86:in `service&#39;
+/Users/qin/.rbenv/versions/2.5.0/lib/ruby/2.5.0/webrick/httpserver.rb:140:in
+`service&#39;
+/Users/qin/.rbenv/versions/2.5.0/lib/ruby/2.5.0/webrick/httpserver.rb:96:in
+`run&#39;
+/Users/qin/.rbenv/versions/2.5.0/lib/ruby/2.5.0/webrick/server.rb:307:in
+`block in start_thread&#39; Started GET “/cable” for 127.0.0.1 at
+2018-04-22 09:00:50 +0800 Started GET “/cable/” [WebSocket] for 127.0.0.1
+at 2018-04-22 09:00:50 +0800 Successfully upgraded to WebSocket
+(REQUEST_METHOD: GET, HTTP_CONNECTION: keep-alive, Upgrade, HTTP_UPGRADE:
+websocket)</p>
+
+<p>NotImplementedError (only partial hijack is supported.):</p>
+
+<p>rack (2.0.4) lib/rack/handler/webrick.rb:74:in `block in service&#39;
+actioncable (5.2.0) lib/action_cable/connection/stream.rb:101:in
+`hijack_rack_socket&#39; actioncable (5.2.0)
+lib/action_cable/connection/client_socket.rb:59:in `start_driver&#39;
+actioncable (5.2.0) lib/action_cable/connection/client_socket.rb:70:in
+`rack_response&#39; actioncable (5.2.0)
+lib/action_cable/connection/web_socket.rb:34:in `rack_response&#39;
+actioncable (5.2.0) lib/action_cable/connection/base.rb:213:in
+`respond_to_successful_request&#39; actioncable (5.2.0)
+lib/action_cable/connection/base.rb:73:in `process&#39; actioncable (5.2.0)
+lib/action_cable/server/base.rb:30:in `call&#39; actionpack (5.2.0)
+lib/action_dispatch/routing/mapper.rb:19:in `block in
+&lt;class:Constraints&gt;&#39; actionpack (5.2.0)
+lib/action_dispatch/routing/mapper.rb:48:in `serve&#39; actionpack (5.2.0)
+lib/action_dispatch/journey/router.rb:52:in `block in serve&#39; actionpack
+(5.2.0) lib/action_dispatch/journey/router.rb:35:in `each&#39; actionpack
+(5.2.0) lib/action_dispatch/journey/router.rb:35:in `serve&#39; actionpack
+(5.2.0) lib/action_dispatch/routing/route_set.rb:840:in `call&#39; omniauth
+(1.8.1) lib/omniauth/strategy.rb:190:in `call!&#39; omniauth (1.8.1)
+lib/omniauth/strategy.rb:168:in `call&#39; omniauth (1.8.1)
+lib/omniauth/strategy.rb:190:in `call!&#39; omniauth (1.8.1)
+lib/omniauth/strategy.rb:168:in `call&#39; omniauth (1.8.1)
+lib/omniauth/builder.rb:63:in `call&#39; rack (2.0.4)
+lib/rack/tempfile_reaper.rb:15:in `call&#39; rack (2.0.4)
+lib/rack/etag.rb:25:in `call&#39; rack (2.0.4)
+lib/rack/conditional_get.rb:25:in `call&#39; rack (2.0.4)
+lib/rack/head.rb:12:in `call&#39; actionpack (5.2.0)
+lib/action_dispatch/http/content_security_policy.rb:18:in `call&#39; rack
+(2.0.4) lib/rack/session/abstract/id.rb:232:in `context&#39; rack (2.0.4)
+lib/rack/session/abstract/id.rb:226:in `call&#39; actionpack (5.2.0)
+lib/action_dispatch/middleware/cookies.rb:670:in `call&#39; activerecord
+(5.2.0) lib/active_record/migration.rb:559:in `call&#39; actionpack (5.2.0)
+lib/action_dispatch/middleware/callbacks.rb:28:in `block in call&#39;
+activesupport (5.2.0) lib/active_support/callbacks.rb:98:in
+`run_callbacks&#39; actionpack (5.2.0)
+lib/action_dispatch/middleware/callbacks.rb:26:in `call&#39; actionpack
+(5.2.0) lib/action_dispatch/middleware/executor.rb:14:in `call&#39;
+actionpack (5.2.0) lib/action_dispatch/middleware/debug_exceptions.rb:61:in
+`call&#39; actionpack (5.2.0)
+lib/action_dispatch/middleware/show_exceptions.rb:33:in `call&#39; railties
+(5.2.0) lib/rails/rack/logger.rb:38:in `call_app&#39; railties (5.2.0)
+lib/rails/rack/logger.rb:26:in `block in call&#39; activesupport (5.2.0)
+lib/active_support/tagged_logging.rb:71:in `block in tagged&#39;
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:28:in
+`tagged&#39; activesupport (5.2.0)
+lib/active_support/tagged_logging.rb:71:in `tagged&#39; railties (5.2.0)
+lib/rails/rack/logger.rb:26:in `call&#39; sprockets-rails (3.2.1)
+lib/sprockets/rails/quiet_assets.rb:13:in `call&#39; actionpack (5.2.0)
+lib/action_dispatch/middleware/remote_ip.rb:81:in `call&#39; actionpack
+(5.2.0) lib/action_dispatch/middleware/request_id.rb:27:in `call&#39; rack
+(2.0.4) lib/rack/method_override.rb:22:in `call&#39; rack (2.0.4)
+lib/rack/runtime.rb:22:in `call&#39; activesupport (5.2.0)
+lib/active_support/cache/strategy/local_cache_middleware.rb:29:in
+`call&#39; actionpack (5.2.0)
+lib/action_dispatch/middleware/executor.rb:14:in `call&#39; actionpack
+(5.2.0) lib/action_dispatch/middleware/static.rb:127:in `call&#39; rack
+(2.0.4) lib/rack/sendfile.rb:111:in `call&#39; railties (5.2.0)
+lib/rails/engine.rb:524:in `call&#39; rack (2.0.4)
+lib/rack/handler/webrick.rb:86:in `service&#39;
+/Users/qin/.rbenv/versions/2.5.0/lib/ruby/2.5.0/webrick/httpserver.rb:140:in
+`service&#39;
+/Users/qin/.rbenv/versions/2.5.0/lib/ruby/2.5.0/webrick/httpserver.rb:96:in
+`run&#39;
+/Users/qin/.rbenv/versions/2.5.0/lib/ruby/2.5.0/webrick/server.rb:307:in
+`block in start_thread&#39; Started GET “/cable” for ::1 at 2018-04-22
+09:01:01 +0800 Started GET “/cable/” [WebSocket] for ::1 at 2018-04-22
+09:01:01 +0800 Successfully upgraded to WebSocket (REQUEST_METHOD: GET,
+HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)</p>
+
+<p>NotImplementedError (only partial hijack is supported.):</p>
+
+<p>rack (2.0.4) lib/rack/handler/webrick.rb:74:in `block in service&#39;
+actioncable (5.2.0) lib/action_cable/connection/stream.rb:101:in
+`hijack_rack_socket&#39; actioncable (5.2.0)
+lib/action_cable/connection/client_socket.rb:59:in `start_driver&#39;
+actioncable (5.2.0) lib/action_cable/connection/client_socket.rb:70:in
+`rack_response&#39; actioncable (5.2.0)
+lib/action_cable/connection/web_socket.rb:34:in `rack_response&#39;
+actioncable (5.2.0) lib/action_cable/connection/base.rb:213:in
+`respond_to_successful_request&#39; actioncable (5.2.0)
+lib/action_cable/connection/base.rb:73:in `process&#39; actioncable (5.2.0)
+lib/action_cable/server/base.rb:30:in `call&#39; actionpack (5.2.0)
+lib/action_dispatch/routing/mapper.rb:19:in `block in
+&lt;class:Constraints&gt;&#39; actionpack (5.2.0)
+lib/action_dispatch/routing/mapper.rb:48:in `serve&#39; actionpack (5.2.0)
+lib/action_dispatch/journey/router.rb:52:in `block in serve&#39; actionpack
+(5.2.0) lib/action_dispatch/journey/router.rb:35:in `each&#39; actionpack
+(5.2.0) lib/action_dispatch/journey/router.rb:35:in `serve&#39; actionpack
+(5.2.0) lib/action_dispatch/routing/route_set.rb:840:in `call&#39; omniauth
+(1.8.1) lib/omniauth/strategy.rb:190:in `call!&#39; omniauth (1.8.1)
+lib/omniauth/strategy.rb:168:in `call&#39; omniauth (1.8.1)
+lib/omniauth/strategy.rb:190:in `call!&#39; omniauth (1.8.1)
+lib/omniauth/strategy.rb:168:in `call&#39; omniauth (1.8.1)
+lib/omniauth/builder.rb:63:in `call&#39; rack (2.0.4)
+lib/rack/tempfile_reaper.rb:15:in `call&#39; rack (2.0.4)
+lib/rack/etag.rb:25:in `call&#39; rack (2.0.4)
+lib/rack/conditional_get.rb:25:in `call&#39; rack (2.0.4)
+lib/rack/head.rb:12:in `call&#39; actionpack (5.2.0)
+lib/action_dispatch/http/content_security_policy.rb:18:in `call&#39; rack
+(2.0.4) lib/rack/session/abstract/id.rb:232:in `context&#39; rack (2.0.4)
+lib/rack/session/abstract/id.rb:226:in `call&#39; actionpack (5.2.0)
+lib/action_dispatch/middleware/cookies.rb:670:in `call&#39; activerecord
+(5.2.0) lib/active_record/migration.rb:559:in `call&#39; actionpack (5.2.0)
+lib/action_dispatch/middleware/callbacks.rb:28:in `block in call&#39;
+activesupport (5.2.0) lib/active_support/callbacks.rb:98:in
+`run_callbacks&#39; actionpack (5.2.0)
+lib/action_dispatch/middleware/callbacks.rb:26:in `call&#39; actionpack
+(5.2.0) lib/action_dispatch/middleware/executor.rb:14:in `call&#39;
+actionpack (5.2.0) lib/action_dispatch/middleware/debug_exceptions.rb:61:in
+`call&#39; actionpack (5.2.0)
+lib/action_dispatch/middleware/show_exceptions.rb:33:in `call&#39; railties
+(5.2.0) lib/rails/rack/logger.rb:38:in `call_app&#39; railties (5.2.0)
+lib/rails/rack/logger.rb:26:in `block in call&#39; activesupport (5.2.0)
+lib/active_support/tagged_logging.rb:71:in `block in tagged&#39;
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:28:in
+`tagged&#39; activesupport (5.2.0)
+lib/active_support/tagged_logging.rb:71:in `tagged&#39; railties (5.2.0)
+lib/rails/rack/logger.rb:26:in `call&#39; sprockets-rails (3.2.1)
+lib/sprockets/rails/quiet_assets.rb:13:in `call&#39; actionpack (5.2.0)
+lib/action_dispatch/middleware/remote_ip.rb:81:in `call&#39; actionpack
+(5.2.0) lib/action_dispatch/middleware/request_id.rb:27:in `call&#39; rack
+(2.0.4) lib/rack/method_override.rb:22:in `call&#39; rack (2.0.4)
+lib/rack/runtime.rb:22:in `call&#39; activesupport (5.2.0)
+lib/active_support/cache/strategy/local_cache_middleware.rb:29:in
+`call&#39; actionpack (5.2.0)
+lib/action_dispatch/middleware/executor.rb:14:in `call&#39; actionpack
+(5.2.0) lib/action_dispatch/middleware/static.rb:127:in `call&#39; rack
+(2.0.4) lib/rack/sendfile.rb:111:in `call&#39; railties (5.2.0)
+lib/rails/engine.rb:524:in `call&#39; rack (2.0.4)
+lib/rack/handler/webrick.rb:86:in `service&#39;
+/Users/qin/.rbenv/versions/2.5.0/lib/ruby/2.5.0/webrick/httpserver.rb:140:in
+`service&#39;
+/Users/qin/.rbenv/versions/2.5.0/lib/ruby/2.5.0/webrick/httpserver.rb:96:in
+`run&#39;
+/Users/qin/.rbenv/versions/2.5.0/lib/ruby/2.5.0/webrick/server.rb:307:in
+`block in start_thread&#39; Started GET “/cable” for ::1 at 2018-04-22
+09:01:17 +0800 Started GET “/cable/” [WebSocket] for ::1 at 2018-04-22
+09:01:17 +0800 Successfully upgraded to WebSocket (REQUEST_METHOD: GET,
+HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)</p>
+
+<p>NotImplementedError (only partial hijack is supported.):</p>
+
+<p>rack (2.0.4) lib/rack/handler/webrick.rb:74:in `block in service&#39;
+actioncable (5.2.0) lib/action_cable/connection/stream.rb:101:in
+`hijack_rack_socket&#39; actioncable (5.2.0)
+lib/action_cable/connection/client_socket.rb:59:in `start_driver&#39;
+actioncable (5.2.0) lib/action_cable/connection/client_socket.rb:70:in
+`rack_response&#39; actioncable (5.2.0)
+lib/action_cable/connection/web_socket.rb:34:in `rack_response&#39;
+actioncable (5.2.0) lib/action_cable/connection/base.rb:213:in
+`respond_to_successful_request&#39; actioncable (5.2.0)
+lib/action_cable/connection/base.rb:73:in `process&#39; actioncable (5.2.0)
+lib/action_cable/server/base.rb:30:in `call&#39; actionpack (5.2.0)
+lib/action_dispatch/routing/mapper.rb:19:in `block in
+&lt;class:Constraints&gt;&#39; actionpack (5.2.0)
+lib/action_dispatch/routing/mapper.rb:48:in `serve&#39; actionpack (5.2.0)
+lib/action_dispatch/journey/router.rb:52:in `block in serve&#39; actionpack
+(5.2.0) lib/action_dispatch/journey/router.rb:35:in `each&#39; actionpack
+(5.2.0) lib/action_dispatch/journey/router.rb:35:in `serve&#39; actionpack
+(5.2.0) lib/action_dispatch/routing/route_set.rb:840:in `call&#39; omniauth
+(1.8.1) lib/omniauth/strategy.rb:190:in `call!&#39; omniauth (1.8.1)
+lib/omniauth/strategy.rb:168:in `call&#39; omniauth (1.8.1)
+lib/omniauth/strategy.rb:190:in `call!&#39; omniauth (1.8.1)
+lib/omniauth/strategy.rb:168:in `call&#39; omniauth (1.8.1)
+lib/omniauth/builder.rb:63:in `call&#39; rack (2.0.4)
+lib/rack/tempfile_reaper.rb:15:in `call&#39; rack (2.0.4)
+lib/rack/etag.rb:25:in `call&#39; rack (2.0.4)
+lib/rack/conditional_get.rb:25:in `call&#39; rack (2.0.4)
+lib/rack/head.rb:12:in `call&#39; actionpack (5.2.0)
+lib/action_dispatch/http/content_security_policy.rb:18:in `call&#39; rack
+(2.0.4) lib/rack/session/abstract/id.rb:232:in `context&#39; rack (2.0.4)
+lib/rack/session/abstract/id.rb:226:in `call&#39; actionpack (5.2.0)
+lib/action_dispatch/middleware/cookies.rb:670:in `call&#39; activerecord
+(5.2.0) lib/active_record/migration.rb:559:in `call&#39; actionpack (5.2.0)
+lib/action_dispatch/middleware/callbacks.rb:28:in `block in call&#39;
+activesupport (5.2.0) lib/active_support/callbacks.rb:98:in
+`run_callbacks&#39; actionpack (5.2.0)
+lib/action_dispatch/middleware/callbacks.rb:26:in `call&#39; actionpack
+(5.2.0) lib/action_dispatch/middleware/executor.rb:14:in `call&#39;
+actionpack (5.2.0) lib/action_dispatch/middleware/debug_exceptions.rb:61:in
+`call&#39; actionpack (5.2.0)
+lib/action_dispatch/middleware/show_exceptions.rb:33:in `call&#39; railties
+(5.2.0) lib/rails/rack/logger.rb:38:in `call_app&#39; railties (5.2.0)
+lib/rails/rack/logger.rb:26:in `block in call&#39; activesupport (5.2.0)
+lib/active_support/tagged_logging.rb:71:in `block in tagged&#39;
+activesupport (5.2.0) lib/active_support/tagged_logging.rb:28:in
+`tagged&#39; activesupport (5.2.0)
+lib/active_support/tagged_logging.rb:71:in `tagged&#39; railties (5.2.0)
+lib/rails/rack/logger.rb:26:in `call&#39; sprockets-rails (3.2.1)
+lib/sprockets/rails/quiet_assets.rb:13:in `call&#39; actionpack (5.2.0)
+lib/action_dispatch/middleware/remote_ip.rb:81:in `call&#39; actionpack
+(5.2.0) lib/action_dispatch/middleware/request_id.rb:27:in `call&#39; rack
+(2.0.4) lib/rack/method_override.rb:22:in `call&#39; rack (2.0.4)
+lib/rack/runtime.rb:22:in `call&#39; activesupport (5.2.0)
+lib/active_support/cache/strategy/local_cache_middleware.rb:29:in
+`call&#39; actionpack (5.2.0)
+lib/action_dispatch/middleware/executor.rb:14:in `call&#39; actionpack
+(5.2.0) lib/action_dispatch/middleware/static.rb:127:in `call&#39; rack
+(2.0.4) lib/rack/sendfile.rb:111:in `call&#39; railties (5.2.0)
+lib/rails/engine.rb:524:in `call&#39; rack (2.0.4)
+lib/rack/handler/webrick.rb:86:in `service&#39;
+/Users/qin/.rbenv/versions/2.5.0/lib/ruby/2.5.0/webrick/httpserver.rb:140:in
+`service&#39;
+/Users/qin/.rbenv/versions/2.5.0/lib/ruby/2.5.0/webrick/httpserver.rb:96:in
+`run&#39;
+/Users/qin/.rbenv/versions/2.5.0/lib/ruby/2.5.0/webrick/server.rb:307:in
+`block in start_thread&#39;</p>
+
+<pre><code>[1m[35m (0.8ms)[0m  [1m[35mSET  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, &#39;,STRICT_ALL_TABLES&#39;), &#39;,NO_AUTO_VALUE_ON_ZERO&#39;),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+[1m[36mOauthUser Load (0.4ms)[0m  [1m[34mSELECT  `oauth_users`.* FROM `oauth_users` ORDER BY `oauth_users`.`id` ASC LIMIT 1[0m
+[1m[35m (0.7ms)[0m  [1m[35mSET  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, &#39;,STRICT_ALL_TABLES&#39;), &#39;,NO_AUTO_VALUE_ON_ZERO&#39;),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+[1m[35m (0.4ms)[0m  [1m[35mSET  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, &#39;,STRICT_ALL_TABLES&#39;), &#39;,NO_AUTO_VALUE_ON_ZERO&#39;),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+[1m[35m (3.6ms)[0m  [1m[35mCREATE DATABASE `dummy_development` DEFAULT CHARACTER SET `utf8`[0m
+[1m[35m (0.3ms)[0m  [1m[35mSET  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, &#39;,STRICT_ALL_TABLES&#39;), &#39;,NO_AUTO_VALUE_ON_ZERO&#39;),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+[1m[35m (0.4ms)[0m  [1m[35mCREATE DATABASE `dummy_test` DEFAULT CHARACTER SET `utf8`[0m
+[1m[35m (0.3ms)[0m  [1m[35mSET  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, &#39;,STRICT_ALL_TABLES&#39;), &#39;,NO_AUTO_VALUE_ON_ZERO&#39;),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+[1m[35m (0.3ms)[0m  [1m[35mSET  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, &#39;,STRICT_ALL_TABLES&#39;), &#39;,NO_AUTO_VALUE_ON_ZERO&#39;),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+[1m[35m (0.3ms)[0m  [1m[35mSET  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, &#39;,STRICT_ALL_TABLES&#39;), &#39;,NO_AUTO_VALUE_ON_ZERO&#39;),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+[1m[35m (44.2ms)[0m  [1m[35mCREATE TABLE `schema_migrations` (`version` varchar(255) NOT NULL PRIMARY KEY)[0m
+[1m[35m (10.5ms)[0m  [1m[35mCREATE TABLE `ar_internal_metadata` (`key` varchar(255) NOT NULL PRIMARY KEY, `value` varchar(255), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL)[0m
+[1m[35m (0.3ms)[0m  [1m[34mSELECT GET_LOCK(&#39;1721091371569202325&#39;, 0)[0m
+[1m[35m (0.4ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+</code></pre>
+
+<p>Migrating to <a href="../../../../classes/TheAuthInit.html">TheAuthInit</a>
+(20170518023400)</p>
+
+<pre><code>[1m[35m (28.0ms)[0m  [1m[35mCREATE TABLE `users` (`id` bigint NOT NULL AUTO_INCREMENT PRIMARY KEY, `name` varchar(100), `avatar` varchar(255), `email` varchar(100), `email_confirm` tinyint(1) DEFAULT FALSE, `mobile` varchar(20), `mobile_confirm` tinyint(1) DEFAULT FALSE, `password_digest` varchar(255), `last_login_at` datetime, `last_login_ip` varchar(255), `disabled` tinyint(1) DEFAULT FALSE, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB[0m
+[1m[35m (11.1ms)[0m  [1m[35mCREATE TABLE `verify_tokens` (`id` bigint NOT NULL AUTO_INCREMENT PRIMARY KEY, `user_id` bigint, `type` varchar(100), `token` varchar(255), `expired_at` datetime, `account` varchar(255), `access_counter` int DEFAULT 0, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL,  INDEX `index_verify_tokens_on_user_id`  (`user_id`)) ENGINE=InnoDB[0m
+[1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+[1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES (&#39;20170518023400&#39;)[0m
+[1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+</code></pre>
+
+<p>Migrating to <a
+href="../../../../classes/CreateOauthUsers.html">CreateOauthUsers</a>
+(20170614071849)</p>
+
+<pre><code>[1m[35m (14.9ms)[0m  [1m[35mCREATE TABLE `oauth_users` (`id` bigint NOT NULL AUTO_INCREMENT PRIMARY KEY, `user_id` bigint, `provider` varchar(255), `type` varchar(255), `uid` varchar(255), `name` varchar(255), `avatar_url` varchar(255), `state` varchar(255), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL,  INDEX `index_oauth_users_on_user_id`  (`user_id`)) ENGINE=InnoDB[0m
+[1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+[1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES (&#39;20170614071849&#39;)[0m
+[1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+[1m[36mActiveRecord::InternalMetadata Load (0.5ms)[0m  [1m[34mSELECT  `ar_internal_metadata`.* FROM `ar_internal_metadata` WHERE `ar_internal_metadata`.`key` = &#39;environment&#39; LIMIT 1[0m
+[1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+[1m[36mActiveRecord::InternalMetadata Create (0.3ms)[0m  [1m[32mINSERT INTO `ar_internal_metadata` (`key`, `value`, `created_at`, `updated_at`) VALUES (&#39;environment&#39;, &#39;development&#39;, &#39;2018-05-03 08:24:07&#39;, &#39;2018-05-03 08:24:07&#39;)[0m
+[1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+[1m[35m (0.2ms)[0m  [1m[34mSELECT RELEASE_LOCK(&#39;1721091371569202325&#39;)[0m
+[1m[35m (0.2ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+[1m[35m (0.4ms)[0m  [1m[35mSET  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, &#39;,STRICT_ALL_TABLES&#39;), &#39;,NO_AUTO_VALUE_ON_ZERO&#39;),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+[1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  `users`.* FROM `users` ORDER BY `users`.`id` ASC LIMIT 1[0m
+[1m[36mOauthUser Load (0.3ms)[0m  [1m[34mSELECT  `oauth_users`.* FROM `oauth_users` ORDER BY `oauth_users`.`id` ASC LIMIT 1[0m
+[1m[35m (0.3ms)[0m  [1m[35mSET  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, &#39;,STRICT_ALL_TABLES&#39;), &#39;,NO_AUTO_VALUE_ON_ZERO&#39;),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+[1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  `users`.* FROM `users` ORDER BY `users`.`id` ASC LIMIT 1[0m
+[1m[35m (0.4ms)[0m  [1m[35mSET  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, &#39;,STRICT_ALL_TABLES&#39;), &#39;,NO_AUTO_VALUE_ON_ZERO&#39;),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+[1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  `users`.* FROM `users` ORDER BY `users`.`id` ASC LIMIT 1[0m
+[1m[35m (0.3ms)[0m  [1m[35mSET  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, &#39;,STRICT_ALL_TABLES&#39;), &#39;,NO_AUTO_VALUE_ON_ZERO&#39;),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+[1m[36mOauthUser Load (0.3ms)[0m  [1m[34mSELECT  `oauth_users`.* FROM `oauth_users` ORDER BY `oauth_users`.`id` ASC LIMIT 1[0m
+</code></pre>
+
+    </div>
+  
+
+
+  
+
+
+  
+  
+
+
+  
+
+
+  
+
+  
+
+
+
+  
+
+    
+
+    
+
+    
+
+
+    
+
+
+    <!-- Methods -->
+    
+    
+    
+  
+</div>
+
+    </div>
+  </body>
+</html>

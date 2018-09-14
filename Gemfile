@@ -16,3 +16,4 @@ gem 'turbolinks'
 #
 gem 'pry-rails'
 gem 'awesome_print'
+gem 'sdoc'

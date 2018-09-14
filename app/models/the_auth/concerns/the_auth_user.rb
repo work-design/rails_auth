@@ -1,3 +1,8 @@
+##
+# include this module to your User model
+#   class User < ApplicationRecord
+#     include TheAuthUser
+#   end
 module TheAuthUser
   extend ActiveSupport::Concern
 
@@ -69,6 +74,8 @@ module TheAuthUser
     save
   end
 
+  ##
+  # pass login params to this method;
   def can_login?(params)
     if verified_status?
       return false
@@ -77,14 +84,14 @@ module TheAuthUser
     if authenticate(params[:password])
       self
     else
-      errors.add :login, 'Incorrect email or password.'
+      errors.add :base, 'Incorrect email or password.'
       false
     end
   end
 
   def verified_status?
     if self.disabled?
-      errors.add :login, 'The account has been disabled!'
+      errors.add :base, 'The account has been disabled!'
       true
     else
       false

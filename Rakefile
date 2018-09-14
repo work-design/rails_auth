@@ -4,14 +4,17 @@ rescue LoadError
   puts 'You must `gem install bundler` and `bundle install` to run rake tasks'
 end
 
+require 'sdoc'
 require 'rdoc/task'
 
-RDoc::Task.new(:rdoc) do |rdoc|
-  rdoc.rdoc_dir = 'rdoc'
-  rdoc.title    = 'TheAuth'
-  rdoc.options << '--line-numbers'
-  rdoc.rdoc_files.include('README.rdoc')
+RDoc::Task.new(:sdoc) do |rdoc|
+  rdoc.rdoc_dir = 'docs'
+  rdoc.title = 'TheAuth'
+  rdoc.options << '--format=sdoc'
+  rdoc.template = 'rails'
+  rdoc.rdoc_files.include('README.md')
   rdoc.rdoc_files.include('lib/**/*.rb')
+  rdoc.rdoc_files.include('app/models/**/*.rb')
 end
 
 APP_RAKEFILE = File.expand_path("../test/dummy/Rakefile", __FILE__)

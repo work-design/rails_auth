@@ -1,39 +1,20 @@
 
 # TheAuth
 
-TheAuth is a Rails Engine for user authentification, more easy to use, more easy to override.
+`TheAuth`是个处理鉴权的`Rails Engine`
+
+## 特性
+
+- [系列项目说明](https://github.com/yougexiangfa/yougexiangfa)
+- 使用`Rails`自带的`ActiveModel::SecurePassword`模块处理密码;
+
+## 文件说明
 
 
-## Description
+## 如何使用
 
-There are so many gems about auth, I seprated the engine from our projects because of:
 
-- more easy to understand and use, for example, `devise` is good, but difficult to override and config, it's unfriendly to fresh developers;
-
-- more easy to config, just normal rails contorller model and views; 
-
-- used `ActiveModel::SecurePassword` which default included by rails, make so easy to do Password;
-
-## How To Use
-
-#### Config TheAuth
-
-add this under `config/initializers`
-
-```ruby
-TheAuth.configure do |config|
-end
-```
-
-#### Overwrite Routes
-
-add the in the file: `config/routes.rb`
-
-```ruby
-
-```
-
-#### include in Controller
+### 
 
 
 

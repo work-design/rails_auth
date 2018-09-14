@@ -9,6 +9,6 @@ module TheAuth
     config.admin_class = 'Admin::BaseController'
   end
 
-end
+end # :nodoc:
 
 

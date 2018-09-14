@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>Rakefile</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="../css/reset.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../css/main.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../css/github.css" type="text/css" media="screen" />
+<script src="../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="../js/main.js" type="text/javascript" charset="utf-8"></script>
+<script src="../js/highlight.pack.js" type="text/javascript" charset="utf-8"></script>
+
+</head>
+
+<body>
+    <div class="banner">
+        
+        <h1>
+            Rakefile
+        </h1>
+        <ul class="files">
+            <li>Rakefile</li>
+            <li>Last modified: 2014-05-08 17:19:51 +0800</li>
+        </ul>
+    </div>
+
+    <div id="bodyContent">
+        <div id="content">
+  
+    <div class="description">
+      
+<p>begin</p>
+
+<pre><code>require &#39;bundler/setup&#39;
+</code></pre>
+
+<p>rescue LoadError</p>
+
+<pre><code>puts &#39;You must `gem install bundler` and `bundle install` to run rake tasks&#39;
+</code></pre>
+
+<p>end</p>
+
+<p>require &#39;rdoc/task&#39;</p>
+
+<p>RDoc::Task.new(:rdoc) do |rdoc|</p>
+
+<pre><code>rdoc.rdoc_dir = &#39;rdoc&#39;
+rdoc.title    = &#39;TheAuth&#39;
+rdoc.options &lt;&lt; &#39;--line-numbers&#39;
+rdoc.rdoc_files.include(&#39;README.rdoc&#39;)
+rdoc.rdoc_files.include(&#39;lib   /*.rb&#39;)
+</code></pre>
+
+<p>end</p>
+
+<p>APP_RAKEFILE = File.expand_path(“../test/dummy/Rakefile”, __FILE__) load
+&#39;rails/tasks/engine.rake&#39;</p>
+
+<p>Bundler::GemHelper.install_tasks</p>
+
+<p>require &#39;rake/testtask&#39;</p>
+
+<p>Rake::TestTask.new(:test) do |t|</p>
+
+<pre><code>t.libs &lt;&lt; &#39;lib&#39;
+t.libs &lt;&lt; &#39;test&#39;
+t.pattern = &#39;test/   *_test.rb&#39;
+t.verbose = false
+</code></pre>
+
+<p>end</p>
+
+<p>task default: :test</p>
+
+    </div>
+  
+
+
+  
+
+
+  
+  
+
+
+  
+
+
+  
+
+  
+
+
+
+  
+
+    
+
+    
+
+    
+
+
+    
+
+
+    <!-- Methods -->
+    
+    
+    
+  
+</div>
+
+    </div>
+  </body>
+</html>

@@ -22,4 +22,4 @@ class TheAuth::Engine < ::Rails::Engine
     app.config.assets.precompile += ['the_auth_manifest.js']
   end
 
-end
+end # :nodoc:
