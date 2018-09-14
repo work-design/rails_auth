@@ -11,6 +11,7 @@ RDoc::Task.new(:sdoc) do |rdoc|
   rdoc.rdoc_dir = 'docs'
   rdoc.title = 'TheAuth'
   rdoc.options << '--format=sdoc'
+  rdoc.options << '-g'
   rdoc.template = 'rails'
   rdoc.rdoc_files.include('README.md')
   rdoc.rdoc_files.include('lib/**/*.rb')
