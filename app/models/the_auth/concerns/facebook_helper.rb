@@ -9,7 +9,6 @@ class FacebookHelper
      access_token = 'xx'
   end
 
-
 end
 
 

@@ -4,7 +4,7 @@ gemspec
 
 gem 'rails', '>= 5.2.0'
 #
-# gem 'mysql2'
+gem 'sqlite3'
 gem 'factory_bot_rails'
 gem 'default_form'
 gem 'rails_com', github: 'qinmingyuan/rails_com', branch: 'master'
