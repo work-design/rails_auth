@@ -6,12 +6,6 @@ class TheAuthApi::JoinController < TheAuthApi::BaseController
   # @apiGroup User
   #
   # @apiParam {String} account Email or Mobile number
-  # @apiSuccessExample {json} Success-Response:
-  #       HTTP/1.1 200 OK
-  #      {
-  #       "firstname": "John",
-  #        "lastname": "Doe"
-  #       }
   #*
   def new_verify
     if params[:account].include?('@')
@@ -99,7 +93,7 @@ class TheAuthApi::JoinController < TheAuthApi::BaseController
   end
 
   def user_params
-    params.fetch(:user, {}).permit(
+    params.fetch(:user, {}).require(:name, :email).permit(
       :name,
       :email,
       :mobile,
