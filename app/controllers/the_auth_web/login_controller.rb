@@ -41,10 +41,10 @@ class TheAuthWeb::LoginController < TheAuthWeb::BaseController
 
   private
   def set_user
-    if params[:login].include?('@')
-      @user = User.find_by(email: params[:login])
+    if params[:account].include?('@')
+      @user = User.find_by(email: params[:account])
     else
-      @user = User.find_by(mobile: params[:login])
+      @user = User.find_by(mobile: params[:account])
     end
   end
 
