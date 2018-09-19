@@ -1,4 +1,4 @@
-module TheAuthApi
+module RailsAuthApi
   extend ActiveSupport::Concern
 
   included do

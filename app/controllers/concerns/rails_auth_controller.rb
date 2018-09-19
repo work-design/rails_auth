@@ -1,4 +1,4 @@
-module TheAuthController
+module RailsAuthController
   extend ActiveSupport::Concern
 
   included do
