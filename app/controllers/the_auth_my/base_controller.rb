@@ -1,4 +1,4 @@
-class TheAuthMy::BaseController < TheAuth.config.my_class.constantize
+class RailsAuthMy::BaseController < RailsAuth.config.my_class.constantize
 
 
 end

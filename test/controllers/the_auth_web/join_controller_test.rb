@@ -1,10 +1,10 @@
 require 'test_helper'
 
-class TheAuth::JoinControllerTest < ActionDispatch::IntegrationTest
+class RailsAuth::JoinControllerTest < ActionDispatch::IntegrationTest
 
   setup do
-    ApplicationController.include TheAuthController
-    User.include TheAuthUser
+    ApplicationController.include RailsAuthController
+    User.include RailsAuthUser
   end
 
   test 'new' do

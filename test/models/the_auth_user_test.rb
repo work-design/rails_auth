@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class TheAuthUserTest < ActiveSupport::TestCase
+class RailsAuthUserTest < ActiveSupport::TestCase
 
 
   test 'clear_reset_token!' do

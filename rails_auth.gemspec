@@ -1,12 +1,12 @@
 $:.push File.expand_path('../lib', __FILE__)
-require 'the_auth/version'
+require 'rails_auth/version'
 
 Gem::Specification.new do |s|
   s.name = 'the_auth'
-  s.version = TheAuth::VERSION
+  s.version = RailsAuth::VERSION
   s.authors = ['qinmingyuan']
   s.email = ['mingyuan0715@foxmail.com']
-  s.homepage = 'https://github.com/qinmingyuan/the_auth'
+  s.homepage = 'https://github.com/yougexaingfa/rails_auth'
   s.summary = 'understandable and simple auth'
   s.description = '更容易理解的auth'
   s.license = 'MIT'

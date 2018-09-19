@@ -37,7 +37,7 @@
         </h1>
         <ul class="files">
             
-            <li><a href="../files/app/models/the_auth/oauth_user_rb.html">app/models/the_auth/oauth_user.rb</a></li>
+            <li><a href="../files/app/models/rails_auth/oauth_user_rb.html">app/models/rails_auth/oauth_user.rb</a></li>
             
         </ul>
     </div>
@@ -152,11 +152,11 @@
                 Source:
                 <a href="javascript:toggleSource('method-i-init_user_source')" id="l_method-i-init_user_source">show</a>
                 
-                  | <a href="https://github.com/yougexiangfa/the_auth/blob/4db0a6c55f8ad59374810beffd5ff657471d6a53/app/models/the_auth/oauth_user.rb#L7" target="_blank" class="github_url">on GitHub</a>
+                  | <a href="https://github.com/yougexiangfa/rails_auth/blob/f919b11d323ab741ed4929d19703fe6224a74d5e/app/models/rails_auth/oauth_user.rb#L7" target="_blank" class="github_url">on GitHub</a>
                 
               </p>
               <div id="method-i-init_user_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File app/models/the_auth/oauth_user.rb, line 7</span>
+                <pre><span class="ruby-comment"># File app/models/rails_auth/oauth_user.rb, line 7</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">init_user</span>
   <span class="ruby-keyword">unless</span> <span class="ruby-identifier">user</span>
     <span class="ruby-identifier">_user</span> = <span class="ruby-keyword">self</span>.<span class="ruby-identifier">build_user</span>
@@ -194,11 +194,11 @@
                 Source:
                 <a href="javascript:toggleSource('method-i-refresh_token-21_source')" id="l_method-i-refresh_token-21_source">show</a>
                 
-                  | <a href="https://github.com/yougexiangfa/the_auth/blob/4db0a6c55f8ad59374810beffd5ff657471d6a53/app/models/the_auth/oauth_user.rb#L21" target="_blank" class="github_url">on GitHub</a>
+                  | <a href="https://github.com/yougexiangfa/rails_auth/blob/f919b11d323ab741ed4929d19703fe6224a74d5e/app/models/rails_auth/oauth_user.rb#L21" target="_blank" class="github_url">on GitHub</a>
                 
               </p>
               <div id="method-i-refresh_token-21_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File app/models/the_auth/oauth_user.rb, line 21</span>
+                <pre><span class="ruby-comment"># File app/models/rails_auth/oauth_user.rb, line 21</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">refresh_token!</span>
   <span class="ruby-identifier">client</span> = <span class="ruby-identifier">strategy</span>
   <span class="ruby-identifier">token</span> = <span class="ruby-constant">OAuth2</span><span class="ruby-operator">::</span><span class="ruby-constant">AccessToken</span>.<span class="ruby-identifier">new</span> <span class="ruby-identifier">client</span>, <span class="ruby-keyword">self</span>.<span class="ruby-identifier">access_token</span>, {<span class="ruby-value">expires_at:</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">expires_at</span>.<span class="ruby-identifier">to_i</span>, <span class="ruby-value">refresh_token:</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">refresh_token</span>}
@@ -235,11 +235,11 @@
                 Source:
                 <a href="javascript:toggleSource('method-i-save_info_source')" id="l_method-i-save_info_source">show</a>
                 
-                  | <a href="https://github.com/yougexiangfa/the_auth/blob/4db0a6c55f8ad59374810beffd5ff657471d6a53/app/models/the_auth/oauth_user.rb#L14" target="_blank" class="github_url">on GitHub</a>
+                  | <a href="https://github.com/yougexiangfa/rails_auth/blob/f919b11d323ab741ed4929d19703fe6224a74d5e/app/models/rails_auth/oauth_user.rb#L14" target="_blank" class="github_url">on GitHub</a>
                 
               </p>
               <div id="method-i-save_info_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File app/models/the_auth/oauth_user.rb, line 14</span>
+                <pre><span class="ruby-comment"># File app/models/rails_auth/oauth_user.rb, line 14</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">save_info</span>(<span class="ruby-identifier">info_params</span>)
 <span class="ruby-keyword">end</span></pre>
               </div>
@@ -273,11 +273,11 @@
                 Source:
                 <a href="javascript:toggleSource('method-i-strategy_source')" id="l_method-i-strategy_source">show</a>
                 
-                  | <a href="https://github.com/yougexiangfa/the_auth/blob/4db0a6c55f8ad59374810beffd5ff657471d6a53/app/models/the_auth/oauth_user.rb#L17" target="_blank" class="github_url">on GitHub</a>
+                  | <a href="https://github.com/yougexiangfa/rails_auth/blob/f919b11d323ab741ed4929d19703fe6224a74d5e/app/models/rails_auth/oauth_user.rb#L17" target="_blank" class="github_url">on GitHub</a>
                 
               </p>
               <div id="method-i-strategy_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File app/models/the_auth/oauth_user.rb, line 17</span>
+                <pre><span class="ruby-comment"># File app/models/rails_auth/oauth_user.rb, line 17</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">strategy</span>
 
 <span class="ruby-keyword">end</span></pre>

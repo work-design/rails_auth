@@ -1,4 +1,4 @@
-class TheAuthMy::UsersController < TheAuthMy::BaseController
+class RailsAuthMy::UsersController < RailsAuthMy::BaseController
   before_action :set_user
 
   def show

@@ -1,4 +1,4 @@
-class TheAuthWeb::JoinController < TheAuthWeb::BaseController
+class RailsAuthWeb::JoinController < RailsAuthWeb::BaseController
 
   def new
     @user = User.new(password: '')

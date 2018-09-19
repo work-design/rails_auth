@@ -1,6 +1,6 @@
-class TheAuthWeb::BaseController < TheAuth.config.app_class.constantize
+class RailsAuthWeb::BaseController < RailsAuth.config.app_class.constantize
   include TheAuthController
-  default_form_builder 'TheAuthWebBuilder' do
+  default_form_builder 'RailsAuthWebBuilder' do
 
   end
 

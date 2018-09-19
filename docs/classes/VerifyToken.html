@@ -37,7 +37,7 @@
         </h1>
         <ul class="files">
             
-            <li><a href="../files/app/models/the_auth/verify_token_rb.html">app/models/the_auth/verify_token.rb</a></li>
+            <li><a href="../files/app/models/rails_auth/verify_token_rb.html">app/models/rails_auth/verify_token.rb</a></li>
             
         </ul>
     </div>
@@ -147,11 +147,11 @@
                 Source:
                 <a href="javascript:toggleSource('method-i-clear_token-21_source')" id="l_method-i-clear_token-21_source">show</a>
                 
-                  | <a href="https://github.com/yougexiangfa/the_auth/blob/4db0a6c55f8ad59374810beffd5ff657471d6a53/app/models/the_auth/verify_token.rb#L21" target="_blank" class="github_url">on GitHub</a>
+                  | <a href="https://github.com/yougexiangfa/rails_auth/blob/f919b11d323ab741ed4929d19703fe6224a74d5e/app/models/rails_auth/verify_token.rb#L21" target="_blank" class="github_url">on GitHub</a>
                 
               </p>
               <div id="method-i-clear_token-21_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File app/models/the_auth/verify_token.rb, line 21</span>
+                <pre><span class="ruby-comment"># File app/models/rails_auth/verify_token.rb, line 21</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">clear_token!</span>
   <span class="ruby-keyword">self</span>.<span class="ruby-identifier">destroy</span>
 <span class="ruby-keyword">end</span></pre>
@@ -186,11 +186,11 @@
                 Source:
                 <a href="javascript:toggleSource('method-i-update_token_source')" id="l_method-i-update_token_source">show</a>
                 
-                  | <a href="https://github.com/yougexiangfa/the_auth/blob/4db0a6c55f8ad59374810beffd5ff657471d6a53/app/models/the_auth/verify_token.rb#L6" target="_blank" class="github_url">on GitHub</a>
+                  | <a href="https://github.com/yougexiangfa/rails_auth/blob/f919b11d323ab741ed4929d19703fe6224a74d5e/app/models/rails_auth/verify_token.rb#L6" target="_blank" class="github_url">on GitHub</a>
                 
               </p>
               <div id="method-i-update_token_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File app/models/the_auth/verify_token.rb, line 6</span>
+                <pre><span class="ruby-comment"># File app/models/rails_auth/verify_token.rb, line 6</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">update_token</span>
   <span class="ruby-keyword">self</span>.<span class="ruby-identifier">token</span> = <span class="ruby-constant">SecureRandom</span>.<span class="ruby-identifier">uuid</span>
   <span class="ruby-keyword">self</span>.<span class="ruby-identifier">expired_at</span> = <span class="ruby-value">14</span>.<span class="ruby-identifier">days</span>.<span class="ruby-identifier">since</span>
@@ -226,11 +226,11 @@
                 Source:
                 <a href="javascript:toggleSource('method-i-verify_token-3F_source')" id="l_method-i-verify_token-3F_source">show</a>
                 
-                  | <a href="https://github.com/yougexiangfa/the_auth/blob/4db0a6c55f8ad59374810beffd5ff657471d6a53/app/models/the_auth/verify_token.rb#L11" target="_blank" class="github_url">on GitHub</a>
+                  | <a href="https://github.com/yougexiangfa/rails_auth/blob/f919b11d323ab741ed4929d19703fe6224a74d5e/app/models/rails_auth/verify_token.rb#L11" target="_blank" class="github_url">on GitHub</a>
                 
               </p>
               <div id="method-i-verify_token-3F_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File app/models/the_auth/verify_token.rb, line 11</span>
+                <pre><span class="ruby-comment"># File app/models/rails_auth/verify_token.rb, line 11</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">verify_token?</span>(<span class="ruby-identifier">now</span> = <span class="ruby-constant">Time</span>.<span class="ruby-identifier">now</span>)
   <span class="ruby-keyword">return</span> <span class="ruby-keyword">false</span> <span class="ruby-keyword">if</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">expired_at</span>.<span class="ruby-identifier">blank?</span>
   <span class="ruby-keyword">if</span> <span class="ruby-identifier">now</span> <span class="ruby-operator">&gt;</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">expired_at</span>

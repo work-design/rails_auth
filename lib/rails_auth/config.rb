@@ -1,6 +1,6 @@
 require 'active_support/configurable'
 
-module TheAuth
+module RailsAuth
   include ActiveSupport::Configurable
 
   configure do |config|

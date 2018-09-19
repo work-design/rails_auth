@@ -1,4 +1,4 @@
-class TheAuthWeb::LoginController < TheAuthWeb::BaseController
+class RailsAuthWeb::LoginController < RailsAuthWeb::BaseController
   before_action :set_user, only: [:create]
 
   def new
