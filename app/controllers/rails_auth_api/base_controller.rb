@@ -1,6 +1,6 @@
 class RailsAuthApi::BaseController < ActionController::Base
   skip_before_action :verify_authenticity_token
-  include TheAuthApi
+  include RailsAuthApi
   include TheCommonApi
 
   def login_as user

@@ -93,7 +93,7 @@ class RailsAuthApi::JoinController < RailsAuthApi::BaseController
   end
 
   def user_params
-    params.fetch(:user, {}).require(:name, :email).permit(
+    params.fetch(:user, {}).permit(
       :name,
       :email,
       :mobile,
