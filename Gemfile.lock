@@ -9,7 +9,7 @@ GIT
 PATH
   remote: .
   specs:
-    the_auth (1.0.4)
+    rails_auth (1.0.4)
       bcrypt
       default_form
       rails (>= 5.0)
@@ -61,7 +61,7 @@ GEM
       tzinfo (~> 1.1)
     arel (9.0.0)
     awesome_print (1.8.0)
-    bcrypt (3.1.11)
+    bcrypt (3.1.12)
     builder (3.2.3)
     coderay (1.1.2)
     concurrent-ruby (1.0.5)
@@ -159,10 +159,10 @@ DEPENDENCIES
   mysql2
   pry-rails
   rails (>= 5.2.0)
+  rails_auth!
   rails_com!
   sdoc
   sqlite3
-  the_auth!
   turbolinks
 
 BUNDLED WITH
