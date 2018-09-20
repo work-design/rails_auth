@@ -7,6 +7,7 @@ module RailsAuth
     config.app_class = 'ApplicationController'
     config.my_class = 'My::BaseController'
     config.admin_class = 'Admin::BaseController'
+    config.api_class = 'Api::ApiController'
   end
 
 end # :nodoc:

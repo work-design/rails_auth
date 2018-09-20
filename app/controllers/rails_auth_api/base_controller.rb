@@ -1,7 +1,5 @@
-class RailsAuthApi::BaseController < ActionController::Base
-  skip_before_action :verify_authenticity_token
+class RailsAuthApi::BaseController < RailsAuth.config.api_class.constantize
   include RailsAuthApi
-  include TheCommonApi
 
   def login_as user
     user.update(last_login_at: Time.now)

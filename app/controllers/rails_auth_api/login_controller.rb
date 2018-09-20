@@ -9,8 +9,10 @@ class RailsAuthApi::LoginController < RailsAuthApi::BaseController
       login_as @user
 
       render json: { status: 200, auth_token: @user.access_token.token }
+    elsif @user.nil?
+      render json: { code: 401, error: { account: '登陆失败' }, message: '请先注册账号' }, status: 401
     else
-      render json: { error: @user.errors.messages }
+      process_errors(@user)
     end
   end
 
