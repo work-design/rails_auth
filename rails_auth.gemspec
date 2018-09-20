@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
   s.homepage = 'https://github.com/yougexiangfa/rails_auth'
   s.summary = 'understandable, simple auth logic for Rails'
   s.description = '更容易理解的auth'
-  s.license = 'LGPL 3.0'
+  s.license = 'LGPL-3.0'
 
   s.files = Dir[
     '{app,config,db,lib}/**/*',
@@ -23,6 +23,4 @@ Gem::Specification.new do |s|
   s.add_dependency 'bcrypt', '~> 3.1'
   s.add_dependency 'rails_com', '~> 1.2'
   s.add_dependency 'default_form', '~> 1.3'
-
-  s.add_development_dependency 'mysql2'
 end
