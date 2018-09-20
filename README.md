@@ -13,13 +13,10 @@
 ## 如何使用
 
 
-### 
-
-
-
 ```ruby
 class ApplicationController < ActionController::Base
   include RailsAuthController
+  before_action :require_login_from_session
 end
 ```
 
@@ -37,3 +34,4 @@ end
 # in controller
 current_user
 ```
+

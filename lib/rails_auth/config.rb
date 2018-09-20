@@ -1,6 +1,6 @@
 require 'active_support/configurable'
 
-module RailsAuth
+module RailsAuth #:nodoc:
   include ActiveSupport::Configurable
 
   configure do |config|
@@ -10,6 +10,6 @@ module RailsAuth
     config.api_class = 'Api::ApiController'
   end
 
-end # :nodoc:
+end
 
 

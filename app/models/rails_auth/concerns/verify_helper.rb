@@ -1,3 +1,6 @@
+# extend self::
+#   this module extended self
+#
 module VerifyHelper
   extend self
 

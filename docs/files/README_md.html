@@ -23,10 +23,10 @@
             <li>
                 README.md
                 
-                    <a href="https://github.com/yougexiangfa/rails_auth/blob/9eeeda55bed7eeb2e1419250c9e0d75998698fca/README.md" target="_blank" class="github_url">on GitHub</a>
+                    <a href="https://github.com/yougexiangfa/rails_auth/blob/2cbce44131e288266c0bc014c9f049187cad12a5/README.md" target="_blank" class="github_url">on GitHub</a>
                 
             </li>
-            <li>Last modified: 2018-09-19 10:56:42 +0800</li>
+            <li>Last modified: 2018-09-21 00:11:01 +0800</li>
         </ul>
     </div>
 
@@ -35,7 +35,7 @@
   
     <div class="description">
       
-<h1 id="label-RailsAuth"><a href="../classes/RailsAuth.html">RailsAuth</a></h1>
+<h1 id="label-RailsAuth">RailsAuth</h1>
 
 <p><code>RailsAuth</code>是个处理鉴权的<code>Rails Engine</code></p>
 
@@ -50,10 +50,9 @@
 
 <h2 id="label-E5-A6-82-E4-BD-95-E4-BD-BF-E7-94-A8">如何使用</h2>
 
-<p>###</p>
-
 <pre><code>class ApplicationController &lt; ActionController::Base
   include RailsAuthController
+  before_action :require_login_from_session
 end
 </code></pre>
 
@@ -64,7 +63,7 @@ end
 end
 </code></pre>
 
-<h2 id="label-The+methods+RailsAuth+provided-EF-BC-9A">The methods <a href="../classes/RailsAuth.html">RailsAuth</a> provided：</h2>
+<h2 id="label-The+methods+RailsAuth+provided-EF-BC-9A">The methods RailsAuth provided：</h2>
 
 <pre><code># in controller
 current_user

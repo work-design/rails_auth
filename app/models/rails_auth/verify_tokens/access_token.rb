@@ -1,3 +1,9 @@
+##
+# Usually used for access api request
+#--
+# this not docs
+#++
+# test
 class AccessToken < VerifyToken
   before_create :update_token
 

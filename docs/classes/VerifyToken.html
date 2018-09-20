@@ -14,10 +14,14 @@
     <meta property="og:title" value="VerifyToken">
 
   
+    
+    <meta name="description" content="Deal with token  用于处理Token.">
+    <meta property="og:description" content="Deal with token  用于处理Token.">
+  
 
     <meta name="keywords" content="VerifyToken class">
   
-    <meta name="keywords" content="update_token, verify_token?, clear_token!">
+    <meta name="keywords" content="update_token, verify_token?">
   
 </head>
 
@@ -44,6 +48,14 @@
     <div id="bodyContent">
         <div id="content">
   
+    <div class="description">
+      
+<p>Deal with token</p>
+
+<p>用于处理Token</p>
+
+    </div>
+  
 
 
   
@@ -60,18 +72,6 @@
     <!-- Method ref -->
     <div class="sectiontitle">Methods</div>
     <dl class="methods">
-      
-        <dt>C</dt>
-        <dd>
-          <ul>
-            
-              
-              <li>
-                <a href="#method-i-clear_token-21">clear_token!</a>
-              </li>
-            
-          </ul>
-        </dd>
       
         <dt>U</dt>
         <dd>
@@ -122,45 +122,6 @@
       <div class="sectiontitle">Instance Public methods</div>
       
         <div class="method">
-          <div class="title method-title" id="method-i-clear_token-21">
-            
-              <b>clear_token!</b>()
-            
-            <a href="../classes/VerifyToken.html#method-i-clear_token-21" name="method-i-clear_token-21" class="permalink">Link</a>
-          </div>
-
-          
-            <div class="description">
-              
-            </div>
-          
-
-          
-
-          
-
-          
-            
-            <div class="sourcecode">
-              
-              <p class="source-link">
-                Source:
-                <a href="javascript:toggleSource('method-i-clear_token-21_source')" id="l_method-i-clear_token-21_source">show</a>
-                
-                  | <a href="https://github.com/yougexiangfa/rails_auth/blob/9eeeda55bed7eeb2e1419250c9e0d75998698fca/app/models/rails_auth/verify_token.rb#L21" target="_blank" class="github_url">on GitHub</a>
-                
-              </p>
-              <div id="method-i-clear_token-21_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File app/models/rails_auth/verify_token.rb, line 21</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">clear_token!</span>
-  <span class="ruby-keyword">self</span>.<span class="ruby-identifier">destroy</span>
-<span class="ruby-keyword">end</span></pre>
-              </div>
-            </div>
-            
-          </div>
-        
-        <div class="method">
           <div class="title method-title" id="method-i-update_token">
             
               <b>update_token</b>()
@@ -186,11 +147,11 @@
                 Source:
                 <a href="javascript:toggleSource('method-i-update_token_source')" id="l_method-i-update_token_source">show</a>
                 
-                  | <a href="https://github.com/yougexiangfa/rails_auth/blob/9eeeda55bed7eeb2e1419250c9e0d75998698fca/app/models/rails_auth/verify_token.rb#L6" target="_blank" class="github_url">on GitHub</a>
+                  | <a href="https://github.com/yougexiangfa/rails_auth/blob/2cbce44131e288266c0bc014c9f049187cad12a5/app/models/rails_auth/verify_token.rb#L9" target="_blank" class="github_url">on GitHub</a>
                 
               </p>
               <div id="method-i-update_token_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File app/models/rails_auth/verify_token.rb, line 6</span>
+                <pre><span class="ruby-comment"># File app/models/rails_auth/verify_token.rb, line 9</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">update_token</span>
   <span class="ruby-keyword">self</span>.<span class="ruby-identifier">token</span> = <span class="ruby-constant">SecureRandom</span>.<span class="ruby-identifier">uuid</span>
   <span class="ruby-keyword">self</span>.<span class="ruby-identifier">expired_at</span> = <span class="ruby-value">14</span>.<span class="ruby-identifier">days</span>.<span class="ruby-identifier">since</span>
@@ -226,11 +187,11 @@
                 Source:
                 <a href="javascript:toggleSource('method-i-verify_token-3F_source')" id="l_method-i-verify_token-3F_source">show</a>
                 
-                  | <a href="https://github.com/yougexiangfa/rails_auth/blob/9eeeda55bed7eeb2e1419250c9e0d75998698fca/app/models/rails_auth/verify_token.rb#L11" target="_blank" class="github_url">on GitHub</a>
+                  | <a href="https://github.com/yougexiangfa/rails_auth/blob/2cbce44131e288266c0bc014c9f049187cad12a5/app/models/rails_auth/verify_token.rb#L14" target="_blank" class="github_url">on GitHub</a>
                 
               </p>
               <div id="method-i-verify_token-3F_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File app/models/rails_auth/verify_token.rb, line 11</span>
+                <pre><span class="ruby-comment"># File app/models/rails_auth/verify_token.rb, line 14</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">verify_token?</span>(<span class="ruby-identifier">now</span> = <span class="ruby-constant">Time</span>.<span class="ruby-identifier">now</span>)
   <span class="ruby-keyword">return</span> <span class="ruby-keyword">false</span> <span class="ruby-keyword">if</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">expired_at</span>.<span class="ruby-identifier">blank?</span>
   <span class="ruby-keyword">if</span> <span class="ruby-identifier">now</span> <span class="ruby-operator">&gt;</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">expired_at</span>

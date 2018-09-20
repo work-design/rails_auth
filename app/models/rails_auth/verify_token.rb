@@ -1,3 +1,6 @@
+# Deal with token
+#
+# 用于处理Token
 class VerifyToken < ApplicationRecord
   belongs_to :user, optional: true
 
@@ -16,10 +19,6 @@ class VerifyToken < ApplicationRecord
     end
 
     true
-  end
-
-  def clear_token!
-    self.destroy
   end
 
 end

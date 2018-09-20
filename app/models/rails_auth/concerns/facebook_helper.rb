@@ -1,4 +1,4 @@
-class FacebookHelper
+class FacebookHelper # :nodoc:
   attr_reader :strategy
 
   def initialize
