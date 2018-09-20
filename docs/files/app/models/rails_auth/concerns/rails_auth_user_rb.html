@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>facebook_helper.rb</title>
+    <title>rails_auth_user.rb</title>
     <meta charset="UTF-8" />
     <link rel="stylesheet" href="../../../../../css/reset.css" type="text/css" media="screen" />
 <link rel="stylesheet" href="../../../../../css/main.css" type="text/css" media="screen" />
@@ -16,22 +16,33 @@
     <div class="banner">
         
         <h1>
-            facebook_helper.rb
+            rails_auth_user.rb
         </h1>
         <ul class="files">
             
             <li>
-                app/models/rails_auth/concerns/facebook_helper.rb
+                app/models/rails_auth/concerns/rails_auth_user.rb
                 
-                    <a href="https://github.com/yougexiangfa/rails_auth/blob/9eeeda55bed7eeb2e1419250c9e0d75998698fca/app/models/rails_auth/concerns/facebook_helper.rb" target="_blank" class="github_url">on GitHub</a>
+                    <a href="https://github.com/yougexiangfa/rails_auth/blob/9eeeda55bed7eeb2e1419250c9e0d75998698fca/app/models/rails_auth/concerns/rails_auth_user.rb" target="_blank" class="github_url">on GitHub</a>
                 
             </li>
-            <li>Last modified: 2018-09-14 16:22:06 +0800</li>
+            <li>Last modified: 2018-09-19 10:52:00 +0800</li>
         </ul>
     </div>
 
     <div id="bodyContent">
         <div id="content">
+  
+    <div class="description">
+      
+<p>include this module to your User model</p>
+
+<pre><code>class User &lt; ApplicationRecord
+  include RailsAuthUser
+end
+</code></pre>
+
+    </div>
   
 
 
@@ -48,8 +59,8 @@
     <ul>
       
         <li>
-          <span class="type">CLASS</span>
-          <a href="../../../../../classes/FacebookHelper.html">FacebookHelper</a>
+          <span class="type">MODULE</span>
+          <a href="../../../../../classes/RailsAuthUser.html">RailsAuthUser</a>
         </li>
       
     </ul>

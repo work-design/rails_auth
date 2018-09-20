@@ -35,7 +35,7 @@
         </h1>
         <ul class="files">
             
-            <li><a href="../files/app/models/rails_auth/concerns/the_auth_user_rb.html">app/models/rails_auth/concerns/the_auth_user.rb</a></li>
+            <li><a href="../files/app/models/rails_auth/concerns/rails_auth_user_rb.html">app/models/rails_auth/concerns/rails_auth_user.rb</a></li>
             
         </ul>
     </div>
@@ -229,11 +229,11 @@ end
                 Source:
                 <a href="javascript:toggleSource('method-i-access_token_source')" id="l_method-i-access_token_source">show</a>
                 
-                  | <a href="https://github.com/yougexiangfa/rails_auth/blob/f919b11d323ab741ed4929d19703fe6224a74d5e/app/models/rails_auth/concerns/the_auth_user.rb#L36" target="_blank" class="github_url">on GitHub</a>
+                  | <a href="https://github.com/yougexiangfa/rails_auth/blob/9eeeda55bed7eeb2e1419250c9e0d75998698fca/app/models/rails_auth/concerns/rails_auth_user.rb#L36" target="_blank" class="github_url">on GitHub</a>
                 
               </p>
               <div id="method-i-access_token_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File app/models/rails_auth/concerns/the_auth_user.rb, line 36</span>
+                <pre><span class="ruby-comment"># File app/models/rails_auth/concerns/rails_auth_user.rb, line 36</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">access_token</span>
   <span class="ruby-keyword">if</span> <span class="ruby-keyword">super</span>
     <span class="ruby-keyword">super</span>
@@ -273,11 +273,11 @@ end
                 Source:
                 <a href="javascript:toggleSource('method-i-can_login-3F_source')" id="l_method-i-can_login-3F_source">show</a>
                 
-                  | <a href="https://github.com/yougexiangfa/rails_auth/blob/f919b11d323ab741ed4929d19703fe6224a74d5e/app/models/rails_auth/concerns/the_auth_user.rb#L79" target="_blank" class="github_url">on GitHub</a>
+                  | <a href="https://github.com/yougexiangfa/rails_auth/blob/9eeeda55bed7eeb2e1419250c9e0d75998698fca/app/models/rails_auth/concerns/rails_auth_user.rb#L79" target="_blank" class="github_url">on GitHub</a>
                 
               </p>
               <div id="method-i-can_login-3F_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File app/models/rails_auth/concerns/the_auth_user.rb, line 79</span>
+                <pre><span class="ruby-comment"># File app/models/rails_auth/concerns/rails_auth_user.rb, line 79</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">can_login?</span>(<span class="ruby-identifier">params</span>)
   <span class="ruby-keyword">if</span> <span class="ruby-identifier">verified_status?</span>
     <span class="ruby-keyword">return</span> <span class="ruby-keyword">false</span>
@@ -321,11 +321,11 @@ end
                 Source:
                 <a href="javascript:toggleSource('method-i-confirm_token_source')" id="l_method-i-confirm_token_source">show</a>
                 
-                  | <a href="https://github.com/yougexiangfa/rails_auth/blob/f919b11d323ab741ed4929d19703fe6224a74d5e/app/models/rails_auth/concerns/the_auth_user.rb#L54" target="_blank" class="github_url">on GitHub</a>
+                  | <a href="https://github.com/yougexiangfa/rails_auth/blob/9eeeda55bed7eeb2e1419250c9e0d75998698fca/app/models/rails_auth/concerns/rails_auth_user.rb#L54" target="_blank" class="github_url">on GitHub</a>
                 
               </p>
               <div id="method-i-confirm_token_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File app/models/rails_auth/concerns/the_auth_user.rb, line 54</span>
+                <pre><span class="ruby-comment"># File app/models/rails_auth/concerns/rails_auth_user.rb, line 54</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">confirm_token</span>
   <span class="ruby-keyword">if</span> <span class="ruby-keyword">super</span>
     <span class="ruby-keyword">super</span>
@@ -365,11 +365,11 @@ end
                 Source:
                 <a href="javascript:toggleSource('method-i-join_source')" id="l_method-i-join_source">show</a>
                 
-                  | <a href="https://github.com/yougexiangfa/rails_auth/blob/f919b11d323ab741ed4929d19703fe6224a74d5e/app/models/rails_auth/concerns/the_auth_user.rb#L72" target="_blank" class="github_url">on GitHub</a>
+                  | <a href="https://github.com/yougexiangfa/rails_auth/blob/9eeeda55bed7eeb2e1419250c9e0d75998698fca/app/models/rails_auth/concerns/rails_auth_user.rb#L72" target="_blank" class="github_url">on GitHub</a>
                 
               </p>
               <div id="method-i-join_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File app/models/rails_auth/concerns/the_auth_user.rb, line 72</span>
+                <pre><span class="ruby-comment"># File app/models/rails_auth/concerns/rails_auth_user.rb, line 72</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">join</span>(<span class="ruby-identifier">params</span> = <span class="ruby-keyword">nil</span>)
   <span class="ruby-keyword">self</span>.<span class="ruby-identifier">errors</span>.<span class="ruby-identifier">add</span>(<span class="ruby-value">:password</span>, <span class="ruby-value">:blank</span>) <span class="ruby-keyword">unless</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">password_digest</span>.<span class="ruby-identifier">present?</span>
   <span class="ruby-identifier">save</span>
@@ -405,11 +405,11 @@ end
                 Source:
                 <a href="javascript:toggleSource('method-i-mobile_token_source')" id="l_method-i-mobile_token_source">show</a>
                 
-                  | <a href="https://github.com/yougexiangfa/rails_auth/blob/f919b11d323ab741ed4929d19703fe6224a74d5e/app/models/rails_auth/concerns/the_auth_user.rb#L63" target="_blank" class="github_url">on GitHub</a>
+                  | <a href="https://github.com/yougexiangfa/rails_auth/blob/9eeeda55bed7eeb2e1419250c9e0d75998698fca/app/models/rails_auth/concerns/rails_auth_user.rb#L63" target="_blank" class="github_url">on GitHub</a>
                 
               </p>
               <div id="method-i-mobile_token_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File app/models/rails_auth/concerns/the_auth_user.rb, line 63</span>
+                <pre><span class="ruby-comment"># File app/models/rails_auth/concerns/rails_auth_user.rb, line 63</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">mobile_token</span>
   <span class="ruby-keyword">if</span> <span class="ruby-keyword">super</span>
     <span class="ruby-keyword">super</span>
@@ -449,11 +449,11 @@ end
                 Source:
                 <a href="javascript:toggleSource('method-i-oauth_providers_source')" id="l_method-i-oauth_providers_source">show</a>
                 
-                  | <a href="https://github.com/yougexiangfa/rails_auth/blob/f919b11d323ab741ed4929d19703fe6224a74d5e/app/models/rails_auth/concerns/the_auth_user.rb#L101" target="_blank" class="github_url">on GitHub</a>
+                  | <a href="https://github.com/yougexiangfa/rails_auth/blob/9eeeda55bed7eeb2e1419250c9e0d75998698fca/app/models/rails_auth/concerns/rails_auth_user.rb#L101" target="_blank" class="github_url">on GitHub</a>
                 
               </p>
               <div id="method-i-oauth_providers_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File app/models/rails_auth/concerns/the_auth_user.rb, line 101</span>
+                <pre><span class="ruby-comment"># File app/models/rails_auth/concerns/rails_auth_user.rb, line 101</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">oauth_providers</span>
   <span class="ruby-constant">OauthUser</span>.<span class="ruby-identifier">options_i18n</span>(<span class="ruby-value">:provider</span>).<span class="ruby-identifier">values</span>.<span class="ruby-identifier">map</span>(<span class="ruby-operator">&amp;</span><span class="ruby-value">:to_s</span>) <span class="ruby-operator">-</span> <span class="ruby-identifier">oauth_users</span>.<span class="ruby-identifier">pluck</span>(<span class="ruby-value">:provider</span>).<span class="ruby-identifier">compact</span>
 <span class="ruby-keyword">end</span></pre>
@@ -488,11 +488,11 @@ end
                 Source:
                 <a href="javascript:toggleSource('method-i-reset_token_source')" id="l_method-i-reset_token_source">show</a>
                 
-                  | <a href="https://github.com/yougexiangfa/rails_auth/blob/f919b11d323ab741ed4929d19703fe6224a74d5e/app/models/rails_auth/concerns/the_auth_user.rb#L45" target="_blank" class="github_url">on GitHub</a>
+                  | <a href="https://github.com/yougexiangfa/rails_auth/blob/9eeeda55bed7eeb2e1419250c9e0d75998698fca/app/models/rails_auth/concerns/rails_auth_user.rb#L45" target="_blank" class="github_url">on GitHub</a>
                 
               </p>
               <div id="method-i-reset_token_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File app/models/rails_auth/concerns/the_auth_user.rb, line 45</span>
+                <pre><span class="ruby-comment"># File app/models/rails_auth/concerns/rails_auth_user.rb, line 45</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">reset_token</span>
   <span class="ruby-keyword">if</span> <span class="ruby-keyword">super</span>
     <span class="ruby-keyword">super</span>
@@ -532,11 +532,11 @@ end
                 Source:
                 <a href="javascript:toggleSource('method-i-verified_status-3F_source')" id="l_method-i-verified_status-3F_source">show</a>
                 
-                  | <a href="https://github.com/yougexiangfa/rails_auth/blob/f919b11d323ab741ed4929d19703fe6224a74d5e/app/models/rails_auth/concerns/the_auth_user.rb#L92" target="_blank" class="github_url">on GitHub</a>
+                  | <a href="https://github.com/yougexiangfa/rails_auth/blob/9eeeda55bed7eeb2e1419250c9e0d75998698fca/app/models/rails_auth/concerns/rails_auth_user.rb#L92" target="_blank" class="github_url">on GitHub</a>
                 
               </p>
               <div id="method-i-verified_status-3F_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File app/models/rails_auth/concerns/the_auth_user.rb, line 92</span>
+                <pre><span class="ruby-comment"># File app/models/rails_auth/concerns/rails_auth_user.rb, line 92</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">verified_status?</span>
   <span class="ruby-keyword">if</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">disabled?</span>
     <span class="ruby-identifier">errors</span>.<span class="ruby-identifier">add</span> <span class="ruby-value">:base</span>, <span class="ruby-string">&#39;The account has been disabled!&#39;</span>
