@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>RailsAuthUser</title>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="../css/reset.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../css/main.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../css/github.css" type="text/css" media="screen" />
+<script src="../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="../js/main.js" type="text/javascript" charset="utf-8"></script>
+<script src="../js/highlight.pack.js" type="text/javascript" charset="utf-8"></script>
+
+
+    <meta property="og:title" value="RailsAuthUser">
+
+  
+    
+    <meta name="description" content="include this module to your User model  class User &lt; ApplicationRecord   include RailsAuthUser end .">
+    <meta property="og:description" content="include this module to your User model  class User &lt; ApplicationRecord   include RailsAuthUser end .">
+  
+
+    <meta name="keywords" content="RailsAuthUser class">
+  
+    <meta name="keywords" content="access_token, reset_token, confirm_token, mobile_token, join, can_login?, verified_status?, oauth_providers">
+  
+</head>
+
+<body>
+    <div class="banner">
+        
+        <h1>
+            <span class="type">Module</span>
+            RailsAuthUser
+            
+        </h1>
+        <ul class="files">
+            
+            <li><a href="../files/app/models/rails_auth/concerns/rails_auth_user_rb.html">app/models/rails_auth/concerns/rails_auth_user.rb</a></li>
+            
+        </ul>
+    </div>
+    <div id="bodyContent">
+        <div id="content">
+  
+    <div class="description">
+      
+<p>include this module to your User model</p>
+
+<pre><code>class User &lt; ApplicationRecord
+  include RailsAuthUser
+end
+</code></pre>
+
+    </div>
+  
+
+
+  
+
+
+  
+  
+
+
+  
+
+
+  
+    <!-- Method ref -->
+    <div class="sectiontitle">Methods</div>
+    <dl class="methods">
+      
+        <dt>A</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-access_token">access_token</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>C</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-can_login-3F">can_login?</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-confirm_token">confirm_token</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>J</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-join">join</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>M</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-mobile_token">mobile_token</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>O</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-oauth_providers">oauth_providers</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>R</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-reset_token">reset_token</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>V</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-verified_status-3F">verified_status?</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+    </dl>
+  
+
+  
+    <!-- Includes -->
+    <div class="sectiontitle">Included Modules</div>
+    <ul>
+      
+        <li>
+          
+            ActiveModel::SecurePassword
+          
+        </li>
+      
+        <li>
+          
+            <a href="JwtToken.html">
+              JwtToken
+            </a>
+          
+        </li>
+      
+    </ul>
+  
+
+
+
+  
+
+    
+
+    
+
+    
+
+
+    
+
+
+    <!-- Methods -->
+    
+    
+      <div class="sectiontitle">Instance Public methods</div>
+      
+        <div class="method">
+          <div class="title method-title" id="method-i-access_token">
+            
+              <b>access_token</b>()
+            
+            <a href="../classes/RailsAuthUser.html#method-i-access_token" name="method-i-access_token" class="permalink">Link</a>
+          </div>
+
+          
+            <div class="description">
+              
+            </div>
+          
+
+          
+
+          
+
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source:
+                <a href="javascript:toggleSource('method-i-access_token_source')" id="l_method-i-access_token_source">show</a>
+                
+                  | <a href="https://github.com/yougexiangfa/rails_auth/blob/398aaff4b6e8c03a515d6a08df3e6ea9d15cc4b3/app/models/rails_auth/concerns/rails_auth_user.rb#L36" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-i-access_token_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File app/models/rails_auth/concerns/rails_auth_user.rb, line 36</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">access_token</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-keyword">super</span>
+    <span class="ruby-keyword">super</span>
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-keyword">self</span>.<span class="ruby-identifier">access_tokens</span>.<span class="ruby-identifier">delete_all</span>
+    <span class="ruby-identifier">create_access_token</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-can_login-3F">
+            
+              <b>can_login?</b>(params)
+            
+            <a href="../classes/RailsAuthUser.html#method-i-can_login-3F" name="method-i-can_login-3F" class="permalink">Link</a>
+          </div>
+
+          
+            <div class="description">
+              <p>pass login params to this method;</p>
+            </div>
+          
+
+          
+
+          
+
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source:
+                <a href="javascript:toggleSource('method-i-can_login-3F_source')" id="l_method-i-can_login-3F_source">show</a>
+                
+                  | <a href="https://github.com/yougexiangfa/rails_auth/blob/398aaff4b6e8c03a515d6a08df3e6ea9d15cc4b3/app/models/rails_auth/concerns/rails_auth_user.rb#L79" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-i-can_login-3F_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File app/models/rails_auth/concerns/rails_auth_user.rb, line 79</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">can_login?</span>(<span class="ruby-identifier">params</span>)
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">verified_status?</span>
+    <span class="ruby-keyword">return</span> <span class="ruby-keyword">false</span>
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">authenticate</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:password</span>])
+    <span class="ruby-keyword">self</span>
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-identifier">errors</span>.<span class="ruby-identifier">add</span> <span class="ruby-value">:base</span>, <span class="ruby-string">&#39;Incorrect email or password.&#39;</span>
+    <span class="ruby-keyword">false</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-confirm_token">
+            
+              <b>confirm_token</b>()
+            
+            <a href="../classes/RailsAuthUser.html#method-i-confirm_token" name="method-i-confirm_token" class="permalink">Link</a>
+          </div>
+
+          
+            <div class="description">
+              
+            </div>
+          
+
+          
+
+          
+
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source:
+                <a href="javascript:toggleSource('method-i-confirm_token_source')" id="l_method-i-confirm_token_source">show</a>
+                
+                  | <a href="https://github.com/yougexiangfa/rails_auth/blob/398aaff4b6e8c03a515d6a08df3e6ea9d15cc4b3/app/models/rails_auth/concerns/rails_auth_user.rb#L54" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-i-confirm_token_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File app/models/rails_auth/concerns/rails_auth_user.rb, line 54</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">confirm_token</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-keyword">super</span>
+    <span class="ruby-keyword">super</span>
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-keyword">self</span>.<span class="ruby-identifier">confirm_tokens</span>.<span class="ruby-identifier">delete_all</span>
+    <span class="ruby-identifier">create_confirm_token</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-join">
+            
+              <b>join</b>(params = nil)
+            
+            <a href="../classes/RailsAuthUser.html#method-i-join" name="method-i-join" class="permalink">Link</a>
+          </div>
+
+          
+            <div class="description">
+              
+            </div>
+          
+
+          
+
+          
+
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source:
+                <a href="javascript:toggleSource('method-i-join_source')" id="l_method-i-join_source">show</a>
+                
+                  | <a href="https://github.com/yougexiangfa/rails_auth/blob/398aaff4b6e8c03a515d6a08df3e6ea9d15cc4b3/app/models/rails_auth/concerns/rails_auth_user.rb#L72" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-i-join_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File app/models/rails_auth/concerns/rails_auth_user.rb, line 72</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">join</span>(<span class="ruby-identifier">params</span> = <span class="ruby-keyword">nil</span>)
+  <span class="ruby-keyword">self</span>.<span class="ruby-identifier">errors</span>.<span class="ruby-identifier">add</span>(<span class="ruby-value">:password</span>, <span class="ruby-value">:blank</span>) <span class="ruby-keyword">unless</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">password_digest</span>.<span class="ruby-identifier">present?</span>
+  <span class="ruby-identifier">save</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-mobile_token">
+            
+              <b>mobile_token</b>()
+            
+            <a href="../classes/RailsAuthUser.html#method-i-mobile_token" name="method-i-mobile_token" class="permalink">Link</a>
+          </div>
+
+          
+            <div class="description">
+              
+            </div>
+          
+
+          
+
+          
+
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source:
+                <a href="javascript:toggleSource('method-i-mobile_token_source')" id="l_method-i-mobile_token_source">show</a>
+                
+                  | <a href="https://github.com/yougexiangfa/rails_auth/blob/398aaff4b6e8c03a515d6a08df3e6ea9d15cc4b3/app/models/rails_auth/concerns/rails_auth_user.rb#L63" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-i-mobile_token_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File app/models/rails_auth/concerns/rails_auth_user.rb, line 63</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">mobile_token</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-keyword">super</span>
+    <span class="ruby-keyword">super</span>
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-keyword">self</span>.<span class="ruby-identifier">mobile_tokens</span>.<span class="ruby-identifier">delete_all</span>
+    <span class="ruby-identifier">create_mobile_token</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-oauth_providers">
+            
+              <b>oauth_providers</b>()
+            
+            <a href="../classes/RailsAuthUser.html#method-i-oauth_providers" name="method-i-oauth_providers" class="permalink">Link</a>
+          </div>
+
+          
+            <div class="description">
+              
+            </div>
+          
+
+          
+
+          
+
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source:
+                <a href="javascript:toggleSource('method-i-oauth_providers_source')" id="l_method-i-oauth_providers_source">show</a>
+                
+                  | <a href="https://github.com/yougexiangfa/rails_auth/blob/398aaff4b6e8c03a515d6a08df3e6ea9d15cc4b3/app/models/rails_auth/concerns/rails_auth_user.rb#L101" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-i-oauth_providers_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File app/models/rails_auth/concerns/rails_auth_user.rb, line 101</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">oauth_providers</span>
+  <span class="ruby-constant">OauthUser</span>.<span class="ruby-identifier">options_i18n</span>(<span class="ruby-value">:provider</span>).<span class="ruby-identifier">values</span>.<span class="ruby-identifier">map</span>(<span class="ruby-operator">&amp;</span><span class="ruby-value">:to_s</span>) <span class="ruby-operator">-</span> <span class="ruby-identifier">oauth_users</span>.<span class="ruby-identifier">pluck</span>(<span class="ruby-value">:provider</span>).<span class="ruby-identifier">compact</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-reset_token">
+            
+              <b>reset_token</b>()
+            
+            <a href="../classes/RailsAuthUser.html#method-i-reset_token" name="method-i-reset_token" class="permalink">Link</a>
+          </div>
+
+          
+            <div class="description">
+              
+            </div>
+          
+
+          
+
+          
+
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source:
+                <a href="javascript:toggleSource('method-i-reset_token_source')" id="l_method-i-reset_token_source">show</a>
+                
+                  | <a href="https://github.com/yougexiangfa/rails_auth/blob/398aaff4b6e8c03a515d6a08df3e6ea9d15cc4b3/app/models/rails_auth/concerns/rails_auth_user.rb#L45" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-i-reset_token_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File app/models/rails_auth/concerns/rails_auth_user.rb, line 45</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">reset_token</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-keyword">super</span>
+    <span class="ruby-keyword">super</span>
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-keyword">self</span>.<span class="ruby-identifier">reset_tokens</span>.<span class="ruby-identifier">delete_all</span>
+    <span class="ruby-identifier">create_reset_token</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-verified_status-3F">
+            
+              <b>verified_status?</b>()
+            
+            <a href="../classes/RailsAuthUser.html#method-i-verified_status-3F" name="method-i-verified_status-3F" class="permalink">Link</a>
+          </div>
+
+          
+            <div class="description">
+              
+            </div>
+          
+
+          
+
+          
+
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source:
+                <a href="javascript:toggleSource('method-i-verified_status-3F_source')" id="l_method-i-verified_status-3F_source">show</a>
+                
+                  | <a href="https://github.com/yougexiangfa/rails_auth/blob/398aaff4b6e8c03a515d6a08df3e6ea9d15cc4b3/app/models/rails_auth/concerns/rails_auth_user.rb#L92" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-i-verified_status-3F_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File app/models/rails_auth/concerns/rails_auth_user.rb, line 92</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">verified_status?</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">disabled?</span>
+    <span class="ruby-identifier">errors</span>.<span class="ruby-identifier">add</span> <span class="ruby-value">:base</span>, <span class="ruby-string">&#39;The account has been disabled!&#39;</span>
+    <span class="ruby-keyword">true</span>
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-keyword">false</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+      
+    
+  
+</div>
+
+    </div>
+  </body>
+</html>
