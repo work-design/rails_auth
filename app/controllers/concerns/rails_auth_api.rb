@@ -9,7 +9,7 @@ module RailsAuthApi
   def require_login_from_token
     return if login_from_token
 
-    render(json: { error: @error || 'no user!' }, status: 401)
+    raise ActionController::UnauthorizedError
   end
 
   def current_user
@@ -42,18 +42,17 @@ module RailsAuthApi
       password_digest = User.find_by(id: payload['iss']).password_digest.to_s
       JWT.decode(token, password_digest, true, {'sub' => 'auth', verify_sub: true})
     rescue => e
-      @error = e.message
+      puts nil, e.full_message(highlight: true, order: :top)
     end
   end
 
   def decode_without_verification(token)
     begin
       payload, _ = JWT.decode(token, nil, false, verify_expiration: false)
+      payload
     rescue => e
-      @error = e.message
+      puts nil, e.full_message(highlight: true, order: :top)
     end
-
-    payload
   end
 
 end
