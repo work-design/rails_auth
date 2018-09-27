@@ -15,15 +15,17 @@ class RailsAuthWeb::PasswordController < RailsAuthWeb::BaseController
     reset_token = ResetToken.find_by(token: params[:token])
 
     if reset_token
-      unless reset_token.verify_token?
+      if reset_token.verify_token?
+        @user = reset_token.user
+        render :edit and return
+      else
         @error_message = 'Reset Token 已失效, 请重新申请'
         render :edit_error and return
       end
     else
       @error_message = '重置Token无效'
-      render :edit_error and return
+      render :edit_error
     end
-    @user = reset_token.user
   end
 
   def update
