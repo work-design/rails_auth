@@ -1,7 +1,7 @@
 <%= form_with model: [:admin, @user] do |f| %>
   <%= f.text_field :name %>
   <%= f.text_field :email %>
-  <%= f.file_field :avatar, direct_upload: true %>
+  <%= f.file_field :avatar %>
   <%= render 'active_storage/attachments/list_form', target: @user.avatar %>
   <%= f.text_field :mobile %>
   <%= f.text_field :password %>
