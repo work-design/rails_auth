@@ -31,6 +31,8 @@ module RailsAuthUser
 
     has_many :verify_tokens, autosave: true, dependent: :delete_all
     has_many :oauth_users, dependent: :nullify
+
+    before_save :invalid_access_token, if: -> { password_digest_changed? }
   end
 
   def access_token
@@ -100,6 +102,10 @@ module RailsAuthUser
 
   def oauth_providers
     OauthUser.options_i18n(:provider).values.map(&:to_s) - oauth_users.pluck(:provider).compact
+  end
+
+  def invalid_access_token
+    self.access_tokens.delete_all
   end
 
 end
