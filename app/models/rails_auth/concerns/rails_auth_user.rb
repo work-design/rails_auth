@@ -84,7 +84,7 @@ module RailsAuthUser
     if authenticate(params[:password])
       self
     else
-      errors.add :base, 'Incorrect email or password.'
+      errors.add :base, 'Incorrect account or password.'
       false
     end
   end
