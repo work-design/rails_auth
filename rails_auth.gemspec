@@ -1,4 +1,4 @@
-$:.push File.expand_path('../lib', __FILE__)
+$:.push File.expand_path('lib', __dir__)
 require 'rails_auth/version'
 
 Gem::Specification.new do |s|
