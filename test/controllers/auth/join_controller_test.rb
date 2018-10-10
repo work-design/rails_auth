@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class RailsAuthWeb::JoinControllerTest < ActionDispatch::IntegrationTest
+class Auth::JoinControllerTest < ActionDispatch::IntegrationTest
 
   setup do
     ApplicationController.include RailsAuthController

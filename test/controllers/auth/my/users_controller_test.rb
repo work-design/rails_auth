@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class RailsAuthMy::UsersControllerTest < ActionDispatch::IntegrationTest
+class Auth::My::UsersControllerTest < ActionDispatch::IntegrationTest
 
   setup do
     User.include RailsAuthUser
