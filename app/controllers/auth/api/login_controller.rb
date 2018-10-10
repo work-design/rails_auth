@@ -1,4 +1,4 @@
-class RailsAuthApi::LoginController < RailsAuthApi::BaseController
+class Auth::Api::LoginController < Auth::Api::BaseController
   before_action :set_user, only: [:create]
 
   #**

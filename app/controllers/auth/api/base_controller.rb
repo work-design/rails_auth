@@ -1,4 +1,4 @@
-class RailsAuthApi::BaseController < RailsAuth.config.api_class.constantize
+class Auth::Api::BaseController < RailsAuth.config.api_class.constantize
   include RailsAuthApi
 
   def login_as user

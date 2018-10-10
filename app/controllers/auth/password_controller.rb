@@ -1,4 +1,4 @@
-class RailsAuthWeb::PasswordController < RailsAuthWeb::BaseController
+class Auth::PasswordController < Auth::BaseController
 
   def new
   end

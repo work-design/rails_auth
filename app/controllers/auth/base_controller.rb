@@ -1,4 +1,4 @@
-class RailsAuthWeb::BaseController < RailsAuth.config.app_class.constantize
+class Auth::BaseController < RailsAuth.config.app_class.constantize
   include RailsAuthController
   default_form_builder 'RailsAuthWebBuilder' do
 

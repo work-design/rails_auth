@@ -1,4 +1,4 @@
-class RailsAuthAdmin::UsersController < RailsAuthAdmin::BaseController
+class Auth::Admin::UsersController < Auth::Admin::BaseController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
   def index

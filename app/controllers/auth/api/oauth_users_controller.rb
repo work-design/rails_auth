@@ -1,4 +1,4 @@
-class RailsAuthApi::OauthUsersController < RailsAuthApi::BaseController
+class Auth::Api::OauthUsersController < Auth::Api::BaseController
 
   def create
     @oauth_user = OauthUser.find_or_initialize_by(type: oauth_user_params[:type], uid: oauth_user_params[:uid])

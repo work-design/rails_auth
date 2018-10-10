@@ -1,4 +1,4 @@
-class RailsAuthApi::JoinController < RailsAuthApi::BaseController
+class Auth::Api::JoinController < Auth::Api::BaseController
 
   #**
   # @api {get} /verify get verify

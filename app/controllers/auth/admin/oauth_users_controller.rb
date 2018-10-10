@@ -1,4 +1,4 @@
-class RailsAuthAdmin::OauthUsersController < RailsAuthAdmin::BaseController
+class Auth::Admin::OauthUsersController < Auth::Admin::BaseController
   before_action :set_oauth_user, only: [:show, :update, :destroy]
 
   def index

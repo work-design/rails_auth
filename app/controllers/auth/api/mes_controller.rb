@@ -1,4 +1,4 @@
-class RailsAuthApi::MesController < RailsAuthApi::BaseController
+class Auth::Api::MesController < Auth::Api::BaseController
 
 
   def show
