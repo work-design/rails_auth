@@ -47,7 +47,7 @@ end
 
 RailsAuth::Engine.routes.draw do
 
-  scope '', module: 'auth/api' do
+  scope module: 'auth/api', as: 'api' do
     resource :me
     controller :login do
       post 'login' => :create
