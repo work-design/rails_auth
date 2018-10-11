@@ -51,6 +51,7 @@ class Auth::Admin::UsersController < Auth::Admin::BaseController
     params[:user].permit(
       :name,
       :avatar,
+      :avatars,
       :email,
       :mobile,
       :password,
