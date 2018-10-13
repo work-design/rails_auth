@@ -1,4 +1,4 @@
-class TheAuthInit < ActiveRecord::Migration[5.1]
+class RailsAuthInit < ActiveRecord::Migration[5.1]
   def change
 
     create_table :users do |t|
@@ -24,6 +24,20 @@ class TheAuthInit < ActiveRecord::Migration[5.1]
       t.datetime :expired_at
       t.string :account
       t.integer :access_counter, default: 0
+      t.timestamps
+    end
+
+    create_table :oauth_users do |t|
+      t.references :user
+      t.string :provider
+      t.string :type
+      t.string :uid
+      t.string :name
+      t.string :avatar_url
+      t.string :state
+      t.string :code
+      t.string :access_token, limit: 1024
+      t.datetime :expires_at
       t.timestamps
     end
 
