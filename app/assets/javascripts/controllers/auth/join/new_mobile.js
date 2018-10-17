@@ -1,4 +1,4 @@
-$('#mobile_confirm').click(function(e){
+document.getElementById('mobile_confirm').addEventListener('click', function(e){
   var remind_link = new URL(this.href);
-  $(this).attr('href', remind_link.pathname + '?mobile=' + $('#mobile').val())
+  this.href = remind_link.pathname + '?mobile=' + document.getElementById('new_mobile').value
 });
