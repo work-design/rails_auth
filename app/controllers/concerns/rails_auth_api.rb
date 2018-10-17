@@ -6,14 +6,14 @@ module RailsAuthApi
     after_action :set_auth_token
   end
 
+  def current_user
+    @current_user
+  end
+
   def require_login_from_token
     return if login_from_token
 
     raise ActionController::UnauthorizedError
-  end
-
-  def current_user
-    @current_user ||= login_from_token
   end
 
   def login_from_token
@@ -25,6 +25,11 @@ module RailsAuthApi
     if @access_token
       @current_user ||= @access_token.user
     end
+  end
+
+  def login_as(user)
+    user.update(last_login_at: Time.now)
+    @current_user = user
   end
 
   private
