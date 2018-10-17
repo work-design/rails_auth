@@ -6,12 +6,7 @@ module RailsAuthController
   end
 
   def current_user
-    @current_user ||= login_from_session
-  end
-
-  def logout
-    session.delete(:user_id)
-    @current_user = nil
+    @current_user
   end
 
   def require_login_from_session
@@ -29,6 +24,17 @@ module RailsAuthController
     @current_user ||= User.find_by(id: session[:user_id]) if session[:user_id]
   end
 
+  def login_as(user)
+    session[:user_id] = user.id
+    user.update(last_login_at: Time.now)
+    @current_user = user
+  end
+
+  def logout
+    session.delete(:user_id)
+    @current_user = nil
+  end
+
   def store_location(path = nil)
     path = path || request.fullpath
     if ['auth/login', 'auth/password'].include? request.params['controller']
@@ -41,12 +47,6 @@ module RailsAuthController
   def redirect_back_or_default(default = root_url)
     redirect_to session[:return_to] || default
     session[:return_to] = nil
-  end
-
-  def login_as(user)
-    session[:user_id] = user.id
-    user.update(last_login_at: Time.now)
-    @current_user = user
   end
 
 end
