@@ -1,7 +1,7 @@
 <div class="ui centered middle aligned grid">
 <div class="six wide column">
 
-  <h4 class="ui block top attached header">请注册</h4>
+  <h4 class="ui block top attached header">手机号登陆/注册</h4>
 
   <div class="ui bottom attached segment">
     <%= form_with model: @user, url: join_mobile_path, method: :post, local: true, html: {class: 'ui form'} do |f| %>
@@ -9,7 +9,7 @@
       <div class="field">
         <div class="ui action input">
           <%= text_field_tag :mobile, @user.mobile, placeholder: 'Mobile', id: 'new_mobile' %>
-          <%= link_to 'Get Token', mobile_confirm_path, remote: true, class: 'ui mini button', id: 'mobile_confirm' %>
+          <%= link_to 'Get Token', join_confirm_path, remote: true, class: 'ui mini button', id: 'mobile_confirm' %>
         </div>
       </div>
       <div class="field">

@@ -27,6 +27,9 @@ module RailsAuthController
   def login_as(user)
     session[:user_id] = user.id
     user.update(last_login_at: Time.now)
+
+    logger.debug "Login as User #{user.id}"
+
     @current_user = user
   end
 

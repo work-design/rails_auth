@@ -4,11 +4,12 @@ Rails.application.routes.draw do
     controller :join do
       get 'join' => :new
       post 'join' => :create
-      scope :join, as: 'join' do
-        get 'mobile' => :new_mobile
-        post 'mobile' => :create_mobile
-      end
-      get :mobile_confirm
+    end
+
+    scope :join, controller: 'mobile', as: 'join' do
+      get 'mobile' => :new
+      post 'mobile' => :create
+      get :confirm
     end
 
     controller :login do
