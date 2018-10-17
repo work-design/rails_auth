@@ -17,7 +17,7 @@ Rails.application.routes.draw do
       get 'logout' => :destroy
     end
 
-    scope controller: :password, as: 'password' do
+    scope :password, controller: :password, as: 'password' do
       get 'forget' => :new
       post 'forget' => :create
       scope as: 'reset' do
