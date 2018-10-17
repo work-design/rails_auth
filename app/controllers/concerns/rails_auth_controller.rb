@@ -43,4 +43,10 @@ module RailsAuthController
     session[:return_to] = nil
   end
 
+  def login_as(user)
+    session[:user_id] = user.id
+    user.update(last_login_at: Time.now)
+    @current_user = user
+  end
+
 end
