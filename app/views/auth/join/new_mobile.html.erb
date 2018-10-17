@@ -6,9 +6,11 @@
   <div class="ui bottom attached segment">
     <%= form_with model: @user, url: join_mobile_path, method: :post, local: true, html: {class: 'ui form'} do |f| %>
       <%= render 'shared/error_messages', target: @user %>
-      <div class="inline field">
-        <%= text_field_tag :mobile, @user.mobile, placeholder: 'Mobile', id: 'new_mobile' %>
-        <%= link_to 'Mobile Confirm', mobile_confirm_path, remote: true, id: 'mobile_confirm' %>
+      <div class="field">
+        <div class="ui action input">
+          <%= text_field_tag :mobile, @user.mobile, placeholder: 'Mobile', id: 'new_mobile' %>
+          <%= link_to 'Get Token', mobile_confirm_path, remote: true, class: 'ui mini button', id: 'mobile_confirm' %>
+        </div>
       </div>
       <div class="field">
         <%= text_field_tag :token, nil, placeholder: 'Mobile Token' %>
