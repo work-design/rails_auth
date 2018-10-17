@@ -7,7 +7,7 @@ module RailsAuthApi
   end
 
   def current_user
-    @current_user
+    @current_user ||= login_from_token
   end
 
   def require_login_from_token

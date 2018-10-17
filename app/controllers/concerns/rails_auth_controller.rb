@@ -6,7 +6,7 @@ module RailsAuthController
   end
 
   def current_user
-    @current_user
+    @current_user ||= login_from_session
   end
 
   def require_login_from_session

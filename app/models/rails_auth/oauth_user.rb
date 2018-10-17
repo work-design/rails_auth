@@ -1,6 +1,6 @@
 class OauthUser < ApplicationRecord
   attribute :refresh_token, :string
-  belongs_to :user, autosave: true
+  belongs_to :user, autosave: true, optional: true
   validates :provider, presence: true
   validates :uid, presence: true, uniqueness: { scope: :provider }
 
