@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>verify_token.rb</title>
+    <title>rails_auth_user.rb</title>
     <meta charset="UTF-8" />
     <link rel="stylesheet" href="../../../../css/reset.css" type="text/css" media="screen" />
 <link rel="stylesheet" href="../../../../css/main.css" type="text/css" media="screen" />
@@ -16,14 +16,14 @@
     <div class="banner">
         
         <h1>
-            verify_token.rb
+            rails_auth_user.rb
         </h1>
         <ul class="files">
             
             <li>
-                app/models/rails_auth/verify_token.rb
+                app/models/concerns/rails_auth_user.rb
                 
-                    <a href="https://github.com/yougexiangfa/rails_auth/blob/7e076642103ce2442efd32b617323547a0014871/app/models/rails_auth/verify_token.rb" target="_blank" class="github_url">on GitHub</a>
+                    <a href="https://github.com/yougexiangfa/rails_auth/blob/7e076642103ce2442efd32b617323547a0014871/app/models/concerns/rails_auth_user.rb" target="_blank" class="github_url">on GitHub</a>
                 
             </li>
             <li>Last modified: 2018-10-18 10:40:40 +0800</li>
@@ -35,9 +35,12 @@
   
     <div class="description">
       
-<p>Deal with token</p>
+<p>include this module to your User model</p>
 
-<p>用于处理Token</p>
+<pre><code>class User &lt; ApplicationRecord
+  include RailsAuthUser
+end
+</code></pre>
 
     </div>
   
@@ -56,8 +59,8 @@
     <ul>
       
         <li>
-          <span class="type">CLASS</span>
-          <a href="../../../../classes/VerifyToken.html">VerifyToken</a>
+          <span class="type">MODULE</span>
+          <a href="../../../../classes/RailsAuthUser.html">RailsAuthUser</a>
         </li>
       
     </ul>

@@ -1,17 +1,17 @@
-Fri, 21 Sep 2018 00:15:16 +0800
-README.md	Fri, 21 Sep 2018 00:11:01 +0800
-lib/rails_auth.rb	Wed, 19 Sep 2018 22:28:37 +0800
-lib/rails_auth/config.rb	Thu, 20 Sep 2018 23:59:28 +0800
-lib/rails_auth/engine.rb	Wed, 19 Sep 2018 22:28:37 +0800
-lib/rails_auth/version.rb	Thu, 20 Sep 2018 23:59:28 +0800
-app/models/rails_auth/concerns/facebook_helper.rb	Thu, 20 Sep 2018 23:53:52 +0800
-app/models/rails_auth/concerns/jwt_token.rb	Wed, 19 Sep 2018 22:28:37 +0800
-app/models/rails_auth/concerns/rails_auth_user.rb	Wed, 19 Sep 2018 22:28:37 +0800
-app/models/rails_auth/concerns/verify_helper.rb	Fri, 21 Sep 2018 00:07:56 +0800
-app/models/rails_auth/oauth_user.rb	Wed, 19 Sep 2018 22:28:37 +0800
-app/models/rails_auth/verify_token.rb	Fri, 21 Sep 2018 00:04:48 +0800
-app/models/rails_auth/verify_tokens/access_token.rb	Thu, 20 Sep 2018 23:50:13 +0800
-app/models/rails_auth/verify_tokens/confirm_token.rb	Wed, 19 Sep 2018 22:28:37 +0800
-app/models/rails_auth/verify_tokens/email_token.rb	Wed, 19 Sep 2018 22:28:37 +0800
-app/models/rails_auth/verify_tokens/mobile_token.rb	Wed, 19 Sep 2018 22:28:37 +0800
-app/models/rails_auth/verify_tokens/reset_token.rb	Wed, 19 Sep 2018 22:28:37 +0800
+Thu, 18 Oct 2018 10:50:11 +0800
+README.md	Thu, 18 Oct 2018 10:40:40 +0800
+lib/rails_auth.rb	Thu, 18 Oct 2018 10:40:40 +0800
+lib/rails_auth/config.rb	Thu, 18 Oct 2018 10:40:40 +0800
+lib/rails_auth/engine.rb	Thu, 18 Oct 2018 10:40:40 +0800
+lib/rails_auth/version.rb	Thu, 18 Oct 2018 10:40:40 +0800
+app/models/concerns/jwt_token.rb	Thu, 18 Oct 2018 10:40:40 +0800
+app/models/concerns/rails_auth_user.rb	Thu, 18 Oct 2018 10:40:40 +0800
+app/models/concerns/verify_helper.rb	Thu, 18 Oct 2018 10:40:40 +0800
+app/models/rails_auth/oauth_user.rb	Thu, 18 Oct 2018 10:40:40 +0800
+app/models/rails_auth/oauth_users/dev_user.rb	Thu, 18 Oct 2018 10:40:40 +0800
+app/models/rails_auth/verify_token.rb	Thu, 18 Oct 2018 10:40:40 +0800
+app/models/rails_auth/verify_tokens/access_token.rb	Thu, 18 Oct 2018 10:40:40 +0800
+app/models/rails_auth/verify_tokens/confirm_token.rb	Thu, 18 Oct 2018 10:40:40 +0800
+app/models/rails_auth/verify_tokens/email_token.rb	Thu, 18 Oct 2018 10:40:40 +0800
+app/models/rails_auth/verify_tokens/mobile_token.rb	Thu, 18 Oct 2018 10:40:40 +0800
+app/models/rails_auth/verify_tokens/reset_token.rb	Thu, 18 Oct 2018 10:40:40 +0800

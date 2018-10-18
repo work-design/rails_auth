@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>ResetToken</title>
+    <title>DeveloperUser</title>
     <meta charset="UTF-8" />
     <link rel="stylesheet" href="../css/reset.css" type="text/css" media="screen" />
 <link rel="stylesheet" href="../css/main.css" type="text/css" media="screen" />
@@ -11,13 +11,13 @@
 <script src="../js/highlight.pack.js" type="text/javascript" charset="utf-8"></script>
 
 
-    <meta property="og:title" value="ResetToken">
+    <meta property="og:title" value="DeveloperUser">
 
   
 
-    <meta name="keywords" content="ResetToken class">
+    <meta name="keywords" content="DeveloperUser class">
   
-    <meta name="keywords" content="update_token">
+    <meta name="keywords" content="save_info">
   
 </head>
 
@@ -26,18 +26,18 @@
         
         <h1>
             <span class="type">Class</span>
-            ResetToken
+            DeveloperUser
             
                 <span class="parent">&lt;
                     
-                    <a href="VerifyToken.html">VerifyToken</a>
+                    <a href="OauthUser.html">OauthUser</a>
                     
                 </span>
             
         </h1>
         <ul class="files">
             
-            <li><a href="../files/app/models/rails_auth/verify_tokens/reset_token_rb.html">app/models/rails_auth/verify_tokens/reset_token.rb</a></li>
+            <li><a href="../files/app/models/rails_auth/oauth_users/dev_user_rb.html">app/models/rails_auth/oauth_users/dev_user.rb</a></li>
             
         </ul>
     </div>
@@ -61,13 +61,13 @@
     <div class="sectiontitle">Methods</div>
     <dl class="methods">
       
-        <dt>U</dt>
+        <dt>S</dt>
         <dd>
           <ul>
             
               
               <li>
-                <a href="#method-i-update_token">update_token</a>
+                <a href="#method-i-save_info">save_info</a>
               </li>
             
           </ul>
@@ -98,11 +98,11 @@
       <div class="sectiontitle">Instance Public methods</div>
       
         <div class="method">
-          <div class="title method-title" id="method-i-update_token">
+          <div class="title method-title" id="method-i-save_info">
             
-              <b>update_token</b>()
+              <b>save_info</b>(oauth_params)
             
-            <a href="../classes/ResetToken.html#method-i-update_token" name="method-i-update_token" class="permalink">Link</a>
+            <a href="../classes/DeveloperUser.html#method-i-save_info" name="method-i-save_info" class="permalink">Link</a>
           </div>
 
           
@@ -121,16 +121,15 @@
               
               <p class="source-link">
                 Source:
-                <a href="javascript:toggleSource('method-i-update_token_source')" id="l_method-i-update_token_source">show</a>
+                <a href="javascript:toggleSource('method-i-save_info_source')" id="l_method-i-save_info_source">show</a>
                 
-                  | <a href="https://github.com/yougexiangfa/rails_auth/blob/7e076642103ce2442efd32b617323547a0014871/app/models/rails_auth/verify_tokens/reset_token.rb#L4" target="_blank" class="github_url">on GitHub</a>
+                  | <a href="https://github.com/yougexiangfa/rails_auth/blob/7e076642103ce2442efd32b617323547a0014871/app/models/rails_auth/oauth_users/dev_user.rb#L4" target="_blank" class="github_url">on GitHub</a>
                 
               </p>
-              <div id="method-i-update_token_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File app/models/rails_auth/verify_tokens/reset_token.rb, line 4</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">update_token</span>
-  <span class="ruby-keyword">self</span>.<span class="ruby-identifier">token</span> = <span class="ruby-constant">SecureRandom</span>.<span class="ruby-identifier">uuid</span>
-  <span class="ruby-keyword">self</span>.<span class="ruby-identifier">expired_at</span> = <span class="ruby-value">10</span>.<span class="ruby-identifier">minutes</span>.<span class="ruby-identifier">since</span>
+              <div id="method-i-save_info_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File app/models/rails_auth/oauth_users/dev_user.rb, line 4</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">save_info</span>(<span class="ruby-identifier">oauth_params</span>)
+
 <span class="ruby-keyword">end</span></pre>
               </div>
             </div>

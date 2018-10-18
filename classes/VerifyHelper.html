@@ -35,7 +35,7 @@
         </h1>
         <ul class="files">
             
-            <li><a href="../files/app/models/rails_auth/concerns/verify_helper_rb.html">app/models/rails_auth/concerns/verify_helper.rb</a></li>
+            <li><a href="../files/app/models/concerns/verify_helper_rb.html">app/models/concerns/verify_helper.rb</a></li>
             
         </ul>
     </div>
@@ -134,11 +134,11 @@
                 Source:
                 <a href="javascript:toggleSource('method-i-mobile_reset_user_source')" id="l_method-i-mobile_reset_user_source">show</a>
                 
-                  | <a href="https://github.com/yougexiangfa/rails_auth/blob/398aaff4b6e8c03a515d6a08df3e6ea9d15cc4b3/app/models/rails_auth/concerns/verify_helper.rb#L23" target="_blank" class="github_url">on GitHub</a>
+                  | <a href="https://github.com/yougexiangfa/rails_auth/blob/7e076642103ce2442efd32b617323547a0014871/app/models/concerns/verify_helper.rb#L23" target="_blank" class="github_url">on GitHub</a>
                 
               </p>
               <div id="method-i-mobile_reset_user_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File app/models/rails_auth/concerns/verify_helper.rb, line 23</span>
+                <pre><span class="ruby-comment"># File app/models/concerns/verify_helper.rb, line 23</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">mobile_reset_user</span>(<span class="ruby-identifier">params</span> = {})
   <span class="ruby-ivar">@user</span> = <span class="ruby-constant">User</span>.<span class="ruby-identifier">find_by</span>(<span class="ruby-value">mobile:</span> <span class="ruby-identifier">params</span>[<span class="ruby-value">:mobile</span>])
   <span class="ruby-keyword">if</span> <span class="ruby-ivar">@user</span>
@@ -179,11 +179,11 @@
                 Source:
                 <a href="javascript:toggleSource('method-i-mobile_user_source')" id="l_method-i-mobile_user_source">show</a>
                 
-                  | <a href="https://github.com/yougexiangfa/rails_auth/blob/398aaff4b6e8c03a515d6a08df3e6ea9d15cc4b3/app/models/rails_auth/concerns/verify_helper.rb#L7" target="_blank" class="github_url">on GitHub</a>
+                  | <a href="https://github.com/yougexiangfa/rails_auth/blob/7e076642103ce2442efd32b617323547a0014871/app/models/concerns/verify_helper.rb#L7" target="_blank" class="github_url">on GitHub</a>
                 
               </p>
               <div id="method-i-mobile_user_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File app/models/rails_auth/concerns/verify_helper.rb, line 7</span>
+                <pre><span class="ruby-comment"># File app/models/concerns/verify_helper.rb, line 7</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">mobile_user</span>(<span class="ruby-identifier">params</span> = {})
   <span class="ruby-ivar">@user</span> = <span class="ruby-constant">User</span>.<span class="ruby-identifier">find_or_initialize_by</span>(<span class="ruby-value">mobile:</span> <span class="ruby-identifier">params</span>[<span class="ruby-value">:mobile</span>])
   <span class="ruby-keyword">if</span> <span class="ruby-ivar">@user</span>.<span class="ruby-identifier">persisted?</span>
