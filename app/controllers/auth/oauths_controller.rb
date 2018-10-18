@@ -16,12 +16,12 @@ class Auth::OauthsController < Auth::BaseController
     end
 
     if @oauth_user.save
-      redirect_back_or_default(my_root_url, notice: 'Oauth user 创建成功')
+      redirect_back_or_default(my_root_url, alert: 'Oauth Success!')
     end
   end
 
   def failure
-    redirect_to root_url, error: "错误: #{params[:message].humanize}"
+    redirect_to root_url, alert: "错误: #{params[:message].humanize}"
   end
 
   private
