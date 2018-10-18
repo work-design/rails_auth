@@ -9,7 +9,7 @@ require 'rdoc/task'
 
 RDoc::Task.new(:sdoc) do |rdoc|
   rdoc.rdoc_dir = 'docs'
-  rdoc.title = 'TheAuth'
+  rdoc.title = 'RailsAuth'
   rdoc.options << '--format=sdoc'
   rdoc.options << '-g'
   rdoc.template = 'rails'

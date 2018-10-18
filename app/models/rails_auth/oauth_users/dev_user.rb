@@ -5,4 +5,4 @@ class DeveloperUser < OauthUser
 
   end
 
-end
+end unless RailsAuth.config.disabled_models.include?('DeveloperUser')

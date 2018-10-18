@@ -17,4 +17,4 @@ class OauthUser < ApplicationRecord
     token.refresh!
   end
 
-end
+end unless RailsAuth.config.disabled_models.include?('OauthUser')

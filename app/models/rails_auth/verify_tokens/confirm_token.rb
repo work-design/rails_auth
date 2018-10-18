@@ -6,4 +6,4 @@ class ConfirmToken < VerifyToken
     self.expired_at = 10.minutes.since
   end
 
-end
+end unless RailsAuth.config.disabled_models.include?('ConfirmToken')

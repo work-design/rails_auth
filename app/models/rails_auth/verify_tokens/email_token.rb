@@ -19,4 +19,4 @@ class EmailToken < VerifyToken
     save
   end
 
-end
+end unless RailsAuth.config.disabled_models.include?('EmailToken')

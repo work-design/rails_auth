@@ -21,4 +21,4 @@ class MobileToken < VerifyToken
     'sends sms here'
   end
 
-end
+end unless RailsAuth.config.disabled_models.include?('MobileToken')

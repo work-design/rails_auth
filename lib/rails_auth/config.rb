@@ -8,6 +8,8 @@ module RailsAuth #:nodoc:
     config.my_class = 'MyController'
     config.admin_class = 'AdminController'
     config.api_class = 'ApiController'
+    config.disabled_models = []
+    config.default_return_path = '/'
   end
 
 end

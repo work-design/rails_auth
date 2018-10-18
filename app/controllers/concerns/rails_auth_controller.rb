@@ -41,13 +41,13 @@ module RailsAuthController
   def store_location(path = nil)
     path = path || request.fullpath
     if ['auth/login', 'auth/password'].include? request.params['controller']
-      session[:return_to] = root_url
+      session[:return_to] = RailsAuth.config.default_return_path
     else
       session[:return_to] = path
     end
   end
 
-  def redirect_back_or_default(default = root_url, **options)
+  def redirect_back_or_default(default = RailsAuth.config.default_return_path, **options)
     redirect_to session[:return_to] || default, **options
     session[:return_to] = nil
   end

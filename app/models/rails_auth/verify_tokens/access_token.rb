@@ -12,4 +12,4 @@ class AccessToken < VerifyToken
     self.token = user.generate_auth_token(sub: 'auth', exp: expired_at.to_i)
   end
 
-end
+end unless RailsAuth.config.disabled_models.include?('AccessToken')
