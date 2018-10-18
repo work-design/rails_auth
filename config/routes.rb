@@ -18,6 +18,11 @@ Rails.application.routes.draw do
       get 'logout' => :destroy
     end
 
+    scope :auth, controller: :oauths do
+      match ':provider/callback' => :create, via: [:get, :post]
+      match ':provider/failure' => :failure, via: [:get, :post]
+    end
+
     scope :password, controller: :password, as: 'password' do
       get 'forget' => :new
       post 'forget' => :create

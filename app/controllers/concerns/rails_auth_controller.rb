@@ -47,8 +47,8 @@ module RailsAuthController
     end
   end
 
-  def redirect_back_or_default(default = root_url)
-    redirect_to session[:return_to] || default
+  def redirect_back_or_default(default = root_url, **options)
+    redirect_to session[:return_to] || default, **options
     session[:return_to] = nil
   end
 
