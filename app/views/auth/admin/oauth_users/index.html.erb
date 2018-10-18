@@ -1,44 +1,43 @@
-<div>
-
-  <div class="ui top attached menu borderless">
-    <div class="item"><strong>Oauth Users</strong></div>
-  </div>
-
-  <% unless params[:user_id] %>
-    <div class="ui segment bottom attached">
-      <%= render 'search_form' %>
-    </div>
-  <% end %>
-
-  <table class="ui bottom attached table">
-    <thead>
-    <tr>
-      <th>ID</th>
-      <th>Type</th>
-      <th>UID</th>
-      <th>Name</th>
-      <th>Created At</th>
-      <th></th>
-    </tr>
-    </thead>
-
-    <tbody>
-    <% @oauth_users.each do |oauth_user| %>
-      <tr>
-        <td><%= oauth_user.id %></td>
-        <td><%= oauth_user.type %></td>
-        <td><%= oauth_user.uid %></td>
-        <td><%= oauth_user.name %></td>
-        <td><%= oauth_user.created_at.to_s(:admin) %></td>
-        <td>
-          <%= link_to 'Delete', admin_oauth_user_path(oauth_user), method: :delete, data: { confirm: 'Are you sure?' }, class: 'ui red label' %>
-        </td>
-      </tr>
-    <% end %>
-    </tbody>
-  </table>
-
-  <%= paginate @oauth_users %>
+<div class="ui top attached borderless menu">
+  <div class="item">Oauth Users</div>
 </div>
 
-<%= js_load(root: TheAuth::Engine.root) %>
+<% unless params[:user_id] %>
+  <div class="ui attached segment">
+    <%= render 'search_form' %>
+  </div>
+<% end %>
+
+<table class="ui bottom attached table">
+  <thead>
+    <tr>
+      <th><%= OauthUser.human_attribute_name(:id) %></th>
+      <th><%= OauthUser.human_attribute_name(:type) %></th>
+      <th><%= OauthUser.human_attribute_name(:uid) %></th>
+      <th><%= OauthUser.human_attribute_name(:name) %></th>
+      <th><%= OauthUser.human_attribute_name(:created_at) %></th>
+      <th><%= OauthUser.human_attribute_name(:user) %></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+  <% @oauth_users.each do |oauth_user| %>
+    <tr>
+      <td><%= oauth_user.id %></td>
+      <td><%= oauth_user.type %></td>
+      <td><%= oauth_user.uid %></td>
+      <td><%= oauth_user.name %></td>
+      <td><time><%= oauth_user.created_at.to_s(:rfc822) %></time></td>
+      <td>
+        <%= link_to oauth_user.user_id, admin_user_path(oauth_user.user_id) if oauth_user.user_id %>
+      </td>
+      <td>
+        <%= link_to 'Delete', admin_oauth_user_path(oauth_user), method: :delete, data: { confirm: 'Are you sure?' }, class: 'ui red label' %>
+      </td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<%= paginate @oauth_users %>
