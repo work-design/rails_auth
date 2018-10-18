@@ -17,8 +17,8 @@ module RailsAuthUser
     validates :mobile, uniqueness: true, if: -> { mobile.present? && mobile_changed? }
     validates :password, confirmation: true, length: { in: 6..72 }, allow_blank: true
 
-    has_one  :confirm_token, -> { valid }
-    has_many :confirm_tokens, dependent: :delete_all
+    has_one  :unlock_token, -> { valid }
+    has_many :unlock_tokens, dependent: :delete_all
 
     has_one  :reset_token, -> { valid }
     has_many :reset_tokens, dependent: :delete_all
@@ -55,12 +55,12 @@ module RailsAuthUser
     end
   end
 
-  def confirm_token
+  def unlock_token
     if super
       super
     else
-      self.confirm_tokens.delete_all
-      create_confirm_token
+      self.unlock_tokens.delete_all
+      create_unlock_token
     end
   end
 
