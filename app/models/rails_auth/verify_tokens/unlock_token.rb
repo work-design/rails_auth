@@ -1,4 +1,4 @@
-class ConfirmToken < VerifyToken
+class UnlockToken < VerifyToken
   before_create :update_token
 
   def update_token
@@ -6,4 +6,4 @@ class ConfirmToken < VerifyToken
     self.expired_at = 10.minutes.since
   end
 
-end unless RailsAuth.config.disabled_models.include?('ConfirmToken')
+end unless RailsAuth.config.disabled_models.include?('UnlockToken')
