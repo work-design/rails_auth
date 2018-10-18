@@ -32,6 +32,8 @@ module RailsAuthUser
     has_many :verify_tokens, autosave: true, dependent: :delete_all
     has_many :oauth_users, dependent: :nullify
 
+    has_one_attached :avatar
+
     before_save :invalid_access_token, if: -> { password_digest_changed? }
   end
 

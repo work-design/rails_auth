@@ -3,7 +3,6 @@ class RailsAuthInit < ActiveRecord::Migration[5.1]
 
     create_table :users do |t|
       t.string :name, limit: 100
-      t.string :avatar
       t.string :email, limit: 100
       t.boolean :email_confirm, default: false
       t.string :mobile, limit: 20
