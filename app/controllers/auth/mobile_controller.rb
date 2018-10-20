@@ -27,7 +27,7 @@ class Auth::MobileController < Auth::BaseController
     end
 
     if @mobile_token
-      @user.mobile_confirm = true
+      @user.mobile_confirmed = true
     else
       render :new, error: 'Token is invalid' and return
     end
