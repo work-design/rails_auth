@@ -23,7 +23,6 @@ class Auth::MobileController < Auth::BaseController
       @mobile_token = @user.mobile_tokens.valid.find_by(token: params[:token])
     else
       @mobile_token = MobileToken.valid.find_by(token: params[:token], account: params[:mobile])
-      @user = @mobile_token.build_user if @mobile_token
     end
 
     if @mobile_token
