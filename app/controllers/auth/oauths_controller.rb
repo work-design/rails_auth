@@ -8,14 +8,12 @@ class Auth::OauthsController < Auth::BaseController
     @oauth_user = OauthUser.find_or_initialize_by(type: type, uid: oauth_params[:uid])
     @oauth_user.save_info(oauth_params)
 
-    if current_user
+    if @oauth_user.user.nil? && current_user
       @oauth_user.user = current_user
-    else
+    elsif @oauth_user.user.nil? && !current_user
       @oauth_user.save
       redirect_to join_mobile_url and return
-    end
-
-    if @oauth_user.save
+    elsif @oauth_user.user
       redirect_back_or_default(my_root_url, alert: 'Oauth Success!')
     end
   end
