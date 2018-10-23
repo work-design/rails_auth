@@ -28,14 +28,16 @@ class Auth::MobileController < Auth::BaseController
     if @mobile_token
       @user.mobile_confirmed = true
     else
-      render :new, error: 'Token is invalid' and return
+      flash.now[:error] = '验证码不正确！'
+      render :new and return
     end
 
     if @user.save
       login_as @user
       redirect_back_or_default
     else
-      render :new, error: @user.errors.full_messages
+      flash.now[:error] = @user.errors.full_messages
+      render :new
     end
   end
 
