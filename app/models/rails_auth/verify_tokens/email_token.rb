@@ -21,4 +21,9 @@ class EmailToken < VerifyToken
     UserMailer.email_confirm(self.account).deliver_later
   end
 
+  def save_with_send
+    send_email
+    save
+  end
+
 end unless RailsAuth.config.disabled_models.include?('EmailToken')

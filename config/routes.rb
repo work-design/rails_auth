@@ -54,14 +54,12 @@ end
 RailsAuth::Engine.routes.draw do
 
   scope module: 'auth/api', as: 'api' do
+    controller :user do
+      get 'join' => :new
+      post 'join' => :create
+      post 'login' => :login
+    end
     resource :me
-    controller :login do
-      post 'login' => :create
-    end
-    controller :join do
-      get 'join' => :new_verify
-      post 'join' => :create_verify
-    end
     resources :oauth_users, only: [:create]
   end
 

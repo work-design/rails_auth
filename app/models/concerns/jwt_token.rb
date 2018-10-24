@@ -1,3 +1,4 @@
+require 'jwt'
 module JwtToken
   # 变量
 

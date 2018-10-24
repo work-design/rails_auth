@@ -74,6 +74,7 @@ module RailsAuthUser
   end
 
   def join(params = nil)
+    self.assign_attributes params
     self.errors.add(:password, :blank) unless self.password_digest.present?
     save
   end
@@ -85,7 +86,7 @@ module RailsAuthUser
       return false
     end
 
-    if authenticate(params[:password])
+    if password_digest? && authenticate(params[:password])
       self
     else
       errors.add :base, 'Incorrect account or password.'
