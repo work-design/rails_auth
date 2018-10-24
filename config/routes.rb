@@ -57,7 +57,7 @@ RailsAuth::Engine.routes.draw do
     controller :user do
       get 'join' => :new
       post 'join' => :create
-      post 'login' => :login
+      post 'login' => :create
     end
     resource :me
     resources :oauth_users, only: [:create]
