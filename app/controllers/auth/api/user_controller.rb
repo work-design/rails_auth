@@ -18,9 +18,9 @@ class Auth::Api::UserController < Auth::Api::BaseController
     end
 
     if @verify_token.save_with_send
-      render json: { code: 200, present: @user.present?, messages: 'Validation code has been sent!' }
+      render json: { code: 200, present: @user.present?, message: 'Validation code has been sent!' }
     else
-      render json: { code: 401, messages: 'Token is invalid' }
+      render json: { code: 401, message: 'Token is invalid' }
     end
   end
 
