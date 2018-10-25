@@ -1,3 +1,4 @@
+require 'jwt'
 module RailsAuthApi
   extend ActiveSupport::Concern
 
