@@ -14,14 +14,14 @@
 <table class="ui bottom attached table">
   <thead>
   <tr>
-    <th>ID</th>
+    <th><%= User.human_attribute_name(:id) %></th>
     <th><%= User.human_attribute_name(:name) %></th>
-    <th>Email</th>
-    <th>Mobile</th>
-    <th>Created At</th>
-    <th>Last Login At</th>
-    <th>Disable</th>
-    <th>Oauth Users</th>
+    <th><%= User.human_attribute_name(:email) %></th>
+    <th><%= User.human_attribute_name(:mobile) %></th>
+    <th><%= User.human_attribute_name(:created_at) %></th>
+    <th><%= User.human_attribute_name(:last_login_at) %></th>
+    <th><%= User.human_attribute_name(:disabled) %></th>
+    <th><%= User.human_attribute_name(:oauth_users) %></th>
     <th></th>
   </tr>
   </thead>
