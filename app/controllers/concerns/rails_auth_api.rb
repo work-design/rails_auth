@@ -18,10 +18,10 @@ module RailsAuthApi
   end
 
   def login_from_token
-    return if request.headers['HTTP_AUTH_TOKEN'].blank?
+    return if request.headers['Auth-Token'].blank?
 
     if verify_auth_token
-      @access_token = AccessToken.find_by token: request.headers['HTTP_AUTH_TOKEN']
+      @access_token = AccessToken.find_by token: request.headers['Auth-Token']
     end
     if @access_token
       @current_user ||= @access_token.user
