@@ -103,6 +103,10 @@ module RailsAuthUser
     end
   end
 
+  def avatar_url
+    avatar.service_url if avatar.attachment.present?
+  end
+
   def oauth_providers
     OauthUser.options_i18n(:provider).values.map(&:to_s) - oauth_users.pluck(:provider).compact
   end
