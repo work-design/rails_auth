@@ -2,17 +2,17 @@ class Auth::Api::MesController < Auth::Api::BaseController
 
 
   def show
-    render json: current_user.as_json(include: [:oauth_users], methods: [:avatar_url])
+    render json: current_user.as_json(root: true, include: [:oauth_users], methods: [:avatar_url])
   end
 
   def edit
   end
 
   def update
-    if @me.update(me_params)
-      redirect_to @me, notice: 'Me was successfully updated.'
+    if current_user.update(user_params)
+      render json: current_user.as_json(root: true, methods: [:avatar_url]), status: :created
     else
-      render :edit
+      render json: current_user.errors, status: :unprocessable_entity
     end
   end
 
@@ -21,5 +21,12 @@ class Auth::Api::MesController < Auth::Api::BaseController
     redirect_to mes_url, notice: 'Me was successfully destroyed.'
   end
 
+  private
+  def user_params
+    params.fetch(:user, {}).permit(
+      :name,
+      :mobile
+    )
+  end
 
 end
