@@ -46,6 +46,10 @@ module RailsAuthUser
     end
   end
 
+  def auth_token
+    access_token.token
+  end
+
   def reset_token
     if super
       super

@@ -36,7 +36,7 @@ class Auth::Api::UserController < Auth::Api::BaseController
       @user.mobile_confirmed = true if @mobile_token
       if @user.can_login?(params)
         login_as @user
-        render json: { code: 200, auth_token: @user.access_token.token, message: '登陆成功!' } and return
+        render json: { code: 200, message: '登陆成功!', user: @user.as_json(only:[:id, :name, :mobile], methods: [:auth_token]) } and return
       end
     else
       @mobile_token = MobileToken.valid.find_by(token: params[:token], account: params[:account])
@@ -50,7 +50,7 @@ class Auth::Api::UserController < Auth::Api::BaseController
 
       if @user.join(join_params)
         login_as @user
-        render json: { code: 200, auth_token: @user.access_token.token, message: '注册成功!' } and return
+        render json: { code: 200, message: '注册成功!', user: @user.as_json(only:[:id, :name, :mobile], methods: [:auth_token]) } and return
       end
     end
 
