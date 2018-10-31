@@ -23,7 +23,14 @@ class Auth::Api::MesController < Auth::Api::BaseController
 
   private
   def user_params
-    params.fetch(:user, {}).permit!
+    params.fetch(:user, {}).permit(
+      :name,
+      :email,
+      :mobile,
+      :locale,
+      :nation,
+      :timezone
+    )
   end
 
 end
