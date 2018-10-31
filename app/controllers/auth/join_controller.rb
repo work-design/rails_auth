@@ -7,7 +7,7 @@ class Auth::JoinController < Auth::BaseController
 
   def create
     @user = User.new(user_params)
-    if @user.join(params)
+    if @user.join(user_params)
       login_as @user
       redirect_back_or_default
     else
