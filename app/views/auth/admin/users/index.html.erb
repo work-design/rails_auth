@@ -31,14 +31,8 @@
     <tr>
       <td><%= user.id %></td>
       <td>
-        <% if user.avatar.attached? %>
-          <%= link_to admin_user_path(user.id) do %>
-            <%= image_tag user.avatar.variant(resize: '35x35'), class: 'ui avatar image' %>
-          <% end %>
-        <% else %>
-          <%= link_to admin_user_path(user.id) do %>
-            <%= image_tag 'default_avatar.jpg', size: '35x35', class: 'ui avatar image' %>
-          <% end %>
+        <%= link_to admin_user_path(user.id) do %>
+          <%= image_tag user.avatar.variant(resize: '35x35'), class: 'ui avatar image' %>
         <% end %>
       </td>
       <td><%= user.email %></td>
@@ -56,9 +50,15 @@
         <% end %>
       </td>
       <td class="ui labels">
-        <%= link_to 'Show', admin_user_path(user), class: 'ui blue label' %>
-        <%= link_to 'Edit', edit_admin_user_path(user), class: 'ui pink label' %>
-        <%= link_to 'Delete', admin_user_path(user), method: :delete, data: { confirm: 'Are you sure?' }, class: 'ui red label' %>
+        <%= link_to admin_user_path(user), data: { tooltip: t('.show') }, class: 'ui blue mini icon button' do %>
+          <i class="location arrow icon"></i>
+        <% end %>
+        <%= link_to edit_admin_user_path(user), data: { tooltip: t('.edit') }, class: 'ui pink mini icon button' do %>
+          <i class="pencil alternate icon"></i>
+        <% end %>
+        <%= link_to admin_user_path(user), method: :delete, data: { tooltip: t('.destroy'), confirm: 'Are you sure?' }, class: 'ui red mini icon button' do %>
+          <i class="times icon"></i>
+        <% end %>
       </td>
     </tr>
   <% end %>
