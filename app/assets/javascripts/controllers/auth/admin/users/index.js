@@ -1,2 +1,1 @@
-
-
+$('.ui.toggle.checkbox').checkbox();
