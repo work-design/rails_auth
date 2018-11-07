@@ -93,14 +93,14 @@ module RailsAuthUser
     if password_digest? && authenticate(params[:password])
       self
     else
-      errors.add :base, 'Incorrect account or password.'
+      errors.add :base, 'Incorrect account or password!'
       false
     end
   end
 
   def verified_status?
     if self.disabled?
-      errors.add :base, 'The account has been disabled!'
+      errors.add :base, 'Your account has been disabled!'
       true
     else
       false
