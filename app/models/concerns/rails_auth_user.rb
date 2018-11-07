@@ -92,6 +92,8 @@ module RailsAuthUser
 
     if password_digest? && authenticate(params[:password])
       self
+    elsif params[:token].present? && authenticate_by_token(params[:token])
+      self
     else
       errors.add :base, 'Incorrect account or password!'
       false
@@ -102,6 +104,15 @@ module RailsAuthUser
     if self.disabled?
       errors.add :base, 'Your account has been disabled!'
       true
+    else
+      false
+    end
+  end
+
+  def authenticate_by_token(token)
+    mobile_token = self.mobile_tokens.valid.find_by(token: token)
+    if mobile_token
+      self.update(mobile_confirmed: true)
     else
       false
     end

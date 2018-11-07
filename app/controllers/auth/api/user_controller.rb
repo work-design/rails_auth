@@ -32,8 +32,6 @@ class Auth::Api::UserController < Auth::Api::BaseController
     end
 
     if @user.persisted?
-      @mobile_token = @user.mobile_tokens.valid.find_by(token: params[:token]) if params[:token].present?
-      @user.mobile_confirmed = true if @mobile_token
       if @user.can_login?(params)
         login_as @user
         render json: { code: 200, message: '登陆成功!', user: @user.as_json(only:[:id, :name, :mobile], methods: [:auth_token]) } and return
