@@ -41,7 +41,9 @@
       <td><time><%= user.updated_at.to_s(:rfc822) %></time></td>
       <td><time><%= user.last_login_at.to_s(:rfc822) if user.last_login_at %></time></td>
       <td>
-        <%= check_box_tag '[user]disabled', user.disabled, user.disabled, data: { method: :patch, remote: true, url: admin_user_path(user) } %>
+        <div class="ui toggle checkbox">
+          <%= check_box_tag '[user]disabled', nil, user.disabled, data: { method: :patch, remote: true, params: "[user]disabled=#{!user.disabled}", url: admin_user_path(user) }, id: nil %>
+        </div>
       </td>
       <td class="ui blue labels">
         <% user.oauth_users.each do |oauth_user| %>
