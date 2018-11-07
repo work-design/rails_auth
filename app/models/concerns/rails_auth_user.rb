@@ -90,12 +90,22 @@ module RailsAuthUser
       return false
     end
 
-    if password_digest? && authenticate(params[:password])
-      self
-    elsif params[:token].present? && authenticate_by_token(params[:token])
-      self
+    if password_digest? && params[:password].present?
+      if authenticate(params[:password])
+        self
+      else
+        errors.add :base, 'Incorrect account or password!'
+        return false
+      end
+    elsif params[:token].present?
+      if authenticate_by_token(params[:token])
+        self
+      else
+        errors.add :base, 'Incorrect Token!'
+        return false
+      end
     else
-      errors.add :base, 'Incorrect account or password!'
+      errors.add :base, 'Your must provide password or token!'
       false
     end
   end
