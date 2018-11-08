@@ -60,7 +60,7 @@ class Auth::Api::UserController < Auth::Api::BaseController
     params.permit(
       :password,
       :password_confirmation
-    )
+    ).merge(source: 'api')
   end
 
 end

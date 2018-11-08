@@ -13,6 +13,7 @@ class RailsAuthInit < ActiveRecord::Migration[5.1]
       t.boolean :disabled, default: false
       t.string :timezone
       t.string :locale
+      t.string :source
       t.timestamps
     end
 

@@ -23,7 +23,7 @@ class Auth::JoinController < Auth::BaseController
       :mobile,
       :password,
       :password_confirmation
-    )
+    ).merge(source: 'web')
   end
 
 end
