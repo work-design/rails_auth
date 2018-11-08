@@ -11,7 +11,7 @@ module RailsAuthUser
     include JwtToken
     alias_attribute :identifier, :id
 
-    has_secure_password validations: false
+    has_secure_password
 
     validates :email, uniqueness: true, if: -> { email.present? && email_changed? }
     validates :mobile, uniqueness: true, if: -> { mobile.present? && mobile_changed? }
@@ -79,7 +79,6 @@ module RailsAuthUser
 
   def join(params = nil)
     self.assign_attributes params
-    self.errors.add(:password, :blank) unless self.password_digest.present?
     save
   end
 
