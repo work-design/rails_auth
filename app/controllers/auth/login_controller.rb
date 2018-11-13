@@ -8,6 +8,7 @@ class Auth::LoginController < Auth::BaseController
     respond_to do |format|
       format.html.phone
       format.html
+      format.js
     end
   end
 
