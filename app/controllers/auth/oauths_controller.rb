@@ -11,8 +11,12 @@ class Auth::OauthsController < Auth::BaseController
     if @oauth_user.user.nil? && current_user
       @oauth_user.user = current_user
     elsif @oauth_user.user.nil? && !current_user
-      @oauth_user.save
-      redirect_to join_mobile_url and return
+      if @oauth_user.same_user
+        @oauth_user.user_id = @oauth_user.same_user.id
+        redirect_back_or_default(my_root_url, alert: 'Oauth Success!') and return if @oauth_user.save
+      else
+        redirect_to join_mobile_url and return if @oauth_user.save
+      end
     elsif @oauth_user.user
       redirect_back_or_default(my_root_url, alert: 'Oauth Success!')
     end

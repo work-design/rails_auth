@@ -31,7 +31,8 @@ class RailsAuthInit < ActiveRecord::Migration[5.1]
       t.references :user
       t.string :provider
       t.string :type
-      t.string :uid
+      t.string :uid, index: true
+      t.string :unionid, index: true
       t.string :name
       t.string :avatar_url
       t.string :state

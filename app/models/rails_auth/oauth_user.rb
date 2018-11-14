@@ -3,6 +3,8 @@ class OauthUser < ApplicationRecord
   belongs_to :user, autosave: true, optional: true
   validates :provider, presence: true
   validates :uid, presence: true, uniqueness: { scope: :provider }
+  has_one :same_user, -> (o){ where.not(id: o.id, unionid: nil) }, class_name: self.name, foreign_key: :unionid, primary_key: :unionid
+  has_many :same_users, -> (o){ where.not(id: o.id, unionid: nil) }, class_name: self.name, foreign_key: :unionid, primary_key: :unionid
 
   def save_info(info_params)
   end
