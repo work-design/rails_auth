@@ -57,7 +57,9 @@ class Auth::My::UsersController < Auth::My::BaseController
       :name,
       :mobile,
       :avatar,
-      :timezone
+      :timezone,
+      :password,
+      :password_confirmation
     )
   end
 
