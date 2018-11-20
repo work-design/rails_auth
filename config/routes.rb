@@ -2,14 +2,9 @@ Rails.application.routes.draw do
 
   scope module: :auth do
     controller :join do
+      get :confirm
       get 'join' => :new
       post 'join' => :create
-    end
-
-    scope :join, controller: 'mobile', as: 'join' do
-      get 'mobile' => :new
-      post 'mobile' => :create
-      get :confirm
     end
 
     controller :login do
@@ -18,9 +13,10 @@ Rails.application.routes.draw do
       get 'logout' => :destroy
     end
 
-    scope :auth, controller: :oauths do
-      match ':provider/callback' => :create, via: [:get, :post]
-      match ':provider/failure' => :failure, via: [:get, :post]
+    controller :confirm do
+      post 'email' => :email
+      post 'mobile' => :mobile
+      post 'confirm/:token' => :update
     end
 
     scope :password, controller: :password, as: 'password' do
@@ -32,10 +28,9 @@ Rails.application.routes.draw do
       end
     end
 
-    controller :confirm do
-      post 'email' => :email
-      post 'mobile' => :mobile
-      post 'confirm/:token' => :update
+    scope :auth, controller: :oauths do
+      match ':provider/callback' => :create, via: [:get, :post]
+      match ':provider/failure' => :failure, via: [:get, :post]
     end
   end
 

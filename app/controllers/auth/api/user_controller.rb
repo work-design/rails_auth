@@ -43,7 +43,7 @@ class Auth::Api::UserController < Auth::Api::BaseController
         @user.mobile_confirmed = true
         @mobile_token.user = @user
       else
-        render json: { code: 401, messages: 'Token is invalid' } and return
+        render json: { code: 401, message: 'Token is invalid' } and return
       end
 
       if @user.join(join_params)

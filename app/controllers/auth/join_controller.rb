@@ -10,8 +10,34 @@ class Auth::JoinController < Auth::BaseController
     end
   end
 
+  def confirm
+    @user = User.find_by(mobile: params[:mobile])
+
+    if @user
+      @mobile_token = @user.mobile_token
+    else
+      @mobile_token = MobileToken.create(account: params[:mobile])
+    end
+    @mobile_token.send_sms
+
+    render json: { code: 200, message: 'Validation code has been sent!' }
+  end
+
   def create
-    @user = User.new(user_params)
+    @user = User.find_or_initialize_by(mobile: params[:mobile])
+    if @user.persisted?
+      @mobile_token = @user.mobile_tokens.valid.find_by(token: params[:token])
+    else
+      @mobile_token = MobileToken.valid.find_by(token: params[:token], account: params[:mobile])
+    end
+
+    if @mobile_token
+      @user.mobile_confirmed = true
+    else
+      flash.now[:error] = '验证码不正确！'
+      render :new and return
+    end
+
     if @user.join(user_params)
       login_as @user
       respond_to do |format|
@@ -19,6 +45,7 @@ class Auth::JoinController < Auth::BaseController
         format.js
       end
     else
+      flash.now[:error] = @user.errors.full_messages
       respond_to do |format|
         format.html { render :new, error: @user.errors.full_messages }
         format.js
