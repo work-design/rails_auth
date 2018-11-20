@@ -1,4 +1,6 @@
 class Auth::JoinController < Auth::BaseController
+  before_action :set_user_and_token, only: [:token]
+  before_action :set_user, only: [:create]
 
   def new
     @user = User.new(password: '')
@@ -10,25 +12,20 @@ class Auth::JoinController < Auth::BaseController
     end
   end
 
-  def confirm
-    @user = User.find_by(mobile: params[:mobile])
-
-    if @user
-      @mobile_token = @user.mobile_token
+  def token
+    if @token.save_with_send
+      render json: { code: 200, message: 'Validation code has been sent!' }
     else
-      @mobile_token = MobileToken.create(account: params[:mobile])
+      render json: { }
     end
-    @mobile_token.send_sms
-
-    render json: { code: 200, message: 'Validation code has been sent!' }
   end
 
   def create
-    @user = User.find_or_initialize_by(mobile: params[:mobile])
+    @user = User.find_or_initialize_by(mobile: user_params[:account])
     if @user.persisted?
-      @mobile_token = @user.mobile_tokens.valid.find_by(token: params[:token])
+      @mobile_token = @user.mobile_tokens.valid.find_by(token: user_params[:token])
     else
-      @mobile_token = MobileToken.valid.find_by(token: params[:token], account: params[:mobile])
+      @mobile_token = MobileToken.valid.find_by(token: params[:token], account: params[:account])
     end
 
     if @mobile_token
@@ -54,6 +51,32 @@ class Auth::JoinController < Auth::BaseController
   end
 
   private
+  def set_user_and_token
+    if params[:account].include?('@')
+      user = User.find_by(email: params[:account])
+      if user
+        @token = user.email_token
+      else
+        @token = EmailToken.create(account: params[:account])
+      end
+    else
+      user = User.find_by(mobile: params[:account])
+      if user
+        @token = user.mobile_token
+      else
+        @token = MobileToken.create(account: params[:account])
+      end
+    end
+  end
+
+  def set_user
+    if params[:account].include?('@')
+      @user = User.find_or_initialize_by(email: params[:account])
+    else
+      @user = User.find_or_initialize_by(mobile: params[:account])
+    end
+  end
+
   def user_params
     params.fetch(:user, {}).permit(
       :name,

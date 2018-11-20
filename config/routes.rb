@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
   scope module: :auth do
     controller :join do
-      get :confirm
+      get 'join/token' => :token
       get 'join' => :new
       post 'join' => :create
     end
