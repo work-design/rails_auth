@@ -23,13 +23,17 @@ class Auth::JoinController < Auth::BaseController
   def create
     @user = User.find_or_initialize_by(mobile: user_params[:account])
     if @user.persisted?
-      @mobile_token = @user.mobile_tokens.valid.find_by(token: user_params[:token])
+      @token = @user.verify_tokens.valid.find_by(token: user_params[:token])
     else
-      @mobile_token = MobileToken.valid.find_by(token: params[:token], account: params[:account])
+      @token = VerifyToken.valid.find_by(token: params[:token], account: user_params[:account])
     end
 
-    if @mobile_token
-      @user.mobile_confirmed = true
+    if @token
+      if @token.is_a?(MobileToken)
+        @user.mobile_confirmed = true
+      elsif @token.is_a?(EmailToken)
+        @user.email_confirmed = true
+      end
     else
       flash.now[:error] = '验证码不正确！'
       render :new and return
@@ -80,8 +84,7 @@ class Auth::JoinController < Auth::BaseController
   def user_params
     params.fetch(:user, {}).permit(
       :name,
-      :email,
-      :mobile,
+      :account,
       :password,
       :password_confirmation
     ).merge(source: 'web')
