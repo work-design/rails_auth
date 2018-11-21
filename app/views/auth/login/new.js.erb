@@ -1,3 +1,3 @@
-$('#modal').replaceWith('<%= j(render 'new') %>');
+$('#modal').replaceWith('<%= j(render 'auth/login/new') %>');
 $('#modal').modal('setting', { autofocus: false }).modal('show');
 remote_js_load(<%= raw remote_js_load %>)

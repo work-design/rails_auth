@@ -12,6 +12,10 @@ module RailsAuthController
   def require_login_from_session
     return if login_from_session
 
+    if request.xhr?
+      render file: RailsAuth::Engine.root + 'app/views/auth/login/new.js.erb' and return
+    end
+
     store_location
     if params[:form_id]
       redirect_to login_url(form_id: params[:form_id], login: params[:login])
