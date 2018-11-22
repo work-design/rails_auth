@@ -3,7 +3,10 @@ class Auth::LoginController < Auth::BaseController
 
   def new
     store_location request.referer if request.referer.present?
-    @remote = true if params[:form_id]
+
+    unless request.xhr? || params[:form_id]
+      @local = true
+    end
 
     respond_to do |format|
       format.html.phone

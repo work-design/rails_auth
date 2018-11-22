@@ -13,7 +13,10 @@ module RailsAuthController
     return if login_from_session
 
     if request.xhr?
+      @local = false
       render file: RailsAuth::Engine.root + 'app/views/auth/login/new.js.erb' and return
+    else
+      @local = true
     end
 
     store_location

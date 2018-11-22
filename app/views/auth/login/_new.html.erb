@@ -4,7 +4,7 @@
     Login
   </div>
   <div class="content">
-    <%= form_tag login_path, class: 'ui large form', remote: @remote do %>
+    <%= form_tag login_path, class: 'ui large form', local: @local do %>
       <%= hidden_field_tag :form_id, params[:form_id] %>
       <div class="field">
         <%= text_field_tag :account, params[:account], placeholder: 'Email or Mobile' %>

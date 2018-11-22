@@ -6,6 +6,10 @@ class Auth::JoinController < Auth::BaseController
     @user = User.new(password: '')
     store_location request.referer if request.referer.present?
 
+    unless request.xhr? || params[:form_id]
+      @local = true
+    end
+
     respond_to do |format|
       format.js
       format.html
