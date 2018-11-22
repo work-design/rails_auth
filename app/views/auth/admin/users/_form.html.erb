@@ -1,8 +1,8 @@
-<%= form_with model: [:admin, @user], local: true do |f| %>
-  <%= f.text_field :name %>
+<%= form_with model: [:admin, @user], local: true, html: { novalidate: true } do |f| %>
+  <%= f.text_field :name, required: true %>
   <%= f.text_field :email %>
   <%= f.file_field :avatar %>
-  <%= render 'active_storage_ext/attachments/list_form', target: @user.avatar %>
+  <%= render 'active_storage_ext/attachments/list_field', target: @user.avatar %>
   <%= f.text_field :mobile %>
   <%= f.text_field :password %>
 	<%= f.check_box :disabled %>

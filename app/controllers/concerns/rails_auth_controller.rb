@@ -9,12 +9,12 @@ module RailsAuthController
     @current_user ||= login_from_session
   end
 
-  def require_login_from_session
+  def require_login_from_session(js_template: RailsAuth::Engine.root + 'app/views/auth/login/new.js.erb')
     return if login_from_session
 
     if request.xhr?
       @local = false
-      render file: RailsAuth::Engine.root + 'app/views/auth/login/new.js.erb' and return
+      render file: js_template and return
     else
       @local = true
     end
