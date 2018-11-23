@@ -25,9 +25,8 @@ class Auth::JoinController < Auth::BaseController
   end
 
   def create
-    @user = User.find_or_initialize_by(mobile: user_params[:account])
     if @user.persisted?
-      @token = @user.verify_tokens.valid.find_by(token: user_params[:token])
+      @token = @user.verify_tokens.valid.find_by(token: params[:token])
     else
       @token = VerifyToken.valid.find_by(token: params[:token], account: user_params[:account])
     end
@@ -78,10 +77,10 @@ class Auth::JoinController < Auth::BaseController
   end
 
   def set_user
-    if params[:account].include?('@')
-      @user = User.find_or_initialize_by(email: params[:account])
+    if user_params[:account].include?('@')
+      @user = User.find_or_initialize_by(email: user_params[:account])
     else
-      @user = User.find_or_initialize_by(mobile: params[:account])
+      @user = User.find_or_initialize_by(mobile: user_params[:account])
     end
   end
 

@@ -77,8 +77,14 @@ module RailsAuthUser
     end
   end
 
-  def join(params = nil)
-    self.assign_attributes params
+  def join(params = {})
+    self.assign_attributes params.slice(
+      :name,
+      :email,
+      :mobile,
+      :password,
+      :password_confirmation
+    )
     save
   end
 
