@@ -2,6 +2,7 @@ class Auth::LoginController < Auth::BaseController
   before_action :set_user, only: [:create]
 
   def new
+    @user = User.new
     store_location request.referer if request.referer.present?
 
     unless request.xhr? || params[:form_id]
