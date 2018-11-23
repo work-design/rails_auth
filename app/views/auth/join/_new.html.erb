@@ -4,13 +4,7 @@
     Join
   </div>
   <div class="content">
-    <%= form_with model: @user, scope: :user, url: join_path, local: @local do |f| %>
-      <%= render 'shared/error_messages', target: @user %>
-      <%= f.email_field :email, placeholder: 'Email' %>
-      <%= f.password_field :password, placeholder: 'Password' %>
-      <%= f.password_field :password_confirmation, placeholder: 'Password confirm' %>
-      <%= submit_tag 'submit' %>
-    <% end %>
+    <%= render 'form' %>
   </div>
 </div>
 
