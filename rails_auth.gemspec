@@ -6,7 +6,7 @@ Gem::Specification.new do |s|
   s.version = RailsAuth::VERSION
   s.authors = ['qinmingyuan']
   s.email = ['mingyuan0715@foxmail.com']
-  s.homepage = 'https://github.com/yougexiangfa/rails_auth'
+  s.homepage = 'https://github.com/work-design/rails_auth'
   s.summary = 'understandable, simple auth logic for Rails'
   s.description = '更容易理解的auth'
   s.license = 'LGPL-3.0'
