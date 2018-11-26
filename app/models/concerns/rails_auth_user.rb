@@ -99,25 +99,25 @@ module RailsAuthUser
       if authenticate(params[:password])
         self
       else
-        errors.add :base, 'Incorrect account or password!'
+        errors.add :base, :wrong_name_or_password
         return false
       end
     elsif params[:token].present?
       if authenticate_by_token(params[:token])
         self
       else
-        errors.add :base, 'Incorrect Token!'
+        errors.add :base, :wrong_token
         return false
       end
     else
-      errors.add :base, 'Your must provide password or token!'
+      errors.add :base, :token_blank
       false
     end
   end
 
   def verified_status?
     if self.disabled?
-      errors.add :base, 'Your account has been disabled!'
+      errors.add :base, :account_disable
       true
     else
       false

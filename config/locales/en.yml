@@ -8,4 +8,7 @@ en:
 
   errors:
     messages:
-      wrong_name_or_password: '账号或者密码错误'
+      wrong_name_or_password: Incorrect account or password!
+      wrong_token: Incorrect Token!
+      token_blank: Your must provide password or token!
+      acount_disable: Your account has been disabled!
