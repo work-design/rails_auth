@@ -10,6 +10,11 @@ module RailsAuth #:nodoc:
     config.api_class = 'ApiController'
     config.disabled_models = []
     config.default_return_path = '/'
+    config.ignore_return_paths = [
+      'auth/login',
+      'auth/join',
+      'auth/password'
+    ]
   end
 
 end

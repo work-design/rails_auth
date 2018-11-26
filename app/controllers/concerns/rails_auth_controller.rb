@@ -47,7 +47,7 @@ module RailsAuthController
 
   def store_location(path = nil)
     path = path || request.fullpath
-    if ['auth/login', 'auth/join', 'auth/password'].include? request.params['controller']
+    if RailsAuth.config.ignore_return_paths.include? controller_path
       session[:return_to] = RailsAuth.config.default_return_path
     else
       session[:return_to] = path
