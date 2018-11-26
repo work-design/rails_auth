@@ -1,16 +1,5 @@
-<%= form_with scope: nil, url: login_path, local: @local do |f| %>
-  <div class="field">
-    <%= f.text_field :account, value: params[:account], placeholder: 'Email or Mobile' %>
-  </div>
-  <div class="field">
-    <%= f.password_field :password, placeholder: 'Password', autocomplete: false %>
-  </div>
-  <div class="field">
-    <%= f.submit 'Submit', class: 'ui fluid button' %>
-  </div>
+<%= form_with scope: nil, url: login_path, local: @local, on: { label: false, offset: false, wrapper_input: false, placeholder: true }, css: { wrapper_all: 'field' } do |f| %>
+  <%= f.text_field :account, value: params[:account], placeholder: 'Email or Mobile' %>
+  <%= f.password_field :password, placeholder: 'Password', autocomplete: false %>
+  <%= f.submit 'Submit', class: 'ui fluid button' %>
 <% end %>
-
-
-
-
-
