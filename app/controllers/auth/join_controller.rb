@@ -38,7 +38,7 @@ class Auth::JoinController < Auth::BaseController
         @user.email_confirmed = true
       end
     else
-      flash.now[:error] = '验证码不正确！'
+      flash.now[:error] = t('errors.messages.wrong_token')
       render :new and return
     end
 
