@@ -52,7 +52,7 @@ class Auth::JoinController < Auth::BaseController
       flash.now[:error] = @user.errors.full_messages
       respond_to do |format|
         format.html { render :new, error: @user.errors.full_messages }
-        format.js
+        format.js { render :new }
       end
     end
   end
