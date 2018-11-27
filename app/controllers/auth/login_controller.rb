@@ -28,7 +28,7 @@ class Auth::LoginController < Auth::BaseController
       if @user
         flash[:error] = @user.errors.messages.values.flatten.join(' ')
       else
-        flash[:error] = 'Incorrect email or password.'
+        flash[:error] = t('errors.messages.wrong_name_or_password')
       end
 
       respond_to do |format|
