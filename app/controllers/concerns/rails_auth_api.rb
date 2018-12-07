@@ -40,22 +40,13 @@ module RailsAuthApi
 
   def verify_auth_token
     token = request.headers['Auth-Token']
-    payload = decode_without_verification(token)
+    payload = JwtHelper.decode_without_verification(token)
 
     return unless payload
 
     begin
       password_digest = User.find_by(id: payload['iss']).password_digest.to_s
       JWT.decode(token, password_digest, true, 'sub' => 'auth', verify_sub: true, verify_expiration: false)
-    rescue => e
-      puts nil, e.full_message(highlight: true, order: :top)
-    end
-  end
-
-  def decode_without_verification(token)
-    begin
-      payload, _ = JWT.decode(token, nil, false, verify_expiration: false)
-      payload
     rescue => e
       puts nil, e.full_message(highlight: true, order: :top)
     end

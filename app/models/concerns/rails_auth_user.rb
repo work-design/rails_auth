@@ -8,9 +8,6 @@ module RailsAuthUser
 
   included do
     include ActiveModel::SecurePassword
-    include JwtToken
-    alias_attribute :identifier, :id
-
     has_secure_password validations: false
 
     validates :email, uniqueness: true, if: -> { email.present? && email_changed? }
@@ -143,6 +140,10 @@ module RailsAuthUser
 
   def invalid_access_token
     self.access_tokens.delete_all
+  end
+
+  def generate_auth_token(**options)
+    JwtHelper.generate_jwt_token(id, password_digest, options)
   end
 
 end
