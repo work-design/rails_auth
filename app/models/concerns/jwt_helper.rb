@@ -1,20 +1,13 @@
 require 'jwt'
 module JwtHelper
   extend self
-  # 变量
-
-  # algorithm
-
-  # payload 强制 key
-  # iss(issuer)放鉴权唯一标识
-  # sub
-  # exp
 
   # 模型需要定义属性
-  # identifier   比如 id,  AppID
-  # password_digest 比如 AppSecret
+  # iss(issuer) 比如鉴权唯一标识 id,  AppID
+  # key 比如 password_digest, AppSecret
   # sub: 'auth'
   # exp: auth_token_expired_at, should be int
+  # algorithm: 默认HS256
   def generate_jwt_token(iss, key, options = {})
     payload = {
       iss: iss,
