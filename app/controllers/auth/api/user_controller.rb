@@ -46,7 +46,7 @@ class Auth::Api::UserController < Auth::Api::BaseController
         render json: { code: 401, message: 'Token is invalid' } and return
       end
 
-      if @user.join(join_params)
+      if @user.join(user_params)
         login_as @user
         render json: { code: 200, message: '注册成功!', user: @user.as_json(only:[:id, :name, :mobile], methods: [:auth_token, :avatar_url]) } and return
       end
@@ -55,8 +55,32 @@ class Auth::Api::UserController < Auth::Api::BaseController
     process_errors(@user)
   end
 
+  def reset
+    if params[:account].include?('@')
+      @user = User.find_by(email: params[:account])
+    else
+      @user = User.find_by(mobile: params[:account])
+    end
+
+    unless @user
+      render json: { code: 401, message: 'Please join first' } and return
+    end
+
+    @token = @user.verify_tokens.valid.find_by(token: params[:token])
+    if @token
+      @user.assign_attributes user_params
+      if @user.save
+        render json: { code: 200, message: '重置成功!', user: @user.as_json(only:[:id, :name, :mobile], methods: [:auth_token, :avatar_url]) } and return
+      else
+        process_errors(@user)
+      end
+    else
+      render json: { code: 401, message: 'Token is invalid' }
+    end
+  end
+
   private
-  def join_params
+  def user_params
     params.permit(
       :password,
       :password_confirmation
