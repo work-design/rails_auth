@@ -35,7 +35,7 @@ module RailsAuthApi
 
   private
   def set_auth_token
-    headers['Auth-Token'] = @current_user.access_token.token if @current_user
+    headers['Auth-Token'] = @current_user.auth_token if @current_user
   end
 
   def verify_auth_token
@@ -46,7 +46,7 @@ module RailsAuthApi
 
     begin
       password_digest = User.find_by(id: payload['iss']).password_digest.to_s
-      JWT.decode(token, password_digest, true, {'sub' => 'auth', verify_sub: true})
+      JWT.decode(token, password_digest, true, 'sub' => 'auth', verify_sub: true, verify_expiration: false)
     rescue => e
       puts nil, e.full_message(highlight: true, order: :top)
     end
