@@ -1,6 +1,5 @@
 class Auth::Api::MesController < Auth::Api::BaseController
 
-
   def show
     render json: current_user.as_json(root: true, include: [:oauth_users], methods: [:avatar_url])
   end

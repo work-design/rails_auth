@@ -56,6 +56,7 @@ RailsAuth::Engine.routes.draw do
       post 'reset' => :reset
     end
     resource :me
+    resources :users, only: [:index, :show]
     resources :oauth_users, only: [:create]
   end
 
