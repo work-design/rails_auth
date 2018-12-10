@@ -55,6 +55,7 @@ class Auth::Api::UserController < Auth::Api::BaseController
     process_errors(@user)
   end
 
+  # 40001 登陆；
   def reset
     if params[:account].include?('@')
       @user = User.find_by(email: params[:account])
@@ -63,7 +64,7 @@ class Auth::Api::UserController < Auth::Api::BaseController
     end
 
     unless @user
-      render json: { message: 'Please join first' }, status: :bad_request and return
+      render json: { code: 40001, message: 'Please join first' }, status: :bad_request and return
     end
 
     @token = @user.verify_tokens.valid.find_by(token: params[:token])
