@@ -22,8 +22,8 @@ class MobileToken < VerifyToken
   end
 
   def save_with_send
-    send_sms
     save
+    send_sms
   end
 
 end unless RailsAuth.config.disabled_models.include?('MobileToken')
