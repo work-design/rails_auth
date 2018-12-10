@@ -38,8 +38,10 @@ module RailsAuthUser
     if super
       super
     else
-      self.access_tokens.delete_all
-      create_access_token
+      VerifyToken.transaction do
+        self.access_tokens.delete_all
+        create_access_token
+      end
     end
   end
 
@@ -51,8 +53,10 @@ module RailsAuthUser
     if super
       super
     else
-      self.reset_tokens.delete_all
-      create_reset_token
+      VerifyToken.transaction do
+        self.reset_tokens.delete_all
+        create_reset_token
+      end
     end
   end
 
@@ -60,8 +64,10 @@ module RailsAuthUser
     if super
       super
     else
-      self.unlock_tokens.delete_all
-      create_unlock_token
+      VerifyToken.transaction do
+        self.unlock_tokens.delete_all
+        create_unlock_token
+      end
     end
   end
 
@@ -69,8 +75,10 @@ module RailsAuthUser
     if super
       super
     else
-      self.mobile_tokens.delete_all
-      create_mobile_token
+      VerifyToken.transaction do
+        self.mobile_tokens.delete_all
+        create_mobile_token
+      end
     end
   end
 
