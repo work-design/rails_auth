@@ -20,7 +20,7 @@ class Auth::My::UsersController < Auth::My::BaseController
     if @user.email_changed?
       logout
       flash[:notice] = 'Your Email changed, please login again!'
-      UserMailer.email_confirm(@user.id).deliver_later
+      UserMailer.email_confirm(@user.email).deliver_later
     end
 
     respond_to do |format|
