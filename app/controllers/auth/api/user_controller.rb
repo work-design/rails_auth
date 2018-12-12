@@ -1,4 +1,7 @@
 class Auth::Api::UserController < Auth::Api::BaseController
+  if whether_filter(:require_login_from_token)
+    skip_before_action :require_login_from_token
+  end
 
   def new
     if params[:account].include?('@')
