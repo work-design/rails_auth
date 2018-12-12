@@ -11,7 +11,9 @@ module RailsAuthUser
     has_secure_password validations: false
 
     validates :email, uniqueness: true, if: -> { email.present? && email_changed? }
+    validates :email, presence: true, if: -> { mobile.blank? }
     validates :mobile, uniqueness: true, if: -> { mobile.present? && mobile_changed? }
+    validates :mobile, presence: true, if: -> { email.blank? }
     validates :password, confirmation: true, length: { in: 6..72 }, allow_blank: true
 
     has_one  :unlock_token, -> { valid }
