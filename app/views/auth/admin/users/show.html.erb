@@ -23,11 +23,26 @@
     </tr>
     <tr>
       <td class="right aligned"><%= User.human_attribute_name(:mobile) %></td>
-      <td><%= @user.mobile %></td>
+      <td>
+        <%= @user.mobile %>
+        <%= @user.mobile_confirmed %>
+      </td>
     </tr>
     <tr>
-      <td class="right aligned"><%= User.human_attribute_name(:mobile) %></td>
-      <td><%= @user.mobile %></td>
+      <td class="right aligned"><%= User.human_attribute_name(:locale) %></td>
+      <td><%= @user.locale %></td>
+    </tr>
+    <tr>
+      <td class="right aligned"><%= User.human_attribute_name(:timezone) %></td>
+      <td><%= @user.timezone %></td>
+    </tr>
+    <tr>
+      <td class="right aligned"><%= User.human_attribute_name(:last_login_at) %></td>
+      <td><time><%= @user.last_login_at.to_s(:rfc822) if @user.last_login_at %></time></td>
+    </tr>
+    <tr>
+      <td class="right aligned"><%= User.human_attribute_name(:created_at) %></td>
+      <td><time><%= @user.created_at.to_s(:rfc822) %></time></td>
     </tr>
   </tbody>
 </table>

@@ -16,10 +16,15 @@
     <tr>
       <th><%= User.human_attribute_name(:id) %></th>
       <th><%= User.human_attribute_name(:name) %></th>
-      <th><%= User.human_attribute_name(:email) %></th>
-      <th><%= User.human_attribute_name(:mobile) %></th>
+      <th>
+        <p><%= User.human_attribute_name(:mobile) %></p>
+        <p><%= User.human_attribute_name(:email) %></p>
+      </th>
       <th><%= User.human_attribute_name(:created_at) %></th>
-      <th><%= User.human_attribute_name(:last_login_at) %></th>
+      <th>
+        <p><%= User.human_attribute_name(:last_login_at) %></p>
+        <p><%= User.human_attribute_name(:last_login_ip) %></p>
+      </th>
       <th><%= User.human_attribute_name(:disabled) %></th>
       <th><%= User.human_attribute_name(:oauth_users) %></th>
       <th></th>
@@ -36,10 +41,15 @@
           <%= user.name %>
         <% end %>
       </td>
-      <td><%= user.email %></td>
-      <td><%= user.mobile %></td>
-      <td><time><%= user.updated_at.to_s(:rfc822) %></time></td>
-      <td><time><%= user.last_login_at.to_s(:rfc822) if user.last_login_at %></time></td>
+      <td>
+        <p><%= user.mobile %></p>
+        <p><%= user.email %></p>
+      </td>
+      <td><time><%= user.created_at.to_s(:rfc822) %></time></td>
+      <td>
+        <p><time><%= user.last_login_at.to_s(:rfc822) if user.last_login_at %></time></p>
+        <p><%= user.last_login_ip %></p>
+      </td>
       <td>
         <div class="ui toggle checkbox">
           <%= check_box_tag '[user]disabled', nil, user.disabled, data: { method: :patch, remote: true, params: "[user]disabled=#{!user.disabled}", url: admin_user_path(user) }, id: nil %>
