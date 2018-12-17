@@ -1,5 +1,6 @@
 class Auth::Api::MesController < Auth::Api::BaseController
-  before_action :require_logon_from_token
+  before_action :require_login_from_token
+  before_action :set_user
 
   def show
     render json: @user.as_json(root: true, include: [:oauth_users], methods: [:avatar_url])

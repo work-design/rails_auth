@@ -1,8 +1,8 @@
 require 'test_helper'
 
-class Api::UsersControllerTest < ActionDispatch::IntegrationTest
+class Auth::Api::UsersControllerTest < ActionDispatch::IntegrationTest
   setup do
-    @api_user = api_users(:one)
+    @user = create :user
   end
 
   test "should get index" do
