@@ -9,3 +9,4 @@ test/dummy/tmp/
 test/dummy/.sass-cache
 docs/
 *.gem
+Gemfile.lock
