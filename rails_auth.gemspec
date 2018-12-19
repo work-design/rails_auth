@@ -19,9 +19,7 @@ Gem::Specification.new do |s|
   s.test_files = Dir['test/**/*']
   s.require_paths = ['lib']
 
-  s.add_dependency 'rails', '>= 5.0', '<= 6.1'
-  s.add_dependency 'bcrypt', '~> 3.1'
   s.add_dependency 'rails_com', '~> 1.2'
-  s.add_dependency 'default_form', '~> 1.3'
+  s.add_dependency 'bcrypt', '~> 3.1'
   s.add_dependency 'jwt', '>= 2.0', '<= 3.0'
 end
