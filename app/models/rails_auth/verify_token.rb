@@ -6,6 +6,7 @@ class VerifyToken < ApplicationRecord
 
   scope :valid, -> { where('expired_at >= ?', Time.now).order(access_counter: :asc) }
   validates :token, uniqueness: { scope: :account }, presence: true
+  after_initialize :update_token, if: -> { new_record? }
 
   def update_token
     self.token = SecureRandom.uuid

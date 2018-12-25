@@ -5,7 +5,6 @@
 #++
 # test
 class AccessToken < VerifyToken
-  before_create :update_token
 
   def update_token
     self.expired_at = 1.weeks.since
