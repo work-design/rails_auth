@@ -52,7 +52,7 @@
       </td>
       <td>
         <div class="ui toggle checkbox">
-          <%= check_box_tag '[user]disabled', nil, user.disabled, data: { method: :patch, remote: true, params: "[user]disabled=#{!user.disabled}", url: admin_user_path(user), submit: true }, id: nil %>
+          <%= check_box_tag '[user]disabled', nil, user.disabled, data: { method: :patch, remote: true, url: admin_user_path(user), submit: true }, id: nil %>
         </div>
       </td>
       <td class="ui blue labels">
