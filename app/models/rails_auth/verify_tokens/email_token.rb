@@ -1,13 +1,8 @@
 class EmailToken < VerifyToken
   validates :account, presence: true
 
-  after_initialize do
-    if self.user
-      self.account = self.user.email
-    end
-  end
-
   def update_token
+    self.account = self.user.email if self.user
     self.token = rand(10000..999999)
     self.expired_at = 10.minutes.since
   end
