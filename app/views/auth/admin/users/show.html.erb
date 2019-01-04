@@ -44,5 +44,11 @@
       <td class="right aligned"><%= User.human_attribute_name(:created_at) %></td>
       <td><time><%= @user.created_at.to_s(:rfc822) %></time></td>
     </tr>
+    <tr>
+      <td class="right aligned"><%= User.human_attribute_name(:verify_tokens) %></td>
+      <td>
+        <%= render 'verify_tokens', target: @user %>
+      </td>
+    </tr>
   </tbody>
 </table>
