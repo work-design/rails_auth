@@ -1,5 +1,5 @@
 class Auth::Api::MesController < Auth::Api::BaseController
-  before_action :require_login_from_token
+  before_action :require_login
   before_action :set_user
 
   def show

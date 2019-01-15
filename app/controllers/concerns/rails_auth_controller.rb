@@ -30,12 +30,7 @@ module RailsAuthController
   end
 
   def current_user
-    @current_user ||=
-    if api_request?
-      login_from_token
-    else
-      login_from_session
-    end
+    @current_user ||= login_from_token
   end
 
   def login_as(user)
@@ -70,35 +65,30 @@ module RailsAuthController
 
   def login_from_token
     auth_token = request.headers['Auth-Token'].presence || session[:auth_token]
-
     return unless auth_token
 
-    if verify_auth_token
-      @access_token = AccessToken.find_by token: request.headers['Auth-Token']
-    end
-    if @access_token
-      @current_user ||= @access_token.user
+    if verify_auth_token(auth_token)
+      @current_user ||= AccessToken.find_by(token: auth_token)&.user
     end
   end
 
   private
   def set_auth_token
+    return unless @current_user
     if api_request?
-      headers['Auth-Token'] = @current_user.auth_token if @current_user
+      headers['Auth-Token'] = @current_user.auth_token
     else
-      session[:auth_token] = user.auth_token
+      session[:auth_token] = @current_user.auth_token
     end
   end
 
-  def verify_auth_token
-    token = request.headers['Auth-Token']
-    payload = JwtHelper.decode_without_verification(token)
-
+  def verify_auth_token(auth_token)
+    payload = JwtHelper.decode_without_verification(auth_token)
     return unless payload
 
     begin
       password_digest = User.find_by(id: payload['iss']).password_digest.to_s
-      JWT.decode(token, password_digest, true, 'sub' => 'auth', verify_sub: true, verify_expiration: false)
+      JWT.decode(auth_token, password_digest, true, 'sub' => 'auth', verify_sub: true, verify_expiration: false)
     rescue => e
       puts nil, e.full_message(highlight: true, order: :top)
     end
