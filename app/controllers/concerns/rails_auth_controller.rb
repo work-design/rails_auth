@@ -1,12 +1,31 @@
 module RailsAuthController
   extend ActiveSupport::Concern
+  include RailsAuthApi
 
   included do
     helper_method :current_user
+    after_action :set_auth_token
+  end
+
+  def api_request?
+    request.headers['Auth-Token'].present? || request.format.json?
+  end
+
+  def require_login
+    if api_request?
+      require_login_from_token
+    else
+      require_login_from_session
+    end
   end
 
   def current_user
-    @current_user ||= login_from_session
+    @current_user ||=
+    if api_request?
+      login_from_token
+    else
+      login_from_session
+    end
   end
 
   def require_login_from_session(js_template: RailsAuth::Engine.root + 'app/views/auth/login/new.js.erb')

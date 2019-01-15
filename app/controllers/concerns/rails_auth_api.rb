@@ -1,15 +1,5 @@
 require 'jwt'
 module RailsAuthApi
-  extend ActiveSupport::Concern
-
-  included do
-    helper_method :current_user
-    after_action :set_auth_token
-  end
-
-  def current_user
-    @current_user ||= login_from_token
-  end
 
   def require_login_from_token
     return if login_from_token
@@ -35,7 +25,9 @@ module RailsAuthApi
 
   private
   def set_auth_token
-    headers['Auth-Token'] = @current_user.auth_token if @current_user
+    if api_request?
+      headers['Auth-Token'] = @current_user.auth_token if @current_user
+    end
   end
 
   def verify_auth_token
