@@ -17,7 +17,7 @@
 ```ruby
 class ApplicationController < ActionController::Base
   include RailsAuthController
-  before_action :require_login_from_session
+  before_action :require_login
 end
 ```
 
