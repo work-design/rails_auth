@@ -7,6 +7,10 @@ module RailsAuthController
     after_action :set_auth_token
   end
 
+  def current_user
+    @current_user ||= login_from_token
+  end
+
   def require_login(js_template: RailsAuth::Engine.root + 'app/views/auth/login/new.js.erb')
     return if login_from_token
 
@@ -26,10 +30,6 @@ module RailsAuthController
     end
   end
 
-  def current_user
-    @current_user ||= login_from_token
-  end
-
   def login_as(user)
     unless api_request?
       session[:auth_token] = user.auth_token
@@ -46,6 +46,15 @@ module RailsAuthController
     @current_user = nil
   end
 
+  def login_from_token
+    auth_token = request.headers['Auth-Token'].presence || session[:auth_token]
+    return unless auth_token
+
+    if verify_auth_token(auth_token)
+      @current_user ||= AccessToken.find_by(token: auth_token)&.user
+    end
+  end
+
   def store_location(path = nil)
     path = path || request.fullpath
     if RailsAuth.config.ignore_return_paths.include? controller_path
@@ -58,15 +67,6 @@ module RailsAuthController
   def redirect_back_or_default(default = RailsAuth.config.default_return_path, **options)
     redirect_to session[:return_to] || default, **options
     session[:return_to] = nil
-  end
-
-  def login_from_token
-    auth_token = request.headers['Auth-Token'].presence || session[:auth_token]
-    return unless auth_token
-
-    if verify_auth_token(auth_token)
-      @current_user ||= AccessToken.find_by(token: auth_token)&.user
-    end
   end
 
   private
