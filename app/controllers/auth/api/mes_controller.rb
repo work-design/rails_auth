@@ -28,6 +28,7 @@ class Auth::Api::MesController < Auth::Api::BaseController
     params.fetch(:user, {}).permit(
       :name,
       :email,
+      :avatar,
       :mobile,
       :locale,
       :nation,
