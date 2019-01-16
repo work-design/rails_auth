@@ -5,6 +5,7 @@ class EmailToken < VerifyToken
     self.account = self.user.email if self.user
     self.token = rand(10000..999999)
     self.expired_at = 10.minutes.since
+    self
   end
 
   def verify_token?

@@ -11,6 +11,7 @@ class VerifyToken < ApplicationRecord
   def update_token
     self.token = SecureRandom.uuid
     self.expired_at = 14.days.since
+    self
   end
 
   def verify_token?(now = Time.now)
