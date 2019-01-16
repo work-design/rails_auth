@@ -23,4 +23,4 @@ class VerifyToken < ApplicationRecord
     true
   end
 
-end unless RailsAuth.config.disabled_models.include?('OauthUser')
+end unless RailsAuth.config.disabled_models.include?('VerifyToken')

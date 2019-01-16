@@ -16,20 +16,23 @@ module RailsAuthUser
     validates :mobile, presence: true, if: -> { email.blank? }
     validates :password, confirmation: true, length: { in: 6..72 }, allow_blank: true
 
-    has_one  :unlock_token, -> { valid }
+    has_one :unlock_token, -> { valid }
     has_many :unlock_tokens, dependent: :delete_all
 
-    has_one  :reset_token, -> { valid }
+    has_one :reset_token, -> { valid }
     has_many :reset_tokens, dependent: :delete_all
 
-    has_one  :mobile_token, -> { valid }
+    has_one :mobile_token, -> { valid }
     has_many :mobile_tokens, dependent: :delete_all
 
-    has_one  :email_token, -> { valid }
+    has_one :email_token, -> { valid }
     has_many :email_tokens, dependent: :delete_all
 
-    has_one  :access_token, -> { valid }
+    has_one :access_token, -> { valid }
     has_many :access_tokens, dependent: :delete_all
+
+    has_one :invite_token, -> { valid }
+    has_many :invite_tokens, dependent: :delete_all
 
     has_many :verify_tokens, autosave: true, dependent: :delete_all
     has_many :oauth_users, dependent: :nullify
@@ -52,6 +55,17 @@ module RailsAuthUser
 
   def auth_token
     access_token.token
+  end
+
+  def invite_token
+    if super
+      super
+    else
+      VerifyToken.transaction do
+        self.invite_tokens.delete_all
+        create_invite_token
+      end
+    end
   end
 
   def reset_token
