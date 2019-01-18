@@ -36,7 +36,6 @@ class RailsAuthInit < ActiveRecord::Migration[5.1]
       t.string :name
       t.string :avatar_url
       t.string :state
-      t.string :code
       t.string :access_token
       t.string :refresh_token
       t.datetime :expires_at
