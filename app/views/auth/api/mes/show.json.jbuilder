@@ -1,1 +1,1 @@
-json.app @user, partial: 'user', as: :user
+json.user @user, partial: 'user', as: :user
