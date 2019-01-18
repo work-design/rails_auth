@@ -31,9 +31,6 @@ module RailsAuthUser
     has_one :access_token, -> { valid }
     has_many :access_tokens, dependent: :delete_all
 
-    has_one :invite_token, -> { valid }
-    has_many :invite_tokens, dependent: :delete_all
-
     has_many :verify_tokens, autosave: true, dependent: :delete_all
     has_many :oauth_users, dependent: :nullify
 
@@ -55,17 +52,6 @@ module RailsAuthUser
 
   def auth_token
     access_token.token
-  end
-
-  def invite_token
-    if super
-      super
-    else
-      VerifyToken.transaction do
-        self.invite_tokens.delete_all
-        create_invite_token
-      end
-    end
   end
 
   def reset_token
