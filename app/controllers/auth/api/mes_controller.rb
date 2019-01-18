@@ -3,7 +3,6 @@ class Auth::Api::MesController < Auth::Api::BaseController
   before_action :set_user
 
   def show
-    render json: @user.as_json(root: true, include: [:oauth_users], methods: [:avatar_url])
   end
 
   def update
