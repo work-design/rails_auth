@@ -33,7 +33,9 @@
         <%= link_to oauth_user.user_id, admin_user_path(oauth_user.user_id) if oauth_user.user_id %>
       </td>
       <td>
-        <%= link_to 'Delete', admin_oauth_user_path(oauth_user), method: :delete, data: { confirm: 'Are you sure?' }, class: 'ui red label' %>
+        <%= link_to admin_oauth_user_path(oauth_user), method: :delete, data: { tooltip: t('.destroy'), confirm: 'Are you sure?' }, class: 'ui red mini icon button' do %>
+          <i class="times icon"></i>
+        <% end %>
       </td>
     </tr>
   <% end %>

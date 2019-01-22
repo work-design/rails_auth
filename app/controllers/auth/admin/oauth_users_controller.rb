@@ -23,7 +23,7 @@ class Auth::Admin::OauthUsersController < Auth::Admin::BaseController
 
   def destroy
     @oauth_user.destroy
-    redirect_to oauth_users_url, notice: 'Oauth user was successfully destroyed.'
+    redirect_to admin_oauth_users_url(user_id: @oauth_user.user_id), notice: 'Oauth user was successfully destroyed.'
   end
 
   private
