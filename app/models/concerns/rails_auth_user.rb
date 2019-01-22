@@ -158,8 +158,8 @@ module RailsAuthUser
     avatar.service_url if avatar.attachment.present?
   end
 
-  def oauth_providers
-    OauthUser.options_i18n(:provider).values.map(&:to_s) - oauth_users.pluck(:provider).compact
+  def valid_providers
+    OauthUser.options_i18n(:provider).values.map(&:to_s) - oauth_providers
   end
 
   def invalid_access_token
@@ -168,6 +168,10 @@ module RailsAuthUser
 
   def generate_auth_token(**options)
     JwtHelper.generate_jwt_token(id, password_digest, options)
+  end
+
+  def oauth_providers
+    oauth_users.pluck(:provider).compact
   end
 
 end

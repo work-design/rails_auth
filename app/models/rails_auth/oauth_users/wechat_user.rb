@@ -11,7 +11,7 @@ class WechatUser < OauthUser
       self.errors.add :base, "#{res['errcode']}, #{res['errmsg']}"
     end
 
-    info_params = res.slice('nick_name', 'headimgurl')
+    info_params = res.slice('nickname', 'headimgurl')
     assign_user_info(info_params)
 
     raw_info = res.slice('unionid')
