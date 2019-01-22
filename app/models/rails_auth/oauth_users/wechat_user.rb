@@ -52,18 +52,4 @@ class WechatUser < OauthUser
     self.save
   end
 
-  def self.oauth_client(scope = [])
-    return @oauth_client if defined?(@oauth_client)
-    @oauth_client = OmniAuth::Strategies::Wechat.new(
-      nil, # App - nil seems to be ok?!
-      'wxc7c60047a9c75018', #WECHAT_APP['appid'],
-      'c5168f183fd20a038df632c1d6d4157e',# WECHAT_APP['secret'],
-      scope: scope
-    )
-  end
-
-  def client
-    @client ||= OAuth2::AccessToken.new self.class.oauth_client, access_token
-  end
-
 end unless RailsAuth.config.disabled_models.include?('WechatUser')
