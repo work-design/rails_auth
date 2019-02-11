@@ -53,6 +53,7 @@ RailsAuth::Engine.routes.draw do
       get 'join' => :new
       post 'join' => :create
       post 'login' => :create
+      post 'mock' => :mock
       post 'reset' => :reset
     end
     resource :me

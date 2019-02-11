@@ -58,6 +58,22 @@ class Auth::Api::UserController < Auth::Api::BaseController
     process_errors(@user)
   end
 
+  def mock
+    @user = User.find_or_initialize_by(user_uuid: params[:account])
+
+    if @user.persisted?
+      login_as @user
+      render json: { user: @user.as_json(only:[:id, :name, :mobile], methods: [:auth_token, :avatar_url]) } and return
+    else
+      if @user.join(user_params)
+        login_as @user
+        render json: { user: @user.as_json(only:[:id, :name, :mobile], methods: [:auth_token, :avatar_url]) } and return
+      end
+    end
+
+    process_errors(@user)
+  end
+
   # 40001 登陆；
   def reset
     if params[:account].include?('@')
