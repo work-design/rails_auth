@@ -13,7 +13,13 @@ class Auth::Api::OauthUsersController < Auth::Api::BaseController
 
   private
   def oauth_user_params
-    params.fetch(:oauth_user, {}).permit(:uid, :provider, :type, :name, :access_token, :auth_code)
+    params.fetch(:oauth_user, {}).permit(
+      :uid,
+      :provider,
+      :type,
+      :name,
+      :access_token
+    )
   end
 
 end
