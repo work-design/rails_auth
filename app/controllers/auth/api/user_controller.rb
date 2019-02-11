@@ -103,6 +103,7 @@ class Auth::Api::UserController < Auth::Api::BaseController
   def user_params
     params.permit(
       :password,
+      :user_uuid,
       :password_confirmation
     ).merge(source: 'api')
   end

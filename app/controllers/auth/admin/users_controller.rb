@@ -5,6 +5,10 @@ class Auth::Admin::UsersController < Auth::Admin::BaseController
     @users = User.includes(:oauth_users).order(created_at: :desc).default_where(search_params).page(params[:page])
   end
 
+  def panel
+
+  end
+
   def new
     @user = User.new
   end

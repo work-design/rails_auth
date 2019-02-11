@@ -35,7 +35,9 @@ Rails.application.routes.draw do
   end
 
   scope :admin, module: 'auth/admin', as: 'admin' do
-    resources :users
+    resources :users do
+      get :panel, on: :collection
+    end
     resources :oauth_users
   end
 
