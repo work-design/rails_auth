@@ -1,4 +1,5 @@
 //= require @antv/g2
+//= require @antv/data-set
 
 const data = [
   { genre: 'Sports', sold: 275 },
@@ -15,5 +16,15 @@ const chart = new G2.Chart({
 });
 
 chart.source(data);
-chart.interval().position('genre*sold').color('genre');
+chart.scale('genre', {
+  min: 0
+});
+chart.scale('sold', {
+  range: [0, 1]
+});
+chart.line().position('genre*sold').color('genre');
+chart.point().position('genre*sold').size(4).shape('circle').style({
+  stroke: '#fff',
+  lineWidth: 1
+});
 chart.render();
