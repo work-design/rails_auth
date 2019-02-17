@@ -87,7 +87,7 @@ module RailsAuthController
       password_digest = User.find_by(id: payload['iss']).password_digest.to_s
       JWT.decode(auth_token, password_digest, true, 'sub' => 'auth', verify_sub: true, verify_expiration: false)
     rescue => e
-      puts nil, e.full_message(highlight: true, order: :top)
+      logger.debug e.full_message(highlight: true, order: :top)
     end
   end
 
