@@ -29,7 +29,7 @@ module RailsAuthWechat
   # overrided method
   def login_as(user)
     # 绑定wechat_user 和 user
-    if current_wechat_user && current_wechat_user.user_id != user.id
+    if current_wechat_user&.user_id != user.id
       current_wechat_user.update(user_id: user.id)
       user.sync_info_from_oauth_user(current_wechat_user)
     end
@@ -45,7 +45,9 @@ module RailsAuthWechat
   def require_wechat_user(return_to: nil)
     return if current_wechat_user
 
-    store_location(return_to) if request.get? || return_to.present?
+    if request.get? || return_to.present?
+      store_location(return_to)
+    end
     redirect_url = '/auth/wechat?skip_register=true'
 
     respond_to do |format|
