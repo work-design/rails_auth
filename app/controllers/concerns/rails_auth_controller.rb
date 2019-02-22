@@ -12,7 +12,7 @@ module RailsAuthController
   end
 
   def require_login(js_template: RailsAuth::Engine.root + 'app/views/auth/login/new.js.erb')
-    return if login_from_token
+    return if current_user
 
     if api_request?
       raise ActionController::UnauthorizedError
