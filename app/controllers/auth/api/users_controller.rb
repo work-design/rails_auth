@@ -8,7 +8,6 @@ class Auth::Api::UsersController < Auth::Api::BaseController
   end
 
   def show
-    render json: @user.as_json(root: true, only: [:name, :timezone, :locale, :disabled, :nation, :last_login_at, :last_login_ip, :mobile_confirmed], methods: [:avatar_url])
   end
 
   private
