@@ -46,7 +46,7 @@ class Auth::Api::UserController < Auth::Api::BaseController
         @user.mobile_confirmed = true
         @mobile_token.user = @user
       else
-        render json: { message: 'Token is invalid' }, status: :bad_request and return
+        render json: { message: '验证码错误' }, status: :bad_request and return
       end
 
       if @user.join(user_params)
@@ -104,7 +104,8 @@ class Auth::Api::UserController < Auth::Api::BaseController
     params.permit(
       :password,
       :user_uuid,
-      :password_confirmation
+      :password_confirmation,
+      :invite_token
     ).merge(source: 'api')
   end
 
