@@ -37,7 +37,7 @@
       <td><%= user.id %></td>
       <td>
         <%= link_to admin_user_path(user.id) do %>
-          <%= image_tag user.avatar, class: 'ui avatar image' if user.avatar.attached? %>
+          <%= image_tag user.avatar_url, class: 'ui avatar image' if user.avatar.present? %>
           <%= user.name %>
         <% end %>
       </td>
