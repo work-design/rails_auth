@@ -34,27 +34,36 @@ class Auth::Api::UserController < Auth::Api::BaseController
       @user = User.find_or_initialize_by(mobile: params[:account])
     end
 
-    if @user.persisted?
-      if @user.can_login?(params)
-        login_as @user
-        render json: { user: @user.as_json(only:[:id, :name, :mobile], methods: [:auth_token, :avatar_url]) } and return
-      end
-    elsif params[:token].present?
-      @mobile_token = MobileToken.valid.find_by(token: params[:token], account: params[:account])
-
-      if @mobile_token
-        @user.mobile_confirmed = true
-        @mobile_token.user = @user
+    if params[:token].present?
+      # 注册
+      if @user.persisted?
+        render json: { message: '该手机号已注册' }, status: :bad_request and return
       else
-        render json: { message: '验证码错误' }, status: :bad_request and return
-      end
+        @mobile_token = MobileToken.valid.find_by(token: params[:token], account: params[:account])
 
-      if @user.join(user_params)
-        login_as @user
-        render json: { user: @user.as_json(only:[:id, :name, :mobile], methods: [:auth_token, :avatar_url]) } and return
+        if @mobile_token
+          @user.mobile_confirmed = true
+          @mobile_token.user = @user
+        else
+          render json: { message: '验证码错误' }, status: :bad_request and return
+        end
+
+        if @user.join(user_params)
+          login_as @user
+          render json: { user: @user.as_json(only:[:id, :name, :mobile], methods: [:auth_token, :avatar_url]) } and return
+        end
       end
+     
     else
-      render json: { message: '账号或密码错误' }, status: :bad_request and return
+      # 登录
+      if @user.persisted?
+        if @user.can_login?(params)
+          login_as @user
+          render json: { user: @user.as_json(only:[:id, :name, :mobile], methods: [:auth_token, :avatar_url]) } and return
+        end
+      else
+        render json: { message: '账号或密码错误' }, status: :bad_request and return
+      end
     end
 
     process_errors(@user)
@@ -85,7 +94,7 @@ class Auth::Api::UserController < Auth::Api::BaseController
     end
 
     unless @user
-      render json: { code: 40001, message: 'Please join first' }, status: :bad_request and return
+      render json: { code: 40001, message: '该手机号未注册' }, status: :bad_request and return
     end
 
     @token = @user.verify_tokens.valid.find_by(token: params[:token])
@@ -97,7 +106,7 @@ class Auth::Api::UserController < Auth::Api::BaseController
         process_errors(@user)
       end
     else
-      render json: { message: 'Token is invalid' }, status: :bad_request
+      render json: { message: '验证码错误' }, status: :bad_request
     end
   end
 
