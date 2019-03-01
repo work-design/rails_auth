@@ -39,7 +39,7 @@ class Auth::Api::UserController < Auth::Api::BaseController
         login_as @user
         render json: { user: @user.as_json(only:[:id, :name, :mobile], methods: [:auth_token, :avatar_url]) } and return
       end
-    else
+    elsif params[:token].present?
       @mobile_token = MobileToken.valid.find_by(token: params[:token], account: params[:account])
 
       if @mobile_token
@@ -53,6 +53,8 @@ class Auth::Api::UserController < Auth::Api::BaseController
         login_as @user
         render json: { user: @user.as_json(only:[:id, :name, :mobile], methods: [:auth_token, :avatar_url]) } and return
       end
+    else
+      render json: { message: '账号或密码错误' }, status: :bad_request and return
     end
 
     process_errors(@user)
