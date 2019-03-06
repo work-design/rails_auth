@@ -10,6 +10,9 @@ module RailsAuthUser
     include ActiveModel::SecurePassword
     has_secure_password validations: false
 
+    attribute :locale, :string, default: I18n.default_locale
+    attribute :timezone, :string
+
     validates :email, uniqueness: true, if: -> { email.present? && email_changed? }
     validates :mobile, uniqueness: true, if: -> { mobile.present? && mobile_changed? }
     validates :password, confirmation: true, length: { in: 6..72 }, allow_blank: true

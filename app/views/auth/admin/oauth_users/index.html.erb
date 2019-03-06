@@ -1,3 +1,11 @@
+<div class="ui attached segment breadcrumb">
+  <%= link_to 'Back', admin_users_path, class: 'section' %>
+  <div class="divider">/</div>
+  <%= link_to 'User', admin_users_path(params[:user_id]), class: 'section' %>
+  <div class="divider">/</div>
+  <div class="active section">Oauth Users</div>
+</div>
+
 <div class="ui top attached borderless menu">
   <div class="item">Oauth Users</div>
 </div>
