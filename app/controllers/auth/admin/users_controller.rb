@@ -26,13 +26,12 @@ class Auth::Admin::UsersController < Auth::Admin::BaseController
   end
 
   def edit
-
   end
 
   def update
     respond_to do |format|
       if @user.update(user_params)
-        format.js { head :no_content }
+        format.js { redirect_to admin_users_url }
         format.html { redirect_to admin_users_url, notice: 'User was successfully updated.' }
       else
         format.js { head :no_content }
