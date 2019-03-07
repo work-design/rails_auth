@@ -1,8 +1,16 @@
 <table class="ui very basic large table">
+  <thead>
+    <tr>
+      <th class="six wide">
+        <%= link_to t('.edit'), edit_admin_user_path, class: 'ui mini blue right floated button', remote: true %>
+      </th>
+      <th class="ten wide"></th>
+    </tr>
+  </thead>
   <tbody>
     <tr>
-      <td class="right aligned six wide"><%= User.human_attribute_name(:name) %></td>
-      <td class="ten wide"><%= @user.name %></td>
+      <td class="right aligned"><%= User.human_attribute_name(:name) %></td>
+      <td><%= @user.name %></td>
     </tr>
     <tr>
       <td class="right aligned"><%= User.human_attribute_name(:avatar) %></td>
