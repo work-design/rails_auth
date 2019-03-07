@@ -61,7 +61,7 @@
         <% end %>
       </td>
       <td class="ui labels">
-        <%= link_to admin_user_path(user), data: { tooltip: t('.show') }, class: 'ui blue mini icon button' do %>
+        <%= link_to admin_user_path(user), data: { tooltip: t('.show') }, class: 'ui blue mini icon button', remote: true do %>
           <i class="location arrow icon"></i>
         <% end %>
         <%= link_to edit_admin_user_path(user), data: { tooltip: t('.edit') }, class: 'ui pink mini icon button', remote: true do %>

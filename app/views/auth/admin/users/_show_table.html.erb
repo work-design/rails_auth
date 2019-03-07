@@ -1,0 +1,48 @@
+<table class="ui very basic large table">
+  <tbody>
+    <tr>
+      <td class="right aligned six wide"><%= User.human_attribute_name(:name) %></td>
+      <td class="ten wide"><%= @user.name %></td>
+    </tr>
+    <tr>
+      <td class="right aligned"><%= User.human_attribute_name(:avatar) %></td>
+      <td><%= image_tag @user.avatar, class: 'ui small image' %></td>
+    </tr>
+    <tr>
+      <td class="right aligned"><%= User.human_attribute_name(:email) %></td>
+      <td>
+        <%= @user.email %>
+        <%= @user.email_confirmed %>
+      </td>
+    </tr>
+    <tr>
+      <td class="right aligned"><%= User.human_attribute_name(:mobile) %></td>
+      <td>
+        <%= @user.mobile %>
+        <%= @user.mobile_confirmed %>
+      </td>
+    </tr>
+    <tr>
+      <td class="right aligned"><%= User.human_attribute_name(:locale) %></td>
+      <td><%= @user.locale %></td>
+    </tr>
+    <tr>
+      <td class="right aligned"><%= User.human_attribute_name(:timezone) %></td>
+      <td><%= @user.timezone %></td>
+    </tr>
+    <tr>
+      <td class="right aligned"><%= User.human_attribute_name(:last_login_at) %></td>
+      <td><time><%= @user.last_login_at.to_s(:rfc822) if @user.last_login_at %></time></td>
+    </tr>
+    <tr>
+      <td class="right aligned"><%= User.human_attribute_name(:created_at) %></td>
+      <td><time><%= @user.created_at.to_s(:rfc822) %></time></td>
+    </tr>
+    <tr>
+      <td class="right aligned"><%= User.human_attribute_name(:verify_tokens) %></td>
+      <td>
+        <%= render 'verify_tokens', target: @user %>
+      </td>
+    </tr>
+  </tbody>
+</table>
