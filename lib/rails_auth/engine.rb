@@ -1,3 +1,4 @@
+require 'factory_bot_rails'
 class RailsAuth::Engine < ::Rails::Engine
 
   config.eager_load_paths += Dir[
@@ -5,6 +6,8 @@ class RailsAuth::Engine < ::Rails::Engine
     "#{config.root}/app/models/rails_auth/oauth_users",
     "#{config.root}/app/models/rails_auth/verify_tokens"
   ]
+
+  config.factory_bot.definition_file_paths += Dir["#{config.root}/test/factories"] if defined?(FactoryBotRails)
 
   config.generators do |g|
     g.rails = {
