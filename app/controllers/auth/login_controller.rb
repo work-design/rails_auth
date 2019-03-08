@@ -1,4 +1,7 @@
 class Auth::LoginController < Auth::BaseController
+  if whether_filter(:require_login)
+    skip_before_action :require_login
+  end
   before_action :set_user, only: [:create]
 
   def new

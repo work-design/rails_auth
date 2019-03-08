@@ -1,5 +1,11 @@
 class Auth::My::UsersController < Auth::My::BaseController
-  before_action :set_user
+  before_action :set_user, only: [:show]
+
+  def index
+    @users = User.page(params[:page])
+
+    render json: @users
+  end
 
   def show
     respond_to do |format|
@@ -48,7 +54,7 @@ class Auth::My::UsersController < Auth::My::BaseController
 
   private
   def set_user
-    @user = current_user
+    @user = User.find(params[:id])
   end
 
   def user_params

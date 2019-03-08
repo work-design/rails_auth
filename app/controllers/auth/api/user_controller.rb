@@ -1,7 +1,5 @@
 class Auth::Api::UserController < Auth::Api::BaseController
-  if whether_filter(:require_login)
-    skip_before_action :require_login
-  end
+
 
   def new
     if params[:account].include?('@')
@@ -53,7 +51,7 @@ class Auth::Api::UserController < Auth::Api::BaseController
           render json: { user: @user.as_json(only:[:id, :name, :mobile], methods: [:auth_token, :avatar_url]) } and return
         end
       end
-     
+
     else
       # 登录
       if @user.persisted?
