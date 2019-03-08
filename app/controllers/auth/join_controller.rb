@@ -45,7 +45,7 @@ class Auth::JoinController < Auth::BaseController
       #@token = @user.verify_tokens.valid.find_by(token: params[:token])
       render json: { message: '该手机号已注册' }, status: :bad_request and return
     else
-      @token = @user.verify_tokens.valid.find_by(token: params[:token], account: user_params[:account])
+      @token = VerifyToken.valid.find_by(token: params[:token], account: user_params[:account])
     end
 
     if @token
