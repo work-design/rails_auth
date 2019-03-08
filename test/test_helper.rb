@@ -1,4 +1,5 @@
 ENV['RAILS_ENV'] = 'test'
+require 'factory_bot_rails'
 require_relative '../test/dummy/config/environment'
 require 'rails/test_help'
 require 'minitest/mock'

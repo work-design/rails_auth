@@ -1,4 +1,3 @@
-require 'factory_bot_rails'
 class RailsAuth::Engine < ::Rails::Engine
 
   config.eager_load_paths += Dir[
