@@ -1,5 +1,4 @@
-//= require @antv/g2
-//= require @antv/data-set
+
 
 const data = [
   { genre: 'Sports', sold: 275 },

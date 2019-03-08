@@ -7,14 +7,14 @@ class Auth::JoinControllerTest < ActionDispatch::IntegrationTest
     User.include RailsAuthUser
   end
 
-  test 'new' do
+  test 'new ok' do
     get join_url
     assert_response :success
   end
 
-  test 'create' do
+  test 'create ok' do
     assert_difference('User.count') do
-      post join_url, params: { user: { email: 'mingyuan0715@foxmail.com', password: '111111' } }
+      post join_url, params: { user: { account: 'mingyuan0715@foxmail.com', password: '111111' } }
     end
   end
 

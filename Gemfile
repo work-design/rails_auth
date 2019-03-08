@@ -7,7 +7,7 @@ gem 'puma'
 #
 gem 'sqlite3'
 gem 'factory_bot_rails', github: 'thoughtbot/factory_bot_rails'
-gem 'default_form'
+gem 'default_form', github: 'qinmingyuan/default_form'
 gem 'rails_com', github: 'work-design/rails_com', branch: '6.0'
 gem 'jbuilder'
 
