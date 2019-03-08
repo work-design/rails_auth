@@ -35,6 +35,7 @@ Rails.application.routes.draw do
       match ':provider/callback' => :create, via: [:get, :post]
       match ':provider/failure' => :failure, via: [:get, :post]
     end
+    resources :users, only: [:index, :show]
   end
 
   scope :admin, module: 'auth/admin', as: 'admin' do
@@ -46,9 +47,7 @@ Rails.application.routes.draw do
 
   scope :my, module: 'auth/my', as: 'my' do
     resource :user
-    resource :me
     resources :oauth_users
-    resources :users, only: [:index, :show]
   end
 
 end
