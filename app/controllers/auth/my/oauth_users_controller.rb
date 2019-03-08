@@ -9,25 +9,7 @@ class Auth::My::OauthUsersController < Auth::My::BaseController
   def show
   end
 
-  def new
-    @oauth_user = OauthUser.new
-  end
-
   def edit
-  end
-
-  def create
-    @oauth_user = OauthUser.new(oauth_user_params)
-
-    respond_to do |format|
-      if @oauth_user.save
-        format.html { redirect_to @oauth_user, notice: 'Oauth user was successfully created.' }
-        format.json { render :show, status: :created, location: @oauth_user }
-      else
-        format.html { render :new }
-        format.json { render json: @oauth_user.errors, status: :unprocessable_entity }
-      end
-    end
   end
 
   def update
@@ -57,10 +39,6 @@ class Auth::My::OauthUsersController < Auth::My::BaseController
 
   def set_oauth_user
     @oauth_user = OauthUser.find(params[:id])
-  end
-
-  def oauth_user_params
-    params.fetch(:oauth_user, {})
   end
 
 end

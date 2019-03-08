@@ -19,7 +19,7 @@
       </td>
     </tr>
   <% end %>
-  <% current_user.oauth_providers.each do |provider| %>
+  <% current_user.valid_providers.each do |provider| %>
     <tr>
       <td><%= provider %></td>
       <td colspan="2"></td>

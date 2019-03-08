@@ -10,6 +10,7 @@ class Auth::OauthsController < Auth::BaseController
 
     if @oauth_user.user.nil? && current_user
       @oauth_user.user = current_user
+      redirect_back_or_default(my_root_url, alert: 'Oauth Success!') and return if @oauth_user.save
     elsif @oauth_user.user.nil? && !current_user
       if @oauth_user.same_user
         @oauth_user.user_id = @oauth_user.same_user.id
