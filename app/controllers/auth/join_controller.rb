@@ -42,9 +42,10 @@ class Auth::JoinController < Auth::BaseController
 
   def create
     if @user.persisted?
-      @token = @user.verify_tokens.valid.find_by(token: params[:token])
+      #@token = @user.verify_tokens.valid.find_by(token: params[:token])
+      render json: { message: '该手机号已注册' }, status: :bad_request and return
     else
-      @token = VerifyToken.valid.find_by(token: params[:token], account: user_params[:account])
+      @token = @user.verify_tokens.valid.find_by(token: params[:token], account: user_params[:account])
     end
 
     if @token
@@ -54,8 +55,14 @@ class Auth::JoinController < Auth::BaseController
         @user.email_confirmed = true
       end
     else
-      flash.now[:error] = t('errors.messages.wrong_token')
-      render :new and return
+      msg = t('errors.messages.wrong_token')
+      flash.now[:error] = msg
+      respond_to do |format|
+        format.html { render :new and return }
+        format.json {
+          render json: { message: msg }, status: :bad_request and return
+        }
+      end
     end
 
     if @user.join(user_params)
@@ -63,12 +70,18 @@ class Auth::JoinController < Auth::BaseController
       respond_to do |format|
         format.html { redirect_back_or_default }
         format.js
+        format.json {
+          render json: { user: @user.as_json(only:[:id, :name, :mobile], methods: [:auth_token, :avatar_url]) } and return
+        }
       end
     else
       flash.now[:error] = @user.errors.full_messages
       respond_to do |format|
         format.html { render :new, error: @user.errors.full_messages }
         format.js { render :new }
+        format.json {
+          process_errors(@user)
+        }
       end
     end
   end

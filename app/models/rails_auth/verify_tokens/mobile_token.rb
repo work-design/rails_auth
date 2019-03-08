@@ -14,6 +14,7 @@ class MobileToken < VerifyToken
 
   def send_sms
     puts 'sends sms here'
+    true
   end
 
   def save_with_send
