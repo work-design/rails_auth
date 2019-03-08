@@ -17,10 +17,26 @@ class Auth::JoinController < Auth::BaseController
   end
 
   def token
-    if @token.save_with_send
-      render json: { code: 200, message: 'Validation code has been sent!' }
+    if params[:account].include?('@')
+      @user = User.find_by(email: params[:account])
+      if @user
+        @verify_token = @user.email_token
+      else
+        @verify_token = EmailToken.valid.find_or_initialize_by(account: params[:account])
+      end
     else
-      render json: { }
+      @user = User.find_by(mobile: params[:account])
+      if @user
+        @verify_token = @user.mobile_token
+      else
+        @verify_token = MobileToken.valid.find_or_initialize_by(account: params[:account])
+      end
+    end
+
+    if @verify_token.save_with_send
+      render json: { present: @user.present?, message: 'Validation code has been sent!' }
+    else
+      render json: { message: 'Token is invalid' }, status: :bad_request
     end
   end
 

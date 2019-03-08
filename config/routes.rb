@@ -1,10 +1,13 @@
 Rails.application.routes.draw do
 
   scope module: :auth do
+
     controller :join do
       get 'join/token' => :token
       get 'join' => :new
       post 'join' => :create
+      post 'mock' => :mock
+      post 'reset' => :reset
     end
 
     controller :login do
@@ -43,24 +46,9 @@ Rails.application.routes.draw do
 
   scope :my, module: 'auth/my', as: 'my' do
     resource :user
-    resources :oauth_users
-  end
-
-end
-
-RailsAuth::Engine.routes.draw do
-
-  scope module: 'auth/api', as: 'api' do
-    controller :user do
-      get 'join' => :new
-      post 'join' => :create
-      post 'login' => :create
-      post 'mock' => :mock
-      post 'reset' => :reset
-    end
     resource :me
+    resources :oauth_users
     resources :users, only: [:index, :show]
-    resources :oauth_users, only: [:create]
   end
 
 end
