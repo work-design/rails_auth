@@ -7,9 +7,7 @@ module RailsAuthWechat
   def require_login(return_to: nil)
     return super unless request.variant.any?(:wechat)
 
-    if request.get? || return_to.present?
-      store_location(return_to)
-    end
+    store_location(return_to)
 
     if current_wechat_user && current_wechat_user.user.nil?
       redirect_url = join_mobile_url

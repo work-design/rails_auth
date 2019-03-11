@@ -11,7 +11,7 @@ module RailsAuthController
     @current_user ||= login_from_token
   end
 
-  def require_login(js_template: RailsAuth::Engine.root + 'app/views/auth/login/new.js.erb')
+  def require_login(js_template: RailsAuth::Engine.root + 'app/views/auth/login/new.js.erb', return_to: nil)
     return if current_user
 
     if api_request?
@@ -21,7 +21,7 @@ module RailsAuthController
       render file: js_template and return
     else
       @local = true
-      store_location
+      store_location(return_to)
       if params[:form_id]
         redirect_to login_url(form_id: params[:form_id], login: params[:login])
       else
@@ -56,11 +56,14 @@ module RailsAuthController
   end
 
   def store_location(path = nil)
-    path = path || request.fullpath
-    if RailsAuth.config.ignore_return_paths.include? controller_path
-      session[:return_to] = RailsAuth.config.default_return_path
-    else
+    if path
       session[:return_to] = path
+    elsif RailsAuth.config.ignore_return_paths.include?(controller_path)
+      session[:return_to] = RailsAuth.config.default_return_path
+    elsif request.get?
+      session[:return_to] = request.fullpath
+    else
+      session[:return_to] = RailsAuth.config.default_return_path
     end
   end
 

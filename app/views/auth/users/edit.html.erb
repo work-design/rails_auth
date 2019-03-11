@@ -18,11 +18,7 @@
           <%= hidden_field_tag nil, nil, id: 'proxy' %>
           <%= file_field_tag :key, id: 'file_input' %>
         </a>
-        <% if current_user.avatar.attached? %>
-          <%= image_tag current_user.avatar.variant(resize: '200x200'), id: 'avatar_image' %>
-        <% else %>
-          <%= image_tag 'default_avatar.jpg', size: '200x200', id: 'avatar_image' %>
-        <% end %>
+        <%= image_tag current_user.avatar.variant(resize: '200x200'), id: 'avatar_image' %>
       </div>
     </td>
   </tr>

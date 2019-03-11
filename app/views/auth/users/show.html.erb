@@ -13,11 +13,7 @@
       <td></td>
       <td>
         <div class="ui image">
-          <% if current_user.avatar.attached? %>
-            <%= image_tag current_user.avatar.variant(resize: '200x200') %>
-          <% else %>
-            <%= image_tag 'default_avatar.jpg', size: '200x200' %>
-          <% end %>
+          <%= image_tag current_user.avatar.variant(resize: '200x200') %>
         </div>
       </td>
     </tr>
