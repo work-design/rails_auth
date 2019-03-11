@@ -12,14 +12,9 @@ class MobileToken < VerifyToken
     user.update(mobile_confirm: true)
   end
 
-  def send_sms
+  def send_out
     puts 'sends sms here'
     true
-  end
-
-  def save_with_send
-    save
-    send_sms
   end
 
 end unless RailsAuth.config.disabled_models.include?('MobileToken')

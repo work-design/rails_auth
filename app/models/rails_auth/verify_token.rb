@@ -24,4 +24,19 @@ class VerifyToken < ApplicationRecord
     true
   end
 
+  def send_out
+    raise 'should implement in subclass'
+  end
+
+  def self.create_with_account(account)
+    verify_token = self.valid.find_by(account: account)
+    return verify_token if verify_token
+    verify_token = self.new(account: account)
+    self.transaction do
+      self.where(account: account).delete_all
+      verify_token.save
+    end
+    verify_token
+  end
+
 end unless RailsAuth.config.disabled_models.include?('VerifyToken')

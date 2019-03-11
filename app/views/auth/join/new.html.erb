@@ -2,7 +2,11 @@
   <div class="column">
     <h4 class="ui block top attached header">请注册</h4>
     <div class="ui bottom attached segment">
-      <%= render 'form' %>
+      <%= form_with model: @user, url: join_token_path, local: true, on: { label: nil, wrapper_input: false, placeholder: true }, css: { wrapper_all: 'field' } do |f| %>
+        <%= render 'shared/error_messages', target: @user %>
+        <%= f.text_field :account %>
+        <%= f.submit 'next step', class: 'ui fluid button' %>
+      <% end %>
     </div>
   </div>
 </div>

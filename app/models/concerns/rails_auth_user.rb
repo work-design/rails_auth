@@ -10,6 +10,7 @@ module RailsAuthUser
     include ActiveModel::SecurePassword
     has_secure_password validations: false
 
+    attribute :account, :string
     attribute :locale, :string, default: I18n.default_locale
     attribute :timezone, :string
 

@@ -17,35 +17,43 @@ class Auth::JoinController < Auth::BaseController
   end
 
   def token
-    if params[:account].include?('@')
-      @user = User.find_by(email: params[:account])
-      if @user
-        @verify_token = @user.email_token
-      else
-        @verify_token = EmailToken.valid.find_or_initialize_by(account: params[:account])
+    if @verify_token.send_out
+      respond_to do |format|
+        format.html { redirect_to join_password_path(account: user_params[:account]) }
+        format.json {
+          render json: { present: @user.present?, message: 'Validation code has been sent!' }
+        }
       end
     else
-      @user = User.find_by(mobile: params[:account])
-      if @user
-        @verify_token = @user.mobile_token
-      else
-        @verify_token = MobileToken.valid.find_or_initialize_by(account: params[:account])
+      respond_to do |format|
+        format.html
+        format.json {
+          render json: { message: 'Token is invalid' }, status: :bad_request
+        }
       end
     end
+  end
 
-    if @verify_token.save_with_send
-      render json: { present: @user.present?, message: 'Validation code has been sent!' }
-    else
-      render json: { message: 'Token is invalid' }, status: :bad_request
+  def join
+    @user = User.new(account: params[:account])
+    store_location request.referer if request.referer.present?
+
+    unless request.xhr? || params[:form_id]
+      @local = true
+    end
+
+    respond_to do |format|
+      format.js
+      format.html
     end
   end
 
   def create
     if @user.persisted?
-      #@token = @user.verify_tokens.valid.find_by(token: params[:token])
+      @token = @user.verify_tokens.valid.find_by(token: user_params[:token])
       render json: { message: '该手机号已注册' }, status: :bad_request and return
     else
-      @token = VerifyToken.valid.find_by(token: params[:token], account: user_params[:account])
+      @token = VerifyToken.valid.find_by(token: user_params[:token], account: user_params[:account])
     end
 
     if @token
@@ -88,19 +96,19 @@ class Auth::JoinController < Auth::BaseController
 
   private
   def set_user_and_token
-    if params[:account].include?('@')
-      user = User.find_by(email: params[:account])
-      if user
-        @token = user.email_token
+    if user_params[:account].include?('@')
+      @user = User.find_by(email: user_params[:account])
+      if @user
+        @verify_token = @user.email_token
       else
-        @token = EmailToken.create(account: params[:account])
+        @verify_token = EmailToken.create_with_account(user_params[:account])
       end
     else
-      user = User.find_by(mobile: params[:account])
-      if user
-        @token = user.mobile_token
+      @user = User.find_by(mobile: user_params[:account])
+      if @user
+        @verify_token = @user.mobile_token
       else
-        @token = MobileToken.create(account: params[:account])
+        @verify_token = MobileToken.create_with_acount(user_params[:account])
       end
     end
   end
@@ -118,7 +126,8 @@ class Auth::JoinController < Auth::BaseController
       :name,
       :account,
       :password,
-      :password_confirmation
+      :password_confirmation,
+      :token
     ).merge(source: 'web')
   end
 

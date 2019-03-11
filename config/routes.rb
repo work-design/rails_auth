@@ -3,8 +3,9 @@ Rails.application.routes.draw do
   scope module: :auth do
 
     controller :join do
-      get 'join/token' => :token
       get 'join' => :new
+      get 'join/password' => :join
+      post 'join/token' => :token, via: [:get, :post]
       post 'join' => :create
       post 'mock' => :mock
       post 'reset' => :reset

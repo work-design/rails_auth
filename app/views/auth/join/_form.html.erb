@@ -1,6 +1,7 @@
 <%= form_with model: @user, url: join_path, local: @local, on: { label: nil, wrapper_input: false, placeholder: true }, css: { wrapper_all: 'field' } do |f| %>
   <%= render 'shared/error_messages', target: @user %>
-  <%= f.email_field :email %>
+  <%= f.hidden_field :account %>
+  <%= f.text_field :token %>
   <%= f.password_field :password %>
   <%= f.password_field :password_confirmation %>
   <%= f.submit 'submit', class: 'ui fluid button' %>
