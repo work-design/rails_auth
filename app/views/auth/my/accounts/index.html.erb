@@ -18,7 +18,12 @@
           <label class="ui green label">Confirmed</label>
         <% else %>
           <label class="ui red label">待验证</label>
-          <%= link_to '发送验证码' %>
+          <%= link_to '发送验证码', confirm_my_account_path(account.id) %>
+        <% end %>
+      </td>
+      <td>
+        <% if account.can_login_organ? %>
+          <%= link_to 'Org', login_my_organ_path(account.member.organ_id), method: :patch %>
         <% end %>
       </td>
       <td>
@@ -42,7 +47,7 @@
     <td>
       <%= submit_tag '添加', form: 'add_account', class: 'ui button' %>
     </td>
-    <td colspan="2">
+    <td colspan="3">
     
     </td>
   </tr>

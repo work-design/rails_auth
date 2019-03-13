@@ -17,12 +17,6 @@ Rails.application.routes.draw do
       get 'logout' => :destroy
     end
 
-    controller :confirm do
-      post 'email' => :email
-      post 'mobile' => :mobile
-      post 'confirm/:token' => :update
-    end
-
     scope :password, controller: :password, as: 'password' do
       get 'forget' => :new
       post 'forget' => :create
@@ -48,7 +42,12 @@ Rails.application.routes.draw do
 
   scope :my, module: 'auth/my', as: 'my' do
     resource :user
-    resources :accounts
+    resources :accounts do
+      member do
+        get 'confirm' => :edit_confirm
+        post 'confirm' => :update_confirm
+      end
+    end
     resources :oauth_users
   end
 

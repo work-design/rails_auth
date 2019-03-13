@@ -119,13 +119,17 @@ class Auth::JoinController < Auth::BaseController
   end
 
   def user_params
-    params.fetch(:user, {}).permit(
+    q = params.fetch(:user, {}).permit(
       :name,
       :account,
       :password,
       :password_confirmation,
       :token
     ).merge(source: 'web')
+    if q[:account].blank?
+      q.merge! params.permit(:account)
+    end
+    q
   end
 
 end

@@ -1,6 +1,6 @@
 class RailsAuth::Engine < ::Rails::Engine
 
-  config.eager_load_paths += Dir[
+  config.autoload_paths += Dir[
     "#{config.root}/app/models/rails_auth",
     "#{config.root}/app/models/rails_auth/oauth_users",
     "#{config.root}/app/models/rails_auth/verify_tokens",
