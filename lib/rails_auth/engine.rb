@@ -3,7 +3,8 @@ class RailsAuth::Engine < ::Rails::Engine
   config.eager_load_paths += Dir[
     "#{config.root}/app/models/rails_auth",
     "#{config.root}/app/models/rails_auth/oauth_users",
-    "#{config.root}/app/models/rails_auth/verify_tokens"
+    "#{config.root}/app/models/rails_auth/verify_tokens",
+    "#{config.root}/app/models/rails_auth/accounts"
   ]
 
   config.factory_bot.definition_file_paths += Dir["#{config.root}/test/factories"] if defined?(FactoryBotRails)

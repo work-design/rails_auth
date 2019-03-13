@@ -48,6 +48,7 @@ Rails.application.routes.draw do
 
   scope :my, module: 'auth/my', as: 'my' do
     resource :user
+    resources :accounts
     resources :oauth_users
   end
 

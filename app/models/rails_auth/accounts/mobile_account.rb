@@ -1,0 +1,3 @@
+class MobileAccount < Account
+
+end

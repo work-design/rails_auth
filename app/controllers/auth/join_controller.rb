@@ -57,11 +57,7 @@ class Auth::JoinController < Auth::BaseController
     end
 
     if @token
-      if @token.is_a?(MobileToken)
-        @user.mobile_confirmed = true
-      elsif @token.is_a?(EmailToken)
-        @user.email_confirmed = true
-      end
+      @account.confirmed = true
     else
       msg = t('errors.messages.wrong_token')
       flash.now[:error] = msg
@@ -119,6 +115,7 @@ class Auth::JoinController < Auth::BaseController
     else
       @user = User.find_or_initialize_by(mobile: user_params[:account])
     end
+    @account = @user.accounts.find_or_initialize_by(account: user_params[:account])
   end
 
   def user_params

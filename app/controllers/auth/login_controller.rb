@@ -101,6 +101,9 @@ class Auth::LoginController < Auth::BaseController
     else
       @user = User.find_by(mobile: params[:account])
     end
+    return @user if @user
+    @account = Account.find_by(account: params[:account])
+    @user = @account.user
   end
 
   def user_params

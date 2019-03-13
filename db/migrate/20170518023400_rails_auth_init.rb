@@ -4,9 +4,7 @@ class RailsAuthInit < ActiveRecord::Migration[5.1]
     create_table :users do |t|
       t.string :name, limit: 100
       t.string :email, limit: 100
-      t.boolean :email_confirmed, default: false
       t.string :mobile, limit: 20
-      t.boolean :mobile_confirmed, default: false
       t.string :password_digest
       t.datetime :last_login_at
       t.string :last_login_ip
@@ -15,6 +13,15 @@ class RailsAuthInit < ActiveRecord::Migration[5.1]
       t.string :locale
       t.string :source
       t.string :user_uuid
+      t.timestamps
+    end
+
+    create_table :accounts do |t|
+      t.references :user
+      t.string :type
+      t.string :account
+      t.boolean :confirmed, default: false
+      t.boolean :primary, default: false
       t.timestamps
     end
 
