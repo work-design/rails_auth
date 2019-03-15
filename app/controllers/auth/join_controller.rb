@@ -3,8 +3,8 @@ class Auth::JoinController < Auth::BaseController
   before_action :set_user, only: [:create]
 
   def new
-    @user = User.new(password: '')
-    store_location request.referer if request.referer.present?
+    @user = User.new
+    store_location
 
     unless request.xhr? || params[:form_id]
       @local = true
@@ -36,7 +36,6 @@ class Auth::JoinController < Auth::BaseController
 
   def join
     @user = User.new(account: params[:account])
-    store_location request.referer if request.referer.present?
 
     unless request.xhr? || params[:form_id]
       @local = true

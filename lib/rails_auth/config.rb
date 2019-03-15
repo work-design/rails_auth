@@ -14,9 +14,8 @@ module RailsAuth #:nodoc:
     ]
     config.default_return_path = '/'
     config.ignore_return_paths = [
-      'auth/login',
-      'auth/join',
-      'auth/password'
+      'login',
+      'join'
     ]
   end
 

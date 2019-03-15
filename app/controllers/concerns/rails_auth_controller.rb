@@ -21,7 +21,12 @@ module RailsAuthController
       render file: js_template and return
     else
       @local = true
+
+      if request.get?
+        return_to ||= request.fullpath
+      end
       store_location(return_to)
+
       if params[:form_id]
         redirect_to login_url(form_id: params[:form_id], login: params[:login])
       else
@@ -56,13 +61,21 @@ module RailsAuthController
   end
 
   def store_location(path = nil)
+    return if session[:return_to]
+
     if path
       session[:return_to] = path
-    elsif RailsAuth.config.ignore_return_paths.include?(controller_path)
-      session[:return_to] = RailsAuth.config.default_return_path
-    elsif request.get?
-      session[:return_to] = request.fullpath
-    else
+    elsif request.referer.present?
+      session[:return_to] = request.referer
+    end
+
+    if session[:return_to].nil?
+      return session[:return_to] = RailsAuth.config.default_return_path
+    end
+
+    path = URI(session[:return_to]).path.chomp('/')
+
+    if RailsAuth.config.ignore_return_paths.include?(path)
       session[:return_to] = RailsAuth.config.default_return_path
     end
   end
