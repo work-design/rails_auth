@@ -103,7 +103,7 @@ class Auth::LoginController < Auth::BaseController
     end
     return @user if @user
     @account = Account.find_by(account: params[:account])
-    @user = @account.user
+    @user = @account&.user
   end
 
   def user_params
