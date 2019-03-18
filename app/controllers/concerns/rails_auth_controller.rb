@@ -14,23 +14,27 @@ module RailsAuthController
   def require_login(js_template: RailsAuth::Engine.root + 'app/views/auth/login/new.js.erb', return_to: nil)
     return if current_user
 
-    if api_request?
-      raise ActionController::UnauthorizedError
-    elsif request.xhr?
-      @local = false
-      render file: js_template and return
-    else
-      @local = true
+    respond_to do |format|
+      format.html {
+        @local = true
 
-      if request.get?
-        return_to ||= request.fullpath
-      end
-      store_location(return_to)
+        if request.get?
+          return_to ||= request.fullpath
+        end
+        store_location(return_to)
 
-      if params[:form_id]
-        redirect_to login_url(form_id: params[:form_id], login: params[:login])
-      else
-        redirect_to login_url
+        if params[:form_id]
+          redirect_to login_url(form_id: params[:form_id], login: params[:login])
+        else
+          redirect_to login_url
+        end
+      }
+      format.js {
+        @local = false
+        render file: js_template and return
+      }
+      format.json do
+        render json: { status: 'error', error_message: '请登录后操作' }, status: 401
       end
     end
   end

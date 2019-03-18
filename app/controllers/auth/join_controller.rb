@@ -103,7 +103,7 @@ class Auth::JoinController < Auth::BaseController
       if @user
         @verify_token = @user.mobile_token
       else
-        @verify_token = MobileToken.create_with_acount(user_params[:account])
+        @verify_token = MobileToken.create_with_account(user_params[:account])
       end
     end
   end
