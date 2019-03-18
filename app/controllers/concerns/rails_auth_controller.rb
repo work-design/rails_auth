@@ -34,7 +34,7 @@ module RailsAuthController
         render file: js_template and return
       }
       format.json do
-        render json: { status: 'error', error_message: '请登录后操作' }, status: 401
+        render json: { message: '请登录后操作' }, status: 401
       end
     end
   end
