@@ -1,5 +1,5 @@
 class Auth::My::AccountsController < Auth::My::BaseController
-  before_action :set_account, only: [:show, :edit, :update, :edit_confirm, :update_confirm, :destroy]
+  before_action :set_account, only: [:edit, :update, :edit_confirm, :update_confirm, :destroy]
 
   def index
     @accounts = current_user.accounts
@@ -30,9 +30,9 @@ class Auth::My::AccountsController < Auth::My::BaseController
 
   def edit_confirm
     if @account.is_a?(EmailAccount)
-      @verify_token = @account.user.email_tokens.create_with_account(@account.account)
+      @verify_token = @account.user.email_tokens.create_with_account(@account.identity)
     else
-      @verify_token = @account.user.mobile_tokens.create_with_account(@account.account)
+      @verify_token = @account.user.mobile_tokens.create_with_account(@account.identity)
     end
     @verify_token.send_out
   end
@@ -60,7 +60,7 @@ class Auth::My::AccountsController < Auth::My::BaseController
 
   def account_params
     params.require(:account).permit(
-      :account,
+      :identity,
       :confirmed,
       :primary
     )

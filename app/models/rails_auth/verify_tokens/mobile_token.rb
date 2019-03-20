@@ -1,8 +1,8 @@
 class MobileToken < VerifyToken
-  validates :account, presence: true
+  validates :identity, presence: true
 
   def update_token
-    self.account = self.user.mobile if self.user
+    self.identity ||= self.user.mobile if self.user
     self.token = rand(10000..999999)
     self.expired_at = 10.minutes.since
     self
@@ -13,7 +13,7 @@ class MobileToken < VerifyToken
   end
 
   def send_out
-    puts 'sends sms here'
+    puts "sends sms here #{token}"
     true
   end
 

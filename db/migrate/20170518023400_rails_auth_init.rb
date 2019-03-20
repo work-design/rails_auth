@@ -19,7 +19,7 @@ class RailsAuthInit < ActiveRecord::Migration[5.1]
     create_table :accounts do |t|
       t.references :user
       t.string :type
-      t.string :account
+      t.string :identity
       t.boolean :confirmed, default: false
       t.boolean :primary, default: false
       t.timestamps
@@ -30,7 +30,7 @@ class RailsAuthInit < ActiveRecord::Migration[5.1]
       t.string :type, limit: 100
       t.string :token
       t.datetime :expired_at
-      t.string :account
+      t.string :identity
       t.integer :access_counter, default: 0
       t.timestamps
     end

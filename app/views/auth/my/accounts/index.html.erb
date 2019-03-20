@@ -7,7 +7,7 @@
   <% @accounts.each do |account| %>
     <tr>
       <td></td>
-      <td><%= account.account %></td>
+      <td><%= account.identity %></td>
       <td>
         <% if account.primary %>
           <label class="ui green label">Primary</label>
@@ -41,7 +41,7 @@
     </td>
     <td class="six wide">
       <div class="ui fluid input">
-        <%= text_field_tag 'account[account]', nil, placeholder: '账号：', form: 'add_account' %>
+        <%= text_field_tag 'account[identity]', nil, placeholder: '账号：', form: 'add_account' %>
       </div>
     </td>
     <td>

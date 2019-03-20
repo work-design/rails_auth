@@ -1,6 +1,6 @@
 json.extract! account,
               :id,
-              :account,
+              :identity,
               :confirmed,
               :primary
 if account.member

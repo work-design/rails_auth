@@ -1,8 +1,8 @@
 class EmailToken < VerifyToken
-  validates :account, presence: true
+  validates :identity, presence: true
 
   def update_token
-    self.account = self.user.email if self.user
+    self.identity ||= self.user.email if self.user
     self.token = rand(10000..999999)
     self.expired_at = 10.minutes.since
     self
@@ -13,7 +13,7 @@ class EmailToken < VerifyToken
   end
 
   def send_out
-    UserMailer.email_token(self.account, self.token).deliver_later
+    UserMailer.email_token(self.identity, self.token).deliver_later
   end
 
 end unless RailsAuth.config.disabled_models.include?('EmailToken')

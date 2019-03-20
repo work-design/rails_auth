@@ -28,13 +28,13 @@ class VerifyToken < ApplicationRecord
     raise 'should implement in subclass'
   end
 
-  def self.create_with_account(account)
-    verify_token = self.valid.find_by(account: account)
+  def self.create_with_account(identity)
+    verify_token = self.valid.find_by(identity: identity)
     return verify_token if verify_token
-    verify_token = self.new(account: account)
+    verify_token = self.new(identity: identity)
     self.transaction do
-      self.where(account: account).delete_all
-      verify_token.save
+      self.where(identity: identity).delete_all
+      verify_token.save!
     end
     verify_token
   end
