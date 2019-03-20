@@ -56,7 +56,12 @@ module RailsAuthController
   end
 
   def login_from_token
-    auth_token = request.headers['Auth-Token'].presence || session[:auth_token]
+    if request.headers['Authorization']
+      auth_token = request.headers['Authorization']&.split(' ').last.presence
+    else
+      auth_token = request.headers['Auth-Token'].presence || session[:auth_token]
+    end
+
     return unless auth_token
 
     if verify_auth_token(auth_token)
