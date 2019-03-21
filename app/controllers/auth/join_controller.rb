@@ -50,7 +50,13 @@ class Auth::JoinController < Auth::BaseController
   def create
     if @user.persisted?
       @token = @user.verify_tokens.valid.find_by(token: user_params[:token])
-      render json: { message: '该手机号已注册' }, status: :bad_request and return
+      msg = '该手机号已注册'
+      respond_to do |format|
+        format.html {}
+        format.json {
+          render json: { message: msg }, status: :bad_request and return
+        }
+      end
     else
       @token = VerifyToken.valid.find_by(token: user_params[:token], account: user_params[:account])
     end
