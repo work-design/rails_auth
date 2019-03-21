@@ -19,7 +19,7 @@ class Auth::JoinController < Auth::BaseController
   def token
     if @verify_token.send_out
       respond_to do |format|
-        format.html { redirect_to join_password_path(account: user_params[:account]) }
+        format.html { redirect_to join_password_path(identity: user_params[:identity]) }
         format.json {
           render json: { present: @user.present?, message: 'Validation code has been sent!' }
         }
@@ -35,7 +35,7 @@ class Auth::JoinController < Auth::BaseController
   end
 
   def join
-    @user = User.new(account: params[:account])
+    @user = User.new(identity: params[:identity])
 
     unless request.xhr? || params[:form_id]
       @local = true
@@ -91,42 +91,41 @@ class Auth::JoinController < Auth::BaseController
 
   private
   def set_user_and_token
-    if user_params[:account].include?('@')
-      @user = User.find_by(email: user_params[:account])
+    if user_params[:identity].include?('@')
+      @user = User.find_by(email: user_params[:identity])
       if @user
         @verify_token = @user.email_token
       else
-        @verify_token = EmailToken.create_with_account(user_params[:account])
+        @verify_token = EmailToken.create_with_account(user_params[:identity])
       end
     else
-      @user = User.find_by(mobile: user_params[:account])
+      @user = User.find_by(mobile: user_params[:identity])
       if @user
         @verify_token = @user.mobile_token
       else
-        @verify_token = MobileToken.create_with_account(user_params[:account])
+        @verify_token = MobileToken.create_with_account(user_params[:identity])
       end
     end
   end
 
   def set_user
-    if user_params[:account].include?('@')
-      @user = User.find_or_initialize_by(email: user_params[:account])
+    if user_params[:identity].include?('@')
+      @user = User.find_or_initialize_by(email: user_params[:identity])
     else
-      @user = User.find_or_initialize_by(mobile: user_params[:account])
+      @user = User.find_or_initialize_by(mobile: user_params[:identity])
     end
-    @account = @user.accounts.find_or_initialize_by(account: user_params[:account])
   end
 
   def user_params
     q = params.fetch(:user, {}).permit(
       :name,
-      :account,
+      :identity,
       :password,
       :password_confirmation,
       :token
     ).merge(source: 'web')
-    if q[:account].blank?
-      q.merge! params.permit(:account)
+    if q[:identity].blank?
+      q.merge! params.permit(:identity)
     end
     q
   end

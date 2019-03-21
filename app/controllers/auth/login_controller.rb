@@ -96,13 +96,13 @@ class Auth::LoginController < Auth::BaseController
 
   private
   def set_user
-    if params[:account].include?('@')
-      @user = User.find_by(email: params[:account])
+    if params[:identity].include?('@')
+      @user = User.find_by(email: params[:identity])
     else
-      @user = User.find_by(mobile: params[:account])
+      @user = User.find_by(mobile: params[:identity])
     end
     return @user if @user
-    @account = Account.find_by(account: params[:account])
+    @account = Account.find_by(identity: params[:identity])
     @user = @account&.user
   end
 
@@ -112,9 +112,8 @@ class Auth::LoginController < Auth::BaseController
       :user_uuid,
       :password_confirmation,
       :invite_token
-    ).merge(source: 'api')
+    )
   end
-
 
 end
 
