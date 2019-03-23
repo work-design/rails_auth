@@ -1,4 +1,4 @@
-class Account < ApplicationRecord
+class Account < RailsAuthRecord
   belongs_to :user
   after_initialize if: :new_record? do
     if self.identity.include?('@')

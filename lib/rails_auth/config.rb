@@ -8,6 +8,7 @@ module RailsAuth #:nodoc:
     config.my_class = 'MyController'
     config.admin_class = 'AdminController'
     config.api_class = 'ApiController'
+    config.record_class = 'ApplicationRecord'
     config.disabled_models = [
       'AlipayUser',
       'WechatUser'

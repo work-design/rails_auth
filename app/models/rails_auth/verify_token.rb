@@ -1,7 +1,7 @@
 # Deal with token
 #
 # 用于处理Token
-class VerifyToken < ApplicationRecord
+class VerifyToken < RailsAuthRecord
   belongs_to :user, optional: true
 
   scope :valid, -> { where('expired_at >= ?', Time.now).order(access_counter: :asc) }

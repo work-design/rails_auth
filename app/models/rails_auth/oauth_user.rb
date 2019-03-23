@@ -1,4 +1,4 @@
-class OauthUser < ApplicationRecord
+class OauthUser < RailsAuthRecord
   attribute :refresh_token, :string
   belongs_to :user, autosave: true, optional: true
   validates :provider, presence: true
