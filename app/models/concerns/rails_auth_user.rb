@@ -40,8 +40,7 @@ module RailsAuthUser
     has_one_attached :avatar
 
     before_save :invalid_access_token, if: -> { password_digest_changed? }
-    before_save :sync_to_email_accounts, if: -> { email_changed? }
-    before_save :sync_to_mobile_accounts, if: -> { mobile_changed? }
+    before_save :sync_to_accounts, if: -> { email_changed? || mobile_changed? }
   end
 
   def access_token
@@ -177,6 +176,21 @@ module RailsAuthUser
 
   def oauth_providers
     oauth_users.pluck(:provider).compact
+  end
+
+  def sync_to_accounts
+    if email_changed?
+      sync_to_email_accounts
+    end
+    if mobile_changed?
+      sync_to_mobile_accounts
+    end
+  end
+
+  def sync_to_accounts!
+    sync_to_email_accounts
+    sync_to_mobile_accounts
+    self.save
   end
 
   def sync_to_email_accounts
