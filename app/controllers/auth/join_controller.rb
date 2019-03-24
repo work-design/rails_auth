@@ -126,9 +126,14 @@ class Auth::JoinController < Auth::BaseController
       :password,
       :password_confirmation,
       :token
-    ).merge(source: 'web')
+    )
     if q[:identity].blank?
       q.merge! params.permit(:identity)
+    end
+    if request.format.json?
+      q.merge! source: 'api'
+    else
+      q.merge! source: 'web'
     end
     q
   end
