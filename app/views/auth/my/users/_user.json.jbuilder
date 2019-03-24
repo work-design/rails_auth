@@ -7,4 +7,4 @@ json.extract! user,
               :timezone,
               :avatar_url
 json.oauth_users user.oauth_users, :id, :provider, :uid
-json.accounts user.accounts, :account, :confirmed, :primary
+json.accounts user.accounts, :identity, :confirmed, :primary
