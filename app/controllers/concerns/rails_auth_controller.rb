@@ -8,7 +8,8 @@ module RailsAuthController
   end
 
   def current_user
-    @current_user ||= login_from_token
+    return @current_user if defined?(@current_user)
+    @current_user = login_from_token
   end
 
   def require_login(js_template: RailsAuth::Engine.root + 'app/views/auth/login/new.js.erb', return_to: nil)
@@ -65,7 +66,7 @@ module RailsAuthController
     return unless auth_token
 
     if verify_auth_token(auth_token)
-      @current_user ||= AccessToken.find_by(token: auth_token)&.user
+      @current_user = AccessToken.find_by(token: auth_token)&.user
     end
   end
 

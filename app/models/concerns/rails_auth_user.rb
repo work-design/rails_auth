@@ -11,6 +11,7 @@ module RailsAuthUser
     has_secure_password validations: false
 
     attribute :identity, :string
+    attribute :confirmed, :boolean
     attribute :locale, :string, default: I18n.default_locale
     attribute :timezone, :string
 
@@ -127,13 +128,6 @@ module RailsAuthUser
         errors.add :base, :wrong_name_or_password
         return false
       end
-    elsif params[:token].present?
-      if authenticate_by_token(params[:token])
-        self
-      else
-        errors.add :base, :wrong_token
-        return false
-      end
     else
       errors.add :base, :token_blank
       false
@@ -144,15 +138,6 @@ module RailsAuthUser
     if self.disabled?
       errors.add :base, :account_disable
       true
-    else
-      false
-    end
-  end
-
-  def authenticate_by_token(token)
-    mobile_token = self.mobile_tokens.valid.find_by(token: token)
-    if mobile_token
-      self.update(mobile_confirmed: true)
     else
       false
     end
@@ -194,12 +179,16 @@ module RailsAuthUser
   end
 
   def sync_to_email_accounts
-    accounts.find_or_initialize_by(identity: email) unless email.blank?
+    if email.present?
+      ac = accounts.find_or_initialize_by(identity: email)
+    end
     accounts.where(identity: email_was).delete_all
   end
 
   def sync_to_mobile_accounts
-    accounts.find_or_initialize_by(identity: mobile) unless mobile.blank?
+    if mobile.present?
+      ac = accounts.find_or_initialize_by(identity: mobile)
+    end
     accounts.where(identity: mobile_was).delete_all
   end
 

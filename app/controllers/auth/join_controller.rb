@@ -58,11 +58,11 @@ class Auth::JoinController < Auth::BaseController
         }
       end
     else
-      @token = VerifyToken.valid.find_by(token: user_params[:token], account: user_params[:account])
+      @token = VerifyToken.valid.find_by(token: user_params[:token], identity: user_params[:identity])
     end
 
     if @token
-      @account.confirmed = true
+      @user.confirmed = true
     else
       msg = t('errors.messages.wrong_token')
       flash.now[:error] = msg

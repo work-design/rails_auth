@@ -20,14 +20,14 @@ class Auth::LoginController < Auth::BaseController
   end
 
   def create
-    if @user && @user.can_login?(params)
-      login_as @user
+    if @account && @account.can_login?(params)
+      login_as @account.user
 
       respond_to do |format|
         format.html { redirect_back_or_default }
         format.js
         format.json {
-          render json: { user: @user.as_json(only:[:id, :name, :mobile], methods: [:auth_token, :avatar_url]) } and return
+          render 'create' and return
         }
       end
     else
@@ -53,11 +53,11 @@ class Auth::LoginController < Auth::BaseController
 
     if @user.persisted?
       login_as @user
-      render json: { user: @user.as_json(only:[:id, :name, :mobile], methods: [:auth_token, :avatar_url]) } and return
+      render :create and return
     else
       if @user.join(user_params)
         login_as @user
-        render json: { user: @user.as_json(only:[:id, :name, :mobile], methods: [:auth_token, :avatar_url]) } and return
+        render :create and return
       end
     end
 
@@ -96,12 +96,6 @@ class Auth::LoginController < Auth::BaseController
 
   private
   def set_user
-    if params[:identity].include?('@')
-      @user = User.find_by(email: params[:identity])
-    else
-      @user = User.find_by(mobile: params[:identity])
-    end
-    return @user if @user
     @account = Account.find_by(identity: params[:identity])
     @user = @account&.user
   end
