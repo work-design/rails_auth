@@ -11,7 +11,6 @@ module RailsAuthUser
     has_secure_password validations: false
 
     attribute :identity, :string
-    attribute :confirmed, :boolean
     attribute :locale, :string, default: I18n.default_locale
     attribute :timezone, :string
 

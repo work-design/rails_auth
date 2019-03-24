@@ -11,7 +11,7 @@ en:
       wrong_token: Incorrect Token!
       token_blank: Your must provide password or token!
       acount_disable: Your account has been disabled!
-      phone_existed: 'Phone already existed'
+      account_existed: Your account already existed, Please login or Reset password!
   activerecord:
     attributes:
       user:

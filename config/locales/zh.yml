@@ -11,7 +11,7 @@ zh:
       wrong_token: 验证码不正确
       token_blank: 必须提供密码或者验证码其中的一种
       acount_disable: 你的账号已被禁用!
-      phone_existed: '该手机号已注册'
+      account_existed: 该账号已注册，请选择登陆或者重置密码！
   activerecord:
     attributes:
       user:

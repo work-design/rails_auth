@@ -1,6 +1,6 @@
 class Auth::JoinController < Auth::BaseController
   before_action :set_user_and_token, only: [:token]
-  before_action :set_user, only: [:create]
+  before_action :set_user_with_token, only: [:create]
 
   def new
     @user = User.new
@@ -48,28 +48,12 @@ class Auth::JoinController < Auth::BaseController
   end
 
   def create
-    if @user.persisted?
-      @token = @user.verify_tokens.valid.find_by(token: user_params[:token])
-      msg = '该手机号已注册'
+    if @msg
+      flash.now[:error] = @msg
       respond_to do |format|
-        format.html {}
+        format.html { render :new, status: :bad_request and return }
         format.json {
-          render json: { message: msg }, status: :bad_request and return
-        }
-      end
-    else
-      @token = VerifyToken.valid.find_by(token: user_params[:token], identity: user_params[:identity])
-    end
-
-    if @token
-      @user.confirmed = true
-    else
-      msg = t('errors.messages.wrong_token')
-      flash.now[:error] = msg
-      respond_to do |format|
-        format.html { render :new and return }
-        format.json {
-          render json: { message: msg }, status: :bad_request and return
+          render json: { message: @msg }, status: :bad_request and return
         }
       end
     end
@@ -114,11 +98,24 @@ class Auth::JoinController < Auth::BaseController
     end
   end
 
-  def set_user
+  def set_user_with_token
     if user_params[:identity].include?('@')
       @user = User.find_or_initialize_by(email: user_params[:identity])
     else
       @user = User.find_or_initialize_by(mobile: user_params[:identity])
+    end
+
+    if @user.persisted?
+      @token = @user.verify_tokens.valid.find_by(token: user_params[:token])
+      if @token
+        @user.accounts.where(identity: user_params[:identity]).update_all(confirmed: true)
+        @msg = t('errors.messages.account_existed')
+      else
+        @msg = t('errors.messages.wrong_token')
+      end
+    else
+      @token = VerifyToken.valid.find_by(token: user_params[:token], identity: user_params[:identity])
+      @msg = t('errors.messages.wrong_token') unless @token
     end
   end
 
