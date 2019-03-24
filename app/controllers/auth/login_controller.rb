@@ -66,10 +66,10 @@ class Auth::LoginController < Auth::BaseController
 
   # 40001 登陆；
   def reset
-    if params[:account].include?('@')
-      @user = User.find_by(email: params[:account])
+    if params[:identity].include?('@')
+      @user = User.find_by(email: params[:identity])
     else
-      @user = User.find_by(mobile: params[:account])
+      @user = User.find_by(mobile: params[:identity])
     end
 
     unless @user
@@ -80,7 +80,7 @@ class Auth::LoginController < Auth::BaseController
     if @token
       @user.assign_attributes user_params
       if @user.save
-        render json: { user: @user.as_json(only:[:id, :name, :mobile], methods: [:auth_token, :avatar_url]) } and return
+        render :create and return
       else
         process_errors(@user)
       end

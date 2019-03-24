@@ -5,16 +5,16 @@ Rails.application.routes.draw do
     controller :join do
       get 'join' => :new
       get 'join/password' => :join
-      post 'join/token' => :token, via: [:get, :post]
+      match 'join/token' => :token, via: [:get, :post]
       post 'join' => :create
       post 'mock' => :mock
-      post 'reset' => :reset
     end
 
     controller :login do
       get 'login' => :new
       post 'login' => :create
       get 'logout' => :destroy
+      post 'login/reset' => :reset
     end
 
     scope :password, controller: :password, as: 'password' do

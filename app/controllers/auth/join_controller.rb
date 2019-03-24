@@ -21,14 +21,18 @@ class Auth::JoinController < Auth::BaseController
       respond_to do |format|
         format.html { redirect_to join_password_path(identity: user_params[:identity]) }
         format.json {
-          render json: { present: @user.present?, message: 'Validation code has been sent!' }
+          body = { present: @user.present?, message: 'Validation code has been sent!' }
+          unless Rails.env.production?
+            body.merge! token: @verify_token.token
+          end
+          render json: body
         }
       end
     else
       respond_to do |format|
         format.html
         format.json {
-          render json: { message: 'Token is invalid' }, status: :bad_request
+          render json: { message: @verity_token.errors.full_message }, status: :bad_request
         }
       end
     end
@@ -48,12 +52,12 @@ class Auth::JoinController < Auth::BaseController
   end
 
   def create
-    if @msg
-      flash.now[:error] = @msg
+    if @error
+      flash.now[:error] = @error[:message]
       respond_to do |format|
         format.html { render :new, status: :bad_request and return }
         format.json {
-          render json: { message: @msg }, status: :bad_request and return
+          render json: @error, status: :bad_request and return
         }
       end
     end
@@ -109,13 +113,13 @@ class Auth::JoinController < Auth::BaseController
       @token = @user.verify_tokens.valid.find_by(token: user_params[:token])
       if @token
         @user.accounts.where(identity: user_params[:identity]).update_all(confirmed: true)
-        @msg = t('errors.messages.account_existed')
+        @error = { code: 1001, message: t('errors.messages.account_existed') }
       else
-        @msg = t('errors.messages.wrong_token')
+        @error = { code: 1002, mesage: t('errors.messages.wrong_token') }
       end
     else
       @token = VerifyToken.valid.find_by(token: user_params[:token], identity: user_params[:identity])
-      @msg = t('errors.messages.wrong_token') unless @token
+      @error = { message: t('errors.messages.wrong_token') } unless @token
     end
   end
 
