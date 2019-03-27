@@ -1,0 +1,4 @@
+<span class="header item">用户</span>
+<%= link_to '个人资料', my_user_path, class: active_helper(controllers: ['users']) %>
+<%= link_to '账号绑定', my_accounts_path, class: active_helper(controllers: ['accounts']) %>
+<%= link_to '第三方登陆', my_oauth_users_path, class: active_helper(controllers: ['oauth_users']) %>
