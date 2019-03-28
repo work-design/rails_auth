@@ -27,7 +27,7 @@ class Auth::LoginController < Auth::BaseController
         format.html { redirect_back_or_default }
         format.js
         format.json {
-          render 'create' and return
+          render 'create_ok' and return
         }
       end
     else
