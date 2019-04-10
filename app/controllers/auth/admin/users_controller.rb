@@ -2,7 +2,11 @@ class Auth::Admin::UsersController < Auth::Admin::BaseController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
   def index
-    @users = User.includes(:oauth_users).order(created_at: :desc).default_where(search_params).page(params[:page])
+    q_params = {
+      'created_at-desc': 2
+    }.with_indifferent_access
+    q_params.merge! params.permit(:name, :mobile, :email, 'last_login_at-desc')
+    @users = User.includes(:oauth_users).default_where(q_params).page(params[:page])
   end
 
   def panel
@@ -48,10 +52,6 @@ class Auth::Admin::UsersController < Auth::Admin::BaseController
   private
   def set_user
     @user = User.find(params[:id])
-  end
-
-  def search_params
-    params.fetch(:q, {}).permit(:name, :mobile, :email)
   end
 
   def user_params

@@ -1,12 +1,3 @@
-<div class="ui top attached borderless menu">
-  <div class="header item">Users</div>
-  <div class="right menu">
-    <div class="item">
-      <%= link_to 'Add New', new_admin_user_path, remote: true, class: 'ui teal button' %>
-    </div>
-  </div>
-</div>
-
 <div class="ui attached segment">
   <%= render 'search_form' %>
 </div>
@@ -22,12 +13,18 @@
       </th>
       <th><%= User.human_attribute_name(:created_at) %></th>
       <th>
-        <p><%= User.human_attribute_name(:last_login_at) %></p>
+        <p>
+          <%= link_to User.human_attribute_name(:last_login_at), filter_params('last_login_at-desc': 1, except: ['last_login_at-desc']) %>
+        </p>
         <p><%= User.human_attribute_name(:last_login_ip) %></p>
       </th>
       <th><%= User.human_attribute_name(:disabled) %></th>
       <th><%= User.human_attribute_name(:oauth_users) %></th>
-      <th></th>
+      <th>
+        <%= link_to new_admin_user_path, remote: true, class: 'ui mini primary button' do %>
+          <i class="plus icon"></i><%= t('.new') %>
+        <% end %>
+      </th>
     </tr>
   </thead>
 
@@ -60,15 +57,15 @@
           <%= link_to oauth_user.type, admin_oauth_users_path(user_id: user.id), class: 'ui label' %>
         <% end %>
       </td>
-      <td class="ui labels">
-        <%= link_to admin_user_path(user), data: { tooltip: t('.show') }, class: 'ui blue mini icon button', remote: true do %>
+      <td>
+        <%= link_to admin_user_path(user), data: { tooltip: t('.show') }, class: 'ui mini circular icon button', remote: true do %>
           <i class="location arrow icon"></i>
         <% end %>
-        <%= link_to edit_admin_user_path(user), data: { tooltip: t('.edit') }, class: 'ui pink mini icon button', remote: true do %>
+        <%= link_to edit_admin_user_path(user), data: { tooltip: t('.edit') }, class: 'ui mini circular icon button', remote: true do %>
           <i class="pencil alternate icon"></i>
         <% end %>
-        <%= link_to admin_user_path(user), method: :delete, data: { tooltip: t('.destroy'), confirm: 'Are you sure?' }, class: 'ui red mini icon button' do %>
-          <i class="times icon"></i>
+        <%= link_to admin_user_path(user), method: :delete, data: { tooltip: t('.destroy'), confirm: 'Are you sure?' }, class: 'ui mini circular icon button' do %>
+          <i class="trash alternate icon"></i>
         <% end %>
       </td>
     </tr>
