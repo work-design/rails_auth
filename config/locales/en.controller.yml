@@ -1,0 +1,24 @@
+en:
+  auth:
+    join:
+      join:
+        login: Login
+        join: Join
+        password: Password
+        mobile: Please enter mobile number
+        enter_password: Please enter password
+        repeat_password: Pleast repeat password
+        account: Account
+        token: Confirm token
+        get_token: Get Token
+        enter_token: Please enter token
+        reset: Reset Password
+    password:
+      create:
+        header: Reset Password
+        body: A link with reset token has been sent to
+        home: Hme
+    my:
+      users:
+        update:
+          saved: Saved!
