@@ -1,3 +1,3 @@
-class Auth::Admin::BaseController < RailsAuth.config.admin_class.constantize
+class Auth::Admin::BaseController < RailsAuth.config.admin_controller.constantize
 
 end

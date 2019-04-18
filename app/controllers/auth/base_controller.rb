@@ -1,4 +1,4 @@
-class Auth::BaseController < RailsAuth.config.app_class.constantize
+class Auth::BaseController < RailsAuth.config.app_controller.constantize
   include RailsAuthController
 
 end
