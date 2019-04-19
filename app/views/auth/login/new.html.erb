@@ -1,12 +1,15 @@
-<div class="ui three column middle aligned centered grid">
-  <div class="column ui segment">
+<div class="ten wide column middle aligned">
+
+</div>
+
+
+<div class="six wide column middle aligned">
+  <div class="ui segment" style="width: 300px;">
     <%= render 'form' %>
     <div class="ui divider"></div>
     <div class="ui basic center aligned segment">
-      <%= link_to 'forget password', password_forget_path, class: 'ui button' %>
+      <%= link_to t('.forget'), password_forget_path, class: 'ui button' %>
       <%= link_to 'Join', join_path, class: 'ui button' %>
     </div>
   </div>
 </div>
-
-

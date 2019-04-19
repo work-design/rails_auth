@@ -26,3 +26,5 @@ zh:
         timezone: 时区
         locale: 语言
         source: 来源
+        identity: 手机号或邮箱
+        password: 密码

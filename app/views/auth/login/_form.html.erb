@@ -1,5 +1,5 @@
 <%= form_with scope: nil, url: login_path, local: @local, on: { label: false, offset: false, wrapper_input: false, placeholder: true }, css: { wrapper_all: 'field' } do |f| %>
-  <%= f.text_field :identity, value: params[:identity], placeholder: 'Email or Mobile' %>
-  <%= f.password_field :password, placeholder: 'Password', autocomplete: false %>
-  <%= f.submit 'Submit', class: 'ui fluid button' %>
+  <%= f.text_field :identity, value: params[:identity], placeholder: User.human_attribute_name(:identity) %>
+  <%= f.password_field :password, placeholder: User.human_attribute_name(:password), autocomplete: false %>
+  <%= f.submit 'Submit', class: 'ui fluid primary button' %>
 <% end %>
