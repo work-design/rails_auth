@@ -1,12 +1,10 @@
-<div class="ui three column middle aligned centered grid">
-  <div class="column">
-    <h4 class="ui block top attached header">请注册</h4>
-    <div class="ui bottom attached segment">
-      <%= form_with model: @user, url: join_token_path, local: true, on: { label: nil, wrapper_input: false, placeholder: true }, css: { wrapper_all: 'field' } do |f| %>
-        <%= render 'shared/error_messages', target: @user %>
-        <%= f.text_field :identity %>
-        <%= f.submit 'next step', class: 'ui fluid button' %>
-      <% end %>
-    </div>
+<div class="three wide column">
+  <h4 class="ui block top attached header">请注册</h4>
+  <div class="ui bottom attached segment">
+    <%= form_with model: @user, url: join_token_path, local: true, on: { label: nil, wrapper_input: false, placeholder: true }, css: { wrapper_all: 'field' } do |f| %>
+      <%= render 'shared/error_messages', target: @user %>
+      <%= f.text_field :identity %>
+      <%= f.submit t('.next'), class: 'ui fluid primary button' %>
+    <% end %>
   </div>
 </div>
