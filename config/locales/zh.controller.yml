@@ -20,6 +20,8 @@ zh:
         forget: 忘记密码？
         join: 注册
     password:
+      new:
+        title: 重置密码
       create:
         header: 重置密码
         body: 包含重置密码链接的信息已发往：

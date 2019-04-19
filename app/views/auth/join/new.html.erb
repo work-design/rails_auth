@@ -1,5 +1,5 @@
 <div class="three wide column">
-  <h4 class="ui block top attached header">请注册</h4>
+  <h4 class="ui block top attached centered header">请注册</h4>
   <div class="ui bottom attached segment">
     <%= form_with model: @user, url: join_token_path, local: true, on: { label: nil, wrapper_input: false, placeholder: true }, css: { wrapper_all: 'field' } do |f| %>
       <%= render 'shared/error_messages', target: @user %>

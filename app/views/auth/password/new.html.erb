@@ -1,9 +1,9 @@
-<div class="ui three column middle aligned centered grid">
-  <div class="column ui segment">
-    <h2 class="ui header">Reset Password?</h2>
+<div class="three wide column">
+  <h4 class="ui block top attached centered header"><%= t('.title') %></h4>
+  <div class="ui bottom attached segment">
     <%= form_with scope: nil, url: password_forget_url, local: true, on: { label: false, wrapper_all: false, wrapper_input: false } do |f| %>
-      <%= f.text_field :login, placeholder: 'Email/Mobile' %>
-      <%= f.submit 'Send me reset password instructions' %>
+      <%= f.text_field :identity, placeholder: User.human_attribute_name(:identity) %>
+      <%= f.submit class: 'ui fluid primary button' %>
     <% end %>
   </div>
 </div>
