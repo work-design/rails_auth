@@ -17,7 +17,8 @@ zh:
         next: 下一步
     login:
       new:
-        forget: 忘记密码
+        forget: 忘记密码？
+        join: 注册
     password:
       create:
         header: 重置密码

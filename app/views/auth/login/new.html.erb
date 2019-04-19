@@ -6,10 +6,8 @@
 <div class="six wide column middle aligned">
   <div class="ui segment" style="width: 300px;">
     <%= render 'form' %>
-    <div class="ui divider"></div>
-    <div class="ui basic center aligned segment">
-      <%= link_to t('.forget'), password_forget_path, class: 'ui button' %>
-      <%= link_to 'Join', join_path, class: 'ui button' %>
+    <div class="ui basic right aligned divider segment">
+      <%= link_to t('.join'), join_path %>
     </div>
   </div>
 </div>

@@ -1,5 +1,10 @@
 <%= form_with scope: nil, url: login_path, local: @local, on: { label: false, offset: false, wrapper_input: false, placeholder: true }, css: { wrapper_all: 'field' } do |f| %>
   <%= f.text_field :identity, value: params[:identity], placeholder: User.human_attribute_name(:identity) %>
-  <%= f.password_field :password, placeholder: User.human_attribute_name(:password), autocomplete: false %>
+  <div class="field">
+    <%= f.password_field :password, placeholder: User.human_attribute_name(:password), autocomplete: false, on: { wrapper_all: false } %>
+    <p style="text-align:right;padding-top:5px;">
+      <%= link_to t('.forget'), password_forget_path, class: 'grey text' %>
+    </p>
+  </div>
   <%= f.submit class: 'ui fluid primary button' %>
 <% end %>
