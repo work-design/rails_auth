@@ -14,7 +14,7 @@
       <td><%= oauth_user.uid %></td>
       <td><%= truncate(oauth_user.access_token) %></td>
       <td class="ui labels">
-        <%= link_to '解绑', my_oauth_user_path(oauth_user), method: :delete, data: { confirm: 'Are you sure?' }, class: 'ui yellow label' %>
+        <%= link_to '解绑', my_oauth_user_path(oauth_user), method: :delete, data: { confirm: t('.confirm') }, class: 'ui yellow label' %>
         <%= link_to 'update token', "/auth/#{oauth_user.provider}", class: 'ui blue label' %>
       </td>
     </tr>
