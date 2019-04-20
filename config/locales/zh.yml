@@ -30,3 +30,7 @@ zh:
         password: 密码
         password_confirmation: 确认密码
         token: 验证码
+    enum:
+      oauth_user:
+        type:
+          WechatUser: 微信用户

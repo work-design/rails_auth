@@ -22,7 +22,7 @@
       <th><%= User.human_attribute_name(:oauth_users) %></th>
       <th>
         <%= link_to new_admin_user_path, remote: true, class: 'ui mini primary button' do %>
-          <i class="plus icon"></i><%= t('.new') %>
+          <i class="fas fa-plus"></i><%= t('.new') %>
         <% end %>
       </th>
     </tr>
@@ -52,9 +52,9 @@
           <%= check_box_tag '[user]disabled', nil, user.disabled, data: { method: :patch, remote: true, url: admin_user_path(user), submit: true }, id: nil %>
         </div>
       </td>
-      <td class="ui blue labels">
+      <td class="ui labels">
         <% user.oauth_users.each do |oauth_user| %>
-          <%= link_to oauth_user.type, admin_oauth_users_path(user_id: user.id), class: 'ui label' %>
+          <%= link_to oauth_user.type_i18n, admin_oauth_users_path(user_id: user.id), class: 'ui blue label' %>
         <% end %>
       </td>
       <td>

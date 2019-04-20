@@ -30,3 +30,10 @@ zh:
       users:
         update:
           saved: 资料已保存！
+    admin:
+      users:
+        index:
+          title: 用户列表
+      oauth_users:
+        index:
+          title: 第三方登陆
