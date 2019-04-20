@@ -1,9 +1,9 @@
-<%= search_form_with css: { wrapper_all: 'inline field', wrapper_input: 'field', wrapper_submit: 'field', submit: 'ui green button'} do |f| %>
+<%= search_form_with model: User.new(params.permit(:name)) do |f| %>
   <div class="fields">
-  <%= f.text_field :name, placeholder: 'Input Name' %>
-  <%= f.text_field :mobile, placeholder: 'Input Mobile' %>
-  <%= f.text_field :email, placeholder: 'abc@123.com' %>
-  <%= f.submit 'Search' %>
+    <%= f.text_field :name %>
+    <%= f.text_field :mobile %>
+    <%= f.text_field :email %>
+    <%= f.submit %>
   </div>
 <% end %>
 
