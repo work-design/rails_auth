@@ -15,7 +15,7 @@ class Auth::Admin::OauthUsersController < Auth::Admin::BaseController
 
   def update
     if @oauth_user.update(oauth_user_params)
-      redirect_to @oauth_user, notice: 'Oauth user was successfully updated.'
+      redirect_to @oauth_user
     else
       render head: :no_content
     end
@@ -23,7 +23,7 @@ class Auth::Admin::OauthUsersController < Auth::Admin::BaseController
 
   def destroy
     @oauth_user.destroy
-    redirect_to admin_oauth_users_url(user_id: @oauth_user.user_id), notice: 'Oauth user was successfully destroyed.'
+    redirect_to admin_oauth_users_url(user_id: @oauth_user.user_id)
   end
 
   private

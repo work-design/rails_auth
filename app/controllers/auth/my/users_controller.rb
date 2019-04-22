@@ -14,7 +14,7 @@ class Auth::My::UsersController < Auth::My::BaseController
 
   def destroy
     @user.destroy
-    redirect_to api_me_url, notice: 'Me was successfully destroyed.'
+    redirect_to api_me_url
   end
 
   private
