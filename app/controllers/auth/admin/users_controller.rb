@@ -36,7 +36,7 @@ class Auth::Admin::UsersController < Auth::Admin::BaseController
     respond_to do |format|
       if @user.update(user_params)
         format.js { redirect_to admin_users_url }
-        format.html { redirect_to admin_users_url, notice: 'User was successfully updated.' }
+        format.html { redirect_to admin_users_url }
       else
         format.js { head :no_content }
         format.html { render :edit }
@@ -46,7 +46,7 @@ class Auth::Admin::UsersController < Auth::Admin::BaseController
 
   def destroy
     @user.destroy
-    redirect_to admin_users_url, alert: 'User was successfully destroyed.'
+    redirect_to admin_users_url
   end
 
   private

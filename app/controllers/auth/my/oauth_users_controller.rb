@@ -15,7 +15,7 @@ class Auth::My::OauthUsersController < Auth::My::BaseController
   def update
     respond_to do |format|
       if @oauth_user.update(oauth_user_params)
-        format.html { redirect_to @oauth_user, notice: 'Oauth user was successfully updated.' }
+        format.html { redirect_to @oauth_user }
         format.json { render :show, status: :ok, location: @oauth_user }
       else
         format.html { render :edit }
@@ -39,7 +39,7 @@ class Auth::My::OauthUsersController < Auth::My::BaseController
   def destroy
     @oauth_user.destroy
     respond_to do |format|
-      format.html { redirect_to my_oauth_users_url, notice: 'Oauth user was successfully destroyed.' }
+      format.html { redirect_to my_oauth_users_url }
       format.json { head :no_content }
     end
   end

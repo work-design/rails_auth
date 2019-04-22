@@ -16,13 +16,13 @@ class Auth::My::AccountsController < Auth::My::BaseController
     @account = current_user.accounts.build(account_params)
 
     if @account.save
-      redirect_to my_accounts_url, notice: 'Account was successfully created.'
+      redirect_to my_accounts_url
     end
   end
 
   def update
     if @account.update(account_params)
-      redirect_to @account, notice: 'Account was successfully updated.'
+      redirect_to @account
     else
       render :edit
     end
@@ -50,7 +50,7 @@ class Auth::My::AccountsController < Auth::My::BaseController
 
   def destroy
     @account.destroy
-    redirect_to my_accounts_url, notice: 'Account was successfully destroyed.'
+    redirect_to my_accounts_url
   end
 
   private
