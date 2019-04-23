@@ -65,7 +65,7 @@ class Auth::JoinController < Auth::BaseController
     if @user.join(user_params)
       login_as @user
       respond_to do |format|
-        format.html { redirect_back_or_default }
+        format.html { redirect_back_or_default notice: t('.success') }
         format.js
         format.json {
           render json: { user: @user.as_json(only:[:id, :name, :mobile], methods: [:auth_token, :avatar_url]) } and return
