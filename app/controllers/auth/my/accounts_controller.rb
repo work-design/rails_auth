@@ -22,7 +22,7 @@ class Auth::My::AccountsController < Auth::My::BaseController
 
   def update
     if @account.update(account_params)
-      redirect_to @account
+      redirect_to my_accounts_url
     else
       render :edit
     end

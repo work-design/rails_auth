@@ -1,35 +1,39 @@
-<h3 class="ui dividing header">
-  账号管理
-</h3>
-
-<table class="ui very basic table">
+<table class="ui basic table">
   <tbody>
   <% @accounts.each do |account| %>
     <tr>
       <td></td>
-      <td><%= account.identity %></td>
       <td>
+        <span><%= account.identity %></span>
         <% if account.primary %>
-          <label class="ui green label">Primary</label>
+          <label class="ui blue icon label"><i class="fas fa-exclamation-triangle"></i></label>
+        <% else %>
+          <div class="ui slider checkbox inverted label">
+            <%= check_box_tag '[account]primary', nil, account.primary, data: { method: :patch, remote: true, url: my_account_path(account), submit: true }, id: nil %>
+            <label>primary</label>
+          </div>
+        <% end %>
+        <% if account.confirmed %>
+          <label class="ui green icon label"><i class="fas fa-check-circle"></i></label>
+        <% else %>
+          <label class="ui yellow icon label"><i class="fas fa-question-circle"></i></label>
         <% end %>
       </td>
       <td>
-        <% if account.confirmed %>
-          <label class="ui green label">Confirmed</label>
-        <% else %>
+        <% unless account.confirmed %>
           <label class="ui red label">待验证</label>
           <%= link_to '发送验证码', confirm_my_account_path(account.id) %>
         <% end %>
       </td>
       <td>
         <% if account.can_login_organ? %>
-          <%= link_to 'Org', login_my_organ_path(account.member.organ_id), method: :patch %>
+          <%= link_to account.member.organ.name, login_my_organ_path(account.member.organ_id), method: :patch %>
         <% end %>
       </td>
       <td>
         <% unless account.primary %>
-          <%= link_to my_account_path(account), method: :delete, data: { tooltip: t('.destroy'), confirm: '删除后此账号无法用于登陆' }, class: 'ui red mini icon button' do %>
-            <i class="times icon"></i>
+          <%= link_to my_account_path(account), method: :delete, data: { tooltip: t('.destroy'), confirm: '删除后此账号无法用于登陆' }, class: 'ui circular icon button' do %>
+            <i class="fas fa-trash-alt"></i>
           <% end %>
         <% end %>
       </td>

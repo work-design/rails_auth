@@ -8,6 +8,16 @@ class Account < RailsAuthRecord
       self.type = 'MobileAccount'
     end
   end
+  after_update :set_primary, if: -> { self.primary? && saved_change_to_primary? }
+
+  def set_primary
+    self.class.base_class.unscoped.where.not(id: self.id).where(user_id: self.user_id).update_all(primary: false)
+    if self.identity.include?('@')
+      user.email = self.identity
+    else
+      user.mobile = self.identity
+    end
+  end
 
   def can_login?(params)
     if user.verified_status?
