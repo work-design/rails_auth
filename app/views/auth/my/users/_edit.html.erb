@@ -24,15 +24,15 @@
   </tr>
   <tr>
     <td class="right aligned"><%= User.human_attribute_name(:name) %></td>
-    <td class="ui mini input six wide"><%= text_field_tag 'user[name]', @user.name, placeholder: '称呼：', form: 'edit_user' %></td>
+    <td class="ui mini input six wide"><%= text_field_tag 'user[name]', @user.name, form: 'edit_user' %></td>
   </tr>
   <tr>
     <td class="right aligned"><%= User.human_attribute_name(:email) %></td>
-    <td class="ui mini input six wide"><%= email_field_tag 'user[email]', @user.email, placeholder: 'Email：', form: 'edit_user' %></td>
+    <td class="ui mini input six wide"><%= email_field_tag 'user[email]', @user.email, form: 'edit_user' %></td>
   </tr>
   <tr>
     <td class="right aligned"><%= User.human_attribute_name(:mobile) %></td>
-    <td class="ui mini input six wide"><%= text_field_tag 'user[mobile]', @user.mobile, placeholder: 'Mobile：', form: 'edit_user' %></td>
+    <td class="ui mini input six wide"><%= text_field_tag 'user[mobile]', @user.mobile, form: 'edit_user' %></td>
   </tr>
   <tr>
   </tr>

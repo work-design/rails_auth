@@ -1,1 +1,2 @@
-json.user @user, partial: 'auth/api/mes/user', as: :user
+json.user @user, partial: 'user', as: :user
+json.avatar_url @user.avatar_url

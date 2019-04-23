@@ -3,6 +3,7 @@ attachToInput({
   fileInput: 'file_input',
   uploadUrl: '/my/user',
   uploadFieldName: 'user[avatar]',
+  jsonFieldName: 'avatar_url',
   extraParams: {
     token: '',
     _method: 'patch'
@@ -16,5 +17,4 @@ attachToInput({
   }
 });
 
-
-
+$('#user_timezone').dropdown();

@@ -6,7 +6,7 @@ class Auth::My::UsersController < Auth::My::BaseController
 
   def update
     if @user.update(user_params)
-      render json: @user.as_json(root: true, methods: [:avatar_url]), status: :created
+      render :show, status: :created
     else
       process_errors(@user)
     end
