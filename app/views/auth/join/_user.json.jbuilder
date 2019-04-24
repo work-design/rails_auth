@@ -5,5 +5,4 @@ json.extract! user,
               :mobile,
               :locale,
               :timezone,
-              :avatar_url,
-              :auth_token
+              :avatar_url
