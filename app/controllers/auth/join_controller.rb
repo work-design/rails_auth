@@ -61,11 +61,10 @@ class Auth::JoinController < Auth::BaseController
     @verify_token = @account.verify_token
     body = {}
 
-    if @account.user&.persisted?
-      body.merge! present: true, code: 1001, message: t('errors.messages.account_existed')
-    elsif @verify_token.send_out
+    if @verify_token.send_out
       body.merge! sent: true, message: 'Validation code has been sent!'
       body.merge! token: @verify_token.token unless Rails.env.production?
+      body.merge! present: true, code: 1001, message: t('errors.messages.account_existed') if @account.user&.persisted?
     else
       body.merge! message: @verity_token.errors.full_message
     end
