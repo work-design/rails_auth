@@ -25,7 +25,7 @@ module RailsAuthWechat
   end
 
   # overrided method
-  def login_as(user)
+  def login_by_oauth(oauth_user)
     # 绑定wechat_user 和 user
     if current_wechat_user&.user_id != user.id
       current_wechat_user.update(user_id: user.id)

@@ -1,5 +1,6 @@
 class Auth::JoinController < Auth::BaseController
-  before_action :set_user_with_token, only: [:create]
+  before_action :set_remote, only: [:new, :token]
+  before_action :set_account, only: [:token]
 
   def new
     @user = User.new
@@ -16,12 +17,12 @@ class Auth::JoinController < Auth::BaseController
   end
 
   def token
-    @account = Acccount.find_or_create_by(identity: params[:identity])
-    @verify_token = @account.check_token
+    @verify_token = @account.verify_token
 
     if @verify_token.send_out
       respond_to do |format|
-        format.html { redirect_to join_password_path(identity: params[:identity]) }
+        format.html
+        format.js
         format.json {
           body = { present: @user.present?, message: 'Validation code has been sent!' }
           unless Rails.env.production?
@@ -32,24 +33,12 @@ class Auth::JoinController < Auth::BaseController
       end
     else
       respond_to do |format|
-        format.html
+        format.html { render :new }
+        format.js
         format.json {
           render json: { message: @verity_token.errors.full_message }, status: :bad_request
         }
       end
-    end
-  end
-
-  def join
-    @user = User.new(identity: params[:identity])
-
-    unless request.xhr? || params[:form_id]
-      @local = true
-    end
-
-    respond_to do |format|
-      format.js
-      format.html
     end
   end
 
@@ -63,7 +52,7 @@ class Auth::JoinController < Auth::BaseController
         if @account.user
           @error = { code: 1001, message: t('errors.messages.account_existed') }
         elsif @account.join(user_params)
-          login_as @account.user
+          login_as @account
           respond_to do |format|
             format.html { redirect_back_or_default notice: t('.success') }
             format.js

@@ -18,18 +18,19 @@ zh:
       user:
         name: 姓名
         email: 邮箱
-        email_confirmed: 邮箱验证
         mobile: 手机号
-        mobile_confirmed: 手机号验证
         last_login_at: 上次登录时间
         last_login_ip: 上次登录IP
         disabled: 限制登录
         timezone: 时区
         locale: 语言
         source: 来源
-        identity: 手机号或邮箱
         password: 密码
         password_confirmation: 确认密码
+        token: 验证码
+      account:
+        identity: 手机号或邮箱
+      verify_token:
         token: 验证码
     enum:
       oauth_user:

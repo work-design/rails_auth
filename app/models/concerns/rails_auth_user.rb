@@ -10,7 +10,6 @@ module RailsAuthUser
     include ActiveModel::SecurePassword
     has_secure_password validations: false
 
-    attribute :identity, :string
     attribute :locale, :string, default: I18n.default_locale
     attribute :timezone, :string
 
@@ -24,9 +23,6 @@ module RailsAuthUser
     has_one :reset_token, -> { valid }
     has_many :reset_tokens, dependent: :delete_all
 
-    has_one :access_token, -> { valid }
-    has_many :access_tokens, dependent: :delete_all
-
     has_many :verify_tokens, autosave: true, dependent: :delete_all
     has_many :oauth_users, dependent: :nullify
     has_many :accounts, dependent: :nullify
@@ -35,21 +31,6 @@ module RailsAuthUser
 
     before_save :invalid_access_token, if: -> { password_digest_changed? }
     before_save :sync_to_accounts, if: -> { email_changed? || mobile_changed? }
-  end
-
-  def access_token
-    if super
-      super
-    else
-      VerifyToken.transaction do
-        self.access_tokens.delete_all
-        create_access_token
-      end
-    end
-  end
-
-  def auth_token
-    access_token.token
   end
 
   def reset_token

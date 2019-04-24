@@ -1,11 +1,15 @@
 class Account < RailsAuthRecord
+
   belongs_to :user, optional: true
-  has_many :verify_tokens
+  has_one :access_token, -> { valid }
+  has_many :access_tokens, dependent: :delete_all
+  has_many :verify_tokens, dependent: :delete_all
+
   after_initialize if: :new_record? do
     if self.identity.include?('@')
-      self.type = 'EmailAccount'
+      self.type ||= 'EmailAccount'
     else
-      self.type = 'MobileAccount'
+      self.type ||= 'MobileAccount'
     end
   end
   after_update :set_primary, if: -> { self.primary? && saved_change_to_primary? }
@@ -63,15 +67,30 @@ class Account < RailsAuthRecord
     end
   end
 
-  def check_token
-    if super
-      super
+  def verify_token
+    if check_token
+      check_token
     else
       VerifyToken.transaction do
         self.check_tokens.delete_all
         create_check_token
       end
     end
+  end
+
+  def access_token
+    if super
+      super
+    else
+      VerifyToken.transaction do
+        self.access_tokens.delete_all
+        create_access_token
+      end
+    end
+  end
+
+  def auth_token
+    access_token.token
   end
 
 end

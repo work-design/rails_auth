@@ -4,7 +4,6 @@ Rails.application.routes.draw do
 
     controller :join do
       get 'join' => :new
-      get 'join/password' => :join
       match 'join/token' => :token, via: [:get, :post]
       post 'join' => :create
       post 'mock' => :mock

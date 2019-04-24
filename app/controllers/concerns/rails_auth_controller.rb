@@ -40,15 +40,15 @@ module RailsAuthController
     end
   end
 
-  def login_as(user)
+  def login_as(account)
     unless api_request?
-      session[:auth_token] = user.auth_token
+      session[:auth_token] = account.auth_token
     end
-    user.update(last_login_at: Time.now)
+    account.user.update(last_login_at: Time.now)
 
-    logger.debug "Login as User #{user.id}"
+    logger.debug "Login as User #{account.user_id}"
 
-    @current_user = user
+    @current_user = account.user
   end
 
   def logout

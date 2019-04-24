@@ -1,8 +1,7 @@
-<%= form_with model: @user, url: join_path, local: @local, on: { label: nil, wrapper_input: false, placeholder: true }, css: { wrapper_all: 'field' } do |f| %>
-  <%= render 'shared/error_messages', target: @user %>
-  <%= f.hidden_field :identity %>
-  <%= f.text_field :token %>
-  <%= f.password_field :password %>
-  <%= f.password_field :password_confirmation %>
+<%= form_with scope: nil, url: join_path, local: @local, on: { label: nil, wrapper_input: false, placeholder: true }, css: { wrapper_all: 'field' } do |f| %>
+  <%= f.hidden_field :identity, value: params[:identity] %>
+  <%= f.text_field :token, placeholder: VerifyToken.human_attribute_name(:token) %>
+  <%= f.password_field :password, placeholder: User.human_attribute_name(:password) %>
+  <%= f.password_field :password_confirmation, placeholder: User.human_attribute_name(:password_confirmation) %>
   <%= f.submit class: 'ui fluid primary button' %>
 <% end %>

@@ -24,7 +24,7 @@ class Auth::LoginController < Auth::BaseController
     if @account.nil?
       msg = t('errors.messages.wrong_name_or_password')
     elsif @account.can_login?(params)
-      login_as @account.user
+      login_as @account
 
       respond_to do |format|
         format.html { redirect_back_or_default }
