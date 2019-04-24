@@ -18,11 +18,12 @@ module RailsAuthUser
     validates :password, confirmation: true, length: { in: 6..72 }, allow_blank: true
 
     has_one :unlock_token, -> { valid }
-    has_many :unlock_tokens, dependent: :delete_all
+    has_many :unlock_tokens
 
     has_one :reset_token, -> { valid }
-    has_many :reset_tokens, dependent: :delete_all
+    has_many :reset_tokens
 
+    has_many :access_tokens
     has_many :verify_tokens, autosave: true, dependent: :delete_all
     has_many :oauth_users, dependent: :nullify
     has_many :accounts, dependent: :nullify
