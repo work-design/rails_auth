@@ -24,12 +24,6 @@ module RailsAuthUser
     has_one :reset_token, -> { valid }
     has_many :reset_tokens, dependent: :delete_all
 
-    has_one :mobile_token, -> { valid }
-    has_many :mobile_tokens, dependent: :delete_all
-
-    has_one :email_token, -> { valid }
-    has_many :email_tokens, dependent: :delete_all
-
     has_one :access_token, -> { valid }
     has_many :access_tokens, dependent: :delete_all
 
@@ -76,28 +70,6 @@ module RailsAuthUser
       VerifyToken.transaction do
         self.unlock_tokens.delete_all
         create_unlock_token
-      end
-    end
-  end
-
-  def mobile_token
-    if super
-      super
-    else
-      VerifyToken.transaction do
-        self.mobile_tokens.delete_all
-        create_mobile_token
-      end
-    end
-  end
-
-  def email_token
-    if super
-      super
-    else
-      VerifyToken.transaction do
-        self.email_tokens.delete_all
-        create_email_token
       end
     end
   end

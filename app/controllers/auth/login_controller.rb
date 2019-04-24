@@ -2,7 +2,6 @@ class Auth::LoginController < Auth::BaseController
   if whether_filter(:require_login)
     skip_before_action :require_login
   end
-  before_action :set_user, only: [:create]
 
   def new
     @user = User.new
@@ -20,31 +19,32 @@ class Auth::LoginController < Auth::BaseController
   end
 
   def create
-    if @account && @account.can_login?(params)
+    @account = Account.find_by(identity: params[:identity])
+
+    if @account.nil?
+      msg = t('errors.messages.wrong_name_or_password')
+    elsif @account.can_login?(params)
       login_as @account.user
 
       respond_to do |format|
         format.html { redirect_back_or_default }
         format.js
         format.json {
-          render 'create_ok' and return
+          render 'create_ok'
         }
       end
+      return
     else
-      if @user
-        msg = @user.errors.messages.values.flatten.join(' ')
-      else
-        msg = t('errors.messages.wrong_name_or_password')
-      end
+      msg = @account.user.errors.messages.values.flatten.join(' ')
+    end
 
-      flash[:error] = msg
-      respond_to do |format|
-        format.html { redirect_back fallback_location: login_url }
-        format.js { render :new }
-        format.json {
-          render json: { message: msg }, status: :bad_request and return
-        }
-      end
+    flash[:error] = msg
+    respond_to do |format|
+      format.html { redirect_back fallback_location: login_url }
+      format.js { render :new }
+      format.json {
+        render json: { message: msg }, status: :bad_request and return
+      }
     end
   end
 
@@ -95,11 +95,6 @@ class Auth::LoginController < Auth::BaseController
   end
 
   private
-  def set_user
-    @account = Account.find_by(identity: params[:identity])
-    @user = @account&.user
-  end
-
   def user_params
     params.permit(
       :password,

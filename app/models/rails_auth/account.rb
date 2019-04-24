@@ -1,6 +1,6 @@
 class Account < RailsAuthRecord
-  belongs_to :user
-  has_many :verify_tokens, ->(o){ where(identity: o.identity) }, primary_key: :user_id, foreign_key: :user_id
+  belongs_to :user, optional: true
+  has_many :verify_tokens
   after_initialize if: :new_record? do
     if self.identity.include?('@')
       self.type = 'EmailAccount'
@@ -44,12 +44,33 @@ class Account < RailsAuthRecord
     end
   end
 
+  def join(params)
+    user || build_user
+    user.assign_attributes params.slice(
+      :name,
+      :password,
+      :password_confirmation
+    )
+    save
+  end
+
   def authenticate_by_token(token)
     verify_token = self.verify_tokens.valid.find_by(token: token)
     if verify_token
       self.update(confirmed: true)
     else
       false
+    end
+  end
+
+  def check_token
+    if super
+      super
+    else
+      VerifyToken.transaction do
+        self.check_tokens.delete_all
+        create_check_token
+      end
     end
   end
 
