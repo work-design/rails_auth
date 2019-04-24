@@ -20,6 +20,8 @@ zh:
       new_login:
         forget: 忘记密码？
         join: 注册
+      token:
+        forget: 忘记密码？
     password:
       new:
         title: 重置密码
