@@ -23,8 +23,12 @@ class Account < RailsAuthRecord
     end
   end
 
-  def can_login?(params)
-    if user.verified_status?
+  def can_login?(params = {})
+    if user.nil?
+      join
+    end
+
+    if user&.restrictive?
       return false
     end
 
@@ -48,16 +52,6 @@ class Account < RailsAuthRecord
     end
   end
 
-  def join(params)
-    user || build_user
-    user.assign_attributes params.slice(
-      :name,
-      :password,
-      :password_confirmation
-    )
-    save
-  end
-
   def authenticate_by_token(token)
     verify_token = self.verify_tokens.valid.find_by(token: token)
     if verify_token
@@ -65,6 +59,16 @@ class Account < RailsAuthRecord
     else
       false
     end
+  end
+
+  def join(params = {})
+    user || build_user
+    user.assign_attributes params.slice(
+      :name,
+      :password,
+      :password_confirmation
+    )
+    save
   end
 
   def verify_token

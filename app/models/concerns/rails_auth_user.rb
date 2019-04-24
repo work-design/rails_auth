@@ -70,7 +70,7 @@ module RailsAuthUser
   ##
   # pass login params to this method;
   def can_login?(params)
-    if verified_status?
+    if restrictive?
       return false
     end
 
@@ -87,7 +87,7 @@ module RailsAuthUser
     end
   end
 
-  def verified_status?
+  def restrictive?
     if self.disabled?
       errors.add :base, :account_disable
       true
