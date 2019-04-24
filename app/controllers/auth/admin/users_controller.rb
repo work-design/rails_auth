@@ -44,6 +44,22 @@ class Auth::Admin::UsersController < Auth::Admin::BaseController
     end
   end
 
+  def mock
+    @user = User.find_or_initialize_by(user_uuid: params[:account])
+
+    if @user.persisted?
+      login_as @user
+      render :create and return
+    else
+      if @user.join(user_params)
+        login_as @user
+        render :create and return
+      end
+    end
+
+    process_errors(@user)
+  end
+
   def destroy
     @user.destroy
     redirect_to admin_users_url

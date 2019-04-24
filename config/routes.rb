@@ -10,7 +10,6 @@ Rails.application.routes.draw do
       get 'join' => :new
       match 'join/token' => :token, via: [:get, :post]
       post 'join' => :create
-      post 'mock' => :mock
     end
 
     scope :password, controller: :password, as: 'password' do
@@ -32,6 +31,7 @@ Rails.application.routes.draw do
   scope :admin, module: 'auth/admin', as: 'admin' do
     resources :users do
       get :panel, on: :collection
+      post :mock, on: :member
     end
     resources :oauth_users
   end
