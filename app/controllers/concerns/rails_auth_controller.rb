@@ -9,7 +9,14 @@ module RailsAuthController
 
   def current_user
     return @current_user if defined?(@current_user)
-    @current_user = login_from_token
+    @current_user, _ = login_from_token
+    @current_user
+  end
+
+  def current_account
+    return @current_account if defined?(@current_account)
+    _, @current_account = login_from_token
+    @current_account
   end
 
   def require_login(js_template: RailsAuth::Engine.root + 'app/views/auth/login/new.js.erb', return_to: nil)
@@ -66,7 +73,10 @@ module RailsAuthController
     return unless auth_token
 
     if verify_auth_token(auth_token)
-      @current_user = AccessToken.find_by(token: auth_token)&.user
+      token = AccessToken.find_by(token: auth_token)
+      @current_user = token&.user
+      @current_account = token&.account
+      [@current_user, @current_account]
     end
   end
 
@@ -97,11 +107,11 @@ module RailsAuthController
 
   private
   def set_auth_token
-    return unless @current_user
+    return unless @current_account
     if api_request?
-      headers['Auth-Token'] = @current_user.auth_token
+      headers['Auth-Token'] = @current_account.auth_token
     else
-      session[:auth_token] = @current_user.auth_token
+      session[:auth_token] = @current_account.auth_token
     end
   end
 
