@@ -17,8 +17,7 @@ zh:
         next: 下一步
       create:
         success: 登陆成功
-    login:
-      new:
+      new_login:
         forget: 忘记密码？
         join: 注册
     password:

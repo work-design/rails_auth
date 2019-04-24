@@ -3,51 +3,6 @@ class Auth::LoginController < Auth::BaseController
     skip_before_action :require_login
   end
 
-  def new
-    @user = User.new
-    store_location
-
-    unless request.xhr? || params[:form_id]
-      @local = true
-    end
-
-    respond_to do |format|
-      format.html.phone
-      format.html
-      format.js
-    end
-  end
-
-  def create
-    @account = Account.find_by(identity: params[:identity])
-
-    if @account.nil?
-      msg = t('errors.messages.wrong_name_or_password')
-    elsif @account.can_login?(params)
-      login_as @account
-
-      respond_to do |format|
-        format.html { redirect_back_or_default }
-        format.js
-        format.json {
-          render 'create_ok'
-        }
-      end
-      return
-    else
-      msg = @account.user.errors.messages.values.flatten.join(' ')
-    end
-
-    flash[:error] = msg
-    respond_to do |format|
-      format.html { redirect_back fallback_location: login_url }
-      format.js { render :new }
-      format.json {
-        render json: { message: msg }, status: :bad_request and return
-      }
-    end
-  end
-
   def mock
     @user = User.find_or_initialize_by(user_uuid: params[:account])
 
@@ -89,20 +44,6 @@ class Auth::LoginController < Auth::BaseController
     end
   end
 
-  def destroy
-    logout
-    redirect_to root_url
-  end
-
-  private
-  def user_params
-    params.permit(
-      :password,
-      :user_uuid,
-      :password_confirmation,
-      :invite_token
-    )
-  end
 
 end
 

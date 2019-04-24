@@ -1,6 +1,47 @@
 class Auth::JoinController < Auth::BaseController
-  before_action :set_remote, only: [:new, :token]
   before_action :set_account, only: [:token]
+  before_action :set_remote, only: [:new, :token, :new_login]
+
+  def new_login
+    @user = User.new
+    store_location
+
+    respond_to do |format|
+      format.html.phone
+      format.html
+      format.js
+    end
+  end
+
+  def create_login
+    @account = Account.find_by(identity: params[:identity])
+
+    if @account.nil?
+      msg = t('errors.messages.wrong_name_or_password')
+    elsif @account.can_login?(params)
+      login_as @account
+
+      respond_to do |format|
+        format.html { redirect_back_or_default }
+        format.js
+        format.json {
+          render 'create_ok'
+        }
+      end
+      return
+    else
+      msg = @account.user.errors.messages.values.flatten.join(' ')
+    end
+
+    flash[:error] = msg
+    respond_to do |format|
+      format.html { redirect_back fallback_location: login_url }
+      format.js { render :new }
+      format.json {
+        render json: { message: msg }, status: :bad_request and return
+      }
+    end
+  end
 
   def new
     @user = User.new
@@ -18,27 +59,36 @@ class Auth::JoinController < Auth::BaseController
 
   def token
     @verify_token = @account.verify_token
+    body = {}
 
-    if @verify_token.send_out
-      respond_to do |format|
-        format.html
-        format.js
-        format.json {
-          body = { present: @user.present?, message: 'Validation code has been sent!' }
-          unless Rails.env.production?
-            body.merge! token: @verify_token.token
-          end
-          render json: body
-        }
-      end
+    if @account.user&.persisted?
+      body.merge! present: true, code: 1001, message: t('errors.messages.account_existed')
+    elsif @verify_token.send_out
+      body.merge! sent: true, message: 'Validation code has been sent!'
+      body.merge! token: @verify_token.token unless Rails.env.production?
     else
-      respond_to do |format|
-        format.html { render :new }
-        format.js
-        format.json {
-          render json: { message: @verity_token.errors.full_message }, status: :bad_request
-        }
-      end
+      body.merge! message: @verity_token.errors.full_message
+    end
+
+    respond_to do |format|
+      format.html {
+        if body[:present]
+          flash.now[:error] = body[:message]
+          render :new_login
+        elsif body[:sent]
+          render 'token'
+        else
+          render :new
+        end
+      }
+      format.js
+      format.json {
+        if body[:sent]
+          render json: body
+        else
+          render json: body, status: :bad_request
+        end
+      }
     end
   end
 
@@ -81,6 +131,11 @@ class Auth::JoinController < Auth::BaseController
     end
   end
 
+  def destroy
+    logout
+    redirect_to root_url
+  end
+
   private
   def user_params
     q = params.permit(
@@ -88,7 +143,9 @@ class Auth::JoinController < Auth::BaseController
       :identity,
       :password,
       :password_confirmation,
-      :token
+      :token,
+      :user_uuid,
+      :invite_token
     )
     if request.format.json?
       q.merge! source: 'api'
@@ -96,6 +153,14 @@ class Auth::JoinController < Auth::BaseController
       q.merge! source: 'web'
     end
     q
+  end
+
+  def set_account
+    if params[:identity].include?('@')
+      @account = EmailAccount.find_or_create_by(identity: params[:identity])
+    else
+      @account = MobileAccount.find_or_create_by(identity: params[:identity])
+    end
   end
 
 end
