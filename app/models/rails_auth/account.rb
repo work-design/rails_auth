@@ -17,9 +17,9 @@ class Account < RailsAuthRecord
   def set_primary
     self.class.base_class.unscoped.where.not(id: self.id).where(user_id: self.user_id).update_all(primary: false)
     if self.identity.include?('@')
-      user.email = self.identity
+      user.update(email: self.identity)
     else
-      user.mobile = self.identity
+      user.update(mobile: self.identity)
     end
   end
 
