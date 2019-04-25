@@ -1,4 +1,5 @@
 module RailsAuth::VerifyToken::MobileToken
+  extend ActiveSupport::Concern
   included do
     validates :identity, presence: true
   end
