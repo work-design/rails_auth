@@ -1,6 +1,9 @@
-class WechatUser < OauthUser
-  attribute :provider, :string, default: 'wechat'
-  has_one :same_wechat_user, -> (o){ where.not(id: o.id, unionid: nil, user_id: nil) }, class_name: self.name, foreign_key: :unionid, primary_key: :unionid
+module RailsAuth::OauthUser::WechatUser
+  extend ActiveSupport::Concern
+  included do
+    attribute :provider, :string, default: 'wechat'
+    has_one :same_wechat_user, -> (o){ where.not(id: o.id, unionid: nil, user_id: nil) }, class_name: self.name, foreign_key: :unionid, primary_key: :unionid
+  end
 
   def sync_user_info
     userinfo_url = "https://api.weixin.qq.com/sns/userinfo?access_token=#{access_token}&openid=#{uid}"
@@ -52,4 +55,4 @@ class WechatUser < OauthUser
     self.save
   end
 
-end unless RailsAuth.config.disabled_models.include?('WechatUser')
+end

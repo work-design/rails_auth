@@ -1,6 +1,10 @@
-class AlipayUser < OauthUser
-  attribute :provider, :string, default: 'alipay'
-  before_save :sync_user_info, if: -> { auth_code_changed? }
+module RailsAuth::OauthUser::AlipayUser
+  extend ActiveSupport::Concern
+
+  included do
+    attribute :provider, :string, default: 'alipay'
+    before_save :sync_user_info, if: -> { auth_code_changed? }
+  end
 
   def save_info(oauth_params)
     self.access_token = oauth_params['access_token']
@@ -46,4 +50,4 @@ class AlipayUser < OauthUser
     result
   end
 
-end unless RailsAuth.config.disabled_models.include?('AlipayUser')
+end

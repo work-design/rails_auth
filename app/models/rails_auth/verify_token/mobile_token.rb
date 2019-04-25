@@ -1,5 +1,7 @@
-class EmailToken < VerifyToken
-  validates :identity, presence: true
+module RailsAuth::VerifyToken::MobileToken
+  included do
+    validates :identity, presence: true
+  end
 
   def update_token
     self.identity ||= self.account.identity
@@ -10,11 +12,12 @@ class EmailToken < VerifyToken
   end
 
   def verify_token?
-    user.update(email_confirm: true)
+    user.update(mobile_confirm: true)
   end
 
   def send_out
-    UserMailer.email_token(self.identity, self.token).deliver_later
+    puts "sends sms here #{token}"
+    true
   end
 
-end unless RailsAuth.config.disabled_models.include?('EmailToken')
+end

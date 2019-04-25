@@ -1,4 +1,4 @@
 class Account < RailsAuthRecord
   include RailsAuth::Account
 
-end
+end unless defined? Account

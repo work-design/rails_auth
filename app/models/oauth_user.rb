@@ -1,3 +1,4 @@
 class OauthUser < RailsAuthRecord
+  include RailsAuth::OauthUser
 
-end unless RailsAuth.config.disabled_models.include?('OauthUser')
+end unless defined? OauthUser

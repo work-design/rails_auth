@@ -4,7 +4,7 @@
 # this not docs
 #++
 # test
-class AccessToken < VerifyToken
+module RailsAuth::VerifyToken::AccessToken
 
   def update_token
     self.user_id = self.account.user_id
@@ -13,4 +13,4 @@ class AccessToken < VerifyToken
     self
   end
 
-end unless RailsAuth.config.disabled_models.include?('AccessToken')
+end

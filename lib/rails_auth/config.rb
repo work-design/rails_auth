@@ -8,10 +8,6 @@ module RailsAuth #:nodoc:
     config.my_controller = 'MyController'
     config.admin_controller = 'AdminController'
     config.record_class = 'ApplicationRecord'
-    config.disabled_models = [
-      'AlipayUser',
-      'WechatUser'
-    ]
     config.default_return_path = '/'
     config.ignore_return_paths = [
       'login',
