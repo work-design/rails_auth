@@ -7,4 +7,4 @@ class ResetToken < VerifyToken
     self
   end
 
-end unless RailsAuth.config.disabled_models.include?('ResetToken')
+end

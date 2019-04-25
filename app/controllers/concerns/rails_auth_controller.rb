@@ -74,9 +74,14 @@ module RailsAuthController
 
     if verify_auth_token(auth_token)
       token = AccessToken.find_by(token: auth_token)
-      @current_user = token&.user
-      @current_account = token&.account
-      [@current_user, @current_account]
+      if token
+        token.increment! :access_counter, 1
+        @current_user = token.user
+        @current_account = token.account
+        [@current_user, @current_account]
+      else
+        [nil, nil]
+      end
     end
   end
 

@@ -1,6 +1,9 @@
 module RailsAuth::VerifyToken::EmailToken
-  validates :identity, presence: true
-
+  extend ActiveSupport::Concern
+  included do
+    validates :identity, presence: true
+  end
+  
   def update_token
     self.identity ||= self.account.identity
     self.user_id = self.account.user_id

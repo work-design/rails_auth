@@ -7,4 +7,4 @@ class UnlockToken < VerifyToken
     self
   end
 
-end unless RailsAuth.config.disabled_models.include?('UnlockToken')
+end
