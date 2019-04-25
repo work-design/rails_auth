@@ -56,6 +56,10 @@ module RailsAuthUser
     end
   end
 
+  def auth_tokens
+    access_tokens.pluck(:token)
+  end
+
   def join(params = {})
     self.assign_attributes params.slice(
       :name,
