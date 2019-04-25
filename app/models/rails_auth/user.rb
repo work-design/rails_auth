@@ -1,9 +1,9 @@
 ##
 # include this module to your User model
 #   class User < ApplicationRecord
-#     include RailsAuthUser
+#     include RailsAuth::User
 #   end
-module RailsAuthUser
+module RailsAuth::User
   extend ActiveSupport::Concern
 
   included do

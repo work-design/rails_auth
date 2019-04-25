@@ -1,18 +1,21 @@
-class Account < RailsAuthRecord
+module RailsAuth::Account
+  extend ActiveSupport::Concern
 
-  belongs_to :user, optional: true
-  has_one :access_token, -> { valid }
-  has_many :access_tokens, dependent: :delete_all
-  has_many :verify_tokens, dependent: :delete_all
+  included do
+    belongs_to :user, optional: true
+    has_one :access_token, -> { valid }
+    has_many :access_tokens, dependent: :delete_all
+    has_many :verify_tokens, dependent: :delete_all
 
-  after_initialize if: :new_record? do
-    if self.identity.include?('@')
-      self.type ||= 'EmailAccount'
-    else
-      self.type ||= 'MobileAccount'
+    after_initialize if: :new_record? do
+      if self.identity.include?('@')
+        self.type ||= 'EmailAccount'
+      else
+        self.type ||= 'MobileAccount'
+      end
     end
+    after_update :set_primary, if: -> { self.primary? && saved_change_to_primary? }
   end
-  after_update :set_primary, if: -> { self.primary? && saved_change_to_primary? }
 
   def set_primary
     self.class.base_class.unscoped.where.not(id: self.id).where(user_id: self.user_id).update_all(primary: false)

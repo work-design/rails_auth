@@ -1,13 +1,17 @@
 # Deal with token
 #
 # 用于处理Token
-class VerifyToken < RailsAuthRecord
-  belongs_to :account
-  belongs_to :user, optional: true
+module RailsAuth::VerifyToken
+  extend ActiveSupport::Concern
 
-  scope :valid, -> { where('expired_at >= ?', Time.now).order(access_counter: :asc) }
-  validates :token, presence: true
-  after_initialize :update_token, if: -> { new_record? }
+  included do
+    belongs_to :account
+    belongs_to :user, optional: true
+
+    scope :valid, -> { where('expired_at >= ?', Time.now).order(access_counter: :asc) }
+    validates :token, presence: true
+    after_initialize :update_token, if: -> { new_record? }
+  end
 
   def update_token
     self.token = SecureRandom.uuid
@@ -40,4 +44,4 @@ class VerifyToken < RailsAuthRecord
     verify_token
   end
 
-end unless RailsAuth.config.disabled_models.include?('VerifyToken')
+end
