@@ -1,4 +1,4 @@
-class UnlockToken < VerifyToken
+module RailsAuth::VerifyToken::UnlockToken
 
   def update_token
     self.user_id = self.account.user_id

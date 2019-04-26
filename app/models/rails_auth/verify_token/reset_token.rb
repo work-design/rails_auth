@@ -1,4 +1,4 @@
-class ResetToken < VerifyToken
+module RailsAuth::VerifyToken::ResetToken
 
   def update_token
     self.user_id = self.account.user_id

@@ -1,4 +1,4 @@
-class Auth::My::UsersController < Auth::My::BaseController
+class Auth::UsersController < Auth::BaseController
   before_action :set_user, only: [:show]
 
   def index
