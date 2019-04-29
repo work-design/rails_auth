@@ -13,6 +13,7 @@ module RailsAuth #:nodoc:
       'login',
       'join'
     ]
+    config.enable_access_counter = false
   end
 
 end
