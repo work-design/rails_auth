@@ -1,8 +1,8 @@
 class UserMailer < ApplicationMailer
 
-  def password_reset(user_id)
-    @user = User.find(user_id)
-    mail(to: @user.email, subject: 'Reset Your Password')
+  def password_reset(account_id)
+    @account = Account.find(account_id)
+    mail(to: @account.identity, subject: 'Reset Your Password')
   end
 
   def email_confirm(email)

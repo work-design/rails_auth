@@ -4,6 +4,8 @@ module RailsAuth::Account
   included do
     belongs_to :user, optional: true
     has_one :access_token, -> { valid }
+    has_one :reset_token, -> { valid }
+    has_many :reset_tokens, dependent: :delete_all
     has_many :access_tokens, dependent: :delete_all
     has_many :verify_tokens, dependent: :delete_all
 
@@ -98,6 +100,21 @@ module RailsAuth::Account
 
   def auth_token
     access_token.token
+  end
+
+  def reset_token
+    if super
+      super
+    else
+      VerifyToken.transaction do
+        self.reset_tokens.delete_all
+        create_reset_token
+      end
+    end
+  end
+  
+  def reset_notice
+    p 'Should implement in subclass'
   end
 
 end

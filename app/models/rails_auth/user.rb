@@ -19,10 +19,7 @@ module RailsAuth::User
 
     has_one :unlock_token, -> { valid }
     has_many :unlock_tokens
-
-    has_one :reset_token, -> { valid }
     has_many :reset_tokens
-
     has_many :access_tokens
     has_many :verify_tokens, autosave: true, dependent: :delete_all
     has_many :oauth_users, dependent: :nullify
@@ -32,17 +29,6 @@ module RailsAuth::User
 
     before_save :invalid_access_token, if: -> { password_digest_changed? }
     before_save :sync_to_accounts, if: -> { email_changed? || mobile_changed? }
-  end
-
-  def reset_token
-    if super
-      super
-    else
-      VerifyToken.transaction do
-        self.reset_tokens.delete_all
-        create_reset_token
-      end
-    end
   end
 
   def unlock_token

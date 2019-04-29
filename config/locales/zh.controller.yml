@@ -26,6 +26,7 @@ zh:
       new:
         title: 重置密码
       create:
+        title: 重置密码
         header: 重置密码
         body: 包含重置密码链接的信息已发往：
         home: 首页

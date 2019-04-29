@@ -4,11 +4,9 @@ class Auth::PasswordController < Auth::BaseController
   end
 
   def create
-    @user = User.find_by email: params[:login]
-    @login = params[:login]
-    if @user
-      UserMailer.password_reset(@user.id).deliver_later
-    end
+    @account = Account.find_by(identity: params[:identity])
+    @identity = params[:identity]
+    @account.reset_notice if @account
   end
 
   def edit

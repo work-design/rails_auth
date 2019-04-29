@@ -6,4 +6,8 @@ module RailsAuth::Account::MobileAccount
     has_many :check_tokens, class_name: 'MobileToken', foreign_key: :account_id, dependent: :delete_all
   end
 
+  def reset_notice
+    puts "sends sms here"
+  end
+
 end
