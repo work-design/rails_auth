@@ -11,7 +11,7 @@ zh:
       wrong_token: 验证码不正确
       wrong_account: 请确保账号输入正确
       token_blank: 必须提供密码或者验证码其中的一种
-      acount_disable: 你的账号已被禁用!
+      account_disable: 你的账号已被禁用!
       account_existed: 该账号已注册，请选择登陆或者重置密码！
   activerecord:
     attributes:
@@ -32,6 +32,12 @@ zh:
         identity: 手机号或邮箱
       verify_token:
         token: 验证码
+    errors:
+      models:
+        user:
+          attributes:
+            base:
+              account_disable: 你的账号已被禁用!
     enum:
       oauth_user:
         type:
