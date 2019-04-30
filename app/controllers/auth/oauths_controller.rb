@@ -16,7 +16,7 @@ class Auth::OauthsController < Auth::BaseController
         @oauth_user.user_id = @oauth_user.same_user.id
         redirect_back_or_default(my_root_url, alert: 'Oauth Success!') and return if @oauth_user.save
       else
-        redirect_to join_mobile_url and return if @oauth_user.save
+        redirect_to login_url and return if @oauth_user.save
       end
     elsif @oauth_user.user
       redirect_back_or_default(my_root_url, alert: 'Oauth Success!')
@@ -28,10 +28,6 @@ class Auth::OauthsController < Auth::BaseController
   end
 
   private
-  def set_oauth
-    @oauth = Oauth.find(params[:id])
-  end
-
   def oauth_params
     request.env['omniauth.auth']
   end
