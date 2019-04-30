@@ -1,5 +1,5 @@
 <%= form_with scope: nil, url: login_path, local: @local, builder: WechatFormBuilder do |f| %>
-  <%= f.text_field :account, value: params[:account], placeholder: 'Email or Mobile' %>
-  <%= f.password_field :password, placeholder: 'Password', autocomplete: false %>
-  <%= f.submit 'Submit' %>
+  <%= f.text_field :identity, value: params[:identity], placeholder: Account.human_attribute_name(:identity) %>
+  <%= f.password_field :password, placeholder: User.human_attribute_name(:password), autocomplete: false %>
+  <%= f.submit %>
 <% end %>
