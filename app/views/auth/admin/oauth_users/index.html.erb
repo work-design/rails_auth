@@ -31,7 +31,10 @@
       <td><%= oauth_user.id %></td>
       <td><%= oauth_user.type %></td>
       <td><%= oauth_user.uid %></td>
-      <td><%= oauth_user.name %></td>
+      <td>
+        <%= image_tag oauth_user.avatar_url, class: 'ui avatar image' if oauth_user.avatar_url.present? %>
+        <%= oauth_user.name %>
+      </td>
       <td><time><%= oauth_user.created_at.to_s(:rfc822) %></time></td>
       <td>
         <%= link_to oauth_user.user_id, admin_user_path(oauth_user.user_id) if oauth_user.user_id %>

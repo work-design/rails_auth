@@ -1,5 +1,5 @@
 require 'jwt'
-module RailsAuthController
+module RailsAuth::Controller
   extend ActiveSupport::Concern
 
   included do

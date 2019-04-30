@@ -1,8 +1,6 @@
-module RailsAuthWechat
+# pleas order after RailsAuth::Controller
+module RailsAuth::Wechat
   extend ActiveSupport::Concern
-  included do
-    include RailsAuthController
-  end
 
   def require_login(return_to: nil)
     return super unless request.variant.any?(:wechat)
