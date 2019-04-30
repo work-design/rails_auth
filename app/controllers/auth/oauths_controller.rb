@@ -6,20 +6,22 @@ class Auth::OauthsController < Auth::BaseController
     type = (oauth_params[:provider].to_s + '_user').classify
 
     @oauth_user = OauthUser.find_or_initialize_by(type: type, uid: oauth_params[:uid])
-    @oauth_user.save_info(oauth_params)
+    @oauth_user.assign_info(oauth_params)
 
-    if @oauth_user.user.nil? && current_user
-      @oauth_user.user = current_user
-      redirect_back_or_default(my_root_url, alert: 'Oauth Success!') and return if @oauth_user.save
-    elsif @oauth_user.user.nil? && !current_user
-      if @oauth_user.same_user
-        @oauth_user.user_id = @oauth_user.same_user.id
-        redirect_back_or_default(my_root_url, alert: 'Oauth Success!') and return if @oauth_user.save
+    if @oauth_user.user.nil?
+      if current_user
+        @oauth_user.user = current_user
       else
-        redirect_to login_url and return if @oauth_user.save
+        @oauth_user.user = @oauth_user.same_user
       end
-    elsif @oauth_user.user
+    end
+    
+    @oauth_user.save
+    
+    if @oauth_user.user
       redirect_back_or_default(my_root_url, alert: 'Oauth Success!')
+    else
+      redirect_to login_url
     end
   end
 

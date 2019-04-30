@@ -19,7 +19,7 @@ class Auth::JoinController < Auth::BaseController
     if @account.nil?
       msg = t('errors.messages.wrong_name_or_password')
     elsif @account.can_login?(params)
-      login_as @account
+      login_by_account @account
 
       respond_to do |format|
         format.html { redirect_back_or_default }
@@ -101,7 +101,7 @@ class Auth::JoinController < Auth::BaseController
         if @account.user
           @error = { code: 1001, message: t('errors.messages.account_existed') }
         elsif @account.join(user_params)
-          login_as @account
+          login_by_account @account
           respond_to do |format|
             format.html { redirect_back_or_default notice: t('.success') }
             format.js

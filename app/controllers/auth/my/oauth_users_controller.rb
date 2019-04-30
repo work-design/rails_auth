@@ -30,7 +30,7 @@ class Auth::My::OauthUsersController < Auth::My::BaseController
     @oauth_user.init_user
 
     if @oauth_user.save
-      login_by_oauth @oauth_user
+      login_by_oauth_user @oauth_user
       render json: { oauth_user: @oauth_user.as_json, user: @oauth_user.user.as_json }
     end
   end

@@ -47,7 +47,7 @@ module RailsAuth::Controller
     end
   end
 
-  def login_as(account)
+  def login_by_account(account)
     unless api_request?
       session[:auth_token] = account.auth_token
     end
