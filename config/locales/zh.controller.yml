@@ -32,8 +32,16 @@ zh:
         home: 首页
     my:
       users:
+        show:
+          title: 基本信息
         update:
           saved: 资料已保存！
+      accounts:
+        index:
+          title: 账号绑定
+      oauth_users:
+        index:
+          title: 第三方登陆
     admin:
       users:
         index:
