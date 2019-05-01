@@ -21,7 +21,7 @@ class Auth::OauthsController < Auth::BaseController
     if @oauth_user.user
       redirect_back_or_default(my_root_url, alert: 'Oauth Success!')
     else
-      redirect_to login_url
+      redirect_to join_url
     end
   end
 
