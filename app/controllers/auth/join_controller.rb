@@ -47,10 +47,6 @@ class Auth::JoinController < Auth::BaseController
     @user = User.new
     store_location
 
-    unless request.xhr? || params[:form_id]
-      @local = true
-    end
-
     respond_to do |format|
       format.js
       format.html
