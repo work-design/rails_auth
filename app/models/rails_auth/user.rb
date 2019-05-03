@@ -123,14 +123,20 @@ module RailsAuth::User
 
   def sync_to_email_accounts
     if email.present?
-      ac = accounts.find_or_initialize_by(identity: email)
+      ac = accounts.find_by(identity: email) ||
+      Account.without_user.find_by(identity: email) ||
+      accounts.build(identity: email)
+      ac.user ||= self
     end
     accounts.where(identity: email_was).delete_all
   end
 
   def sync_to_mobile_accounts
     if mobile.present?
-      ac = accounts.find_or_initialize_by(identity: mobile)
+      ac = accounts.find_by(identity: mobile) ||
+      Account.without_user.find_by(identity: mobile) ||
+      accounts.build(identity: mobile)
+      ac.user ||= self
     end
     accounts.where(identity: mobile_was).delete_all
   end

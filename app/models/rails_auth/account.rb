@@ -9,6 +9,8 @@ module RailsAuth::Account
     has_many :access_tokens, dependent: :delete_all
     has_many :verify_tokens, dependent: :delete_all
     has_many :oauth_users, dependent: :nullify
+    
+    scope :without_user, -> { where(user_id: nil) }
 
     after_initialize if: :new_record? do
       if self.identity.include?('@')
