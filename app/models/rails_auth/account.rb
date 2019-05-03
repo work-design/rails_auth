@@ -23,15 +23,20 @@ module RailsAuth::Account
 
   def set_primary
     self.class.base_class.unscoped.where.not(id: self.id).where(user_id: self.user_id).update_all(primary: false)
+    sync_identity
+  end
+  
+  def sync_identity
     if self.identity.include?('@')
-      user.update(email: self.identity)
+      user.update(email: self.identity) if user.email.blank?
     else
-      user.update(mobile: self.identity)
+      user.update(mobile: self.identity) if user.mobile.blank?
     end
   end
   
   def sync_user
     self.oauth_users.update_all(user_id: self.user_id)
+    sync_identity
   end
 
   def can_login?(params = {})
