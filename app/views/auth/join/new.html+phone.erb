@@ -1,6 +1,6 @@
 <h4 class="weui-cells__title">请注册或登陆</h4>
 <%= form_with scope: nil, url: join_token_path, local: true, builder: WechatFormBuilder do |f| %>
-  <%= f.hidden_field :oauth_user_id, params[:oauth_user_id] %>
+  <%= f.hidden_field :oauth_user_id, value: params[:oauth_user_id] %>
   <%= f.text_field :identity, label: '账号', placeholder: Account.human_attribute_name(:identity) %>
   <%= f.submit t('.next') %>
 <% end %>
