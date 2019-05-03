@@ -8,6 +8,7 @@ module RailsAuth::Account
     has_many :reset_tokens, dependent: :delete_all
     has_many :access_tokens, dependent: :delete_all
     has_many :verify_tokens, dependent: :delete_all
+    has_many :oauth_users, dependent: :nullify
 
     after_initialize if: :new_record? do
       if self.identity.include?('@')
@@ -17,6 +18,7 @@ module RailsAuth::Account
       end
     end
     after_update :set_primary, if: -> { self.primary? && saved_change_to_primary? }
+    after_update :sync_user, if: -> { saved_change_to_user_id? }
   end
 
   def set_primary
@@ -26,6 +28,10 @@ module RailsAuth::Account
     else
       user.update(mobile: self.identity)
     end
+  end
+  
+  def sync_user
+    self.oauth_users.update_all(user_id: self.user_id)
   end
 
   def can_login?(params = {})

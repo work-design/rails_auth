@@ -48,14 +48,21 @@ class Auth::JoinController < Auth::BaseController
     store_location
 
     respond_to do |format|
-      format.js
+      format.html.phone
       format.html
+      format.js
     end
   end
 
   def token
     @verify_token = @account.verify_token
     body = {}
+    
+    if params[:oauth_user_id]
+      oauth_user = OauthUser.find params[:oauth_user_id]
+      oauth_user.account_id ||= @account.id
+      oauth_user.save
+    end
 
     if @account.user&.persisted?
       body.merge! present: true, code: 1001, message: t('errors.messages.account_existed')

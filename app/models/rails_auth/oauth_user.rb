@@ -4,12 +4,18 @@ module RailsAuth::OauthUser
   included do
     attribute :refresh_token, :string
 
+    belongs_to :account, optional: true
     belongs_to :user, autosave: true, optional: true
     has_one :same_user, -> (o){ where.not(id: o.id, unionid: nil) }, class_name: self.name, foreign_key: :unionid, primary_key: :unionid
     has_many :same_users, -> (o){ where.not(id: o.id, unionid: nil) }, class_name: self.name, foreign_key: :unionid, primary_key: :unionid
 
     validates :provider, presence: true
     validates :uid, presence: true, uniqueness: { scope: :provider }
+    
+    before_validation do
+      # todo better user sync logic
+      self.user_id ||= self.account&.user_id
+    end
   end
 
   def save_info(info_params)

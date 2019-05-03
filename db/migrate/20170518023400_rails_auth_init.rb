@@ -38,6 +38,7 @@ class RailsAuthInit < ActiveRecord::Migration[5.1]
 
     create_table :oauth_users do |t|
       t.references :user
+      t.references :account
       t.string :provider
       t.string :type
       t.string :uid, index: true
