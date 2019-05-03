@@ -2,6 +2,7 @@
 <%= form_with scope: nil, url: join_path, local: @local, builder: WechatFormBuilder do |f| %>
   <%= f.hidden_field :identity, value: params[:identity] %>
   <%= f.text_field :token, placeholder: VerifyToken.human_attribute_name(:token) %>
+  <%= f.text_field :name, placeholder: User.human_attribute_name(:name) %>
   <%= f.password_field :password, placeholder: User.human_attribute_name(:password) %>
   <%= f.submit %>
 <% end %>
