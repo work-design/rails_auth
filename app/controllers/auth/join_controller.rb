@@ -22,6 +22,7 @@ class Auth::JoinController < Auth::BaseController
       login_by_account @account
 
       respond_to do |format|
+        format.html.phone
         format.html { redirect_back_or_default }
         format.js
         format.json {
@@ -35,7 +36,7 @@ class Auth::JoinController < Auth::BaseController
 
     flash[:error] = msg
     respond_to do |format|
-      format.html { redirect_back fallback_location: login_url }
+      format.html { redirect_to login_url }
       format.js { render :new }
       format.json {
         render json: { message: msg }, status: :bad_request and return
