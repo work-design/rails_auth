@@ -49,3 +49,6 @@ zh:
       oauth_users:
         index:
           title: 第三方登陆
+      accounts:
+        index:
+          title: 账号

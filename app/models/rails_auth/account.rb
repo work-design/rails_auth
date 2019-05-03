@@ -13,7 +13,7 @@ module RailsAuth::Account
     scope :without_user, -> { where(user_id: nil) }
 
     after_initialize if: :new_record? do
-      if self.identity.include?('@')
+      if self.identity.to_s.include?('@')
         self.type ||= 'EmailAccount'
       else
         self.type ||= 'MobileAccount'

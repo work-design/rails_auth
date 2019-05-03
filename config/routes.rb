@@ -34,6 +34,7 @@ Rails.application.routes.draw do
       post :mock, on: :member
     end
     resources :oauth_users
+    resources :accounts
   end
 
   scope :my, module: 'auth/my', as: 'my' do

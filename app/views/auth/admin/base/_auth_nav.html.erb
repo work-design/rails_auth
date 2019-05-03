@@ -1,12 +1,13 @@
 <div class="item">
-  <a class="<%= active_helper(controllers: ['users', 'oauth_users'], active_class: 'title active', item_class: 'title') %>">
+  <a class="<%= active_helper(modules: 'auth/admin', active_class: 'title active', item_class: 'title') %>">
     <i class="fas fa-users"></i>
-    <span>User</span>
+    <span><%= User.human_name %></span>
     <i class="dropdown icon"></i>
   </a>
-  <div class="<%= active_helper(controllers: ['users', 'oauth_users'], active_class: 'menu content active', item_class: 'menu content') %>">
+  <div class="<%= active_helper(modules: 'auth/admin', active_class: 'menu content active', item_class: 'menu content') %>">
     <%= link_to 'User Panel', panel_admin_users_path, class: active_helper(paths: panel_admin_users_path) %>
     <%= link_to t('auth.admin.users.index.title'), admin_users_path, class: active_helper('users': ['index', 'show']) %>
     <%= link_to t('auth.admin.oauth_users.index.title'), admin_oauth_users_path, class: active_helper(controllers: 'oauth_users') %>
+    <%= link_to t('auth.admin.accounts.index.title'), admin_accounts_path, class: active_helper(controllers: 'accounts') %>
   </div>
 </div>
