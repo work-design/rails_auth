@@ -22,7 +22,6 @@ class Auth::JoinController < Auth::BaseController
       login_by_account @account
 
       respond_to do |format|
-        format.html.phone
         format.html { redirect_back_or_default }
         format.js
         format.json {
@@ -36,7 +35,7 @@ class Auth::JoinController < Auth::BaseController
 
     flash[:error] = msg
     respond_to do |format|
-      format.html { redirect_to login_url }
+      format.html { redirect_to login_url(identity: params[:identity]) }
       format.js { render :new }
       format.json {
         render json: { message: msg }, status: :bad_request and return
@@ -59,7 +58,7 @@ class Auth::JoinController < Auth::BaseController
     @verify_token = @account.verify_token
     body = {}
     
-    if params[:oauth_user_id]
+    if params[:oauth_user_id].present?
       oauth_user = OauthUser.find params[:oauth_user_id]
       oauth_user.account_id ||= @account.id
       oauth_user.save
