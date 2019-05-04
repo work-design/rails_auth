@@ -1,0 +1,6 @@
+<%= form_with model: @user, url: my_user_path, local: true, builder: WechatFormBuilder do |f| %>
+  <%= f.text_field :name %>
+  <%= f.text_field :mobile %>
+  <%= f.text_field :email %>
+  <%= f.submit %>
+<% end %>
