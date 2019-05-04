@@ -137,14 +137,14 @@ module RailsAuth::User
     if email.present?
       Account.where(user_id: [self.id, nil]).find_by(identity: email) || accounts.build(identity: email)
     end
-    accounts.where(identity: email_was).delete_all
+    accounts.where(identity: email_was).delete_all if email_changed?
   end
 
   def sync_to_mobile_accounts
     if mobile.present?
       Account.where(user_id: [self.id, nil]).find_by(identity: mobile) || accounts.build(identity: mobile)
     end
-    accounts.where(identity: mobile_was).delete_all
+    accounts.where(identity: mobile_was).delete_all if mobile_changed?
   end
 
 end
