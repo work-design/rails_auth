@@ -37,9 +37,9 @@ module RailsAuth::Account
   def sync_identity
     return if user_id_before_last_save.nil?
     if self.identity.include?('@')
-      user.update(email: self.identity)
+      user&.update(email: self.identity)
     else
-      user.update(mobile: self.identity)
+      user&.update(mobile: self.identity)
     end
   end
 
