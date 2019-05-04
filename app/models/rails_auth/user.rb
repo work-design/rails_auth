@@ -28,7 +28,7 @@ module RailsAuth::User
     has_one_attached :avatar
 
     before_save :invalid_access_token, if: -> { password_digest_changed? }
-    after_save :sync_to_accounts, if: -> { saved_change_to_email? || saved_change_to_mobile? }
+    before_save :sync_to_accounts, if: -> { email_changed? || mobile_changed? }
     after_create_commit :check_without_user_accounts
   end
 
@@ -137,14 +137,14 @@ module RailsAuth::User
     if email.present?
       Account.where(user_id: [self.id, nil]).find_by(identity: email) || accounts.build(identity: email)
     end
-    accounts.where(identity: saved_change_to_email).delete_all
+    accounts.where(identity: email_was).delete_all
   end
 
   def sync_to_mobile_accounts
     if mobile.present?
       Account.where(user_id: [self.id, nil]).find_by(identity: mobile) || accounts.build(identity: mobile)
     end
-    accounts.where(identity: saved_change_to_mobile).delete_all
+    accounts.where(identity: mobile_was).delete_all
   end
 
 end
