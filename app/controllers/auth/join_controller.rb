@@ -1,7 +1,8 @@
 class Auth::JoinController < Auth::BaseController
   before_action :set_account, only: [:token]
   before_action :set_remote, only: [:new, :token, :new_login]
-
+  before_action :check_login
+  
   def new_login
     @user = User.new
     store_location
@@ -165,6 +166,12 @@ class Auth::JoinController < Auth::BaseController
       @account = EmailAccount.find_or_create_by(identity: params[:identity])
     else
       @account = MobileAccount.find_or_create_by(identity: params[:identity])
+    end
+  end
+  
+  def check_login
+    if current_user
+      redirect_to my_root_url
     end
   end
 

@@ -3,12 +3,13 @@ module RailsAuth::Wechat
   extend ActiveSupport::Concern
 
   def require_login(return_to: nil)
+    return if current_user
     return super unless request.variant.any?(:wechat)
 
     store_location(return_to)
 
     if current_wechat_user && current_wechat_user.user.nil?
-      redirect_url = join_mobile_url
+      redirect_url = join_url(oauth_user_id: current_wechat_user.id)
     else
       redirect_url = '/auth/wechat'
     end

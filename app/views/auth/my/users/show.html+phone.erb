@@ -1,0 +1,20 @@
+<div class="weui-cells">
+  <%= link_to edit_my_user_path, class: 'weui-cell weui-cell_access' do %>
+    <div class="weui-cell__bd">
+      <%= User.human_attribute_name(:name) %>
+    </div>
+    <div class="weui-cell__ft"><%= @user.name %></div>
+  <% end %>
+  <%= link_to edit_my_user_path, class: 'weui-cell weui-cell_access' do %>
+    <div class="weui-cell__bd">
+      <%= User.human_attribute_name(:mobile) %>
+    </div>
+    <div class="weui-cell__ft"><%= @user.mobile %></div>
+  <% end %>
+  <%= link_to edit_my_user_path, class: 'weui-cell weui-cell_access' do %>
+    <div class="weui-cell__bd">
+      <%= User.human_attribute_name(:email) %>
+    </div>
+    <div class="weui-cell__ft"><%= @user.email %></div>
+  <% end %>
+</div>
