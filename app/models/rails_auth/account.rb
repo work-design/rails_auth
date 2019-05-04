@@ -2,7 +2,7 @@ module RailsAuth::Account
   extend ActiveSupport::Concern
 
   included do
-    belongs_to :user, optional: true
+    belongs_to :user, autosave: false, optional: true
     has_one :access_token, -> { valid }
     has_one :reset_token, -> { valid }
     has_many :reset_tokens, dependent: :delete_all
@@ -24,21 +24,23 @@ module RailsAuth::Account
   end
 
   def set_primary
+    return unless user_id
     self.class.base_class.unscoped.where.not(id: self.id).where(user_id: self.user_id).update_all(primary: false)
     sync_identity
-  end
-  
-  def sync_identity
-    if self.identity.include?('@')
-      user.update(email: self.identity) if user.email.blank?
-    else
-      user.update(mobile: self.identity) if user.mobile.blank?
-    end
   end
   
   def sync_user
     self.oauth_users.update_all(user_id: self.user_id)
     sync_identity
+  end
+  
+  def sync_identity
+    return if user_id_before_last_save.nil?
+    if self.identity.include?('@')
+      user.update(email: self.identity)
+    else
+      user.update(mobile: self.identity)
+    end
   end
 
   def can_login?(params = {})

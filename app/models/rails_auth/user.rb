@@ -28,7 +28,8 @@ module RailsAuth::User
     has_one_attached :avatar
 
     before_save :invalid_access_token, if: -> { password_digest_changed? }
-    before_save :sync_to_accounts, if: -> { email_changed? || mobile_changed? }
+    after_save :sync_to_accounts, if: -> { saved_change_to_email? || saved_change_to_mobile? }
+    after_create_commit :check_without_user_accounts
   end
 
   def unlock_token
@@ -120,25 +121,30 @@ module RailsAuth::User
     sync_to_mobile_accounts
     self.save
   end
+  
+  def check_without_user_accounts
+    if email.present?
+      ac = Account.without_user.find_by(identity: email)
+      ac.update(user_id: self.id) if ac
+    end
+    if mobile.present?
+      ac = Account.without_user.find_by(identity: mobile)
+      ac.update(user_id: self.id) if ac
+    end
+  end
 
   def sync_to_email_accounts
     if email.present?
-      ac = accounts.find_by(identity: email) ||
-      Account.without_user.find_by(identity: email) ||
-      accounts.build(identity: email)
-      ac.user ||= self
+      Account.where(user_id: [self.id, nil]).find_by(identity: email) || accounts.build(identity: email)
     end
-    accounts.where(identity: email_was).delete_all
+    accounts.where(identity: saved_change_to_email).delete_all
   end
 
   def sync_to_mobile_accounts
     if mobile.present?
-      ac = accounts.find_by(identity: mobile) ||
-      Account.without_user.find_by(identity: mobile) ||
-      accounts.build(identity: mobile)
-      ac.user ||= self
+      Account.where(user_id: [self.id, nil]).find_by(identity: mobile) || accounts.build(identity: mobile)
     end
-    accounts.where(identity: mobile_was).delete_all
+    accounts.where(identity: saved_change_to_mobile).delete_all
   end
 
 end

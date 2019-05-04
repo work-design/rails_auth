@@ -125,7 +125,7 @@ module RailsAuth::Controller
     return unless payload
 
     begin
-      password_digest = User.find_by(id: payload['iss']).password_digest.to_s
+      password_digest = ::User.find_by(id: payload['iss']).password_digest.to_s
       JWT.decode(auth_token, password_digest, true, 'sub' => 'auth', verify_sub: true, verify_expiration: false)
     rescue => e
       logger.debug e.full_message(highlight: true, order: :top)
