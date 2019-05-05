@@ -1,7 +1,7 @@
 class Auth::JoinController < Auth::BaseController
   before_action :set_account, only: [:token]
   before_action :set_remote, only: [:new, :token, :new_login]
-  before_action :check_login
+  before_action :check_login, except: [:destroy]
   
   def new_login
     @user = User.new
@@ -46,6 +46,9 @@ class Auth::JoinController < Auth::BaseController
 
   def new
     @user = User.new
+    if params[:uid]
+      @oauth_user_id = OauthUser.find_by(uid: params[:uid])&.id
+    end
     store_location
 
     respond_to do |format|
