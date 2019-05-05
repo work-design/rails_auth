@@ -43,7 +43,7 @@ module RailsAuth::OauthUser::WechatUser
 
   def assign_user_info(raw_info)
     self.unionid = raw_info['unionid']
-    self.user_id = same_oauth_user.user_id if self.unionid || self.same_oauth_user
+    self.user_id = same_oauth_user.user_id if self.unionid && self.same_oauth_user
   end
 
   def save_info(oauth_params)
