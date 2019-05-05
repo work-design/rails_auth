@@ -6,7 +6,7 @@ module JwtHelper
   # iss(issuer) 比如鉴权唯一标识 id,  AppID
   # key 比如 password_digest, AppSecret
   # sub: 'auth'
-  # exp: auth_token_expired_at, should be int
+  # exp: auth_token_expire_at, should be int
   # algorithm: 默认HS256
   def generate_jwt_token(iss, key, options = {})
     payload = {

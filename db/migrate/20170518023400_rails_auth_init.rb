@@ -30,7 +30,7 @@ class RailsAuthInit < ActiveRecord::Migration[5.1]
       t.references :account
       t.string :type, limit: 100
       t.string :token
-      t.datetime :expired_at
+      t.datetime :expire_at
       t.string :identity
       t.integer :access_counter, default: 0
       t.timestamps

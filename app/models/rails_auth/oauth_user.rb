@@ -27,7 +27,7 @@ module RailsAuth::OauthUser
 
   def refresh_token!
     client = strategy
-    token = OAuth2::AccessToken.new client, self.access_token, {expires_at: self.expires_at.to_i, refresh_token: self.refresh_token}
+    token = OAuth2::AccessToken.new client, self.access_token, { expires_at: self.expires_at.to_i, refresh_token: self.refresh_token }
     token.refresh!
   end
 
