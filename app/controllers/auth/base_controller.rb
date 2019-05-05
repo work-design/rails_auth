@@ -11,6 +11,12 @@ class Auth::BaseController < RailsAuth.config.app_controller.constantize
     unless api_request?
       session[:auth_token] = account.auth_token
     end
+    
+    if params[:oauth_user_id].present?
+      oauth_user = OauthUser.find params[:oauth_user_id]
+      oauth_user.account_id ||= account.id
+      oauth_user.save
+    end
     account.user.update(last_login_at: Time.now)
   
     logger.debug "Login by account as user: #{account.user_id}"

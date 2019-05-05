@@ -60,12 +60,6 @@ class Auth::JoinController < Auth::BaseController
 
   def token
     body = {}
-    
-    if params[:oauth_user_id].present?
-      oauth_user = OauthUser.find params[:oauth_user_id]
-      oauth_user.account_id ||= @account.id
-      oauth_user.save
-    end
 
     if @account.user&.persisted?
       body.merge! present: true, code: 1001, message: t('errors.messages.account_existed')
@@ -112,6 +106,7 @@ class Auth::JoinController < Auth::BaseController
           @error = { code: 1001, message: t('errors.messages.account_existed') }
         elsif @account.join(user_params)
           login_by_account @account
+
           respond_to do |format|
             format.html { redirect_back_or_default notice: t('.success') }
             format.js

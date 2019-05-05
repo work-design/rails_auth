@@ -14,7 +14,7 @@ module RailsAuth::OauthUser
     
     before_validation do
       # todo better user sync logic
-      self.user_id ||= self.account&.user_id
+      self.user_id = self.account&.user_id if account_id_changed?
     end
   end
 
