@@ -9,7 +9,7 @@ module RailsAuth::Wechat
     store_location(return_to)
 
     if current_wechat_user && current_wechat_user.user.nil?
-      redirect_url = join_url(oauth_user_id: current_wechat_user.id)
+      redirect_url = join_url(uid: current_wechat_user.uid)
     else
       redirect_url = '/auth/wechat'
     end
