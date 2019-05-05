@@ -6,7 +6,7 @@ class Auth::Admin::UsersController < Auth::Admin::BaseController
       'created_at-desc': 2
     }.with_indifferent_access
     q_params.merge! params.permit(:name, :mobile, :email, 'last_login_at-desc')
-    @users = User.includes(:oauth_users).default_where(q_params).page(params[:page])
+    @users = User.with_attached_avatar.includes(:oauth_users).default_where(q_params).page(params[:page])
   end
 
   def panel
