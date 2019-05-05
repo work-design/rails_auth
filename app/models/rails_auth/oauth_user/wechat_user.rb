@@ -2,7 +2,6 @@ module RailsAuth::OauthUser::WechatUser
   extend ActiveSupport::Concern
   included do
     attribute :provider, :string, default: 'wechat'
-    has_one :same_wechat_user, -> (o){ where.not(id: o.id, unionid: nil, user_id: nil) }, class_name: self.name, foreign_key: :unionid, primary_key: :unionid
   end
 
   def sync_user_info
@@ -14,20 +13,17 @@ module RailsAuth::OauthUser::WechatUser
       self.errors.add :base, "#{res['errcode']}, #{res['errmsg']}"
     end
 
-    info_params = res.slice('nickname', 'headimgurl')
-    assign_user_info(info_params)
-
-    raw_info = res.slice('unionid')
-    assign_raw_info(raw_info)
+    assign_profile_info(res.slice('nickname', 'headimgurl'))
+    assign_user_info(res.slice('unionid'))
     self
   end
 
   def assign_info(oauth_params)
     info_params = oauth_params.fetch('info', {})
-    assign_user_info(info_params)
+    assign_profile_info(info_params)
 
     raw_info = oauth_params.dig('extra', 'raw_info') || {}
-    assign_raw_info(raw_info)
+    assign_user_info(raw_info)
 
     credential_params = oauth_params.fetch('credentials', {})
     credential_params['access_token'] = credential_params['token']
@@ -40,14 +36,14 @@ module RailsAuth::OauthUser::WechatUser
     self.expires_at = credential_params['expires_in']
   end
 
-  def assign_user_info(info_params)
+  def assign_profile_info(info_params)
     self.name = info_params['nickname']
     self.avatar_url = info_params['headimgurl']
   end
 
-  def assign_raw_info(raw_info)
+  def assign_user_info(raw_info)
     self.unionid = raw_info['unionid']
-    self.user_id = same_wechat_user&.user_id if self.unionid
+    self.user_id = same_oauth_user.user_id if self.unionid || self.same_oauth_user
   end
 
   def save_info(oauth_params)

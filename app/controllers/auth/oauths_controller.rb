@@ -7,13 +7,9 @@ class Auth::OauthsController < Auth::BaseController
 
     @oauth_user = OauthUser.find_or_initialize_by(type: type, uid: oauth_params[:uid])
     @oauth_user.assign_info(oauth_params)
-
+    
     if @oauth_user.user.nil?
-      if current_user
-        @oauth_user.user = current_user
-      else
-        @oauth_user.user = @oauth_user.same_user
-      end
+      @oauth_user.user = current_user if current_user
     end
     
     @oauth_user.save
