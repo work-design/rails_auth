@@ -2,7 +2,7 @@ class Auth::OauthsController < Auth::BaseController
   skip_before_action :verify_authenticity_token
 
   def create
-    session[:open_id] = oauth_params['uid']
+    session[:oauth_uid] = oauth_params['uid']
     type = (oauth_params[:provider].to_s + '_user').classify
 
     @oauth_user = OauthUser.find_or_initialize_by(type: type, uid: oauth_params[:uid])
@@ -19,7 +19,8 @@ class Auth::OauthsController < Auth::BaseController
     @oauth_user.save
     
     if @oauth_user.user
-      redirect_back_or_default(my_root_url, alert: 'Oauth Success!')
+      login_by_oauth_user(@oauth_user)
+      redirect_back_or_default(notice: 'Oauth Success!')
     else
       redirect_to join_url(uid: @oauth_user.uid)
     end
@@ -32,6 +33,15 @@ class Auth::OauthsController < Auth::BaseController
   private
   def oauth_params
     request.env['omniauth.auth']
+  end
+
+  def login_by_oauth_user(oauth_user)
+    session[:auth_token] = oauth_user.account.auth_token
+    oauth_user.user.update(last_login_at: Time.now)
+  
+    logger.debug "Login by oauth user as user: #{oauth_user.user_id}"
+    @current_wechat_user = oauth_user
+    @current_user = oauth_user.user
   end
 
 end

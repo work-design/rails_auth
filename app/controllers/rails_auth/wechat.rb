@@ -23,17 +23,9 @@ module RailsAuth::Wechat
     end
   end
 
-  def login_by_oauth_user(oauth_user)
-    # 绑定wechat_user 和 user
-    if current_wechat_user&.user_id != user.id
-      current_wechat_user.update(user_id: user.id)
-      user.sync_info_from_oauth_user(current_wechat_user)
-    end
-  end
-
   def current_wechat_user
-    return unless session[:wechat_open_id]
-    @wechat_user ||= WechatUser.find_by(uid: session[:wechat_open_id])
+    return unless session[:wechat_uid]
+    @current_wechat_user ||= WechatUser.find_by(uid: session[:wechat_uid])
   end
 
   # 需要微信授权获取openid, 但并不需要注册为用户

@@ -47,22 +47,6 @@ module RailsAuth::Controller
     end
   end
 
-  def login_by_account(account)
-    unless api_request?
-      session[:auth_token] = account.auth_token
-    end
-    account.user.update(last_login_at: Time.now)
-
-    logger.debug "Login as User #{account.user_id}"
-
-    @current_user = account.user
-  end
-
-  def logout
-    session.delete(:auth_token)
-    @current_account = nil
-  end
-
   def login_from_token
     if request.headers['Authorization']
       auth_token = request.headers['Authorization']&.split(' ').last.presence
@@ -83,6 +67,11 @@ module RailsAuth::Controller
         [nil, nil]
       end
     end
+  end
+
+  def logout
+    session.delete(:auth_token)
+    @current_account = nil
   end
 
   def store_location(path = nil)
