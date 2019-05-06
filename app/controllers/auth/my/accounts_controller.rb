@@ -29,16 +29,13 @@ class Auth::My::AccountsController < Auth::My::BaseController
   end
 
   def edit_confirm
-    if @account.is_a?(EmailAccount)
-      @verify_token = @account.user.email_tokens.create_with_account(@account.identity)
-    else
-      @verify_token = @account.user.mobile_tokens.create_with_account(@account.identity)
-    end
+    @verify_token = @account.verify_token
+    
     @verify_token.send_out
   end
 
   def update_confirm
-    @token = @account.user.verify_tokens.valid.find_by(token: params[:token])
+    @token = @account.verify_tokens.valid.find_by(token: params[:token])
 
     if @token
       @account.update(confirmed: true)

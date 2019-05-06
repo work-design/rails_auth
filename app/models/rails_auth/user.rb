@@ -36,7 +36,7 @@ module RailsAuth::User
     if super
       super
     else
-      VerifyToken.transaction do
+      ::VerifyToken.transaction do
         self.unlock_tokens.delete_all
         create_unlock_token
       end
@@ -92,7 +92,7 @@ module RailsAuth::User
   end
 
   def valid_providers
-    OauthUser.options_i18n(:provider).values.map(&:to_s) - oauth_providers
+    ::OauthUser.options_i18n(:provider).values.map(&:to_s) - oauth_providers
   end
 
   def invalid_access_token
@@ -124,25 +124,25 @@ module RailsAuth::User
   
   def check_without_user_accounts
     if email.present?
-      ac = Account.without_user.find_by(identity: email)
+      ac = ::Account.without_user.find_by(identity: email)
       ac.update(user_id: self.id) if ac
     end
     if mobile.present?
-      ac = Account.without_user.find_by(identity: mobile)
+      ac = ::Account.without_user.find_by(identity: mobile)
       ac.update(user_id: self.id) if ac
     end
   end
 
   def sync_to_email_accounts
     if email.present?
-      Account.where(user_id: [self.id, nil]).find_by(identity: email) || accounts.build(identity: email)
+      ::Account.where(user_id: [self.id, nil]).find_by(identity: email) || accounts.build(identity: email)
     end
     accounts.where(identity: email_was).delete_all if email_changed?
   end
 
   def sync_to_mobile_accounts
     if mobile.present?
-      Account.where(user_id: [self.id, nil]).find_by(identity: mobile) || accounts.build(identity: mobile)
+      ::Account.where(user_id: [self.id, nil]).find_by(identity: mobile) || accounts.build(identity: mobile)
     end
     accounts.where(identity: mobile_was).delete_all if mobile_changed?
   end
