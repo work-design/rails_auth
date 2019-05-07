@@ -2,7 +2,7 @@ module RailsAuth::Account
   extend ActiveSupport::Concern
 
   included do
-    belongs_to :user, autosave: false, optional: true
+    belongs_to :user, optional: true
     has_one :access_token, -> { valid }
     has_one :reset_token, -> { valid }
     has_many :reset_tokens, dependent: :delete_all
@@ -11,7 +11,9 @@ module RailsAuth::Account
     has_many :oauth_users, dependent: :nullify
     
     scope :without_user, -> { where(user_id: nil) }
-
+    
+    validates :identity, presence: true, uniqueness: true
+    
     after_initialize if: :new_record? do
       if self.identity.to_s.include?('@')
         self.type ||= 'EmailAccount'
@@ -89,7 +91,10 @@ module RailsAuth::Account
       :password,
       :password_confirmation
     )
-    save
+    self.class.transaction do
+      user.save
+      self.save
+    end
   end
 
   def verify_token
