@@ -28,5 +28,11 @@
       <td class="right aligned"><%= Account.human_attribute_name(:primary) %></td>
       <td><%= @account.primary %></td>
     </tr>
+    <tr>
+      <td class="right aligned"><%= User.human_attribute_name(:verify_tokens) %></td>
+      <td>
+        <%= render 'auth/admin/users/verify_tokens', target: @account %>
+      </td>
+    </tr>
   </tbody>
 </table>
