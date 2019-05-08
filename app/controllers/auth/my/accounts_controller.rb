@@ -17,6 +17,9 @@ class Auth::My::AccountsController < Auth::My::BaseController
 
     if @account.save
       redirect_to my_accounts_url
+    else
+      flash[:alert]= @account.error_text
+      redirect_to my_accounts_url
     end
   end
 

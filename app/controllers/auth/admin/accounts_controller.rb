@@ -3,7 +3,7 @@ class Auth::Admin::AccountsController < Auth::Admin::BaseController
 
   def index
     q_params = {}
-    q_params.merge! params.permit(:user_id)
+    q_params.merge! params.permit(:user_id, :identity)
     @accounts = Account.default_where(q_params).order(id: :desc).page(params[:page])
   end
 
