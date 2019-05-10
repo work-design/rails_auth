@@ -18,7 +18,7 @@
           <%= hidden_field_tag nil, nil, id: 'proxy' %>
           <%= file_field_tag :key, id: 'file_input' %>
         </a>
-        <%= image_tag current_user.avatar.variant(resize: '200x200'), id: 'avatar_image' %>
+        <%= image_tag current_user.avatar.variant(resize_to_limit: [200, 200]), id: 'avatar_image' %>
       </div>
     </td>
   </tr>
