@@ -3,9 +3,4 @@ json.extract! account,
               :identity,
               :confirmed,
               :primary
-if account.member
-  json.member account.member,
-              :id,
-              :organ_id,
-              :organ_token
-end
+json.members account.members, :id, :organ_id, :organ_token
