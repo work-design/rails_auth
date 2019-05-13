@@ -1,10 +1,10 @@
 zh:
   auth:
     join:
-      new:
+      join:
         title: 登录/注册
         next: 下一步
-      create:
+      sign_in:
         success: 登陆成功
       new_join:
         login: 登录
@@ -24,8 +24,6 @@ zh:
         token: 验证码登陆
       token:
         forget: 忘记密码？
-        sent: 验证码已发送
-      login_token:
         sent: 验证码已发送
     password:
       new:

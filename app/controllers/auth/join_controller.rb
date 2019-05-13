@@ -30,7 +30,7 @@ class Auth::JoinController < Auth::BaseController
         elsif body[:present] == false
           render 'new_join'
         else
-          render 'new'
+          render 'join'
         end
       end
       format.js
