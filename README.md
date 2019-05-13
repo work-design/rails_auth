@@ -19,7 +19,7 @@
 
 ```ruby
 class ApplicationController < ActionController::Base
-  include RailsAuthController
+  include RailsAuth::Controller
   before_action :require_login
 end
 ```
@@ -27,8 +27,8 @@ end
 #### Include in Model
 
 ```ruby
-class User
-  include RailsAuthUser
+class User < ActiveRecord::Base
+  include RailsAuth::User
 end
 ```
 
