@@ -48,7 +48,7 @@ module RailsAuth::Account
 
   def can_login?(params = {})
     if user.nil?
-      join
+      join(params)
     end
 
     if user&.restrictive?
