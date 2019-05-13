@@ -1,7 +1,57 @@
 class Auth::JoinController < Auth::BaseController
   before_action :set_account, only: [:join_token]
-  before_action :set_remote, only: [:new, :token, :new_login]
+  before_action :set_remote, only: [:new, :login_token, :new_login]
   before_action :check_login, except: [:destroy]
+
+  def new
+    @user = User.new
+    if params[:uid]
+      @oauth_user_id = OauthUser.find_by(uid: params[:uid])&.id
+    end
+    store_location
+  
+    respond_to do |format|
+      format.html.phone
+      format.html
+      format.js
+    end
+  end
+
+  def detect
+    body = {}
+    @account = Account.find_by(identity: params[:identity])
+  
+    if @account.present?
+      if @account.user.present?
+        body.merge! present: true, code: 1001, message: t('errors.messages.account_existed')
+      else
+        body.merge! present: false
+      end
+    else
+      body.merge! present: false
+    end
+  
+    respond_to do |format|
+      format.html do
+        if body[:present]
+          flash[:notice] = body[:message]
+          redirect_to login_url(identity: params[:identity])
+        elsif body[:present] == false
+          redirect_to join_url(identity: params[:identity])
+        else
+          render :new
+        end
+      end
+      format.js
+      format.json do
+        render json: body
+      end
+    end
+  end
+
+  def new_join
+  
+  end
   
   def new_login
     @user = User.new
@@ -13,121 +63,71 @@ class Auth::JoinController < Auth::BaseController
       format.js
     end
   end
-  
-  def login_token
+
+  def token
     body = {}
-    @account = Account.find_by(identity: params[:identity])
-    if @account.nil?
-      body.merge! blank: true
+    @account = Account.find_by(identity: params[:identity]) || Account.create_with_identity(params[:identity])
+    @verify_token = @account.verify_token
+    if @verify_token.send_out
+      body.merge! sent: true, message: t('.sent')
+      body.merge! token: @verify_token.token unless Rails.env.production?
     else
-      @verify_token = @account.verify_token
-      if @verify_token.send_out
-        body.merge! sent: true, message: t('.sent')
-        body.merge! token: @verify_token.token unless Rails.env.production?
-      else
-        body.merge! message: @verity_token.errors.full_message
-      end
+      body.merge! message: @verity_token.errors.full_message
     end
     
     respond_to do |format|
-      format.js {
-        if body[:blank]
-          flash[:notice] = '请注册'
-          redirect_to join_url(identity: params[:identity])
-        end
-      }
-      format.json {
+      format.js
+      format.json do
         if body[:sent]
           render json: body
         else
           render json: body, status: :bad_request
         end
-      }
+      end
     end
   end
 
   def create_login
+    body = {}
     @account = Account.find_by(identity: params[:identity])
 
     if @account.nil?
-      msg = t('errors.messages.wrong_name_or_password')
+      body.merge blank: true, message: t('errors.messages.wrong_name_or_password')
     elsif @account.can_login?(params)
       login_by_account @account
-
-      respond_to do |format|
-        format.html { redirect_back_or_default }
-        format.js
-        format.json {
-          render 'create_ok'
-        }
-      end
-      return
+      body.merge logined: true
     else
-      msg = @account.user.errors.messages.values.flatten.join(' ')
+      body.merge! message: @account.user.errors.messages.values.flatten.join(' ')
     end
 
-    flash[:error] = msg
+    flash[:error] = body[:message]
     respond_to do |format|
-      format.html { redirect_to login_url(identity: params[:identity]) }
-      format.js { render :new }
-      format.json {
-        render json: { message: msg }, status: :bad_request and return
-      }
-    end
-  end
-
-  def new
-    @user = User.new
-    if params[:uid]
-      @oauth_user_id = OauthUser.find_by(uid: params[:uid])&.id
-    end
-    store_location
-
-    respond_to do |format|
-      format.html.phone
-      format.html
-      format.js
-    end
-  end
-
-  def join_token
-    body = {}
-
-    if @account.user&.persisted?
-      body.merge! present: true, code: 1001, message: t('errors.messages.account_existed')
-    else
-      @verify_token = @account.verify_token
-      if @verify_token.send_out
-        body.merge! sent: true, message: t('.sent')
-        body.merge! token: @verify_token.token unless Rails.env.production?
-      else
-        body.merge! message: @verity_token.errors.full_message
-      end
-    end
-    
-    respond_to do |format|
-      format.html {
-        if body[:present]
-          flash[:error] = body[:message]
+      format.html do
+        if body[:blank]
           redirect_to login_url(identity: params[:identity])
-        elsif body[:sent]
-          render 'join_token'
         else
+          redirect_back_or_default
+        end
+      end
+      format.js do
+        if body[:blank]
           render :new
-        end
-      }
-      format.js
-      format.json {
-        if body[:sent]
-          render json: body
         else
-          render json: body, status: :bad_request
+          render 'create_login'
         end
-      }
+      end
+      format.json do
+        if body[:blank]
+          render json: { message: msg }, status: :bad_request and return
+        else
+          render 'create_ok'
+        end
+      end
     end
   end
 
   def create
+    body = {}
     @account = Account.find_by(identity: params[:identity])
 
     if @account
@@ -135,35 +135,34 @@ class Auth::JoinController < Auth::BaseController
       if @token
         @account.update(confirmed: true)
         if @account.user
-          @error = { code: 1001, message: t('errors.messages.account_existed') }
+          body.merge! code: 1001, message: t('errors.messages.account_existed')
         elsif @account.join(user_params)
           login_by_account @account
-
-          respond_to do |format|
-            format.html { redirect_back_or_default notice: t('.success') }
-            format.js
-            format.json {
-              render json: { user: @account.user.as_json(only:[:id, :name, :mobile], methods: [:avatar_url]) }
-            }
-          end
-          return
         else
-          @error = { code: 1004, message: @account.user.errors.full_messages }
+          body.merge! code: 1004, message: @account.user.errors.full_messages
         end
       else
-        @error = { code: 1002, message: t('errors.messages.wrong_token') }
+        body.merge! code: 1002, message: t('errors.messages.wrong_token')
       end
     else
-      @error = { code: 1002, message: t('errors.messages.wrong_account') }
+      body.merge! code: 1002, message: t('errors.messages.wrong_account')
     end
 
-    flash.now[:error] = @error[:message]
+    flash.now[:error] = body[:message]
     respond_to do |format|
-      format.html { render :new, status: :bad_request }
-      format.js { render :new }
-      format.json {
+      format.html do
+        redirect_back_or_default notice: t('.success')
+      
+        render :new, status: :bad_request
+      end
+      format.js do
+        render :new
+      end
+      format.json do
+        render json: { user: @account.user.as_json(only:[:id, :name, :mobile], methods: [:avatar_url]) }
+  
         process_errors(@account.user)
-      }
+      end
     end
   end
 
@@ -192,11 +191,7 @@ class Auth::JoinController < Auth::BaseController
   end
 
   def set_account
-    if params[:identity].include?('@')
-      @account = EmailAccount.find_or_create_by(identity: params[:identity])
-    else
-      @account = MobileAccount.find_or_create_by(identity: params[:identity])
-    end
+  
   end
   
   def check_login
