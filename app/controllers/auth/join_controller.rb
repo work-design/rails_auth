@@ -2,7 +2,7 @@ class Auth::JoinController < Auth::BaseController
   before_action :set_remote, only: [:new, :token, :new_login]
   before_action :check_login, except: [:destroy]
 
-  def new
+  def join
     store_location
     body = {}
     if params[:uid]
@@ -63,7 +63,7 @@ class Auth::JoinController < Auth::BaseController
     end
   end
 
-  def create_login
+  def sign_in
     body = {}
     @account = Account.find_by(identity: params[:identity])
 
@@ -102,7 +102,7 @@ class Auth::JoinController < Auth::BaseController
     end
   end
 
-  def create
+  def sign_up
     body = {}
     @account = Account.find_by(identity: params[:identity])
 
@@ -142,7 +142,7 @@ class Auth::JoinController < Auth::BaseController
     end
   end
 
-  def destroy
+  def logout
     logout
     redirect_to root_url
   end
