@@ -20,8 +20,12 @@ zh:
       new_login:
         forget: 忘记密码？
         join: 注册
+        token: 验证码登陆
       token:
         forget: 忘记密码？
+        sent: 验证码已发送
+      login_token:
+        sent: 验证码已发送
     password:
       new:
         title: 重置密码

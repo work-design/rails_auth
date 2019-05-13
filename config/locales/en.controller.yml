@@ -13,6 +13,10 @@ en:
         get_token: Get Token
         enter_token: Please enter token
         reset: Reset Password
+      token:
+        sent: Validation code has been sent!
+      login_token:
+        sent: Validation code has been sent!
     password:
       create:
         header: Reset Password

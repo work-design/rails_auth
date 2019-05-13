@@ -1,5 +1,5 @@
 class Auth::JoinController < Auth::BaseController
-  before_action :set_account, only: [:token]
+  before_action :set_account, only: [:join_token]
   before_action :set_remote, only: [:new, :token, :new_login]
   before_action :check_login, except: [:destroy]
   
@@ -11,6 +11,31 @@ class Auth::JoinController < Auth::BaseController
       format.html.phone
       format.html
       format.js
+    end
+  end
+  
+  def login_token
+    body = {}
+    @account = Account.find_by(identity: params[:identity])
+    @verify_token = @account.verify_token
+    if @verify_token.send_out
+      body.merge! sent: true, message: t('.sent')
+      body.merge! token: @verify_token.token unless Rails.env.production?
+    else
+      body.merge! message: @verity_token.errors.full_message
+    end
+    
+    respond_to do |format|
+      format.js {
+      
+      }
+      format.json {
+        if body[:sent]
+          render json: body
+        else
+          render json: body, status: :bad_request
+        end
+      }
     end
   end
 
@@ -58,7 +83,7 @@ class Auth::JoinController < Auth::BaseController
     end
   end
 
-  def token
+  def join_token
     body = {}
 
     if @account.user&.persisted?
@@ -66,7 +91,7 @@ class Auth::JoinController < Auth::BaseController
     else
       @verify_token = @account.verify_token
       if @verify_token.send_out
-        body.merge! sent: true, message: 'Validation code has been sent!'
+        body.merge! sent: true, message: t('.sent')
         body.merge! token: @verify_token.token unless Rails.env.production?
       else
         body.merge! message: @verity_token.errors.full_message
@@ -76,10 +101,10 @@ class Auth::JoinController < Auth::BaseController
     respond_to do |format|
       format.html {
         if body[:present]
-          flash.now[:error] = body[:message]
-          render :new_login
+          flash[:error] = body[:message]
+          redirect_to login_url(identity: params[:identity])
         elsif body[:sent]
-          render 'token'
+          render 'join_token'
         else
           render :new
         end

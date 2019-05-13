@@ -8,7 +8,8 @@ Rails.application.routes.draw do
       get 'logout' => :destroy
       post 'login/reset' => :reset
       get 'join' => :new
-      match 'join/token' => :token, via: [:get, :post]
+      post 'join/token' => :join_token
+      post 'login/token' => :login_token
       post 'join' => :create
     end
 
