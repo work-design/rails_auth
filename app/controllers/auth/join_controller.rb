@@ -17,17 +17,24 @@ class Auth::JoinController < Auth::BaseController
   def login_token
     body = {}
     @account = Account.find_by(identity: params[:identity])
-    @verify_token = @account.verify_token
-    if @verify_token.send_out
-      body.merge! sent: true, message: t('.sent')
-      body.merge! token: @verify_token.token unless Rails.env.production?
+    if @account.nil?
+      body.merge! blank: true
     else
-      body.merge! message: @verity_token.errors.full_message
+      @verify_token = @account.verify_token
+      if @verify_token.send_out
+        body.merge! sent: true, message: t('.sent')
+        body.merge! token: @verify_token.token unless Rails.env.production?
+      else
+        body.merge! message: @verity_token.errors.full_message
+      end
     end
     
     respond_to do |format|
       format.js {
-      
+        if body[:blank]
+          flash[:notice] = '请注册'
+          redirect_to join_url(identity: params[:identity])
+        end
       }
       format.json {
         if body[:sent]
