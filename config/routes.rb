@@ -3,10 +3,8 @@ Rails.application.routes.draw do
   scope module: :auth do
 
     controller :join do
-      get 'sign' => :new
-      get 'join' => :new_join
+      get 'join' => :new
       post 'join' => :create_join
-      get 'login' => :new_login
       post 'login' => :create_login
       get 'logout' => :destroy
       post 'join/detect' => :detect

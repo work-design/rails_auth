@@ -1,66 +1,42 @@
 class Auth::JoinController < Auth::BaseController
-  before_action :set_account, only: [:join_token]
-  before_action :set_remote, only: [:new, :login_token, :new_login]
+  before_action :set_remote, only: [:new, :token, :new_login]
   before_action :check_login, except: [:destroy]
 
   def new
-    @user = User.new
+    store_location
+    body = {}
     if params[:uid]
       @oauth_user_id = OauthUser.find_by(uid: params[:uid])&.id
     end
-    store_location
-  
-    respond_to do |format|
-      format.html.phone
-      format.html
-      format.js
-    end
-  end
-
-  def detect
-    body = {}
-    @account = Account.find_by(identity: params[:identity])
-  
-    if @account.present?
-      if @account.user.present?
-        body.merge! present: true, code: 1001, message: t('errors.messages.account_existed')
+    if params[:identity]
+      @account = Account.find_by(identity: params[:identity])
+    
+      if @account.present?
+        if @account.user.present?
+          body.merge! present: true, code: 1001, message: t('errors.messages.account_existed')
+        else
+          body.merge! present: false
+        end
       else
         body.merge! present: false
       end
-    else
-      body.merge! present: false
     end
   
     respond_to do |format|
       format.html do
         if body[:present]
-          flash[:notice] = body[:message]
-          redirect_to login_url(identity: params[:identity])
+          flash.now[:notice] = body[:message]
+          render 'new_login'
         elsif body[:present] == false
-          redirect_to join_url(identity: params[:identity])
+          render 'new_join'
         else
-          render :new
+          render 'new'
         end
       end
       format.js
       format.json do
         render json: body
       end
-    end
-  end
-
-  def new_join
-  
-  end
-  
-  def new_login
-    @user = User.new
-    store_location
-
-    respond_to do |format|
-      format.html.phone
-      format.html
-      format.js
     end
   end
 
@@ -188,10 +164,6 @@ class Auth::JoinController < Auth::BaseController
       q.merge! source: 'web'
     end
     q
-  end
-
-  def set_account
-  
   end
   
   def check_login
