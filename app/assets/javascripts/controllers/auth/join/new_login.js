@@ -1,10 +1,13 @@
+// todo add identity in location
 document.getElementById('mobile_confirm').addEventListener('click', function(e){
   var identity = document.getElementById('identity').value;
   if (/.+/.test(identity)) {
     var countdown = 60;
+    var link = new URL(this.href);
     var self = this;
 
-    this.href += '?identity=' + identity;
+    link.search = '?identity=' + identity;
+    this.href = link;
     this.classList.add('disabled');
     this.innerText = '重新发送(' + countdown + ')';
 
@@ -19,7 +22,7 @@ document.getElementById('mobile_confirm').addEventListener('click', function(e){
       }
     }, 1000, countdown, timer, self);
   } else {
-    alert('wrong number!');
+    alert('请输入正确的邮箱或者手机号!');
     e.preventDefault();
     e.stopImmediatePropagation();
   }
