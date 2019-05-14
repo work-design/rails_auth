@@ -2,14 +2,11 @@ Rails.application.routes.draw do
 
   scope module: :auth do
 
-    controller :join do
-      match 'join' => :join, via: [:get, :post]
-      post :sign_in
-      post :sign_up
+    controller :sign do
+      match :sign, via: [:get, :post]
+      post 'sign/token' => :token
+      post :login
       get :logout
-      post 'join/detect' => :detect
-      post 'join/token' => :token
-      post 'join/reset' => :reset
     end
 
     scope :password, controller: :password, as: 'password' do

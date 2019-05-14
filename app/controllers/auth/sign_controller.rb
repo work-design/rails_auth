@@ -1,8 +1,8 @@
-class Auth::JoinController < Auth::BaseController
-  before_action :set_remote, only: [:join, :token, :new_login]
+class Auth::SignController < Auth::BaseController
+  before_action :set_remote, only: [:sign, :token]
   before_action :check_login, except: [:logout]
 
-  def join
+  def sign
     store_location
     body = {}
     if params[:uid]
@@ -26,9 +26,9 @@ class Auth::JoinController < Auth::BaseController
       format.html do
         if body[:present]
           flash.now[:notice] = body[:message]
-          render 'new_login'
+          render 'join_with_account'
         elsif body[:present] == false
-          render 'new_join'
+          render 'join_without'
         else
           render 'join'
         end

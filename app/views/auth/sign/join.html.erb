@@ -2,7 +2,7 @@
 <div class="six wide column">
   <div class="ui segment" style="width: 300px;">
     <h4 class="ui centered header">请注册</h4>
-    <%= form_with scope: nil, url: sign_in_path, local: @local, on: { label: nil, wrapper_input: false, placeholder: true }, css: { wrapper_all: 'field', submit: 'ui fluid primary button' } do |f| %>
+    <%= form_with scope: nil, url: login_path, local: @local, on: { label: nil, wrapper_input: false, placeholder: true }, css: { wrapper_all: 'field', submit: 'ui fluid primary button' } do |f| %>
       <%= f.text_field :identity, value: params[:identity], class: 'disabled' %>
       <div class="field">
         <div class="ui fluid action input">
