@@ -56,6 +56,7 @@ module RailsAuth::Account
     end
 
     if user.restrictive?
+      errors.add :base, :account_disable
       return false
     end
 

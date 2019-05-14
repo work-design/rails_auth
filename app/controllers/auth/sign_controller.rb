@@ -78,6 +78,7 @@ class Auth::SignController < Auth::BaseController
       body.merge! code: 1002, message: t('errors.messages.wrong_account')
     end
 
+    logger.debug "#{body[:message]}"
     respond_to do |format|
       format.html do
         flash.now[:error] = body[:message]
