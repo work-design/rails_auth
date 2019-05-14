@@ -32,9 +32,9 @@ module RailsAuth::Controller
         store_location(return_to)
 
         if params[:form_id]
-          redirect_to login_url(form_id: params[:form_id], login: params[:login])
+          redirect_to sign_url(form_id: params[:form_id], identity: params[:identity])
         else
-          redirect_to login_url
+          redirect_to sign_url(identity: params[:identity])
         end
       }
       format.js {
