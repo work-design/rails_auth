@@ -119,7 +119,8 @@ class Auth::SignController < Auth::BaseController
       :password_confirmation,
       :token,
       :user_uuid,
-      :invite_token
+      :invite_token,
+      :oauth_user_id
     )
     if request.format.json?
       q.merge! source: 'api'
