@@ -8,6 +8,10 @@ Rails.application.routes.draw do
       post :login
       get :logout
     end
+    
+    controller :wechat do
+      post :auth
+    end
 
     scope :password, controller: :password, as: 'password' do
       get 'forget' => :new

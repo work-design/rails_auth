@@ -18,7 +18,7 @@ class Auth::OauthsController < Auth::BaseController
       login_by_oauth_user(@oauth_user)
       redirect_back_or_default(notice: 'Oauth Success!')
     else
-      redirect_to join_url(uid: @oauth_user.uid)
+      redirect_to sign_url(uid: @oauth_user.uid)
     end
   end
 
