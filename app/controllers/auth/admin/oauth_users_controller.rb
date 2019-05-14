@@ -4,7 +4,7 @@ class Auth::Admin::OauthUsersController < Auth::Admin::BaseController
   def index
     q_params = {}
     q_params.merge! params.permit(:user_id, :uid, :app_id, :name)
-    @oauth_users = OauthUser.default_where(q_params).page(params[:page])
+    @oauth_users = OauthUser.default_where(q_params).order(id: :desc).page(params[:page])
   end
 
   def show
