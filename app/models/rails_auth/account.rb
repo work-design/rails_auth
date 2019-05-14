@@ -47,8 +47,12 @@ module RailsAuth::Account
   end
 
   def can_login?(params = {})
-    if user.nil?
-      join(params)
+    if params[:token] && authenticate_by_token(params[:token])
+      if user.nil?
+        join(params)
+      else
+        return user
+      end
     end
 
     if user&.restrictive?
@@ -62,24 +66,21 @@ module RailsAuth::Account
         user.errors.add :base, :wrong_name_or_password
         return false
       end
-    elsif params[:token].present?
-      if authenticate_by_token(params[:token])
-        user
-      else
-        user.errors.add :base, :wrong_token
-        return false
-      end
-    else
+    end
+    
+    
+    if
       user.errors.add :base, :token_blank
       false
     end
   end
 
   def authenticate_by_token(token)
-    verify_token = self.verify_tokens.valid.find_by(token: token)
-    if verify_token
+    check_token = self.check_tokens.valid.find_by(token: token)
+    if check_token
       self.update(confirmed: true)
     else
+      self.errors.add :base, :wrong_token
       false
     end
   end
