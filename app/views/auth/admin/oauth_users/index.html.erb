@@ -17,7 +17,10 @@
     <tr>
       <th><%= OauthUser.human_attribute_name(:id) %></th>
       <th><%= OauthUser.human_attribute_name(:type) %></th>
-      <th><%= OauthUser.human_attribute_name(:uid) %></th>
+      <th>
+        <p class="ui green text"><%= OauthUser.human_attribute_name(:uid) %></p>
+        <p class="ui grey text"><%= OauthUser.human_attribute_name(:app_id) %></p>
+      </th>
       <th><%= OauthUser.human_attribute_name(:name) %></th>
       <th><%= OauthUser.human_attribute_name(:created_at) %></th>
       <th><%= OauthUser.human_attribute_name(:user) %></th>
@@ -29,8 +32,11 @@
   <% @oauth_users.each do |oauth_user| %>
     <tr>
       <td><%= oauth_user.id %></td>
-      <td><%= oauth_user.type %></td>
-      <td><%= oauth_user.uid %></td>
+      <td><%= oauth_user.type_i18n %></td>
+      <td>
+        <p class="ui green text"><%= oauth_user.uid %></p>
+        <p class="ui grey text"><%= oauth_user.app_id %></p>
+      </td>
       <td>
         <%= image_tag oauth_user.avatar_url, class: 'ui avatar image' if oauth_user.avatar_url.present? %>
         <%= oauth_user.name %>

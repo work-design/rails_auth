@@ -1,8 +1,10 @@
-<%= search_form_with model: OauthUser.new do |f| %>
+<%= search_form_with model: OauthUser.new(params.permit(:name, :uid, :app_id)) do |f| %>
   <div class="fields">
     <%= f.text_field :name %>
     <%= f.text_field :uid %>
+    <%= f.text_field :app_id %>
     <%= f.submit %>
+    <%= link_to t('.clear'), filter_params(except: [:name, :uid, :app_id]), class: 'ui white button' %>
   </div>
 <% end %>
 

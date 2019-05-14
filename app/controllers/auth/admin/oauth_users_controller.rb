@@ -2,12 +2,9 @@ class Auth::Admin::OauthUsersController < Auth::Admin::BaseController
   before_action :set_oauth_user, only: [:show, :update, :destroy]
 
   def index
-    if params[:user_id]
-      @user = User.find(params[:user_id])
-      @oauth_users = @user.oauth_users.page(params[:page])
-    else
-      @oauth_users = OauthUser.page(params[:page])
-    end
+    q_params = {}
+    q_params.merge! params.permit(:user_id, :uid, :app_id, :name)
+    @oauth_users = OauthUser.default_where(q_params).page(params[:page])
   end
 
   def show
