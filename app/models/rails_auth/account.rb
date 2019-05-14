@@ -87,6 +87,7 @@ module RailsAuth::Account
   def join(params = {})
     user || build_user
     user.assign_attributes params.slice(:name, :password, :password_confirmation)
+    self.primary = true
     self.class.transaction do
       user.save
       self.save
