@@ -10,7 +10,7 @@ Rails.application.routes.draw do
     end
     
     controller :wechat do
-      post :auth
+      post 'wechat/auth' => :auth
     end
 
     scope :password, controller: :password, as: 'password' do
