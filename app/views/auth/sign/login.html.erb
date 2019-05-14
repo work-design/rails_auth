@@ -11,7 +11,7 @@
       <div class="field">
         <%= f.password_field :password, placeholder: User.human_attribute_name(:password), autocomplete: false, on: { wrapper_all: false } %>
         <p style="text-align:right;padding-top:5px;">
-          <%= link_to t('.token'), join_token_path, method: :post, remote: true, id: 'mobile_confirm', class: 'grey text' %>
+          <%= link_to t('.token'), sign_token_path, method: :post, remote: true, id: 'mobile_confirm', class: 'grey text' %>
           <span>|</span>
           <%= link_to t('.forget'), password_forget_path, class: 'grey text' %>
         </p>

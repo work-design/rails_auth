@@ -7,7 +7,7 @@
       <div class="field">
         <div class="ui fluid action input">
           <%= f.text_field :token, placeholder: VerifyToken.human_attribute_name(:token), autocomplete: false, on: { wrapper_all: false } %>
-          <%= link_to t('.token'), join_token_path, method: :post, remote: true, id: 'mobile_confirm', class: 'ui button' %>
+          <%= link_to t('.token'), sign_token_path, method: :post, remote: true, id: 'mobile_confirm', class: 'ui button' %>
         </div>
       </div>
       <%= f.password_field :password, placeholder: User.human_attribute_name(:password), autocomplete: false %>

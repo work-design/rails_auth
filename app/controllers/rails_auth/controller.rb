@@ -69,7 +69,7 @@ module RailsAuth::Controller
     end
   end
 
-  def logout
+  def sign_out
     session.delete(:auth_token)
     @current_account = nil
   end

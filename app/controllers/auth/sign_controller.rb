@@ -13,7 +13,7 @@ class Auth::SignController < Auth::BaseController
     
       if @account.present?
         if @account.user.present?
-          body.merge! present: true, code: 1001, message: t('errors.messages.account_existed')
+          body.merge! present: true
         else
           body.merge! present: false
         end
@@ -25,12 +25,12 @@ class Auth::SignController < Auth::BaseController
     respond_to do |format|
       format.html do
         if body[:present]
-          flash.now[:notice] = body[:message]
-          render 'join_with_account'
+          flash.now[:notice] = body[:message] if body[:message]
+          render 'login'
         elsif body[:present] == false
-          render 'join_without'
-        else
           render 'join'
+        else
+          render 'sign'
         end
       end
       format.js
@@ -68,9 +68,9 @@ class Auth::SignController < Auth::BaseController
     @account = Account.find_by(identity: params[:identity])
 
     if @account
-      if @account.can_login?(params)
+      if @account.can_login?(user_params)
         login_by_account @account
-        body.merge logined: true
+        body.merge! logined: true
       else
         body.merge! code: 1002, message: @account.error_text
       end
@@ -84,14 +84,14 @@ class Auth::SignController < Auth::BaseController
         if body[:logined]
           redirect_back_or_default notice: t('.success')
         else
-          render 'new_login'
+          render 'login'
         end
       end
       format.js do
         if body[:blank]
-          render :new
+          render 'sign'
         else
-          render 'create_login'
+          render 'login_ok'
         end
       end
       format.json do
@@ -99,14 +99,14 @@ class Auth::SignController < Auth::BaseController
           process_errors(@account)
           render json: { message: msg }, status: :bad_request and return
         else
-          render 'create_ok'
+          render 'login_ok'
         end
       end
     end
   end
 
   def logout
-    logout
+    sign_out
     redirect_to root_url
   end
 

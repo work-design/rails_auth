@@ -2,7 +2,7 @@
 <div class="six wide column">
   <div class="ui bottom attached segment" style="width: 300px;">
     <h4 class="ui centered header"><%= t('.title') %></h4>
-    <%= form_with scope: nil, url: join_path, local: true, on: { label: nil, wrapper_input: false, placeholder: true }, css: { wrapper_all: 'field' } do |f| %>
+    <%= form_with scope: nil, url: sign_path, local: true, on: { label: nil, wrapper_input: false, placeholder: true }, css: { wrapper_all: 'field' } do |f| %>
       <%= f.text_field :identity, value: params[:identity], placeholder: Account.human_attribute_name(:identity) %>
       <%= f.submit t('.next'), class: 'ui fluid primary button' %>
     <% end %>

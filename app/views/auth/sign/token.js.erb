@@ -1,1 +1,3 @@
+<% if @verify_token.user %>
 $('#password').replaceWith('<%= j(text_field_tag :token, nil, placeholder: User.human_attribute_name(:token)) %>');
+<% end %>

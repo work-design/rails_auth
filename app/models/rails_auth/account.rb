@@ -48,34 +48,33 @@ module RailsAuth::Account
 
   def can_login?(params = {})
     if params[:token] && authenticate_by_token(params[:token])
-      if user.nil?
-        join(params)
-      else
-        return user
-      end
+      join(params) if user.nil?
+    end
+    
+    if user.nil?
+      return false
     end
 
-    if user&.restrictive?
+    if user.restrictive?
       return false
     end
 
     if params[:password].present? && user.password_digest?
-      if user.authenticate(params[:password])
-        user
-      else
-        user.errors.add :base, :wrong_name_or_password
+      unless user.authenticate(params[:password])
+        self.errors.add :base, :wrong_name_or_password
         return false
       end
     end
     
-    
-    if
-      user.errors.add :base, :token_blank
-      false
-    end
+    user
   end
 
   def authenticate_by_token(token)
+    if token.blank?
+      self.errors.add :base, :token_blank
+      return false
+    end
+    
     check_token = self.check_tokens.valid.find_by(token: token)
     if check_token
       self.update(confirmed: true)
@@ -87,11 +86,7 @@ module RailsAuth::Account
 
   def join(params = {})
     user || build_user
-    user.assign_attributes params.slice(
-      :name,
-      :password,
-      :password_confirmation
-    )
+    user.assign_attributes params.slice(:name, :password, :password_confirmation)
     self.class.transaction do
       user.save
       self.save
