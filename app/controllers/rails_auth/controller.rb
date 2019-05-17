@@ -26,7 +26,11 @@ module RailsAuth::Controller
       format.html {
         @local = true
         
-        return_to ||= request.fullpath if request.get?
+        if request.get?
+          return_to ||= request.fullpath
+        else
+          return_to ||= request.referer
+        end
         store_location(return_to)
 
         if params[:form_id]
