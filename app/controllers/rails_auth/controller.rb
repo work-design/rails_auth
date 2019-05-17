@@ -25,10 +25,8 @@ module RailsAuth::Controller
     respond_to do |format|
       format.html {
         @local = true
-
-        if request.get?
-          return_to ||= request.fullpath
-        end
+        
+        return_to ||= request.fullpath if request.get?
         store_location(return_to)
 
         if params[:form_id]
@@ -75,12 +73,8 @@ module RailsAuth::Controller
   end
 
   def store_location(path = nil)
-    return if session[:return_to]
-
     if path
       session[:return_to] = path
-    elsif request.referer.present?
-      session[:return_to] = request.referer
     end
 
     if session[:return_to].nil?
@@ -96,7 +90,7 @@ module RailsAuth::Controller
 
   def redirect_back_or_default(default = RailsAuth.config.default_return_path, **options)
     redirect_to session[:return_to] || default, **options
-    session[:return_to] = nil
+    session.delete :return_to
   end
 
   private

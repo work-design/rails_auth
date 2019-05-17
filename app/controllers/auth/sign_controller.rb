@@ -3,7 +3,6 @@ class Auth::SignController < Auth::BaseController
   before_action :check_login, except: [:logout]
 
   def sign
-    store_location
     body = {}
     if params[:uid]
       @oauth_user_id = OauthUser.find_by(uid: params[:uid])&.id
