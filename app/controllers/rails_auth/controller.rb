@@ -25,12 +25,6 @@ module RailsAuth::Controller
     respond_to do |format|
       format.html {
         @local = true
-        
-        if request.get?
-          return_to ||= request.fullpath
-        else
-          return_to ||= request.referer
-        end
         store_location(return_to)
 
         if params[:form_id]
@@ -79,15 +73,15 @@ module RailsAuth::Controller
   def store_location(path = nil)
     if path
       session[:return_to] = path
+    elsif request.get?
+      session[:return_to] = request.fullpath
+    else
+      session[:return_to] = request.referer
     end
 
-    if session[:return_to].nil?
-      return session[:return_to] = RailsAuth.config.default_return_path
-    end
+    r_path = URI(session[:return_to]).path.delete_suffix('/')
 
-    path = URI(session[:return_to]).path.chomp('/')
-
-    if RailsAuth.config.ignore_return_paths.include?(path)
+    if RailsAuth.config.ignore_return_paths.include?(r_path)
       session[:return_to] = RailsAuth.config.default_return_path
     end
   end

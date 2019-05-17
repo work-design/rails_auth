@@ -5,7 +5,6 @@ module RailsAuth::Wechat
   def require_login(return_to: nil)
     return if current_user
     return super unless request.variant.any?(:wechat)
-
     store_location(return_to)
 
     if current_wechat_user && current_wechat_user.user.nil?
@@ -31,10 +30,8 @@ module RailsAuth::Wechat
   # 需要微信授权获取openid, 但并不需要注册为用户
   def require_wechat_user(return_to: nil)
     return if current_wechat_user
-
-    if request.get? || return_to.present?
-      store_location(return_to)
-    end
+    store_location(return_to)
+    
     redirect_url = '/auth/wechat?skip_register=true'
 
     respond_to do |format|
