@@ -34,11 +34,11 @@ module RailsAuth::Account
   def sync_user
     self.oauth_users.update_all(user_id: self.user_id)
     self.verify_tokens.update_all(user_id: self.user_id)
+    return if user_id_before_last_save.nil?
     sync_identity
   end
   
   def sync_identity
-    return if user_id_before_last_save.nil?
     if self.identity.include?('@')
       user&.update(email: self.identity)
     else
