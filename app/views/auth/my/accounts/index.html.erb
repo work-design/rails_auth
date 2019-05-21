@@ -28,11 +28,6 @@
           <%= link_to '发送验证码', confirm_my_account_path(account.id) %>
         <% end %>
       </td>
-      <td class="ui labels">
-        <% account.members.each do |member| %>
-          <span class="ui label"><%= link_to member.organ.name, login_my_member_path(member), method: :patch %></span>
-        <% end %>
-      </td>
       <td>
         <% unless account.primary %>
           <%= link_to my_account_path(account), method: :delete, data: { tooltip: t('.destroy'), confirm: '删除后此账号无法用于登陆' }, class: 'ui circular icon button' do %>
