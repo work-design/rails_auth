@@ -39,6 +39,7 @@ zh:
         index:
           title: 第三方登陆
     admin:
+      title: 用户管理
       users:
         index:
           title: 用户列表
