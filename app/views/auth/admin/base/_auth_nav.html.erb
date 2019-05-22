@@ -1,3 +1,4 @@
+<% if rails_role_user.any_role?('auth/admin') %>
 <div class="item">
   <a class="<%= active_helper(modules: 'auth/admin', active_class: 'title active', item_class: 'title') %>">
     <i class="fas fa-users"></i>
@@ -11,3 +12,4 @@
     <%= link_to t('auth.admin.accounts.index.title'), admin_accounts_path, class: active_helper(controllers: 'accounts') %>
   </div>
 </div>
+<% end %>
