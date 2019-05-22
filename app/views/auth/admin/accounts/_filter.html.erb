@@ -1,6 +1,7 @@
-<%= search_form_with model: Account.new do |f| %>
+<%= search_form_with model: Account.new(params.permit(:identity)) do |f| %>
   <div class="fields">
     <%= f.text_field :identity %>
     <%= f.submit %>
+    <%= link_to t('.clear'), filter_params(except: [:identity]), class: 'ui white button' %>
   </div>
 <% end %>
