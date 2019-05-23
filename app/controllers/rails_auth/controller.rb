@@ -109,6 +109,7 @@ module RailsAuth::Controller
       password_digest = ::User.find_by(id: payload['iss']).password_digest.to_s
       JWT.decode(auth_token, password_digest, true, 'sub' => 'auth', verify_sub: true, verify_expiration: false)
     rescue => e
+      session.delete :auth_token
       logger.debug e.full_message(highlight: true, order: :top)
     end
   end
