@@ -10,9 +10,14 @@
   <tbody>
   <% @oauth_users.each do |oauth_user| %>
     <tr>
-      <td><%= oauth_user.provider %></td>
-      <td><%= oauth_user.uid %></td>
-      <td><%= truncate(oauth_user.access_token) %></td>
+      <td><%= oauth_user.type_i18n %></td>
+      <td>
+        <% if oauth_user.avatar_url %>
+          <%= image_tag oauth_user.avatar_url, class: 'ui avatar image' %>
+        <% end %>
+        <%= oauth_user.name %>
+      </td>
+      <td><%= oauth_user.account&.identity %></td>
       <td class="ui labels">
         <%= link_to '解绑', my_oauth_user_path(oauth_user), method: :delete, data: { confirm: t('.confirm') }, class: 'ui yellow label' %>
         <%= link_to 'update token', "/auth/#{oauth_user.provider}", class: 'ui blue label' %>
