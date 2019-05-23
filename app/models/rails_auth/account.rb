@@ -11,6 +11,7 @@ module RailsAuth::Account
     has_many :oauth_users, dependent: :nullify
     
     scope :without_user, -> { where(user_id: nil) }
+    scope :confirmed, -> { where(confirmed: true) }
     
     validates :identity, presence: true, uniqueness: true
     
