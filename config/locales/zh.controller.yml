@@ -35,6 +35,8 @@ zh:
       accounts:
         index:
           title: 账号绑定
+        edit_confirm:
+          title: 验证
       oauth_users:
         index:
           title: 第三方登陆

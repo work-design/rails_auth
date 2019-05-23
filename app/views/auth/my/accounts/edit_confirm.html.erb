@@ -4,7 +4,7 @@
     <div class="ui bottom attached segment">
       <%= form_with url: confirm_my_account_path(@account), on: { label: nil, wrapper_input: false, placeholder: true }, css: { wrapper_all: 'field' } do |f| %>
         <%= f.text_field :token %>
-        <%= f.submit 'submit', class: 'ui fluid button' %>
+        <%= f.submit class: 'ui fluid button' %>
       <% end %>
     </div>
   </div>
