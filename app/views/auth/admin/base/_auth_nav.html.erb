@@ -1,7 +1,7 @@
 <% if rails_role_user.any_role?('auth/admin') %>
 <div class="item">
   <a class="<%= active_helper(modules: 'auth/admin', active_class: 'title active', item_class: 'title') %>">
-    <i class="fas fa-users"></i>
+    <i class="fas fa-users fa-fw"></i>
     <span><%= t('auth.admin.title') %></span>
     <i class="dropdown icon"></i>
   </a>
