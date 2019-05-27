@@ -8,6 +8,7 @@ class Auth::SignController < Auth::BaseController
       @oauth_user_id = OauthUser.find_by(uid: params[:uid])&.id
     end
     if params[:identity]
+      params[:identity].strip!
       @account = Account.find_by(identity: params[:identity])
     
       if @account.present?
