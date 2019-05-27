@@ -74,7 +74,7 @@ class Auth::SignController < Auth::BaseController
         body.merge! code: 1002, message: @account.error_text
       end
     else
-      body.merge! code: 1002, message: t('errors.messages.wrong_account')
+      body.merge! blank: true, code: 1002, message: t('errors.messages.wrong_account')
     end
 
     logger.debug "#{body[:message]}"
@@ -96,8 +96,7 @@ class Auth::SignController < Auth::BaseController
       end
       format.json do
         if body[:blank]
-          process_errors(@account)
-          render json: { message: msg }, status: :bad_request and return
+          render json: { message: body[:message] }, status: :bad_request and return
         else
           render 'login_ok'
         end
