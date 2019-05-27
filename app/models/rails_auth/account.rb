@@ -41,9 +41,9 @@ module RailsAuth::Account
   
   def sync_identity
     if self.identity.include?('@')
-      user&.update(email: self.identity)
+      user&.update_columns(email: self.identity)
     else
-      user&.update(mobile: self.identity)
+      user&.update_columns(mobile: self.identity)
     end
   end
 
