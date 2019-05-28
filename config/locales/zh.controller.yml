@@ -35,6 +35,7 @@ zh:
       accounts:
         index:
           title: 账号绑定
+          primary: 主账号
         edit_confirm:
           title: 验证
       oauth_users:

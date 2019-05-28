@@ -2,20 +2,14 @@
   <tbody>
   <% @accounts.each do |account| %>
     <tr>
-      <td></td>
+      <td>
+        <div class="ui toggle checkbox inverted <%= active_assert(account.primary, expected: 'disabled green label', unexpected: 'label') %>">
+          <%= check_box_tag '[account]primary', nil, account.primary, data: { method: :patch, remote: true, url: my_account_path(account), submit: true }, id: nil %>
+          <label><%= t('.primary') %></label>
+        </div>
+      </td>
       <td>
         <span><%= account.identity %></span>
-        <% if account.primary %>
-          <div class="ui disabled slider checkbox inverted green label">
-            <%= check_box_tag '[account]primary', nil, account.primary, data: { method: :patch, remote: true, url: my_account_path(account), submit: true }, id: nil %>
-            <label><%= t('.primary') %></label>
-          </div>
-        <% else %>
-          <div class="ui slider checkbox inverted label">
-            <%= check_box_tag '[account]primary', nil, account.primary, data: { method: :patch, remote: true, url: my_account_path(account), submit: true }, id: nil %>
-            <label><%= t('.primary') %></label>
-          </div>
-        <% end %>
         <% if account.confirmed %>
           <label class="ui green icon label"><i class="fas fa-check-circle"></i></label>
         <% else %>
