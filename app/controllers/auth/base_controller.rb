@@ -19,9 +19,10 @@ class Auth::BaseController < RailsAuth.config.app_controller.constantize
     end
     account.user.update(last_login_at: Time.now)
   
-    logger.debug "Login by account as user: #{account.user_id}"
     @current_account = account
     @current_user = account.user
+    
+    logger.debug "  ==========> Login by account as user: #{account.user_id}"
   end
 
 end
