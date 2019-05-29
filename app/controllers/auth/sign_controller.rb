@@ -72,10 +72,10 @@ class Auth::SignController < Auth::BaseController
         login_by_account @account
         body.merge! logined: true
       else
-        body.merge! code: 1002, message: @account.error_text
+        body.merge! message: @account.error_text
       end
     else
-      body.merge! blank: true, code: 1002, message: t('errors.messages.wrong_account')
+      body.merge! blank: true, message: t('errors.messages.wrong_account')
     end
 
     logger.debug "#{body[:message]}"
@@ -89,17 +89,17 @@ class Auth::SignController < Auth::BaseController
         end
       end
       format.js do
-        if body[:blank]
-          render 'sign'
-        else
+        if body[:logined]
           render 'login_ok'
+        else
+          render 'login'
         end
       end
       format.json do
-        if body[:blank]
-          render json: { message: body[:message] }, status: :bad_request and return
-        else
+        if body[:logined]
           render 'login_ok'
+        else
+          render json: body, status: :unauthorized
         end
       end
     end
