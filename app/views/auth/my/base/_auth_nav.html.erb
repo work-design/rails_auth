@@ -1,8 +1,9 @@
 <div class="item">
   <span class="header">用户</span>
   <div class="menu">
-    <%= link_to '个人资料', my_user_path, class: active_helper(controllers: ['users']) %>
-    <%= link_to '账号绑定', my_accounts_path, class: active_helper(controllers: ['accounts']) %>
-    <%= link_to '第三方登陆', my_oauth_users_path, class: active_helper(controllers: ['oauth_users']) %>
+    <%= link_to t('auth.my.users.show.title'), my_user_path, class: active_helper(controllers: ['users']) %>
+    <%= link_to t('profile.my.profiles.index.title'), my_profiles_path, class: active_helper(controllers: ['profiles']) %>
+    <%= link_to t('auth.my.accounts.index.title'), my_accounts_path, class: active_helper(controllers: ['accounts']) %>
+    <%= link_to t('auth.my.oauth_users.index.title'), my_oauth_users_path, class: active_helper(controllers: ['oauth_users']) %>
   </div>
 </div>
