@@ -13,7 +13,8 @@ module RailsAuth::Account
     scope :without_user, -> { where(user_id: nil) }
     scope :confirmed, -> { where(confirmed: true) }
     
-    validates :identity, presence: true, uniqueness: true
+    validates :identity, presence: true
+    validates :identity, uniqueness: { scope: :confirmed }
     
     after_initialize if: :new_record? do
       if self.identity.to_s.include?('@')
@@ -29,22 +30,11 @@ module RailsAuth::Account
   def set_primary
     return unless user_id
     self.class.base_class.unscoped.where.not(id: self.id).where(user_id: self.user_id).update_all(primary: false)
-    sync_identity
   end
   
   def sync_user
     self.oauth_users.update_all(user_id: self.user_id)
     self.verify_tokens.update_all(user_id: self.user_id)
-    return if user_id_before_last_save.nil?
-    sync_identity
-  end
-  
-  def sync_identity
-    if self.identity.include?('@')
-      user&.update_columns(email: self.identity)
-    else
-      user&.update_columns(mobile: self.identity)
-    end
   end
 
   def can_login?(params = {})

@@ -14,23 +14,21 @@ module RailsAuth::User
     attribute :locale, :string, default: I18n.default_locale
     attribute :timezone, :string
 
-    validates :email, uniqueness: true, if: -> { email.present? && email_changed? }
-    validates :mobile, uniqueness: true, if: -> { mobile.present? && mobile_changed? }
     validates :password, confirmation: true, length: { in: 6..72 }, allow_blank: true
 
     has_one :unlock_token, -> { valid }
     has_many :unlock_tokens
     has_many :reset_tokens
-    has_many :access_tokens
+    has_many :access_tokens, dependent: :delete_all
     has_many :verify_tokens, autosave: true, dependent: :delete_all
     has_many :oauth_users, dependent: :nullify
     has_many :accounts, dependent: :nullify
 
+    accepts_nested_attributes_for :accounts
+    
     has_one_attached :avatar
 
     before_save :invalid_access_token, if: -> { password_digest_changed? }
-    before_save :sync_to_accounts, if: -> { email_changed? || mobile_changed? }
-    after_create_commit :check_without_user_accounts
   end
 
   def unlock_token
@@ -103,49 +101,13 @@ module RailsAuth::User
   def generate_auth_token(**options)
     JwtHelper.generate_jwt_token(id, password_digest, options)
   end
+  
+  def emails
+    accounts.where(type: 'EmailAccount').pluck(:identity)
+  end
 
   def oauth_providers
     oauth_users.pluck(:provider).compact
-  end
-
-  def sync_to_accounts
-    if email_changed?
-      sync_to_email_accounts
-    end
-    if mobile_changed?
-      sync_to_mobile_accounts
-    end
-  end
-
-  def sync_to_accounts!
-    sync_to_email_accounts
-    sync_to_mobile_accounts
-    self.save
-  end
-  
-  def check_without_user_accounts
-    if email.present?
-      ac = ::Account.without_user.find_by(identity: email)
-      ac.update(user_id: self.id) if ac
-    end
-    if mobile.present?
-      ac = ::Account.without_user.find_by(identity: mobile)
-      ac.update(user_id: self.id) if ac
-    end
-  end
-
-  def sync_to_email_accounts
-    if email.present?
-      ::Account.where(user_id: [self.id, nil]).find_by(identity: email) || accounts.build(identity: email)
-    end
-    accounts.where(identity: email_was).delete_all if email_changed?
-  end
-
-  def sync_to_mobile_accounts
-    if mobile.present?
-      ::Account.where(user_id: [self.id, nil]).find_by(identity: mobile) || accounts.build(identity: mobile)
-    end
-    accounts.where(identity: mobile_was).delete_all if mobile_changed?
   end
 
 end

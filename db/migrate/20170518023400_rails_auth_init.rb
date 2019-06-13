@@ -2,9 +2,7 @@ class RailsAuthInit < ActiveRecord::Migration[5.1]
   def change
 
     create_table :users do |t|
-      t.string :name, limit: 100
-      t.string :email, limit: 100
-      t.string :mobile, limit: 20
+      t.string :name
       t.string :password_digest
       t.datetime :last_login_at
       t.string :last_login_ip

@@ -8,8 +8,8 @@
       <th><%= User.human_attribute_name(:id) %></th>
       <th><%= User.human_attribute_name(:name) %></th>
       <th>
-        <p><%= User.human_attribute_name(:mobile) %></p>
-        <p><%= User.human_attribute_name(:email) %></p>
+        <p><%= User.human_attribute_name(:locale) %></p>
+        <p><%= User.human_attribute_name(:timezone) %></p>
       </th>
       <th><%= User.human_attribute_name(:created_at) %></th>
       <th>
@@ -20,6 +20,7 @@
       </th>
       <th><%= User.human_attribute_name(:disabled) %></th>
       <th><%= User.human_attribute_name(:oauth_users) %></th>
+      <th><%= User.human_attribute_name(:accounts) %></th>
       <th>
         <%= link_to new_admin_user_path, remote: true, class: 'ui mini primary button' do %>
           <i class="fas fa-plus"></i><%= t('.new') %>
@@ -39,8 +40,8 @@
         <% end %>
       </td>
       <td>
-        <p><%= user.mobile %></p>
-        <p><%= user.email %></p>
+        <p><%= user.locale %></p>
+        <p><%= user.timezone %></p>
       </td>
       <td><time><%= user.created_at.to_s(:rfc822) %></time></td>
       <td>
@@ -55,6 +56,11 @@
       <td class="ui labels">
         <% user.oauth_users.each do |oauth_user| %>
           <%= link_to oauth_user.type_i18n, admin_oauth_users_path(user_id: user.id), class: 'ui blue label' %>
+        <% end %>
+      </td>
+      <td>
+        <% user.accounts.each do |account| %>
+          <p><%= account.identity %></p>
         <% end %>
       </td>
       <td>
