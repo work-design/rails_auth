@@ -22,6 +22,8 @@ module RailsAuth::User
     has_many :access_tokens, dependent: :delete_all
     has_many :verify_tokens, autosave: true, dependent: :delete_all
     has_many :oauth_users, dependent: :nullify
+    
+    has_many :email_accounts, dependent: :nullify
     has_many :accounts, dependent: :nullify
 
     accepts_nested_attributes_for :accounts
@@ -103,7 +105,7 @@ module RailsAuth::User
   end
   
   def emails
-    accounts.where(type: 'EmailAccount').pluck(:identity)
+    email_accounts.map(&:identity)
   end
 
   def oauth_providers
