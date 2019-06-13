@@ -22,8 +22,12 @@
       <td><%= @user.name %></td>
     </tr>
     <tr>
-      <td class="right aligned"><%= User.human_attribute_name(:mobile) %></td>
-      <td><%= @user.mobile %></td>
+      <td class="right aligned"><%= User.human_attribute_name(:accounts) %></td>
+      <td>
+        <% @user.accounts.each do |account| %>
+          <p><%= account.identity %></p>
+        <% end %>
+      </td>
     </tr>
   </tbody>
 </table>
