@@ -1,10 +1,9 @@
-<%= search_form_with model: User.new(params.permit(:name, :mobile, :email)) do |f| %>
+<%= search_form_with model: User.new(params.permit(:name)) do |f| %>
   <div class="fields">
     <%= f.text_field :name %>
-    <%= f.text_field :mobile %>
-    <%= f.text_field :email %>
+    <%= f.text_field 'accounts.identity' %>
     <%= f.submit %>
-    <%= link_to t('.clear'), filter_params(except: [:name, :mobile, :email]), class: 'ui white button' %>
+    <%= link_to t('.clear'), filter_params(except: [:name, 'accounts.identity']), class: 'ui white button' %>
   </div>
 <% end %>
 
