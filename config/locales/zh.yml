@@ -26,6 +26,8 @@ zh:
         password: 密码
         password_confirmation: 确认密码
         token: 验证码
+      user/accounts:
+        identity: 手机号或邮箱
       account:
         identity: 手机号或邮箱
       verify_token:

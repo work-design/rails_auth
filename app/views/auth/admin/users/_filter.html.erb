@@ -3,7 +3,7 @@
     <%= f.text_field :name %>
     <%= f.text_field 'accounts.identity' %>
     <%= f.submit %>
-    <%= link_to t('.clear'), filter_params(except: [:name, 'accounts.identity']), class: 'ui white button' %>
+    <%= link_to t('.clear'), filter_params(except: [:name, 'accounts.identity']), class: 'ui button' %>
   </div>
 <% end %>
 
