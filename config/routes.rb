@@ -46,7 +46,11 @@ Rails.application.routes.draw do
         post 'confirm' => :update_confirm
       end
     end
-    resources :oauth_users
+    resources :oauth_users do
+      collection do
+        get :bind
+      end
+    end
   end
 
 end
