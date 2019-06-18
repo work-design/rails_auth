@@ -26,8 +26,16 @@
       <td><%= account.user_id %></td>
       <td><%= account.type %></td>
       <td><%= account.identity %></td>
-      <td><%= account.confirmed %></td>
-      <td><%= account.primary %></td>
+      <td>
+        <div class="ui toggle checkbox">
+          <%= check_box_tag '[account]confirmed', nil, account.confirmed, data: { method: :patch, remote: true, url: admin_account_path(account), submit: true }, id: nil %>
+        </div>
+      </td>
+      <td>
+        <div class="ui toggle checkbox">
+          <%= check_box_tag '[account]primary', nil, account.primary, data: { method: :patch, remote: true, url: admin_account_path(account), submit: true }, id: nil %>
+        </div>
+      </td>
       <td><time><%= account.created_at.to_s(:rfc822) %></time></td>
       <td>
         <%= link_to admin_account_path(account), data: { tooltip: t('.show') }, remote: true, class: 'ui mini circular icon button' do %>
