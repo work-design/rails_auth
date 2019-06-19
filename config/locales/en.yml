@@ -26,3 +26,8 @@ en:
         timezone: Timezone
         locale: Locale
         source: Source
+    enum:
+      user:
+        locale:
+          zh: 中文
+          en: English
