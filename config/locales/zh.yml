@@ -42,3 +42,7 @@ zh:
       oauth_user:
         type:
           WechatUser: 微信用户
+      user:
+        locale:
+          zh: 中文
+          en: English
