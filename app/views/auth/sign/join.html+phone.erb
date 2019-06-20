@@ -1,6 +1,6 @@
 <div class="weui-cells__title">请注册</div>
-<%= form_with scope: nil, url: login_path, local: @local, builder: WechatFormBuilder do |f| %>
-  <%= f.hidden_field :oauth_user_id, value: params[:oauth_user_id], autocomplete: false %>
+<%= form_with scope: nil, url: login_path, local: true, builder: WechatFormBuilder do |f| %>
+  <%= f.hidden_field :uid, value: params[:uid], autocomplete: false %>
   <%= f.hidden_field :identity, value: params[:identity], autocomplete: false %>
   <%= f.text_field :token, label: VerifyToken.human_attribute_name(:token) %>
   <%= f.text_field :name, label: User.human_attribute_name(:name) %>

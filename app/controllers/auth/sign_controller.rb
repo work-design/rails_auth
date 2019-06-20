@@ -4,9 +4,6 @@ class Auth::SignController < Auth::BaseController
 
   def sign
     body = {}
-    if params[:uid]
-      @oauth_user_id = OauthUser.find_by(uid: params[:uid])&.id
-    end
     if params[:identity]
       params[:identity].strip!
       @account = Account.find_by(identity: params[:identity])
@@ -119,7 +116,7 @@ class Auth::SignController < Auth::BaseController
       :token,
       :user_uuid,
       :invite_token,
-      :oauth_user_id
+      :uid
     )
     if request.format.json?
       q.merge! source: 'api'

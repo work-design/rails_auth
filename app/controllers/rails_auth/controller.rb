@@ -96,10 +96,12 @@ module RailsAuth::Controller
       session[:auth_token] = account.auth_token
     end
   
-    if params[:oauth_user_id].present?
-      oauth_user = OauthUser.find params[:oauth_user_id]
-      oauth_user.account_id ||= account.id
-      oauth_user.save
+    if params[:uid].present?
+      oauth_user = OauthUser.find uid: params[:uid]
+      if oauth_user
+        oauth_user.account_id ||= account.id  # todo 对于已经绑定过的处理逻辑需要完善
+        oauth_user.save
+      end
     end
     account.user.update(last_login_at: Time.now)
   

@@ -1,6 +1,6 @@
-<%= form_with scope: nil, url: login_path, local: @local, builder: WechatFormBuilder do |f| %>
-  <%= f.hidden_field :oauth_user_id, value: params[:oauth_user_id], autocomplete: false %>
-  <%= f.text_field :identity, value: params[:identity], label: Account.human_attribute_name(:identity), placeholder: Account.human_attribute_name(:identity) %>
-  <%= f.password_field :password, label: User.human_attribute_name(:password), placeholder: User.human_attribute_name(:password), autocomplete: false %>
+<%= form_with scope: nil, url: login_path, local: true, builder: WechatFormBuilder do |f| %>
+  <%= f.hidden_field :uid, value: params[:uid], autocomplete: false %>
+  <%= f.text_field :identity, value: params[:identity], label: Account.human_attribute_name(:identity) %>
+  <%= f.password_field :password, label: User.human_attribute_name(:password), autocomplete: false %>
   <%= f.submit %>
 <% end %>
