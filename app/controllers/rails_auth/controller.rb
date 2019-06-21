@@ -99,7 +99,7 @@ module RailsAuth::Controller
     if params[:uid].present?
       oauth_user = OauthUser.find uid: params[:uid]
       if oauth_user
-        oauth_user.account_id ||= account.id  # todo 对于已经绑定过的处理逻辑需要完善
+        oauth_user.account_id = account.id
         oauth_user.save
       end
     end
