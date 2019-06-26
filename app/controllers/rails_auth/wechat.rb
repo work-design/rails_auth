@@ -1,4 +1,4 @@
-# pleas order after RailsAuth::Controller
+# Should order after RailsAuth::Controller
 module RailsAuth::Wechat
   extend ActiveSupport::Concern
 
