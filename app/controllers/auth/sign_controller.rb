@@ -61,7 +61,7 @@ class Auth::SignController < Auth::BaseController
   end
   
   def mock
-    @account = DeviceAccount.find_or_initialize_by(identity: params[:identity])
+    @account = DeviceAccount.find_or_initialize_by(identity: params[:device_id])
 
     if @account.can_login?(user_params)
       login_by_account @account
@@ -126,7 +126,8 @@ class Auth::SignController < Auth::BaseController
       :password_confirmation,
       :token,
       :invite_token,
-      :uid
+      :uid,
+      :device_id  # ios设备注册
     )
     if request.format.json?
       q.merge! source: 'api'

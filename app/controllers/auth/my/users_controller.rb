@@ -4,11 +4,31 @@ class Auth::My::UsersController < Auth::My::BaseController
   def show
   end
 
+  def edit
+  end
+
   def update
-    if @user.update(user_params)
-      render :show, status: :created
-    else
-      process_errors(@user)
+    @user.assign_attributes user_params
+  
+    flash[:notice] = 'User was successfully updated.'
+  
+    if @user.email_changed?
+      logout
+      flash[:notice] = 'Your Email changed, please login again!'
+      UserMailer.email_confirm(@user.email).deliver_later
+    end
+  
+    respond_to do |format|
+      if @user.save
+        format.js
+        format.html { redirect_to my_user_url }
+        format.json {
+          render json: { user: @user.as_json, filename: url_for(@user.avatar) }
+        }
+      else
+        format.html { render action: 'edit' }
+        format.json { render json: @user.errors, status: :unprocessable_entity }
+      end
     end
   end
 

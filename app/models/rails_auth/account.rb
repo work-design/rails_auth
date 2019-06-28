@@ -77,6 +77,11 @@ module RailsAuth::Account
   end
 
   def join(params = {})
+    if params[:device_id]
+      account = DeviceAccount.find_by identity: params[:device_id]
+      self.user = account.user if account
+    end
+    
     user || build_user
     user.assign_attributes params.slice(:name, :password, :password_confirmation)
     self.primary = true
