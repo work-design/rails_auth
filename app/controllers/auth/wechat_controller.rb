@@ -5,11 +5,7 @@ class Auth::WechatController < Auth::BaseController
     @wechat_user = WechatUser.find_or_initialize_by(uid: params[:openid])
     @wechat_user.assign_attributes params.permit(:access_token, :refresh_token, :app_id)
     @wechat_user.sync_user_info
-    
-    if @wechat_user.account.nil?
-      @wechat_user.account = current_account if current_account
-    end
-
+    @wechat_user.account = current_account if current_account
     @wechat_user.save
 
     if @wechat_user.user
