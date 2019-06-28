@@ -59,6 +59,17 @@ class Auth::SignController < Auth::BaseController
       end
     end
   end
+  
+  def mock
+    @account = DeviceAccount.find_or_initialize_by(identity: params[:identity])
+
+    if @account.can_login?(user_params)
+      login_by_account @account
+      render 'login_ok'
+    else
+      process_errors(@account)
+    end
+  end
 
   def login
     body = {}
@@ -114,7 +125,6 @@ class Auth::SignController < Auth::BaseController
       :password,
       :password_confirmation,
       :token,
-      :user_uuid,
       :invite_token,
       :uid
     )

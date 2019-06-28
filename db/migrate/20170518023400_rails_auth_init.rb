@@ -10,7 +10,6 @@ class RailsAuthInit < ActiveRecord::Migration[5.1]
       t.string :timezone
       t.string :locale
       t.string :source
-      t.string :user_uuid
       t.timestamps
     end
 
