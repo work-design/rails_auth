@@ -78,7 +78,7 @@ module RailsAuth::Account
 
   def join(params = {})
     if params[:device_id]
-      account = DeviceAccount.find_by identity: params[:device_id]
+      account = ::DeviceAccount.find_by identity: params[:device_id]
       self.user = account.user if account
     end
     
