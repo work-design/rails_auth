@@ -12,7 +12,7 @@ class Auth::WechatController < Auth::BaseController
       login_by_wechat_user(@wechat_user)
       render 'auth'
     else
-      render json: { oauth_user_id: @wechat_user.id }
+      render json: { oauth_user_id: @wechat_user.id.to_s }
     end
   end
 
