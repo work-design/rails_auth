@@ -46,3 +46,8 @@ zh:
         locale:
           zh: 中文
           en: English
+      account:
+        type:
+          EmailAccount: 邮箱账号
+          MobileAccount: 手机账号
+          DeviceAccount: 设备标识
