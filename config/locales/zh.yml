@@ -30,6 +30,8 @@ zh:
         identity: 手机号或邮箱
       account:
         identity: 手机号或邮箱
+        confirmed: 是否验证
+        primary: 是否主账号
       verify_token:
         token: 验证码
     errors:
