@@ -49,6 +49,9 @@ class Auth::SignController < Auth::BaseController
     end
     
     respond_to do |format|
+      format.html {
+        render 'join'
+      }
       format.js
       format.json do
         if body[:sent]
