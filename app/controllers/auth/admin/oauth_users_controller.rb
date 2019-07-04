@@ -3,7 +3,7 @@ class Auth::Admin::OauthUsersController < Auth::Admin::BaseController
 
   def index
     q_params = {}
-    q_params.merge! app_id: current_organ.wechat_configs.pluck(:appid) if current_organ
+    q_params.merge! app_id: current_organ.wechat_apps.pluck(:appid) if current_organ
     q_params.merge! params.permit(:user_id, :uid, :app_id, :name)
     @oauth_users = OauthUser.default_where(q_params).order(id: :desc).page(params[:page])
   end
