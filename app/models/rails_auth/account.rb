@@ -128,6 +128,12 @@ module RailsAuth::Account
     end
   end
   
+  def init_user
+    user || build_user
+    save
+    user
+  end
+  
   def reset_notice
     p 'Should implement in subclass'
   end
