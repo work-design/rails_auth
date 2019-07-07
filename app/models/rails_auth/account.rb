@@ -23,8 +23,8 @@ module RailsAuth::Account
         self.type ||= 'MobileAccount'
       end
     end
-    after_update :set_primary, if: -> { self.primary? && saved_change_to_primary? }
-    after_update :sync_user, if: -> { saved_change_to_user_id? }
+    after_save :set_primary, if: -> { self.primary? && saved_change_to_primary? }
+    after_save :sync_user, if: -> { saved_change_to_user_id? }
   end
 
   def set_primary
@@ -126,12 +126,6 @@ module RailsAuth::Account
         create_reset_token
       end
     end
-  end
-  
-  def init_user
-    user || build_user
-    save
-    user
   end
   
   def reset_notice
