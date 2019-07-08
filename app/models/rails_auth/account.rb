@@ -24,7 +24,7 @@ module RailsAuth::Account
       end
     end
     after_save :set_primary, if: -> { self.primary? && saved_change_to_primary? }
-    after_save :sync_user, if: -> { saved_change_to_user_id? }
+    after_update :sync_user, if: -> { saved_change_to_user_id? }
   end
 
   def set_primary
