@@ -9,14 +9,7 @@ class Auth::My::UsersController < Auth::My::BaseController
 
   def update
     @user.assign_attributes user_params
-  
     flash[:notice] = 'User was successfully updated.'
-  
-    if @user.email_changed?
-      logout
-      flash[:notice] = 'Your Email changed, please login again!'
-      UserMailer.email_confirm(@user.email).deliver_later
-    end
   
     respond_to do |format|
       if @user.save
@@ -45,9 +38,7 @@ class Auth::My::UsersController < Auth::My::BaseController
   def user_params
     params.fetch(:user, {}).permit(
       :name,
-      :email,
       :avatar,
-      :mobile,
       :locale,
       :nation,
       :timezone
