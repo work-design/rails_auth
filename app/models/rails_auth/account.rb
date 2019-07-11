@@ -50,16 +50,8 @@ module RailsAuth::Account
       return false
     end
 
-    if user.restrictive?
-      errors.add :base, :account_disable
+    unless user.can_login?(params)
       return false
-    end
-
-    if params[:password].present? && user.password_digest?
-      unless user.authenticate(params[:password])
-        self.errors.add :base, :wrong_name_or_password
-        return false
-      end
     end
     
     user
