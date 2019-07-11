@@ -88,6 +88,8 @@ module RailsAuth::User
 
   def avatar_url
     avatar.service_url if avatar.attachment.present?
+  rescue ArgumentError
+    ''
   end
 
   def valid_providers
