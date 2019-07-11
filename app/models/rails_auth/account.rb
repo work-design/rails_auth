@@ -40,7 +40,7 @@ module RailsAuth::Account
   def can_login?(params = {})
     if params[:token] && authenticate_by_token(params[:token])
       join(params) if user.nil?
-    else
+    elsif params[:token]
       return false
     end
     
