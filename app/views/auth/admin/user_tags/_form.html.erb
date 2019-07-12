@@ -1,0 +1,5 @@
+<%= form_with model: [:admin, @user_tag] do |f| %>
+  <%= render 'shared/error_messages', target: @user_tag %>
+  <%= f.text_field :name %>
+  <%= f.submit %>
+<% end %>

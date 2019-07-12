@@ -37,6 +37,7 @@ Rails.application.routes.draw do
     end
     resources :oauth_users
     resources :accounts
+    resources :user_tags
   end
 
   scope :my, module: 'auth/my', as: 'my' do
