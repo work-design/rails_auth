@@ -17,18 +17,6 @@
       <td><%= image_tag @user.avatar, class: 'ui small image' %></td>
     </tr>
     <tr>
-      <td class="right aligned"><%= User.human_attribute_name(:email) %></td>
-      <td>
-        <%= @user.email %>
-      </td>
-    </tr>
-    <tr>
-      <td class="right aligned"><%= User.human_attribute_name(:mobile) %></td>
-      <td>
-        <%= @user.mobile %>
-      </td>
-    </tr>
-    <tr>
       <td class="right aligned"><%= User.human_attribute_name(:locale) %></td>
       <td><%= @user.locale %></td>
     </tr>

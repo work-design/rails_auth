@@ -49,6 +49,20 @@ class RailsAuthInit < ActiveRecord::Migration[5.1]
       t.datetime :expires_at
       t.timestamps
     end
+    
+    create_table :user_tags do |t|
+      t.references :organ  # For SaaS
+      t.references :tagging, polymorphic: true
+      t.string :name
+      t.integer :user_taggeds_count
+      t.timestamps
+    end
+    
+    create_table :user_taggeds do |t|
+      t.references :user_tag
+      t.references :user
+      t.timestamps
+    end
 
   end
 end

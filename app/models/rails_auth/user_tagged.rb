@@ -1,0 +1,3 @@
+module RailsAuth::UserTagged
+
+end

@@ -1,0 +1,3 @@
+module RailsAuth::UserTag
+
+end
