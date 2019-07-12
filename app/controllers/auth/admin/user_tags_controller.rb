@@ -67,7 +67,7 @@ class Auth::Admin::UserTagsController < Auth::Admin::BaseController
   def user_tag_params
     p = params.fetch(:user_tag, {}).permit(
       :name,
-      :user_tagged_count
+      :tagging_type
     )
     p.merge! default_params
   end
