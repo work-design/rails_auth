@@ -4,13 +4,13 @@
     Login
   </div>
   <div class="content">
-    <%= form_tag login_path, class: 'ui large form', local: @local do %>
+    <%= form_tag login_path, class: 'ui large form' do %>
       <%= hidden_field_tag :form_id, params[:form_id] %>
       <div class="field">
-        <%= text_field_tag :identity, params[:identity], placeholder: 'Email or Mobile' %>
+        <%= text_field_tag :identity, params[:identity], placeholder: Account.human_attribute_name(:identity) %>
       </div>
       <div class="field">
-        <%= password_field_tag :password, nil, placeholder: 'Password' %>
+        <%= password_field_tag :password, nil, placeholder: User.human_attribute_name(:password) %>
       </div>
       <div class="field">
         <%= submit_tag 'Submit', class: 'ui button' %>

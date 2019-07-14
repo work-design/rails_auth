@@ -24,7 +24,6 @@ module RailsAuth::Controller
 
     respond_to do |format|
       format.html {
-        @local = true
         store_location(return_to)
 
         if params[:form_id]
@@ -34,7 +33,6 @@ module RailsAuth::Controller
         end
       }
       format.js {
-        @local = false
         render file: js_template and return
       }
       format.json do
@@ -84,11 +82,6 @@ module RailsAuth::Controller
     if RailsAuth.config.ignore_return_paths.include?(r_path)
       session[:return_to] = RailsAuth.config.default_return_path
     end
-  end
-
-  def redirect_back_or_default(default = RailsAuth.config.default_return_path, **options)
-    redirect_to session[:return_to] || default, **options
-    session.delete :return_to
   end
 
   def login_by_account(account)

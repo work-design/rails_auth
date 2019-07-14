@@ -16,10 +16,11 @@ class Auth::OauthsController < Auth::BaseController
     
     if @oauth_user.user
       login_by_oauth_user(@oauth_user)
-      redirect_back_or_default(notice: 'Oauth Success!')
+      redirect_to session[:return_to] || RailsAuth.config.default_return_path, notice: 'Oauth Success!'
     else
       redirect_to sign_url(uid: @oauth_user.uid)
     end
+    session[:return_to] = nil
   end
 
   def failure

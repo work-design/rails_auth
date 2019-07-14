@@ -6,7 +6,7 @@
 <div class="six wide column middle aligned">
   <div class="ui segment" style="width: 300px;">
     <h4 class="ui centered header"><%= t('.title') %></h4>
-    <%= form_with scope: nil, url: login_path, local: @local, on: { label: false, offset: false, wrapper_input: false, placeholder: true }, css: { wrapper_all: 'field' } do |f| %>
+    <%= form_with scope: nil, url: login_path, local: true, on: { label: false, offset: false, wrapper_input: false, placeholder: true }, css: { wrapper_all: 'field' } do |f| %>
       <%= f.text_field :identity, value: params[:identity], placeholder: Account.human_attribute_name(:identity) %>
       <div class="field">
         <%= f.password_field :password, placeholder: User.human_attribute_name(:password), autocomplete: false, on: { wrapper_all: false } %>

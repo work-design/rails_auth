@@ -88,12 +88,12 @@ class Auth::SignController < Auth::BaseController
     else
       body.merge! blank: true, message: t('errors.messages.wrong_account')
     end
-
+    
     respond_to do |format|
       format.html do
         flash.now[:error] = body[:message]
         if body[:logined]
-          redirect_back_or_default notice: t('.success')
+          redirect_to session[:return_to] || RailsAuth.config.default_return_path, notice: t('.success')
         else
           render 'login'
         end
@@ -113,6 +113,7 @@ class Auth::SignController < Auth::BaseController
         end
       end
     end
+    session[:return_to] = nil
   end
 
   def logout
