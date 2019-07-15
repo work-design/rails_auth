@@ -26,7 +26,6 @@
         <p><%= User.human_attribute_name(:last_login_ip) %></p>
       </th>
       <th><%= User.human_attribute_name(:oauth_users) %></th>
-      <th><%= User.human_attribute_name(:accounts) %></th>
       <th>
         <%= link_to new_admin_user_path, remote: true, class: 'ui mini primary button' do %>
           <i class="fas fa-plus"></i><%= t('.new') %>
@@ -53,11 +52,6 @@
         <p><time><%= user.last_login_at.to_s(:rfc822) if user.last_login_at %></time></p>
         <p><%= user.last_login_ip %></p>
       </td>
-      <td>
-        <div class="ui toggle checkbox">
-          <%= check_box_tag '[user]disabled', nil, user.disabled, data: { method: :patch, remote: true, url: admin_user_path(user), submit: true }, id: nil %>
-        </div>
-      </td>
       <td class="ui labels">
         <% user.oauth_users.each do |oauth_user| %>
           <%= link_to oauth_user.type_i18n, admin_oauth_users_path(user_id: user.id), class: 'ui blue label' %>
@@ -69,12 +63,6 @@
         <% end %>
         <%= link_to admin_accounts_path(user_id: user.id), data: { tooltip: t('auth.admin.accounts.index.title') }, class: 'ui mini circular icon button' do %>
           <i class="fas fa-portrait"></i>
-        <% end %>
-        <%= link_to edit_admin_user_path(user), data: { tooltip: t('.edit') }, class: 'ui mini circular icon button', remote: true do %>
-          <i class="fas fa-pencil-alt"></i>
-        <% end %>
-        <%= link_to admin_user_path(user), method: :delete, data: { tooltip: t('.destroy'), confirm: t('.confirm') }, class: 'ui mini circular icon button' do %>
-          <i class="fas fa-trash-alt"></i>
         <% end %>
       </td>
     </tr>
