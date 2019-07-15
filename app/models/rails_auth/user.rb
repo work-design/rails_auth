@@ -22,8 +22,10 @@ module RailsAuth::User
     has_many :verify_tokens, autosave: true, dependent: :delete_all
     has_many :oauth_users, dependent: :nullify
     has_many :accounts, dependent: :nullify
-
     accepts_nested_attributes_for :accounts
+    
+    has_many :user_taggeds, dependent: :destroy
+    has_many :user_tags, through: :user_taggeds
     
     has_one_attached :avatar
 
