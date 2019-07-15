@@ -34,6 +34,8 @@ zh:
         primary: 是否主账号
       verify_token:
         token: 验证码
+      user_tag:
+        user_taggeds_count: 用户数
     errors:
       models:
         user:

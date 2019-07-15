@@ -1,7 +1,83 @@
-<div class="ui segment breadcrumb">
+<% content_for :breadcrumb do %>
+<div class="ui basic segment breadcrumb">
   <%= link_to 'Back', admin_user_tags_path, class: 'section' %>
   <i class="fas fa-angle-right divider"></i>
   <div class="active section">Show</div>
 </div>
+<% end %>
 
-<%= render 'show_table' %>
+<div class="ui top attached segment">
+  <%= render 'filter' %>
+</div>
+
+<table class="ui bottom attached selectable table">
+  <thead>
+    <tr>
+      <th><%= User.human_attribute_name(:name) %></th>
+      <th>
+        <p><%= User.human_attribute_name(:locale) %></p>
+        <p><%= User.human_attribute_name(:timezone) %></p>
+      </th>
+      <th><%= User.human_attribute_name(:created_at) %></th>
+      <th>
+        <p>
+          <%= link_to User.human_attribute_name(:last_login_at), filter_params('last_login_at-desc': 1, except: ['last_login_at-desc']) %>
+        </p>
+        <p><%= User.human_attribute_name(:last_login_ip) %></p>
+      </th>
+      <th><%= User.human_attribute_name(:oauth_users) %></th>
+      <th><%= User.human_attribute_name(:accounts) %></th>
+      <th>
+        <%= link_to new_admin_user_path, remote: true, class: 'ui mini primary button' do %>
+          <i class="fas fa-plus"></i><%= t('.new') %>
+        <% end %>
+      </th>
+    </tr>
+  </thead>
+
+  <tbody>
+  <% @user_tag.users.each do |user| %>
+    <tr>
+      <td>
+        <%= link_to admin_user_path(user.id) do %>
+          <%= image_tag user.avatar, class: 'ui avatar image' if user.avatar.present? %>
+          <%= user.name %>
+        <% end %>
+      </td>
+      <td>
+        <p><%= user.locale %></p>
+        <p><%= user.timezone %></p>
+      </td>
+      <td><time><%= user.created_at.to_s(:rfc822) %></time></td>
+      <td>
+        <p><time><%= user.last_login_at.to_s(:rfc822) if user.last_login_at %></time></p>
+        <p><%= user.last_login_ip %></p>
+      </td>
+      <td>
+        <div class="ui toggle checkbox">
+          <%= check_box_tag '[user]disabled', nil, user.disabled, data: { method: :patch, remote: true, url: admin_user_path(user), submit: true }, id: nil %>
+        </div>
+      </td>
+      <td class="ui labels">
+        <% user.oauth_users.each do |oauth_user| %>
+          <%= link_to oauth_user.type_i18n, admin_oauth_users_path(user_id: user.id), class: 'ui blue label' %>
+        <% end %>
+      </td>
+      <td>
+        <%= link_to admin_user_path(user), data: { tooltip: t('.show') }, class: 'ui mini circular icon button', remote: true do %>
+          <i class="fas fa-eye"></i>
+        <% end %>
+        <%= link_to admin_accounts_path(user_id: user.id), data: { tooltip: t('auth.admin.accounts.index.title') }, class: 'ui mini circular icon button' do %>
+          <i class="fas fa-portrait"></i>
+        <% end %>
+        <%= link_to edit_admin_user_path(user), data: { tooltip: t('.edit') }, class: 'ui mini circular icon button', remote: true do %>
+          <i class="fas fa-pencil-alt"></i>
+        <% end %>
+        <%= link_to admin_user_path(user), method: :delete, data: { tooltip: t('.destroy'), confirm: t('.confirm') }, class: 'ui mini circular icon button' do %>
+          <i class="fas fa-trash-alt"></i>
+        <% end %>
+      </td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
