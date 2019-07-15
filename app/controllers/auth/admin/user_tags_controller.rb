@@ -31,6 +31,8 @@ class Auth::Admin::UserTagsController < Auth::Admin::BaseController
   end
 
   def show
+    user_ids = @user_tag.user_taggeds.pluck(:user_id)
+    @users = User.default_where(id: user_ids)
   end
 
   def edit

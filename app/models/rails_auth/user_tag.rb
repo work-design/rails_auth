@@ -5,7 +5,6 @@ module RailsAuth::UserTag
     attribute :user_taggeds_count, :integer, default: 0
     
     has_many :user_taggeds, dependent: :destroy
-    has_many :users, through: :user_taggeds
   end
   
 end
