@@ -7,7 +7,7 @@ module RailsAuth::Account::MobileAccount
   end
 
   def reset_notice
-    puts "sends sms here"
+    puts 'sends sms here'
   end
 
 end
