@@ -94,6 +94,7 @@ class Auth::SignController < Auth::BaseController
         flash.now[:error] = body[:message]
         if body[:logined]
           redirect_to session[:return_to] || RailsAuth.config.default_return_path, notice: t('.success')
+          session[:return_to] = nil
         else
           render 'login'
         end
@@ -113,7 +114,6 @@ class Auth::SignController < Auth::BaseController
         end
       end
     end
-    session[:return_to] = nil
   end
 
   def logout

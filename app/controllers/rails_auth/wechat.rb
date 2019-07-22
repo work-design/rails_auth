@@ -23,8 +23,8 @@ module RailsAuth::Wechat
   end
 
   def current_wechat_user
-    return unless session[:wechat_uid]
-    @current_wechat_user ||= WechatUser.find_by(uid: session[:wechat_uid])
+    return unless session[:oauth_uid]
+    @current_wechat_user ||= WechatUser.find_by(uid: session[:oauth_uid])
   end
 
   # 需要微信授权获取openid, 但并不需要注册为用户
