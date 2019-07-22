@@ -41,7 +41,7 @@ module RailsAuth::Account
     if params[:token]
       if authenticate_by_token(params[:token])
         if user.nil?
-          join(params)
+          return join(params)
         else
           return user
         end
@@ -89,6 +89,8 @@ module RailsAuth::Account
       user.save
       self.save
     end
+    
+    user
   end
 
   def verify_token
