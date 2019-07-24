@@ -3,7 +3,7 @@ module RailsAuth::Controller
   extend ActiveSupport::Concern
 
   included do
-    helper_method :current_user
+    helper_method :current_user, :current_account
     after_action :set_auth_token
   end
 
