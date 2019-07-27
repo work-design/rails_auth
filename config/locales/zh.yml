@@ -46,6 +46,13 @@ zh:
       oauth_user:
         type:
           WechatUser: 微信用户
+          GithubUser: Github User
+          FacebookUser: Facebook User
+        provider:
+          github: Github
+          facebook: Factbook
+          developer: Developer
+          wechat: 微信
       user:
         locale:
           zh: 中文
