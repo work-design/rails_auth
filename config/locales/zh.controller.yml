@@ -27,6 +27,7 @@ zh:
         body: 包含重置密码链接的信息已发往：
         home: 首页
     my:
+      title: 用户
       users:
         show:
           title: 基本信息
