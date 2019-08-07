@@ -3,7 +3,7 @@
   <tr>
     <th class="three wide">
       <%= form_tag my_user_path, method: :patch, id: 'edit_user' %>
-      <%= link_to t('.back'), my_user_path, class: 'ui mini blue right floated button' %>
+      <%= link_to t('.back'), my_user_path, class: 'ui mini right floated button' %>
     </th>
     <th></th>
   </tr>
@@ -32,7 +32,6 @@
     <td></td>
     <td>
       <%= submit_tag t('.save'), form: 'edit_user', class: 'ui blue button' %>
-      <%= link_to t('.back'), my_user_path, class: 'ui gray button' %>
     </td>
   </tr>
   </tbody>

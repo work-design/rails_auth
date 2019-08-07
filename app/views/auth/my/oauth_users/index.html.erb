@@ -1,12 +1,4 @@
-<div class="ui top attached borderless menu">
-  <div class="item header">我的账号</div>
-  <div class="right menu">
-    <div class="item">
-    </div>
-  </div>
-</div>
-
-<table class="ui bottom attached selectable table">
+<table class="ui very basic table">
   <tbody>
   <% @oauth_users.each do |oauth_user| %>
     <tr>
@@ -19,8 +11,8 @@
       </td>
       <td><%= oauth_user.account&.identity %></td>
       <td class="ui labels">
-        <%= link_to '解绑', my_oauth_user_path(oauth_user), method: :delete, data: { confirm: t('.confirm') }, class: 'ui yellow label' %>
-        <%= link_to 'update token', "/auth/#{oauth_user.provider}", class: 'ui blue label' %>
+        <%= link_to t('.unbind'), my_oauth_user_path(oauth_user), method: :delete, data: { confirm: t('.confirm') }, class: 'ui yellow label' %>
+        <%= link_to t('.update_token'), "/auth/#{oauth_user.provider}", class: 'ui blue label' %>
       </td>
     </tr>
   <% end %>
@@ -29,7 +21,7 @@
       <td><%= provider %></td>
       <td colspan="2"></td>
       <td class="ui labels">
-        <%= link_to '绑定', "/auth/#{provider}", class: 'ui blue label' %>
+        <%= link_to t('.bind'), "/auth/#{provider}", class: 'ui blue label' %>
       </td>
     </tr>
   <% end %>

@@ -31,6 +31,8 @@ zh:
       users:
         show:
           title: 基本信息
+        edit:
+          title: 编辑基本信息
         update:
           saved: 资料已保存！
       accounts:
@@ -42,6 +44,9 @@ zh:
       oauth_users:
         index:
           title: 第三方登陆
+          bind: 绑定
+          unbind: 解绑
+          update_token: 重新绑定
     admin:
       title: 用户管理
       users:

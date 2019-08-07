@@ -9,7 +9,6 @@ class Auth::My::UsersController < Auth::My::BaseController
 
   def update
     @user.assign_attributes user_params
-    flash[:notice] = 'User was successfully updated.'
   
     respond_to do |format|
       if @user.save
