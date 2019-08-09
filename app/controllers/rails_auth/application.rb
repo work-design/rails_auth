@@ -1,5 +1,5 @@
 require 'jwt'
-module RailsAuth::Controller
+module RailsAuth::Application
   extend ActiveSupport::Concern
 
   included do
@@ -9,14 +9,12 @@ module RailsAuth::Controller
 
   def current_user
     return @current_user if defined?(@current_user)
-    @current_user, _ = login_from_token
-    @current_user
+    @current_user = current_access_token&.user
   end
 
   def current_account
     return @current_account if defined?(@current_account)
-    _, @current_account = login_from_token
-    @current_account
+    @current_account = current_access_token&.account
   end
 
   def require_login(js_template: RailsAuth::Engine.root + 'app/views/auth/login/new.js.erb', return_to: nil)
@@ -41,25 +39,20 @@ module RailsAuth::Controller
     end
   end
 
-  def login_from_token
+  def current_access_token
+    return @current_access_token if defined?(@current_access_token)
+    
     if request.headers['Authorization']
       auth_token = request.headers['Authorization']&.split(' ').last.presence
     else
       auth_token = request.headers['Auth-Token'].presence || session[:auth_token]
     end
-
     return unless auth_token
 
     if verify_auth_token(auth_token)
-      token = AccessToken.find_by(token: auth_token)
-      if token
-        token.increment! :access_counter, 1 if RailsAuth.config.enable_access_counter
-        @current_user = token.user
-        @current_account = token.account
-        [@current_user, @current_account]
-      else
-        [nil, nil]
-      end
+      @current_access_token = AccessToken.find_by(token: auth_token)
+      @current_access_token.increment! :access_counter, 1 if RailsAuth.config.enable_access_counter if @current_access_token
+      @current_access_token
     end
   end
 
@@ -85,10 +78,6 @@ module RailsAuth::Controller
   end
 
   def login_by_account(account)
-    unless api_request?
-      session[:auth_token] = account.auth_token
-    end
-  
     if params[:uid].present?
       oauth_user = OauthUser.find_by uid: params[:uid]
     elsif params[:oauth_user_id].present?
@@ -112,11 +101,9 @@ module RailsAuth::Controller
   private
   def set_auth_token
     return unless @current_account
-    if api_request?
-      headers['Auth-Token'] = @current_account.auth_token
-    else
-      session[:auth_token] = @current_account.auth_token
-    end
+    
+    headers['Auth-Token'] = @current_account.auth_token
+    session[:auth_token] = @current_account.auth_token
   end
 
   def verify_auth_token(auth_token)
@@ -130,10 +117,6 @@ module RailsAuth::Controller
       session.delete :auth_token
       logger.debug e.full_message(highlight: true, order: :top)
     end
-  end
-
-  def api_request?
-    request.headers['Auth-Token'].present? || request.format.json?
   end
 
 end
