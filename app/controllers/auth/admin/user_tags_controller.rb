@@ -71,7 +71,7 @@ class Auth::Admin::UserTagsController < Auth::Admin::BaseController
       :name,
       :tagging_type
     )
-    p.merge! default_params
+    p.merge! default_form_params
   end
 
 end
