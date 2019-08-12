@@ -40,7 +40,7 @@ Rails.application.routes.draw do
     resources :user_tags
   end
 
-  scope :my, module: 'auth/my', as: 'my' do
+  scope :my, module: 'auth/mine', as: 'my' do
     resource :user
     resources :accounts do
       member do

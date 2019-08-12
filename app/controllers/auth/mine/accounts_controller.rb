@@ -1,4 +1,4 @@
-class Auth::My::AccountsController < Auth::My::BaseController
+class Auth::Mine::AccountsController < Auth::Mine::BaseController
   before_action :set_account, only: [:edit, :update, :edit_confirm, :update_confirm, :destroy]
 
   def index
