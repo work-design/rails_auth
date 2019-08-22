@@ -6,8 +6,7 @@
     <meta name="keywords" content="<%= yield(:meta_keywords) %>" />
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= css_load media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
     <%= js_ready 'data-turbolinks-track': 'reload' %>
     <%= csrf_meta_tags %>
     <%= action_cable_meta_tag %>
@@ -25,6 +24,6 @@
     <%= render 'footer' %>
     <div id="modal"></div>
     <%= js_load %>
-    <%= javascript_include_tag 'footer' %>
+    <%= javascript_pack_tag 'footer' %>
   </body>
 </html>
