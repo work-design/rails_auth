@@ -1,5 +1,3 @@
-
-
 const data = [
   { genre: 'Sports', sold: 275 },
   { genre: 'Strategy', sold: 1150 },

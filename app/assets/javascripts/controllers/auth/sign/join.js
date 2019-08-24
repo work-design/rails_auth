@@ -1,1 +1,1 @@
-//= require ./login
+import './login'
