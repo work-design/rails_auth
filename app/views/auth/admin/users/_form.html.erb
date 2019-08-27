@@ -3,7 +3,7 @@
   <%= f.fields :accounts do |ef| %>
     <%= ef.text_field :identity %>
   <% end %>
-  <%= f.file_field :avatar %>
+  <%= f.file_field :avatar, direct_upload: true %>
   <%= render 'active_storage_ext/attachments/list_field', target: @user.avatar %>
   <%= f.text_field :password %>
   <%= f.check_box :disabled %>
