@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class Auth::My::AccountsControllerTest < ActionDispatch::IntegrationTest
+class Auth::Mine::AccountsControllerTest < ActionDispatch::IntegrationTest
   setup do
     @auth_my_account = auth_my_accounts(:one)
   end

@@ -1,10 +1,8 @@
 require 'test_helper'
 
-class Auth::My::UsersControllerTest < ActionDispatch::IntegrationTest
+class Auth::Mine::UsersControllerTest < ActionDispatch::IntegrationTest
 
   setup do
-    User.include RailsAuthUser
-
     @user = create :user
     post '/login', params: { account: @user.email, password: @user.password }
     follow_redirect!
