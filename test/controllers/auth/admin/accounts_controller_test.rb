@@ -21,7 +21,7 @@ class Auth::Admin::AccountsControllerTest < ActionDispatch::IntegrationTest
       post admin_accounts_url, params: {  }
     end
 
-    assert_redirected_to auth_admin_account_url(Account.last)
+    assert_redirected_to admin_account_url(Account.last)
   end
 
   test 'show ok' do
@@ -36,7 +36,7 @@ class Auth::Admin::AccountsControllerTest < ActionDispatch::IntegrationTest
 
   test 'update ok' do
     patch admin_account_url(@account), params: {  }
-    assert_redirected_to auth_admin_account_url(@account)
+    assert_redirected_to admin_account_url(@account)
   end
 
   test 'destroy ok' do
