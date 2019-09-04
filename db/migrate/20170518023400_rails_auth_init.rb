@@ -25,7 +25,7 @@ class RailsAuthInit < ActiveRecord::Migration[5.1]
     create_table :verify_tokens do |t|
       t.references :user
       t.references :account
-      t.string :type, limit: 100
+      t.string :type
       t.string :token
       t.datetime :expire_at
       t.string :identity

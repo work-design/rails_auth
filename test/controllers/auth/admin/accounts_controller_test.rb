@@ -1,6 +1,7 @@
 require 'test_helper'
 
 class Auth::Admin::AccountsControllerTest < ActionDispatch::IntegrationTest
+  
   setup do
     @account = create :account
   end

@@ -3,8 +3,6 @@ require 'test_helper'
 class Auth::JoinControllerTest < ActionDispatch::IntegrationTest
 
   setup do
-    ApplicationController.include RailsAuthController
-    User.include RailsAuthUser
   end
 
   test 'new ok' do

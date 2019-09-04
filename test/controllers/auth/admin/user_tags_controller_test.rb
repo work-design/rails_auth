@@ -1,6 +1,7 @@
 require 'test_helper'
 
 class Auth::Admin::UserTagsControllerTest < ActionDispatch::IntegrationTest
+  
   setup do
     @user_tag = create :user_tag
   end

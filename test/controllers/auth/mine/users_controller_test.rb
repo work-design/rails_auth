@@ -4,7 +4,7 @@ class Auth::Mine::UsersControllerTest < ActionDispatch::IntegrationTest
 
   setup do
     @user = create :user
-    post '/login', params: { account: @user.email, password: @user.password }
+    post '/login', params: { identity: @user.email, password: @user.password }
     follow_redirect!
   end
 
