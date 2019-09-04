@@ -38,6 +38,7 @@ module RailsAuth::Account
   end
 
   def can_login?(params = {})
+    self.errors.clear
     if params[:token]
       if authenticate_by_token(params[:token])
         if user.nil?
@@ -51,10 +52,14 @@ module RailsAuth::Account
     end
     
     if user.nil?
+      errors.add :base, :join_first
       return false
     end
 
     unless user.can_login?(params)
+      user.errors.details[:base].each do |err|
+        self.errors.add :base, err[:error]
+      end
       return false
     end
     

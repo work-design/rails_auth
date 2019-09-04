@@ -61,18 +61,22 @@ module RailsAuth::User
   ##
   # pass login params to this method;
   def can_login?(params)
-    if restrictive?
-      errors.add :base, :account_disable
+    if params[:password].blank?
+      errors.add :base, :password_blank
+      return false
+    end
+    
+    if password_digest.blank?
+      errors.add :base, :password_reject
+    end
+    
+    unless authenticate(params[:password])
+      errors.add :base, :wrong_name_or_password
       return false
     end
 
-    if params[:password].present? && password_digest?
-      unless authenticate(params[:password])
-        errors.add :base, :wrong_name_or_password
-        return false
-      end
-    else
-      errors.add :base, :token_blank
+    if restrictive?
+      errors.add :base, :account_disable
       return false
     end
     
