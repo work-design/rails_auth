@@ -20,10 +20,9 @@ class Auth::Admin::UsersController < Auth::Admin::BaseController
 
   def create
     @user = User.new(user_params)
-    if @user.join(params)
-      redirect_to admin_users_url
-    else
-      render :new
+
+    unless @user.join(params)
+      render :new, locals: { model: @user }, status: :unprocessable_entity
     end
   end
 

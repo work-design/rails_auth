@@ -14,18 +14,8 @@ class Auth::Admin::AccountsController < Auth::Admin::BaseController
   def create
     @account = Account.new(account_params)
 
-    respond_to do |format|
-      if @account.save
-        format.html.phone
-        format.html { redirect_to admin_accounts_url }
-        format.js { redirect_back fallback_location: admin_accounts_url }
-        format.json { render :show }
-      else
-        format.html.phone { render :new }
-        format.html { render :new }
-        format.js { redirect_back fallback_location: admin_accounts_url }
-        format.json { render :show }
-      end
+    unless @account.save
+      render :new, locals: { model: @account }, status: :unprocessable_entity
     end
   end
 

@@ -15,18 +15,8 @@ class Auth::Admin::UserTagsController < Auth::Admin::BaseController
   def create
     @user_tag = UserTag.new(user_tag_params)
 
-    respond_to do |format|
-      if @user_tag.save
-        format.html.phone
-        format.html { redirect_to admin_user_tags_url }
-        format.js { redirect_back fallback_location: admin_user_tags_url }
-        format.json { render :show }
-      else
-        format.html.phone { render :new }
-        format.html { render :new }
-        format.js { redirect_back fallback_location: admin_user_tags_url }
-        format.json { render :show }
-      end
+    unless @user_tag.save
+      render :new, locals: { model: @user_tag }, status: :unprocessable_entity
     end
   end
 
