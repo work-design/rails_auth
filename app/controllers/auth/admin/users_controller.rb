@@ -33,14 +33,10 @@ class Auth::Admin::UsersController < Auth::Admin::BaseController
   end
 
   def update
-    respond_to do |format|
-      if @user.update(user_params)
-        format.js { redirect_to admin_users_url }
-        format.html { redirect_to admin_users_url }
-      else
-        format.js { head :no_content }
-        format.html { render :edit }
-      end
+    @user.assign_attributes user_params
+
+    unless @user.save
+      render :edit, locals: { model: @user }, status: :unprocessable_entity
     end
   end
 
@@ -62,7 +58,6 @@ class Auth::Admin::UsersController < Auth::Admin::BaseController
 
   def destroy
     @user.destroy
-    redirect_to admin_users_url
   end
 
   private
