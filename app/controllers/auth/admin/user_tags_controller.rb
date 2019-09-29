@@ -31,24 +31,13 @@ class Auth::Admin::UserTagsController < Auth::Admin::BaseController
   def update
     @user_tag.assign_attributes(user_tag_params)
 
-    respond_to do |format|
-      if @user_tag.save
-        format.html.phone
-        format.html { redirect_to admin_user_tags_url }
-        format.js { redirect_back fallback_location: admin_user_tags_url }
-        format.json { render :show }
-      else
-        format.html.phone { render :edit }
-        format.html { render :edit }
-        format.js { redirect_back fallback_location: admin_user_tags_url }
-        format.json { render :show }
-      end
+    unless @user_tag.save
+      render :edit, locals: { model: @user_tag }, status: :unprocessable_entity
     end
   end
 
   def destroy
     @user_tag.destroy
-    redirect_to admin_user_tags_url
   end
 
   private

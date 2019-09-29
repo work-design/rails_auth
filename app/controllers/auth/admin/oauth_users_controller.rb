@@ -3,7 +3,7 @@ class Auth::Admin::OauthUsersController < Auth::Admin::BaseController
 
   def index
     q_params = {}
-    q_params.merge! app_id: current_organ.wechat_apps.pluck(:appid) if current_organ
+    q_params.merge! app_id: current_organ.wechat_apps.pluck(:appid) if defined?(:current_organ) && current_organ
     q_params.merge! params.permit(:user_id, :uid, :app_id, :name)
     @oauth_users = OauthUser.default_where(q_params).order(id: :desc).page(params[:page])
   end
@@ -12,16 +12,15 @@ class Auth::Admin::OauthUsersController < Auth::Admin::BaseController
   end
 
   def update
-    if @oauth_user.update(oauth_user_params)
-      redirect_to @oauth_user
-    else
-      render head: :no_content
+    @oauth_user.assign_attributes(oauth_user_params)
+    
+    unless @oauth_user.save
+      render :edit, locals: { model: @oauth_user }, status: :unprocessable_entity
     end
   end
 
   def destroy
     @oauth_user.destroy
-    redirect_to admin_oauth_users_url(user_id: @oauth_user.user_id)
   end
 
   private
