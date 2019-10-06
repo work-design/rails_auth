@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class RailsAuthUserTest < ActiveSupport::TestCase
+class UserTest < ActiveSupport::TestCase
 
   test 'clear_reset_token!' do
     user = create :user
