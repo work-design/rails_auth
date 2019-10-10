@@ -1,6 +1,6 @@
 // todo add identity in location
 document.getElementById('mobile_confirm').addEventListener('click', function(e){
-  var identity = document.getElementById('identity').value;
+  var identity = document.getElementsByName('identity')[0].value;
   if (/.+/.test(identity)) {
     var countdown = 60;
     var link = new URL(this.href);
