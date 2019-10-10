@@ -16,10 +16,9 @@ class Auth::JoinControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'create ok' do
-    create :email_token, identity: 'test@work.design', token: '111111'
-    assert_difference('User.count') do
-      post join_url, params: { identity: 'test@work.design', password: '111111', token: '111111' }
-    end
+    create :account
+    post login_url, params: { identity: 'test@work.design', password: '111111' }
+    assert_response 302
   end
   
   test 'logout ok' do

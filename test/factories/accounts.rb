@@ -1,8 +1,9 @@
 FactoryBot.define do
   
   factory :account do
-    user_id { 1 }
-    identity { "MyString" }
+    user
+    type { 'EmailAccount' }
+    identity { 'test@work.design' }
     confirmed { false }
     primary { false }
   end
