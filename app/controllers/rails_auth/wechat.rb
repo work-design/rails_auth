@@ -7,8 +7,8 @@ module RailsAuth::Wechat
     return super unless request.variant.any?(:wechat)
     store_location(return_to)
 
-    if current_wechat_user && current_wechat_user.user.nil?
-      redirect_url = sign_url(uid: current_wechat_user.uid)
+    if current_oauth_user && current_oauth_user.user.nil?
+      redirect_url = sign_url(uid: current_oauth_user.uid)
     else
       redirect_url = '/auth/wechat'
     end
@@ -22,14 +22,14 @@ module RailsAuth::Wechat
     end
   end
 
-  def current_wechat_user
-    return unless session[:oauth_uid]
-    @current_wechat_user ||= WechatUser.find_by(uid: session[:oauth_uid])
+  def current_oauth_user
+    return @current_oauth_user if defined?(@current_oauth_user)
+    @current_oauth_user = current_access_token&.oauth_user
   end
 
   # 需要微信授权获取openid, 但并不需要注册为用户
   def require_wechat_user(return_to: nil)
-    return if current_wechat_user
+    return if current_oauth_user
     store_location(return_to)
     
     redirect_url = '/auth/wechat?skip_register=true'

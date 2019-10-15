@@ -39,7 +39,7 @@ module RailsAuth::AccessToken
     elsif oauth_user
       xbb = [oauth_user_id, oauth_user.xx]
     elsif account
-      xbb = [account_id, account.xx]
+      xbb = [account_id, account.identity]
     else
       xbb = []
     end

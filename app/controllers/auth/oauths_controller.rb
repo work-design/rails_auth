@@ -2,7 +2,6 @@ class Auth::OauthsController < Auth::BaseController
   skip_before_action :verify_authenticity_token
 
   def create
-    session[:oauth_uid] = oauth_params['uid']
     type = (oauth_params[:provider].to_s + '_user').classify
 
     @oauth_user = OauthUser.find_or_initialize_by(type: type, uid: oauth_params[:uid])
@@ -37,7 +36,7 @@ class Auth::OauthsController < Auth::BaseController
     oauth_user.user.update(last_login_at: Time.now)
   
     logger.debug "Login by oauth user as user: #{oauth_user.user_id}"
-    @current_wechat_user = oauth_user
+    @current_oauth_user = oauth_user
     @current_user = oauth_user.user
   end
 
