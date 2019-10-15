@@ -17,26 +17,23 @@ module RailsAuth::Application
     @current_account = current_authorized_token&.account
   end
 
-  def require_login(js_template: RailsAuth::Engine.root + 'app/views/auth/login/new.js.erb', return_to: nil)
+  def require_user(return_to: nil)
     return if current_user
+    store_location(return_to)
+    binding.pry
+    # if params[:form_id]
+    #   redirect_to sign_url(form_id: params[:form_id], identity: params[:identity])
+    # else
+    #   redirect_to sign_url(identity: params[:identity])
+    # end
+    
+    render json: { message: '请登录后操作' }, status: 401
+  end
+  
+  def require_authorized_token
+    return if current_authorized_token
 
-    respond_to do |format|
-      format.html {
-        store_location(return_to)
-
-        if params[:form_id]
-          redirect_to sign_url(form_id: params[:form_id], identity: params[:identity])
-        else
-          redirect_to sign_url(identity: params[:identity])
-        end
-      }
-      format.js {
-        render file: js_template and return
-      }
-      format.json do
-        render json: { message: '请登录后操作' }, status: 401
-      end
-    end
+    render json: { message: '请登录后操作' }, status: 401
   end
 
   def current_authorized_token
