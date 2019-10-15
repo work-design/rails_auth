@@ -38,15 +38,19 @@ module RailsAuth::AuthorizedToken
   def generate_token
     if user
       xbb = [user_id, user.password_digest]
+      options = { sub: 'User', column: 'password_digest' }
     elsif oauth_user
       xbb = [oauth_user_id, oauth_user.access_token]
+      options = { sub: 'OauthUser', column: 'access_token' }
     elsif account
       xbb = [account_id, account.identity]
+      options = { sub: 'Account', column: 'identity' }
     else
       xbb = []
+      options = {}
     end
     
-    JwtHelper.generate_jwt_token(*xbb, sub: 'auth', exp: expire_at.to_i)
+    JwtHelper.generate_jwt_token(*xbb, exp: expire_at.to_i, **options)
   end
 
 end

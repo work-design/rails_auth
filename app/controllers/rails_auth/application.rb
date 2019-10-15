@@ -108,7 +108,7 @@ module RailsAuth::Application
     return unless payload
 
     begin
-      key = payload['sub'].constantize.find_by(id: payload['iss']).password_digest.to_s  # todo common password digest
+      key = payload['sub'].constantize.find_by(id: payload['iss']).send payload['column']
       JWT.decode(auth_token, key, true, 'sub' => payload['sub'], verify_sub: true, verify_expiration: false)
     rescue => e
       session.delete :auth_token
