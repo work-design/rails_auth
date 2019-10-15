@@ -5,10 +5,9 @@ module RailsAuth::VerifyToken::EmailToken
   end
   
   def update_token
-    self.identity ||= self.account.identity
-    self.user_id = self.account.user_id
     self.token = rand(10000..999999)
     self.expire_at = 10.minutes.since
+    super
     self
   end
 

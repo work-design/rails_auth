@@ -5,8 +5,9 @@ module RailsAuth::VerifyToken
   extend ActiveSupport::Concern
 
   included do
-    belongs_to :account
+    belongs_to :account, optional: true
     belongs_to :user, optional: true
+    belongs_to :oauth_user, optional: true
 
     scope :valid, -> { where('expire_at >= ?', Time.now).order(access_counter: :asc) }
     validates :token, presence: true
@@ -14,8 +15,13 @@ module RailsAuth::VerifyToken
   end
 
   def update_token
-    self.token = SecureRandom.uuid
-    self.expire_at = 14.days.since
+    if account
+      self.user_id = self.account.user_id
+      self.identity ||= self.account.identity
+    end
+    
+    self.token ||= SecureRandom.uuid
+    self.expire_at ||= 14.days.since
     self
   end
 
