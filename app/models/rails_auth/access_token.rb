@@ -9,6 +9,7 @@ module RailsAuth::AccessToken
   included do
     belongs_to :user, optional: true
     belongs_to :oauth_user, optional: true
+    belongs_to :account, optional: true
 
     scope :valid, -> { where('expire_at >= ?', Time.now).order(access_counter: :asc) }
     validates :token, presence: true
@@ -27,9 +28,23 @@ module RailsAuth::AccessToken
   
   def update_token
     self.expire_at = 1.weeks.since
-    self.token = user.generate_auth_token(sub: 'auth', exp: expire_at.to_i)
+    self.token = xx
     super
     self
+  end
+  
+  def xx
+    if user
+      xbb = [user_id, user.password_digest]
+    elsif oauth_user
+      xbb = [oauth_user_id, oauth_user.xx]
+    elsif account
+      xbb = [account_id, account.xx]
+    else
+      xbb = []
+    end
+    
+    JwtHelper.generate_jwt_token(*xbb, sub: 'auth', exp: expire_at.to_i)
   end
 
 end
