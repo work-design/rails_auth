@@ -3,13 +3,15 @@ module RailsAuth::OauthUser
 
   included do
     attribute :refresh_token, :string
-
+    attribute :access_token, :string
+    attribute :refresh_token, :string
+    
     belongs_to :account, optional: true
     belongs_to :user, autosave: true, optional: true
     has_one :same_oauth_user, -> (o){ where.not(id: o.id, unionid: nil, user_id: nil) }, class_name: self.name, foreign_key: :unionid, primary_key: :unionid
     has_many :same_oauth_users, -> (o){ where.not(id: o.id, unionid: nil) }, class_name: self.name, foreign_key: :unionid, primary_key: :unionid
-    has_one :access_token, -> { valid }
-    has_many :access_tokens, dependent: :delete_all
+    has_one :authorized_token, -> { valid }
+    has_many :authorized_tokens, dependent: :delete_all
     
     validates :provider, presence: true
     validates :uid, presence: true, uniqueness: { scope: :provider }
@@ -31,19 +33,19 @@ module RailsAuth::OauthUser
     JwtHelper.generate_jwt_token(id, password_digest, options)
   end
 
-  def access_token
+  def authorized_token
     if super
       super
     else
-      AccessToken.transaction do
-        self.access_tokens.delete_all
-        create_access_token
+      AuthorizedToken.transaction do
+        self.authorized_tokens.delete_all
+        create_authorized_token
       end
     end
   end
 
   def auth_token
-    access_token.token
+    authorized_token.token
   end
 
   def refresh_token!

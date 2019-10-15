@@ -15,7 +15,7 @@ module RailsAuth::User
 
     validates :password, confirmation: true, length: { in: 6..72 }, allow_blank: true
 
-    has_many :access_tokens, dependent: :delete_all
+    has_many :authorized_tokens, dependent: :delete_all
     has_many :verify_tokens, autosave: true, dependent: :delete_all
     has_many :oauth_users, dependent: :nullify
     has_many :accounts, dependent: :nullify
@@ -26,11 +26,11 @@ module RailsAuth::User
     
     has_one_attached :avatar
 
-    before_save :invalid_access_token, if: -> { password_digest_changed? }
+    before_save :invalid_authorized_token, if: -> { password_digest_changed? }
   end
 
   def auth_tokens
-    access_tokens.pluck(:token)
+    authorized_tokens.pluck(:token)
   end
 
   def join(params = {})
@@ -88,8 +88,8 @@ module RailsAuth::User
     ::OauthUser.options_i18n(:provider).values.map(&:to_s) - oauth_providers
   end
 
-  def invalid_access_token
-    self.access_tokens.delete_all
+  def invalid_authorized_token
+    self.authorized_tokens.delete_all
   end
   
   def account_identities

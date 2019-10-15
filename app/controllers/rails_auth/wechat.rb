@@ -24,7 +24,7 @@ module RailsAuth::Wechat
 
   def current_oauth_user
     return @current_oauth_user if defined?(@current_oauth_user)
-    @current_oauth_user = current_access_token&.oauth_user
+    @current_oauth_user = current_authorized_token&.oauth_user
   end
 
   # 需要微信授权获取openid, 但并不需要注册为用户

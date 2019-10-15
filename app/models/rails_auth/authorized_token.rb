@@ -4,7 +4,7 @@
 # this not docs
 #++
 # test
-module RailsAuth::AccessToken
+module RailsAuth::AuthorizedToken
   extend ActiveSupport::Concern
   included do
     belongs_to :user, optional: true

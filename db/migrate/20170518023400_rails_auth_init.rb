@@ -33,7 +33,7 @@ class RailsAuthInit < ActiveRecord::Migration[5.1]
       t.timestamps
     end
     
-    create_table :access_tokens do |t|
+    create_table :authorized_tokens do |t|
       t.references :user
       t.references :oauth_user
       t.string :token

@@ -9,12 +9,12 @@ module RailsAuth::Application
 
   def current_user
     return @current_user if defined?(@current_user)
-    @current_user = current_access_token&.user
+    @current_user = current_authorized_token&.user
   end
 
   def current_account
     return @current_account if defined?(@current_account)
-    @current_account = current_access_token&.account
+    @current_account = current_authorized_token&.account
   end
 
   def require_login(js_template: RailsAuth::Engine.root + 'app/views/auth/login/new.js.erb', return_to: nil)
@@ -39,8 +39,8 @@ module RailsAuth::Application
     end
   end
 
-  def current_access_token
-    return @current_access_token if defined?(@current_access_token)
+  def current_authorized_token
+    return @current_authorized_token if defined?(@current_authorized_token)
     
     if request.headers['Authorization']
       auth_token = request.headers['Authorization']&.split(' ').last.presence
@@ -50,9 +50,9 @@ module RailsAuth::Application
     return unless auth_token
 
     if verify_auth_token(auth_token)
-      @current_access_token = AccessToken.find_by(token: auth_token)
-      @current_access_token.increment! :access_counter, 1 if RailsAuth.config.enable_access_counter if @current_access_token
-      @current_access_token
+      @current_authorized_token = AuthorizedToken.find_by(token: auth_token)
+      @current_authorized_token.increment! :access_counter, 1 if RailsAuth.config.enable_access_counter if @current_authorized_token
+      @current_authorized_token
     end
   end
 

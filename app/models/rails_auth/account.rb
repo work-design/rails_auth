@@ -3,8 +3,8 @@ module RailsAuth::Account
 
   included do
     belongs_to :user, optional: true
-    has_one :access_token, -> { valid }
-    has_many :access_tokens, dependent: :delete_all
+    has_one :authorized_token, -> { valid }
+    has_many :authorized_tokens, dependent: :delete_all
     has_many :verify_tokens, dependent: :delete_all
     has_many :oauth_users, dependent: :nullify
     
@@ -107,19 +107,19 @@ module RailsAuth::Account
     end
   end
 
-  def access_token
+  def authorized_token
     if super
       super
     else
-      AccessToken.transaction do
-        self.access_tokens.delete_all
-        create_access_token
+      AuthorizedToken.transaction do
+        self.authorized_tokens.delete_all
+        create_authorized_token
       end
     end
   end
 
   def auth_token
-    access_token.token
+    authorized_token.token
   end
   
   def reset_notice
