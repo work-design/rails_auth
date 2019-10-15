@@ -10,7 +10,7 @@ class Auth::PasswordController < Auth::BaseController
   end
 
   def edit
-    reset_token = ResetToken.find_by(token: params[:token])
+    reset_token = AccessToken.find_by(token: params[:token])
 
     if reset_token
       if reset_token.verify_token?
@@ -51,10 +51,8 @@ class Auth::PasswordController < Auth::BaseController
     end
   end
 
-
-
   def update
-    reset_token = ResetToken.find_by(token: params[:token])
+    reset_token = AccessToken.find_by(token: params[:token])
     @user = reset_token.user
 
     User.transaction do

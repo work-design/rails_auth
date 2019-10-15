@@ -25,11 +25,19 @@ class RailsAuthInit < ActiveRecord::Migration[5.1]
     create_table :verify_tokens do |t|
       t.references :user
       t.references :account
-      t.references :oauth_user
       t.string :type
       t.string :token
       t.datetime :expire_at
       t.string :identity
+      t.integer :access_counter, default: 0
+      t.timestamps
+    end
+    
+    create_table :access_tokens do |t|
+      t.references :user
+      t.references :oauth_user
+      t.string :token
+      t.datetime :expire_at
       t.integer :access_counter, default: 0
       t.timestamps
     end
