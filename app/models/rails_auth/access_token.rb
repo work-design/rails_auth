@@ -27,17 +27,19 @@ module RailsAuth::AccessToken
   end
   
   def update_token
+    if account
+      self.user_id = self.account.user_id
+    end
     self.expire_at = 1.weeks.since
-    self.token = xx
-    super
+    self.token = generate_token
     self
   end
   
-  def xx
+  def generate_token
     if user
       xbb = [user_id, user.password_digest]
     elsif oauth_user
-      xbb = [oauth_user_id, oauth_user.xx]
+      xbb = [oauth_user_id, oauth_user.access_token]
     elsif account
       xbb = [account_id, account.identity]
     else
