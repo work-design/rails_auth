@@ -17,6 +17,8 @@
 
 ## 如何使用
 
+* AccessToken 授权token
+* VerifyToken 验证Token
 
 ```ruby
 class ApplicationController < ActionController::Base

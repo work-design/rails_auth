@@ -8,6 +8,8 @@ module RailsAuth::OauthUser
     belongs_to :user, autosave: true, optional: true
     has_one :same_oauth_user, -> (o){ where.not(id: o.id, unionid: nil, user_id: nil) }, class_name: self.name, foreign_key: :unionid, primary_key: :unionid
     has_many :same_oauth_users, -> (o){ where.not(id: o.id, unionid: nil) }, class_name: self.name, foreign_key: :unionid, primary_key: :unionid
+    has_one :access_token, -> { valid }
+    has_many :access_tokens, dependent: :delete_all
     
     validates :provider, presence: true
     validates :uid, presence: true, uniqueness: { scope: :provider }
@@ -27,6 +29,21 @@ module RailsAuth::OauthUser
 
   def generate_auth_token(**options)
     JwtHelper.generate_jwt_token(id, password_digest, options)
+  end
+
+  def access_token
+    if super
+      super
+    else
+      AccessToken.transaction do
+        self.access_tokens.delete_all
+        create_access_token
+      end
+    end
+  end
+
+  def auth_token
+    access_token.token
   end
 
   def refresh_token!
