@@ -17,23 +17,29 @@ module RailsAuth::Application
     @current_account = current_authorized_token&.account
   end
 
-  def require_user(return_to: nil)
+  def require_login(return_to: nil)
     return if current_user
+    
+    if current_authorized_token
+      code = 'user'
+    else
+      code = 'authorized_token'
+    end
+    
     store_location(return_to)
-    binding.pry
     # if params[:form_id]
     #   redirect_to sign_url(form_id: params[:form_id], identity: params[:identity])
     # else
     #   redirect_to sign_url(identity: params[:identity])
     # end
     
-    render json: { message: '请登录后操作' }, status: 401
+    render json: { message: '请登录后操作', code: code }, status: 401
   end
   
   def require_authorized_token
     return if current_authorized_token
 
-    render json: { message: '请登录后操作' }, status: 401
+    render json: { message: '请登录后操作', scope: 'authorized_token' }, status: 401
   end
 
   def current_authorized_token
@@ -109,7 +115,7 @@ module RailsAuth::Application
 
     begin
       key = payload['sub'].constantize.find_by(id: payload['iss']).send payload['column']
-      JWT.decode(auth_token, key, true, 'sub' => payload['sub'], verify_sub: true, verify_expiration: false)
+      JWT.decode(auth_token, key.to_s, true, 'sub' => payload['sub'], verify_sub: true, verify_expiration: false)
     rescue => e
       session.delete :auth_token
       logger.debug e.full_message(highlight: true, order: :top)
