@@ -33,6 +33,7 @@ module RailsAuth::Account
   def sync_user
     self.oauth_users.update_all(user_id: self.user_id)
     self.verify_tokens.update_all(user_id: self.user_id)
+    self.authorized_tokens.update_all(user_id: self.user_id)
   end
 
   def can_login?(params = {})
