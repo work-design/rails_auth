@@ -33,19 +33,20 @@ module RailsAuth::OauthUser
     JwtHelper.generate_jwt_token(id, password_digest, options)
   end
 
-  def authorized_token
-    if super
-      super
-    else
+  def get_authorized_token(session_key = nil)
+    token = authorized_token
+    unless token
       AuthorizedToken.transaction do
         self.authorized_tokens.delete_all
-        create_authorized_token
+        token = create_authorized_token(session_key: session_key)
       end
     end
+    
+    token
   end
 
-  def auth_token
-    authorized_token.token
+  def auth_token(session_key = nil)
+    get_authorized_token(session_key).token
   end
 
   def refresh_token!
