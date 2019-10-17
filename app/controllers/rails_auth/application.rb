@@ -21,19 +21,18 @@ module RailsAuth::Application
     return if current_user
     
     if current_authorized_token
-      code = 'user'
+      @code = 'user'
     else
-      code = 'authorized_token'
+      @code = 'authorized_token'
     end
     
     store_location(return_to)
-    # if params[:form_id]
-    #   redirect_to sign_url(form_id: params[:form_id], identity: params[:identity])
-    # else
-    #   redirect_to sign_url(identity: params[:identity])
-    # end
-    
-    render json: { message: '请登录后操作', code: code }, status: 401
+
+    if request.format.html?
+      render 'require_login', layout: 'application', status: 401
+    else
+      render 'require_login', status: 401
+    end
   end
   
   def require_authorized_token
