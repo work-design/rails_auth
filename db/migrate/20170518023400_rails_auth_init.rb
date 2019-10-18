@@ -57,6 +57,7 @@ class RailsAuthInit < ActiveRecord::Migration[5.1]
       t.string :refresh_token
       t.string :app_id
       t.datetime :expires_at
+      t.jsonb :extra
       t.timestamps
     end
     
