@@ -19,14 +19,15 @@ module RailsAuth::Application
 
   def require_login(return_to: nil)
     return if current_user
-    
-    if current_authorized_token
-      @code = 'user'
+    store_location(return_to)
+
+    if current_authorized_token.oauth_user
+      @code = 'oauth_user'
+    elsif current_authorized_token.account
+      @code = 'account'
     else
       @code = 'authorized_token'
     end
-    
-    store_location(return_to)
 
     if request.format.html?
       render 'require_login', layout: 'application', status: 401
@@ -37,8 +38,9 @@ module RailsAuth::Application
   
   def require_authorized_token
     return if current_authorized_token
-
-    render json: { message: '请登录后操作', scope: 'authorized_token' }, status: 401
+    @code = 'authorized_token'
+    
+    render 'require_authorized_token', status: 401
   end
 
   def current_authorized_token
