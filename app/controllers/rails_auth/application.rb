@@ -21,9 +21,9 @@ module RailsAuth::Application
     return if current_user
     store_location(return_to)
 
-    if current_authorized_token.oauth_user
+    if current_authorized_token&.oauth_user
       @code = 'oauth_user'
-    elsif current_authorized_token.account
+    elsif current_authorized_token&.account
       @code = 'account'
     else
       @code = 'authorized_token'
