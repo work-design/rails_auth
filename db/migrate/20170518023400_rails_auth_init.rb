@@ -48,7 +48,7 @@ class RailsAuthInit < ActiveRecord::Migration[5.1]
       t.references :account
       t.string :provider
       t.string :type
-      t.string :uid, index: true
+      t.string :uid
       t.string :unionid, index: true
       t.string :name
       t.string :avatar_url
@@ -58,6 +58,7 @@ class RailsAuthInit < ActiveRecord::Migration[5.1]
       t.string :app_id
       t.datetime :expires_at
       t.jsonb :extra
+      t.index [:uid, :provider], unique: true
       t.timestamps
     end
     
