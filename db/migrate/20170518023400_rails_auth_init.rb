@@ -39,7 +39,9 @@ class RailsAuthInit < ActiveRecord::Migration[5.1]
       t.references :account
       t.string :token
       t.datetime :expire_at
+      t.string :session_key
       t.integer :access_counter, default: 0
+      t.index [:user_id, :oauth_user_id, :account_id, :token], unique: true, name: 'index_authorized_tokens_on_unique_token'
       t.timestamps
     end
 

@@ -39,7 +39,7 @@ module RailsAuth::OauthUser
     unless token
       AuthorizedToken.transaction do
         self.authorized_tokens.delete_all
-        token = create_authorized_token(session_key: session_key)
+        token = create_authorized_token!(session_key: session_key)
       end
     end
     
