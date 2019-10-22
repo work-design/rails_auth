@@ -17,6 +17,8 @@ class Auth::Admin::AccountsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'create ok' do
+    Account.delete_all
+    
     assert_difference('Account.count') do
       post admin_accounts_url, params: { account: { identity: 'test@work.design' } }, xhr: true
     end

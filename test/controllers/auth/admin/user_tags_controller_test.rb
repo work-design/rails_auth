@@ -21,7 +21,7 @@ class Auth::Admin::UserTagsControllerTest < ActionDispatch::IntegrationTest
       post admin_user_tags_url, params: { user_tag: { name: 'good' } }
     end
 
-    assert_redirected_to auth_admin_user_tag_url(UserTag.last)
+    assert_response :success
   end
 
   test 'show ok' do
@@ -36,7 +36,7 @@ class Auth::Admin::UserTagsControllerTest < ActionDispatch::IntegrationTest
 
   test 'update ok' do
     patch admin_user_tag_url(@user_tag), params: { user_tag: { name: 'good' } }
-    assert_redirected_to auth_admin_user_tag_url(@user_tag)
+    assert_response :success
   end
 
   test 'destroy ok' do
@@ -44,6 +44,7 @@ class Auth::Admin::UserTagsControllerTest < ActionDispatch::IntegrationTest
       delete admin_user_tag_url(@user_tag)
     end
 
-    assert_redirected_to admin_user_tags_url
+    assert_response :success
   end
+  
 end
