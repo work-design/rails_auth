@@ -1,7 +1,5 @@
 <%= render 'shared/error_messages', target: @account %>
-<%= f.text_field :user_id %>
-<%= f.text_field :type %>
 <%= f.text_field :identity %>
-<%= f.text_field :confirmed %>
-<%= f.text_field :primary %>
+<%= f.check_box :confirmed %>
+<%= f.check_box :primary %>
 <%= f.submit %>

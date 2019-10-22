@@ -2,7 +2,7 @@
   <thead>
     <tr>
       <th class="six wide">
-        <%= link_to t('.edit'), edit_admin_user_path, class: 'ui mini blue right floated button', remote: true %>
+        <%= link_to t('.edit'), edit_admin_user_path, remote: true, class: 'ui mini blue right floated button' %>
       </th>
       <th class="ten wide"></th>
     </tr>
@@ -14,7 +14,7 @@
     </tr>
     <tr>
       <td class="right aligned"><%= User.human_attribute_name(:avatar) %></td>
-      <td><%= image_tag @user.avatar, class: 'ui small image' %></td>
+      <td><%= image_tag @user.avatar, class: 'ui small image' if @user.avatar.present? %></td>
     </tr>
     <tr>
       <td class="right aligned"><%= User.human_attribute_name(:locale) %></td>

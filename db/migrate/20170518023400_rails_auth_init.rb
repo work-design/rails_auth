@@ -59,7 +59,11 @@ class RailsAuthInit < ActiveRecord::Migration[5.1]
       t.string :refresh_token
       t.string :app_id
       t.datetime :expires_at
-      t.jsonb :extra
+      if connection.adapter_name == 'PostgreSQL'
+        t.jsonb :extra
+      else
+        t.json :extra
+      end
       t.index [:uid, :provider], unique: true
       t.timestamps
     end

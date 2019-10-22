@@ -5,7 +5,7 @@ module RailsAuth::OauthUser
     attribute :refresh_token, :string
     attribute :access_token, :string
     attribute :refresh_token, :string
-    attribute :extra, :jsonb, default: {}
+    attribute :extra, :json, default: {}
     
     belongs_to :account, optional: true
     belongs_to :user, autosave: true, optional: true

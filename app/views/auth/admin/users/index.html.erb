@@ -32,7 +32,7 @@
   <% @users.each do |user| %>
     <tr>
       <td>
-        <%= link_to admin_user_path(user.id) do %>
+        <%= link_to admin_user_path(user.id), remote: true do %>
           <%= image_tag user.avatar, class: 'ui avatar image' if user.avatar.present? %>
           <%= user.name %>
         <% end %>
