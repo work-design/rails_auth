@@ -54,7 +54,7 @@ module RailsAuth::Application
     return unless auth_token
 
     if verify_auth_token(auth_token)
-      @current_authorized_token = AuthorizedToken.find_by(token: auth_token)
+      @current_authorized_token = ::AuthorizedToken.find_by(token: auth_token)
       @current_authorized_token.increment! :access_counter, 1 if RailsAuth.config.enable_access_counter if @current_authorized_token
       @current_authorized_token
     end

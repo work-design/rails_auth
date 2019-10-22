@@ -50,7 +50,6 @@ class Auth::Mine::AccountsController < Auth::Mine::BaseController
 
   def destroy
     @account.destroy
-    redirect_to my_accounts_url
   end
 
   private
