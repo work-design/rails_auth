@@ -24,7 +24,7 @@
       </td>
       <td>
         <% unless account.primary %>
-          <%= link_to my_account_path(account), method: :delete, data: { tooltip: t('.destroy'), confirm: '删除后此账号无法用于登陆' }, class: 'ui circular icon button' do %>
+          <%= link_to my_account_path(account), method: :delete, data: { tooltip: t('.destroy'), confirm: '删除后此账号无法用于登陆' }, remote: true, class: 'ui circular icon button' do %>
             <i class="fas fa-trash-alt"></i>
           <% end %>
         <% end %>
@@ -33,7 +33,7 @@
   <% end %>
   <tr>
     <td>
-      <%= form_tag my_accounts_path, method: :post, id: 'add_account' %>
+      <%= form_with url: my_accounts_path, method: :post, id: 'add_account' %>
     </td>
     <td class="six wide">
       <div class="ui fluid input">
