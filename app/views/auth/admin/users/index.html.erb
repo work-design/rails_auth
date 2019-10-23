@@ -58,7 +58,7 @@
       </td>
       <td>
         <% user.accounts.each do |account| %>
-          <p><%= account.identity %></p>
+          <p><%= link_to account.identity, admin_accounts_path(user_id: user.id) %></p>
         <% end %>
       </td>
       <td>
