@@ -9,6 +9,7 @@ module RailsAuth #:nodoc:
     config.admin_controller = 'AdminController'
     config.record_class = 'ApplicationRecord'
     config.default_return_path = '/'
+    config.default_home_path = '/my'
     config.ignore_return_paths = [
       'login',
       'join'

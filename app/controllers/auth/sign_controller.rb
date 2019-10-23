@@ -143,7 +143,7 @@ class Auth::SignController < Auth::BaseController
   
   def check_login
     if current_user
-      redirect_to my_root_url
+      redirect_to RailsAuth.config.default_home_path
     end
   end
 

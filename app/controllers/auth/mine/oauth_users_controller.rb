@@ -23,7 +23,7 @@ class Auth::Mine::OauthUsersController < Auth::Mine::BaseController
 
     @oauth_user.save
     
-    redirect_to my_root_url
+    redirect_to '/my'
   end
 
   def show
