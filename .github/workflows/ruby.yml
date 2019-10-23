@@ -12,6 +12,9 @@ jobs:
       uses: actions/setup-ruby@v1
       with:
         ruby-version: 2.6.x
+    - name: git submodule
+      run: |
+        git submodule update --init
     - name: Build and test with Rake
       run: |
         gem install bundler
