@@ -46,10 +46,6 @@ class Auth::Mine::OauthUsersController < Auth::Mine::BaseController
 
   def destroy
     @oauth_user.destroy
-    respond_to do |format|
-      format.html { redirect_to my_oauth_users_url }
-      format.json { head :no_content }
-    end
   end
 
   private

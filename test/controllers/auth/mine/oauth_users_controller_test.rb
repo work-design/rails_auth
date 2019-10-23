@@ -2,9 +2,10 @@ require 'test_helper'
 class Auth::Mine::OauthUsersControllerTest < ActionDispatch::IntegrationTest
 
   setup do
-    @user = create :user
-    post '/login', params: { identity: @user.email, password: @user.password }
+    account = create :account
+    post '/login', params: { identity: account.identity, password: account.user.password }
     follow_redirect!
+    
     @oauth_user = create :oauth_user
   end
 
@@ -18,6 +19,6 @@ class Auth::Mine::OauthUsersControllerTest < ActionDispatch::IntegrationTest
       delete my_oauth_user_url(@oauth_user)
     end
 
-    assert_redirected_to my_oauth_users_url
+    assert_response :success
   end
 end

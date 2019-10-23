@@ -1,17 +1,15 @@
 FactoryBot.define do
+  
   factory :oauth_user do
-    id { 1 }
-    user_id { 1 }
-    provider { "MyString" }
-    type { "" }
+    user
+    provider { 'wechat' }
+    type { 'WechatUser' }
     uid { "MyString" }
     name { "MyString" }
     avatar_url { "MyString" }
     state { "MyString" }
-    code { "MyString" }
     access_token { "MyString" }
-    expires_at { "2018-09-20 10:20:04" }
-    created_at { "2018-09-20 10:20:04" }
-    updated_at { "2018-09-20 10:20:04" }
+    expires_at { 1.hour.since }
   end
+  
 end
