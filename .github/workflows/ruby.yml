@@ -1,13 +1,13 @@
-name: Ruby
-on: 
-  push:
-    branches: 
-      - master
+name: Test
+on: [push]
 jobs:
-  build:
+  test:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v1
+    - name: Set up System
+      run: |
+        sudo apt install libsqlite3-dev
     - name: Set up Ruby 2.6
       uses: actions/setup-ruby@v1
       with:
@@ -16,4 +16,6 @@ jobs:
       run: |
         gem install bundler
         bundle install --jobs 4 --retry 3
-        bundle exec rake
+    - name: Test
+      run: |
+        bin/rails test
