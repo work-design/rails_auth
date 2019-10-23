@@ -15,7 +15,7 @@ class Auth::Mine::UsersController < Auth::Mine::BaseController
   end
 
   def destroy
-    @user.destroy
+    current_user.destroy
   end
 
   private

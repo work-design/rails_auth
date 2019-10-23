@@ -3,8 +3,10 @@ require 'test_helper'
 class Auth::Mine::UsersControllerTest < ActionDispatch::IntegrationTest
 
   setup do
-    @user = create :user
-    post '/login', params: { identity: @user.email, password: @user.password }
+    @account = create :account
+    @user = @account.user
+
+    post '/login', params: { identity: @account.identity, password: @user.password }
     follow_redirect!
   end
 
@@ -23,7 +25,7 @@ class Auth::Mine::UsersControllerTest < ActionDispatch::IntegrationTest
           params: { user: { name: 'a@b.c' } }
     @user.reload
     assert_equal 'a@b.c', @user.name
-    assert_redirected_to my_user_url
+    assert_response :success
   end
 
   test 'destroy ok' do
@@ -31,6 +33,6 @@ class Auth::Mine::UsersControllerTest < ActionDispatch::IntegrationTest
       delete my_user_url
     end
 
-    assert_redirected_to my_user_url
+    assert_response :success
   end
 end
