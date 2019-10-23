@@ -16,12 +16,7 @@ gem 'rails_com', github: 'work-design/rails_com'
 gem 'jbuilder'
 
 gem 'kaminari'
-
-# gem 'sprockets', '~> 4.0.0.beta4'
 gem 'turbolinks'
-#
-# gem 'omniauth-facebook'
-#
 gem 'pry-rails'
 gem 'awesome_print'
 gem 'sdoc'
