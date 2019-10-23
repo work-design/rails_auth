@@ -15,19 +15,18 @@ class Auth::Mine::AccountsController < Auth::Mine::BaseController
   def create
     @account = current_user.accounts.build(account_params)
 
-    if @account.save
-      redirect_to my_accounts_url
-    else
-      flash[:alert]= @account.error_text
-      redirect_to my_accounts_url
+    unless @account.save
+      flash[:alert] = @account.error_text
+      render :edit, locals: { model: @account }, status: :unprocessable_entity
     end
   end
 
   def update
-    if @account.update(account_params)
-      redirect_to my_accounts_url
-    else
-      render :edit
+    @account.assign_attributes(account_params)
+
+    unless @account.save
+      flash[:alert] = @account.error_text
+      render :edit, locals: { model: @account }, status: :unprocessable_entity
     end
   end
 
@@ -42,9 +41,9 @@ class Auth::Mine::AccountsController < Auth::Mine::BaseController
 
     if @token
       @account.update(confirmed: true)
-      redirect_to my_accounts_url, notice: 'token 验证成功'
+      flash[:alert] = 'token 验证成功'
     else
-      redirect_to my_accounts_url, notice: 'token 验证失败，请重新操作'
+      flash[:alert] = 'token 验证失败，请重新操作'
     end
   end
 
