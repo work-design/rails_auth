@@ -21,6 +21,7 @@ jobs:
         bundle install --jobs 4 --retry 3
     - name: Prepare Test
       run: |
+        bin/rails app:yarn:install
         bin/rails db:drop
         bin/rails db:create
         bin/rails db:migrate
