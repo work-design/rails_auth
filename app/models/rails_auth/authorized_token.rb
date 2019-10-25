@@ -13,7 +13,7 @@ module RailsAuth::AuthorizedToken
 
     scope :valid, -> { where('expire_at >= ?', Time.now).order(access_counter: :asc) }
     validates :token, presence: true
-    after_initialize :update_token, if: -> { new_record? }
+    before_validation :update_token, if: -> { new_record? }
     after_update :sync_user, if: -> { saved_change_to_account_id? && account }
   end
 

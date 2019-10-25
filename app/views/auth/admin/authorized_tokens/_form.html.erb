@@ -1,0 +1,10 @@
+<%= form_with model: @authorized_token do |f| %>
+  <%= render 'shared/error_messages', target: @authorized_token %>
+  <%= f.text_field :token %>
+  <%= f.text_field :expire_at %>
+  <%= f.text_field :session_key %>
+  <%= f.text_field :oauth_user %>
+  <%= f.text_field :account %>
+  <%= f.text_field :user %>
+  <%= f.submit %>
+<% end %>

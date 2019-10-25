@@ -37,6 +37,7 @@ Rails.application.routes.draw do
     end
     resources :oauth_users
     resources :accounts
+    resources :authorized_tokens
     resources :user_tags
   end
 
