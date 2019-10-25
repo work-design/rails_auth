@@ -19,16 +19,16 @@ jobs:
     - name: git submodule
       run: |
         git submodule update --init
-    - name: Build and test with Rake
+    - name: Install dependencies
       run: |
         gem install bundler
         bundle install --jobs 4 --retry 3
-    - name: Prepare Test
-      run: |
         bin/rails app:yarn:install
+    - name: Prepare DB
+      run: |
         bin/rails db:drop
         bin/rails db:create
         bin/rails db:migrate
-    - name: Test
+    - name: Run test
       run: |
         bin/rails test
