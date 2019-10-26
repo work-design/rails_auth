@@ -7,8 +7,6 @@ class RailsAuth::Engine < ::Rails::Engine
     "#{config.root}/app/models/verify_token"
   ]
   
-  config.factory_bot.definition_file_paths += Dir["#{config.root}/test/factories"] if defined?(FactoryBotRails)
-
   config.generators do |g|
     g.rails = {
       assets: false,
