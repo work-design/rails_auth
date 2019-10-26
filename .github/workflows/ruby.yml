@@ -4,11 +4,14 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v1
+    - name: Fetch project
+      uses: actions/checkout@v1
+      run: |
+        git submodule update --init
     - name: Set up System
       run: |
         sudo apt install libsqlite3-dev
-    - name: Set up Ruby 2.6
+    - name: Set up Ruby
       uses: actions/setup-ruby@v1
       with:
         ruby-version: 2.6.x
@@ -16,9 +19,6 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: 10.x
-    - name: git submodule
-      run: |
-        git submodule update --init
     - name: Install dependencies
       run: |
         gem install bundler
