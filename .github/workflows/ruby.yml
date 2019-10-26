@@ -6,8 +6,8 @@ jobs:
     steps:
     - name: Fetch project
       uses: actions/checkout@v1
-      run: |
-        git submodule update --init
+      with:
+        submodules: recursive
     - name: Set up System
       run: |
         sudo apt install libsqlite3-dev
