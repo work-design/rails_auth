@@ -4,9 +4,6 @@ require 'rails/test_help'
 require 'minitest/mock'
 require 'factory_bot'
 
-ActiveRecord::Migrator.migrations_paths += [
-  File.expand_path('dummy/db/migrate', __dir__)
-]
 Minitest.backtrace_filter = Minitest::BacktraceFilter.new
 FactoryBot.find_definitions
 
