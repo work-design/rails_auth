@@ -23,10 +23,10 @@ module RailsAuth::User
     has_many :oauth_users, dependent: :nullify
     has_many :accounts, dependent: :nullify
     accepts_nested_attributes_for :accounts
-    
+
     has_many :user_taggeds, dependent: :destroy
     has_many :user_tags, through: :user_taggeds
-    
+
     has_one_attached :avatar
 
     before_save :invalid_access_token, if: -> { password_digest_changed? }
@@ -65,11 +65,12 @@ module RailsAuth::User
       errors.add :base, :password_blank
       return false
     end
-    
+
     if password_digest.blank?
       errors.add :base, :password_reject
+      return false
     end
-    
+
     unless authenticate(params[:password])
       errors.add :base, :wrong_name_or_password
       return false
@@ -79,7 +80,7 @@ module RailsAuth::User
       errors.add :base, :account_disable
       return false
     end
-    
+
     self
   end
 
@@ -109,7 +110,7 @@ module RailsAuth::User
   def generate_auth_token(**options)
     JwtHelper.generate_jwt_token(id, password_digest, options)
   end
-  
+
   def account_identities
     accounts.map(&:identity)
   end
