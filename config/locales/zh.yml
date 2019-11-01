@@ -49,8 +49,9 @@ zh:
       oauth_user:
         type:
           WechatUser: 微信用户
-          GithubUser: Github User
-          FacebookUser: Facebook User
+          WechatProgramUser: 微信小程序用户
+          GithubUser: Github用户
+          FacebookUser: Facebook用户
         provider:
           github: Github
           facebook: Factbook
