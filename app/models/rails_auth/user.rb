@@ -79,13 +79,16 @@ module RailsAuth::User
   end
 
   def avatar_url
-    if avatar.attachment.present?
-      avatar.service_url
-    else
-      oauth_users.first&.avatar_url
+    if avatar.attached?
+      return avatar.service_url
     end
-  rescue ArgumentError
-    ''
+    
+    url = oauth_users.first&.avatar_url.presence
+    return url if url
+    
+    if avatar.present?
+      avatar.service_url
+    end
   end
 
   def valid_providers
