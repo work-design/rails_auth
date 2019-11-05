@@ -52,6 +52,7 @@ zh:
       users:
         index:
           title: 用户列表
+          role: 角色设置
       oauth_users:
         index:
           title: 第三方登陆
