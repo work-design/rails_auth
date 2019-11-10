@@ -6,8 +6,8 @@ module RailsAuth::OauthUser::WechatUser
 
   def sync_user_info
     userinfo_url = "https://api.weixin.qq.com/sns/userinfo?access_token=#{access_token}&openid=#{uid}"
-    user_response = HTTParty.get(userinfo_url)
-    res = JSON.parse(user_response)
+    user_response = HTTPX.get(userinfo_url)
+    res = JSON.parse(user_response.to_s)
 
     if res['errcode'].present?
       self.errors.add :base, "#{res['errcode']}, #{res['errmsg']}"
