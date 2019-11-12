@@ -53,6 +53,7 @@ zh:
         index:
           title: 用户列表
           role: 角色设置
+          tag: 用户标签
       oauth_users:
         index:
           title: 第三方登陆
