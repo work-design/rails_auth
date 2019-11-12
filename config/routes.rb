@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
-
   scope module: :auth do
-
     controller :sign do
       match :sign, via: [:get, :post]
       post 'sign/token' => :token
@@ -33,7 +31,11 @@ Rails.application.routes.draw do
   scope :admin, module: 'auth/admin', as: 'admin' do
     resources :users do
       get :panel, on: :collection
-      post :mock, on: :member
+      member do
+        post :mock
+        get 'user_tags' => :edit_user_tags
+        patch 'user_tags' => :update_user_tags
+      end
     end
     resources :oauth_users
     resources :accounts
@@ -55,5 +57,4 @@ Rails.application.routes.draw do
       end
     end
   end
-
 end

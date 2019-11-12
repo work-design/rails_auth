@@ -1,5 +1,5 @@
 class Auth::Admin::UsersController < Auth::Admin::BaseController
-  before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :set_user, only: [:show, :edit, :update, :edit_user_tags, :update_user_tags, :destroy]
 
   def index
     q_params = {
@@ -39,6 +39,18 @@ class Auth::Admin::UsersController < Auth::Admin::BaseController
       render :edit, locals: { model: @user }, status: :unprocessable_entity
     end
   end
+  
+  def edit_user_tags
+    @user_tags = UserTag.default_where(default_params).page(params[:page])
+  end
+  
+  def update_user_tags
+    @user.assign_attributes user_params
+  
+    unless @user.save
+      render :edit_user_tags, locals: { model: @user }, status: :unprocessable_entity
+    end
+  end
 
   def mock
     @user = User.find_or_initialize_by(user_uuid: params[:account])
@@ -66,11 +78,12 @@ class Auth::Admin::UsersController < Auth::Admin::BaseController
   end
 
   def user_params
-    params[:user].permit(
+    params.fetch(:user, {}).permit(
       :name,
       :avatar,
       :password,
       :disabled,
+      user_tag_ids: [],
       accounts_attributes: {}
     )
   end
