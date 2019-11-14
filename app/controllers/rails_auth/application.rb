@@ -71,9 +71,10 @@ module RailsAuth::Application
     elsif request.get?
       session[:return_to] = request.fullpath
     else
-      session[:return_to] = request.referer.to_s
+      session[:return_to] = request.referer
     end
 
+    return if session[:return_to].blank?
     r_path = URI(session[:return_to]).path.delete_suffix('/')
 
     if RailsAuth.config.ignore_return_paths.include?(r_path)
