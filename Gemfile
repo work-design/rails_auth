@@ -4,17 +4,15 @@ gemspec
 
 gem 'rails', '6.0.0'
 gem 'puma'
-
 gem 'webpacker'
-#
 gem 'sqlite3'
-gem 'factory_bot_rails', require: false
-gem 'default_form', github: 'qinmingyuan/default_form'
 
+gem 'factory_bot_rails', require: false
+
+gem 'default_form', github: 'qinmingyuan/default_form'
 gem 'rails_com', github: 'work-design/rails_com'
 
 gem 'jbuilder'
-
 gem 'kaminari'
 gem 'turbolinks'
 gem 'pry-rails'
