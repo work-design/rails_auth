@@ -22,7 +22,7 @@
 
 ```ruby
 class ApplicationController < ActionController::Base
-  include RailsAuth::Controller
+  include RailsAuth::Application
   before_action :require_login
 end
 ```
@@ -42,5 +42,5 @@ end
 current_user
 ```
 
-## License
-The gem is available as open source under the terms of the [LGPL-3.0](https://opensource.org/licenses/LGPL-3.0).
+## 许可证
+许可证采用 [LGPL-3.0](https://opensource.org/licenses/LGPL-3.0).
