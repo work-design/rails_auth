@@ -34,22 +34,18 @@ add the in the file: `config/routes.rb`
 ```
 
 #### include in Controller
-
-
-
 ```ruby
 
 # api
 class ApplicationController < ActionController::Base
-  include TheAuthController
+  include RailsAuth::Application
 end
 ```
 
 #### Include in Model
-
 ```ruby
-class User
-  include TheAuthUser
+class User < ApplicationRecord
+  include RailsAuth::User
 end
 ```
 
