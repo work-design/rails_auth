@@ -23,7 +23,7 @@ jobs:
       run: |
         gem install bundler
         bundle install --jobs 4 --retry 3
-        bin/rails app:yarn:install
+        test/dummy/bin/yarn install --check-files
     - name: Prepare DB
       run: |
         bin/rails db:drop
