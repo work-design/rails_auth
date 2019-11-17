@@ -7,4 +7,3 @@ test/dummy/.sass-cache
 docs/
 
 *.gem
-Gemfile.lock

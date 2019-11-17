@@ -19,16 +19,20 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: 10.x
-    - name: Cache Installs
-      id: cache
+    - name: Cache Bundle
+      uses: actions/cache@v1
+      with:
+        path: bundle
+        key: ${{ runner.OS }}-bundle-${{ hashFiles('Gemfile.lock') }}
+    - name: Cache Node Modules
       uses: actions/cache@v1
       with:
         path: test/dummy/node_modules
-        key: ${{ runner.OS }}-build-${{ hashFiles('test/dummy/yarn.lock') }}
+        key: ${{ runner.OS }}-yarn-${{ hashFiles('test/dummy/yarn.lock') }}
     - name: Install dependencies
       run: |
         gem install bundler
-        bundle install --jobs 4 --retry 3
+        bundle install --path=bundle --jobs=4 --retry=3
         test/dummy/bin/yarn install --check-files
     - name: Prepare DB
       run: |
