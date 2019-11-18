@@ -22,7 +22,7 @@ class Auth::Admin::UserTagsController < Auth::Admin::BaseController
 
   def show
     user_ids = @user_tag.user_taggeds.pluck(:user_id)
-    @users = User.default_where(id: user_ids)
+    @users = User.default_where(id: user_ids).order(id: :desc)
   end
 
   def edit
