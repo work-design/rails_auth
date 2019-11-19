@@ -12,7 +12,7 @@ module RailsAuth::UserTagging
   def xx
     tag = user_tag || config_user_tag
     if tag
-      tagged = user.user_taggeds.build(user_tag_id: tag.id)
+      tagged = user.user_taggeds.find_or_initialize_by(user_tag_id: tag.id)
       tagged.save
     end
   end
