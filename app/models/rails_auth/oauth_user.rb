@@ -15,7 +15,7 @@ module RailsAuth::OauthUser
     has_many :authorized_tokens, dependent: :delete_all
     
     validates :provider, presence: true
-    validates :uid, presence: true, uniqueness: { scope: :provider }
+    validates :uid, presence: true
     
     before_validation do
       # todo better user sync logic
