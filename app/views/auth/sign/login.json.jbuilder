@@ -1,1 +1,1 @@
-json.body @body
+json.extract! @body, *@body.keys

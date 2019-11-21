@@ -30,28 +30,18 @@ class Auth::SignController < Auth::BaseController
   end
 
   def token
-    body = {}
+    @body = {}
     @account = Account.find_by(identity: params[:identity]) || Account.create_with_identity(params[:identity])
     @verify_token = @account.verify_token
     if @verify_token.send_out
-      body.merge! sent: true, message: t('.sent')
-      body.merge! token: @verify_token.token unless Rails.env.production?
+      @body.merge! sent: true, message: t('.sent')
+      @body.merge! token: @verify_token.token unless Rails.env.production?
     else
-      body.merge! message: @verity_token.errors.full_message
+      @body.merge! message: @verity_token.errors.full_message
     end
     
-    respond_to do |format|
-      format.html {
-        render 'join'
-      }
-      format.js
-      format.json do
-        if body[:sent]
-          render json: body
-        else
-          render json: body, status: :bad_request
-        end
-      end
+    unless @body[:sent]
+      render :token, status: :bad_request
     end
   end
   
