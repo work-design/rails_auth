@@ -6,7 +6,7 @@ module RailsAuth::Account::EmailAccount
   end
   
   def reset_notice
-    UserMailer.password_reset(self.id).deliver_later
+    UserMailer.password_reset(self).deliver_later
   end
   
 end

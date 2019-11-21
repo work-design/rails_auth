@@ -21,6 +21,7 @@ zh:
     password:
       new:
         title: 重置密码
+        next: 下一步
       create:
         title: 重置密码
         header: 重置密码

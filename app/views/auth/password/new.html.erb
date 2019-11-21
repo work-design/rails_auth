@@ -3,7 +3,7 @@
   <div class="ui bottom attached segment">
     <%= form_with scope: nil, url: password_forget_url, local: true, on: { label: false, wrap_all: false, wrap_input: false } do |f| %>
       <%= f.text_field :identity, placeholder: Account.human_attribute_name(:identity) %>
-      <%= f.submit class: 'ui fluid primary button' %>
+      <%= f.submit t('.next'), class: 'ui fluid primary button' %>
     <% end %>
   </div>
 </div>
