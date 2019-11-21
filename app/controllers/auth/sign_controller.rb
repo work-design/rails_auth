@@ -3,37 +3,29 @@ class Auth::SignController < Auth::BaseController
   before_action :check_login, except: [:logout]
 
   def sign
-    body = {}
+    @body = {}
     if params[:identity]
       params[:identity].strip!
       @account = Account.find_by(identity: params[:identity])
     
       if @account.present?
         if @account.user.present?
-          body.merge! present: true
+          @body.merge! present: true
         else
-          body.merge! present: false
+          @body.merge! present: false
         end
       else
-        body.merge! present: false
+        @body.merge! present: false
       end
     end
-  
-    respond_to do |format|
-      format.html do
-        if body[:present]
-          flash.now[:notice] = body[:message] if body[:message]
-          render 'login'
-        elsif body[:present] == false
-          render 'join'
-        else
-          render 'sign'
-        end
-      end
-      format.js
-      format.json do
-        render json: body
-      end
+    
+    if @body[:present]
+      flash.now[:notice] = @body[:message] if @body[:message]
+      render 'login'
+    elsif @body[:present] == false
+      render 'join'
+    else
+      render 'sign'
     end
   end
 

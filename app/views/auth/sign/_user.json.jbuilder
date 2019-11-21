@@ -1,5 +1,7 @@
-json.extract! user,
-              :id,
-              :name,
-              :locale,
-              :timezone
+json.extract!(
+  user,
+  :id,
+  :name,
+  :locale,
+  :timezone
+)
