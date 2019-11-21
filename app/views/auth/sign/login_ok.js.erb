@@ -1,9 +1,9 @@
-$('#modal').modal('hide');
+$('#modal').modal('hide')
 <% if params[:form_id] %>
-var form = document.getElementById('<%= params[:form_id] %>');
+var form = document.getElementById('<%= params[:form_id] %>')
 if (form) {
-  form.submit();
+  form.submit()
 }
 <% else %>
-Turbolinks.visit('<%= session[:return_to] %>');
+Turbolinks.visit('<%= session[:return_to] %>')
 <% end %>

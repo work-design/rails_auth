@@ -52,55 +52,37 @@ class Auth::SignController < Auth::BaseController
       login_by_account @account
       render 'login_ok'
     else
-      process_errors(@account)
+      render 'new', locals: { model: @account }, status: :unprocessable_entity
     end
   end
 
   def login
-    body = {}
+    @body = {}
     @account = Account.find_by(identity: params[:identity])
 
     if @account
       if @account.can_login?(user_params)
         login_by_account @account
-        body.merge! logined: true
+        @body.merge! logined: true, message: t('.success')
       else
-        body.merge! message: @account.error_text
+        @body.merge! message: @account.error_text
       end
     else
-      body.merge! blank: true, message: t('errors.messages.wrong_account')
+      @body.merge! blank: true, message: t('errors.messages.wrong_account')
     end
+    @body.merge! return_to session[:return_to] || RailsAuth.config.default_return_path
     
-    respond_to do |format|
-      format.html do
-        flash.now[:error] = body[:message]
-        if body[:logined]
-          redirect_to session[:return_to] || RailsAuth.config.default_return_path, notice: t('.success')
-          session[:return_to] = nil
-        else
-          render 'login'
-        end
-      end
-      format.js do
-        if body[:logined]
-          render 'login_ok'
-        else
-          render 'login'
-        end
-      end
-      format.json do
-        if body[:logined]
-          render 'login_ok'
-        else
-          render json: body, status: :unauthorized
-        end
-      end
+    flash.now[:error] = body[:message]
+    if @body[:logined]
+      render 'login_ok'
+      session[:return_to] = nil
+    else
+      render 'login', status: :unauthorized
     end
   end
 
   def logout
     sign_out
-    redirect_to root_url
   end
 
   private
