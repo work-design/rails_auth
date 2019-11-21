@@ -6,6 +6,4 @@ class Auth::BaseController < RailsAuth.config.app_controller.constantize
     end
   end
 
- 
-
 end

@@ -1,5 +1,4 @@
-
-# TheAuth
+# RailsAuth
 
 TheAuth is a Rails Engine for user authentication, more easy to use, more easy to override.
 

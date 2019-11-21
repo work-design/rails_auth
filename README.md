@@ -1,6 +1,6 @@
 # RailsAuth
 
-`RailsAuth`是个处理鉴权的`Rails Engine`
+RailsAuth 是个处理鉴权的 Rails Engine
 
 ## 特性
 

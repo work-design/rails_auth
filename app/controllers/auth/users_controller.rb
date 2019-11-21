@@ -3,16 +3,9 @@ class Auth::UsersController < Auth::BaseController
 
   def index
     @users = User.page(params[:page])
-
-    render json: @users
   end
 
   def show
-    respond_to do |format|
-      format.js
-      format.html
-      format.json { render json: @user }
-    end
   end
 
   private
