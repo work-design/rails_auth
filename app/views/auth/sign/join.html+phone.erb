@@ -1,5 +1,5 @@
 <div class="weui-cells__title">注册/登陆</div>
-<%= form_with scope: nil, url: login_path, local: true, builder: WechatFormBuilder do |f| %>
+<%= form_with theme: 'weui', scope: nil, url: login_path, local: true do |f| %>
   <%= f.hidden_field :uid, value: params[:uid], autocomplete: false %>
   <%= f.hidden_field :identity, value: params[:identity], autocomplete: false %>
   <%= f.text_field :token, label: VerifyToken.human_attribute_name(:token) %>
