@@ -70,9 +70,9 @@ class Auth::SignController < Auth::BaseController
     else
       @body.merge! blank: true, message: t('errors.messages.wrong_account')
     end
-    @body.merge! return_to session[:return_to] || RailsAuth.config.default_return_path
+    @body.merge! return_to: session[:return_to] || RailsAuth.config.default_return_path
     
-    flash.now[:error] = body[:message]
+    flash.now[:error] = @body[:message]
     if @body[:logined]
       render 'login_ok'
       session[:return_to] = nil
