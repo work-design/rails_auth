@@ -6,7 +6,11 @@ class Auth::PasswordController < Auth::BaseController
   def create
     @account = Account.find_by(identity: params[:identity])
     @identity = params[:identity]
-    @account.reset_notice if @account
+    if @account
+      @account.reset_notice
+    else
+      render 'create_err', status: :unprocessable_entity
+    end
   end
 
   def edit
