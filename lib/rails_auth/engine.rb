@@ -22,6 +22,7 @@ class RailsAuth::Engine < ::Rails::Engine
 
   initializer 'rails_auth.assets.precompile' do |app|
     app.config.assets.precompile += ['rails_auth_manifest.js']
+    app.config.action_mailer.preview_path = "{#{app.config.action_mailer.preview_path.to_s.delete_prefix('{').delete_suffix('}').split(',').push(config.root.join('test/mailers/previews')).join(',')}}"
   end
 
 end # :nodoc:
