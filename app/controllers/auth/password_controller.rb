@@ -61,8 +61,16 @@ class Auth::PasswordController < Auth::BaseController
 
     User.transaction do
       reset_token.destroy!
-      @user.update!(password: params[:password], password_confirmation: params[:password_confirmation])
+      @user.update!(password_params)
     end
+  end
+  
+  private
+  def password_params
+    params.permit(
+      :password,
+      :password_confirmation
+    )
   end
 
 end

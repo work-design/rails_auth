@@ -28,6 +28,8 @@ zh:
         body: 包含重置密码链接的信息已发往：
         home: 首页
         sign: 请完成注册
+      edit:
+        title: 重置密码
     mine:
       title: 用户
       users:
