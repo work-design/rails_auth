@@ -10,4 +10,12 @@ module RailsAuth::Account::MobileAccount
     puts 'sends sms here'
   end
 
+  def reset_token
+    authorized_token.token = SecureRandom.uuid
+    authorized_token.expire_at = 1.hour.since
+    authorized_token.save
+    authorized_token.token
+  end
+
+
 end

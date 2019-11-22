@@ -13,13 +13,16 @@ module RailsAuth::AuthorizedToken
 
     scope :valid, -> { where('expire_at >= ?', Time.now).order(access_counter: :asc) }
     validates :token, presence: true
+    before_validation :sync_user, if: -> { account_id_changed? }
     before_validation :update_token, if: -> { new_record? }
-    after_update :sync_user, if: -> { saved_change_to_account_id? && account }
   end
 
   def sync_user
-    self.user_id = account.user_id
-    self.save
+    if account
+      self.user_id = account.user_id
+    else
+      self.user_id = nil
+    end
   end
 
   def verify_token?(now = Time.now)
@@ -33,9 +36,6 @@ module RailsAuth::AuthorizedToken
   end
   
   def update_token
-    if account
-      self.user_id = self.account.user_id
-    end
     self.expire_at = 1.weeks.since
     self.token = generate_token
     self

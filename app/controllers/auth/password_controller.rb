@@ -14,7 +14,7 @@ class Auth::PasswordController < Auth::BaseController
   end
 
   def edit
-    reset_token = AccessToken.find_by(token: params[:token])
+    reset_token = AuthorizedToken.find_by(token: params[:token])
 
     if reset_token
       if reset_token.verify_token?
@@ -30,7 +30,6 @@ class Auth::PasswordController < Auth::BaseController
     end
   end
 
-  # 40001 登陆；
   def reset
     if params[:identity].include?('@')
       @user = User.find_by(email: params[:identity])
@@ -56,15 +55,13 @@ class Auth::PasswordController < Auth::BaseController
   end
 
   def update
-    reset_token = AccessToken.find_by(token: params[:token])
+    reset_token = AuthorizedToken.find_by(token: params[:token])
     @user = reset_token.user
 
     User.transaction do
       reset_token.destroy!
       @user.update!(password: params[:password], password_confirmation: params[:password_confirmation])
     end
-
-    redirect_to login_url
   end
 
 end

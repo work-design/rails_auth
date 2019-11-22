@@ -11,7 +11,7 @@ module JwtHelper
   # algorithm: 默认HS256
   def generate_jwt_token(iss, key, options = {})
     payload = {
-      iss: iss,
+      iss: iss
     }
 
     payload.merge! options

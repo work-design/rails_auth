@@ -123,6 +123,9 @@ module RailsAuth::Account
     authorized_token.token
   end
   
+  def reset_token
+  end
+  
   def reset_notice
     p 'Should implement in subclass'
   end
