@@ -57,6 +57,7 @@ class Auth::PasswordController < Auth::BaseController
   def update
     reset_token = AuthorizedToken.find_by(token: params[:token])
     @user = reset_token.user
+    @account = reset_token.account
 
     User.transaction do
       reset_token.destroy!
