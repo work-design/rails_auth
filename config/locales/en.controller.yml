@@ -26,3 +26,10 @@ en:
       users:
         update:
           saved: Saved!
+  user_mailer:
+    email_token:
+      title: 'You email verify code is:'
+    password_reset:
+      link: Click this
+      body: Dear User, We have received a request to reset the password for your user account on. Please follow the link below to reset your password.
+      foot: If you did not make this request, you can safely ignore it.
