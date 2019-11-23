@@ -2,7 +2,7 @@
   <div class="column">
     <h4 class="ui block top attached header">请填写验证码</h4>
     <div class="ui bottom attached segment">
-      <%= form_with url: confirm_my_account_path(@account), on: { label: nil, wrapper_input: false, placeholder: true }, css: { wrapper_all: 'field' } do |f| %>
+      <%= form_with url: confirm_my_account_path(@account), on: { label: nil, wrap_input: false, placeholder: true }, css: { wrap_all: 'field' } do |f| %>
         <%= f.text_field :token %>
         <%= f.submit class: 'ui fluid button' %>
       <% end %>
