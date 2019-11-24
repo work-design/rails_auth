@@ -5,8 +5,7 @@ module RailsAuth::OauthUser::DeveloperUser
     attribute :provider, :string, default: 'developer'
   end
 
-  def save_info(oauth_params)
-
+  def assign_info(oauth_params)
   end
 
 end
