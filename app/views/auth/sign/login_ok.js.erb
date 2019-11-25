@@ -5,5 +5,5 @@ if (form) {
   form.submit()
 }
 <% else %>
-Turbolinks.visit('<%= session[:return_to] %>')
+Turbolinks.visit('<%= return_to %>')
 <% end %>
