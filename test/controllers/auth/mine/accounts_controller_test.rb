@@ -5,7 +5,6 @@ class Auth::Mine::AccountsControllerTest < ActionDispatch::IntegrationTest
   setup do
     @account = create :account
     post login_url, params: { identity: @account.identity, password: @account.user.password }
-    follow_redirect!
   end
   
   teardown do

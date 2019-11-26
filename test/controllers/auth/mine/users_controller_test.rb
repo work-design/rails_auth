@@ -7,7 +7,6 @@ class Auth::Mine::UsersControllerTest < ActionDispatch::IntegrationTest
     @user = @account.user
 
     post '/login', params: { identity: @account.identity, password: @user.password }
-    follow_redirect!
   end
 
   test 'show ok' do

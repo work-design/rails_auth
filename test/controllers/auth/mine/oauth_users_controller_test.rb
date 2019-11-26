@@ -4,7 +4,6 @@ class Auth::Mine::OauthUsersControllerTest < ActionDispatch::IntegrationTest
   setup do
     account = create :account
     post '/login', params: { identity: account.identity, password: account.user.password }
-    follow_redirect!
     
     @oauth_user = create :oauth_user
   end

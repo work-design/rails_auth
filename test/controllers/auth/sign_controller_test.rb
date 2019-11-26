@@ -18,7 +18,7 @@ class Auth::JoinControllerTest < ActionDispatch::IntegrationTest
   test 'create ok' do
     create :account
     post login_url, params: { identity: 'test@work.design', password: '111111' }
-    assert_response 302
+    assert_response :success
   end
   
   test 'logout ok' do
