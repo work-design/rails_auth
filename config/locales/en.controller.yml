@@ -1,5 +1,8 @@
 en:
   auth:
+    sign:
+      sign:
+        next: Next
     join:
       join:
         login: Login

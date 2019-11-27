@@ -17,7 +17,7 @@ class RailsAuth::Engine < ::Rails::Engine
       fixture: true,
       fixture_replacement: :factory_girl
     }
-    g.templates.unshift File.expand_path('lib/templates', RailsCom::Engine.root)
+    g.templates.prepend File.expand_path('lib/templates', RailsCom::Engine.root)
   end
 
   initializer 'rails_auth.assets.precompile' do |app|

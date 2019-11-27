@@ -7,6 +7,11 @@
 module RailsAuth::AuthorizedToken
   extend ActiveSupport::Concern
   included do
+    attribute :token, :string, index: { unique: true }
+    attribute :expire_at, :datetime
+    attribute :session_key, :string, comment: '目前在小程序下用到'
+    attribute :access_counter, :integer, default: 0
+    
     belongs_to :user, optional: true
     belongs_to :oauth_user, optional: true
     belongs_to :account, optional: true

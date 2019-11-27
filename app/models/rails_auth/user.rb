@@ -10,8 +10,14 @@ module RailsAuth::User
     include ActiveModel::SecurePassword
     has_secure_password validations: false
 
+    attribute :name, :string
+    attribute :password_digest, :string
     attribute :locale, :string, default: I18n.default_locale
     attribute :timezone, :string
+    attribute :last_login_at, :datetime
+    attribute :last_login_ip, :string
+    attribute :disabled, :boolean, default: false
+    attribute :source, :string
 
     validates :password, confirmation: true, length: { in: 6..72 }, allow_blank: true
 

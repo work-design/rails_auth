@@ -1,27 +1,6 @@
 class RailsAuthInit < ActiveRecord::Migration[5.1]
   def change
 
-    create_table :users do |t|
-      t.string :name
-      t.string :password_digest
-      t.datetime :last_login_at
-      t.string :last_login_ip
-      t.boolean :disabled, default: false
-      t.string :timezone
-      t.string :locale
-      t.string :source
-      t.timestamps
-    end
-
-    create_table :accounts do |t|
-      t.references :user
-      t.string :type
-      t.string :identity
-      t.boolean :confirmed, default: false
-      t.boolean :primary, default: false
-      t.timestamps
-    end
-
     create_table :verify_tokens do |t|
       t.references :user
       t.references :account
@@ -37,10 +16,7 @@ class RailsAuthInit < ActiveRecord::Migration[5.1]
       t.references :user
       t.references :oauth_user
       t.references :account
-      t.string :token, index: { unique: true }
-      t.datetime :expire_at
-      t.string :session_key
-      t.integer :access_counter, default: 0
+      
       t.timestamps
     end
 

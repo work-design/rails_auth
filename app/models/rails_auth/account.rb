@@ -2,6 +2,11 @@ module RailsAuth::Account
   extend ActiveSupport::Concern
 
   included do
+    attribute :type, :string
+    attribute :identity, :string
+    attribute :confirmed, :boolean, default: false
+    attribute :primary, :boolean, default: false
+    
     belongs_to :user, optional: true
     has_one :authorized_token, -> { valid }
     has_many :authorized_tokens, dependent: :delete_all
