@@ -4,7 +4,9 @@ module RailsAuth::UserTag
     attribute :name, :string
     attribute :user_taggeds_count, :integer, default: 0
     attribute :user_tagging, :string
-    
+
+    #t.references :organ  # For SaaS
+    belongs_to :tagging, polymorphic: true
     has_many :user_taggeds, dependent: :destroy
   end
   

@@ -2,8 +2,17 @@ module RailsAuth::OauthUser
   extend ActiveSupport::Concern
 
   included do
-    attribute :refresh_token, :string
+    #t.index [:uid, :provider], unique: true
+    attribute :type, :string
+    attribute :provider, :string
+    attribute :uid, :string
+    attribute :unionid, :string, index: true
+    attribute :app_id, :string
+    attribute :name, :string
+    attribute :avatar_url, :string
+    attribute :state, :string
     attribute :access_token, :string
+    attribute :expires_at, :datetime
     attribute :refresh_token, :string
     attribute :extra, :json, default: {}
     

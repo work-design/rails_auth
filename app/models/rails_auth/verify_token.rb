@@ -5,6 +5,11 @@ module RailsAuth::VerifyToken
   extend ActiveSupport::Concern
 
   included do
+    attribute :type, :string
+    attribute :token, :string
+    attribute :expire_at, :datetime
+    attribute :identity, :string
+    attribute :access_counter, :integer, default: 0
     belongs_to :account
     belongs_to :user, optional: true
 
