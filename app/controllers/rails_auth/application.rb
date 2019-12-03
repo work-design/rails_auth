@@ -49,7 +49,7 @@ module RailsAuth::Application
     if request.headers['Authorization']
       auth_token = request.headers['Authorization']&.split(' ').last.presence
     else
-      auth_token = request.headers['Auth-Token'].presence || session[:auth_token]
+      auth_token = request.headers['Auth-Token'].presence || session[:auth_token] || params[:auth_token]
     end
     return unless auth_token
 
