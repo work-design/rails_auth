@@ -14,8 +14,12 @@ class Auth::Mine::AccountsController < Auth::Mine::BaseController
 
   def create
     @account = current_user.accounts.build(account_params)
-
-    unless @account.save
+    
+    if @account.save
+      @account = Account.find @account.id
+      @verify_token = @account.verify_token
+      @verify_token.send_out
+    else
       flash[:alert] = @account.error_text
       render :edit, locals: { model: @account }, status: :unprocessable_entity
     end
@@ -32,7 +36,6 @@ class Auth::Mine::AccountsController < Auth::Mine::BaseController
 
   def edit_confirm
     @verify_token = @account.verify_token
-    
     @verify_token.send_out
   end
 
