@@ -18,11 +18,14 @@ module RailsAuth::AuthorizedToken
 
     scope :valid, -> { where('expire_at >= ?', Time.now).order(access_counter: :asc) }
     validates :token, presence: true
-    before_validation :sync_user, if: -> { account_id_changed? }
+    before_validation :sync_user, if: -> { oauth_user_id_changed? || account_id_changed? }
     before_validation :update_token, if: -> { new_record? }
   end
 
   def sync_user
+    if oauth_user
+      self.account_id = oauth_user.account_id
+    end
     if account
       self.user_id = account.user_id
     else
