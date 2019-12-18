@@ -18,6 +18,7 @@ module RailsAuth::User
     attribute :last_login_ip, :string
     attribute :disabled, :boolean, default: false
     attribute :source, :string
+    attribute :invited_code, :string
 
     validates :password, confirmation: true, length: { in: 6..72 }, allow_blank: true
 

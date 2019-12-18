@@ -92,7 +92,7 @@ module RailsAuth::Account
     end
     
     user || build_user
-    user.assign_attributes params.slice(:name, :password, :password_confirmation)
+    user.assign_attributes params.slice(:name, :password, :password_confirmation, :invited_code)
     self.primary = true
     self.class.transaction do
       user.save!
