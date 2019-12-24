@@ -16,7 +16,7 @@ module RailsAuth::OauthUser
     attribute :refresh_token, :string
     attribute :extra, :json, default: {}
     
-    belongs_to :account, optional: true
+    belongs_to :account, optional: true, inverse_of: :oauth_users
     belongs_to :user, autosave: true, optional: true
     has_one :same_oauth_user, -> (o){ where.not(id: o.id, unionid: nil, user_id: nil) }, class_name: self.name, foreign_key: :unionid, primary_key: :unionid
     has_many :same_oauth_users, -> (o){ where.not(id: o.id, unionid: nil) }, class_name: self.name, foreign_key: :unionid, primary_key: :unionid

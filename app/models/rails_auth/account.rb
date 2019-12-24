@@ -11,7 +11,7 @@ module RailsAuth::Account
     has_one :authorized_token, -> { valid }
     has_many :authorized_tokens, dependent: :delete_all
     has_many :verify_tokens, dependent: :delete_all
-    has_many :oauth_users, dependent: :nullify
+    has_many :oauth_users, dependent: :nullify, inverse_of: :account
     
     scope :without_user, -> { where(user_id: nil) }
     scope :confirmed, -> { where(confirmed: true) }
