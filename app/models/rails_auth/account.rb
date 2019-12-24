@@ -17,7 +17,7 @@ module RailsAuth::Account
     scope :confirmed, -> { where(confirmed: true) }
     
     validates :identity, presence: true
-    validates :identity, uniqueness: { scope: :confirmed }
+    validate :validate_identity
     
     after_initialize if: :new_record? do
       if self.identity.to_s.include?('@')
@@ -133,6 +133,12 @@ module RailsAuth::Account
   
   def reset_notice
     p 'Should implement in subclass'
+  end
+  
+  def validate_identity
+    if self.class.where(confirmed: true).exists?(identity: identity)
+      errors.add(:identity, :taken)
+    end
   end
   
   class_methods do

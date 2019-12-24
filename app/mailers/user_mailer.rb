@@ -2,7 +2,7 @@ class UserMailer < ApplicationMailer
   
   def email_token(email, token)
     @token = token
-    mail(to: email, subject: 'Check Your Email')
+    mail(to: email, subject: t('.subject'))
   end
   
   def password_reset(account)
