@@ -136,7 +136,7 @@ module RailsAuth::Account
   end
   
   def validate_identity
-    if self.class.where(confirmed: true).exists?(identity: identity)
+    if self.class.where.not(id: self.id).where(confirmed: true).exists?(identity: identity)
       errors.add(:identity, :taken)
     end
   end
