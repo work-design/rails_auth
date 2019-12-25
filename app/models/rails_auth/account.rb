@@ -103,18 +103,26 @@ module RailsAuth::Account
   end
 
   def verify_token
-    if check_token&.verify_token?
-      check_token
+    if check_token
+      if check_token.verify_token?
+        check_token
+      else
+        check_token.update_token!
+      end
     else
-      check_token.update_token!
+      create_check_token
     end
   end
 
   def authorized_token
-    if super&.verify_token?
-      super
+    if super
+      if super.verify_token?
+        super
+      else
+        super.update_token!
+      end
     else
-      super.update_token!
+      create_authorized_token
     end
   end
 

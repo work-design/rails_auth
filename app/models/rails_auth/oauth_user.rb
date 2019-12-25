@@ -44,11 +44,15 @@ module RailsAuth::OauthUser
   end
 
   def get_authorized_token(session_key = nil)
-    if authorized_token&.verify_token?
-      authorized_token
+    if authorized_token
+      if authorized_token.verify_token?
+        authorized_token
+      else
+        authorized_token.session_key = session_key
+        authorized_token.update_token!
+      end
     else
-      authorized_token.session_key = session_key
-      authorized_token.update_token!
+      create_authorized_token(session_key: session_key)
     end
   end
 
