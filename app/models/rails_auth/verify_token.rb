@@ -13,7 +13,7 @@ module RailsAuth::VerifyToken
     belongs_to :account
     belongs_to :user, optional: true
 
-    scope :valid, -> { where('expire_at >= ?', Time.now).order(access_counter: :asc) }
+    scope :valid, -> { where('expire_at >= ?', Time.now).order(expire_at: :desc) }
     validates :token, presence: true
     after_initialize :update_token, if: -> { new_record? }
   end

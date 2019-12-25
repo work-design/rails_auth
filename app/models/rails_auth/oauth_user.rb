@@ -20,7 +20,6 @@ module RailsAuth::OauthUser
     belongs_to :user, autosave: true, optional: true
     has_one :same_oauth_user, -> (o){ where.not(id: o.id, unionid: nil, user_id: nil) }, class_name: self.name, foreign_key: :unionid, primary_key: :unionid
     has_many :same_oauth_users, -> (o){ where.not(id: o.id, unionid: nil) }, class_name: self.name, foreign_key: :unionid, primary_key: :unionid
-    has_one :authorized_token
     has_many :authorized_tokens, dependent: :delete_all
     
     validates :provider, presence: true
@@ -44,6 +43,7 @@ module RailsAuth::OauthUser
   end
 
   def get_authorized_token(session_key = nil)
+    authorized_token = authorized_tokens.order(expire_at: :desc).first
     if authorized_token
       if authorized_token.verify_token?
         authorized_token
@@ -52,7 +52,7 @@ module RailsAuth::OauthUser
         authorized_token.update_token!
       end
     else
-      create_authorized_token(session_key: session_key)
+      authorized_tokens.create(session_key: session_key)
     end
   end
 

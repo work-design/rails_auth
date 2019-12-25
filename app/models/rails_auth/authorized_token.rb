@@ -16,7 +16,7 @@ module RailsAuth::AuthorizedToken
     belongs_to :oauth_user, optional: true
     belongs_to :account, optional: true
 
-    scope :valid, -> { where('expire_at >= ?', Time.now).order(access_counter: :asc) }
+    scope :valid, -> { where('expire_at >= ?', Time.now).order(expire_at: :desc) }
     validates :token, presence: true
     before_validation :sync_user, if: -> { oauth_user_id_changed? || account_id_changed? }
     before_validation :update_token, if: -> { new_record? }
