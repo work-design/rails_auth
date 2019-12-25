@@ -46,7 +46,8 @@ class Auth::Mine::AccountsController < Auth::Mine::BaseController
       @account.update(confirmed: true)
       flash[:alert] = 'token 验证成功'
     else
-      flash[:alert] = 'token 验证失败，请重新操作'
+      @account.errors.add :base, '验证码错误，请核对'
+      render 'edit', locals: { model: @account }, status: :unprocessable_entity
     end
   end
 
