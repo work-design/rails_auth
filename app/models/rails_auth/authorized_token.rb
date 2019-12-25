@@ -49,6 +49,12 @@ module RailsAuth::AuthorizedToken
     self
   end
   
+  def update_token!
+    update_token
+    save
+    self
+  end
+  
   def generate_token
     if user
       xbb = [user_id, user.password_digest]

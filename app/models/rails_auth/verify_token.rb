@@ -28,6 +28,12 @@ module RailsAuth::VerifyToken
     self.expire_at ||= 14.days.since
     self
   end
+  
+  def update_token!
+    update_token
+    save
+    self
+  end
 
   def verify_token?(now = Time.now)
     return false if self.expire_at.blank?

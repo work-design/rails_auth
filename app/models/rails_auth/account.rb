@@ -8,7 +8,7 @@ module RailsAuth::Account
     attribute :primary, :boolean, default: false
     
     belongs_to :user, optional: true
-    has_one :authorized_token, -> { valid }
+    has_one :authorized_token
     has_many :authorized_tokens, dependent: :delete_all
     has_many :verify_tokens, dependent: :delete_all
     has_many :oauth_users, dependent: :nullify, inverse_of: :account
@@ -103,24 +103,18 @@ module RailsAuth::Account
   end
 
   def verify_token
-    if check_token
+    if check_token&.verify_token?
       check_token
     else
-      VerifyToken.transaction do
-        self.check_tokens.delete_all
-        create_check_token
-      end
+      check_token.update_token!
     end
   end
 
   def authorized_token
-    if super
+    if super&.verify_token?
       super
     else
-      AuthorizedToken.transaction do
-        self.authorized_tokens.delete_all
-        create_authorized_token
-      end
+      super.update_token!
     end
   end
 
