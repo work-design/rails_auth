@@ -48,7 +48,7 @@ module RailsAuth::OauthUser
       if authorized_token.verify_token?
         authorized_token
       else
-        authorized_token.session_key = session_key
+        authorized_token.session_key ||= session_key
         authorized_token.update_token!
       end
     else
