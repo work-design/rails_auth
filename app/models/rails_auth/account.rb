@@ -101,7 +101,7 @@ module RailsAuth::Account
     user
   end
 
-  def check_token
+  def verify_token
     r = check_tokens.order(expire_at: :desc).first
     if r
       if r.verify_token?
