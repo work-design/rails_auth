@@ -11,10 +11,6 @@ module RailsAuth::VerifyToken::MobileToken
     self
   end
 
-  def verify_token?
-    user.update(mobile_confirm: true)
-  end
-
   def send_out
     puts "sends sms here #{token}"
     true

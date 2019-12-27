@@ -11,10 +11,6 @@ module RailsAuth::VerifyToken::EmailToken
     self
   end
 
-  def verify_token?
-    user.update(email_confirm: true)
-  end
-
   def send_out
     UserMailer.email_token(self.identity, self.token).deliver_later
   end
