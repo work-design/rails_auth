@@ -6,7 +6,7 @@ class FacebookHelper
   end
 
   def info(acc: xx)
-     access_token = 'xx'
+    access_token = 'xx'
   end
 
 end
