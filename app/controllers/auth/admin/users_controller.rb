@@ -5,7 +5,7 @@ class Auth::Admin::UsersController < Auth::Admin::BaseController
     q_params = {
       'created_at-desc': 2
     }
-    q_params.merge! params.permit(:name, 'accounts.identity', 'last_login_at-desc')
+    q_params.merge! user_filter_params
     @users = User.with_attached_avatar.includes(:oauth_users, :accounts).default_where(q_params).page(params[:page])
   end
 
@@ -39,14 +39,14 @@ class Auth::Admin::UsersController < Auth::Admin::BaseController
       render :edit, locals: { model: @user }, status: :unprocessable_entity
     end
   end
-  
+
   def edit_user_tags
     @user_tags = UserTag.default_where(default_params).page(params[:page])
   end
-  
+
   def update_user_tags
     @user.assign_attributes user_params
-  
+
     unless @user.save
       render :edit_user_tags, locals: { model: @user }, status: :unprocessable_entity
     end
@@ -75,6 +75,16 @@ class Auth::Admin::UsersController < Auth::Admin::BaseController
   private
   def set_user
     @user = User.find(params[:id])
+  end
+
+  def user_filter_params
+    q = params.permit(
+      'name-like',
+      'accounts.identity',
+      'last_login_at-desc'
+    )
+    q.merge! super if defined? super
+    q
   end
 
   def user_params
