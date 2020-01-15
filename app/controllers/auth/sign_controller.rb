@@ -7,7 +7,7 @@ class Auth::SignController < Auth::BaseController
     if params[:identity]
       params[:identity].strip!
       @account = Account.find_by(identity: params[:identity])
-    
+
       if @account.present?
         if @account.user.present?
           @body.merge! present: true
@@ -18,7 +18,7 @@ class Auth::SignController < Auth::BaseController
         @body.merge! present: false
       end
     end
-    
+
     if @body[:present]
       flash.now[:notice] = @body[:message] if @body[:message]
       render 'login'
@@ -39,12 +39,12 @@ class Auth::SignController < Auth::BaseController
     else
       @body.merge! message: @verity_token.errors.full_message
     end
-    
-    unless @body[:sent]
+
+    if @body[:sent]
       render :token, status: :bad_request
     end
   end
-  
+
   def mock
     @account = DeviceAccount.find_or_initialize_by(identity: params[:device_id])
 
@@ -71,7 +71,7 @@ class Auth::SignController < Auth::BaseController
       @body.merge! blank: true, message: t('errors.messages.wrong_account')
     end
     @body.merge! return_to: session[:return_to] || RailsAuth.config.default_return_path
-    
+
     flash.now[:error] = @body[:message]
     if @body[:logined]
       render 'login_ok', locals: { return_to: @body[:return_to] }
@@ -104,7 +104,7 @@ class Auth::SignController < Auth::BaseController
     end
     q
   end
-  
+
   def check_login
     if current_user
       redirect_to RailsAuth.config.default_home_path
