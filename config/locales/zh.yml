@@ -36,6 +36,7 @@ zh:
         confirmed: 是否验证
         primary: 是否主账号
       verify_token:
+        identity: 账号
         token: 验证码
       user_tag:
         user_taggeds_count: 用户数

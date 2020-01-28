@@ -41,6 +41,8 @@ class Auth::SignController < Auth::BaseController
     end
 
     if @body[:sent]
+      render :token
+    else
       render :token, status: :bad_request
     end
   end

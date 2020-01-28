@@ -1,10 +1,15 @@
 // todo add identity in location
-const identity = document.getElementsByName('identity')[0].value
-let href = new URL(location.href)
-href.searchParams.set('identity', identity)
-history.pushState({}, document.title, href)
+document.getElementById('identity').addEventListener('change', function(e) {
+  let identity = e.target.value
+  console.log(identity)
+  let href = new URL(location.href)
+  href.searchParams.set('identity', identity)
+  history.pushState({}, document.title, href)
+})
 
 document.getElementById('mobile_confirm').addEventListener('click', function(e){
+  let identity = document.getElementsByName('identity')[0].value
+
   if (/.+/.test(identity)) {
     var countdown = 60
     var link = new URL(this.href)
@@ -30,4 +35,4 @@ document.getElementById('mobile_confirm').addEventListener('click', function(e){
     e.preventDefault()
     e.stopImmediatePropagation()
   }
-});
+})
