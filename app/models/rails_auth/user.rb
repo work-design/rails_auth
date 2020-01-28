@@ -20,18 +20,18 @@ module RailsAuth::User
     attribute :source, :string
     attribute :invited_code, :string
 
-    validates :password, confirmation: true, length: { in: 6..72 }, allow_blank: true
-
     has_many :authorized_tokens, dependent: :delete_all
     has_many :verify_tokens, autosave: true, dependent: :delete_all
     has_many :oauth_users, dependent: :nullify
     has_many :accounts, dependent: :nullify
     accepts_nested_attributes_for :accounts
-    
+
     has_many :user_taggeds, dependent: :destroy
     has_many :user_tags, through: :user_taggeds
-    
+
     has_one_attached :avatar
+
+    validates :password, confirmation: true, length: { in: 6..72 }, allow_blank: true
 
     before_save :invalid_authorized_token, if: -> { password_digest_changed? }
   end
@@ -58,11 +58,11 @@ module RailsAuth::User
       errors.add :base, :password_blank
       return false
     end
-    
+
     if password_digest.blank?
       errors.add :base, :password_reject
     end
-    
+
     unless authenticate(params[:password])
       errors.add :base, :wrong_name_or_password
       return false
@@ -72,7 +72,7 @@ module RailsAuth::User
       errors.add :base, :account_disable
       return false
     end
-    
+
     self
   end
 
@@ -89,10 +89,10 @@ module RailsAuth::User
     if avatar.attached?
       return avatar.service_url
     end
-    
+
     url = oauth_users.first&.avatar_url.presence
     return url if url
-    
+
     if avatar.present?
       avatar.service_url
     end
@@ -105,7 +105,7 @@ module RailsAuth::User
   def invalid_authorized_token
     self.authorized_tokens.delete_all
   end
-  
+
   def account_identities
     accounts.map(&:identity)
   end
