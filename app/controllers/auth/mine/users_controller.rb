@@ -31,7 +31,7 @@ class Auth::Mine::UsersController < Auth::Mine::BaseController
       :name,
       :avatar,
       :locale,
-      :nation,
+      :plate_number,
       :timezone
     )
   end
