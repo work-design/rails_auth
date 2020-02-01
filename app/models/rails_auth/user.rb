@@ -107,7 +107,7 @@ module RailsAuth::User
   end
 
   def account_identities
-    accounts.map(&:identity)
+    accounts.confirmed.map(&:identity)
   end
 
   def oauth_providers
