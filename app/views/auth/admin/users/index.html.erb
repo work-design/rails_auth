@@ -73,7 +73,7 @@
         <%= link_to user_tags_admin_user_path(user), data: { tooltip: t('.tag') }, remote: true, class: 'ui mini circular icon button' do %>
           <i class="fas fa-user-tag"></i>
         <% end %>
-        <%= link_to "/User/#{user.id}/who_roles/edit", data: { tooltip: t('.role') }, remote: true, class: 'ui mini circular icon button' do %>
+        <%= link_to edit_who_roles_path('User', user.id), data: { tooltip: t('.role') }, remote: true, class: 'ui mini circular icon button' do %>
           <i class="fas fa-user-lock"></i>
         <% end %>
         <%= link_to edit_admin_user_path(user), data: { tooltip: t('.edit') }, remote: true, class: 'ui mini circular icon button' do %>
