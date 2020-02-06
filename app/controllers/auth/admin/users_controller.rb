@@ -79,6 +79,7 @@ class Auth::Admin::UsersController < Auth::Admin::BaseController
 
   def user_filter_params
     q = params.permit(
+      :id,
       'name-like',
       'accounts.identity',
       'last_login_at-desc'
