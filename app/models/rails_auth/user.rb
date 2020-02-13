@@ -24,6 +24,7 @@ module RailsAuth::User
     has_many :verify_tokens, autosave: true, dependent: :delete_all
     has_many :oauth_users, dependent: :nullify
     has_many :accounts, dependent: :nullify
+    has_many :confirmed_accounts, -> { where(confirmed: true) }, class_name: 'Account'
     accepts_nested_attributes_for :accounts
 
     has_many :user_taggeds, dependent: :destroy
@@ -107,7 +108,7 @@ module RailsAuth::User
   end
 
   def account_identities
-    accounts.confirmed.map(&:identity)
+    confirmed_accounts.map(&:identity)
   end
 
   def oauth_providers
