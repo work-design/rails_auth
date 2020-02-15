@@ -77,7 +77,7 @@ class Auth::SignController < Auth::BaseController
     flash.now[:error] = @body[:message]
     if @body[:logined]
       render 'login_ok', locals: { return_to: @body[:return_to] }
-      session[:return_to] = nil
+      session.delete :return_to
     else
       render 'login', status: :unauthorized
     end

@@ -35,17 +35,17 @@ module RailsAuth::Application
       render 'require_login', status: 401
     end
   end
-  
+
   def require_authorized_token
     return if current_authorized_token
     @code = 'authorized_token'
-    
+
     render 'require_authorized_token', status: 401
   end
 
   def current_authorized_token
     return @current_authorized_token if defined?(@current_authorized_token)
-    
+
     if request.headers['Authorization']
       auth_token = request.headers['Authorization']&.split(' ').last.presence
     else
@@ -61,7 +61,7 @@ module RailsAuth::Application
   end
 
   def sign_out
-    session.delete(:auth_token)
+    session.delete :auth_token
     @current_account = nil
   end
 
@@ -94,19 +94,19 @@ module RailsAuth::Application
       oauth_user.account_id = account.id
       oauth_user.save
     end
-    
+
     account.user.update(last_login_at: Time.now)
-  
+
     @current_account = account
     @current_user = account.user
-  
+
     logger.debug "  ==========> Login by account as user: #{account.user_id}"
   end
 
   private
   def set_auth_token
     return unless @current_account
-    
+
     headers['Auth-Token'] = @current_account.auth_token
     session[:auth_token] = @current_account.auth_token
   end
