@@ -1,1 +1,4 @@
-json.extract! @body, *@body.keys
+json.message message
+unless Rails.env.production?
+  json.token @verify_token.token
+end

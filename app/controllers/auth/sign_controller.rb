@@ -3,47 +3,33 @@ class Auth::SignController < Auth::BaseController
   before_action :check_login, except: [:logout]
 
   def sign
-    @body = {}
     if params[:identity]
       params[:identity].strip!
       @account = Account.find_by(identity: params[:identity])
 
       if @account.present?
         if @account.user.present?
-          @body.merge! present: true
+          flash.now[:notice] = @body[:message] if @body[:message]
+          render 'login'
         else
-          @body.merge! present: false
+          render 'join'
         end
       else
-        @body.merge! present: false
+        render 'join'
       end
-    end
-
-    if @body[:present]
-      flash.now[:notice] = @body[:message] if @body[:message]
-      render 'login'
-    elsif @body[:present] == false
-      render 'join'
     else
       render 'sign'
     end
   end
 
   def token
-    @body = {}
     @account = Account.find_by(identity: params[:identity]) || Account.create_with_identity(params[:identity])
     @verify_token = @account.verify_token
-    if @verify_token.send_out
-      @body.merge! sent: true, message: t('.sent')
-      @body.merge! token: @verify_token.token unless Rails.env.production?
-    else
-      @body.merge! message: @verity_token.errors.full_message
-    end
 
-    if @body[:sent]
-      render :token
+    if @verify_token.send_out
+      render :token, locals: { message: t('.sent') }
     else
-      render :token, status: :bad_request
+      render :token, locals: { message: @verity_token.error_text }, status: :bad_request
     end
   end
 
@@ -59,27 +45,18 @@ class Auth::SignController < Auth::BaseController
   end
 
   def login
-    @body = {}
     @account = Account.find_by(identity: params[:identity])
 
     if @account
       if @account.can_login?(user_params)
         login_by_account @account
-        @body.merge! logined: true, message: t('.success')
+        render 'login_ok', locals: { return_to: session[:return_to] || RailsAuth.config.default_return_path, message: t('.success') }
+        session.delete :return_to
       else
-        @body.merge! message: @account.error_text
+        render 'login', locals: { message: @account.error_text }, status: :unauthorized
       end
     else
-      @body.merge! blank: true, message: t('errors.messages.wrong_account')
-    end
-    @body.merge! return_to: session[:return_to] || RailsAuth.config.default_return_path
-
-    flash.now[:error] = @body[:message]
-    if @body[:logined]
-      render 'login_ok', locals: { return_to: @body[:return_to] }
-      session.delete :return_to
-    else
-      render 'login', status: :unauthorized
+      render 'login', locals: { message: t('errors.messages.wrong_account') }, status: :unauthorized
     end
   end
 

@@ -1,1 +1,1 @@
-json.extract! @body, *@body.keys
+json.message message

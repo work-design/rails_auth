@@ -85,14 +85,10 @@ module RailsAuth::Application
   def login_by_account(account)
     if params[:uid].present?
       oauth_user = OauthUser.find_by uid: params[:uid]
-    elsif params[:oauth_user_id].present?
-      oauth_user = OauthUser.find_by id: params[:oauth_user_id]
-    else
-      oauth_user = nil
-    end
-    if oauth_user
-      oauth_user.account_id = account.id
-      oauth_user.save
+      if oauth_user
+        oauth_user.account_id = account.id
+        oauth_user.save
+      end
     end
 
     account.user.update(last_login_at: Time.now)
