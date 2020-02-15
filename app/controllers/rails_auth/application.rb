@@ -60,11 +60,6 @@ module RailsAuth::Application
     end
   end
 
-  def sign_out
-    session.delete :auth_token
-    @current_account = nil
-  end
-
   def store_location(path = nil)
     if path
       session[:return_to] = path

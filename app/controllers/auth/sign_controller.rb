@@ -55,7 +55,7 @@ class Auth::SignController < Auth::BaseController
   end
 
   def logout
-    sign_out
+    session.delete :auth_token
   end
 
   private
