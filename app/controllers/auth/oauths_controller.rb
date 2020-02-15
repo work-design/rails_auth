@@ -23,7 +23,7 @@ class Auth::OauthsController < Auth::BaseController
   end
 
   def failure
-    redirect_to root_url, alert: "错误: #{params[:message].humanize}"
+    redirect_to root_url, alert: "错误: #{params[:message]}"
   end
 
   private
