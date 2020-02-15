@@ -4,16 +4,10 @@ class Auth::SignController < Auth::BaseController
 
   def sign
     if params[:identity]
-      params[:identity].strip!
-      @account = Account.find_by(identity: params[:identity])
+      @account = Account.find_by(identity: params[:identity].strip)
 
-      if @account.present?
-        if @account.user.present?
-          flash.now[:notice] = @body[:message] if @body[:message]
-          render 'login'
-        else
-          render 'join'
-        end
+      if @account && @account.user
+        render 'login'
       else
         render 'join'
       end
