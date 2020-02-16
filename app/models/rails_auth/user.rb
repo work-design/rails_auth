@@ -18,7 +18,7 @@ module RailsAuth::User
     attribute :last_login_ip, :string
     attribute :disabled, :boolean, default: false
     attribute :source, :string
-    attribute :invited_code, :string
+    attribute :invite_token, :string
 
     has_many :authorized_tokens, dependent: :delete_all
     has_many :verify_tokens, autosave: true, dependent: :delete_all
@@ -55,13 +55,9 @@ module RailsAuth::User
   ##
   # pass login params to this method;
   def can_login?(params)
-    if params[:password].blank?
-      errors.add :base, :password_blank
-      return false
-    end
-
     if password_digest.blank?
       errors.add :base, :password_reject
+      return false
     end
 
     unless authenticate(params[:password])
@@ -69,21 +65,12 @@ module RailsAuth::User
       return false
     end
 
-    if restrictive?
+    if disabled?
       errors.add :base, :account_disable
       return false
     end
 
     self
-  end
-
-  def restrictive?
-    if self.disabled?
-      errors.add :base, :account_disable
-      true
-    else
-      false
-    end
   end
 
   def avatar_url

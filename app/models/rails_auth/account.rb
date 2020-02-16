@@ -6,18 +6,18 @@ module RailsAuth::Account
     attribute :identity, :string
     attribute :confirmed, :boolean, default: false
     attribute :primary, :boolean, default: false
-    
+
     belongs_to :user, optional: true
     has_many :authorized_tokens, dependent: :delete_all
     has_many :verify_tokens, dependent: :delete_all
     has_many :oauth_users, dependent: :nullify, inverse_of: :account
-    
+
     scope :without_user, -> { where(user_id: nil) }
     scope :confirmed, -> { where(confirmed: true) }
-    
+
     validates :identity, presence: true
     validate :validate_identity
-    
+
     after_initialize if: :new_record? do
       if self.identity.to_s.include?('@')
         self.type ||= 'EmailAccount'
@@ -33,7 +33,7 @@ module RailsAuth::Account
     return unless user_id
     self.class.base_class.unscoped.where.not(id: self.id).where(user_id: self.user_id).update_all(primary: false)
   end
-  
+
   def sync_user
     self.oauth_users.update_all(user_id: self.user_id)
     self.verify_tokens.update_all(user_id: self.user_id)
@@ -42,46 +42,38 @@ module RailsAuth::Account
 
   def can_login?(params = {})
     self.errors.clear
-    if params[:token]
-      if authenticate_by_token(params[:token])
+    if params[:token].present?
+      check_token = self.verify_tokens.valid.find_by(token: params[:token])
+      if check_token
+        self.confirmed = true
         if user.nil?
           return join(params)
         else
+          self.save
           return user
         end
       else
+        self.errors.add :base, :wrong_token
         return false
       end
+    elsif params[:password].present?
+      unless user.can_login?(params)
+        user.errors.details[:base].each do |err|
+          self.errors.add :base, err[:error]
+        end
+        return false
+      end
+    else
+      self.errors.add :base, :token_blank
+      return false
     end
-    
+
     if user.nil?
       errors.add :base, :join_first
       return false
     end
 
-    unless user.can_login?(params)
-      user.errors.details[:base].each do |err|
-        self.errors.add :base, err[:error]
-      end
-      return false
-    end
-    
     user
-  end
-
-  def authenticate_by_token(token)
-    if token.blank?
-      self.errors.add :base, :token_blank
-      return false
-    end
-    
-    check_token = self.check_tokens.valid.find_by(token: token)
-    if check_token
-      self.update(confirmed: true)
-    else
-      self.errors.add :base, :wrong_token
-      false
-    end
   end
 
   def join(params = {})
@@ -89,15 +81,15 @@ module RailsAuth::Account
       account = ::DeviceAccount.find_by identity: params[:device_id]
       self.user = account.user if account
     end
-    
+
     user || build_user
-    user.assign_attributes params.slice(:name, :password, :password_confirmation, :invited_code)
+    user.assign_attributes params.slice(:name, :password, :password_confirmation, :invite_token)
     self.primary = true
     self.class.transaction do
       user.save!
       self.save!
     end
-    
+
     user
   end
 
@@ -130,22 +122,22 @@ module RailsAuth::Account
   def auth_token
     authorized_token.token
   end
-  
+
   def reset_token
   end
-  
+
   def reset_notice
     p 'Should implement in subclass'
   end
-  
+
   def validate_identity
     if self.class.where.not(id: self.id).where(confirmed: true).exists?(identity: identity)
       errors.add(:identity, :taken)
     end
   end
-  
+
   class_methods do
-    
+
     def create_with_identity(identity)
       if identity.to_s.include?('@')
         ::EmailAccount.create(identity: identity)
@@ -153,7 +145,7 @@ module RailsAuth::Account
         ::MobileAccount.create(identity: identity)
       end
     end
-    
+
   end
 
 end
