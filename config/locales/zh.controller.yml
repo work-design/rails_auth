@@ -53,6 +53,9 @@ zh:
           update_token: 重新绑定
     admin:
       title: 用户管理
+      authorized_tokens:
+        index:
+          title: 登陆密钥
       users:
         index:
           title: 用户列表
