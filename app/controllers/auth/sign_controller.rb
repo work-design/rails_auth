@@ -47,10 +47,12 @@ class Auth::SignController < Auth::BaseController
         render 'login_ok', locals: { return_to: session[:return_to] || RailsAuth.config.default_return_path, message: t('.success') }
         session.delete :return_to
       else
-        render 'login', locals: { message: @account.error_text }, status: :unauthorized
+        flash.now[:error] = @account.error_text
+        render 'login', locals: { message: flash.now[:error] }, status: :unauthorized
       end
     else
-      render 'login', locals: { message: t('errors.messages.wrong_account') }, status: :unauthorized
+      flash.now[:error] = t('errors.messages.wrong_account')
+      render 'login', locals: { message: flash.now[:error] }, status: :unauthorized
     end
   end
 
