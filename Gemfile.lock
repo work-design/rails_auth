@@ -6,8 +6,15 @@ GIT
       rails_com (~> 1.2)
 
 GIT
+  remote: https://github.com/qinmingyuan/default_where.git
+  revision: 7657ef532ee4749a6c9d2b7c7f11423dad511f33
+  specs:
+    default_where (2.2.3)
+      activerecord (>= 4.0, <= 6.1)
+
+GIT
   remote: https://github.com/work-design/rails_com.git
-  revision: e7c231db79efe64a54a6d4c1eb91f2eea1feac71
+  revision: 8a73855a8aff9353dc3e6d8ca7ea8cec5c1db79e
   specs:
     rails_com (1.2.9)
       default_where (~> 2.2)
@@ -87,8 +94,6 @@ GEM
     coderay (1.1.2)
     concurrent-ruby (1.1.5)
     crass (1.0.6)
-    default_where (2.2.0)
-      activerecord (>= 4.0.0)
     erubi (1.9.0)
     factory_bot (5.1.1)
       activesupport (>= 4.2.0)
@@ -207,6 +212,7 @@ PLATFORMS
 DEPENDENCIES
   awesome_print
   default_form!
+  default_where!
   factory_bot_rails
   jbuilder
   kaminari
