@@ -68,14 +68,14 @@ class Auth::SignController < Auth::BaseController
       :password,
       :password_confirmation,
       :token,
-      :invite_token,
+      :invited_code,
       :uid,
       :device_id  # ios设备注册
     )
 
     if session[:return_to]
       r = URI.decode_www_form(URI(session[:return_to]).query).to_h
-      q.merge! invite_token: r['invite_token'] if r.key?('invite_token')
+      q.merge! invited_code: r['invited_code'] if r.key?('invited_code')
     end
 
     if request.format.json?

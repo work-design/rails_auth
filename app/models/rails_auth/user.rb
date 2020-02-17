@@ -18,7 +18,7 @@ module RailsAuth::User
     attribute :last_login_ip, :string
     attribute :disabled, :boolean, default: false
     attribute :source, :string
-    attribute :invite_token, :string
+    attribute :invited_code, :string
 
     has_many :authorized_tokens, dependent: :delete_all
     has_many :verify_tokens, autosave: true, dependent: :delete_all
