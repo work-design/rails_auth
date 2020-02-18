@@ -74,7 +74,7 @@ class Auth::SignController < Auth::BaseController
     )
 
     if session[:return_to]
-      r = URI.decode_www_form(URI(session[:return_to]).query).to_h
+      r = URI.decode_www_form(URI(session[:return_to]).query.to_s).to_h
       q.merge! invited_code: r['invited_code'] if r.key?('invited_code')
     end
 
