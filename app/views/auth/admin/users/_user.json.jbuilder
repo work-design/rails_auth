@@ -3,7 +3,8 @@ json.extract!(
   :id,
   :name,
   :timezone,
-  :avatar_url
+  :avatar_url,
+  :auth_tokens
 )
 json.accounts user.accounts do |account|
   json.extract! account, :id, :identity
