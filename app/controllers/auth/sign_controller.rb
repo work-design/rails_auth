@@ -87,7 +87,7 @@ class Auth::SignController < Auth::BaseController
   end
 
   def check_login
-    if current_user
+    if current_user && !request.format.json?
       redirect_to RailsAuth.config.default_home_path
     end
   end
