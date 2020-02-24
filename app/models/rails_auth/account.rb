@@ -6,6 +6,7 @@ module RailsAuth::Account
     attribute :identity, :string
     attribute :confirmed, :boolean, default: false
     attribute :primary, :boolean, default: false
+    attribute :source, :string
 
     belongs_to :user, optional: true
     has_many :authorized_tokens, dependent: :delete_all

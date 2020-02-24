@@ -4,7 +4,7 @@ module RailsAuth::Account::DeviceAccount
     if user.nil?
       join(params)
     end
-    
+
     user
   end
 
