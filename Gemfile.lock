@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/qinmingyuan/default_form.git
-  revision: e5c038a727220bc0e79a83d11a6d5469b6838d5f
+  revision: e4600e93de120cc2d3a49970f6f1606179f8aa06
   specs:
     default_form (1.5.0)
       rails_com (~> 1.2)
@@ -92,7 +92,7 @@ GEM
     bcrypt (3.1.13)
     builder (3.2.4)
     coderay (1.1.2)
-    concurrent-ruby (1.1.5)
+    concurrent-ruby (1.1.6)
     crass (1.0.6)
     erubi (1.9.0)
     factory_bot (5.1.1)
@@ -137,7 +137,7 @@ GEM
     mini_portile2 (2.4.0)
     minitest (5.14.0)
     nio4r (2.5.2)
-    nokogiri (1.10.7)
+    nokogiri (1.10.8)
       mini_portile2 (~> 2.4.0)
     pry (0.12.2)
       coderay (~> 1.1.0)
@@ -146,7 +146,7 @@ GEM
       pry (>= 0.10.4)
     puma (4.3.1)
       nio4r (~> 2.0)
-    rack (2.2.1)
+    rack (2.2.2)
     rack-proxy (0.6.5)
       rack
     rack-test (1.1.0)
