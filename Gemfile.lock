@@ -1,20 +1,20 @@
 GIT
   remote: https://github.com/qinmingyuan/default_form.git
-  revision: e4600e93de120cc2d3a49970f6f1606179f8aa06
+  revision: c55e73c74f188513b852393e12dfef7b31764303
   specs:
     default_form (1.5.0)
       rails_com (~> 1.2)
 
 GIT
   remote: https://github.com/qinmingyuan/default_where.git
-  revision: 7657ef532ee4749a6c9d2b7c7f11423dad511f33
+  revision: 7010175f19b0c6ecb0685b6a4f861ad2574c00e0
   specs:
     default_where (2.2.3)
       activerecord (>= 4.0, <= 6.1)
 
 GIT
   remote: https://github.com/work-design/rails_com.git
-  revision: 70e0ad52e892696aa9ea49eceecd93e82deda450
+  revision: 2cceb52a6d47ec2bfa87475fc81244f3dd1cba92
   specs:
     rails_com (1.2.9)
       default_where (~> 2.2)
@@ -102,9 +102,9 @@ GEM
       railties (>= 4.2.0)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
-    http-2-next (0.2.2)
+    http-2-next (0.2.3)
     http-form_data (2.2.0)
-    httpx (0.6.6)
+    httpx (0.6.7)
       http-2-next (>= 0.1.2)
       timers
     i18n (1.8.2)
@@ -227,4 +227,4 @@ DEPENDENCIES
   webpacker
 
 BUNDLED WITH
-   1.17.2
+   2.1.2
