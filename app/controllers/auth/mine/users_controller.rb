@@ -2,6 +2,9 @@ class Auth::Mine::UsersController < Auth::Mine::BaseController
   before_action :set_user
 
   def show
+    if params.key? :organ_id
+      @current_organ_grant = @user.get_organ_grant(params[:organ_id])
+    end
   end
 
   def edit

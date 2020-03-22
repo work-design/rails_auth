@@ -5,7 +5,7 @@ class Auth::Mine::OauthUsersController < Auth::Mine::BaseController
   def index
     @oauth_users = current_user.oauth_users
   end
-  
+
   def create
     @oauth_user = OauthUser.find_or_initialize_by(type: oauth_user_params[:type], uid: oauth_user_params[:uid])
     @oauth_user.save_info(oauth_user_params)
@@ -16,14 +16,14 @@ class Auth::Mine::OauthUsersController < Auth::Mine::BaseController
       render json: { oauth_user: @oauth_user.as_json, user: @oauth_user.user.as_json }
     end
   end
-  
+
   def bind
     @oauth_user = OauthUser.find_by(uid: params[:uid])
     @oauth_user.account = current_account
 
     @oauth_user.save
-    
-    redirect_to '/my'
+
+    redirect_to my_root_url(organ_id: params[:organ_id])
   end
 
   def show
