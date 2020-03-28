@@ -1,14 +1,14 @@
-<div class="item" data-controller="menu">
-  <a class="<%= active_helper(modules: 'auth/admin', active_class: 'active', item_class: '') %>">
+<div class="<%= active_helper(modules: 'auth/admin', active_class: 'menu ex-accordion is-active', item_class: 'menu ex-accordion') %>" data-controller="menu">
+  <a class="menu-label" data-action="menu#toggle">
     <i class="fas fa-users fa-fw"></i>
     <span><%= t('auth.admin.title') %></span>
-    <i class="dropdown icon"></i>
+    <i class="fas dropdown"></i>
   </a>
-  <div class="<%= active_helper(modules: 'auth/admin', active_class: 'menu content active', item_class: 'menu content') %>">
+  <div class="menu-list">
     <%# link_to 'User Panel', panel_admin_users_path, class: active_helper(paths: panel_admin_users_path) %>
-    <%= link_to t('auth.admin.users.index.title'), admin_users_path, class: active_helper('users': ['index', 'show']) %>
-    <%= link_to t('auth.admin.accounts.index.title'), admin_accounts_path, class: active_helper(controllers: 'accounts') %>
-    <%= link_to t('auth.admin.oauth_users.index.title'), admin_oauth_users_path, class: active_helper(controllers: 'oauth_users') %>
-    <%= link_to t('auth.admin.user_tags.index.title'), admin_user_tags_path, class: active_helper(controllers: 'user_tags') %>
+    <%= link_to t('auth.admin.users.index.title'), admin_users_path, class: active_helper('users': ['index', 'show'], active_class: '', item_class: '') %>
+    <%= link_to t('auth.admin.accounts.index.title'), admin_accounts_path, class: active_helper(controllers: 'accounts', active_class: '', item_class: '') %>
+    <%= link_to t('auth.admin.oauth_users.index.title'), admin_oauth_users_path, class: active_helper(controllers: 'oauth_users', active_class: '', item_class: '') %>
+    <%= link_to t('auth.admin.user_tags.index.title'), admin_user_tags_path, class: active_helper(controllers: 'user_tags', active_class: '', item_class: '') %>
   </div>
 </div>
