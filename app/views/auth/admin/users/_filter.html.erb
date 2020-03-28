@@ -1,6 +1,10 @@
 <%= form_with theme: 'search', model: User.new do |f| %>
-  <%= f.text_field :name %>
-  <%= f.text_field 'accounts.identity' %>
-  <%= f.submit %>
-  <%= link_to t('.clear'), filter_params(except: [:id, :name, 'accounts.identity']), class: 'button' %>
+  <div class="field-body">
+    <%= f.text_field :name %>
+    <%= f.text_field 'accounts.identity' %>
+    <div class="field">
+      <%= f.submit %>
+      <%= link_to t('.clear'), filter_params(except: [:id, :name, 'accounts.identity']), class: 'button' %>
+    </div>
+  </div>
 <% end %>
