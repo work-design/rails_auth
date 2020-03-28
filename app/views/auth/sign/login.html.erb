@@ -1,20 +1,16 @@
-<div class="ten wide column middle aligned">
-</div>
-
-<div class="six wide column middle aligned">
-  <div class="ui segment" style="width: 300px;">
-    <h4 class="ui centered header"><%= t('.title') %></h4>
-    <%= form_with scope: nil, url: login_path, local: true, on: { label: false, offset: false, wrap_input: false, placeholder: true }, css: { wrap_all: 'field' } do |f| %>
+<div class="column"></div>
+<div class="column">
+  <div class="panel" style="width: 300px;">
+    <h4 class="panel-heading has-text-centered"><%= t('.title') %></h4>
+    <%= form_with scope: nil, url: login_path, local: true, on: { label: false, offset: false, wrap_input: false, placeholder: true }, css: { wrap_all: 'panel-block' } do |f| %>
       <%= f.text_field :identity, value: params[:identity], placeholder: Account.human_attribute_name(:identity) %>
-      <div class="field">
-        <%= f.password_field :password, placeholder: User.human_attribute_name(:password), autocomplete: false, on: { wrap_all: false } %>
-        <p style="text-align:right;padding-top:5px;">
-          <%= link_to t('.token'), sign_token_path, method: :post, remote: true, id: 'mobile_confirm', class: 'grey text' %>
-          <span>|</span>
-          <%= link_to t('.forget'), password_forget_path, class: 'grey text' %>
-        </p>
+      <%= f.password_field :password, placeholder: User.human_attribute_name(:password), autocomplete: false %>
+      <div class="has-text-right">
+        <%= link_to t('.token'), sign_token_path, method: :post, remote: true, id: 'mobile_confirm', class: 'has-text-grey' %>
+        <span>|</span>
+        <%= link_to t('.forget'), password_forget_path, class: 'has-text-grey' %>
       </div>
-      <%= f.submit class: 'ui fluid primary button' %>
+      <%= f.submit class: 'button is-primary is-fullwidth' %>
     <% end %>
   </div>
 </div>
