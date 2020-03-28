@@ -1,8 +1,6 @@
-<div class="item">
-  <span class="header"><%= t('auth.mine.title') %></span>
-  <div class="menu">
-    <%= link_to t('auth.mine.users.show.title'), my_user_path, class: active_helper(controllers: ['users']) %>
-    <%= link_to t('auth.mine.accounts.index.title'), my_accounts_path, class: active_helper(controllers: ['accounts']) %>
-    <%= link_to t('auth.mine.oauth_users.index.title'), my_oauth_users_path, class: active_helper(controllers: ['oauth_users']) %>
-  </div>
+<div class="menu-label"><%= t('auth.mine.title') %></div>
+<div class="menu-list">
+  <%= link_to t('auth.mine.users.show.title'), my_user_path, class: active_helper(controllers: ['users'], active_class: 'is-active', item_class: nil) %>
+  <%= link_to t('auth.mine.accounts.index.title'), my_accounts_path, class: active_helper(controllers: ['accounts'], active_class: 'is-active', item_class: nil) %>
+  <%= link_to t('auth.mine.oauth_users.index.title'), my_oauth_users_path, class: active_helper(controllers: ['oauth_users'], active_class: 'is-active', item_class: nil) %>
 </div>

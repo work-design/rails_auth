@@ -1,8 +1,8 @@
-<div class="ten wide column"></div>
-<div class="six wide column">
-  <div class="ui segment" style="width: 300px;">
-    <h4 class="ui centered header"><%= t('.title') %></h4>
-    <%= form_with scope: nil, url: sign_path, local: @local, on: { label: nil, wrap_input: false, placeholder: true }, css: { wrap_all: 'field' } do |f| %>
+<div class="column is-6"></div>
+<div class="column is-6">
+  <div class="panel" style="width: 300px;">
+    <h4 class="panel-heading"><%= t('.title') %></h4>
+    <%= form_with scope: nil, url: sign_path, local: @local, on: { label: nil, placeholder: true }, css: { wrap_all: 'field' } do |f| %>
       <%= f.text_field :identity, value: params[:identity], placeholder: Account.human_attribute_name(:identity) %>
       <%= f.submit t('.next'), class: 'ui fluid primary button' %>
     <% end %>
