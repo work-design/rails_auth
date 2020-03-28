@@ -2,7 +2,7 @@
 <div class="column is-6">
   <div class="panel" style="width: 300px;">
     <h4 class="panel-heading has-text-centered"><%= t('.title') %></h4>
-    <%= form_with scope: nil, url: sign_path, local: @local, on: { label: nil, offset: false, placeholder: true }, css: { wrap_all: 'panel-block' } do |f| %>
+    <%= form_with scope: nil, url: sign_path, local: @local, can: { label: nil, offset: false, placeholder: true }, css: { wrap_all: 'panel-block' } do |f| %>
       <%= f.text_field :identity, value: params[:identity], placeholder: Account.human_attribute_name(:identity) %>
       <%= f.submit t('.next'), class: 'button is-primary is-fullwidth' %>
     <% end %>
