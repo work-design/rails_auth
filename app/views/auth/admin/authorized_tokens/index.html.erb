@@ -30,10 +30,10 @@
       <td><%= authorized_token.account_id %></td>
       <td><%= authorized_token.user_id %></td>
       <td>
-        <%= link_to edit_admin_authorized_token_path(authorized_token), data: { tooltip: t('.edit') }, remote: true, class: 'ui mini circular icon button' do %>
+        <%= link_to edit_admin_authorized_token_path(authorized_token), aria: { label: t('.edit') }, remote: true, class: 'ui mini circular icon button' do %>
           <i class="fas fa-pencil-alt"></i>
         <% end %>
-        <%= link_to admin_authorized_token_path(authorized_token), method: :delete, data: { tooltip: t('.destroy'), confirm: t('.confirm') }, remote: true, class: 'ui mini circular icon button' do %>
+        <%= link_to admin_authorized_token_path(authorized_token), method: :delete, aria: { label: t('.destroy') }, data: { confirm: t('.confirm') }, remote: true, class: 'ui mini circular icon button' do %>
           <i class="fas fa-trash-alt"></i>
         <% end %>
       </td>
