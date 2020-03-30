@@ -1,11 +1,11 @@
 <div class="ui top attached segment">
   <%= render 'filter' %>
 </div>
-
-<table class="ui bottom attached selectable fixed table">
+<div class="table-container">
+<table class="table is-hoverable">
   <thead>
     <tr>
-      <th class="six wide">
+      <th>
         <p><%= AuthorizedToken.human_attribute_name(:token) %></p>
         <p><%= AuthorizedToken.human_attribute_name(:expire_at) %></p>
       </th>
@@ -41,5 +41,6 @@
   <% end %>
   </tbody>
 </table>
+</div>
 
 <%= paginate @authorized_tokens %>

@@ -1,15 +1,14 @@
 <% content_for :breadcrumb do %>
-<div class="ui basic segment breadcrumb">
-  <%= link_to t('auth.admin.users.index.title'), admin_users_path(id: params[:user_id]), class: 'section' %>
-  <i class="fas fa-angle-right divider"></i>
-  <div class="active section"><%= t('.title') %></div>
+<div class="breadcrumb has-succeeds-separator">
+  <ul>
+    <li><%= link_to t('auth.admin.users.index.title'), admin_users_path(id: params[:user_id]) %></li>
+    <li class="is-active"><%= t('.title') %></li>
+  </ul>
 </div>
 <% end %>
 
 <% unless params[:user_id] %>
-  <div class="ui top attached segment">
-    <%= render 'filter' %>
-  </div>
+  <%= render 'filter' %>
 <% end %>
 
 <table class="table is-hoverable is-fullwidth">

@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/qinmingyuan/default_form.git
-  revision: cd01cb958728534b17878a5dc3bce572bd1ce807
+  revision: eaa5991a2d6c42f2d5ff6c593e0dd49c6e839842
   specs:
     default_form (1.5.0)
       rails_com (~> 1.2)
@@ -14,7 +14,7 @@ GIT
 
 GIT
   remote: https://github.com/work-design/rails_com.git
-  revision: 3e804660113ba183c48b95c27c88e2ef410f612e
+  revision: 3e9af33c298f9af93166316bedcc073c294a18e9
   specs:
     rails_com (1.2.9)
       default_where (~> 2.2)
@@ -95,7 +95,7 @@ GEM
     concurrent-ruby (1.1.6)
     crass (1.0.6)
     erubi (1.9.0)
-    factory_bot (5.1.1)
+    factory_bot (5.1.2)
       activesupport (>= 4.2.0)
     factory_bot_rails (5.1.1)
       factory_bot (~> 5.1.0)
@@ -181,6 +181,7 @@ GEM
     rdoc (6.2.1)
     sdoc (1.1.0)
       rdoc (>= 5.0)
+    semantic_range (2.3.0)
     sprockets (4.0.0)
       concurrent-ruby (~> 1.0)
       rack (> 1, < 3)
@@ -197,10 +198,11 @@ GEM
     turbolinks-source (5.2.0)
     tzinfo (1.2.6)
       thread_safe (~> 0.1)
-    webpacker (4.2.2)
-      activesupport (>= 4.2)
+    webpacker (5.0.1)
+      activesupport (>= 5.2)
       rack-proxy (>= 0.6.1)
-      railties (>= 4.2)
+      railties (>= 5.2)
+      semantic_range (>= 2.3.0)
     websocket-driver (0.7.1)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.4)
