@@ -6,7 +6,7 @@
       <th><%= UserTag.human_attribute_name(:name) %></th>
       <th><%= UserTag.human_attribute_name(:user_taggeds_count) %></th>
       <th>
-        <%= link_to new_admin_user_tag_path, remote: true, class: 'ui mini green button' do %>
+        <%= link_to new_admin_user_tag_path, remote: true, class: 'button is-link is-small' do %>
           <i class="fas fa-plus"></i><%= t('.new') %>
         <% end %>
       </th>
@@ -20,10 +20,10 @@
         <%= link_to user_tag.user_taggeds_count, admin_user_tag_path(user_tag) %>
       </td>
       <td>
-        <%= link_to edit_admin_user_tag_path(user_tag), aria: { label: t('.edit') }, remote: true, class: 'ui mini circular icon button' do %>
+        <%= link_to edit_admin_user_tag_path(user_tag), aria: { label: t('.edit') }, remote: true, class: 'button is-small is-rounded is-light' do %>
           <i class="fas fa-pencil-alt"></i>
         <% end %>
-        <%= link_to admin_user_tag_path(user_tag), method: :delete, aria: { label: t('.destroy') }, data: { confirm: t('.confirm') }, class: 'ui mini circular icon button' do %>
+        <%= link_to admin_user_tag_path(user_tag), method: :delete, aria: { label: t('.destroy') }, data: { confirm: t('.confirm') }, class: 'button is-small is-rounded is-light' do %>
           <i class="fas fa-trash-alt"></i>
         <% end %>
       </td>

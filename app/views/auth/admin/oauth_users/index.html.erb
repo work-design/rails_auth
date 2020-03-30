@@ -43,7 +43,7 @@
         <%= link_to oauth_user.user_id, admin_user_path(oauth_user.user_id) if oauth_user.user_id %>
       </td>
       <td>
-        <%= link_to admin_oauth_user_path(oauth_user), method: :delete, aria: { label: t('.destroy') }, data: { confirm: t('.confirm') }, class: 'ui mini circular icon button' do %>
+        <%= link_to admin_oauth_user_path(oauth_user), method: :delete, aria: { label: t('.destroy') }, data: { confirm: t('.confirm') }, class: 'button is-small is-rounded is-light' do %>
           <i class="fas fa-trash-alt"></i>
         <% end %>
       </td>
