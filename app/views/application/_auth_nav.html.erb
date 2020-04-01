@@ -6,9 +6,9 @@
   </a>
   <div class="menu-list">
     <%# link_to 'User Panel', panel_admin_users_path, class: active_helper(paths: panel_admin_users_path) %>
-    <%= link_to t('auth.admin.users.index.title'), admin_users_path, class: active_helper('users': ['index', 'show'], active_class: '', item_class: '') %>
-    <%= link_to t('auth.admin.accounts.index.title'), admin_accounts_path, class: active_helper(controllers: 'accounts', active_class: '', item_class: '') %>
-    <%= link_to t('auth.admin.oauth_users.index.title'), admin_oauth_users_path, class: active_helper(controllers: 'oauth_users', active_class: '', item_class: '') %>
-    <%= link_to t('auth.admin.user_tags.index.title'), admin_user_tags_path, class: active_helper(controllers: 'user_tags', active_class: '', item_class: '') %>
+    <%= link_to t('auth.admin.users.index.title'), admin_users_path, class: active_helper('users': ['index', 'show'], active_class: 'is-active', item_class: '') %>
+    <%= link_to t('auth.admin.accounts.index.title'), admin_accounts_path, class: active_helper(controllers: 'accounts', active_class: 'is-active', item_class: '') %>
+    <%= link_to t('auth.admin.oauth_users.index.title'), admin_oauth_users_path, class: active_helper(controllers: 'oauth_users', active_class: 'is-active', item_class: '') %>
+    <%= link_to t('auth.admin.user_tags.index.title'), admin_user_tags_path, class: active_helper(controllers: 'user_tags', active_class: 'is-active', item_class: '') %>
   </div>
 </div>
