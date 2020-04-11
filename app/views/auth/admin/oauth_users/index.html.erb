@@ -16,8 +16,8 @@
     <tr>
       <th><%= OauthUser.human_attribute_name(:type) %></th>
       <th>
-        <p class="ui green text"><%= OauthUser.human_attribute_name(:uid) %></p>
-        <p class="ui grey text"><%= OauthUser.human_attribute_name(:app_id) %></p>
+        <p class="has-text-success"><%= OauthUser.human_attribute_name(:uid) %></p>
+        <p class="has-text-grey"><%= OauthUser.human_attribute_name(:app_id) %></p>
       </th>
       <th><%= OauthUser.human_attribute_name(:name) %></th>
       <th><%= OauthUser.human_attribute_name(:created_at) %></th>
@@ -31,11 +31,11 @@
     <tr>
       <td><%= oauth_user.type_i18n %></td>
       <td>
-        <p class="ui green text"><%= oauth_user.uid %></p>
-        <p class="ui grey text"><%= oauth_user.app_id %></p>
+        <p class="has-text-success"><%= oauth_user.uid %></p>
+        <p class="has-text-grey"><%= oauth_user.app_id %></p>
       </td>
       <td>
-        <%= image_tag oauth_user.avatar_url, class: 'ui avatar image' if oauth_user.avatar_url.present? %>
+        <%= image_tag oauth_user.avatar_url, class: 'image is-24x24' if oauth_user.avatar_url.present? %>
         <%= oauth_user.name %>
       </td>
       <td><time><%= oauth_user.created_at.to_s(:rfc822) %></time></td>
