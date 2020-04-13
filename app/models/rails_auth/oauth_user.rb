@@ -15,16 +15,16 @@ module RailsAuth::OauthUser
     attribute :expires_at, :datetime
     attribute :refresh_token, :string
     attribute :extra, :json, default: {}
-    
+
     belongs_to :account, optional: true, inverse_of: :oauth_users
     belongs_to :user, autosave: true, optional: true
-    has_one :same_oauth_user, -> (o){ where.not(id: o.id, unionid: nil, user_id: nil) }, class_name: self.name, foreign_key: :unionid, primary_key: :unionid
-    has_many :same_oauth_users, -> (o){ where.not(id: o.id, unionid: nil) }, class_name: self.name, foreign_key: :unionid, primary_key: :unionid
+    has_one :same_oauth_user, -> (o){ where.not(id: o.id).where.not(unionid: nil).where.not(user_id: nil) }, class_name: self.name, foreign_key: :unionid, primary_key: :unionid
+    has_many :same_oauth_users, -> (o){ where.not(id: o.id).where.not(unionid: nil) }, class_name: self.name, foreign_key: :unionid, primary_key: :unionid
     has_many :authorized_tokens, dependent: :delete_all
-    
+
     validates :provider, presence: true
     validates :uid, presence: true
-    
+
     before_validation do
       # todo better user sync logic
       self.user_id = self.account&.user_id if account_id_changed?
