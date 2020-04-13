@@ -64,7 +64,7 @@ module RailsAuth::Application
     if path
       session[:return_to] = path
     elsif request.get?
-      session[:return_to] = request.fullpath
+      session[:return_to] = request.url
     else
       session[:return_to] = request.referer
     end
