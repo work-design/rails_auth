@@ -23,7 +23,7 @@ class Auth::Mine::OauthUsersController < Auth::Mine::BaseController
 
     @oauth_user.save
 
-    redirect_to my_root_url(organ_id: params[:organ_id])
+    redirect_to my_root_url
   end
 
   def show
