@@ -1,4 +1,4 @@
-<%= form_with model: [:admin, @authorized_token] do |f| %>
+<%= form_with model: [:panel, @authorized_token] do |f| %>
   <%= render 'shared/error_messages', target: @authorized_token %>
   <%= f.datetime_field :expire_at %>
   <%= f.hidden_field :oauth_user_id %>

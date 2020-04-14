@@ -1,4 +1,4 @@
-class Auth::Admin::AuthorizedTokensController < Auth::Admin::BaseController
+class Auth::Panel::AuthorizedTokensController < Auth::Panel::BaseController
   before_action :set_authorized_token, only: [:edit, :update, :destroy]
 
   def index

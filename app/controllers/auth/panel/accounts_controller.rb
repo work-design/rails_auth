@@ -1,4 +1,4 @@
-class Auth::Admin::AccountsController < Auth::Admin::BaseController
+class Auth::Panel::AccountsController < Auth::Panel::BaseController
   before_action :set_account, only: [:show, :edit, :update, :destroy]
 
   def index

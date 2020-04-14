@@ -1,4 +1,4 @@
-class Auth::Admin::UsersController < Auth::Admin::BaseController
+class Auth::Panel::UsersController < Auth::Panel::BaseController
   before_action :set_user, only: [:show, :edit, :update, :edit_user_tags, :update_user_tags, :destroy]
 
   def index

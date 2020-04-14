@@ -25,6 +25,11 @@ Rails.application.routes.draw do
   end
 
   scope :admin, module: 'auth/admin', as: 'admin' do
+    resources :oauth_users
+    resources :user_tags
+  end
+
+  scope :panel, module: 'auth/panel', as: 'panel' do
     resources :users do
       get :panel, on: :collection
       member do
@@ -33,10 +38,8 @@ Rails.application.routes.draw do
         patch 'user_tags' => :update_user_tags
       end
     end
-    resources :oauth_users
     resources :accounts
     resources :authorized_tokens
-    resources :user_tags
   end
 
   scope :my, module: 'auth/mine', as: 'my' do

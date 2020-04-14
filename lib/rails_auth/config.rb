@@ -7,6 +7,7 @@ module RailsAuth #:nodoc:
     config.app_controller = 'ApplicationController'
     config.mine_controller = 'MineController'
     config.admin_controller = 'AdminController'
+    config.panel_controller = 'PanelController'
     config.record_class = 'ApplicationRecord'
     config.default_return_path = '/'
     config.default_home_path = '/my'

@@ -1,4 +1,4 @@
-<%= form_with model: [:admin, @user] do |f| %>
+<%= form_with model: [:panel, @user] do |f| %>
   <%= f.text_field :name, required: true %>
   <%= f.fields :accounts do |ef| %>
     <%= ef.text_field :identity %>
