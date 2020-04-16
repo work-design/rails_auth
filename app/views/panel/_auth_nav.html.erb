@@ -1,8 +1,8 @@
 <div class="<%= active_helper(modules: 'auth/panel', active_class: 'menu ex-accordion is-active', item_class: 'menu ex-accordion') %>" data-controller="menu">
-  <%= content_tag :div, class: 'menu-list' do -%>
+  <%= content_tag :div, class: 'menu-list' do %>
     <%# link_to 'User Panel', panel_panel_users_path, class: active_helper(paths: panel_panel_users_path) %>
     <%= link_to t('auth.panel.users.index.title'), panel_users_path, class: active_helper('users': ['index', 'show'], active_class: 'is-active', item_class: nil) %>
-    <%= link_to t('auth.panel.accounts.index.title'), panel_accounts_path, class: active_helper(controllers: 'accounts', active_class: 'is-active', item_class: nil) %>
+    <%= link_to t('auth.panel.accounts.index.title'), panel_accounts_path, class: active_helper(controllers: 'accounts', active_class: 'is-active', item_class: nil) -%>
   <% end %>
   <a class="menu-label" data-action="menu#toggle">
     <i class="fas fa-users fa-fw"></i>
