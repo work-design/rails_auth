@@ -24,7 +24,7 @@
       </th>
       <th><%= User.human_attribute_name(:oauth_users) %></th>
       <th>
-        <%= link_to new_admin_user_path, remote: true, class: 'button is-link is-small' do %>
+        <%= link_to new_panel_user_path, remote: true, class: 'button is-link is-small' do %>
           <i class="fas fa-plus"></i><%= t('.new') %>
         <% end %>
       </th>
