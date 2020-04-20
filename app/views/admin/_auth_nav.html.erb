@@ -1,7 +1,7 @@
-<div class="<%= active_helper(modules: 'auth/admin', active_class: 'menu ex-accordion is-active', item_class: 'menu ex-accordion') %>" data-controller="menu">
+<div class="<%= active_helper(modules: 'auth/admin', active: 'menu ex-accordion is-active', item: 'menu ex-accordion') %>" data-controller="menu">
   <%= content_tag :div, class: 'menu-list' do %>
-    <%= link_to t('auth.admin.oauth_users.index.title'), admin_oauth_users_path, class: active_helper(controllers: 'oauth_users', active_class: 'is-active', item_class: nil) %>
-    <%= link_to t('auth.admin.user_tags.index.title'), admin_user_tags_path, class: active_helper(controllers: 'user_tags', active_class: 'is-active', item_class: nil) -%>
+    <%= link_to t('auth.admin.oauth_users.index.title'), admin_oauth_users_path, class: active_helper(controllers: 'oauth_users', active: 'is-active', item: nil) %>
+    <%= link_to t('auth.admin.user_tags.index.title'), admin_user_tags_path, class: active_helper(controllers: 'user_tags', active: 'is-active', item: nil) -%>
   <% end %>
   <a class="menu-label" data-action="menu#toggle">
     <i class="fas fa-users fa-fw"></i>

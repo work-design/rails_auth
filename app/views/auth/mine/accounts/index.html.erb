@@ -3,7 +3,7 @@
   <% @accounts.each do |account| %>
     <tr>
       <td>
-        <div class="ui toggle checkbox inverted <%= active_assert(account.primary, expected: 'disabled green label', unexpected: 'label') %>">
+        <div class="ui toggle checkbox inverted <%= account.primary ? 'disabled green label' : 'label' %>">
           <%= check_box_tag '[account]primary', nil, account.primary, data: { method: :patch, remote: true, url: my_account_path(account), submit: true }, id: nil %>
           <label><%= t('.primary') %></label>
         </div>
