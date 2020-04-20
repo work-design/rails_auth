@@ -35,16 +35,14 @@
     <td>
       <%= form_with url: my_accounts_path, method: :post, id: 'add_account' %>
     </td>
-    <td class="six wide">
-      <div class="ui fluid input">
-        <%= text_field_tag 'account[identity]', nil, placeholder: Account.human_attribute_name(:identity), form: 'add_account' %>
-      </div>
+    <td>
+      <%= text_field_tag 'account[identity]', nil, placeholder: Account.human_attribute_name(:identity), form: 'add_account', class: 'input' %>
     </td>
     <td>
-      <%= submit_tag '添加', form: 'add_account', class: 'ui button' %>
+      <%= submit_tag '添加', form: 'add_account', class: 'button is-primary' %>
     </td>
     <td colspan="3">
-    
+
     </td>
   </tr>
   </tbody>

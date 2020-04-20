@@ -15,7 +15,6 @@
       <div class="ui image dimmable dimmed">
         <a class="ui grey right corner label" id="avatar_button">
           <i class="fas fa-file-image"></i>
-          <%= hidden_field_tag nil, nil, id: 'proxy' %>
           <%= file_field_tag :key, id: 'file_input' %>
         </a>
         <%= image_tag current_user.avatar.variant(resize_to_limit: [200, 200]), id: 'avatar_image' if current_user.avatar.attached? %>
@@ -24,14 +23,16 @@
   </tr>
   <tr>
     <td class="right aligned"><%= User.human_attribute_name(:name) %></td>
-    <td class="ui mini input six wide"><%= text_field_tag 'user[name]', current_user.name, form: 'edit_user' %></td>
+    <td>
+      <%= text_field_tag 'user[name]', current_user.name, form: 'edit_user', class: 'input' %>
+    </td>
   </tr>
   <tr>
   </tr>
   <tr>
     <td></td>
     <td>
-      <%= submit_tag t('.save'), form: 'edit_user', class: 'ui blue button' %>
+      <%= submit_tag t('.save'), form: 'edit_user', class: 'button is-primary' %>
     </td>
   </tr>
   </tbody>

@@ -4,15 +4,13 @@
     <tr>
       <td><%= oauth_user.type_i18n %></td>
       <td>
-        <% if oauth_user.avatar_url %>
-          <%= image_tag oauth_user.avatar_url, class: 'ui avatar image' %>
-        <% end %>
+        <%= image_tag oauth_user.avatar_url, class: 'image is-24x24' if oauth_user.avatar_url %>
         <%= oauth_user.name %>
       </td>
       <td><%= oauth_user.account&.identity %></td>
-      <td class="ui labels">
-        <%= link_to t('.unbind'), my_oauth_user_path(oauth_user), method: :delete, data: { confirm: t('.confirm') }, class: 'ui yellow label' %>
-        <%= link_to t('.update_token'), "/auth/#{oauth_user.provider}", class: 'ui blue label' %>
+      <td>
+        <%= link_to t('.unbind'), my_oauth_user_path(oauth_user), method: :delete, data: { confirm: t('.confirm') }, class: 'button is-warning' %>
+        <%= link_to t('.update_token'), "/auth/#{oauth_user.provider}", class: 'button is-success' %>
       </td>
     </tr>
   <% end %>
@@ -20,8 +18,8 @@
     <tr>
       <td><%= provider %></td>
       <td colspan="2"></td>
-      <td class="ui labels">
-        <%= link_to t('.bind'), "/auth/#{provider}", class: 'ui blue label' %>
+      <td>
+        <%= link_to t('.bind'), "/auth/#{provider}", class: 'button is-info' %>
       </td>
     </tr>
   <% end %>
