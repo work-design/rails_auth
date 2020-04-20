@@ -2,6 +2,8 @@ class Auth::Mine::UsersController < Auth::Mine::BaseController
   before_action :set_user
 
   def show
+    # todo remove
+    logout_organ
   end
 
   def edit
