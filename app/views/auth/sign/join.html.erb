@@ -1,18 +1,21 @@
-<div class="ten wide column"></div>
-<div class="six wide column">
-  <div class="ui segment" style="width: 300px;">
-    <h4 class="ui centered header">请注册</h4>
-    <%= form_with scope: nil, url: login_path, local: @local, on: { label: nil, wrap_input: false, placeholder: true }, css: { wrap_all: 'field', submit: 'ui fluid primary button' } do |f| %>
-      <%= f.text_field :identity, value: params[:identity], class: 'disabled' %>
-      <div class="field">
-        <div class="ui fluid action input">
-          <%= f.text_field :token, placeholder: VerifyToken.human_attribute_name(:token), autocomplete: false, on: { wrap_all: false } %>
-          <%= link_to t('.token'), sign_token_path, method: :post, remote: true, id: 'mobile_confirm', class: 'ui button' %>
+<div class="column"></div>
+<div class="column">
+  <div class="panel" style="width: 300px;">
+    <h4 class="panel-heading has-text-centered">请注册</h4>
+    <%= form_with scope: nil, url: login_path, local: @local, origin: { label: nil }, wrap: { input: nil, all: 'field control', submit: 'panel-block' } do |f| %>
+      <div class="panel-block is-wrapped">
+        <%= f.text_field :identity, value: params[:identity], disabled: true %>
+        <%= f.hidden_field :identity, value: params[:identity] %>
+        <div class="field control has-addons">
+          <%= f.text_field :token, placeholder: VerifyToken.human_attribute_name(:token), autocomplete: false, wrap: { input: 'control is-expanded', all: nil } %>
+          <div class="control">
+            <%= link_to t('.token'), sign_token_path, method: :post, remote: true, id: 'mobile_confirm', class: 'button is-info' %>
+          </div>
         </div>
+        <%= f.password_field :password, placeholder: User.human_attribute_name(:password), autocomplete: false %>
+        <%= f.password_field :password_confirmation, placeholder: User.human_attribute_name(:password_confirmation), autocomplete: false %>
       </div>
-      <%= f.password_field :password, placeholder: User.human_attribute_name(:password), autocomplete: false %>
-      <%= f.password_field :password_confirmation, placeholder: User.human_attribute_name(:password_confirmation), autocomplete: false %>
-      <%= f.submit %>
+      <%= f.submit class: 'button is-primary is-fullwidth' %>
     <% end %>
   </div>
 </div>
