@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   scope module: :auth do
     controller :sign do
       match :sign, via: [:get, :post]
@@ -24,12 +25,12 @@ Rails.application.routes.draw do
     resources :users, only: [:index, :show]
   end
 
-  scope :admin, module: 'auth/admin', as: 'admin' do
+  scope :admin, module: 'auth/admin', as: :admin do
     resources :oauth_users
     resources :user_tags
   end
 
-  scope :panel, module: 'auth/panel', as: 'panel' do
+  scope :panel, module: 'auth/panel', as: :panel do
     resources :users do
       get :panel, on: :collection
       member do
@@ -42,7 +43,7 @@ Rails.application.routes.draw do
     resources :authorized_tokens
   end
 
-  scope :my, module: 'auth/mine', as: 'my' do
+  scope :my, module: 'auth/my', as: :my do
     resource :user
     resources :accounts do
       member do

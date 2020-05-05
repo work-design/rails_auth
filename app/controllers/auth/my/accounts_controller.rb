@@ -1,4 +1,4 @@
-class Auth::Mine::AccountsController < Auth::Mine::BaseController
+class Auth::My::AccountsController < Auth::My::BaseController
   before_action :set_account, only: [:edit, :update, :edit_confirm, :update_confirm, :destroy]
 
   def index
@@ -14,7 +14,7 @@ class Auth::Mine::AccountsController < Auth::Mine::BaseController
 
   def create
     @account = current_user.accounts.build(account_params)
-    
+
     if @account.save
       @account = Account.find @account.id
       @verify_token = @account.verify_token
