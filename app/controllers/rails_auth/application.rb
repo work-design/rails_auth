@@ -47,7 +47,7 @@ module RailsAuth::Application
     return @current_authorized_token if defined?(@current_authorized_token)
 
     if request.headers['Authorization']
-      auth_token = request.headers['Authorization']&.split(' ').last.presence
+      auth_token = request.headers['Authorization'].to_s.split(' ').last.presence
     else
       auth_token = request.headers['Auth-Token'].presence || session[:auth_token] || params[:auth_token]
     end

@@ -6,15 +6,19 @@
 # test
 module RailsAuth::AuthorizedToken
   extend ActiveSupport::Concern
+
   included do
     attribute :token, :string, index: { unique: true }
     attribute :expire_at, :datetime
     attribute :session_key, :string, comment: '目前在小程序下用到'
     attribute :access_counter, :integer, default: 0
-    
+    attribute :mock, :boolean, default: false
+
     belongs_to :user, optional: true
     belongs_to :oauth_user, optional: true
     belongs_to :account, optional: true
+    belongs_to :organ, optional: true
+    belongs_to :member, optional: true
 
     scope :valid, -> { where('expire_at >= ?', Time.now).order(expire_at: :desc) }
     validates :token, presence: true
@@ -39,22 +43,22 @@ module RailsAuth::AuthorizedToken
       self.errors.add(:token, 'The token has expired')
       return false
     end
-  
+
     true
   end
-  
+
   def update_token
     self.expire_at = 1.weeks.since
     self.token = generate_token
     self
   end
-  
+
   def update_token!
     update_token
     save
     self
   end
-  
+
   def generate_token
     if user
       xbb = [user_id, user.password_digest]
@@ -69,7 +73,7 @@ module RailsAuth::AuthorizedToken
       xbb = []
       options = {}
     end
-    
+
     JwtHelper.generate_jwt_token(*xbb, exp: expire_at.to_i, **options)
   end
 
