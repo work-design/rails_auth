@@ -22,7 +22,8 @@ module RailsAuth::AuthorizedToken
 
     scope :valid, -> { where('expire_at >= ?', Time.now).order(expire_at: :desc) }
     validates :token, presence: true
-    before_validation :sync_user, if: -> { oauth_user_id_changed? || account_id_changed? }
+
+    before_validation :sync_user, if: -> { oauth_user_id_changed? || account_id_changed? || member_id_changed? }
     before_validation :update_token, if: -> { new_record? }
   end
 
@@ -34,6 +35,11 @@ module RailsAuth::AuthorizedToken
       self.user_id = account.user_id
     else
       self.user_id = nil
+    end
+    if member
+      self.organ_id = member.organ_id
+      self.user_id ||= member.user_id
+      self.mock = true if user_id != member.user_id
     end
   end
 
@@ -61,20 +67,20 @@ module RailsAuth::AuthorizedToken
 
   def generate_token
     if user
-      xbb = [user_id, user.password_digest]
+      uids = [user_id, user.password_digest || user.id]
       options = { sub: 'User', column: 'password_digest', exp_float: expire_at.to_f }
     elsif oauth_user
-      xbb = [oauth_user_id, oauth_user.access_token]
+      uids = [oauth_user_id, oauth_user.access_token]
       options = { sub: 'OauthUser', column: 'access_token', exp_float: expire_at.to_f }
     elsif account
-      xbb = [account_id, account.identity]
+      uids = [account_id, account.identity]
       options = { sub: 'Account', column: 'identity', exp_float: expire_at.to_f }
     else
-      xbb = []
+      uids = []
       options = {}
     end
 
-    JwtHelper.generate_jwt_token(*xbb, exp: expire_at.to_i, **options)
+    JwtHelper.generate_jwt_token(*uids, exp: expire_at.to_i, **options)
   end
 
 end

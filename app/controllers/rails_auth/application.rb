@@ -96,10 +96,11 @@ module RailsAuth::Application
 
   private
   def set_auth_token
-    return unless @current_account
+    return unless defined?(@current_authorized_token) && @current_authorized_token
 
-    headers['Auth-Token'] = @current_account.auth_token
-    session[:auth_token] = @current_account.auth_token
+    token = @current_authorized_token.token
+    headers['Organ-Token'] = token
+    session[:organ_token] = token
   end
 
   def verify_auth_token(auth_token)
