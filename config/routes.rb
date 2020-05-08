@@ -43,7 +43,7 @@ Rails.application.routes.draw do
     resources :authorized_tokens
   end
 
-  scope :my, module: 'auth/my', as: :my do
+  scope :my, module: 'auth/board', as: :my do
     resource :user
     resources :accounts do
       member do

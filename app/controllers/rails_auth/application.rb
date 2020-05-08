@@ -99,8 +99,8 @@ module RailsAuth::Application
     return unless defined?(@current_authorized_token) && @current_authorized_token
 
     token = @current_authorized_token.token
-    headers['Organ-Token'] = token
-    session[:organ_token] = token
+    headers['Auth-Token'] = token
+    session[:auth_token] = token
   end
 
   def verify_auth_token(auth_token)

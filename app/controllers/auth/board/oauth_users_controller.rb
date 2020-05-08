@@ -1,4 +1,4 @@
-class Auth::My::OauthUsersController < Auth::My::BaseController
+class Auth::Board::OauthUsersController < Auth::Board::BaseController
   before_action :set_user
   before_action :set_oauth_user, only: [:show, :edit, :update, :destroy]
 
