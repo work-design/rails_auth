@@ -2,8 +2,6 @@ class Auth::Board::UsersController < Auth::Board::BaseController
   before_action :set_user
 
   def show
-    # todo remove
-    logout_organ
   end
 
   def edit
