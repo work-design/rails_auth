@@ -22,17 +22,17 @@ class LoginController extends Controller {
 
     if (/.+/.test(identity)) {
       let countdown = parseInt(ele.dataset['time'])
-      let link = new URL(ele.href)
-      link.search = '?identity=' + identity
+      let url = new URL(ele.dataset['url'])
+      url.searchParams.set('identity', identity)
+      Rails.ajax({ url: url, type: 'POST', dataType: 'script' })
 
-      ele.href = link
-      ele.setAttribute('disabled', false)
+      ele.setAttribute('disabled', '')
       ele.innerText = '重新发送(' + countdown + ')'
 
       let timer = setInterval(function() {
         countdown--
         if (countdown <= 0) {
-          ele.setAttribute('disabled', false)
+          ele.removeAttribute('disabled')
           ele.innerText = '获取验证码'
           clearInterval(timer)
         } else {

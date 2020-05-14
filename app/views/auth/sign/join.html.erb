@@ -9,7 +9,9 @@
         <div class="field control has-addons">
           <%= f.text_field :token, placeholder: VerifyToken.human_attribute_name(:token), autocomplete: false, wrap: { input: 'control is-expanded', all: nil } %>
           <div class="control">
-            <%= link_to t('.token'), sign_token_path, method: :post, remote: true, data: { action: 'login#code', time: 20 }, class: 'button is-info' %>
+            <button type="button" class="button is-info" data-action="login#code" data-time="60" data-url="<%= sign_token_url %>">
+              <%= t('.token') %>
+            </button>
           </div>
         </div>
         <%= f.password_field :password, placeholder: User.human_attribute_name(:password), autocomplete: false %>
