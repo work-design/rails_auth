@@ -1,6 +1,7 @@
 class Auth::SignController < Auth::BaseController
   before_action :set_remote, only: [:sign, :token]
   before_action :check_login, except: [:logout]
+  skip_after_action :set_auth_token, only: [:logout]
 
   def sign
     if params[:identity]
