@@ -1,6 +1,6 @@
 <%= form_with theme: 'search', model: User.new do |f| %>
   <div class="field-body">
-    <%= f.text_field :name %>
+    <%= f.text_field 'name-like' %>
     <%= f.text_field 'accounts.identity' %>
     <div class="field is-narrow">
       <%= f.submit %>
