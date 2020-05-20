@@ -1,1 +1,1 @@
-import './login-ready'
+import './login'
