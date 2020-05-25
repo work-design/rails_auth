@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class Auth::Mine::UsersControllerTest < ActionDispatch::IntegrationTest
+class Auth::Board::UsersControllerTest < ActionDispatch::IntegrationTest
 
   setup do
     @account = create :account

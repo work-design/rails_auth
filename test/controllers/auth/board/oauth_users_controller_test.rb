@@ -1,10 +1,10 @@
 require 'test_helper'
-class Auth::Mine::OauthUsersControllerTest < ActionDispatch::IntegrationTest
+class Auth::Board::OauthUsersControllerTest < ActionDispatch::IntegrationTest
 
   setup do
     account = create :account
     post '/login', params: { identity: account.identity, password: account.user.password }
-    
+
     @oauth_user = create :oauth_user
   end
 

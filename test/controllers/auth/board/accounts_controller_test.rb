@@ -1,12 +1,12 @@
 require 'test_helper'
 
-class Auth::Mine::AccountsControllerTest < ActionDispatch::IntegrationTest
-  
+class Auth::Board::AccountsControllerTest < ActionDispatch::IntegrationTest
+
   setup do
     @account = create :account
     post login_url, params: { identity: @account.identity, password: @account.user.password }
   end
-  
+
   teardown do
     @account.destroy
   end
@@ -23,7 +23,7 @@ class Auth::Mine::AccountsControllerTest < ActionDispatch::IntegrationTest
 
     assert_response :success
   end
-  
+
   test 'edit_confirm ok' do
     get confirm_my_account_url(@account)
     assert_response :success
