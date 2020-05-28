@@ -23,12 +23,12 @@ module RailsAuth::VerifyToken
       self.user_id = self.account.user_id
       self.identity ||= self.account.identity
     end
-    
+
     self.token ||= SecureRandom.uuid
     self.expire_at ||= 14.days.since
     self
   end
-  
+
   def update_token!
     update_token
     save
@@ -49,15 +49,17 @@ module RailsAuth::VerifyToken
     raise 'should implement in subclass'
   end
 
-  def self.create_with_account(identity)
-    verify_token = self.valid.find_by(identity: identity)
-    return verify_token if verify_token
-    verify_token = self.new(identity: identity)
-    self.transaction do
-      self.where(identity: identity).delete_all
-      verify_token.save!
+  class_methods do
+    def create_with_account(identity)
+      verify_token = self.valid.find_by(identity: identity)
+      return verify_token if verify_token
+      verify_token = self.new(identity: identity)
+      self.transaction do
+        self.where(identity: identity).delete_all
+        verify_token.save!
+      end
+      verify_token
     end
-    verify_token
   end
 
 end

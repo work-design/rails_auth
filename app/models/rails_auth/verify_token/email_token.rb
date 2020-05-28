@@ -1,9 +1,10 @@
 module RailsAuth::VerifyToken::EmailToken
   extend ActiveSupport::Concern
+
   included do
     validates :identity, presence: true
   end
-  
+
   def update_token
     self.token = rand(10000..999999)
     self.expire_at = 10.minutes.since
