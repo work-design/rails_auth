@@ -3,8 +3,8 @@
   <% @accounts.each do |account| %>
     <tr>
       <td>
-        <div class="ui toggle checkbox inverted <%= account.primary ? 'disabled green label' : 'label' %>">
-          <%= check_box_tag '[account]primary', nil, account.primary, data: { method: :patch, remote: true, url: my_account_path(account), submit: true }, id: nil %>
+        <div data-controller="input">
+          <%= check_box_tag '[account]primary', nil, account.primary, data: { method: :patch, remote: true, url: my_account_path(account), action: 'input#submit' }, id: nil, class: 'switch is-rounded', disabled: account.primary %>
           <label><%= t('.primary') %></label>
         </div>
       </td>

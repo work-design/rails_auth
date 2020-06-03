@@ -45,11 +45,12 @@
         <p><%= user.last_login_ip %></p>
       </td>
       <td>
-        <div class="ui toggle checkbox">
-          <%= check_box_tag '[user]disabled', nil, user.disabled, data: { method: :patch, remote: true, url: panel_user_path(user), submit: true }, id: nil %>
+        <div data-controller="input">
+          <%= check_box_tag '[user]disabled', nil, user.disabled, data: { method: :patch, remote: true, url: panel_user_path(user), action: 'input#submit' }, id: nil, class: 'switch is-rounded' %>
+          <label></label>
         </div>
       </td>
-      <td class="ui labels">
+      <td>
         <% user.oauth_users.each do |oauth_user| %>
           <%= link_to oauth_user.type_i18n, admin_oauth_users_path(user_id: user.id), class: 'ui blue label' %>
         <% end %>
