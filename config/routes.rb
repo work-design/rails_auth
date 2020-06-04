@@ -47,8 +47,8 @@ Rails.application.routes.draw do
     resource :user
     resources :accounts do
       member do
-        get 'confirm' => :edit_confirm
-        post 'confirm' => :update_confirm
+        post :token
+        post :confirm
       end
     end
     resources :oauth_users do

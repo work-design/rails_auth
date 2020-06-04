@@ -11,20 +11,29 @@
       <td>
         <span><%= account.identity %></span>
         <% if account.confirmed %>
-          <label class="ui green icon label"><i class="fas fa-check-circle"></i></label>
+          <i class="fas fa-check-circle has-text-success"></i>
         <% else %>
-          <label class="ui yellow icon label"><i class="fas fa-question-circle"></i></label>
+          <i class="fas fa-question-circle has-text-warning"></i>
         <% end %>
       </td>
       <td>
         <% unless account.confirmed %>
-          <label class="ui red label">待验证</label>
-          <%= link_to '发送验证码', confirm_my_account_path(account.id) %>
+          <%= form_with url: confirm_my_account_path(account), wrap: { all: nil, input: 'field is-narrow', submit: nil }, origin: { offset: nil }, class: 'field is-horizontal' do |f| %>
+            <div class="field-body">
+              <%= f.text_field :token, class: 'input', placeholder: '验证码' %>
+              <div class="field is-narrow">
+                <%= f.submit %>
+              </div>
+            </div>
+          <% end %>
         <% end %>
       </td>
       <td>
+        <% unless account.confirmed %>
+          <button data-controller="login" data-url="<%= token_my_account_url(account.id) %>" data-time="60" data-action="login#countDown" class="button is-link">发送验证码</button>
+        <% end %>
         <% unless account.primary %>
-          <%= link_to my_account_path(account), method: :delete, aria: { label: t('.destroy'), confirm: '删除后此账号无法用于登陆' }, remote: true, class: 'ui circular icon button' do %>
+          <%= link_to my_account_path(account), method: :delete, aria: { label: t('.destroy'), confirm: '删除后此账号无法用于登陆' }, remote: true, class: 'button' do %>
             <i class="fas fa-trash-alt"></i>
           <% end %>
         <% end %>

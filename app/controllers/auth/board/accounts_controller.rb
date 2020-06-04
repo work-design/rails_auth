@@ -1,5 +1,5 @@
 class Auth::Board::AccountsController < Auth::Board::BaseController
-  before_action :set_account, only: [:edit, :update, :edit_confirm, :update_confirm, :destroy]
+  before_action :set_account, only: [:edit, :update, :token, :confirm, :destroy]
 
   def index
     @accounts = current_user.accounts.order(id: :asc)
@@ -34,12 +34,14 @@ class Auth::Board::AccountsController < Auth::Board::BaseController
     end
   end
 
-  def edit_confirm
+  def token
     @verify_token = @account.verify_token
     @verify_token.send_out
+
+    head :no_content
   end
 
-  def update_confirm
+  def confirm
     @token = @account.verify_tokens.valid.find_by(token: params[:token])
 
     if @token
