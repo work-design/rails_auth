@@ -43,13 +43,16 @@ class Auth::Board::AccountsController < Auth::Board::BaseController
 
   def confirm
     @token = @account.verify_tokens.valid.find_by(token: params[:token])
-
     if @token
-      @account.update(confirmed: true)
-      flash[:alert] = 'token 验证成功'
+      @account.confirmed = true
     else
       @account.errors.add :base, '验证码错误，请核对'
-      render 'edit', locals: { model: @account }, status: :unprocessable_entity
+    end
+
+    if @token && @account.save
+      flash[:alert] = 'token 验证成功'
+    else
+      render 'error', locals: { model: @account }, status: :unprocessable_entity
     end
   end
 
