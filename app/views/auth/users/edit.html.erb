@@ -1,4 +1,4 @@
-<table class="ui very basic large table">
+<table class="table is-hoverable is-fullwidth">
   <thead>
   <tr>
     <th class="three wide">
@@ -23,15 +23,15 @@
     </td>
   </tr>
   <tr>
-    <td class="right aligned"><%= User.human_attribute_name(:name) %></td>
+    <td class="has-text-right"><%= User.human_attribute_name(:name) %></td>
     <td class="ui mini input six wide"><%= text_field_tag 'user[name]', @user.name, placeholder: '称呼：', form: 'edit_user' %></td>
   </tr>
   <tr>
-    <td class="right aligned"><%= User.human_attribute_name(:email) %></td>
+    <td class="has-text-right"><%= User.human_attribute_name(:email) %></td>
     <td class="ui mini input six wide"><%= email_field_tag 'user[email]', @user.email, placeholder: 'Email：', form: 'edit_user' %></td>
   </tr>
   <tr>
-    <td class="right aligned"><%= User.human_attribute_name(:mobile) %></td>
+    <td class="has-text-right"><%= User.human_attribute_name(:mobile) %></td>
     <td class="ui mini input six wide"><%= text_field_tag 'user[mobile]', @user.mobile, placeholder: 'Mobile：', form: 'edit_user' %></td>
   </tr>
   <tr>

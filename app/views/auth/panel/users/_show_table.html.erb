@@ -9,31 +9,31 @@
   </thead>
   <tbody>
     <tr>
-      <td class="right aligned"><%= User.human_attribute_name(:name) %></td>
+      <td class="has-text-right"><%= User.human_attribute_name(:name) %></td>
       <td><%= @user.name %></td>
     </tr>
     <tr>
-      <td class="right aligned"><%= User.human_attribute_name(:avatar) %></td>
+      <td class="has-text-right"><%= User.human_attribute_name(:avatar) %></td>
       <td><%= image_tag @user.avatar.variant(resize_to_limit: [300, 300]), class: 'image is-300x300' if @user.avatar.present? %></td>
     </tr>
     <tr>
-      <td class="right aligned"><%= User.human_attribute_name(:locale) %></td>
+      <td class="has-text-right"><%= User.human_attribute_name(:locale) %></td>
       <td><%= @user.locale %></td>
     </tr>
     <tr>
-      <td class="right aligned"><%= User.human_attribute_name(:timezone) %></td>
+      <td class="has-text-right"><%= User.human_attribute_name(:timezone) %></td>
       <td><%= @user.timezone %></td>
     </tr>
     <tr>
-      <td class="right aligned"><%= User.human_attribute_name(:last_login_at) %></td>
+      <td class="has-text-right"><%= User.human_attribute_name(:last_login_at) %></td>
       <td><time><%= @user.last_login_at.to_s(:rfc822) if @user.last_login_at %></time></td>
     </tr>
     <tr>
-      <td class="right aligned"><%= User.human_attribute_name(:created_at) %></td>
+      <td class="has-text-right"><%= User.human_attribute_name(:created_at) %></td>
       <td><time><%= @user.created_at.to_s(:rfc822) %></time></td>
     </tr>
     <tr>
-      <td class="right aligned"><%= User.human_attribute_name(:verify_tokens) %></td>
+      <td class="has-text-right"><%= User.human_attribute_name(:verify_tokens) %></td>
       <td>
         <%= render 'verify_tokens', target: @user %>
       </td>
