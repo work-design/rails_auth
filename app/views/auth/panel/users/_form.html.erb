@@ -3,7 +3,7 @@
   <%= f.fields :accounts do |ef| %>
     <%= ef.text_field :identity %>
   <% end %>
-  <%= render 'com/attachments/list_field', target: @user.avatar %>
+  <%= render 'com/attachments/list_field', f: f, target: @user.avatar %>
   <%= f.text_field :password %>
   <%= f.check_box :disabled %>
   <%= f.submit %>
