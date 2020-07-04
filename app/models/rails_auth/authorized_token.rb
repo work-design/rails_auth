@@ -67,8 +67,13 @@ module RailsAuth::AuthorizedToken
 
   def generate_token
     if user
-      uids = [user_id, user.password_digest || user.id]
-      options = { sub: 'User', column: 'password_digest', exp_float: expire_at.to_f }
+      if user.password_digest
+        uids = [user_id, user.password_digest]
+        options = { sub: 'User', column: 'password_digest', exp_float: expire_at.to_f }
+      else
+        uids = [user_id, user.id]
+        options = { sub: 'User', column: 'id', exp_float: expire_at.to_f }
+      end
     elsif oauth_user
       uids = [oauth_user_id, oauth_user.access_token]
       options = { sub: 'OauthUser', column: 'access_token', exp_float: expire_at.to_f }
