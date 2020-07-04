@@ -8,7 +8,7 @@
         <%= f.password_field :password, placeholder: User.human_attribute_name(:password), autocomplete: false %>
       </div>
       <div class="has-text-right">
-        <%= link_to t('.token'), sign_token_path, method: :post, remote: true, id: 'mobile_confirm', class: 'has-text-grey' %>
+        <%= link_to t('.token'), sign_token_path(identity: params[:identity]), method: :post, remote: true, id: 'mobile_confirm', class: 'has-text-grey' %>
         <span>|</span>
         <%= link_to t('.forget'), password_forget_path, class: 'has-text-grey' %>
       </div>
