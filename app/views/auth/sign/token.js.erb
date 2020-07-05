@@ -1,3 +1,3 @@
 <% if @verify_token.user %>
-document.getElementById('password').parentNode.innerHTML = '<%= j(text_field_tag :token, nil, placeholder: User.human_attribute_name(:token), class: 'field input') %>'
+document.getElementById('password').parentNode.innerHTML = '<%= j(text_field_tag :token, nil, placeholder: VerifyToken.human_attribute_name(:token), class: 'field input') %>'
 <% end %>

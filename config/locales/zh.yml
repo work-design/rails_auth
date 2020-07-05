@@ -1,10 +1,4 @@
 zh:
-  admin:
-    users:
-      index:
-      show:
-        back: 用户列表
-        show: 用户信息
   errors:
     messages:
       wrong_account: 账号或密码错误
