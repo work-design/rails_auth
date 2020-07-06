@@ -7,7 +7,7 @@ class Auth::SignController < Auth::BaseController
     if params[:identity]
       @account = Account.find_by(identity: params[:identity].strip)
 
-      if @account && @account.user
+      if @account && @account.user && @account.user.password_digest.present?
         render 'login'
       else
         render 'join'

@@ -5,11 +5,7 @@
       <div class="weui-cells weui-cells_form">
         <%= f.hidden_field :uid, value: params[:uid], autocomplete: false %>
         <%= f.text_field :identity, value: params[:identity], label: Account.human_attribute_name(:identity) %>
-        <% if @account.user.password_digest.present? %>
-          <%= f.password_field :password, label: User.human_attribute_name(:password), autocomplete: false %>
-        <% else %>
-          <%= f.text_field :token, label: VerifyToken.human_attribute_name(:token), autocomplete: false %>
-        <% end %>
+        <%= f.password_field :password, label: User.human_attribute_name(:password), autocomplete: false %>
       </div>
     </div>
   </div>
