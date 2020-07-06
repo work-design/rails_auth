@@ -41,6 +41,10 @@ module RailsAuth::User
     authorized_tokens.pluck(:token)
   end
 
+  def primary_account
+    accounts.find_by(primary: true)
+  end
+
   def join(params = {})
     self.assign_attributes params.slice(
       :name,
