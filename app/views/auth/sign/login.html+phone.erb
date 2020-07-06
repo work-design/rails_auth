@@ -1,6 +1,17 @@
 <%= form_with theme: 'weui', scope: nil, url: login_path do |f| %>
-  <%= f.hidden_field :uid, value: params[:uid], autocomplete: false %>
-  <%= f.text_field :identity, value: params[:identity], label: Account.human_attribute_name(:identity) %>
-  <%= f.password_field :password, label: User.human_attribute_name(:password), autocomplete: false %>
-  <%= f.submit %>
+  <div class="weui-form__control-area">
+    <div class="weui-cells__group weui-cells__group_form">
+      <h4 class="weui-cells__title">请注册或登陆</h4>
+      <div class="weui-cells weui-cells_form">
+        <%= f.hidden_field :uid, value: params[:uid], autocomplete: false %>
+        <%= f.text_field :identity, value: params[:identity], label: Account.human_attribute_name(:identity) %>
+        <% if @account.user.password_digest.present? %>
+          <%= f.password_field :password, label: User.human_attribute_name(:password), autocomplete: false %>
+        <% else %>
+          <%= f.text_field :token, label: VerifyToken.human_attribute_name(:token), autocomplete: false %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <%= f.submit '登录', wrap: { all: nil } %>
 <% end %>

@@ -1,6 +1,12 @@
-<h4 class="weui-cells__title">请注册或登陆</h4>
 <%= form_with theme: 'weui', scope: nil, url: sign_path, local: @local do |f| %>
-  <%= f.hidden_field :uid, value: params[:uid], autocomplete: false %>
-  <%= f.text_field :identity, value: params[:identity], label: Account.human_attribute_name(:identity) %>
-  <%= f.submit t('.next') %>
+  <div class="weui-form__control-area">
+    <div class="weui-cells__group weui-cells__group_form">
+      <h4 class="weui-cells__title">请注册或登陆</h4>
+      <div class="weui-cells weui-cells_form">
+        <%= f.hidden_field :uid, value: params[:uid], autocomplete: false %>
+        <%= f.text_field :identity, value: params[:identity], label: Account.human_attribute_name(:identity), placeholder: '手机号或邮箱' %>
+      </div>
+    </div>
+  </div>
+  <%= f.submit t('.next'), wrap: { all: nil } %>
 <% end %>
