@@ -4,10 +4,6 @@ module RailsAuth #:nodoc:
   include ActiveSupport::Configurable
 
   configure do |config|
-    config.app_controller = 'ApplicationController'
-    config.board_controller = 'BoardController'
-    config.admin_controller = 'AdminController'
-    config.panel_controller = 'PanelController'
     config.record_class = 'ApplicationRecord'
     config.default_return_path = '/'
     config.default_home_path = '/my'

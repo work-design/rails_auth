@@ -1,4 +1,4 @@
-class Auth::BaseController < RailsAuth.config.app_controller.constantize
+class Auth::BaseController < ApplicationController
 
   def set_remote
     unless request.xhr? || params[:form_id]
@@ -6,4 +6,4 @@ class Auth::BaseController < RailsAuth.config.app_controller.constantize
     end
   end
 
-end
+end unless defined? Auth::BaseController

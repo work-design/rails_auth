@@ -1,3 +1,3 @@
-class Auth::Panel::BaseController < RailsAuth.config.panel_controller.constantize
+class Auth::Panel::BaseController < PanelController
 
-end
+end unless defined? Auth::Panel::BaseController
