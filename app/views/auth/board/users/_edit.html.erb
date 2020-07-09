@@ -1,8 +1,8 @@
 <table class="table is-fullwidth">
   <thead>
   <tr>
-    <th class="three wide">
-      <%= form_tag my_user_path, method: :patch, id: 'edit_user' %>
+    <th>
+      <%= form_tag my_user_path, method: :patch, multipart: true, id: 'edit_user' %>
       <%= link_to t('.back'), my_user_path, class: 'ui mini right floated button' %>
     </th>
     <th></th>
@@ -12,13 +12,7 @@
   <tr>
     <td></td>
     <td>
-      <div class="ui image dimmable dimmed">
-        <a class="ui grey right corner label" id="avatar_button">
-          <i class="fas fa-file-image"></i>
-          <%= file_field_tag :key, id: 'file_input' %>
-        </a>
-        <%= image_tag current_user.avatar.variant(resize_to_limit: [200, 200]), id: 'avatar_image' if current_user.avatar.attached? %>
-      </div>
+      <%= file_field_tag 'user[avatar]', form: 'edit_user' %>
     </td>
   </tr>
   <tr>
