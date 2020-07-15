@@ -25,6 +25,10 @@ Rails.application.routes.draw do
     resources :users, only: [:index, :show]
   end
 
+  scope :mine, module: 'auth/mine', as: :mine do
+    resource :user
+  end
+
   scope :admin, module: 'auth/admin', as: :admin do
     resources :oauth_users
     resources :user_tags
