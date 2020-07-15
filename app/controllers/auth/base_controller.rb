@@ -1,4 +1,4 @@
-class Auth::BaseController < ApplicationController
+class Auth::BaseController < BaseController
 
   def set_remote
     unless request.xhr? || params[:form_id]
