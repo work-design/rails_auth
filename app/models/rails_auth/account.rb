@@ -50,6 +50,7 @@ module RailsAuth::Account
         if user.nil?
           return join(params)
         else
+          user.assign_attributes params.slice(:password, :password_confirmation)
           self.save
           return user
         end
