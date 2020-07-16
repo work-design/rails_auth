@@ -25,10 +25,6 @@ Rails.application.routes.draw do
     resources :users, only: [:index, :show]
   end
 
-  scope :mine, module: 'auth/mine', as: :mine do
-    resource :user
-  end
-
   scope :admin, module: 'auth/admin', as: :admin do
     resources :oauth_users
     resources :user_tags
@@ -47,6 +43,10 @@ Rails.application.routes.draw do
     resources :authorized_tokens
   end
 
+  scope :my, module: 'auth/mine', subdomain: /.+\.t/, as: :my do
+    resource :user
+  end
+
   scope :my, module: 'auth/board', as: :my do
     resource :user
     resources :accounts do
@@ -61,4 +61,5 @@ Rails.application.routes.draw do
       end
     end
   end
+
 end
