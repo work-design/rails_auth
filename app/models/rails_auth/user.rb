@@ -79,14 +79,14 @@ module RailsAuth::User
 
   def avatar_url
     if avatar.attached?
-      return avatar.service_url
+      return avatar.url
     end
 
     url = oauth_users.first&.avatar_url.presence
     return url if url
 
     if avatar.present?
-      avatar.service_url
+      avatar.url
     end
   end
 
