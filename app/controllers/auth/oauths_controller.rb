@@ -32,13 +32,4 @@ class Auth::OauthsController < Auth::BaseController
     request.env['omniauth.auth']
   end
 
-  def login_by_oauth_user(oauth_user)
-    session[:auth_token] = oauth_user.account.auth_token
-    oauth_user.user.update(last_login_at: Time.now)
-
-    logger.debug "Login by oauth user as user: #{oauth_user.user_id}"
-    @current_oauth_user = oauth_user
-    @current_user = oauth_user.user
-  end
-
 end

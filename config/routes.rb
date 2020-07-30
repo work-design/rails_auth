@@ -18,7 +18,7 @@ Rails.application.routes.draw do
       end
     end
 
-    scope :auth, controller: :oauths do
+    scope :auth, controller: :oauths, as: 'oauths' do
       match ':provider/callback' => :create, via: [:get, :post]
       match ':provider/failure' => :failure, via: [:get, :post]
     end
