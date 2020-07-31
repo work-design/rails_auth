@@ -91,14 +91,14 @@ module RailsAuth::Application
     @current_account = account
     @current_user = account.user
 
-    logger.debug "  ==========> Login by account as user: #{account.user_id}"
+    logger.debug "  ==========> Login by account #{account.id} as user: #{account.user_id}"
   end
 
   def login_by_oauth_user(oauth_user)
     session[:auth_token] = oauth_user.account.auth_token
     oauth_user.user.update(last_login_at: Time.current)
 
-    logger.debug "Login by oauth user as user: #{oauth_user.user_id}"
+    logger.debug "  ==========> Login by oauth user #{oauth_user.id} as user: #{oauth_user.user_id}"
     @current_oauth_user = oauth_user
     @current_user = oauth_user.user
   end
