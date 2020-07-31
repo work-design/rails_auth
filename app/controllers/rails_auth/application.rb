@@ -108,6 +108,7 @@ module RailsAuth::Application
     return unless defined?(@current_authorized_token) && @current_authorized_token
 
     token = @current_authorized_token.token
+    logger.debug "  =========> Set authorized token #{token}"
     headers['Auth-Token'] = token
     session[:auth_token] = token
   end
