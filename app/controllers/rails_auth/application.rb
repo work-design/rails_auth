@@ -110,7 +110,7 @@ module RailsAuth::Application
     token = @current_authorized_token.token
     headers['Auth-Token'] = token
     session[:auth_token] = token
-    logger.debug "  =========> Set authorized token #{token}, session is #{session[:token]}"
+    #logger.debug "  ==========> Set authorized token #{token}, session is #{session[:token]}"
   end
 
   def verify_auth_token(auth_token)
