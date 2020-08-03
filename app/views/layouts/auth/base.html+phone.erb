@@ -4,11 +4,7 @@
       <div class="weui-tab__panel">
         <%= yield %>
       </div>
-      <% if current_session_organ %>
-        <%= render 'org_tab_bar' %>
-      <% else %>
-        <%= render 'tab_bar' %>
-      <% end %>
+      <%= render 'tab_bar' %>
     </div>
     <div id="modal"></div>
   </body>
