@@ -44,14 +44,6 @@ class Auth::Panel::UsersController < Auth::Panel::BaseController
     @user_tags = UserTag.default_where(default_params).page(params[:page])
   end
 
-  def update_user_tags
-    @user.assign_attributes user_params
-
-    unless @user.save
-      render :edit_user_tags, locals: { model: @user }, status: :unprocessable_entity
-    end
-  end
-
   def mock
     @user = User.find_or_initialize_by(user_uuid: params[:account])
 
