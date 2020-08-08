@@ -5,7 +5,7 @@
 <% end %>
 
 <% unless params[:user_id] %>
-  <%= render 'filter' %>
+  <%= render 'filter_form' %>
 <% end %>
 
 <table class="table is-hoverable is-fullwidth">
@@ -22,7 +22,6 @@
       <th></th>
     </tr>
   </thead>
-
   <tbody>
   <% @oauth_users.each do |oauth_user| %>
     <tr>
