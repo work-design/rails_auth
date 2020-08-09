@@ -2,7 +2,7 @@
   <thead>
   <tr>
     <th>
-      <%= form_tag my_user_path, method: :patch, multipart: true, id: 'edit_user' %>
+      <%= form_with url: my_user_path, method: :patch, multipart: true, id: 'edit_user' %>
       <%= link_to t('.back'), my_user_path, class: 'ui mini right floated button' %>
     </th>
     <th></th>

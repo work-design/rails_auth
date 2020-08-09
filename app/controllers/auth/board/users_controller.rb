@@ -11,7 +11,7 @@ class Auth::Board::UsersController < Auth::Board::BaseController
     current_user.assign_attributes user_params
 
     if current_user.save
-      render 'create', locals: { return_to: params[:return_to].presence || my_user_path }
+      render 'update', locals: { return_to: params[:return_to].presence || my_user_path }
     else
       render :edit, locals: { model: current_user }, status: :unprocessable_entity
     end
