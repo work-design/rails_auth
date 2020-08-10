@@ -17,7 +17,6 @@ module RailsAuth::AuthorizedToken
     belongs_to :user, optional: true
     belongs_to :oauth_user, optional: true
     belongs_to :account, optional: true
-    belongs_to :organ, optional: true
     belongs_to :member, optional: true
 
     scope :valid, -> { where('expire_at >= ?', Time.now).order(expire_at: :desc) }
@@ -37,8 +36,6 @@ module RailsAuth::AuthorizedToken
       self.user_id = nil
     end
     if member
-      self.organ_id = member.organ_id
-      self.user_id ||= member.user_id
       self.mock = true if user_id != member.user_id
     end
   end
