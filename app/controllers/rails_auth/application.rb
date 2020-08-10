@@ -7,16 +7,6 @@ module RailsAuth::Application
     after_action :set_auth_token
   end
 
-  def current_user
-    return @current_user if defined?(@current_user)
-    @current_user = current_authorized_token&.user
-  end
-
-  def current_account
-    return @current_account if defined?(@current_account)
-    @current_account = current_authorized_token&.account
-  end
-
   def require_login(return_to: nil)
     return if current_user
     store_location(return_to)
@@ -41,6 +31,16 @@ module RailsAuth::Application
     @code = 'authorized_token'
 
     render 'require_authorized_token', status: 401
+  end
+
+  def current_user
+    return @current_user if defined?(@current_user)
+    @current_user = current_authorized_token&.user
+  end
+
+  def current_account
+    return @current_account if defined?(@current_account)
+    @current_account = current_authorized_token&.account
   end
 
   def current_authorized_token
@@ -90,6 +90,7 @@ module RailsAuth::Application
 
     @current_account = account
     @current_user = account.user
+    @current_authorized_token = account.authorized_token
 
     logger.debug "  ==========> Login by account #{account.id} as user: #{account.user_id}"
   end
