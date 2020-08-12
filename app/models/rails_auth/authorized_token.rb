@@ -12,14 +12,16 @@ module RailsAuth::AuthorizedToken
     attribute :expire_at, :datetime
     attribute :session_key, :string, comment: '目前在小程序下用到'
     attribute :access_counter, :integer, default: 0
-    attribute :mock, :boolean, default: false
+    attribute :mock_organ, :boolean, default: false
+    attribute :mock_member, :boolean, default: false
+    attribute :mock_user, :boolean, default: false
 
     belongs_to :user, optional: true
     belongs_to :oauth_user, optional: true
     belongs_to :account, optional: true
     belongs_to :member, optional: true
 
-    scope :valid, -> { where('expire_at >= ?', Time.now).order(expire_at: :desc) }
+    scope :valid, -> { where('expire_at >= ?', Time.current).order(expire_at: :desc) }
     validates :token, presence: true
 
     before_validation :sync_user, if: -> { oauth_user_id_changed? || account_id_changed? || member_id_changed? }
@@ -36,11 +38,11 @@ module RailsAuth::AuthorizedToken
       self.user_id = nil
     end
     if member
-      self.mock = true if user_id != member.user_id
+      self.mock_member = true if user_id != member.user_id
     end
   end
 
-  def verify_token?(now = Time.now)
+  def verify_token?(now = Time.current)
     return false if self.expire_at.blank?
     if now > self.expire_at
       self.errors.add(:token, 'The token has expired')
