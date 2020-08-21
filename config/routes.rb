@@ -45,7 +45,7 @@ Rails.application.routes.draw do
 
   scope :my, module: 'auth/mine', subdomain: /.+\.#{RailsCom.config.subdomain}/, as: :my do
     resource :user
-  end if defined? RailsOrg
+  end
 
   scope :my, module: 'auth/board', as: :my do
     resource :user
