@@ -30,7 +30,7 @@ zh:
         sign: 请完成注册
       edit:
         title: 重置密码
-    mine:
+    board:
       title: 用户
       users:
         show:
