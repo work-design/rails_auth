@@ -23,7 +23,7 @@ class Auth::Board::OauthUsersController < Auth::Board::BaseController
 
     @oauth_user.save
 
-    redirect_to my_root_url
+    redirect_to board_root_url
   end
 
   def show

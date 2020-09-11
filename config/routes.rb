@@ -47,7 +47,7 @@ Rails.application.routes.draw do
     resource :user
   end
 
-  scope :my, module: 'auth/board', as: :my do
+  scope :board, module: 'auth/board', as: :board do
     resource :user
     resources :accounts do
       member do
