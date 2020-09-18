@@ -4,7 +4,7 @@ RailsAuth 是个处理鉴权的 Rails Engine
 
 ## 特性
 
-* [系列项目说明](https://github.com/work-design/work-design)
+* [系列项目说明](https://github.com/work-design/work.design)
 * 使用`Rails`自带的`ActiveModel::SecurePassword`模块处理密码;
 * 使用`auth token`统一鉴权，兼容api和cookies, 服务端可控制auth_token失效；
 * 精致的架构:
