@@ -43,7 +43,7 @@ Rails.application.routes.draw do
     resources :authorized_tokens
   end
 
-  scope :my, module: 'auth/mine', subdomain: /.+\.#{RailsCom.config.subdomain}/, as: :my do
+  scope :my, module: 'auth/my', as: :my do
     resource :user
   end
 

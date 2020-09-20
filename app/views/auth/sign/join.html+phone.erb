@@ -4,12 +4,9 @@
       <div class="weui-cells__title">注册/登陆</div>
       <div class="weui-cells weui-cells_form">
         <%= f.hidden_field :uid, value: params[:uid], autocomplete: false %>
-        <%= f.text_field :identity, value: params[:identity], label: VerifyToken.human_attribute_name(:identity), autocomplete: false, data: { login_target: 'identity' } %>
+        <%= f.text_field :identity, value: params[:identity], placeholder: VerifyToken.human_attribute_name(:identity), autocomplete: false, data: { login_target: 'identity' } %>
         <div class="weui-cell weui-cell_active weui-cell_vcode">
-          <div class="weui-cell__hd">
-            <label class="weui-label"><%= VerifyToken.human_attribute_name(:token) %></label>
-          </div>
-          <%= f.text_field :token, on: { label: false }, wrap: { all: nil } %>
+          <%= f.text_field :token, placeholder: VerifyToken.human_attribute_name(:token), wrap: { all: nil } %>
           <div class="weui-cell__ft">
             <button type="button" class="weui-btn weui-btn_default weui-vcode-btn" data-action="login#code" data-url="<%= sign_token_url %>" data-time="60">
               <%= t('.token') %>

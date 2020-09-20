@@ -1,4 +1,4 @@
-class Auth::Mine::UsersController < Auth::Board::UsersController
+class Auth::My::UsersController < Auth::Board::UsersController
   before_action :set_user
 
   def show
