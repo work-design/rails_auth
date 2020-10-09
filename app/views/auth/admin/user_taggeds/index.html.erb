@@ -25,13 +25,10 @@
   <tbody>
   <% @user_taggeds.each do |user_tagged| %>
     <tr>
-      <td><%= user_tagged.tagged_type %></td>
+      <td><%= user_tagged.tagged_type_i18n %></td>
       <td><%= user_tagged.tagged_id %></td>
       <td>
-        <%= link_to edit_admin_user_tagged_path(user_tagged), aria: { label: t('.edit') }, remote: true, class: 'button is-small is-rounded is-light' do %>
-          <i class="fas fa-pencil-alt"></i>
-        <% end %>
-        <%= link_to admin_user_tagged_path(user_tagged), method: :delete, aria: { label: t('.destroy') }, data: { confirm: t('.confirm') }, remote: true, class: 'button is-small is-rounded is-light' do %>
+        <%= link_to admin_user_tag_user_tagged_path(@user_tag, user_tagged), method: :delete, aria: { label: t('.destroy') }, data: { confirm: t('.confirm') }, remote: true, class: 'button is-small is-rounded is-light' do %>
           <i class="fas fa-trash-alt"></i>
         <% end %>
       </td>
