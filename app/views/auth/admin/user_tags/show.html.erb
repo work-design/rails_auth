@@ -1,8 +1,8 @@
 <% content_for :breadcrumb do %>
 <div class="breadcrumb has-succeeds-separator">
   <ul>
-    <li><%= link_to 'Back', admin_user_tags_path %></li>
-    <li class="is-active">Show</li>
+    <li><%= link_to t('auth.admin.user_tags.index.title'), admin_user_tags_path %></li>
+    <li class="is-active"><%= t('.title') %></li>
   </ul>
 </div>
 <% end %>
@@ -51,7 +51,7 @@
         <p><time><%= user.last_login_at.to_s(:rfc822) if user.last_login_at %></time></p>
         <p><%= user.last_login_ip %></p>
       </td>
-      <td class="ui labels">
+      <td>
         <% user.oauth_users.each do |oauth_user| %>
           <%= link_to oauth_user.type_i18n, admin_oauth_users_path(user_id: user.id), class: 'ui blue label' %>
         <% end %>

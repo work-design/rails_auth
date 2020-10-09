@@ -23,6 +23,7 @@ zh:
           DeviceAccount: 设备标识
       user_tagged:
         tagged_type:
+          User: 用户
           Member: 组织成员
           JobTitle: 职称
           Department: 部门
