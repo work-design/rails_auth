@@ -1,0 +1,6 @@
+<%= form_with model: @user_tagged, url: admin_user_tag_user_taggeds_path(@user_tag) do |f| %>
+  <%= render 'shared/error_messages', target: @user_tagged %>
+  <%= f.select :tagged_type, options_for_select(UserTagged.options_i18n(:tagged_type)) %>
+  <%= f.text_field :tagged_id %>
+  <%= f.submit %>
+<% end %>

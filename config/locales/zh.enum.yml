@@ -1,0 +1,28 @@
+zh:
+  activerecord:
+    enum:
+      oauth_user:
+        type:
+          WechatUser: 微信用户
+          WechatProgramUser: 微信小程序用户
+          GithubUser: Github用户
+          FacebookUser: Facebook用户
+        provider:
+          github: Github
+          facebook: Factbook
+          developer: Developer
+          wechat: 微信
+      user:
+        locale:
+          zh: 中文
+          en: English
+      account:
+        type:
+          EmailAccount: 邮箱账号
+          MobileAccount: 手机账号
+          DeviceAccount: 设备标识
+      user_tagged:
+        tagged_type:
+          Member: 组织成员
+          JobTitle: 职称
+          Department: 部门

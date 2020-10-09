@@ -4,7 +4,7 @@ class Auth::Admin::UserTagsController < Auth::Admin::BaseController
   def index
     q_params = {}
     q_params.merge! default_params
-    
+
     @user_tags = UserTag.default_where(q_params).page(params[:page])
   end
 
@@ -47,8 +47,7 @@ class Auth::Admin::UserTagsController < Auth::Admin::BaseController
 
   def user_tag_params
     p = params.fetch(:user_tag, {}).permit(
-      :name,
-      :tagging_type
+      :name
     )
     p.merge! default_form_params
   end

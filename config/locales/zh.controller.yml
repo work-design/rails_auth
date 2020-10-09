@@ -72,6 +72,9 @@ zh:
       user_tags:
         index:
           title: 用户标签
+      user_taggeds:
+        index:
+          title: 人员配置
   user_mailer:
     email_token:
       title: '您的验证码是：'

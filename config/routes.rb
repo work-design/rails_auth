@@ -27,7 +27,9 @@ Rails.application.routes.draw do
 
   scope :admin, module: 'auth/admin', as: :admin do
     resources :oauth_users
-    resources :user_tags
+    resources :user_tags do
+      resources :user_taggeds
+    end
   end
 
   scope :panel, module: 'auth/panel', as: :panel do

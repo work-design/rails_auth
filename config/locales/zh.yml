@@ -34,30 +34,11 @@ zh:
         token: 验证码
       user_tag:
         user_taggeds_count: 用户数
+      user_tagged:
+        tagged_type: 用户类型
     errors:
       models:
         user:
           attributes:
             base:
               account_disable: 你的账号已被禁用!
-    enum:
-      oauth_user:
-        type:
-          WechatUser: 微信用户
-          WechatProgramUser: 微信小程序用户
-          GithubUser: Github用户
-          FacebookUser: Facebook用户
-        provider:
-          github: Github
-          facebook: Factbook
-          developer: Developer
-          wechat: 微信
-      user:
-        locale:
-          zh: 中文
-          en: English
-      account:
-        type:
-          EmailAccount: 邮箱账号
-          MobileAccount: 手机账号
-          DeviceAccount: 设备标识
