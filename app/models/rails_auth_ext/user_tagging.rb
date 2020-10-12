@@ -2,7 +2,7 @@ module RailsAuthExt::UserTagging
   extend ActiveSupport::Concern
 
   included do
-    has_many :user_taggeds, as: :tagged
+    has_many :user_tags, as: :tagging
     after_create :xx
   end
 

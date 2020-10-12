@@ -2,7 +2,7 @@
 <div class="breadcrumb has-succeeds-separator">
   <ul>
     <li><%= link_to t('auth.admin.user_tags.index.title'), admin_user_tags_path %></li>
-    <li class="is-active"><%= t('.title') %></li>
+    <li class="is-active"><%= @user_tag.name %></li>
   </ul>
 </div>
 <% end %>
