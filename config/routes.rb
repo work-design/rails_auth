@@ -28,10 +28,11 @@ Rails.application.routes.draw do
   scope :admin, module: 'auth/admin', as: :admin do
     resources :oauth_users
     resources :user_tags do
-      member do
-        get :search
+      resources :user_taggeds do
+        collection do
+          get :search
+        end
       end
-      resources :user_taggeds
     end
   end
 
