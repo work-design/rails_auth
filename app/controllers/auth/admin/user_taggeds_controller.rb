@@ -1,6 +1,6 @@
 class Auth::Admin::UserTaggedsController < Auth::Admin::BaseController
   before_action :set_user_tag
-  before_action :set_user_tagged, only: [:show, :edit, :update, :destroy]
+  before_action :set_user_tagged, only: [:show, :edit, :update]
 
   def index
     @user_taggeds = @user_tag.user_taggeds.page(params[:page])
@@ -11,7 +11,7 @@ class Auth::Admin::UserTaggedsController < Auth::Admin::BaseController
   end
 
   def create
-    @user_tagged = @user_tag.user_taggeds.build(user_tagged_params)
+    @user_tagged = @user_tag.user_taggeds.build(user_id: params[:user_id])
 
     unless @user_tagged.save
       render :new, locals: { model: @user_tagged }, status: :unprocessable_entity
@@ -38,7 +38,13 @@ class Auth::Admin::UserTaggedsController < Auth::Admin::BaseController
   end
 
   def destroy
-    @user_tagged.destroy
+    if params[:id]
+      @user_tagged = @user_tag.user_taggeds.find params[:id]
+    elsif params[:user_id]
+      @user_tagged = @user_tag.user_taggeds.find_by(user_id: params[:user_id])
+    end
+
+    @user_tagged.destroy if @user_tagged
   end
 
   private
@@ -47,14 +53,7 @@ class Auth::Admin::UserTaggedsController < Auth::Admin::BaseController
   end
 
   def set_user_tagged
-    @user_tagged = @user_tag.user_taggeds.find(params[:id])
-  end
-
-  def user_tagged_params
-    params.fetch(:user_tagged, {}).permit(
-      :tagged_type,
-      :tagged_id
-    )
+    @user_tagged = @user_tag.user_taggeds.find params[:id]
   end
 
 end

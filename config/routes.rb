@@ -30,6 +30,7 @@ Rails.application.routes.draw do
     resources :user_tags do
       resources :user_taggeds do
         collection do
+          delete '' => :destroy
           get :search
         end
       end
