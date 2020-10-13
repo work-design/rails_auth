@@ -17,7 +17,7 @@
     <tr>
       <td><%= user_tag.name %></td>
       <td>
-        <%= link_to user_tag.user_taggeds_count, admin_user_tag_path(user_tag) %>
+        <%= link_to user_tag.user_taggeds_count, { controller: 'auth/admin/user_taggeds', action: 'index', user_tag_id: user_tag.id } %>
       </td>
       <td>
         <%= link_to({ controller: 'auth/admin/user_taggeds', action: 'index', user_tag_id: user_tag.id }, { aria: { label: t('.show') }, class: 'button is-small is-rounded is-light' }) do %>

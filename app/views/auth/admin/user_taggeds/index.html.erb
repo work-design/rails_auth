@@ -15,8 +15,8 @@
     <tr>
       <th><%= UserTagged.human_attribute_name(:user_id) %></th>
       <th>
-        <%= link_to new_admin_user_tag_user_tagged_path(@user_tag), remote: true, class: 'button is-link is-small' do %>
-          <i class="fas fa-plus"></i><%= t('.new') %>
+        <%= link_to({ action: 'new', user_tag_id: @user_tag.id }, { remote: true, class: 'button is-small is-link' }) do %>
+          <i class="fas fa-plus"></i><span><%= t('.new') %></span>
         <% end %>
       </th>
     </tr>
