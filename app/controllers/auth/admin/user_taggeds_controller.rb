@@ -18,6 +18,11 @@ class Auth::Admin::UserTaggedsController < Auth::Admin::BaseController
     end
   end
 
+  def search
+    @select_ids = @user_tag.users.default_where('accounts.identity': params[:identity]).pluck(:id)
+    @users = User.default_where('accounts.identity': params[:identity])
+  end
+
   def show
   end
 
