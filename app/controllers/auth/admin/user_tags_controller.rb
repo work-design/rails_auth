@@ -25,6 +25,11 @@ class Auth::Admin::UserTagsController < Auth::Admin::BaseController
     @users = User.default_where(id: user_ids).order(id: :desc)
   end
 
+  def search
+    @select_ids = @user_tag.users.default_where('accounts.identity': params[:identity]).pluck(:id)
+    @users = User.default_where('accounts.identity': params[:identity])
+  end
+
   def edit
   end
 

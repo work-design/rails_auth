@@ -1,0 +1,6 @@
+<div class="tags has-addons">
+  <div data-controller="input" class="tag">
+    <%= check_box_tag :user_id, user.id, @select_ids.include?(user.id), data: { method: :patch, remote: true, url: disease_admin_member_path(@member), action: 'input#submit' }, id: nil, class: 'switch is-rounded' %>
+    <label><%= user.name %><%=  %></label>
+  </div>
+</div>

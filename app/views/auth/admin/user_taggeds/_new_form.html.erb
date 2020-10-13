@@ -1,5 +1,18 @@
-<%= form_with model: @user_tagged, url: { action: 'create', user_tag_id: @user_tag.id } do |f| %>
-  <%= render 'shared/error_messages', target: @user_tagged %>
-  <%= f.select :user_id, options_for_select(UserTagged.options_i18n(:tagged_type)) %>
-  <%= f.submit %>
+<%= render layout: 'modal' do %>
+  <div class="panel">
+    <div class="panel-heading">选择用户</div>
+    <div class="panel-block" id="search-content">
+      <%= form_with theme: nil, scope: nil, url: { action: 'search', user_tag_id: @user_tag.id }, method: :get, html: { style: 'width: 100%;' } do |f| %>
+        <div class="control has-icons-left">
+          <%= f.search_field :identity, class: 'input', placeholder: '搜索', data: { controller: 'typer' } %>
+          <span class="icon is-left"><i class="fas fa-search"></i></span>
+        </div>
+      <% end %>
+    </div>
+    <div class="panel-block" id="disease_content">
+    <% @users.each do |user| %>
+      <%= render partial: 'user', locals: { user: user } %>
+    <% end %>
+    </div>
+  </div>
 <% end %>
