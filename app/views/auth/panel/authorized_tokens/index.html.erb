@@ -1,45 +1,5 @@
-<%= render 'filter_form' %>
-
-<div class="table-container">
-<table class="table is-hoverable is-fullwidth">
-  <thead>
-    <tr>
-      <th>
-        <p><%= AuthorizedToken.human_attribute_name(:token) %></p>
-        <p><%= AuthorizedToken.human_attribute_name(:expire_at) %></p>
-      </th>
-      <th><%= AuthorizedToken.human_attribute_name(:session_key) %></th>
-      <th><%= AuthorizedToken.human_attribute_name(:oauth_user) %></th>
-      <th><%= AuthorizedToken.human_attribute_name(:account) %></th>
-      <th><%= AuthorizedToken.human_attribute_name(:user) %></th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-  <% @authorized_tokens.each do |authorized_token| %>
-    <tr>
-      <td>
-        <p><%= authorized_token.token %></p>
-        <p><time><%= authorized_token.expire_at.to_s(:rfc822) %></time></p>
-      </td>
-      <td><%= authorized_token.session_key %></td>
-      <td>
-        <%= authorized_token.oauth_user_id %>
-      </td>
-      <td><%= authorized_token.account_id %></td>
-      <td><%= authorized_token.user_id %></td>
-      <td>
-        <%= link_to edit_panel_authorized_token_path(authorized_token), aria: { label: t('.edit') }, remote: true, class: 'button is-small is-rounded is-light' do %>
-          <i class="fas fa-pencil-alt"></i>
-        <% end %>
-        <%= link_to panel_authorized_token_path(authorized_token), method: :delete, aria: { label: t('.destroy') }, data: { confirm: t('.confirm') }, remote: true, class: 'button is-small is-rounded is-light' do %>
-          <i class="fas fa-trash-alt"></i>
-        <% end %>
-      </td>
-    </tr>
-  <% end %>
-  </tbody>
-</table>
-</div>
+<%= render layout: 'index_table', locals: { cache_key: AuthorizedToken.column_names.hash } do %>
+  <%= render partial: 'index_tbody', collection: @authorized_tokens, as: :authorized_token %>
+<% end %>
 
 <%= paginate @authorized_tokens %>

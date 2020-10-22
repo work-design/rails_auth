@@ -1,38 +1,5 @@
-<%= render 'filter_form' %>
-
-<table class="table is-hoverable is-fullwidth">
-  <thead>
-    <tr>
-      <th><%= UserTag.human_attribute_name(:name) %></th>
-      <th><%= UserTag.human_attribute_name(:user_taggeds_count) %></th>
-      <th>
-        <%= link_to({ action: 'new' }, { remote: true, class: 'button is-small is-link' }) do %>
-          <i class="fas fa-plus"></i><span><%= t('.new') %></span>
-        <% end %>
-      </th>
-    </tr>
-  </thead>
-  <tbody>
-  <% @user_tags.each do |user_tag| %>
-    <tr>
-      <td><%= user_tag.name %></td>
-      <td>
-        <%= link_to user_tag.user_taggeds_count, { controller: 'auth/admin/user_taggeds', action: 'index', user_tag_id: user_tag.id } %>
-      </td>
-      <td>
-        <%= link_to({ controller: 'auth/admin/user_taggeds', action: 'index', user_tag_id: user_tag.id }, { aria: { label: t('.show') }, class: 'button is-small is-rounded is-light' }) do %>
-          <i class="fas fa-eye"></i>
-        <% end %>
-        <%= link_to({ action: 'edit', id: user_tag.id }, { aria: { label: t('.edit') }, remote: true, class: 'button is-small is-rounded is-light' }) do %>
-          <i class="fas fa-pencil-alt"></i>
-        <% end %>
-        <%= link_to({ action: 'destroy', id: user_tag.id }, { method: :delete, aria: { label: t('.destroy') }, data: { confirm: t('.confirm') }, class: 'button is-small is-rounded is-light' }) do %>
-          <i class="fas fa-trash-alt"></i>
-        <% end %>
-      </td>
-    </tr>
-  <% end %>
-  </tbody>
-</table>
+<%= render layout: 'index_table', locals: { cache_key: UserTag.column_names.hash } do %>
+  <%= render partial: 'index_tbody', collection: @user_tags, as: :user_tag %>
+<% end %>
 
 <%= paginate @user_tags %>

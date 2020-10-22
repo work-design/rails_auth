@@ -1,38 +1,26 @@
-<table class="table is-hoverable is-fullwidth">
-  <thead>
-    <tr>
-      <th class="six wide">
-        <%= link_to t('.edit'), edit_panel_account_path(@account), class: 'ui mini blue right floated button', remote: true %>
-      </th>
-      <th class="ten wide"></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td class="has-text-right"><%= Account.human_attribute_name(:user_id) %></td>
-      <td><%= @account.user_id %></td>
-    </tr>
-    <tr>
-      <td class="has-text-right"><%= Account.human_attribute_name(:type) %></td>
-      <td><%= @account.type %></td>
-    </tr>
-    <tr>
-      <td class="has-text-right"><%= Account.human_attribute_name(:identity) %></td>
-      <td><%= @account.identity %></td>
-    </tr>
-    <tr>
-      <td class="has-text-right"><%= Account.human_attribute_name(:confirmed) %></td>
-      <td><%= @account.confirmed %></td>
-    </tr>
-    <tr>
-      <td class="has-text-right"><%= Account.human_attribute_name(:primary) %></td>
-      <td><%= @account.primary %></td>
-    </tr>
-    <tr>
-      <td class="has-text-right"><%= User.human_attribute_name(:verify_tokens) %></td>
-      <td>
-        <%= render 'auth/panel/users/verify_tokens', target: @account %>
-      </td>
-    </tr>
-  </tbody>
-</table>
+<tr>
+  <td class="has-text-right"><%= Account.human_attribute_name(:user_id) %></td>
+  <td><%= @account.user_id %></td>
+</tr>
+<tr>
+  <td class="has-text-right"><%= Account.human_attribute_name(:type) %></td>
+  <td><%= @account.type %></td>
+</tr>
+<tr>
+  <td class="has-text-right"><%= Account.human_attribute_name(:identity) %></td>
+  <td><%= @account.identity %></td>
+</tr>
+<tr>
+  <td class="has-text-right"><%= Account.human_attribute_name(:confirmed) %></td>
+  <td><%= @account.confirmed %></td>
+</tr>
+<tr>
+  <td class="has-text-right"><%= Account.human_attribute_name(:primary) %></td>
+  <td><%= @account.primary %></td>
+</tr>
+<tr>
+  <td class="has-text-right"><%= User.human_attribute_name(:verify_tokens) %></td>
+  <td>
+    <%= render 'auth/panel/users/verify_tokens', target: @account %>
+  </td>
+</tr>

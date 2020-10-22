@@ -1,0 +1,16 @@
+<th><%= User.human_attribute_name(:name) %></th>
+<th>
+  <p><%= User.human_attribute_name(:locale) %></p>
+  <p><%= User.human_attribute_name(:timezone) %></p>
+</th>
+<th><%= User.human_attribute_name(:created_at) %></th>
+<th>
+  <p>
+    <%= link_to User.human_attribute_name(:last_login_at), filter_params('last_login_at-desc': 1, except: ['last_login_at-desc']) %>
+  </p>
+  <p><%= User.human_attribute_name(:last_login_ip) %></p>
+</th>
+<th><%= User.human_attribute_name(:disabled) %></th>
+<th><%= User.human_attribute_name(:oauth_users) %></th>
+<th><%= User.human_attribute_name(:accounts) %></th>
+<th></th>
