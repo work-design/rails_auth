@@ -1,34 +1,20 @@
-<table class="table is-fullwidth">
-  <thead>
-    <tr>
-      <th class="three wide">
-        <%= link_to t('.edit'), edit_board_user_path, class: 'ui mini blue right floated button' %>
-      </th>
-      <th>
-      </th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td></td>
-      <td>
-        <div class="image">
-          <%= image_tag current_user.avatar.variant(resize_to_limit: [200, 200]) if current_user.avatar.present? %>
-        </div>
-      </td>
-    </tr>
-    <tr>
-      <td class="has-text-right"><%= User.human_attribute_name(:name) %></td>
-      <td><%= current_user.name %></td>
-    </tr>
-    <tr>
-      <td class="has-text-right"><%= User.human_attribute_name(:accounts) %></td>
-      <td>
-        <% current_user.accounts.each do |account| %>
-          <p><%= account.identity %></p>
-        <% end %>
-      </td>
-    </tr>
-  </tbody>
-</table>
-
+<tr>
+  <td></td>
+  <td>
+    <div class="image">
+      <%= image_tag current_user.avatar.variant(resize_to_limit: [200, 200]) if current_user.avatar.present? %>
+    </div>
+  </td>
+</tr>
+<tr>
+  <td class="has-text-right"><%= User.human_attribute_name(:name) %></td>
+  <td><%= current_user.name %></td>
+</tr>
+<tr>
+  <td class="has-text-right"><%= User.human_attribute_name(:accounts) %></td>
+  <td>
+    <% current_user.accounts.each do |account| %>
+      <p><%= account.identity %></p>
+    <% end %>
+  </td>
+</tr>

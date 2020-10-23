@@ -14,7 +14,7 @@ GIT
 
 GIT
   remote: https://github.com/work-design/rails_com.git
-  revision: 108ee2f8c9ec1517f450521f7c32f8f3d4f650b5
+  revision: fc8a8df92918660fecc9e87ac83b97d2ebe1b984
   specs:
     rails_com (1.2.9)
       acme-client
@@ -111,9 +111,8 @@ GEM
     factory_bot_rails (6.1.0)
       factory_bot (~> 6.1.0)
       railties (>= 5.0.0)
-    faraday (1.1.0)
+    faraday (1.0.1)
       multipart-post (>= 1.2, < 3)
-      ruby2_keywords
     globalid (0.4.2)
       activesupport (>= 4.2.0)
     http-2-next (0.2.6)
@@ -192,7 +191,6 @@ GEM
       thor (>= 0.20.3, < 2.0)
     rake (13.0.1)
     rdoc (6.2.1)
-    ruby2_keywords (0.0.2)
     sdoc (1.1.0)
       rdoc (>= 5.0)
     semantic_range (2.3.0)
