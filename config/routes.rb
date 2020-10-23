@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  scope module: :auth do
+  scope module: 'auth' do
     controller :sign do
       match :sign, via: [:get, :post]
       post 'sign/token' => :token
