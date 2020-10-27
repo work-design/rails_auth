@@ -37,7 +37,7 @@
   </td>
   <td>
     <%= link_to panel_user_path(user), aria: { label: t('.show') }, remote: true, class: 'button is-small is-rounded is-light' do %>
-      <i class="icon fas fa-eye"></i>
+      <i class="icon fas fa-info"></i>
     <% end %>
     <%= link_to panel_authorized_tokens_path(user_id: user.id), aria: { label: t('auth.panel.authorized_tokens.index.title') }, class: 'button is-small is-rounded is-light' do %>
       <i class="icon fas fa-key"></i>
