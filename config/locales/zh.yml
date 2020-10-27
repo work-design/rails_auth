@@ -9,33 +9,6 @@ zh:
       account_disable: 你的账号已被禁用!
       join_first: 请完成注册
   activerecord:
-    attributes:
-      user:
-        name: 姓名
-        name-like: 姓名
-        last_login_at: 上次登录时间
-        last_login_ip: 上次登录IP
-        disabled: 限制登录
-        timezone: 时区
-        locale: 语言
-        source: 来源
-        password: 密码
-        password_confirmation: 确认密码
-        oauth_users: Oauth 用户
-        accounts: 登录账号
-      user/accounts:
-        identity: 手机号或邮箱
-      account:
-        identity: 账号
-        confirmed: 是否验证
-        primary: 是否主账号
-      verify_token:
-        identity: 账号
-        token: 验证码
-      user_tag:
-        user_taggeds_count: 用户数
-      user_tagged:
-        tagged_type: 用户类型
     errors:
       models:
         user:
