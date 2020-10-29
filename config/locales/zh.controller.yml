@@ -1,5 +1,6 @@
 zh:
   auth:
+    title: 用户/登陆
     sign:
       sign:
         title: 登录/注册
