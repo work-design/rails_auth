@@ -21,9 +21,11 @@
     </div>
   </td>
   <td>
+    <div class="tags">
     <% user.oauth_users.each do |oauth_user| %>
-      <%= link_to oauth_user.type_i18n, admin_oauth_users_path(user_id: user.id), class: 'ui blue label' %>
+      <%= link_to oauth_user.type_i18n, admin_oauth_users_path(user_id: user.id), class: 'tag' %>
     <% end %>
+    </div>
   </td>
   <td>
     <% user.accounts.each do |account| %>
