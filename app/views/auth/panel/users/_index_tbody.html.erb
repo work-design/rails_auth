@@ -1,6 +1,6 @@
 <tr>
   <td>
-    <%= link_to panel_user_path(user.id), remote: true do %>
+    <%= link_to({ action: 'show', id: user.id }, remote: true) do %>
       <%= image_tag user.avatar.variant(resize_to_limit: [30, 30]), class: 'image is-24x24' if user.avatar.attached? %>
       <%= user.name %>
     <% end %>
@@ -38,23 +38,23 @@
     <% end %>
   </td>
   <td>
-    <%= link_to panel_user_path(user), aria: { label: t('.show') }, remote: true, class: 'button is-small is-rounded is-light' do %>
-      <i class="icon fas fa-info"></i>
+    <%= link_to({ action: 'show', id: user.id }, aria: { label: t('.show') }, remote: true, class: 'button is-small is-rounded is-light') do %>
+      <i class="fas fa-info"></i>
     <% end %>
-    <%= link_to panel_authorized_tokens_path(user_id: user.id), aria: { label: t('auth.panel.authorized_tokens.index.title') }, class: 'button is-small is-rounded is-light' do %>
-      <i class="icon fas fa-key"></i>
+    <%= link_to({ controller: 'authorized_tokens', user_id: user.id }, aria: { label: t('auth.panel.authorized_tokens.index.title') }, class: 'button is-small is-rounded is-light') do %>
+      <i class="fas fa-key"></i>
     <% end %>
     <%= link_to user_tags_panel_user_path(user), aria: { label: t('.tag') }, remote: true, class: 'button is-small is-rounded is-light' do %>
-      <i class="icon fas fa-user-tag"></i>
+      <i class="fas fa-user-tag"></i>
     <% end %>
-    <%= link_to "User/#{user.id}/who_roles/edit", aria: { label: t('.role') }, remote: true, class: 'button is-small is-rounded is-light' do %>
-      <i class="icon fas fa-user-lock"></i>
+    <%= link_to({ controller: 'role/admin/who_roles', action: 'edit', who_type: 'User', who_id: user.id }, aria: { label: t('.role') }, remote: true, class: 'button is-small is-rounded is-light') do %>
+      <i class="fas fa-user-lock"></i>
     <% end %>
-    <%= link_to edit_panel_user_path(user), aria: { label: t('.edit') }, remote: true, class: 'button is-small is-rounded is-light' do %>
-      <i class="icon fas fa-pencil-alt"></i>
+    <%= link_to({ action: 'edit', id: user.id }, aria: { label: t('.edit') }, remote: true, class: 'button is-small is-rounded is-light') do %>
+      <i class="fas fa-pencil-alt"></i>
     <% end %>
-    <%= link_to panel_user_path(user), method: :delete, aria: { label: t('.destroy') }, data: { confirm: t('.confirm') }, remote: true, class: 'button is-small is-rounded is-light' do %>
-      <i class="icon fas fa-trash-alt"></i>
+    <%= link_to({ action: 'destroy', id: user.id }, method: :delete, aria: { label: t('.destroy') }, data: { confirm: t('.confirm') }, remote: true, class: 'button is-small is-rounded is-light') do %>
+      <i class="fas fa-trash-alt"></i>
     <% end %>
   </td>
 </tr>
