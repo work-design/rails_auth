@@ -47,14 +47,14 @@ module RailsAuth::Application
     return @current_authorized_token if defined?(@current_authorized_token)
 
     if request.headers['Authorization']
-      auth_token = request.headers['Authorization'].to_s.split(' ').last.presence
+      token = request.headers['Authorization'].to_s.split(' ').last.presence
     else
-      auth_token = request.headers['Auth-Token'].presence || session[:auth_token] || params[:auth_token]
+      token = request.headers['Auth-Token'].presence || session[:auth_token] || params[:auth_token]
     end
-    return unless auth_token
+    return unless token
 
-    if verify_auth_token(auth_token)
-      @current_authorized_token = ::AuthorizedToken.find_by(token: auth_token)
+    if verify_auth_token(token)
+      @current_authorized_token = ::AuthorizedToken.find_by(token: token)
       @current_authorized_token.increment! :access_counter, 1 if RailsAuth.config.enable_access_counter if @current_authorized_token
       @current_authorized_token
     end
@@ -86,7 +86,7 @@ module RailsAuth::Application
       end
     end
 
-    account.user.update(last_login_at: Time.now)
+    account.user.update(last_login_at: Time.current)
 
     @current_account = account
     @current_user = account.user
