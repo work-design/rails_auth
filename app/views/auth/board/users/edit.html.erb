@@ -1,1 +1,36 @@
-<%= render 'edit' %>
+<table class="table is-fullwidth">
+  <thead>
+  <tr>
+    <th>
+      <%= form_with url: board_user_path, method: :patch, multipart: true, id: 'edit_user' %>
+      <%= link_to t('.back'), board_user_path, class: 'button' %>
+    </th>
+    <th></th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td></td>
+    <td>
+      <%= file_field_tag 'user[avatar]', form: 'edit_user' %>
+    </td>
+  </tr>
+  <tr>
+    <td class="has-text-right"><%= User.human_attribute_name(:name) %></td>
+    <td>
+      <%= text_field_tag 'user[name]', current_user.name, form: 'edit_user', class: 'input' %>
+    </td>
+  </tr>
+  <tr>
+  </tr>
+  <tr>
+    <td></td>
+    <td>
+      <%= submit_tag t('.save'), form: 'edit_user', class: 'button is-primary' %>
+    </td>
+  </tr>
+  </tbody>
+</table>
+
+
+
