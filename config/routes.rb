@@ -47,6 +47,7 @@ Rails.application.routes.draw do
       end
     end
     resources :accounts
+    resources :oauth_users
     resources :authorized_tokens
   end
 

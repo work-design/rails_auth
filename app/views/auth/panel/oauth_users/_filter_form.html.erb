@@ -1,0 +1,13 @@
+<%= form_with theme: 'search', model: OauthUser.new(params.permit(:name, :uid, :app_id)) do |f| %>
+  <div class="field-body">
+    <%= f.text_field :name %>
+    <%= f.text_field :uid %>
+    <%= f.text_field :app_id %>
+    <div class="field is-narrow">
+      <%= f.submit %>
+      <%= link_to t('.clear'), filter_params(except: [:name, :uid, :app_id]), class: 'button is-light' %>
+    </div>
+  </div>
+<% end %>
+
+

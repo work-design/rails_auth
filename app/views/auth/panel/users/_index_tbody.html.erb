@@ -23,14 +23,14 @@
   <td>
     <div class="tags">
     <% user.oauth_users.each do |oauth_user| %>
-      <%= link_to oauth_user.type_i18n, admin_oauth_users_path(user_id: user.id), class: 'tag' %>
+      <%= link_to oauth_user.type_i18n, { controller: 'oauth_users', user_id: user.id }, class: 'tag' %>
     <% end %>
     </div>
   </td>
   <td>
     <% user.accounts.each do |account| %>
       <p>
-        <%= link_to panel_accounts_path(user_id: user.id), aria: { label: t('auth.panel.accounts.index.title') } do %>
+        <%= link_to({ controller: 'accounts', user_id: user.id }, aria: { label: t('auth.panel.accounts.index.title') }) do %>
           <i class="fas fa-portrait"></i>
         <% end %>
         <span><%= account.identity %></span>

@@ -20,7 +20,6 @@ class Auth::Board::AccountsController < Auth::Board::BaseController
       @verify_token = @account.verify_token
       @verify_token.send_out
     else
-      flash[:alert] = @account.error_text
       render :edit, locals: { model: @account }, status: :unprocessable_entity
     end
   end
@@ -29,7 +28,6 @@ class Auth::Board::AccountsController < Auth::Board::BaseController
     @account.assign_attributes(account_params)
 
     unless @account.save
-      flash[:alert] = @account.error_text
       render :edit, locals: { model: @account }, status: :unprocessable_entity
     end
   end

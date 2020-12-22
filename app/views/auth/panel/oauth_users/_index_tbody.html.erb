@@ -1,0 +1,20 @@
+<tr>
+  <td><%= oauth_user.type_i18n %></td>
+  <td>
+    <p class="has-text-success"><%= oauth_user.uid %></p>
+    <p class="has-text-grey"><%= oauth_user.app_id %></p>
+  </td>
+  <td>
+    <%= image_tag oauth_user.avatar_url, class: 'image is-24x24' if oauth_user.avatar_url.present? %>
+    <%= oauth_user.name %>
+  </td>
+  <td><time><%= oauth_user.created_at.to_s(:rfc822) %></time></td>
+  <td>
+    <%= link_to oauth_user.user_id, panel_user_path(oauth_user.user_id) if oauth_user.user_id %>
+  </td>
+  <td>
+    <%= link_to admin_oauth_user_path(oauth_user), method: :delete, aria: { label: t('.destroy') }, data: { confirm: t('.confirm') }, class: 'button is-small is-rounded is-light' do %>
+      <i class="fas fa-trash-alt"></i>
+    <% end %>
+  </td>
+</tr>

@@ -45,14 +45,17 @@
       <%= form_with url: board_accounts_path, method: :post, id: 'add_account' %>
     </td>
     <td>
-      <%= text_field_tag 'account[identity]', nil, placeholder: Account.human_attribute_name(:identity), form: 'add_account', class: 'input' %>
+      <div class="field has-addons">
+        <div class="control">
+          <%= text_field_tag 'account[identity]', nil, placeholder: Account.human_attribute_name(:identity), form: 'add_account', class: 'input' %>
+        </div>
+        <div class="control">
+          <%= submit_tag '添加', form: 'add_account', class: 'button is-primary' %>
+        </div>
+      </div>
+    </td><td>
     </td>
-    <td>
-      <%= submit_tag '添加', form: 'add_account', class: 'button is-primary' %>
-    </td>
-    <td colspan="3">
-
-    </td>
+    <td colspan="3"></td>
   </tr>
   </tbody>
 </table>
