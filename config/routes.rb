@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  scope module: 'auth', defaults: { business: 'auth' } do
+  scope module: 'auth', defaults: { namespace: 'application', business: 'auth' } do
     controller :sign do
       match :sign, via: [:get, :post]
       post 'sign/token' => :token
