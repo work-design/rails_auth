@@ -65,11 +65,14 @@ zh:
       accounts:
         index:
           title: 账号
+      oauth_users:
+        index:
+          title: 第三方登录
     admin:
       title: 用户管理
       oauth_users:
         index:
-          title: 第三方登陆
+          title: 第三方登录
       user_tags:
         index:
           title: 用户标签
