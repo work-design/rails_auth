@@ -59,6 +59,7 @@ class Auth::SignController < Auth::BaseController
 
   def logout
     session.delete :auth_token
+    redirect_to root_url
   end
 
   private

@@ -1,4 +1,4 @@
 <%= javascript_tag nonce: true do %>
-  Turbolinks.clearCache()
-  Turbolinks.visit('<%= root_url %>', { action: 'replace' })
+  Turbo.clearCache()
+  Turbo.visit('<%= root_url %>', { action: 'replace' })
 <% end %>

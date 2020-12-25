@@ -1,6 +1,6 @@
 <div class="column is-6"></div>
 <div class="column is-6">
-  <div class="panel" style="width: 300px;">
+  <div class="panel" style="width: 300px;" id="auth_form">
     <h4 class="panel-heading has-text-centered"><%= t('.title') %></h4>
     <%= form_with scope: nil, url: sign_path, local: @local, origin: { label: nil, offset: nil }, wrap: { all: nil, input: 'panel-block', submit: 'panel-block' } do |f| %>
       <%= f.text_field :identity, value: params[:identity], placeholder: Account.human_attribute_name(:identity), class: 'input' %>
