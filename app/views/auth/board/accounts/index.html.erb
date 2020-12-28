@@ -4,7 +4,7 @@
     <tr>
       <td>
         <div data-controller="input">
-          <%= check_box_tag '[account]primary', nil, account.primary, data: { method: :patch, remote: true, url: board_account_path(account), action: 'input#submit' }, id: nil, class: 'switch is-rounded', disabled: account.primary %>
+          <%= check_box_tag '[account]primary', nil, account.primary, data: { method: :patch, url: board_account_path(account), action: 'input#submit' }, id: nil, class: 'switch is-rounded', disabled: account.primary %>
           <label><%= t('.primary') %></label>
         </div>
       </td>
@@ -33,7 +33,7 @@
           <button data-controller="login" data-url="<%= token_board_account_url(account.id) %>" data-time="60" data-action="login#countDown" class="button is-link">发送验证码</button>
         <% end %>
         <% unless account.primary %>
-          <%= link_to board_account_path(account), method: :delete, aria: { label: t('.destroy'), confirm: '删除后此账号无法用于登陆' }, remote: true, class: 'button' do %>
+          <%= link_to board_account_path(account), method: :delete, aria: { label: t('.destroy'), confirm: '删除后此账号无法用于登陆' }, class: 'button' do %>
             <i class="fas fa-trash-alt"></i>
           <% end %>
         <% end %>

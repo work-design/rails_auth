@@ -13,7 +13,7 @@
     <%= link_to oauth_user.user_id, panel_user_path(oauth_user.user_id) if oauth_user.user_id %>
   </td>
   <td>
-    <%= link_to({ action: 'destroy', id: oauth_user.id }, method: :delete, remote: true, aria: { label: t('.destroy') }, data: { confirm: t('.confirm') }, class: 'button is-small is-rounded is-light') do %>
+    <%= link_to({ action: 'destroy', id: oauth_user.id }, method: :delete, aria: { label: t('.destroy') }, data: { confirm: t('.confirm') }, class: 'button is-small is-rounded is-light') do %>
       <i class="fas fa-trash-alt"></i>
     <% end %>
   </td>

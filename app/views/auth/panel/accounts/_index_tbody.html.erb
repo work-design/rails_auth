@@ -1,32 +1,32 @@
 <tr>
   <td>
   <% if account.user %>
-    <%= link_to account.user.name, { controller: 'users', action: 'show', id: account.user_id }, remote: true, text: true %>
+    <%= link_to account.user.name, { controller: 'users', action: 'show', id: account.user_id }, text: true %>
   <% end %>
   </td>
   <td><%= account.type_i18n %></td>
   <td><%= account.identity %></td>
   <td>
     <div data-controller="input">
-      <%= check_box_tag '[account]confirmed', nil, account.confirmed, data: { method: :patch, remote: true, url: panel_account_path(account), action: 'input#submit' }, id: nil, class: 'switch is-rounded' %>
+      <%= check_box_tag '[account]confirmed', nil, account.confirmed, data: { method: :patch, url: panel_account_path(account), action: 'input#submit' }, id: nil, class: 'switch is-rounded' %>
       <label></label>
     </div>
   </td>
   <td>
     <div data-controller="input">
-      <%= check_box_tag '[account]primary', nil, account.primary, data: { method: :patch, remote: true, url: panel_account_path(account), action: 'input#submit' }, id: nil, class: 'switch is-rounded' %>
+      <%= check_box_tag '[account]primary', nil, account.primary, data: { method: :patch, url: panel_account_path(account), action: 'input#submit' }, id: nil, class: 'switch is-rounded' %>
       <label></label>
     </div>
   </td>
   <td><time><%= account.created_at.to_s(:rfc822) %></time></td>
   <td>
-    <%= link_to({ action: 'show', id: account.id }, aria: { label: t('.show') }, remote: true, class: 'button is-small is-rounded is-light') do %>
+    <%= link_to({ action: 'show', id: account.id }, aria: { label: t('.show') }, class: 'button is-small is-rounded is-light') do %>
       <i class="fas fa-info"></i>
     <% end %>
-    <%= link_to({ action: 'edit', id: account.id }, aria: { label: t('.edit') }, remote: true, class: 'button is-small is-rounded is-light') do %>
+    <%= link_to({ action: 'edit', id: account.id }, aria: { label: t('.edit') }, class: 'button is-small is-rounded is-light') do %>
       <i class="fas fa-pencil-alt"></i>
     <% end %>
-    <%= link_to({ action: 'destroy', id: account.id }, method: :delete, aria: { label: t('.destroy') }, data: { confirm: t('.confirm') }, remote: true, class: 'button is-small is-rounded is-light') do %>
+    <%= link_to({ action: 'destroy', id: account.id }, method: :delete, aria: { label: t('.destroy') }, data: { confirm: t('.confirm') }, class: 'button is-small is-rounded is-light') do %>
       <i class="fas fa-trash-alt"></i>
     <% end %>
   </td>
