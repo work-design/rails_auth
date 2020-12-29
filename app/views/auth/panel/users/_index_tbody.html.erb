@@ -14,10 +14,11 @@
   <p><%= model.last_login_ip %></p>
 </td>
 <td>
-  <div data-controller="input">
-    <%= check_box_tag '[model]disabled', nil, model.disabled, data: { method: :patch, url: panel_user_path(model), action: 'input#submit' }, id: nil, class: 'switch is-rounded' %>
-    <label></label>
-  </div>
+  <%= form_with theme: nil, model: model, url: { action: 'update', id: model.id }, data: { controller: 'input' } do |f| %>
+    <%= f.check_box :disabled, data: { input_target: 'checkbox' }, id: nil, class: 'switch is-rounded' %>
+    <label data-action="click->input#check"></label>
+    <%= f.submit nil, data: { input_target: 'submit' }, style: 'display: none' %>
+  <% end %>
 </td>
 <td>
   <div class="tags">
