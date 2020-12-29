@@ -1,5 +1,5 @@
 <%= render layout: 'index_table', locals: { cache_key: OauthUser.column_names.hash } do %>
-  <%= render partial: 'index_tbody', collection: @oauth_users, as: :oauth_user %>
+  <%= render partial: 'index_tbody', layout: 'index_tr', collection: @oauth_users, as: :oauth_user %>
 <% end %>
 
 <%= paginate @oauth_users %>

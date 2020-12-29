@@ -1,11 +1,11 @@
-<table class="ui very basic fixed table">
+<table class="table is-fullwidth">
   <% target.verify_tokens.each do |vt| %>
     <tr>
       <td><%= vt.type_i18n %></td>
       <td class="six wide" style="overflow: scroll">
         <pre><%= vt.token %></pre>
       </td>
-      <td><time><%= vt.expire_at.to_s(:rfc822) %></time></td>
+      <td><time data-controller="time"><%= vt.expire_at.to_s(:rfc822) %></time></td>
     </tr>
   <% end %>
 </table>

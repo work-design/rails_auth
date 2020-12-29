@@ -1,0 +1,5 @@
+<%= form_with model: @user, url: { action: 'update_user_tags' } do |f| %>
+  <%= render 'shared/error_messages', target: @user %>
+  <%= f.collection_check_boxes :user_tag_ids, @user_tags, :id, :name %>
+  <%= f.submit %>
+<% end %>

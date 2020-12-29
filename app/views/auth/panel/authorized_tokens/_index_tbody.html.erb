@@ -1,20 +1,10 @@
-<tr>
-  <td>
-    <p><%= authorized_token.token %></p>
-    <p><time><%= authorized_token.expire_at.to_s(:rfc822) %></time></p>
-  </td>
-  <td><%= authorized_token.session_key %></td>
-  <td>
-    <%= authorized_token.oauth_user_id %>
-  </td>
-  <td><%= authorized_token.account_id %></td>
-  <td><%= authorized_token.user_id %></td>
-  <td>
-    <%= link_to edit_panel_authorized_token_path(authorized_token), aria: { label: t('.edit') }, class: 'button is-small is-rounded is-light' do %>
-      <i class="fas fa-pencil-alt"></i>
-    <% end %>
-    <%= link_to panel_authorized_token_path(authorized_token), method: :delete, aria: { label: t('.destroy') }, data: { confirm: t('.confirm') }, class: 'button is-small is-rounded is-light' do %>
-      <i class="fas fa-trash-alt"></i>
-    <% end %>
-  </td>
-</tr>
+<td>
+  <p><%= model.token %></p>
+  <p><time data-controller="time"><%= model.expire_at.to_s(:rfc822) %></time></p>
+</td>
+<td><%= model.session_key %></td>
+<td>
+  <%= model.oauth_user_id %>
+</td>
+<td><%= model.account_id %></td>
+<td><%= model.user_id %></td>

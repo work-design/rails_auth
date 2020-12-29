@@ -37,9 +37,9 @@
         <p><%= user.locale %></p>
         <p><%= user.timezone %></p>
       </td>
-      <td><time><%= user.created_at.to_s(:rfc822) %></time></td>
+      <td><time data-controller="time"><%= user.created_at.to_s(:rfc822) %></time></td>
       <td>
-        <p><time><%= user.last_login_at.to_s(:rfc822) if user.last_login_at %></time></p>
+        <p><time data-controller="time"><%= user.last_login_at.to_s(:rfc822) if user.last_login_at %></time></p>
         <p><%= user.last_login_ip %></p>
       </td>
       <td>
