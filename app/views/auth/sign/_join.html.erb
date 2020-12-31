@@ -1,0 +1,18 @@
+<h4 class="panel-heading has-text-centered">请注册</h4>
+<%= form_with scope: nil, url: login_path, on: { skip_default_ids: true }, origin: { label: nil }, wrap: { input: nil, all: 'field control', submit: 'panel-block' } do |f| %>
+  <div class="panel-block is-wrapped">
+    <%= f.text_field :identity, value: params[:identity], disabled: true %>
+    <%= f.hidden_field :identity, value: params[:identity], data: { target: 'login.identity' } %>
+    <div class="field control has-addons">
+      <%= f.text_field :token, placeholder: VerifyToken.human_attribute_name(:token), autocomplete: false, wrap: { input: 'control is-expanded', all: nil } %>
+      <div class="control">
+        <button type="button" class="button is-info" data-action="login#code" data-time="60" data-url="<%= sign_token_url %>">
+          <%= t('.token') %>
+        </button>
+      </div>
+    </div>
+    <%= f.password_field :password, placeholder: User.human_attribute_name(:password), autocomplete: false %>
+    <%= f.password_field :password_confirmation, placeholder: User.human_attribute_name(:password_confirmation), autocomplete: false %>
+  </div>
+  <%= f.submit class: 'button is-primary is-fullwidth' %>
+<% end %>
