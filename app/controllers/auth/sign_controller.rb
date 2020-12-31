@@ -33,9 +33,9 @@ class Auth::SignController < Auth::BaseController
     @verify_token = @account.verify_token
 
     if @verify_token.send_out
-      render :token, locals: { message: t('.sent') }
+      render 'code', locals: { message: t('.sent') }
     else
-      render :token, locals: { message: @verity_token.error_text }, status: :bad_request
+      render 'token', locals: { message: @verity_token.error_text }, status: :bad_request
     end
   end
 
