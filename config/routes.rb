@@ -3,8 +3,9 @@ Rails.application.routes.draw do
   scope module: 'auth', defaults: { namespace: 'application', business: 'auth' } do
     controller :sign do
       match :sign, via: [:get, :post]
-      post 'sign/token' => :token
+      get 'sign/token' => :token
       post 'sign/mock' => :mock
+      post 'sign/code' => :code
       post :login
       get :logout
     end

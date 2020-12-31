@@ -1,0 +1,3 @@
+<%= turbo_stream.replace 'password' do %>
+  <%= text_field_tag :token, nil, placeholder: VerifyToken.human_attribute_name(:token), class: 'field input' %>
+<% end %>

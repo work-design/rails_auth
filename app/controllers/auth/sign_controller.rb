@@ -28,6 +28,17 @@ class Auth::SignController < Auth::BaseController
     end
   end
 
+  def code
+    @account = Account.find_by(identity: params[:identity]) || Account.create_with_identity(params[:identity])
+    @verify_token = @account.verify_token
+
+    if @verify_token.send_out
+      render :token, locals: { message: t('.sent') }
+    else
+      render :token, locals: { message: @verity_token.error_text }, status: :bad_request
+    end
+  end
+
   def mock
     @account = DeviceAccount.find_or_initialize_by(identity: params[:device_id])
 

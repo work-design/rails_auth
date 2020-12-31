@@ -5,7 +5,8 @@ class LoginController extends Controller {
   static targets = ['identity']
 
   connect() {
-    console.log('Login Controller works!')
+    console.debug('Login Controller works!')
+    this.countDown(this.element)
   }
 
   assignLocation(element) {
@@ -26,16 +27,8 @@ class LoginController extends Controller {
     }
   }
 
-  countDown(element) {
-    let ele = element.target
+  countDown(ele) {
     let countdown = parseInt(ele.dataset['time'])
-    let url = new URL(ele.dataset['url'])
-    if (this.hasIdentityTarget) {
-      url.searchParams.set('identity', this.identityTarget.value)
-    }
-    Rails.ajax({ url: url, type: 'POST', dataType: 'script' })
-
-    ele.setAttribute('disabled', '')
     ele.innerText = '重新发送(' + countdown + ')'
 
     let timer = setInterval(function() {
