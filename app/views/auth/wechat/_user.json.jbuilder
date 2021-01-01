@@ -1,8 +1,10 @@
-json.extract! user,
-              :id,
-              :name,
-              :email,
-              :mobile,
-              :locale,
-              :timezone,
-              :avatar_url
+json.extract!(
+  user,
+  :id,
+  :name,
+  :email,
+  :mobile,
+  :locale,
+  :timezone,
+  :avatar_url
+)

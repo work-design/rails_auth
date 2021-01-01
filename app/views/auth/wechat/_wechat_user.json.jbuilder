@@ -1,3 +1,5 @@
-json.extract! wechat_user,
-              :id,
-              :name
+json.extract!(
+  wechat_user,
+  :id,
+  :name
+)
