@@ -33,11 +33,12 @@
         <% unless account.confirmed %>
           <button data-controller="login" data-url="<%= token_board_account_url(account.id) %>" data-time="60" data-action="login#countDown" class="button is-link">发送验证码</button>
         <% end %>
-        <% unless account.primary %>
-          <%= link_to board_account_path(account), method: :delete, aria: { label: t('.destroy'), confirm: '删除后此账号无法用于登陆' }, class: 'button' do %>
-            <i class="fas fa-trash-alt"></i>
-          <% end %>
-        <% end %>
+        <%= button_to({ action: 'select', id: account.id }, method: :delete, aria: { label: t('.destroy'), confirm: '删除后此账号无法用于登陆' }, class: 'button') do %>
+          <i class="fas fa-trash-alt"></i>
+        <% end unless account.primary %>
+        <%= button_to({ action: 'select', id: account.id }, method: :put, aria: { label: t('.select') }, class: 'button') do %>
+          <i class="fas fa-chevron-circle-right"></i>
+        <% end unless account == current_account %>
       </td>
     </tr>
   <% end %>
@@ -56,7 +57,7 @@
       </div>
     </td><td>
     </td>
-    <td colspan="3"></td>
+    <td></td>
   </tr>
   </tbody>
 </table>

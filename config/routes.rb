@@ -62,6 +62,7 @@ Rails.application.routes.draw do
       member do
         post :token
         post :confirm
+        put :select
       end
     end
     resources :oauth_users do

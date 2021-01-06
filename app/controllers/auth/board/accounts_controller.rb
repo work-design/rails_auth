@@ -1,5 +1,5 @@
 class Auth::Board::AccountsController < Auth::Board::BaseController
-  before_action :set_account, only: [:edit, :update, :token, :confirm, :destroy]
+  before_action :set_account, only: [:edit, :update, :token, :confirm, :select, :destroy]
 
   def index
     @accounts = current_user.accounts.order(id: :asc)
@@ -52,6 +52,10 @@ class Auth::Board::AccountsController < Auth::Board::BaseController
     else
       render 'error', locals: { model: @account }, status: :unprocessable_entity
     end
+  end
+
+  def select
+    @current_authorized_token.update identity: @account.identity
   end
 
   def destroy
