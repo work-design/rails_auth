@@ -14,16 +14,17 @@ module RailsAuth::AuthorizedToken
     attribute :access_counter, :integer, default: 0
     attribute :mock_member, :boolean, default: false
     attribute :mock_user, :boolean, default: false
+    attribute :identity, :string, index: true
 
     belongs_to :user, optional: true
     belongs_to :oauth_user, optional: true
-    belongs_to :account, optional: true
-    belongs_to :member, optional: true
+    belongs_to :account, foreign_key: :identity, primary_key: :identity, optional: true
+    has_many :members, foreign_key: :identity, primary_key: :identity
 
     scope :valid, -> { where('expire_at >= ?', Time.current).order(expire_at: :desc) }
     validates :token, presence: true
 
-    before_validation :sync_user, if: -> { oauth_user_id_changed? || account_id_changed? || member_id_changed? }
+    before_validation :sync_user, if: -> { oauth_user_id_changed? || identity_changed? }
     before_validation :update_token, if: -> { new_record? }
   end
 
@@ -36,9 +37,8 @@ module RailsAuth::AuthorizedToken
     else
       self.user_id = nil
     end
-    if member
-      self.mock_member = true if user_id != member.user_id
-    end
+
+    #self.mock_member = true if user_id != member.user_id
   end
 
   def verify_token?(now = Time.current)

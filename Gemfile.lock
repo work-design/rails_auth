@@ -14,7 +14,7 @@ GIT
 
 GIT
   remote: https://github.com/work-design/rails_com.git
-  revision: a23956e77d12e44ced0a4bb2edf733c471506315
+  revision: 46c19b3da2378918c46cf732cce13c46f2017d08
   specs:
     rails_com (1.2.9)
       acme-client
@@ -115,9 +115,11 @@ GEM
     factory_bot_rails (6.1.0)
       factory_bot (~> 6.1.0)
       railties (>= 5.0.0)
-    faraday (1.2.0)
+    faraday (1.3.0)
+      faraday-net_http (~> 1.0)
       multipart-post (>= 1.2, < 3)
       ruby2_keywords
+    faraday-net_http (1.0.0)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
     http-2-next (0.3.0)

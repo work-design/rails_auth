@@ -9,7 +9,7 @@ module RailsAuth::Account
     attribute :source, :string
 
     belongs_to :user, optional: true
-    has_many :authorized_tokens, dependent: :delete_all
+    has_one :authorized_token, foreign_key: :identity, primary_key: :identity
     has_many :verify_tokens, dependent: :delete_all
     has_many :oauth_users, dependent: :nullify, inverse_of: :account
 
@@ -109,16 +109,14 @@ module RailsAuth::Account
   end
 
   def authorized_token
-    r = authorized_tokens.order(expire_at: :desc).first
-    if r
-      if r.verify_token?
-        r
-      else
-        r.update_token!
-      end
+    r = super || create_authorized_token
+    if r.verify_token?
+      return r
     else
-      authorized_tokens.create
+      r.update_token!
     end
+
+    r
   end
 
   def auth_token
