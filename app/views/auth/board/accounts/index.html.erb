@@ -6,7 +6,6 @@
         <%= form_with theme: nil, model: account, url: { action: 'update', id: account.id }, data: { controller: 'input' } do |f| %>
           <%= f.check_box :primary, data: { input_target: 'checkbox' }, disabled: account.primary, id: nil, class: 'switch is-rounded' %>
           <label data-action="click->input#check"><%= t('.primary') %></label>
-          <%= f.submit nil, data: { input_target: 'submit' }, style: 'display: none' %>
         <% end %>
       </td>
       <td>

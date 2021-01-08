@@ -9,14 +9,12 @@
   <%= form_with theme: nil, model: model, scope: :account, url: { action: 'update', id: model.id }, data: { controller: 'input' } do |f| %>
     <%= f.check_box :confirmed, data: { input_target: 'checkbox' }, id: nil, class: 'switch is-rounded' %>
     <label data-action="click->input#check"></label>
-    <%= f.submit nil, data: { input_target: 'submit' }, style: 'display: none' %>
   <% end %>
 </td>
 <td>
   <%= form_with theme: nil, model: model, scope: :account, url: { action: 'update', id: model.id }, data: { controller: 'input' } do |f| %>
     <%= f.check_box :primary, data: { input_target: 'checkbox' }, id: nil, class: 'switch is-rounded' %>
     <label data-action="click->input#check"></label>
-    <%= f.submit nil, data: { input_target: 'submit' }, style: 'display: none' %>
   <% end %>
 </td>
 <td><time data-controller="time"><%= model.created_at.to_s(:rfc822) %></time></td>
