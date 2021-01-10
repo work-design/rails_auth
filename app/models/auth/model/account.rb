@@ -138,17 +138,5 @@ module Auth
       end
     end
 
-    class_methods do
-
-      def create_with_identity(identity)
-        if identity.to_s.include?('@')
-          EmailAccount.create(identity: identity)
-        else
-          MobileAccount.create(identity: identity)
-        end
-      end
-
-    end
-
   end
 end

@@ -18,7 +18,8 @@ module Auth
     end
 
     def token
-      @account = Account.find_by(identity: params[:identity]) || Account.create_with_identity(params[:identity])
+      @account = Account.find_or_create_by(identity: params[:identity])
+      @account.reload
       @verify_token = @account.verify_token
 
       if @verify_token.send_out
@@ -29,7 +30,8 @@ module Auth
     end
 
     def code
-      @account = Account.find_by(identity: params[:identity]) || Account.create_with_identity(params[:identity])
+      @account = Account.find_or_create_by(identity: params[:identity])
+      @account.reload
       @verify_token = @account.verify_token
 
       if @verify_token.send_out
