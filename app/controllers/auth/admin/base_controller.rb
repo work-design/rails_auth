@@ -1,3 +1,5 @@
-class Auth::Admin::BaseController < AdminController
+module Auth
+  class Admin::BaseController < AdminController
 
-end unless defined? Auth::Admin::BaseController
+  end unless defined? Auth::Admin::BaseController
+end

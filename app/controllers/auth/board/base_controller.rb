@@ -1,3 +1,5 @@
-class Auth::Board::BaseController < BoardController
+module Auth
+  class Board::BaseController < BoardController
 
-end unless defined? Auth::Board::BaseController
+  end unless defined? Auth::Board::BaseController
+end

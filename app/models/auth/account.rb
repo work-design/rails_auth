@@ -1,5 +1,5 @@
 module Auth
   class Account < RailsAuthRecord
     include Model::Account
-  end
-end unless defined? Auth::Account
+  end unless defined? Auth::Account
+end
