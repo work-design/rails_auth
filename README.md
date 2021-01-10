@@ -22,7 +22,7 @@ RailsAuth 是个处理鉴权的 Rails Engine
 
 ```ruby
 class ApplicationController < ActionController::Base
-  include RailsAuth::Application
+  include Auth::Controller::Application
   before_action :require_login
 end
 ```
@@ -31,7 +31,7 @@ end
 
 ```ruby
 class User < ActiveRecord::Base
-  include RailsAuth::User
+  include Auth::Model::User
 end
 ```
 
