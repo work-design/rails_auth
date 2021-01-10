@@ -15,7 +15,6 @@ module Auth
 
     def new
       @user = User.new
-      binding.pry
       @user.accounts.build
     end
 
@@ -57,8 +56,6 @@ module Auth
           render :create and return
         end
       end
-
-      process_errors(@user)
     end
 
     def destroy

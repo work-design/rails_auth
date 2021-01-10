@@ -1,55 +1,57 @@
-class Auth::Panel::AccountsController < Auth::Panel::BaseController
-  before_action :set_account, only: [:show, :edit, :update, :destroy]
+module Auth
+  class Panel::AccountsController < Panel::BaseController
+    before_action :set_account, only: [:show, :edit, :update, :destroy]
 
-  def index
-    q_params = {}
-    q_params.merge! params.permit(:user_id, :identity)
-    @accounts = Account.default_where(q_params).order(id: :desc).page(params[:page])
-  end
-
-  def new
-    @account = Account.new
-  end
-
-  def create
-    @account = Account.new(account_params)
-
-    unless @account.save
-      render :new, locals: { model: @account }, status: :unprocessable_entity
+    def index
+      q_params = {}
+      q_params.merge! params.permit(:user_id, :identity)
+      @accounts = Account.default_where(q_params).order(id: :desc).page(params[:page])
     end
-  end
 
-  def show
-  end
-
-  def edit
-  end
-
-  def update
-    @account.assign_attributes(account_params)
-
-    unless @account.save
-      render :edit, locals: { model: @account }, status: :unprocessable_entity
+    def new
+      @account = Account.new
     end
-  end
 
-  def destroy
-    @account.destroy
-  end
+    def create
+      @account = Account.new(account_params)
 
-  private
-  def set_account
-    @account = Account.find(params[:id])
-  end
+      unless @account.save
+        render :new, locals: { model: @account }, status: :unprocessable_entity
+      end
+    end
 
-  def account_params
-    params.fetch(:account, {}).permit(
-      :user_id,
-      :type,
-      :identity,
-      :confirmed,
-      :primary
-    )
-  end
+    def show
+    end
 
+    def edit
+    end
+
+    def update
+      @account.assign_attributes(account_params)
+
+      unless @account.save
+        render :edit, locals: { model: @account }, status: :unprocessable_entity
+      end
+    end
+
+    def destroy
+      @account.destroy
+    end
+
+    private
+    def set_account
+      @account = Account.find(params[:id])
+    end
+
+    def account_params
+      params.fetch(:account, {}).permit(
+        :user_id,
+        :type,
+        :identity,
+        :confirmed,
+        :primary
+      )
+    end
+
+  end
 end
