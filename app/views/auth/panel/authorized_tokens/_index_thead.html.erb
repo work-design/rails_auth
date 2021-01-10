@@ -1,9 +1,9 @@
 <th>
-  <p><%= AuthorizedToken.human_attribute_name(:token) %></p>
-  <p><%= AuthorizedToken.human_attribute_name(:expire_at) %></p>
+  <p><%= Auth::AuthorizedToken.human_attribute_name(:token) %></p>
+  <p><%= Auth::AuthorizedToken.human_attribute_name(:expire_at) %></p>
 </th>
-<th><%= AuthorizedToken.human_attribute_name(:session_key) %></th>
-<th><%= AuthorizedToken.human_attribute_name(:oauth_user) %></th>
-<th><%= AuthorizedToken.human_attribute_name(:account) %></th>
-<th><%= AuthorizedToken.human_attribute_name(:user) %></th>
+<th><%= Auth::AuthorizedToken.human_attribute_name(:session_key) %></th>
+<th><%= Auth::AuthorizedToken.human_attribute_name(:oauth_user) %></th>
+<th><%= Auth::AuthorizedToken.human_attribute_name(:identity) %></th>
+<th><%= Auth::AuthorizedToken.human_attribute_name(:user) %></th>
 <th></th>
