@@ -35,7 +35,7 @@ module Auth::Model::VerifyToken
     self
   end
 
-  def verify_token?(now = Time.now)
+  def verify_token?(now = Time.current)
     return false if self.expire_at.blank?
     if now > self.expire_at
       self.errors.add(:token, 'The token has expired')
