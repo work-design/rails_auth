@@ -23,9 +23,9 @@ module Auth
 
       after_initialize if: :new_record? do
         if self.identity.to_s.include?('@')
-          self.type ||= 'EmailAccount'
+          self.type ||= 'Auth::EmailAccount'
         else
-          self.type ||= 'MobileAccount'
+          self.type ||= 'Auth::MobileAccount'
         end
       end
       after_save :set_primary, if: -> { self.primary? && saved_change_to_primary? }
