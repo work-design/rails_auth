@@ -4,7 +4,7 @@
     <%= f.text_field :identity, value: params[:identity], disabled: true %>
     <%= f.hidden_field :identity, value: params[:identity] %>
     <div class="field control has-addons">
-      <%= f.text_field :token, placeholder: VerifyToken.human_attribute_name(:token), autocomplete: false, wrap: { input: 'control is-expanded', all: nil } %>
+      <%= f.text_field :token, placeholder: Auth::VerifyToken.human_attribute_name(:token), autocomplete: false, wrap: { input: 'control is-expanded', all: nil } %>
       <turbo-frame class="control">
         <%= button_to({ action: 'code', identity: params[:identity] }, form: { id: 'sign_token' }, class: 'button is-info') do %>
           <span><%= t('.token') %></span>

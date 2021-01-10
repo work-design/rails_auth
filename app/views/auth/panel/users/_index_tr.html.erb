@@ -13,7 +13,7 @@
       <% end %>
       <%= link_to({ controller: 'role/admin/who_roles', action: 'edit', who_type: 'User', who_id: model.id }, aria: { label: t('.role') }, class: 'button is-small is-rounded is-light') do %>
         <i class="fas fa-user-lock"></i>
-      <% end %>
+      <% end if defined?(RailsRole) %>
       <%= link_to({ action: 'edit', id: model.id }, aria: { label: t('.edit') }, class: 'button is-small is-rounded is-light') do %>
         <i class="fas fa-pencil-alt"></i>
       <% end %>
