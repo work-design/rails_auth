@@ -2,9 +2,9 @@ require 'rails_com'
 class RailsAuth::Engine < ::Rails::Engine
 
   config.autoload_paths += Dir[
-    "#{config.root}/app/models/auth/account",
-    "#{config.root}/app/models/auth/oauth_user",
-    "#{config.root}/app/models/auth/verify_token"
+    "#{config.root}/app/models/account",
+    "#{config.root}/app/models/oauth_user",
+    "#{config.root}/app/models/verify_token"
   ]
 
   config.generators do |g|
