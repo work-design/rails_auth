@@ -1,7 +1,7 @@
 # Deal with token
 #
 # 用于处理Token
-module Auth::Model::VerifyToken
+module AuthModel::VerifyToken
   extend ActiveSupport::Concern
 
   included do

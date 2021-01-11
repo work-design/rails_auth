@@ -4,7 +4,7 @@
 # this not docs
 #++
 # test
-module Auth::Model::AuthorizedToken
+module AuthModel::AuthorizedToken
   extend ActiveSupport::Concern
 
   included do

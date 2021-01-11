@@ -1,4 +1,4 @@
-module Auth::Model::UserTag
+module AuthModel::UserTag
   extend ActiveSupport::Concern
 
   included do

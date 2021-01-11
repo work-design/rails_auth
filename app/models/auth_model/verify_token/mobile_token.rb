@@ -1,4 +1,4 @@
-module Auth::Model::VerifyToken::EmailToken
+module AuthModel::VerifyToken::MobileToken
   extend ActiveSupport::Concern
 
   included do
@@ -13,7 +13,8 @@ module Auth::Model::VerifyToken::EmailToken
   end
 
   def send_out
-    UserMailer.email_token(self.identity, self.token).deliver_later
+    puts "sends sms here #{token}"
+    true
   end
 
 end
