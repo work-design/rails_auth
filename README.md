@@ -31,7 +31,7 @@ end
 
 ```ruby
 class User < ActiveRecord::Base
-  include Auth::Model::User
+  include AuthModel::User
 end
 ```
 

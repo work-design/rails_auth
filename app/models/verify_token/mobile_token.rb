@@ -1,3 +1,3 @@
 class MobileToken < VerifyToken
-  include Auth::Model::VerifyToken::MobileToken
+  include AuthModel::VerifyToken::MobileToken
 end

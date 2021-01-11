@@ -1,3 +1,3 @@
 class OauthUser < RailsAuthRecord
-  include Auth::Model::OauthUser
+  include AuthModel::OauthUser
 end

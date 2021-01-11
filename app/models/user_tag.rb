@@ -1,3 +1,3 @@
 class UserTag < ApplicationRecord
-  include Auth::Model::UserTag
+  include AuthModel::UserTag
 end

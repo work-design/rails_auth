@@ -1,3 +1,3 @@
 class EmailToken < VerifyToken
-  include Auth::Model::VerifyToken::EmailToken
+  include AuthModel::VerifyToken::EmailToken
 end

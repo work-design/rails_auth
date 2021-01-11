@@ -1,3 +1,3 @@
 class EmailAccount < Account
-  include Auth::Model::Account::EmailAccount
+  include AuthModel::Account::EmailAccount
 end

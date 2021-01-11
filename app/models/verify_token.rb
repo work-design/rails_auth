@@ -1,3 +1,3 @@
 class VerifyToken < RailsAuthRecord
-  include Auth::Model::VerifyToken
+  include AuthModel::VerifyToken
 end

@@ -1,3 +1,3 @@
 class AuthorizedToken < RailsAuthRecord
-  include Auth::Model::AuthorizedToken
+  include AuthModel::AuthorizedToken
 end

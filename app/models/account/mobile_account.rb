@@ -1,3 +1,3 @@
 class MobileAccount < Account
-  include Auth::Model::Account::MobileAccount
+  include AuthModel::Account::MobileAccount
 end

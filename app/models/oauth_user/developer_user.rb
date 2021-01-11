@@ -1,3 +1,3 @@
 class DeveloperUser < OauthUser
-  include Auth::Model::OauthUser::DeveloperUser
+  include AuthModel::OauthUser::DeveloperUser
 end

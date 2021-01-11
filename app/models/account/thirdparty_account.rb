@@ -1,3 +1,3 @@
 class ThirdpartyAccount < Account
-  include Auth::Model::Account::ThirdpartyAccount
+  include AuthModel::Account::ThirdpartyAccount
 end

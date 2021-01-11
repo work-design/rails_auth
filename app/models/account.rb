@@ -1,3 +1,3 @@
 class Account < RailsAuthRecord
-  include Auth::Model::Account
+  include AuthModel::Account
 end

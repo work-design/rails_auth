@@ -1,3 +1,3 @@
 class User < RailsAuthRecord
-  include Auth::Model::User
+  include AuthModel::User
 end
