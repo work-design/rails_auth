@@ -21,13 +21,6 @@ module Auth
       validates :identity, presence: true
       validate :validate_identity
 
-      after_initialize if: :new_record? do
-        if self.identity.to_s.include?('@')
-          self.type ||= 'Auth::EmailAccount'
-        else
-          self.type ||= 'Auth::MobileAccount'
-        end
-      end
       after_save :set_primary, if: -> { self.primary? && saved_change_to_primary? }
       after_update :sync_user, if: -> { saved_change_to_user_id? }
     end

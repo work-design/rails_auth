@@ -17,7 +17,6 @@ module Auth
       @account = current_user.accounts.build(account_params)
 
       if @account.save
-        @account.reload
         @verify_token = @account.verify_token
         @verify_token.send_out
       else

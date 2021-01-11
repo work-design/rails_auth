@@ -1,6 +1,7 @@
 module Auth
   class SignController < BaseController
     before_action :check_login, except: [:logout]
+    before_action :set_account, only: [:token, :code]
     skip_after_action :set_auth_token, only: [:logout]
 
     def sign
@@ -18,8 +19,6 @@ module Auth
     end
 
     def token
-      @account = Account.find_or_create_by(identity: params[:identity])
-      @account.reload
       @verify_token = @account.verify_token
 
       if @verify_token.send_out
@@ -30,8 +29,6 @@ module Auth
     end
 
     def code
-      @account = Account.find_or_create_by(identity: params[:identity])
-      @account.reload
       @verify_token = @account.verify_token
 
       if @verify_token.send_out
@@ -75,6 +72,14 @@ module Auth
     end
 
     private
+    def set_account
+      if self.identity.to_s.include?('@')
+        @account = EmailAccount.find_or_create_by(identity: params[:identity])
+      else
+        @account = MobileAccount.find_or_create_by(identity: params[:identity])
+      end
+    end
+
     def user_params
       q = params.permit(
         :name,

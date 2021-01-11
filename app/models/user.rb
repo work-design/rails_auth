@@ -1,1 +1,3 @@
-User = Auth::User unless defined? User
+class User < ApplicationRecord
+  include Auth::Model::User
+end unless defined? User
