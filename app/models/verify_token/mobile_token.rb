@@ -1,5 +1,3 @@
-module Auth
-  class MobileToken < VerifyToken
-    include Model::VerifyToken::MobileToken
-  end unless defined? Auth::MobileToken
-end
+class MobileToken < VerifyToken
+  include Auth::Model::VerifyToken::MobileToken
+end unless defined? MobileToken

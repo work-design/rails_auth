@@ -1,5 +1,3 @@
-module Auth
-  class OauthUser < RailsAuthRecord
-    include Model::OauthUser
-  end unless defined? Auth::OauthUser
-end
+class OauthUser < RailsAuthRecord
+  include Auth::Model::OauthUser
+end unless defined? OauthUser

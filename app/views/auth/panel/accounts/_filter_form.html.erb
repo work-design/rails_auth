@@ -1,4 +1,4 @@
-<%= form_with theme: 'search', model: Auth::Account.new(params.permit(:identity)) do |f| %>
+<%= form_with theme: 'search', model: Account.new(params.permit(:identity)) do |f| %>
   <div class="field-body">
     <%= f.text_field :identity %>
     <div class="field is-narrow">

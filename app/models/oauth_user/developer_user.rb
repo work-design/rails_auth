@@ -1,5 +1,3 @@
-module Auth
-  class DeveloperUser < OauthUser
-    include RailsAuth::OauthUser::DeveloperUser
-  end unless defined? Auth::DeveloperUser
-end
+class DeveloperUser < OauthUser
+  include Auth::Model::OauthUser::DeveloperUser
+end unless defined? DeveloperUser

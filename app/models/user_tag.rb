@@ -1,5 +1,3 @@
-module Auth
-  class UserTag < ApplicationRecord
-    include Model::UserTag
-  end unless defined? Auth::UserTag
-end
+class UserTag < ApplicationRecord
+  include Auth::Model::UserTag
+end unless defined? UserTag

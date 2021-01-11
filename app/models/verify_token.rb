@@ -1,5 +1,3 @@
-module Auth
-  class VerifyToken < RailsAuthRecord
-    include Model::VerifyToken
-  end unless defined? Auth::VerifyToken
-end
+class VerifyToken < RailsAuthRecord
+  include Auth::Model::VerifyToken
+end unless defined? VerifyToken
