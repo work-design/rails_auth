@@ -1,5 +1,5 @@
 require 'jwt'
-module Auth::Controller::Application
+module AuthController::Application
   extend ActiveSupport::Concern
 
   included do
