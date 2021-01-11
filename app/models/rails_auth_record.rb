@@ -1,3 +1,8 @@
-class RailsAuthRecord < RailsAuth.config.record_class.constantize
+class RailsAuthRecord < ApplicationRecord
   self.abstract_class = true
-end
+
+  def self.table_name_prefix
+    'auth_'
+  end
+
+end unless defined? RailsAuthRecord

@@ -1,6 +1,4 @@
 class Auth::BaseController < BaseController
-  include RailsAuth::Application
-
-
+  include Auth::Controller::Application
 
 end unless defined? Auth::BaseController

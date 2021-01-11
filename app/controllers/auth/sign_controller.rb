@@ -73,7 +73,7 @@ module Auth
 
     private
     def set_account
-      if self.identity.to_s.include?('@')
+      if params[:identity].to_s.include?('@')
         @account = EmailAccount.find_or_create_by(identity: params[:identity])
       else
         @account = MobileAccount.find_or_create_by(identity: params[:identity])

@@ -1,6 +1,4 @@
-class Account < ApplicationRecord
+class Account < RailsAuthRecord
   include Auth::Model::Account
-  def self.table_name_prefix
-    'auth_'
-  end
+
 end unless defined? Account
