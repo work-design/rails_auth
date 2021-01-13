@@ -1,5 +1,5 @@
 module Auth
   class VerifyToken < ApplicationRecord
-    include Auth::Model::VerifyToken
+    include Model::VerifyToken
   end
 end

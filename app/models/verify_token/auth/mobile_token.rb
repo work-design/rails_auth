@@ -1,5 +1,5 @@
 module Auth
   class MobileToken < VerifyToken
-    include Auth::Model::VerifyToken::MobileToken
+    include Model::VerifyToken::MobileToken
   end
 end

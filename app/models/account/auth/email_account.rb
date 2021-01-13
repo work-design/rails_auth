@@ -1,5 +1,5 @@
 module Auth
   class EmailAccount < Account
-    include Auth::Model::Account::EmailAccount
+    include Model::Account::EmailAccount
   end
 end

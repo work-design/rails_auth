@@ -1,5 +1,5 @@
 module Auth
   class User < ApplicationRecord
-    include Auth::Model::User
+    include Model::User
   end
 end

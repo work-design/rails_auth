@@ -1,5 +1,5 @@
 module Auth
   class UserTag < ApplicationRecord
-    include Auth::Model::UserTag
+    include Model::UserTag
   end
 end
