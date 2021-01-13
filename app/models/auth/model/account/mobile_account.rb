@@ -1,4 +1,4 @@
-module AuthModel::Account::MobileAccount
+module Auth::Model::Account::MobileAccount
   extend ActiveSupport::Concern
 
   included do

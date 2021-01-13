@@ -1,5 +1,5 @@
 module Auth
   class DeveloperUser < OauthUser
-    include AuthModel::OauthUser::DeveloperUser
+    include Auth::Model::OauthUser::DeveloperUser
   end
 end

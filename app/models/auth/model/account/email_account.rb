@@ -1,4 +1,4 @@
-module AuthModel::Account::EmailAccount
+module Auth::Model::Account::EmailAccount
   extend ActiveSupport::Concern
 
   included do

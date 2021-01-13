@@ -1,5 +1,5 @@
 module Auth
   class Account < RailsAuthRecord
-    include AuthModel::Account
+    include Auth::Model::Account
   end
 end

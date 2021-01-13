@@ -1,4 +1,4 @@
-module AuthModel::OauthUser::AlipayUser
+module Auth::Model::OauthUser::AlipayUser
   extend ActiveSupport::Concern
 
   included do

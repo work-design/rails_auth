@@ -1,5 +1,5 @@
 module Auth
   class DeviceAccount < Account
-    include AuthModel::Account::DeviceAccount
+    include Auth::Model::Account::DeviceAccount
   end
 end

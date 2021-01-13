@@ -1,5 +1,5 @@
 module Auth
   class ThirdpartyAccount < Account
-    include AuthModel::Account::ThirdpartyAccount
+    include Auth::Model::Account::ThirdpartyAccount
   end
 end

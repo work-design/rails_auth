@@ -1,5 +1,5 @@
 module Auth
   class EmailToken < VerifyToken
-    include AuthModel::VerifyToken::EmailToken
+    include Auth::Model::VerifyToken::EmailToken
   end
 end

@@ -1,5 +1,5 @@
 module Auth
   class VerifyToken < RailsAuthRecord
-    include AuthModel::VerifyToken
+    include Auth::Model::VerifyToken
   end
 end

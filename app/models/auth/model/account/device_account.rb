@@ -1,4 +1,4 @@
-module AuthModel::Account::DeviceAccount
+module Auth::Model::Account::DeviceAccount
 
   def can_login?(params = {})
     if user.nil?

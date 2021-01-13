@@ -1,5 +1,5 @@
 module Auth
   class UserTagged < ApplicationRecord
-    include AuthModel::UserTagged
+    include Auth::Model::UserTagged
   end
 end

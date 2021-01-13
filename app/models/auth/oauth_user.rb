@@ -1,5 +1,5 @@
 module Auth
   class OauthUser < RailsAuthRecord
-    include AuthModel::OauthUser
+    include Auth::Model::OauthUser
   end
 end

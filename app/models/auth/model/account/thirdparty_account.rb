@@ -1,4 +1,4 @@
-module AuthModel::Account::ThirdpartyAccount
+module Auth::Model::Account::ThirdpartyAccount
   extend ActiveSupport::Concern
 
   included do

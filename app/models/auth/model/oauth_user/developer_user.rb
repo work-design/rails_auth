@@ -1,4 +1,4 @@
-module AuthModel::OauthUser::DeveloperUser
+module Auth::Model::OauthUser::DeveloperUser
   extend ActiveSupport::Concern
 
   included do
