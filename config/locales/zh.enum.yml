@@ -16,7 +16,7 @@ zh:
         locale:
           zh: 中文
           en: English
-      account:
+      auth/account:
         type:
           EmailAccount: 邮箱账号
           MobileAccount: 手机账号
