@@ -1,17 +1,4 @@
-<tr>
-  <td><%= model.name %></td>
-  <td>
-    <%= link_to model.user_taggeds_count, { controller: 'user_taggeds', action: 'index', user_tag_id: model.id } %>
-  </td>
-  <td>
-    <%= link_to({ controller: 'user_taggeds', action: 'index', user_tag_id: model.id }, { aria: { label: t('.show') }, class: 'button is-small is-rounded is-light' }) do %>
-      <i class="fas fa-info"></i>
-    <% end %>
-    <%= link_to({ action: 'edit', id: model.id }, { aria: { label: t('.edit') }, class: 'button is-small is-rounded is-light' }) do %>
-      <i class="fas fa-pencil-alt"></i>
-    <% end %>
-    <%= link_to({ action: 'destroy', id: model.id }, { method: :delete, aria: { label: t('.destroy') }, data: { confirm: t('.confirm') }, class: 'button is-small is-rounded is-light' }) do %>
-      <i class="fas fa-trash-alt"></i>
-    <% end %>
-  </td>
-</tr>
+<td><%= model.name %></td>
+<td>
+  <%= link_to model.user_taggeds_count, { controller: 'user_taggeds', action: 'index', user_tag_id: model.id } %>
+</td>

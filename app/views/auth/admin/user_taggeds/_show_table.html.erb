@@ -1,20 +1,8 @@
-<table class="table is-fullwidth">
-  <thead>
-    <tr>
-      <th>
-        <%= link_to t('.edit'), edit_admin_user_tagged_path(@user_tagged), class: 'button is-small is-link' %>
-      </th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td class="has-text-right"><%= UserTagged.human_attribute_name(:tagged_type) %></td>
-      <td><%= @user_tagged.tagged_type %></td>
-    </tr>
-    <tr>
-      <td class="has-text-right"><%= UserTagged.human_attribute_name(:tagged_id) %></td>
-      <td><%= @user_tagged.tagged_id %></td>
-    </tr>
-  </tbody>
-</table>
+<tr>
+  <td class="has-text-right"><%= UserTagged.human_attribute_name(:tagged_type) %></td>
+  <td><%= @user_tagged.tagged_type %></td>
+</tr>
+<tr>
+  <td class="has-text-right"><%= UserTagged.human_attribute_name(:tagged_id) %></td>
+  <td><%= @user_tagged.tagged_id %></td>
+</tr>
