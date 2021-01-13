@@ -1,7 +1,7 @@
 <h4 class="panel-heading has-text-centered"><%= t('.title') %></h4>
 <%= form_with scope: nil, url: login_path, local: true, origin: { label: false, offset: false }, wrap: { input: 'field control', all: nil, submit: 'panel-block' } do |f| %>
   <div class="panel-block is-wrapped">
-    <%= f.text_field :identity, value: params[:identity], placeholder: Account.human_attribute_name(:identity) %>
+    <%= f.text_field :identity, value: params[:identity], placeholder: Auth::Account.human_attribute_name(:identity) %>
     <%= f.password_field :password, placeholder: User.human_attribute_name(:password), autocomplete: false %>
   </div>
   <div class="has-text-right">
