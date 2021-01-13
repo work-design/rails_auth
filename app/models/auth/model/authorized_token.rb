@@ -68,17 +68,17 @@ module Auth
       if user
         if user.password_digest
           uids = [user_id, user.password_digest]
-          options = { sub: 'User', column: 'password_digest', exp_float: expire_at.to_f }
+          options = { sub: 'Auth::User', column: 'password_digest', exp_float: expire_at.to_f }
         else
           uids = [user_id, user.id]
-          options = { sub: 'User', column: 'id', exp_float: expire_at.to_f }
+          options = { sub: 'Auth::User', column: 'id', exp_float: expire_at.to_f }
         end
       elsif oauth_user
         uids = [oauth_user_id, oauth_user.access_token]
-        options = { sub: 'OauthUser', column: 'access_token', exp_float: expire_at.to_f }
+        options = { sub: 'Auth::OauthUser', column: 'access_token', exp_float: expire_at.to_f }
       elsif account
         uids = [account.identity, account.identity]
-        options = { sub: 'Account', column: 'identity', exp_float: expire_at.to_f }
+        options = { sub: 'Auth::Account', column: 'identity', exp_float: expire_at.to_f }
       else
         uids = []
         options = {}
