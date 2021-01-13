@@ -1,5 +1,5 @@
 module Auth
-  class AuthorizedToken < RailsAuthRecord
+  class AuthorizedToken < ApplicationRecord
     include Auth::Model::AuthorizedToken
   end
 end
