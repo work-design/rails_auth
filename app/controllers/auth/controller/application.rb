@@ -54,11 +54,7 @@ module Auth
       end
       return unless token
 
-      if verify_auth_token(token)
-        @current_authorized_token = AuthorizedToken.find_by(token: token)
-        @current_authorized_token.increment! :access_counter, 1 if RailsAuth.config.enable_access_counter if @current_authorized_token
-        @current_authorized_token
-      end
+      @current_authorized_token = AuthorizedToken.find_by(token: token)
     end
 
     def store_location(path = nil)
