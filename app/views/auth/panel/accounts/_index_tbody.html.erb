@@ -6,13 +6,13 @@
 <td><%= model.type_i18n %></td>
 <td><%= model.identity %></td>
 <td>
-  <%= form_with theme: nil, model: model, scope: :account, url: { action: 'update', id: model.id }, data: { controller: 'input' } do |f| %>
+  <%= form_with theme: nil, model: model, url: { action: 'update', id: model.id }, data: { controller: 'input' } do |f| %>
     <%= f.check_box :confirmed, data: { input_target: 'checkbox' }, id: nil, class: 'switch is-rounded' %>
     <label data-action="click->input#check"></label>
   <% end %>
 </td>
 <td>
-  <%= form_with theme: nil, model: model, scope: :account, url: { action: 'update', id: model.id }, data: { controller: 'input' } do |f| %>
+  <%= form_with theme: nil, model: model, url: { action: 'update', id: model.id }, data: { controller: 'input' } do |f| %>
     <%= f.check_box :primary, data: { input_target: 'checkbox' }, id: nil, class: 'switch is-rounded' %>
     <label data-action="click->input#check"></label>
   <% end %>
