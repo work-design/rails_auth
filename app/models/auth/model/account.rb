@@ -4,7 +4,7 @@ module Auth
 
     included do
       attribute :type, :string
-      attribute :identity, :string
+      attribute :identity, :string, index: true
       attribute :confirmed, :boolean, default: false
       attribute :primary, :boolean, default: false
       attribute :source, :string

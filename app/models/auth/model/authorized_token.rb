@@ -11,12 +11,12 @@ module Auth
 
     included do
       attribute :token, :string, index: { unique: true }
+      attribute :identity, :string, index: true
       attribute :expire_at, :datetime
       attribute :session_key, :string, comment: '目前在小程序下用到'
       attribute :access_counter, :integer, default: 0
       attribute :mock_member, :boolean, default: false
       attribute :mock_user, :boolean, default: false
-      attribute :identity, :string, index: true
 
       belongs_to :user, optional: true
       belongs_to :oauth_user, optional: true
