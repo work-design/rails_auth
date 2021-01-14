@@ -1,7 +1,7 @@
 ##
 # include this module to your User model
 #   class User < ApplicationRecord
-#     include RailsAuth::User
+#     include Auth::Model::User
 #   end
 module Auth
   module Model::User

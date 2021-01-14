@@ -67,24 +67,17 @@ module Auth
     def generate_token
       if user
         if user.password_digest
-          uids = [user_id, user.password_digest]
-          options = { sub: 'Auth::User', column: 'password_digest', exp_float: expire_at.to_f }
+          options = { iss: user_id, key: user.password_digest, sub: 'Auth::User', column: 'password_digest', exp_float: expire_at.to_f }
         else
-          uids = [user_id, user.id]
-          options = { sub: 'Auth::User', column: 'id', exp_float: expire_at.to_f }
+          options = { iss: user_id, key: user_id, sub: 'Auth::User', column: 'id', exp_float: expire_at.to_f }
         end
       elsif oauth_user
-        uids = [oauth_user_id, oauth_user.access_token]
-        options = { sub: 'Auth::OauthUser', column: 'access_token', exp_float: expire_at.to_f }
-      elsif account
-        uids = [account.identity, account.identity]
-        options = { sub: 'Auth::Account', column: 'identity', exp_float: expire_at.to_f }
+        options = { iss: oauth_user_id, key: oauth_user.access_token, sub: 'Auth::OauthUser', column: 'access_token', exp_float: expire_at.to_f }
       else
-        uids = []
-        options = {}
+        options = { iss: identity, key: identity, sub: 'Auth::Account', column: 'identity', exp_float: expire_at.to_f }
       end
 
-      JwtHelper.generate_jwt_token(*uids, exp: expire_at.to_i, **options)
+      JwtHelper.generate_jwt_token(exp: expire_at.to_i, **options)
     end
 
   end

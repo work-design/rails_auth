@@ -9,11 +9,10 @@ module JwtHelper
   # column: 'password_digest'
   # exp: auth_token_expire_at, should be int
   # algorithm: 默认HS256
-  def generate_jwt_token(iss, key, options = {})
+  def generate_jwt_token(iss:, key:, **options)
     payload = {
       iss: iss
     }
-
     payload.merge! options
 
     JWT.encode(payload, key.to_s)
