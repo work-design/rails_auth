@@ -73,19 +73,19 @@ module Auth
     # algorithm: 默认HS256
     def generate_token
       if user
-        if user.password_digest
-          payload = { iss: user_id, sub: 'Auth::User', column: 'password_digest' }
+        if user.password_digest.present?
           key = user.password_digest
+          payload = { iss: user_id, sub: 'Auth::User', column: 'password_digest' }
         else
-          payload = { iss: user_id, sub: 'Auth::User', column: 'id' }
           key = user_id
+          payload = { iss: user_id, sub: 'Auth::User', column: 'id' }
         end
       elsif oauth_user
-        payload = { iss: oauth_user_id,  sub: 'Auth::OauthUser', column: 'access_token' }
         key = oauth_user.access_token
+        payload = { iss: oauth_user_id,  sub: 'Auth::OauthUser', column: 'access_token' }
       else
-        payload = { iss: identity, sub: 'Auth::Account', column: 'identity' }
         key = identity
+        payload = { iss: account.id, sub: 'Auth::Account', column: 'identity' }
       end
       payload.merge! exp_float: expire_at.to_f, exp: expire_at.to_i
 
