@@ -42,7 +42,7 @@ module Auth
     def current_account
       return @current_account if defined?(@current_account)
       @current_account = current_authorized_token&.account
-      logger.debug "  ==========> Login as account: #{@current_account&.id}"
+      logger.debug "  \e[35m========== Login as account: #{@current_account&.id} ==========\e[0m"
       @current_account
     end
 
