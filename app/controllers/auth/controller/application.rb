@@ -116,10 +116,9 @@ module Auth
     end
 
     def verify_auth_token(auth_token)
-      payload = JwtHelper.decode_without_verification(auth_token)
-      return unless payload
-
       begin
+        payload, _ = JWT.decode(auth_token, nil, false, verify_expiration: false)
+        return unless payload
         key = payload['sub'].constantize.find_by(id: payload['iss'])&.send payload['column']
         JWT.decode(auth_token, key.to_s, true, 'sub' => payload['sub'], verify_sub: true, verify_expiration: false)
       rescue => e

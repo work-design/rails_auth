@@ -1,3 +1,4 @@
+require 'jwt'
 ##
 # Usually used for access api request
 #--
@@ -64,20 +65,31 @@ module Auth
       self
     end
 
+    # iss(issuer) 比如鉴权唯一标识 id,  AppID
+    # key 比如 password_digest, AppSecret
+    # sub: 'User'
+    # column: 'password_digest'
+    # exp: auth_token_expire_at, should be int
+    # algorithm: 默认HS256
     def generate_token
       if user
         if user.password_digest
-          options = { iss: user_id, key: user.password_digest, sub: 'Auth::User', column: 'password_digest', exp_float: expire_at.to_f }
+          payload = { iss: user_id, sub: 'Auth::User', column: 'password_digest' }
+          key = user.password_digest
         else
-          options = { iss: user_id, key: user_id, sub: 'Auth::User', column: 'id', exp_float: expire_at.to_f }
+          payload = { iss: user_id, sub: 'Auth::User', column: 'id' }
+          key = user_id
         end
       elsif oauth_user
-        options = { iss: oauth_user_id, key: oauth_user.access_token, sub: 'Auth::OauthUser', column: 'access_token', exp_float: expire_at.to_f }
+        payload = { iss: oauth_user_id,  sub: 'Auth::OauthUser', column: 'access_token' }
+        key = oauth_user.access_token
       else
-        options = { iss: identity, key: identity, sub: 'Auth::Account', column: 'identity', exp_float: expire_at.to_f }
+        payload = { iss: identity, sub: 'Auth::Account', column: 'identity' }
+        key = identity
       end
+      payload.merge! exp_float: expire_at.to_f, exp: expire_at.to_i
 
-      JwtHelper.generate_jwt_token(exp: expire_at.to_i, **options)
+      JWT.encode(payload, key.to_s)
     end
 
   end
