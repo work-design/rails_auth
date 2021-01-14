@@ -103,12 +103,12 @@ module Auth
 
     private
     def set_auth_token
-      return unless defined?(@current_authorized_token) && @current_authorized_token
+      return unless defined?(@current_account) && @current_account
 
-      token = @current_authorized_token.token
+      token = @current_account.auth_token
       headers['Auth-Token'] = token
       session[:auth_token] = token
-      #logger.debug "  ==========> Set authorized token #{token}, session is #{session[:token]}"
+      logger.debug "  ==========> session is #{session[:auth_token]}"
     end
 
     def verify_auth_token(auth_token)
