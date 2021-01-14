@@ -65,29 +65,15 @@ module Auth
       self
     end
 
-    # iss(issuer) 比如鉴权唯一标识 id,  AppID
-    # key 比如 password_digest, AppSecret
-    # sub: 'User'
-    # column: 'password_digest'
-    # exp: auth_token_expire_at, should be int
-    # algorithm: 默认HS256
+    # 采用 JWT 生成 token
+    # 优点1： 通过 payload 记录部分数据，可以跟服务端数据对比，或者防止服务数据删除后验证。
     def generate_token
-      if user
-        if user.password_digest.present?
-          key = user.password_digest
-          payload = { iss: user_id, sub: 'Auth::User', column: 'password_digest' }
-        else
-          key = user_id
-          payload = { iss: user_id, sub: 'Auth::User', column: 'id' }
-        end
-      elsif oauth_user
-        key = oauth_user.access_token
-        payload = { iss: oauth_user_id,  sub: 'Auth::OauthUser', column: 'access_token' }
-      else
-        key = identity
-        payload = { iss: account.id, sub: 'Auth::Account', column: 'identity' }
-      end
-      payload.merge! exp_float: expire_at.to_f, exp: expire_at.to_i
+      key = id.to_s  # todo generate key for more
+      payload = {
+        iss: self.id,
+        exp_float: expire_at.to_f,
+        exp: expire_at.to_i  # should be int
+      }
 
       JWT.encode(payload, key.to_s)
     end
