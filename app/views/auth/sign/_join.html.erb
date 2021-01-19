@@ -1,18 +1,26 @@
 <h4 class="panel-heading has-text-centered">请注册</h4>
-<%= form_with scope: nil, url: login_path, origin: { label: nil }, wrap: { input: nil, all: 'field control', submit: 'panel-block' } do |f| %>
-  <div class="panel-block is-wrapped">
-    <%= f.text_field :identity, value: params[:identity], disabled: true %>
-    <%= f.hidden_field :identity, value: params[:identity] %>
-    <div class="field control has-addons">
-      <%= f.text_field :token, placeholder: Auth::VerifyToken.human_attribute_name(:token), autocomplete: false, wrap: { input: 'control is-expanded', all: nil } %>
-      <turbo-frame class="control">
-        <%= button_to({ action: 'code', identity: params[:identity] }, form: { id: 'sign_token' }, class: 'button is-info') do %>
-          <span><%= t('.token') %></span>
-        <% end %>
-      </turbo-frame>
-    </div>
-    <%= f.password_field :password, placeholder: Auth::User.human_attribute_name(:password), autocomplete: false %>
-    <%= f.password_field :password_confirmation, placeholder: Auth::User.human_attribute_name(:password_confirmation), autocomplete: false %>
-  </div>
-  <%= f.submit class: 'button is-primary is-fullwidth' %>
+<%= form_with theme: nil, scope: nil, url: login_path, wrap: { input: nil, all: 'field control', submit: 'panel-block' }, id: 'join_form' do |f| %>
 <% end %>
+<div class="panel-block is-wrapped">
+  <div class="field control">
+    <%= text_field_tag :identity, params[:identity], disabled: true, form: 'join_form', class: 'input' %>
+    <%= hidden_field_tag :identity, params[:identity], form: 'join_form' %>
+  </div>
+  <div class="field control has-addons">
+    <%= text_field_tag :token, nil, placeholder: Auth::VerifyToken.human_attribute_name(:token), autocomplete: false, wrap: { input: 'control is-expanded', all: nil }, class: 'input' %>
+    <turbo-frame class="control">
+      <%= button_to({ action: 'code', identity: params[:identity] }, form: { id: 'sign_token' }, class: 'button is-info') do %>
+        <span><%= t('.token') %></span>
+      <% end %>
+    </turbo-frame>
+  </div>
+  <div class="field control">
+    <%= password_field_tag :password, nil, placeholder: Auth::User.human_attribute_name(:password), autocomplete: false, form: 'join_form', class: 'input' %>
+  </div>
+  <div class="field control">
+    <%= password_field_tag :password_confirmation, nil, placeholder: Auth::User.human_attribute_name(:password_confirmation), autocomplete: false, form: 'join_form', class: 'input' %>
+  </div>
+</div>
+<div class="panel-block">
+  <%= submit_tag nil, form: 'join_form', class: 'button is-primary is-fullwidth' %>
+</div>
