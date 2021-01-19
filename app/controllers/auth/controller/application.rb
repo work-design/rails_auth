@@ -37,14 +37,14 @@ module Auth
     def current_user
       return @current_user if defined?(@current_user)
       @current_user = current_authorized_token&.user
-      logger.debug "  \e[35m========== Login as User: #{@current_user&.id} ==========\e[0m"
+      logger.debug "  \e[35m===== Login as User: #{@current_user&.id} =====\e[0m"
       @current_user
     end
 
     def current_account
       return @current_account if defined?(@current_account)
       @current_account = current_authorized_token&.account
-      logger.debug "  \e[35m========== Login as account: #{@current_account&.id} ==========\e[0m"
+      logger.debug "  \e[35m===== Login as account: #{@current_account&.id} =====\e[0m"
       @current_account
     end
 
@@ -112,7 +112,7 @@ module Auth
       token = @current_account.auth_token
       headers['Auth-Token'] = token
       session[:auth_token] = token
-      logger.debug "  \e[35m========== Set session Auth token: #{session[:auth_token]}\e[0m"
+      logger.debug "  \e[35m===== Set session Auth token: #{session[:auth_token]} =====\e[0m"
     end
 
     def verify_auth_token(auth_token)
