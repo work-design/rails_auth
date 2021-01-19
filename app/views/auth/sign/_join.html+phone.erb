@@ -7,11 +7,11 @@
         <%= f.text_field :identity, value: params[:identity], placeholder: Auth::VerifyToken.human_attribute_name(:identity), autocomplete: false, data: { login_target: 'identity' } %>
         <div class="weui-cell weui-cell_active weui-cell_vcode">
           <%= f.text_field :token, placeholder: Auth::VerifyToken.human_attribute_name(:token), wrap: { all: nil } %>
-          <div class="weui-cell__ft">
-            <button type="button" class="weui-btn weui-btn_default weui-vcode-btn" data-action="login#code" data-url="<%= sign_token_url %>" data-time="60">
-              <%= t('.token') %>
-            </button>
-          </div>
+          <turbo-frame class="weui-cell__ft">
+            <%= button_to({ action: 'code', identity: params[:identity] }, form: { id: 'sign_token' }, class: 'weui-btn weui-btn_default weui-vcode-btn') do %>
+              <span><%= t('.token') %></span>
+            <% end %>
+          </turbo-frame>
         </div>
       </div>
     </div>
