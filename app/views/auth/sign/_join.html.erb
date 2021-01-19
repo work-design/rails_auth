@@ -7,7 +7,9 @@
     <%= hidden_field_tag :identity, params[:identity], form: 'join_form' %>
   </div>
   <div class="field control has-addons">
-    <%= text_field_tag :token, nil, placeholder: Auth::VerifyToken.human_attribute_name(:token), autocomplete: false, wrap: { input: 'control is-expanded', all: nil }, class: 'input' %>
+    <div class="control is-expanded">
+      <%= text_field_tag :token, nil, placeholder: Auth::VerifyToken.human_attribute_name(:token), autocomplete: false, class: 'input' %>
+    </div>
     <turbo-frame class="control">
       <%= button_to({ action: 'code', identity: params[:identity] }, form: { id: 'sign_token' }, class: 'button is-info') do %>
         <span><%= t('.token') %></span>
