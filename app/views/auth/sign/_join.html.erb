@@ -8,13 +8,13 @@
   </div>
   <div class="field control has-addons">
     <div class="control is-expanded">
-      <%= text_field_tag :token, nil, placeholder: Auth::VerifyToken.human_attribute_name(:token), autocomplete: false, class: 'input' %>
+      <%= text_field_tag :token, nil, placeholder: Auth::VerifyToken.human_attribute_name(:token), autocomplete: false, form: 'join_form', class: 'input' %>
     </div>
-    <turbo-frame class="control">
+    <div class="control">
       <%= button_to({ action: 'code', identity: params[:identity] }, form: { id: 'sign_token' }, class: 'button is-info') do %>
         <span><%= t('.token') %></span>
       <% end %>
-    </turbo-frame>
+    </div>
   </div>
   <div class="field control">
     <%= password_field_tag :password, nil, placeholder: Auth::User.human_attribute_name(:password), autocomplete: false, form: 'join_form', class: 'input' %>
