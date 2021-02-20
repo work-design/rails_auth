@@ -1,23 +1,23 @@
 zh:
   activerecord:
     enum:
-      oauth_user:
+      auth/oauth_user:
         type:
-          WechatUser: 微信用户
-          WechatProgramUser: 微信小程序用户
-          GithubUser: Github用户
-          FacebookUser: Facebook用户
+          Wechat::WechatUser: 微信用户
+          Wechat::WechatProgramUser: 微信小程序用户
+          Auth::GithubUser: Github用户
+          Auth::FacebookUser: Facebook用户
         provider:
           github: Github
           facebook: Factbook
           developer: Developer
           wechat: 微信
-      user:
+      auth/user:
         locale:
           zh: 中文
           en: English
       auth/account:
         type:
-          EmailAccount: 邮箱账号
-          MobileAccount: 手机账号
-          DeviceAccount: 设备标识
+          Auth::EmailAccount: 邮箱账号
+          Auth::MobileAccount: 手机账号
+          Auth::DeviceAccount: 设备标识
