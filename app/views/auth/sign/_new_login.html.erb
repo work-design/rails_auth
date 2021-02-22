@@ -7,10 +7,10 @@
     <%= form_tag login_path, class: 'ui large form' do %>
       <%= hidden_field_tag :form_id, params[:form_id] %>
       <div class="field">
-        <%= text_field_tag :identity, params[:identity], placeholder: Account.human_attribute_name(:identity) %>
+        <%= text_field_tag :identity, params[:identity], placeholder: Auth::Account.human_attribute_name(:identity) %>
       </div>
       <div class="field">
-        <%= password_field_tag :password, nil, placeholder: User.human_attribute_name(:password) %>
+        <%= password_field_tag :password, nil, placeholder: Auth::User.human_attribute_name(:password) %>
       </div>
       <div class="field">
         <%= submit_tag 'Submit', class: 'ui button' %>

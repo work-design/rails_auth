@@ -4,7 +4,7 @@
       <h4 class="weui-cells__title">请注册或登陆</h4>
       <div class="weui-cells weui-cells_form">
         <%= f.hidden_field :uid, value: params[:uid], autocomplete: false %>
-        <%= f.text_field :identity, value: params[:identity], placeholder: Account.human_attribute_name(:identity) %>
+        <%= f.text_field :identity, value: params[:identity], placeholder: Auth::Account.human_attribute_name(:identity) %>
       </div>
     </div>
   </div>
