@@ -58,7 +58,9 @@ module Auth
       end
       return unless token
 
-      @current_authorized_token = AuthorizedToken.find_by(token: token)
+      #Rails.logger.silence do
+        @current_authorized_token = AuthorizedToken.find_by(token: token)
+      #end
     end
 
     def store_location(path = nil)
