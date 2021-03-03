@@ -1,6 +1,6 @@
 <td>
 <% if model.user %>
-  <%= link_to model.user.name, { controller: 'users', action: 'show', id: model.user_id }, text: true %>
+  <%= link_to model.user.name, { controller: 'users', action: 'show', id: model.user_id }, data: { turbo_frame: 'modal' }, text: true %>
 <% end %>
 </td>
 <td><%= model.type_i18n %></td>
