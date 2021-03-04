@@ -58,9 +58,7 @@ module Auth
       end
       return unless token
 
-      #Rails.logger.silence do
-        @current_authorized_token = AuthorizedToken.find_by(token: token)
-      #end
+      @current_authorized_token = AuthorizedToken.find_by(token: token)
     end
 
     def store_location(path = nil)
@@ -88,26 +86,26 @@ module Auth
           oauth_user.save
         end
       end
-
-      account.user.update(last_login_at: Time.current)
-
       @current_account = account
-      @current_user = account.user
-      @current_authorized_token = account.authorized_token
+      set_login_var
 
       logger.debug "  ==========> Login by account #{account.id} as user: #{account.user_id}"
     end
 
     def login_by_oauth_user(oauth_user)
-      session[:auth_token] = oauth_user.account.auth_token
-      oauth_user.user.update(last_login_at: Time.current)
+      @current_account = oauth_user.account
+      set_login_var
 
       logger.debug "  ==========> Login by oauth user #{oauth_user.id} as user: #{oauth_user.user_id}"
-      @current_oauth_user = oauth_user
-      @current_user = oauth_user.user
     end
 
     private
+    def set_login_var
+      @current_user = @current_account.user
+      @current_user.update(last_login_at: Time.current)
+      @current_authorized_token = @current_account.authorized_token
+    end
+
     def set_auth_token
       return unless defined?(@current_account) && @current_account
 
