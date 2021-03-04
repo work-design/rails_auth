@@ -35,8 +35,8 @@ module Auth
     end
 
     def current_user
-      return @current_user if defined?(@current_user)
-      @current_user = @current_account&.user
+      return @current_user if @current_user
+      @current_user = current_account&.user
       logger.debug "  \e[35m===== Login as User: #{@current_user&.id} =====\e[0m"
       @current_user
     end
