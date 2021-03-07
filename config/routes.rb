@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  scope module: 'auth', defaults: { namespace: 'application', business: 'auth' } do
+  scope module: 'auth', defaults: { business: 'auth' } do
     controller :sign do
       match :sign, via: [:get, :post]
       get 'sign/token' => :token
@@ -26,7 +26,7 @@ Rails.application.routes.draw do
     resources :users, only: [:index, :show]
   end
 
-  scope :admin, module: 'auth/admin', as: :admin, defaults: { namespace: 'admin', business: 'auth' } do
+  scope :admin, module: 'auth/admin', as: :admin, defaults: { business: 'auth', namespace: 'admin' } do
     resources :oauth_users
     resources :user_tags do
       resources :user_taggeds do
@@ -38,7 +38,7 @@ Rails.application.routes.draw do
     end
   end
 
-  scope :panel, module: 'auth/panel', as: :panel, defaults: { namespace: 'panel', business: 'auth' } do
+  scope :panel, module: 'auth/panel', as: :panel, defaults: { business: 'auth', namespace: 'panel' } do
     resources :users do
       get :panel, on: :collection
       member do
@@ -52,11 +52,11 @@ Rails.application.routes.draw do
     resources :authorized_tokens
   end
 
-  scope :my, module: 'auth/my', as: :my, defaults: { namespace: 'my', business: 'auth' } do
+  scope :my, module: 'auth/my', as: :my, defaults: { business: 'auth', namespace: 'my' } do
     resource :user
   end
 
-  scope :board, module: 'auth/board', as: :board, defaults: { namespace: 'board', business: 'auth' } do
+  scope :board, module: 'auth/board', as: :board, defaults: { business: 'auth', namespace: 'board' } do
     resource :user
     resources :accounts do
       member do
