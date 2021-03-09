@@ -15,7 +15,7 @@ class Auth::OauthsController < Auth::BaseController
 
     if @oauth_user.user
       login_by_oauth_user(@oauth_user)
-      redirect_to session[:return_to] || RailsAuth.config.default_return_path, notice: 'Oauth Success!'
+      redirect_to session[:return_to] || RailsAuth.config.default_return_path
       session.delete :return_to
     else
       subdomain = ActionDispatch::Http::URL.extract_subdomain session[:return_to].sub(/(http|https):\/\//, ''), 1
