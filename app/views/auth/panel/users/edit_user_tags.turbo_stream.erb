@@ -1,1 +1,3 @@
-<%= turbo_stream.update 'modal', partial: 'modal_form', locals: { action: 'user_tags' } %>
+<turbo-frame id="modal">
+  <%= render partial: 'modal_form', locals: { action: 'user_tags' } %>
+</turbo-frame>
