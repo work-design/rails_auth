@@ -5,7 +5,7 @@
     <%= f.text_field :app_id %>
     <div class="field is-narrow">
       <%= f.submit %>
-      <%= link_to t('.clear'), filter_params(except: [:name, :uid, :app_id]), class: 'button is-light' %>
+      <%= link_to t('.clear'), filter_params(except: [:name, :uid, :app_id, :user_id]), class: 'button is-light' %>
     </div>
   </div>
 <% end %>
