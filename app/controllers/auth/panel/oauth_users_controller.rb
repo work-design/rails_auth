@@ -6,7 +6,7 @@ module Auth
       q_params = {}
       q_params.merge! params.permit(:user_id, :uid, :app_id, :name)
 
-      @oauth_users = OauthUser.default_where(q_params).order(id: :desc).page(params[:page])
+      @oauth_users = OauthUser.includes(:user).default_where(q_params).order(id: :desc).page(params[:page])
     end
 
     def show
