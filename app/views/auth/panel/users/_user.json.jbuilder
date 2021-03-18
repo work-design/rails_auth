@@ -1,5 +1,5 @@
 json.extract!(
-  user,
+  model,
   :id,
   :name,
   :timezone,

@@ -7,6 +7,7 @@ module Auth
         'created_at-desc': 2
       }
       q_params.merge! user_filter_params
+
       @users = User.with_attached_avatar.includes(:oauth_users, :accounts).default_where(q_params).page(params[:page])
     end
 
