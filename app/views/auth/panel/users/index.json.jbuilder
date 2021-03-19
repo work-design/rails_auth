@@ -1,1 +1,1 @@
-json.array! @users, partial: 'user', as: :model
+json.array! @models, partial: 'user', as: :model
