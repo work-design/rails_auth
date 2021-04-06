@@ -15,11 +15,11 @@
           <div class="weui-cell__bd">
             <%= text_field_tag :token, nil, placeholder: Auth::VerifyToken.human_attribute_name(:token), form: 'join_form', class: 'weui-input' %>
           </div>
-          <turbo-frame class="weui-cell__ft">
+          <div class="weui-cell__ft">
             <%= button_to({ action: 'code', identity: params[:identity] }, form: { id: 'sign_token' }, class: 'weui-btn weui-btn_default weui-vcode-btn') do %>
               <span><%= t('.token') %></span>
             <% end %>
-          </turbo-frame>
+          </div>
         </div>
       </div>
     </div>

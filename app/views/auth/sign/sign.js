@@ -3,6 +3,9 @@ import { Controller } from 'stimulus'
 
 class LoginController extends Controller {
   static targets = ['identity']
+  static values = {
+    time: Integer
+  }
 
   connect() {
     console.debug('Login Controller works!')
@@ -28,10 +31,10 @@ class LoginController extends Controller {
   }
 
   countDown(ele) {
-    let countdown = parseInt(ele.dataset['time'])
+    let countdown = this.timeValue
     ele.innerText = '重新发送(' + countdown + ')'
 
-    let timer = setInterval(function() {
+    let timer = setInterval(() => {
       countdown--
       if (countdown <= 0) {
         ele.removeAttribute('disabled')
