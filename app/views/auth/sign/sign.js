@@ -4,11 +4,11 @@ import { Controller } from 'stimulus'
 class LoginController extends Controller {
   static targets = ['identity']
   static values = {
-    time: Integer
+    time: Number
   }
 
   connect() {
-    console.debug('Login Controller works!')
+    console.debug(this.identifier, 'connected!')
     this.countDown(this.element)
   }
 
