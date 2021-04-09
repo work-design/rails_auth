@@ -9,7 +9,7 @@ module Auth
       attribute :type, :string
       attribute :token, :string
       attribute :expire_at, :datetime
-      attribute :identity, :string
+      attribute :identity, :string, index: true
       attribute :access_counter, :integer, default: 0
 
       belongs_to :account, foreign_key: :identify, primary_key: :identity

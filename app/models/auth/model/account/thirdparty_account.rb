@@ -3,6 +3,7 @@ module Auth::Model::Account::ThirdpartyAccount
 
   included do
     attribute :confirmed, :boolean, default: true
+
     validates :identity, uniqueness: { scope: :source }
   end
 
