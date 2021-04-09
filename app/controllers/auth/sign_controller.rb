@@ -8,7 +8,7 @@ module Auth
       if params[:identity]
         @account = Account.find_by(identity: params[:identity].strip)
 
-        if @account && @account.user && @account.user.password_digest.present?
+        if @account.can_login_by_password?
           render 'login'
         else
           render 'join'

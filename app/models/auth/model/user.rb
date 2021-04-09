@@ -59,19 +59,14 @@ module Auth
 
     ##
     # pass login params to this method;
-    def can_login?(params)
-      if password_digest.blank?
-        errors.add :base, :password_reject
-        return false
-      end
-
-      unless authenticate(params[:password])
-        errors.add :base, :wrong_name_or_password
-        return false
-      end
-
+    def can_login?(password)
       if disabled?
         errors.add :base, :account_disable
+        return false
+      end
+
+      unless authenticate(password)
+        errors.add :base, :wrong_name_or_password
         return false
       end
 

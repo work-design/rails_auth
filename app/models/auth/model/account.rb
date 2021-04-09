@@ -36,28 +36,28 @@ module Auth
       self.authorized_tokens.update_all(user_id: self.user_id)
     end
 
+    def can_login_by_password?
+      confirmed && user && user.password_digest.present?
+    end
+
+    def verify_token?(token)
+      check_token = self.verify_tokens.valid.find_by(token: token)
+      if check_token
+        self.confirmed = true
+      end
+    end
+
     def can_login?(params = {})
-      self.errors.clear
       if params[:token].present?
-        check_token = self.verify_tokens.valid.find_by(token: params[:token])
-        if check_token
-          self.confirmed = true
-          if user.nil?
-            return join(params)
-          else
-            user.assign_attributes params.slice(:password, :password_confirmation)
-            self.save
-            return user
-          end
+        if verify_token?(params[:token])
+          user || build_user
+          user.assign_attributes params.slice(:name, :password, :password_confirmation, :invited_code)
         else
           self.errors.add :base, :wrong_token
           return false
         end
       elsif params[:password].present?
-        unless user.can_login?(params)
-          user.errors.details[:base].each do |err|
-            self.errors.add :base, err[:error]
-          end
+        unless user.can_login?(params[:password])
           return false
         end
       else
@@ -65,29 +65,21 @@ module Auth
         return false
       end
 
-      if user.nil?
-        errors.add :base, :join_first
-        return false
-      end
-
       user
     end
 
     def join(params = {})
+
+      self.primary = true
+
+      user
+    end
+
+    def xx
       if params[:device_id]
         account = DeviceAccount.find_by identity: params[:device_id]
         self.user = account.user if account
       end
-
-      user || build_user
-      user.assign_attributes params.slice(:name, :password, :password_confirmation, :invited_code)
-      self.primary = true
-      self.class.transaction do
-        user.save!
-        self.save!
-      end
-
-      user
     end
 
     def verify_token

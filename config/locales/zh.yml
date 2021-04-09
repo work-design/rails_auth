@@ -4,10 +4,8 @@ zh:
       wrong_account: 账号或密码错误
       wrong_name_or_password: 账号或密码错误
       wrong_token: 验证码不正确
-      password_reject: 你的账号还未设置密码，请使用验证码登陆
       token_password_blank: 必须提供密码或者验证码其中的一种
       account_disable: 你的账号已被禁用!
-      join_first: 请完成注册
   activerecord:
     errors:
       models:
