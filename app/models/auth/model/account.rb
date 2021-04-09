@@ -44,6 +44,9 @@ module Auth
       check_token = self.verify_tokens.valid.find_by(token: token)
       if check_token
         self.confirmed = true
+      else
+        self.errors.add :base, :wrong_token
+        false
       end
     end
 
@@ -52,27 +55,29 @@ module Auth
         if verify_token?(params[:token])
           user || build_user
           user.assign_attributes params.slice(:name, :password, :password_confirmation, :invited_code)
-        else
-          self.errors.add :base, :wrong_token
-          return false
+          self.primary = true if user.new_record?
         end
-      elsif params[:password].present?
+      end
+
+      if params[:password].present?
         unless user.can_login?(params[:password])
           return false
         end
-      else
-        self.errors.add :base, :token_blank
-        return false
+      end
+
+      if params[:uid].present?
+        bind_oauth_user(params[:uid])
       end
 
       user
     end
 
-    def join(params = {})
-
-      self.primary = true
-
-      user
+    def bind_oauth_user(uid)
+      oauth_user = OauthUser.find_by uid: uid
+      if oauth_user
+        oauth_user.account = self
+        oauth_user.save
+      end
     end
 
     def xx

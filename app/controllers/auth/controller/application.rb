@@ -79,13 +79,6 @@ module Auth
     end
 
     def login_by_account(account)
-      if params[:uid].present?
-        oauth_user = OauthUser.find_by uid: params[:uid]
-        if oauth_user
-          oauth_user.account_id = account.id
-          oauth_user.save
-        end
-      end
       @current_account = account
       set_login_var
 
