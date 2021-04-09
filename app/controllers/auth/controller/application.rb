@@ -95,7 +95,6 @@ module Auth
     private
     def set_login_var
       @current_user = @current_account.user
-      @current_user.update(last_login_at: Time.current)
       @current_authorized_token = @current_account.authorized_token
     end
 

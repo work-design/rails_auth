@@ -18,7 +18,7 @@ module Auth
       attribute :extra, :json, default: {}
 
       belongs_to :account, optional: true, inverse_of: :oauth_users
-      belongs_to :user, autosave: true, optional: true
+      belongs_to :user, optional: true
       has_one :same_oauth_user, -> (o){ where.not(id: o.id).where.not(unionid: nil).where.not(user_id: nil) }, class_name: self.name, foreign_key: :unionid, primary_key: :unionid
       has_many :same_oauth_users, -> (o){ where.not(id: o.id).where.not(unionid: nil) }, class_name: self.name, foreign_key: :unionid, primary_key: :unionid
       has_many :authorized_tokens, dependent: :nullify
@@ -28,7 +28,7 @@ module Auth
 
       before_validation do
         # todo better user sync logic
-        self.user_id = self.account&.user_id if account_id_changed?
+        self.user = self.account&.user if account_id_changed?
       end
     end
 

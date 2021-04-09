@@ -70,6 +70,7 @@ module Auth
         bind_oauth_user(params[:uid])
       end
 
+      user.last_login_at = Time.current
       user
     end
 
