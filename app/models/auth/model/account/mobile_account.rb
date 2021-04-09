@@ -2,7 +2,7 @@ module Auth::Model::Account::MobileAccount
   extend ActiveSupport::Concern
 
   included do
-    has_many :check_tokens, class_name: 'MobileToken', foreign_key: :identity, primary_key: :identity, dependent: :delete_all
+    has_many :check_tokens, class_name: 'MobileToken', foreign_key: :identity, primary_key: :identity, inverse_of: :account, dependent: :delete_all
   end
 
   def reset_notice

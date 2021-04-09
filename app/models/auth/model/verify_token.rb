@@ -12,12 +12,18 @@ module Auth
       attribute :identity, :string, index: true
       attribute :access_counter, :integer, default: 0
 
-      belongs_to :account, foreign_key: :identify, primary_key: :identity
+      belongs_to :account, foreign_key: :identity, primary_key: :identity
 
       scope :valid, -> { where('expire_at >= ?', Time.now).order(expire_at: :desc) }
 
       validates :token, presence: true
+
       after_initialize :update_token, if: -> { new_record? }
+      after_create_commit :clean_when_expired
+    end
+
+    def clean_when_expired
+      VerifyTokenCleanJob.set(wait_until: expire_at).perform_later(self)
     end
 
     def update_token

@@ -91,16 +91,7 @@ module Auth
     end
 
     def verify_token
-      r = check_tokens.order(expire_at: :desc).first
-      if r
-        if r.verify_token?
-          r
-        else
-          r.update_token!
-        end
-      else
-        check_tokens.create
-      end
+      check_tokens.valid.take || check_tokens.create
     end
 
     def authorized_token
