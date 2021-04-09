@@ -11,20 +11,16 @@ module Auth
       attribute :expire_at, :datetime
       attribute :identity, :string
       attribute :access_counter, :integer, default: 0
-      belongs_to :account
-      belongs_to :user, optional: true
+
+      belongs_to :account, foreign_key: :identify, primary_key: :identity
 
       scope :valid, -> { where('expire_at >= ?', Time.now).order(expire_at: :desc) }
+
       validates :token, presence: true
       after_initialize :update_token, if: -> { new_record? }
     end
 
     def update_token
-      if account
-        self.user_id = self.account.user_id
-        self.identity ||= self.account.identity
-      end
-
       self.token ||= SecureRandom.uuid
       self.expire_at ||= 14.days.since
       self

@@ -12,7 +12,8 @@ module Auth
       belongs_to :user, optional: true
       has_one :authorized_token, foreign_key: :identity, primary_key: :identity
       has_many :authorized_tokens, foreign_key: :identity, primary_key: :identity
-      has_many :verify_tokens, dependent: :delete_all
+
+      has_many :verify_tokens, foreign_key: :identity, primary_key: :identity, dependent: :delete_all
       has_many :oauth_users, dependent: :nullify, inverse_of: :account
 
       scope :without_user, -> { where(user_id: nil) }
@@ -31,7 +32,6 @@ module Auth
 
     def sync_user
       self.oauth_users.update_all(user_id: self.user_id)
-      self.verify_tokens.update_all(user_id: self.user_id)
       self.authorized_tokens.update_all(user_id: self.user_id)
     end
 
@@ -71,6 +71,7 @@ module Auth
       end
 
       user.last_login_at = Time.current
+      self.save
       user
     end
 
