@@ -6,7 +6,6 @@ module Auth
       attribute :type, :string
       attribute :identity, :string, index: true
       attribute :confirmed, :boolean, default: false
-      attribute :primary, :boolean, default: false
       attribute :source, :string
 
       belongs_to :user, optional: true
@@ -21,13 +20,11 @@ module Auth
 
       validates :identity, presence: true, uniqueness: { scope: [:confirmed] }
 
-      after_save :set_primary, if: -> { self.primary? && saved_change_to_primary? }
       after_update :sync_user, if: -> { saved_change_to_user_id? }
     end
 
-    def set_primary
-      return unless user_id
-      self.class.base_class.unscoped.where.not(id: self.id).where(user_id: self.user_id).update_all(primary: false)
+    def last?
+      user.accounts.where.not(id: self.id).empty?
     end
 
     def sync_user
@@ -54,7 +51,6 @@ module Auth
         if verify_token?(params[:token])
           user || build_user
           user.assign_attributes params.slice(:name, :password, :password_confirmation, :invited_code)
-          self.primary = true if user.new_record?
         else
           return false
         end

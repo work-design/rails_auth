@@ -3,12 +3,6 @@
   <% @accounts.each do |account| %>
     <tr>
       <td>
-        <%= form_with theme: nil, model: account, url: { action: 'update', id: account.id }, data: { controller: 'input' } do |f| %>
-          <%= f.check_box :primary, data: { input_target: 'checkbox' }, disabled: account.primary, id: nil, class: 'switch is-rounded' %>
-          <label data-action="click->input#check"><%= t('.primary') %></label>
-        <% end %>
-      </td>
-      <td>
         <span><%= account.identity %></span>
         <% if account.confirmed %>
           <i class="fas fa-check-circle has-text-success"></i>
@@ -34,7 +28,7 @@
         <% end %>
         <%= button_to({ action: 'select', id: account.id }, method: :delete, aria: { label: t('.destroy'), confirm: '删除后此账号无法用于登陆' }, class: 'button') do %>
           <i class="fas fa-trash-alt"></i>
-        <% end unless account.primary %>
+        <% end unless account.last? %>
         <%= button_to({ action: 'select', id: account.id }, method: :put, aria: { label: t('.select') }, class: 'button') do %>
           <i class="fas fa-chevron-circle-right"></i>
         <% end unless account == current_account %>
