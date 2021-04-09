@@ -18,8 +18,7 @@ module Auth
       scope :without_user, -> { where(user_id: nil) }
       scope :confirmed, -> { where(confirmed: true) }
 
-      validates :identity, presence: true
-      validate :validate_identity
+      validates :identity, presence: true, uniqueness: { scope: [:confirmed] }
 
       after_save :set_primary, if: -> { self.primary? && saved_change_to_primary? }
       after_update :sync_user, if: -> { saved_change_to_user_id? }
@@ -56,6 +55,8 @@ module Auth
           user || build_user
           user.assign_attributes params.slice(:name, :password, :password_confirmation, :invited_code)
           self.primary = true if user.new_record?
+        else
+          return false
         end
       end
 
@@ -120,12 +121,6 @@ module Auth
 
     def reset_notice
       p 'Should implement in subclass'
-    end
-
-    def validate_identity
-      if self.class.where.not(id: self.id).where(confirmed: true).exists?(identity: identity)
-        errors.add(:identity, :taken)
-      end
     end
 
   end
