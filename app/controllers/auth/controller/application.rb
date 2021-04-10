@@ -104,7 +104,7 @@ module Auth
       token = @current_account.auth_token
       headers['Auth-Token'] = token
       session[:auth_token] = token
-      logger.debug "  \e[35m===== Set session Auth token: #{session[:auth_token]} =====\e[0m"
+      logger.debug "  \e[35m-----> Set session Auth token: #{session[:auth_token]} \e[0m"
     end
 
     def verify_auth_token(auth_token)
