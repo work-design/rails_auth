@@ -18,17 +18,10 @@ module Auth
       scope :confirmed, -> { where(confirmed: true) }
 
       validates :identity, presence: true, uniqueness: { scope: [:confirmed] }
-
-      after_update :sync_user, if: -> { saved_change_to_user_id? }
     end
 
     def last?
       user.accounts.where.not(id: self.id).empty?
-    end
-
-    def sync_user
-      self.oauth_users.update_all(user_id: self.user_id)
-      self.authorized_tokens.update_all(user_id: self.user_id)
     end
 
     def can_login_by_password?
@@ -60,22 +53,22 @@ module Auth
           return false
         end
       end
+      user.last_login_at = Time.current
 
       if params[:uid].present?
-        bind_oauth_user(params[:uid])
+        oauth_user = OauthUser.find_by uid: params[:uid]
+        if oauth_user
+          oauth_user.account = self
+          self.class.transaction do
+            self.save!
+            oauth_user.save!
+          end
+        end
+      else
+        self.save
       end
 
-      user.last_login_at = Time.current
-      self.save
       user
-    end
-
-    def bind_oauth_user(uid)
-      oauth_user = OauthUser.find_by uid: uid
-      if oauth_user
-        oauth_user.account = self
-        oauth_user.save
-      end
     end
 
     def xx

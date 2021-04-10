@@ -21,7 +21,6 @@ module Auth
       belongs_to :user, optional: true
       has_one :same_oauth_user, -> (o){ where.not(id: o.id).where.not(unionid: nil).where.not(user_id: nil) }, class_name: self.name, foreign_key: :unionid, primary_key: :unionid
       has_many :same_oauth_users, -> (o){ where.not(id: o.id).where.not(unionid: nil) }, class_name: self.name, foreign_key: :unionid, primary_key: :unionid
-      has_many :authorized_tokens, dependent: :nullify
 
       validates :provider, presence: true
       validates :uid, presence: true
@@ -41,24 +40,6 @@ module Auth
 
     def generate_auth_token(**options)
       JwtHelper.generate_jwt_token(id, password_digest, options)
-    end
-
-    def get_authorized_token(session_key = nil)
-      authorized_token = authorized_tokens.order(expire_at: :desc).first
-      if authorized_token
-        if authorized_token.verify_token?
-          authorized_token
-        else
-          authorized_token.session_key ||= session_key
-          authorized_token.update_token!
-        end
-      else
-        authorized_tokens.create(session_key: session_key)
-      end
-    end
-
-    def auth_token(session_key = nil)
-      get_authorized_token(session_key).token
     end
 
     def refresh_token!
