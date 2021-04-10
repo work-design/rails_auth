@@ -21,6 +21,8 @@ module Auth
       attribute :source, :string
       attribute :invited_code, :string
 
+      belongs_to :inviter, class_name: 'User', optional: true
+
       has_many :accounts, inverse_of: :user, dependent: :nullify
       has_many :verify_tokens, through: :accounts
       has_many :authorized_tokens, through: :accounts
