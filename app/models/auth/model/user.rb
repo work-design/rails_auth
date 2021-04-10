@@ -21,9 +21,9 @@ module Auth
       attribute :source, :string
       attribute :invited_code, :string
 
-      has_many :authorized_tokens, dependent: :delete_all
-      has_many :verify_tokens, autosave: true, dependent: :delete_all
       has_many :accounts, inverse_of: :user, dependent: :nullify
+      has_many :verify_tokens, through: :accounts
+      has_many :authorized_tokens, through: :accounts
       has_many :oauth_users, through: :accounts
       has_many :confirmed_accounts, -> { where(confirmed: true) }, class_name: 'Account'
       accepts_nested_attributes_for :accounts
@@ -36,14 +36,6 @@ module Auth
       validates :password, confirmation: true, length: { in: 6..72 }, allow_blank: true
 
       before_save :invalid_authorized_token, if: -> { password_digest_changed? }
-    end
-
-    def auth_tokens
-      authorized_tokens.pluck(:token)
-    end
-
-    def primary_account
-      accounts.find_by(primary: true)
     end
 
     def join(params = {})

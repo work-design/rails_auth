@@ -9,7 +9,6 @@ module Auth
       attribute :source, :string
 
       belongs_to :user, optional: true
-      has_one :authorized_token, foreign_key: :identity, primary_key: :identity
       has_many :authorized_tokens, foreign_key: :identity, primary_key: :identity
 
       has_many :verify_tokens, foreign_key: :identity, primary_key: :identity, dependent: :delete_all
@@ -91,14 +90,7 @@ module Auth
     end
 
     def authorized_token
-      r = super || create_authorized_token
-      if r.verify_token?
-        return r
-      else
-        r.update_token!
-      end
-
-      r
+      authorized_tokens.valid.take || authorized_tokens.create
     end
 
     def auth_token

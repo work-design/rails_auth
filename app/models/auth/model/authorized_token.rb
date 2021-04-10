@@ -18,8 +18,6 @@ module Auth
       attribute :mock_member, :boolean, default: false
       attribute :mock_user, :boolean, default: false
 
-      belongs_to :user, optional: true
-      belongs_to :oauth_user, optional: true
       belongs_to :account, foreign_key: :identity, primary_key: :identity, optional: true
 
       has_many :members, class_name: 'Org::Member', foreign_key: :identity, primary_key: :identity
@@ -27,21 +25,7 @@ module Auth
       scope :valid, -> { where('expire_at >= ?', Time.current).order(expire_at: :desc) }
       validates :token, presence: true
 
-      before_validation :sync_user, if: -> { oauth_user_id_changed? || identity_changed? }
       before_validation :update_token, if: -> { new_record? }
-    end
-
-    def sync_user
-      if oauth_user
-        self.identity = oauth_user.account&.identity
-      end
-      if account
-        self.user_id = account.user_id
-      else
-        self.user_id = nil
-      end
-
-      #self.mock_member = true if user_id != member.user_id
     end
 
     def verify_token?(now = Time.current)
