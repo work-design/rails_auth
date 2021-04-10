@@ -15,10 +15,6 @@
   <td><%= @account.confirmed %></td>
 </tr>
 <tr>
-  <td class="has-text-right"><%= Auth::Account.human_attribute_name(:primary) %></td>
-  <td><%= @account.primary %></td>
-</tr>
-<tr>
   <td class="has-text-right"><%= Auth::User.human_attribute_name(:verify_tokens) %></td>
   <td>
     <%= render 'auth/panel/users/verify_tokens', target: @account %>

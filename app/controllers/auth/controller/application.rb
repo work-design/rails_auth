@@ -89,7 +89,7 @@ module Auth
       @current_account = oauth_user.account
       set_login_var
 
-      logger.debug "  ==========> Login by oauth user #{oauth_user.id} as user: #{oauth_user.user_id}"
+      logger.debug "  ==========> Login by oauth user #{oauth_user.id} as user: #{@current_account&.user_id}"
     end
 
     private

@@ -3,7 +3,9 @@
     <div class="weui-cells__group weui-cells__group_form">
       <h4 class="weui-cells__title">注册或登陆</h4>
       <div class="weui-cells weui-cells_form">
-        <%= f.hidden_field :uid, value: params[:uid], autocomplete: false %>
+        <% params.permit(:uid, :request_id).each do |key, value| %>
+          <%= f.hidden_field key, value: value, autocomplete: false %>
+        <% end %>
         <%= f.text_field :identity, value: params[:identity], placeholder: '手机号或Email' %>
       </div>
     </div>

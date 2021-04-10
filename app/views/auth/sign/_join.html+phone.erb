@@ -1,5 +1,7 @@
 <%= form_with theme: nil, scope: nil, url: { action: 'login' }, id: 'join_form' do |f| %>
-  <%= f.hidden_field :uid, value: params[:uid], autocomplete: false %>
+  <% params.permit(:uid, :request_id).each do |key, value| %>
+    <%= f.hidden_field key, value: value, autocomplete: false %>
+  <% end %>
 <% end %>
 <div class="weui-form">
   <div class="weui-form__control-area">
