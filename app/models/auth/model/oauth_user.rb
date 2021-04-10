@@ -25,6 +25,12 @@ module Auth
 
       validates :provider, presence: true
       validates :uid, presence: true
+
+      after_save_commit :sync_to_user, if: -> { (saved_changes.keys & ['name', 'avatar_url']) && avatar_url.present? }
+    end
+
+    def sync_to_user
+      UserCopyAvatarJob.perform_later(self)
     end
 
     def save_info(info_params)
