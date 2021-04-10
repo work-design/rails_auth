@@ -18,24 +18,18 @@ module Auth
       attribute :extra, :json, default: {}
 
       belongs_to :account, optional: true, inverse_of: :oauth_users
-      belongs_to :user, optional: true
+      has_one :user, through: :account
       has_one :same_oauth_user, -> (o){ where.not(id: o.id).where.not(unionid: nil).where.not(user_id: nil) }, class_name: self.name, foreign_key: :unionid, primary_key: :unionid
       has_many :same_oauth_users, -> (o){ where.not(id: o.id).where.not(unionid: nil) }, class_name: self.name, foreign_key: :unionid, primary_key: :unionid
 
       validates :provider, presence: true
       validates :uid, presence: true
-
-      before_validation do
-        # todo better user sync logic
-        self.user = self.account&.user if account_id_changed?
-      end
     end
 
     def save_info(info_params)
     end
 
     def strategy
-
     end
 
     def generate_auth_token(**options)
