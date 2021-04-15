@@ -85,7 +85,7 @@ module Auth
     end
 
     def invalid_authorized_token
-      self.authorized_tokens.delete_all
+      self.authorized_tokens.destroy
     end
 
     def account_identities
