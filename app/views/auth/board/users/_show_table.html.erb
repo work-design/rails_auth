@@ -7,11 +7,11 @@
   </td>
 </tr>
 <tr>
-  <td class="has-text-right"><%= User.human_attribute_name(:name) %></td>
+  <td class="has-text-right"><%= Auth::User.human_attribute_name(:name) %></td>
   <td><%= current_user.name %></td>
 </tr>
 <tr>
-  <td class="has-text-right"><%= User.human_attribute_name(:accounts) %></td>
+  <td class="has-text-right"><%= Auth::User.human_attribute_name(:accounts) %></td>
   <td>
     <% current_user.accounts.each do |account| %>
       <p><%= account.identity %></p>

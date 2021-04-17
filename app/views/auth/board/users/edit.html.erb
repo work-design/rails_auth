@@ -16,7 +16,7 @@
     </td>
   </tr>
   <tr>
-    <td class="has-text-right"><%= User.human_attribute_name(:name) %></td>
+    <td class="has-text-right"><%= Auth::User.human_attribute_name(:name) %></td>
     <td>
       <%= text_field_tag 'user[name]', current_user.name, form: 'edit_user', class: 'input' %>
     </td>
