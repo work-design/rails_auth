@@ -2,18 +2,18 @@ zh:
   activerecord:
     attributes:
       auth/user:
-          name: 姓名
-          name-like: 姓名
-          last_login_at: 上次登录时间
-          last_login_ip: 上次登录IP
-          disabled: 限制登录
-          timezone: 时区
-          locale: 语言
-          source: 来源
-          password: 密码
-          password_confirmation: 确认密码
-          oauth_users: Oauth 用户
-          accounts: 登录账号
+        name: 姓名
+        name-like: 姓名
+        last_login_at: 上次登录时间
+        last_login_ip: 上次登录IP
+        disabled: 限制登录
+        timezone: 时区
+        locale: 语言
+        source: 来源
+        password: 密码
+        password_confirmation: 确认密码
+        oauth_users: Oauth 用户
+        accounts: 登录账号
       user/accounts:
         identity: 手机号或邮箱
       auth/account:
