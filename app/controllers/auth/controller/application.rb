@@ -92,6 +92,18 @@ module Auth
       logger.debug "  ==========> Login by oauth user #{oauth_user.id} as user: #{@current_account&.user_id}"
     end
 
+    def login_by_token(token)
+      token = Auth::AuthorizedToken.find_by token: token
+      if token
+        account = token.account
+        account.user || account.build_user
+        account.confirmed = true
+        account.save
+
+        login_by_account(account)
+      end
+    end
+
     private
     def set_login_var
       @current_user = @current_account.user
