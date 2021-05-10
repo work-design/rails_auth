@@ -20,7 +20,7 @@ class RailsAuth::Engine < ::Rails::Engine
     g.templates.prepend File.expand_path('lib/templates', RailsCom::Engine.root)
   end
 
-  initializer 'rails_auth.assets.precompile' do |app|
+  initializer 'rails_auth.action_mailers.preview' do |app|
     app.config.action_mailer.preview_path = "{#{app.config.action_mailer.preview_path.to_s.delete_prefix('{').delete_suffix('}').split(',').push(config.root.join('test/mailers/previews')).join(',')}}"
   end
 
