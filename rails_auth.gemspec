@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
   s.homepage = 'https://github.com/work-design/rails_auth'
   s.summary = 'understandable, simple auth logic for Rails'
   s.description = '更容易理解的auth'
-  s.license = 'LGPL-3.0'
+  s.license = 'MIT'
 
   s.files = Dir[
     '{app,config,db,lib}/**/*',
