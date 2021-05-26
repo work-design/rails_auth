@@ -4,7 +4,7 @@
 <div class="panel-block is-wrapped">
   <div class="field control">
     <%= text_field_tag :identity, params[:identity], disabled: true, form: 'join_form', class: 'input' %>
-    <%= hidden_field_tag :identity, params[:identity], form: 'join_form' %>
+    <%= hidden_field_tag :identity, params[:identity], form: 'join_form', id: nil %>
   </div>
   <div class="field control has-addons">
     <div class="control is-expanded">
