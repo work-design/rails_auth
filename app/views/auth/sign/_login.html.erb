@@ -4,10 +4,10 @@
     <%= f.text_field :identity, value: params[:identity], placeholder: Auth::Account.human_attribute_name(:identity) %>
     <%= f.password_field :password, placeholder: Auth::User.human_attribute_name(:password), autocomplete: false %>
   </div>
-  <div class="has-text-right">
-    <%= link_to t('.token'), sign_token_path(identity: params[:identity]), method: :post, id: 'mobile_confirm', class: 'has-text-grey' %>
+  <div class="has-text-right" data-controller="common">
+    <%= link_to t('.token'), { controller: 'auth/sign', action: 'token', identity: params[:identity] }, data: { action: 'common#link' }, id: 'mobile_confirm', class: 'has-text-grey' %>
     <span>|</span>
-    <%= link_to t('.forget'), password_forget_path, class: 'has-text-grey' %>
+    <%= link_to t('.forget'), { controller: 'auth/password', action: 'new' }, class: 'has-text-grey' %>
   </div>
   <%= f.submit class: 'button is-primary is-fullwidth' %>
 <% end %>
