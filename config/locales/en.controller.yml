@@ -29,6 +29,17 @@ en:
       users:
         update:
           saved: Saved!
+    board:
+      title: User Setting
+      accounts:
+        index:
+          title: Accounts
+      oauth_users:
+        index:
+          title: Third Part login
+      users:
+        show:
+          title: User Info
   user_mailer:
     email_token:
       title: 'You email verify code is:'
