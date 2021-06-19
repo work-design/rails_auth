@@ -8,7 +8,8 @@ class LoginController extends Controller {
   }
 
   connect() {
-    console.debug(this.identifier, 'local controller connected!')
+    console.debug('local controller connected:', this.identifier)
+
     this.countDown(this.element)
   }
 
