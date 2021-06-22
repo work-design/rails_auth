@@ -17,6 +17,8 @@ RailsAuth 是个处理鉴权的 Rails Engine
 
 ## 如何使用
 
+# 模型：
+* OauthUser
 * AccessToken 授权token
 * VerifyToken 验证Token
 
