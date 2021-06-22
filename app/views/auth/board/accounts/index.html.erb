@@ -12,7 +12,7 @@
       </td>
       <td>
         <% unless account.confirmed %>
-          <%= form_with url: confirm_board_account_path(account), wrap: { all: nil, input: 'field is-narrow', submit: nil }, origin: { offset: nil }, class: 'field is-horizontal' do |f| %>
+          <%= form_with url: { action: 'confirm', id: account.id }, wrap: { all: nil, input: 'field is-narrow', submit: nil }, origin: { offset: nil }, class: 'field is-horizontal' do |f| %>
             <div class="field-body">
               <%= f.text_field :token, class: 'input', placeholder: '验证码' %>
               <div class="field is-narrow">
@@ -37,7 +37,7 @@
   <% end %>
   <tr>
     <td>
-      <%= form_with url: board_accounts_path, method: :post, id: 'add_account' %>
+      <%= form_with url: { action: 'create' }, method: :post, id: 'add_account' %>
     </td>
     <td>
       <div class="field has-addons">

@@ -12,7 +12,7 @@ module Auth
       current_user.assign_attributes user_params
 
       if current_user.save
-        render 'update', locals: { return_to: params[:return_to].presence || board_user_path }
+        render 'update', locals: { return_to: params[:return_to].presence }
       else
         render :edit, locals: { model: current_user }, status: :unprocessable_entity
       end
