@@ -1,3 +1,4 @@
-class Auth::Panel::BaseController < PanelController
-
+module Auth
+  class Panel::BaseController < PanelController
+  end
 end
