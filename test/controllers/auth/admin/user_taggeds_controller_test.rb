@@ -17,7 +17,7 @@ class Auth::Admin::UserTaggedsControllerTest < ActionDispatch::IntegrationTest
 
   test 'create ok' do
     assert_difference('UserTagged.count') do
-      post admin_user_taggeds_url, params: { #{singular_table_name}: { #{attributes_string} } }
+      post admin_user_taggeds_url, params: { }
     end
 
     assert_response :success
@@ -34,7 +34,7 @@ class Auth::Admin::UserTaggedsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'update ok' do
-    patch admin_user_tagged_url(@auth_admin_user_tagged), params: { #{singular_table_name}: { #{attributes_string} } }
+    patch admin_user_tagged_url(@auth_admin_user_tagged), params: { }
     assert_response :success
   end
 
