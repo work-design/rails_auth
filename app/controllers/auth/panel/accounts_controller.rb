@@ -47,6 +47,7 @@ module Auth
     def account_params
       params.fetch(:account, {}).permit(
         :user_id,
+        :identity,
         :type,
         :confirmed,
         :primary
