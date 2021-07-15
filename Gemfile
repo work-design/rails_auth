@@ -6,8 +6,6 @@ gem 'rails'
 gem 'pg'
 gem 'puma'
 
-gem 'factory_bot_rails', require: false
-gem 'webpacker', github: 'rails/webpacker'
 gem 'turbo-rails', github: 'qinmingyuan/turbo-rails'
 
 gem 'default_form', github: 'qinmingyuan/default_form'

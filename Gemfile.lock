@@ -20,18 +20,8 @@ GIT
       rails (>= 6.0.0)
 
 GIT
-  remote: https://github.com/rails/webpacker.git
-  revision: f8029502ed74bdfa397baa407199fc8a20d8d4e5
-  specs:
-    webpacker (6.0.0.beta.7)
-      activesupport (>= 5.2)
-      rack-proxy (>= 0.6.1)
-      railties (>= 5.2)
-      semantic_range (>= 2.3.0)
-
-GIT
   remote: https://github.com/work-design/rails_com.git
-  revision: 2bcd76685b7f69eae54857807a9e531d2c56f19b
+  revision: a3ac09d0af33b9b0a70a37c61857ee2a49f4f9fe
   specs:
     rails_com (1.2.9)
       acme-client
@@ -42,10 +32,11 @@ GIT
       httpx (~> 0.8)
       kaminari
       rails (~> 6.0)
+      turbo-rails
 
 GIT
   remote: https://github.com/work-design/rails_ui.git
-  revision: e0afac07690cad18801939ca5766d525d4c6cf70
+  revision: 3d4bd272255735bee23daffedeb3164ad907e25e
   specs:
     rails_ui (0.1.0)
       rails
@@ -138,11 +129,6 @@ GEM
     crass (1.0.6)
     debug_inspector (1.1.0)
     erubi (1.10.0)
-    factory_bot (6.2.0)
-      activesupport (>= 5.0.0)
-    factory_bot_rails (6.2.0)
-      factory_bot (~> 6.2.0)
-      railties (>= 5.0.0)
     faraday (1.5.1)
       faraday-em_http (~> 1.0)
       faraday-em_synchrony (~> 1.0)
@@ -166,7 +152,7 @@ GEM
       activesupport (>= 5)
     http-2-next (0.4.3)
     http-form_data (2.3.0)
-    httpx (0.15.3)
+    httpx (0.15.4)
       http-2-next (>= 0.4.1)
       timers
     i18n (1.8.10)
@@ -214,8 +200,6 @@ GEM
       nio4r (~> 2.0)
     racc (1.5.2)
     rack (2.2.3)
-    rack-proxy (0.6.5)
-      rack
     rack-test (1.1.0)
       rack (>= 1.0, < 3)
     rails (6.1.3.2)
@@ -249,7 +233,6 @@ GEM
     ruby2_keywords (0.0.4)
     sdoc (2.1.0)
       rdoc (>= 5.0)
-    semantic_range (3.0.0)
     sprockets (4.0.2)
       concurrent-ruby (~> 1.0)
       rack (> 1, < 3)
@@ -275,7 +258,6 @@ DEPENDENCIES
   awesome_print
   default_form!
   default_where!
-  factory_bot_rails
   jbuilder
   kaminari
   pg
@@ -288,7 +270,6 @@ DEPENDENCIES
   rails_ui!
   sdoc
   turbo-rails!
-  webpacker!
 
 BUNDLED WITH
    2.2.22
