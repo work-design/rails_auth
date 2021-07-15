@@ -1,28 +1,27 @@
 require 'test_helper'
 
-class Auth::JoinControllerTest < ActionDispatch::IntegrationTest
+class Auth::SignControllerTest < ActionDispatch::IntegrationTest
 
   setup do
   end
 
   test 'sign ok' do
-    get sign_url
+    get url_for(controller: 'auth/sign', action: 'sign')
     assert_response :success
   end
-  
+
   test 'post sign ok' do
-    post sign_url, params: { identity: 'test@work.design' }
+    post url_for(controller: 'auth/sign', action: 'sign'), params: { identity: 'test@work.design' }, as: :turbo_stream
     assert_response :success
   end
 
   test 'create ok' do
-    create :account
-    post login_url, params: { identity: 'test@work.design', password: '111111' }
+    post url_for(controller: 'auth/sign', action: 'login'), params: { identity: 'test@work.design', password: 'secret' }, as: :turbo_stream
     assert_response :success
   end
-  
+
   test 'logout ok' do
-  
+
   end
 
 end

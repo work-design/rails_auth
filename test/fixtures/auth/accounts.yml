@@ -1,15 +1,13 @@
 one:
   user: one
   inviter_id: 1
-  type:
-  identity: MyString
+  identity: test@work.design
   confirmed: false
   source: MyString
 
 two:
   user: two
   inviter_id: 1
-  type:
-  identity: MyString
+  identity: 18571856813
   confirmed: false
   source: MyString
