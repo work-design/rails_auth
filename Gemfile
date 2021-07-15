@@ -4,10 +4,8 @@ gemspec
 
 gem 'rails'
 gem 'pg'
-gem 'puma'
 
-gem 'turbo-rails', github: 'qinmingyuan/turbo-rails'
-
+gem 'viter', github: 'qinmingyuan/viter'
 gem 'default_form', github: 'qinmingyuan/default_form'
 gem 'default_where', github: 'qinmingyuan/default_where'
 gem 'rails_com', github: 'work-design/rails_com'

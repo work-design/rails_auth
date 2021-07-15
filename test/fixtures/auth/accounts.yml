@@ -1,0 +1,15 @@
+one:
+  user: one
+  inviter_id: 1
+  type:
+  identity: MyString
+  confirmed: false
+  source: MyString
+
+two:
+  user: two
+  inviter_id: 1
+  type:
+  identity: MyString
+  confirmed: false
+  source: MyString
