@@ -14,7 +14,8 @@ module Auth
     end
 
     def create
-      @account = current_user.accounts.build(account_params)
+      set_new_account
+      @account.assign_attributes account_params
 
       if @account.save
         @verify_token = @account.verify_token
@@ -50,7 +51,7 @@ module Auth
       if @token && @account.save
         flash[:alert] = 'token 验证成功'
       else
-        render 'error', locals: { model: @account }, status: :unprocessable_entity
+        render 'confirm', locals: { model: @account }, status: :unprocessable_entity
       end
     end
 
@@ -67,11 +68,18 @@ module Auth
       @account = current_user.accounts.find(params[:id])
     end
 
+    def set_new_account
+      if params[:identity].to_s.include?('@')
+        @account = current_user.accounts.find_or_create_by(identity: account_params[:identity], type: 'Auth::EmailAccount')
+      else
+        @account = current_user.accounts.find_or_create_by(identity: account_params[:identity], type: 'Auth::MobileAccount')
+      end
+    end
+
     def account_params
       params.require(:account).permit(
         :identity,
-        :confirmed,
-        :primary
+        :confirmed
       )
     end
 
