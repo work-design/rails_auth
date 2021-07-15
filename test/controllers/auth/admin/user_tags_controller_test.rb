@@ -1,9 +1,9 @@
 require 'test_helper'
 
 class Auth::Admin::UserTagsControllerTest < ActionDispatch::IntegrationTest
-  
+
   setup do
-    @user_tag = create :user_tag
+    @user_tag = auth_user_tags(:one)
   end
 
   test 'index ok' do
@@ -36,7 +36,7 @@ class Auth::Admin::UserTagsControllerTest < ActionDispatch::IntegrationTest
 
   test 'update ok' do
     patch admin_user_tag_url(@user_tag), params: { user_tag: { name: 'good' } }, xhr: true
-    
+
     @user_tag.reload
     assert_equal 'good', @user_tag.name
     assert_response :success
@@ -49,5 +49,5 @@ class Auth::Admin::UserTagsControllerTest < ActionDispatch::IntegrationTest
 
     assert_response :success
   end
-  
+
 end
