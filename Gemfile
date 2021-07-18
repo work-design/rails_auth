@@ -3,6 +3,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 gemspec
 
 gem 'rails'
+gem 'puma'
 gem 'pg'
 
 gem 'viter', github: 'qinmingyuan/viter'
