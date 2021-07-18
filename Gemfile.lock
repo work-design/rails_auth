@@ -1,13 +1,13 @@
 GIT
   remote: https://github.com/qinmingyuan/default_form.git
-  revision: d0fbf0383bf8f9ec7941f79ad2dabd95a478e53b
+  revision: 8ad70c8c6a1b76cc770ac180a1b281f874d3ef91
   specs:
     default_form (1.5.1)
       rails_com (~> 1.2)
 
 GIT
   remote: https://github.com/qinmingyuan/default_where.git
-  revision: 73338e8c9bf69cb2cb25ea0a62fee1fe0a0905ba
+  revision: bf2bf8c5ddce69f12cd11c28f0fdabe3e1cc7d6c
   specs:
     default_where (2.2.3)
       activerecord (>= 4.0, <= 7.0)
@@ -21,7 +21,7 @@ GIT
 
 GIT
   remote: https://github.com/work-design/rails_com.git
-  revision: a3ac09d0af33b9b0a70a37c61857ee2a49f4f9fe
+  revision: c94212c83a94b1be8050fcecb1e390f49b6a8f36
   specs:
     rails_com (1.2.9)
       acme-client
@@ -196,6 +196,8 @@ GEM
     pry-stack_explorer (0.6.1)
       binding_of_caller (~> 1.0)
       pry (~> 0.13)
+    puma (5.3.2)
+      nio4r (~> 2.0)
     racc (1.5.2)
     rack (2.2.3)
     rack-test (1.1.0)
@@ -228,7 +230,7 @@ GEM
       thor (~> 1.0)
     rake (13.0.3)
     rdoc (6.3.1)
-    ruby2_keywords (0.0.4)
+    ruby2_keywords (0.0.5)
     sdoc (2.1.0)
       rdoc (>= 5.0)
     sprockets (4.0.2)
@@ -263,6 +265,7 @@ DEPENDENCIES
   pg
   pry-rails
   pry-stack_explorer
+  puma
   rails
   rails_auth!
   rails_com!
