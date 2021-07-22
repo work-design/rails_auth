@@ -9,8 +9,6 @@ class LoginController extends Controller {
 
   connect() {
     console.debug('local controller connected:', this.identifier)
-
-    this.countDown(this.element)
   }
 
   assignLocation(element) {
@@ -31,20 +29,22 @@ class LoginController extends Controller {
     }
   }
 
-  countDown(ele) {
-    let countdown = this.timeValue
+  countDown(event) {
+    let countdown = this.timeValue || 60
+    let ele = event.currentTarget
     ele.innerText = '重新发送(' + countdown + ')'
 
     let timer = setInterval(() => {
       countdown--
       if (countdown <= 0) {
+        window.xxx = ele
         ele.removeAttribute('disabled')
         ele.innerText = '获取验证码'
         clearInterval(timer)
       } else {
         ele.innerText = '重新发送(' + countdown + ')'
       }
-    }, 1000, countdown, timer, ele)
+    }, 1000, countdown, ele)
   }
 
 }
