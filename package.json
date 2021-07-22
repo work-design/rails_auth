@@ -15,5 +15,8 @@
   "license": "ISC",
   "dependencies": {
     "stimulus": "^2.0.0"
+  },
+  "devDependencies": {
+    "postcss-preset-env": "^6.7.0"
   }
 }
