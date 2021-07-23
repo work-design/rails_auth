@@ -18,7 +18,7 @@ class Auth::Admin::UserTagsControllerTest < ActionDispatch::IntegrationTest
 
   test 'create ok' do
     assert_difference('UserTag.count') do
-    post url_for(controller: 'auth/admin/user_tags', action: 'create'), params: { user_tag: { name: 'good' } }, as: :turbo_stream#, xhr: true
+      post url_for(controller: 'auth/admin/user_tags', action: 'create'), params: { user_tag: { name: 'good' } }, as: :turbo_stream
     end
 
     assert_response :success
@@ -35,7 +35,7 @@ class Auth::Admin::UserTagsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'update ok' do
-    patch url_for(controller: 'auth/admin/user_tags', action: 'update', id: @user_tag), params: { user_tag: { name: 'good' } },as: :turbo_stream
+    patch url_for(controller: 'auth/admin/user_tags', action: 'update', id: @user_tag), params: { user_tag: { name: 'good' } }, as: :turbo_stream
     @user_tag.reload
     assert_equal 'good', @user_tag.name
     assert_response :success
