@@ -4,6 +4,7 @@ one:
   identity: test@work.design
   confirmed: false
   source: MyString
+  type: Auth::EmailAccount
 
 two:
   user: two
@@ -11,3 +12,4 @@ two:
   identity: 18571856813
   confirmed: false
   source: MyString
+  type: Auth::MobileAccount

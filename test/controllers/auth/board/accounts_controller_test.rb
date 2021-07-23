@@ -21,8 +21,13 @@ class Auth::Board::AccountsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'confirm ok' do
-    post url_for(controller: 'auth/board/accounts', action: 'confirm', id: @account.id), as: :turbo_stream
-    #assert_response :success
+    post(
+      url_for(controller: 'auth/board/accounts', action: 'confirm', id: @account.id),
+      params: { token: @account.verify_token.token },
+      as: :turbo_stream
+    )
+
+    assert_response :success
   end
 
   test 'update ok' do
