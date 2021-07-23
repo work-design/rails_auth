@@ -1,16 +1,18 @@
-class Auth::UsersController < Auth::BaseController
-  before_action :set_user, only: [:show]
+module Auth
+  class UsersController < BaseController
+    before_action :set_user, only: [:show]
 
-  def index
-    @users = User.page(params[:page])
-  end
+    def index
+      @users = User.page(params[:page])
+    end
 
-  def show
-  end
+    def show
+    end
 
-  private
-  def set_user
-    @user = User.find(params[:id])
+    private
+    def set_user
+      @user = User.find(params[:id])
+    end
+
   end
-  
 end

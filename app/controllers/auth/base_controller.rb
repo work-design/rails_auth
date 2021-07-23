@@ -1,5 +1,5 @@
 module Auth
-  class BaseController < BaseController
+  class BaseController < ApplicationController
     include Controller::Application
   end
 end
