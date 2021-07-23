@@ -1,15 +1,15 @@
 # RailsAuth
 
-RailsAuth 是个处理鉴权的 Rails Engine
+用于处理鉴权
 
 ## 特性
 
-* [系列项目说明](https://github.com/work-design/work.design)
+* [系列项目说明](https://github.com/work-design/home)
 * 使用`Rails`自带的`ActiveModel::SecurePassword`模块处理密码;
-* 使用`auth token`统一鉴权，兼容api和cookies, 服务端可控制auth_token失效；
-* 精致的架构:
-  - 为合并用户提供了非常灵活的架构基础。
-  - 支持多终端登陆。 
+* 使用`auth token`统一鉴权，兼容api和cookies, 服务端可控制 auth_token 失效；
+* 架构:
+  - 为合并用户提供了非常灵活的架构基础；
+  - 支持多终端登陆；
 * 由于整个系统采用了唯一User的设计思路，通过`UserTag`为部分场景自动打标签；
 
 ## 文件说明
@@ -17,7 +17,7 @@ RailsAuth 是个处理鉴权的 Rails Engine
 
 ## 如何使用
 
-# 模型：
+## 模型：
 * OauthUser
 * AccessToken 授权token
 * VerifyToken 验证Token
@@ -45,4 +45,4 @@ current_user
 ```
 
 ## 许可证
-许可证采用 [MIT](https://opensource.org/licenses/MIT).
+遵循 [MIT](https://opensource.org/licenses/MIT) 协议

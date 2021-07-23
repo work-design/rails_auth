@@ -21,7 +21,7 @@ GIT
 
 GIT
   remote: https://github.com/work-design/rails_com.git
-  revision: bd578e56067b362bd4fc1abd68514215ba0ef1b4
+  revision: c079cc7dd0a35d93e2714b936aa04c4dbde52e52
   specs:
     rails_com (1.2.9)
       acme-client
@@ -36,7 +36,7 @@ GIT
 
 GIT
   remote: https://github.com/work-design/rails_ui.git
-  revision: d592e8d05e6637a98728bc675d08d5ba81d6fd9e
+  revision: bd2433c8d9a2b3c18c6e2d4d776592978b2f867f
   specs:
     rails_ui (0.1.0)
       rails
@@ -46,7 +46,6 @@ PATH
   specs:
     rails_auth (1.1.0)
       bcrypt (~> 3.1)
-      groupdate
       jwt (>= 2.0, <= 3.0)
       rails_com (~> 1.2)
 
@@ -148,8 +147,6 @@ GEM
     faraday-patron (1.0.0)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
-    groupdate (5.2.2)
-      activesupport (>= 5)
     http-2-next (0.4.3)
     http-form_data (2.3.0)
     httpx (0.15.4)
