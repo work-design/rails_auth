@@ -3,21 +3,21 @@
 <table class="table is-hoverable is-fullwidth">
   <thead>
     <tr>
-      <th><%= User.human_attribute_name(:name) %></th>
+      <th><%= Auth::User.human_attribute_name(:name) %></th>
       <th>
-        <p><%= User.human_attribute_name(:locale) %></p>
-        <p><%= User.human_attribute_name(:timezone) %></p>
+        <p><%= Auth::User.human_attribute_name(:locale) %></p>
+        <p><%= Auth::User.human_attribute_name(:timezone) %></p>
       </th>
-      <th><%= User.human_attribute_name(:created_at) %></th>
+      <th><%= Auth::User.human_attribute_name(:created_at) %></th>
       <th>
         <p>
-          <%= link_to User.human_attribute_name(:last_login_at), filter_params('last_login_at-desc': 1, except: ['last_login_at-desc']) %>
+          <%= link_to Auth::User.human_attribute_name(:last_login_at), filter_params('last_login_at-desc': 1, except: ['last_login_at-desc']) %>
         </p>
-        <p><%= User.human_attribute_name(:last_login_ip) %></p>
+        <p><%= Auth::User.human_attribute_name(:last_login_ip) %></p>
       </th>
-      <th><%= User.human_attribute_name(:oauth_users) %></th>
+      <th><%= Auth::User.human_attribute_name(:oauth_users) %></th>
       <th>
-        <%= link_to new_panel_user_path, class: 'button is-small is-link' do %>
+        <%= link_to({ controller: 'auth/panel/users', action: 'new' }, data: { turbo_frame: 'modal' }, class: 'button is-small is-link') do %>
           <i class="fas fa-plus"></i><span><%= t('.new') %></span>
         <% end %>
       </th>
@@ -29,7 +29,7 @@
     <tr>
       <td>
         <%= link_to admin_user_path(user.id) do %>
-          <%= image_tag user.avatar, class: 'ui avatar image' if user.avatar.present? %>
+          <%= image_tag user.avatar, class: 'image' if user.avatar.present? %>
           <%= user.name %>
         <% end %>
       </td>

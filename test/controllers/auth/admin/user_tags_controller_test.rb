@@ -17,7 +17,7 @@ class Auth::Admin::UserTagsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'create ok' do
-    assert_difference('UserTag.count') do
+    assert_difference('Auth::UserTag.count') do
       post url_for(controller: 'auth/admin/user_tags', action: 'create'), params: { user_tag: { name: 'good' } }, as: :turbo_stream
     end
 
@@ -42,7 +42,7 @@ class Auth::Admin::UserTagsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'destroy ok' do
-    assert_difference('UserTag.count', -1) do
+    assert_difference('Auth::UserTag.count', -1) do
       delete url_for(controller: 'auth/admin/user_tags', action: 'destroy', id: @user_tag.id), as: :turbo_stream
     end
     assert_response :success
