@@ -36,7 +36,7 @@ GIT
 
 GIT
   remote: https://github.com/work-design/rails_ui.git
-  revision: bd2433c8d9a2b3c18c6e2d4d776592978b2f867f
+  revision: 62e689df00a8cc12f119c2a945990592d173b315
   specs:
     rails_ui (0.1.0)
       rails
@@ -184,6 +184,8 @@ GEM
     nokogiri (1.11.4)
       mini_portile2 (~> 2.5.0)
       racc (~> 1.4)
+    nokogiri (1.11.4-x86_64-linux)
+      racc (~> 1.4)
     pg (1.2.3)
     pry (0.14.1)
       coderay (~> 1.1)
@@ -252,6 +254,7 @@ GEM
 
 PLATFORMS
   ruby
+  x86_64-linux
 
 DEPENDENCIES
   awesome_print
