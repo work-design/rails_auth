@@ -21,7 +21,7 @@ GIT
 
 GIT
   remote: https://github.com/work-design/rails_com.git
-  revision: 0001bb727efe95c748956a2476b0054faa002ab4
+  revision: 4d9b055737f70133637a4941f15657541779c880
   specs:
     rails_com (1.2.9)
       acme-client
@@ -183,8 +183,6 @@ GEM
     nio4r (2.5.7)
     nokogiri (1.11.7)
       mini_portile2 (~> 2.5.0)
-      racc (~> 1.4)
-    nokogiri (1.11.7-x86_64-linux)
       racc (~> 1.4)
     pg (1.2.3)
     pry (0.14.1)
