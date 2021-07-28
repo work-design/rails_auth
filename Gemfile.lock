@@ -1,27 +1,27 @@
 GIT
   remote: https://github.com/qinmingyuan/default_form.git
-  revision: 8ad70c8c6a1b76cc770ac180a1b281f874d3ef91
+  revision: 476ba7231079b1071415ad4e953b55ce16ae1d0d
   specs:
     default_form (1.5.1)
       rails_com (~> 1.2)
 
 GIT
   remote: https://github.com/qinmingyuan/default_where.git
-  revision: bf2bf8c5ddce69f12cd11c28f0fdabe3e1cc7d6c
+  revision: f3a5fafcafd4eaffc0c8eff1385e12c7bd939e83
   specs:
     default_where (2.2.3)
       activerecord (>= 4.0, <= 7.0)
 
 GIT
   remote: https://github.com/qinmingyuan/viter.git
-  revision: 7e67bf86c44f0c95c918d631df253e0f824caf15
+  revision: 68d21b1844497c22df45dea05cf93bc84c809166
   specs:
     viter (0.1.0)
       rails
 
 GIT
   remote: https://github.com/work-design/rails_com.git
-  revision: 9c9cba93faf42ad6b31fb31edd2b1942591b4536
+  revision: 0d665c63b5015543291c90db94ab53dbdb2893d7
   specs:
     rails_com (1.2.9)
       acme-client
@@ -36,7 +36,7 @@ GIT
 
 GIT
   remote: https://github.com/work-design/rails_ui.git
-  revision: f867ac2c3cc4f6661a8eec817c027f9d029fbd89
+  revision: 28312c28dd5e5af50e4d16d38ffc7a15b7e0eee0
   specs:
     rails_ui (0.1.0)
       rails

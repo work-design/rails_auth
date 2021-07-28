@@ -20,6 +20,7 @@ module Auth
 
       belongs_to :account, foreign_key: :identity, primary_key: :identity, optional: true
       has_one :user, through: :account
+      has_one :oauth_user, through: :account, source: :oauth_users
       has_many :members, class_name: 'Org::Member', foreign_key: :identity, primary_key: :identity
 
       scope :valid, -> { where('expire_at >= ?', Time.current).order(expire_at: :desc) }
