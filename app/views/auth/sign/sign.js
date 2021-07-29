@@ -3,9 +3,7 @@ import { Controller } from 'stimulus'
 
 class LoginController extends Controller {
   static targets = ['identity']
-  static values = {
-    time: Number
-  }
+
 
   connect() {
     console.debug('local controller connected:', this.identifier)
@@ -19,23 +17,6 @@ class LoginController extends Controller {
     history.pushState({}, document.title, href)
   }
 
-  link(event) {
-    event.preventDefault()
-    let ele = event.currentTarget
-    let method = (ele.dataset.method && ele.dataset.method.toUpperCase()) || 'GET'
-
-    fetch(ele.href, {
-      method: method,
-      headers: {
-        Accept: 'text/vnd.turbo-stream.html'
-      }
-    }).then(response => {
-      return response.text()
-    }).then(body => {
-      Turbo.renderStreamMessage(body)
-    })
-  }
-
   code(element) {
     if (/.+/.test(this.identityTarget.value)) {
       this.countDown(element)
@@ -44,24 +25,6 @@ class LoginController extends Controller {
       e.preventDefault()
       e.stopImmediatePropagation()
     }
-  }
-
-  countDown(event) {
-    let countdown = this.timeValue || 60
-    let ele = event.currentTarget
-    ele.innerText = '重新发送(' + countdown + ')'
-
-    let timer = setInterval(() => {
-      countdown--
-      if (countdown <= 0) {
-        window.xxx = ele
-        ele.removeAttribute('disabled')
-        ele.innerText = '获取验证码'
-        clearInterval(timer)
-      } else {
-        ele.innerText = '重新发送(' + countdown + ')'
-      }
-    }, 1000, countdown, ele)
   }
 
 }

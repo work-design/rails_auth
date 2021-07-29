@@ -9,8 +9,8 @@
       <div class="control is-expanded">
         <%= f.text_field :token, placeholder: Auth::VerifyToken.human_attribute_name(:token), autocomplete: false, class: 'input' %>
       </div>
-      <div class="control" data-controller="login">
-        <%= link_to({ action: 'code', identity: params[:identity] }, data: { action: 'login#link' }, class: 'button is-info') do %>
+      <div class="control" data-controller="common" id="sign_token">
+        <%= link_to({ action: 'code', identity: params[:identity] }, data: { action: 'common#link' }, class: 'button is-info') do %>
           <span><%= t('.token') %></span>
         <% end %>
       </div>
@@ -23,6 +23,6 @@
     </div>
   </div>
   <div class="panel-block">
-    <%= f.submit class: 'button is-primary is-fullwidth' %>
+    <%= f.submit '提交', class: 'button is-primary is-fullwidth' %>
   </div>
 <% end %>

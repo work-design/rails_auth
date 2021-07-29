@@ -1,5 +1,5 @@
-<%= turbo_stream.replace 'sign_token' do %>
-  <%= button_to({ action: 'code', identity: params[:identity] }, form: { id: 'sign_token' }, data: { controller: 'login', login_time_value: 60 }, disabled: true, class: 'button is-info') do %>
+<%= turbo_stream.update 'sign_token' do %>
+  <%= link_to({ action: 'code', identity: params[:identity] }, data: { controller: 'count-down', count_down_time_value: 60, action: 'common#link' }, disabled: true, class: 'button is-info') do %>
     <span>重新发送</span>
   <% end %>
 <% end %>
