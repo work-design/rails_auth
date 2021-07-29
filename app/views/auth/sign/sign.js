@@ -19,6 +19,23 @@ class LoginController extends Controller {
     history.pushState({}, document.title, href)
   }
 
+  link(event) {
+    event.preventDefault()
+    let ele = event.currentTarget
+    let method = (ele.dataset.method && ele.dataset.method.toUpperCase()) || 'GET'
+
+    fetch(ele.href, {
+      method: method,
+      headers: {
+        Accept: 'text/vnd.turbo-stream.html'
+      }
+    }).then(response => {
+      return response.text()
+    }).then(body => {
+      Turbo.renderStreamMessage(body)
+    })
+  }
+
   code(element) {
     if (/.+/.test(this.identityTarget.value)) {
       this.countDown(element)

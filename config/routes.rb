@@ -5,7 +5,7 @@ Rails.application.routes.draw do
       match :sign, via: [:get, :post]
       get 'sign/token' => :token
       post 'sign/mock' => :mock
-      post 'sign/code' => :code
+      get 'sign/code' => :code
       post :login
       get :logout
     end
