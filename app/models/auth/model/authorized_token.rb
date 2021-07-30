@@ -1,10 +1,5 @@
 require 'jwt'
-##
 # Usually used for access api request
-#--
-# this not docs
-#++
-# test
 module Auth
   module Model::AuthorizedToken
     extend ActiveSupport::Concern
