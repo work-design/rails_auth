@@ -17,6 +17,7 @@ module Auth
       scope :valid, -> { where('expire_at >= ?', 1.minutes.since).order(expire_at: :desc) }
 
       validates :token, presence: true
+      validates :identity, presence: true
 
       after_initialize :update_token, if: -> { new_record? }
       after_create_commit :clean_when_expired

@@ -80,10 +80,6 @@ module Auth
       end
     end
 
-    def verify_token
-      check_tokens.valid.take || check_tokens.create
-    end
-
     def authorized_token
       authorized_tokens.valid.take || authorized_tokens.create
     end
