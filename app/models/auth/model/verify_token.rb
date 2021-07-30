@@ -12,9 +12,9 @@ module Auth
       attribute :identity, :string, index: true
       attribute :access_counter, :integer, default: 0
 
-      belongs_to :account, foreign_key: :identity, primary_key: :identity
+      belongs_to :account, foreign_key: :identity, primary_key: :identity, optional: true
 
-      scope :valid, -> { where('expire_at >= ?', Time.now).order(expire_at: :desc) }
+      scope :valid, -> { where('expire_at >= ?', 1.minutes.since).order(expire_at: :desc) }
 
       validates :token, presence: true
 
@@ -52,16 +52,22 @@ module Auth
       raise 'should implement in subclass'
     end
 
+    def send_out!
+      send_out
+      save
+    end
+
     class_methods do
-      def create_with_account(identity)
+      def build_with_identity(identity)
         verify_token = self.valid.find_by(identity: identity)
         return verify_token if verify_token
-        verify_token = self.new(identity: identity)
-        self.transaction do
-          self.where(identity: identity).delete_all
-          verify_token.save!
+
+        type = if identity.to_s.include?('@')
+          'Auth::EmailToken'
+        else
+          'Auth::MobileToken'
         end
-        verify_token
+        self.new(type: type, identity: identity)
       end
     end
 

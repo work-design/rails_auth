@@ -1,7 +1,7 @@
 module Auth
   class SignController < BaseController
     before_action :check_login, except: [:logout]
-    before_action :set_account, only: [:token, :code]
+    before_action :set_account, only: [:token]
     skip_after_action :set_auth_token, only: [:logout]
 
     def sign
@@ -29,9 +29,9 @@ module Auth
     end
 
     def code
-      @verify_token = @account.verify_token
+      @verify_token = VerifyToken.build_with_identity(params[:identity])
 
-      if @verify_token.send_out
+      if @verify_token.send_out!
         render 'code', locals: { message: t('.sent') }
       else
         render 'token', locals: { message: @verity_token.error_text }, status: :bad_request
@@ -50,19 +50,15 @@ module Auth
     end
 
     def login
-      @account = Account.find_by(identity: params[:identity])
+      @account = Account.build_with_identity(params[:identity])
 
-      if @account
-        if @account.can_login?(user_params)
-          login_by_account @account
-          render 'login_ok', locals: { return_to: session[:return_to] || RailsAuth.config.default_return_path, message: t('.success') }
-          session.delete :return_to
-        else
-          flash.now[:error] = @account.error_text
-          render 'login', locals: { message: flash.now[:error] }, status: :unauthorized
-        end
+      if @account.can_login?(user_params)
+        login_by_account @account
+        render 'login_ok', locals: { return_to: session[:return_to] || RailsAuth.config.default_return_path, message: t('.success') }
+        session.delete :return_to
       else
         flash.now[:error] = t('errors.messages.wrong_account')
+        flash.now[:error] = @account.error_text
         render 'login', locals: { message: flash.now[:error] }, status: :unauthorized
       end
     end

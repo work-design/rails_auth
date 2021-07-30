@@ -99,5 +99,21 @@ module Auth
       p 'Should implement in subclass'
     end
 
+    class_methods do
+
+      def build_with_identity(identity)
+        account = self.find_by(identity: identity)
+        return account if account
+
+        type = if identity.to_s.include?('@')
+          'Auth::EmailAccount'
+        else
+          'Auth::MobileAccount'
+        end
+        self.new(type: type, identity: identity)
+      end
+
+    end
+
   end
 end
