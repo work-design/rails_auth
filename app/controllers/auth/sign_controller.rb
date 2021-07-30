@@ -1,7 +1,6 @@
 module Auth
   class SignController < BaseController
     before_action :check_login, except: [:logout]
-    before_action :set_account, only: [:token]
     skip_after_action :set_auth_token, only: [:logout]
 
     def sign
@@ -15,16 +14,6 @@ module Auth
         end
       else
         render 'sign'
-      end
-    end
-
-    def token
-      @verify_token = @account.verify_token
-
-      if @verify_token.send_out
-        render :token, locals: { message: t('.sent') }
-      else
-        render :token, locals: { message: @verity_token.error_text }, status: :bad_request
       end
     end
 
@@ -57,7 +46,6 @@ module Auth
         render 'login_ok', locals: { return_to: session[:return_to] || RailsAuth.config.default_return_path, message: t('.success') }
         session.delete :return_to
       else
-        flash.now[:error] = t('errors.messages.wrong_account')
         flash.now[:error] = @account.error_text
         render 'login', locals: { message: flash.now[:error] }, status: :unauthorized
       end
@@ -68,14 +56,6 @@ module Auth
     end
 
     private
-    def set_account
-      if params[:identity].to_s.include?('@')
-        @account = EmailAccount.find_or_create_by(identity: params[:identity])
-      else
-        @account = MobileAccount.find_or_create_by(identity: params[:identity])
-      end
-    end
-
     def user_params
       q = params.permit(
         :name,
