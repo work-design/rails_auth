@@ -2,9 +2,14 @@
 <div class="column is-6">
   <div class="panel" style="width: 300px;" id="auth_form">
     <h4 class="panel-heading has-text-centered"><%= t('.title') %></h4>
-    <%= form_with scope: nil, url: { controller: 'auth/sign', action: 'sign' }, origin: { label: nil, offset: nil }, wrap: { all: nil, input: 'panel-block', submit: 'panel-block' } do |f| %>
+    <%= form_with scope: nil, url: { controller: 'auth/sign', action: 'sign' }, origin: { label: nil, offset: nil }, wrap: { all: nil, input: 'control', submit: 'control' }, class: 'panel-block is-flex-direction-column' do |f| %>
       <%= f.text_field :identity, value: params[:identity], placeholder: Auth::Account.human_attribute_name(:identity), class: 'input' %>
       <%= f.submit t('.next'), class: 'button is-primary is-fullwidth' %>
     <% end %>
+    <div class="panel-block is-justify-content-center">
+      <%= link_to({ controller: 'wechat/wechat', action: 'login' }) do %>
+        <i class="fab fa-weixin"></i><span>微信扫码</span>
+      <% end %>
+    </div>
   </div>
 </div>
