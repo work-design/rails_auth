@@ -3,7 +3,6 @@ module Auth
     extend ActiveSupport::Concern
 
     included do
-      #t.index [:uid, :provider], unique: true
       attribute :type, :string
       attribute :provider, :string
       attribute :uid, :string
@@ -16,8 +15,10 @@ module Auth
       attribute :expires_at, :datetime
       attribute :refresh_token, :string
       attribute :extra, :json, default: {}
+      index [:uid, :provider], unique: true
 
       belongs_to :account, optional: true, inverse_of: :oauth_users
+
       has_one :user, through: :account
       has_many :authorized_tokens, through: :account
       has_one :same_oauth_user, -> (o){ where.not(id: o.id).where.not(unionid: nil).where.not(account_id: nil) }, class_name: self.name, foreign_key: :unionid, primary_key: :unionid
