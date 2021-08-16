@@ -4,7 +4,7 @@ module Auth
 
     def index
       q_params = {}
-      q_params.merge! params.permit(:token, :oauth_user_id, :user_id, :account_id)
+      q_params.merge! params.permit(:token, :user_id, :identity)
       @authorized_tokens = AuthorizedToken.default_where(q_params).order(id: :desc).page(params[:page])
     end
 
