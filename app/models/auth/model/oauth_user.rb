@@ -15,12 +15,13 @@ module Auth
       attribute :expires_at, :datetime
       attribute :refresh_token, :string
       attribute :extra, :json, default: {}
+      attribute :identity, :string, index: true
       index [:uid, :provider], unique: true
 
-      belongs_to :account, optional: true, inverse_of: :oauth_users
+      belongs_to :account, foreign_key: :identity, primary_key: :identity, inverse_of: :oauth_users, optional: true
 
       has_one :user, through: :account
-      has_many :authorized_tokens, through: :account
+      has_many :authorized_tokens, foreign_key: :identity, primary_key: :identity
       has_one :same_oauth_user, -> (o){ where.not(id: o.id).where.not(unionid: nil).where.not(account_id: nil) }, class_name: self.name, foreign_key: :unionid, primary_key: :unionid
       has_many :same_oauth_users, -> (o){ where.not(id: o.id).where.not(unionid: nil) }, class_name: self.name, foreign_key: :unionid, primary_key: :unionid
 
@@ -38,6 +39,10 @@ module Auth
     end
 
     def strategy
+    end
+
+    def authorized_token
+      authorized_tokens.valid.take || authorized_tokens.create
     end
 
     def generate_auth_token(**options)
