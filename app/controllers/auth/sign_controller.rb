@@ -47,7 +47,7 @@ module Auth
         session.delete :return_to
       else
         flash.now[:error] = @account.error_text
-        render 'login', locals: { message: flash.now[:error] }, status: :unauthorized
+        render 'alert', locals: { message: flash.now[:error] }, status: :unauthorized
       end
     end
 
