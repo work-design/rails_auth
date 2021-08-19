@@ -10,6 +10,7 @@ require 'pry'
 require 'viter'
 require 'viter/dev_server_runner'
 
+Viter::Exporter.export
 APP_ROOT = File.expand_path('../test/dummy', __dir__)
 Dir.chdir(APP_ROOT) do
   Viter::DevServerRunner.run(ARGV)
