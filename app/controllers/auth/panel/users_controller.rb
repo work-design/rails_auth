@@ -27,20 +27,6 @@ module Auth
       end
     end
 
-    def show
-    end
-
-    def edit
-    end
-
-    def update
-      @user.assign_attributes user_params
-
-      unless @user.save
-        render :edit, locals: { model: @user }, status: :unprocessable_entity
-      end
-    end
-
     def edit_user_tags
       @user_tags = UserTag.default_where(default_params).page(params[:page])
     end
@@ -57,10 +43,6 @@ module Auth
           render :create and return
         end
       end
-    end
-
-    def destroy
-      @user.destroy
     end
 
     private

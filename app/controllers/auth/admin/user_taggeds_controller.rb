@@ -24,20 +24,6 @@ module Auth
       @users = User.default_where('accounts.identity': params[:identity])
     end
 
-    def show
-    end
-
-    def edit
-    end
-
-    def update
-      @user_tagged.assign_attributes(user_tagged_params)
-
-      unless @user_tagged.save
-        render :edit, locals: { model: @user_tagged }, status: :unprocessable_entity
-      end
-    end
-
     def destroy
       if params[:id]
         @user_tagged = @user_tag.user_taggeds.find params[:id]

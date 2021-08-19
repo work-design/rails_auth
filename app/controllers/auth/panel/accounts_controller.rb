@@ -21,24 +21,6 @@ module Auth
       end
     end
 
-    def show
-    end
-
-    def edit
-    end
-
-    def update
-      @account.assign_attributes(account_params)
-
-      unless @account.save
-        render :edit, locals: { model: @account }, status: :unprocessable_entity
-      end
-    end
-
-    def destroy
-      @account.destroy
-    end
-
     private
     def set_account
       @account = Account.find(params[:id])

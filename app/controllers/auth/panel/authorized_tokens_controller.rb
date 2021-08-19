@@ -8,21 +8,6 @@ module Auth
       @authorized_tokens = AuthorizedToken.default_where(q_params).order(id: :desc).page(params[:page])
     end
 
-    def edit
-    end
-
-    def update
-      @authorized_token.assign_attributes(authorized_token_params)
-
-      unless @authorized_token.save
-        render :edit, locals: { model: @authorized_token }, status: :unprocessable_entity
-      end
-    end
-
-    def destroy
-      @authorized_token.destroy
-    end
-
     private
     def set_authorized_token
       @authorized_token = AuthorizedToken.find(params[:id])

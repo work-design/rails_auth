@@ -26,21 +26,6 @@ module Auth
       @users = User.default_where(id: user_ids).order(id: :desc)
     end
 
-    def edit
-    end
-
-    def update
-      @user_tag.assign_attributes(user_tag_params)
-
-      unless @user_tag.save
-        render :edit, locals: { model: @user_tag }, status: :unprocessable_entity
-      end
-    end
-
-    def destroy
-      @user_tag.destroy
-    end
-
     private
     def set_user_tag
       @user_tag = UserTag.find(params[:id])
