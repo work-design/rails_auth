@@ -14,14 +14,14 @@ GIT
 
 GIT
   remote: https://github.com/qinmingyuan/viter.git
-  revision: f968d4fda8e222edddb6de5fda188ada08dbfc06
+  revision: 997cbc807babe4380f76ad0051518de12135702e
   specs:
     viter (0.1.0)
       rails
 
 GIT
   remote: https://github.com/work-design/rails_com.git
-  revision: 24b1121fa3b18a85338898faa49d1825083f23a7
+  revision: bf428f44a710076427f2fbd7b9b7e24de8146275
   specs:
     rails_com (1.2.9)
       acme-client
@@ -185,8 +185,6 @@ GEM
     nio4r (2.5.7)
     nokogiri (1.11.7)
       mini_portile2 (~> 2.5.0)
-      racc (~> 1.4)
-    nokogiri (1.11.7-x86_64-linux)
       racc (~> 1.4)
     pg (1.2.3)
     pry (0.14.1)

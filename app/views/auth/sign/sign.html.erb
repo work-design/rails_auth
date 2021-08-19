@@ -9,7 +9,7 @@
     <div class="panel-block is-justify-content-center">
       <%= link_to({ controller: 'wechat/wechat', action: 'login' }) do %>
         <i class="fab fa-weixin"></i><span>微信扫码</span>
-      <% end %>
+      <% end if defined? RailsWechat %>
     </div>
   </div>
 </div>
