@@ -14,7 +14,7 @@ GIT
 
 GIT
   remote: https://github.com/qinmingyuan/viter.git
-  revision: 177947509000b53236f7e03e19a3df4a911c5a12
+  revision: f968d4fda8e222edddb6de5fda188ada08dbfc06
   specs:
     viter (0.1.0)
       rails
@@ -185,6 +185,8 @@ GEM
     nio4r (2.5.7)
     nokogiri (1.11.7)
       mini_portile2 (~> 2.5.0)
+      racc (~> 1.4)
+    nokogiri (1.11.7-x86_64-linux)
       racc (~> 1.4)
     pg (1.2.3)
     pry (0.14.1)
