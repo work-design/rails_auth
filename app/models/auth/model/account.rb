@@ -67,7 +67,10 @@ module Auth
           end
         end
       else
-        self.save
+        self.class.transaction do
+          self.save!
+          user.save!
+        end
       end
 
       user

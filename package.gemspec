@@ -1,9 +1,8 @@
 $:.push File.expand_path('lib', __dir__)
-require 'rails_auth/version'
 
 Gem::Specification.new do |s|
   s.name = 'rails_auth'
-  s.version = RailsAuth::VERSION
+  s.version = '1.2.0'
   s.authors = ['qinmingyuan']
   s.email = ['mingyuan0715@foxmail.com']
   s.homepage = 'https://github.com/work-design/rails_auth'
