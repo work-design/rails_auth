@@ -4,7 +4,8 @@
     <%= link_to t('auth.panel.users.index.title'), { controller: 'auth/panel/users' }, class: active_helper(users: ['index', 'show'], active: 'is-active') %>
     <%= link_to t('auth.panel.accounts.index.title'), { controller: 'auth/panel/accounts' }, class: active_helper(controllers: 'accounts', active: 'is-active') %>
     <%= link_to t('auth.panel.oauth_users.index.title'), { controller: 'auth/panel/oauth_users' }, class: active_helper(controllers: 'oauth_users', active: 'is-active') %>
-    <%= link_to t('auth.panel.authorized_tokens.index.title'), { controller: 'auth/panel/authorized_tokens' }, class: active_helper(controllers: 'authorized_tokens', active: 'is-active') -%>
+    <%= link_to t('auth.panel.authorized_tokens.index.title'), { controller: 'auth/panel/authorized_tokens' }, class: active_helper(controllers: 'authorized_tokens', active: 'is-active') %>
+    <%= link_to t('auth.panel.apps.index.title'), { controller: 'auth/panel/apps' }, class: active_helper(controllers: 'apps', active: 'is-active') -%>
   <% end %>
   <a class="menu-label" data-action="menu#toggle">
     <i class="fas fa-users fa-fw"></i>

@@ -12,7 +12,10 @@ module Auth
       attribute :access_counter, :integer, default: 0
       attribute :mock_member, :boolean, default: false
       attribute :mock_user, :boolean, default: false
+      attribute :business, :string
+      attribute :appid, :string
 
+      belongs_to :app, foreign_key: :appid, primary_key: :appid, optional: true
       belongs_to :account, foreign_key: :identity, primary_key: :identity, optional: true
       belongs_to :oauth_user, foreign_key: :identity, primary_key: :identity, optional: true
       has_one :user, through: :account
@@ -49,9 +52,9 @@ module Auth
     # 采用 JWT 生成 token
     # 优点1： 通过 payload 记录部分数据，可以跟服务端数据对比，或者防止服务数据删除后验证。
     def generate_token
-      key = id.to_s  # todo generate key for more
+      key = app&.jwt_key || id.to_s  # todo generate key for more
       payload = {
-        iss: self.id,
+        iss: identity,
         exp_float: expire_at.to_f,
         exp: expire_at.to_i  # should be int
       }

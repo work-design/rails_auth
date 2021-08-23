@@ -49,6 +49,7 @@ Rails.application.routes.draw do
       resources :accounts
       resources :oauth_users
       resources :authorized_tokens
+      resources :apps
     end
 
     namespace :my, defaults: { namespace: 'my' } do
