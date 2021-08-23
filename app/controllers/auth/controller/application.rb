@@ -119,19 +119,5 @@ module Auth
       logger.debug "\e[35m  Set session Auth token: #{session[:auth_token]}  \e[0m"
     end
 
-    def verify_auth_token(auth_token)
-      begin
-        payload, _ = JWT.decode(auth_token, nil, false, verify_expiration: false)
-        return unless payload
-        key = AuthorizedToken.find_by(id: payload['iss'])&.session_key
-
-        payload, _ = JWT.decode(auth_token, key.to_s, true, 'sub' => payload['sub'], verify_sub: true, verify_expiration: false)
-        payload['sub'].constantize.find payload['iss']
-      rescue => e
-        session.delete :auth_token
-        logger.debug e.full_message(highlight: true, order: :top)
-      end
-    end
-
   end
 end
