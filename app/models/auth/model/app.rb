@@ -1,5 +1,5 @@
 module Auth
-  module App
+  module Model::App
     extend ActiveSupport::Concern
 
     included do
