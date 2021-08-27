@@ -4,8 +4,10 @@
   <p class="has-text-grey"><%= model.appid %></p>
 </td>
 <td>
-  <%= image_tag model.avatar_url, class: 'image is-24x24' if model.avatar_url.present? %>
-  <%= model.name %>
+  <div class="is-several">
+    <%= image_tag model.avatar_url, class: 'image is-24x24' if model.avatar_url.present? %>
+    <%= model.name %>
+  </div>
 </td>
 <td><time data-controller="time"><%= model.created_at.to_s(:rfc822) %></time></td>
 <td>
