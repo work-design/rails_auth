@@ -16,5 +16,7 @@ gem 'jbuilder'
 gem 'kaminari'
 gem 'awesome_print'
 gem 'sdoc'
-gem 'pry-rails'
-gem 'pry-stack_explorer'
+
+group :development, :test do
+  gem 'debug', '>= 1.0.0.beta'
+end
