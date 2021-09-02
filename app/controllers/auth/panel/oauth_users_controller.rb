@@ -1,6 +1,5 @@
 module Auth
   class Panel::OauthUsersController < Panel::BaseController
-    before_action :set_oauth_user, only: [:show, :edit, :update, :destroy]
 
     def index
       q_params = {}
@@ -10,14 +9,10 @@ module Auth
     end
 
     private
-    def set_oauth_user
-      @oauth_user = OauthUser.find(params[:id])
-    end
-
-    def oauth_user_params
-      params.fetch(:oauth_user, {}).permit(
+    def oauth_user_permit_params
+      [
         :name
-      )
+      ]
     end
 
   end

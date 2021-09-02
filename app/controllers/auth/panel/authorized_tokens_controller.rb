@@ -1,6 +1,5 @@
 module Auth
   class Panel::AuthorizedTokensController < Panel::BaseController
-    before_action :set_authorized_token, only: [:edit, :update, :destroy]
 
     def index
       q_params = {}
@@ -9,16 +8,12 @@ module Auth
     end
 
     private
-    def set_authorized_token
-      @authorized_token = AuthorizedToken.find(params[:id])
-    end
-
-    def authorized_token_params
-      params.fetch(:authorized_token, {}).permit(
+    def authorized_token_permit_params
+      [
         :token,
         :expire_at,
         :session_key
-      )
+      ]
     end
 
   end

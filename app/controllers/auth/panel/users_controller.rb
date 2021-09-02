@@ -61,17 +61,15 @@ module Auth
       q
     end
 
-    def user_params
-      p = params.fetch(:user, {}).permit(
+    def user_permit_params
+      [
         :name,
         :avatar,
         :password,
         :disabled,
         user_tag_ids: [],
         accounts_attributes: {}
-      )
-      p.merge! super if defined? super
-      p
+      ]
     end
 
   end
