@@ -1,5 +1,5 @@
 // todo add identity in location
-import { Controller } from 'stimulus'
+import { Controller } from '@hotwired/stimulus'
 
 class LoginController extends Controller {
   static targets = ['identity']
