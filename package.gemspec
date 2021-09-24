@@ -1,5 +1,3 @@
-$:.push File.expand_path('lib', __dir__)
-
 Gem::Specification.new do |s|
   s.name = 'rails_auth'
   s.version = '1.2.0'

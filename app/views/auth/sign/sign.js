@@ -1,13 +1,9 @@
 // todo add identity in location
 import { Controller } from '@hotwired/stimulus'
+//import { application } from 'rails_design_engine_ui/javascripts/stimulus'
 
 class LoginController extends Controller {
   static targets = ['identity']
-
-
-  connect() {
-    console.debug('local controller connected:', this.identifier)
-  }
 
   assignLocation(element) {
     let identity = element.target.value
