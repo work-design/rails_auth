@@ -1,24 +1,16 @@
-<%= form_with theme: nil, scope: nil, url: { action: 'login' }, id: 'join_form' do |f| %>
+<%= form_with theme: 'weui', scope: nil, url: { action: 'login' } do |f| %>
   <% params.permit(:uid, :request_id).each do |key, value| %>
     <%= f.hidden_field key, value: value, autocomplete: false %>
   <% end %>
-<% end %>
-<div class="weui-form">
   <div class="weui-form__control-area">
     <div class="weui-cells__group weui-cells__group_form">
       <div class="weui-cells__title">注册/登陆</div>
       <div class="weui-cells weui-cells_form">
-        <div class="weui-cell weui-cell_active">
-          <div class="weui-cell__bd">
-            <%= text_field_tag :identity, params[:identity], placeholder: Auth::VerifyToken.human_attribute_name(:identity), autocomplete: false, data: { login_target: 'identity' }, form: 'join_form', class: 'weui-input' %>
-          </div>
-        </div>
+        <%= f.text_field :identity, value: params[:identity], placeholder: Auth::VerifyToken.human_attribute_name(:identity), autocomplete: false, data: { login_target: 'identity' } %>
         <div class="weui-cell weui-cell_active weui-cell_vcode">
-          <div class="weui-cell__bd">
-            <%= text_field_tag :token, nil, placeholder: Auth::VerifyToken.human_attribute_name(:token), form: 'join_form', class: 'weui-input' %>
-          </div>
-          <div class="weui-cell__ft">
-            <%= button_to({ action: 'code', identity: params[:identity] }, form: { id: 'sign_token' }, class: 'weui-btn weui-btn_default weui-vcode-btn') do %>
+          <%= f.text_field :token, placeholder: Auth::VerifyToken.human_attribute_name(:token), wrap: { all: nil } %>
+          <div class="weui-cell__ft" data-controller="common" id="sign_token">
+            <%= link_to({ action: 'code', identity: params[:identity] }, data: { action: 'common#link' }, class: 'weui-btn weui-btn_default weui-vcode-btn') do %>
               <span><%= t('.token') %></span>
             <% end %>
           </div>
@@ -26,7 +18,5 @@
       </div>
     </div>
   </div>
-  <div class="weui-form__opr-area">
-    <%= submit_tag '提交', form: 'join_form', class: 'weui-btn weui-btn_primary' %>
-  </div>
-</div>
+  <%= f.submit '提交' %>
+<% end %>
