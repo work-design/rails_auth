@@ -1,40 +1,6 @@
 <table class="table is-fullwidth">
   <tbody>
-  <% @accounts.each do |account| %>
-    <tr>
-      <td>
-        <span><%= account.identity %></span>
-        <% if account.confirmed %>
-          <i class="fas fa-check-circle has-text-success"></i>
-        <% else %>
-          <i class="fas fa-question-circle has-text-warning"></i>
-        <% end %>
-      </td>
-      <td>
-        <% unless account.confirmed %>
-          <%= form_with url: { action: 'confirm', id: account.id }, wrap: { all: nil, input: 'field is-narrow', submit: nil }, origin: { offset: nil }, class: 'field is-horizontal' do |f| %>
-            <div class="field-body">
-              <%= f.text_field :token, class: 'input', placeholder: '验证码' %>
-              <div class="field is-narrow">
-                <%= f.submit %>
-              </div>
-            </div>
-          <% end %>
-        <% end %>
-      </td>
-      <td>
-        <% unless account.confirmed %>
-          <button data-controller="login" data-url="<%= url_for(action: 'token', id: account.id) %>" data-login-time-value="3" data-action="login#countDown" class="button is-link">发送验证码</button>
-        <% end %>
-        <%= button_to({ action: 'destroy', id: account.id }, method: :delete, aria: { label: t('.destroy'), confirm: '删除后此账号无法用于登陆' }, class: 'button') do %>
-          <i class="fas fa-trash-alt"></i>
-        <% end unless account.last? %>
-        <%= button_to({ action: 'select', id: account.id }, method: :put, aria: { label: t('.select') }, class: 'button') do %>
-          <i class="fas fa-chevron-circle-right"></i>
-        <% end unless account == current_account %>
-      </td>
-    </tr>
-  <% end %>
+  <%= render partial: 'account', collection: @accounts, as: :model %>
   <tr>
     <td>
       <%= form_with url: { action: 'create' }, method: :post, id: 'add_account' %>
