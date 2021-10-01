@@ -13,7 +13,7 @@ module Auth
 
       has_many :authorized_tokens, foreign_key: :identity, primary_key: :identity, dependent: :delete_all
       has_many :verify_tokens, foreign_key: :identity, primary_key: :identity, dependent: :delete_all
-      has_many :oauth_users, foreign_key: :identity, primary_key: :identity, dependent: :nullify, inverse_of: :account
+      has_many :oauth_users, foreign_key: :identity, primary_key: :identity, inverse_of: :account
 
       scope :without_user, -> { where(user_id: nil) }
       scope :confirmed, -> { where(confirmed: true) }
