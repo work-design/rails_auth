@@ -14,10 +14,11 @@ module Auth
       attribute :mock_user, :boolean, default: false
       attribute :business, :string
       attribute :appid, :string
+      attribute :uid, :string
 
       belongs_to :app, foreign_key: :appid, primary_key: :appid, optional: true
       belongs_to :account, foreign_key: :identity, primary_key: :identity, optional: true
-      belongs_to :oauth_user, foreign_key: :identity, primary_key: :identity, optional: true
+      belongs_to :oauth_user, foreign_key: :uid, primary_key: :uid, optional: true
       has_one :user, through: :account
       has_many :members, class_name: 'Org::Member', foreign_key: :identity, primary_key: :identity
 
