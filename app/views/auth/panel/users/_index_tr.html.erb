@@ -11,7 +11,7 @@
       <%= link_to({ action: 'edit_user_tags', id: model.id }, aria: { label: t('.tag') }, class: 'button is-small is-rounded is-light') do %>
         <i class="fas fa-user-tag"></i>
       <% end %>
-      <%= link_to({ controller: 'roled/admin/who_roles', action: 'edit', who_type: 'User', who_id: model.id }, aria: { label: t('.role') }, class: 'button is-small is-rounded is-light') do %>
+      <%= link_to({ controller: 'roled/admin/who_roles', action: 'edit', who_type: model.class_name, who_id: model.id }, aria: { label: t('.role') }, class: 'button is-small is-rounded is-light') do %>
         <i class="fas fa-user-lock"></i>
       <% end if defined?(RailsRole) %>
       <%= link_to({ action: 'edit', id: model.id }, data: { turbo_frame: 'modal' }, aria: { label: t('.edit') }, class: 'button is-small is-rounded is-light') do %>
