@@ -29,10 +29,15 @@ module Auth
       validates :uid, presence: true
 
       after_save_commit :sync_to_user, if: -> { (saved_changes.keys & ['name', 'avatar_url']) && avatar_url.present? }
+      after_save :sync_to_authorized_tokens, if: -> { saved_change_to_identity? }
     end
 
     def sync_to_user
       UserCopyAvatarJob.perform_later(self)
+    end
+
+    def sync_to_authorized_tokens
+      authorized_tokens.update_all(identity: identity)
     end
 
     def save_info(info_params)
