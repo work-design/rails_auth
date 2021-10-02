@@ -9,7 +9,6 @@ module Auth
       attribute :source, :string
 
       belongs_to :user, optional: true
-      belongs_to :inviter, class_name: 'User', optional: true
 
       has_many :authorized_tokens, foreign_key: :identity, primary_key: :identity, dependent: :delete_all
       has_many :verify_tokens, foreign_key: :identity, primary_key: :identity, dependent: :delete_all
