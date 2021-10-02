@@ -3,8 +3,6 @@ zh:
     enum:
       auth/oauth_user:
         type:
-          Wechat::WechatUser: 微信公众号
-          Wechat::ProgramUser: 微信小程序
           Auth::GithubUser: Github用户
           Auth::FacebookUser: Facebook用户
         provider:
