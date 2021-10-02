@@ -59,7 +59,6 @@ module Auth
       if params[:uid].present?
         oauth_user = OauthUser.find_by uid: params[:uid]
         if oauth_user
-          oauth_user.request_id ||= params[:request_id]
           oauth_user.account = self
           self.class.transaction do
             self.save!

@@ -65,7 +65,6 @@ module Auth
         :token,
         :invited_code,
         :uid,
-        :request_id,  # wechat request id
         :device_id  # ios设备注册
       )
 
