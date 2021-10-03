@@ -1,5 +1,6 @@
 <th>
   <p><%= Auth::AuthorizedToken.human_attribute_name(:identity) %></p>
+  <p class="has-text-grey"><%= Auth::AuthorizedToken.human_attribute_name(:uid) %></p>
   <p><%= Auth::AuthorizedToken.human_attribute_name(:token) %></p>
   <p><%= Auth::AuthorizedToken.human_attribute_name(:expire_at) %></p>
   <p><%= Auth::AuthorizedToken.human_attribute_name(:session_key) %></p>
