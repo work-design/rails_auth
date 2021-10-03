@@ -20,19 +20,17 @@
   <% end %>
 </td>
 <td>
-  <div class="tags">
-    <% model.oauth_users.each do |oauth_user| %>
-      <%= link_to oauth_user.type_i18n, { controller: 'oauth_users', user_id: model.id }, class: 'tag' %>
-    <% end %>
-  </div>
-</td>
-<td>
   <% model.accounts.each do |account| %>
-    <p>
+    <div>
       <%= link_to({ controller: 'accounts', user_id: model.id }, aria: { label: t('auth.panel.accounts.index.title') }) do %>
         <i class="fas fa-portrait"></i>
       <% end %>
       <span><%= account.identity %></span>
-    </p>
+      <span class="tags">
+        <% account.oauth_users.each do |oauth_user| %>
+          <%= link_to oauth_user.type_i18n, { controller: 'oauth_users', identity: account.identity }, class: 'tag' %>
+        <% end %>
+      </span>
+    </div>
   <% end %>
 </td>
