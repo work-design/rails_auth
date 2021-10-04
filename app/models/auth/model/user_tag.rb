@@ -9,7 +9,7 @@ module Auth
       belongs_to :organ, optional: true
       belongs_to :user_tagging, polymorphic: true, optional: true
 
-      has_many :user_taggeds, dependent: :destroy
+      has_many :user_taggeds, dependent: :destroy_async
       has_many :users, through: :user_taggeds
 
       validates :name, presence: true

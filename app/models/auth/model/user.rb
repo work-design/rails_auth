@@ -28,7 +28,7 @@ module Auth
       has_many :confirmed_accounts, -> { where(confirmed: true) }, class_name: 'Account'
       accepts_nested_attributes_for :accounts
 
-      has_many :user_taggeds, dependent: :destroy
+      has_many :user_taggeds, dependent: :destroy_async
       has_many :user_tags, through: :user_taggeds
 
       has_one_attached :avatar
