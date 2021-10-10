@@ -23,7 +23,7 @@
   <% model.accounts.each do |account| %>
     <div>
       <%= link_to({ controller: 'accounts', user_id: model.id }, aria: { label: t('auth.panel.accounts.index.title') }) do %>
-        <i class="fas fa-portrait"></i>
+        <i class="fa-light fa-portrait"></i>
       <% end %>
       <span><%= account.identity %></span>
       <span class="tags">
