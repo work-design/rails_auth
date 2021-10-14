@@ -12,7 +12,7 @@
       <td><%= oauth_user.account&.identity %></td>
       <td>
         <%= link_to t('.unbind'), { controller: 'auth/board/oauth_users', action: 'destroy', id: oauth_user.id }, method: :delete, data: { confirm: t('.confirm') }, class: 'button is-warning' %>
-        <%= link_to t('.update_token'), "/auth/#{oauth_user.provider}", class: 'button is-success' %>
+        <%= button_to t('.update_token'), "/auth/#{oauth_user.provider}", class: 'button is-success' %>
       </td>
     </tr>
   <% end %>
@@ -21,7 +21,9 @@
       <td><%= provider %></td>
       <td colspan="2"></td>
       <td>
-        <%= link_to t('.bind'), "/auth/#{provider}", class: 'button is-info' %>
+        <%= button_to "/auth/#{provider}", data: { turbo: false }, class: 'button is-info' do %>
+          <span>绑定</span>
+        <% end %>
       </td>
     </tr>
   <% end %>

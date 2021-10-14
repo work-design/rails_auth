@@ -18,11 +18,6 @@ Rails.application.routes.draw do
         post 'reset/:token' => :update
       end
     end
-
-    scope :auth, controller: :oauths, as: 'oauths' do
-      match ':provider/callback' => :create, via: [:get, :post]
-      match ':provider/failure' => :failure, via: [:get, :post]
-    end
     resources :users, only: [:index, :show]
 
     namespace :admin, defaults: { namespace: 'admin' } do
@@ -71,6 +66,11 @@ Rails.application.routes.draw do
         end
       end
     end
+  end
+
+  scope :auth, module: 'auth', controller: :oauths, as: 'oauths' do
+    match ':provider/callback' => :create, via: [:get, :post]
+    match ':provider/failure' => :failure, via: [:get, :post]
   end
 
 end

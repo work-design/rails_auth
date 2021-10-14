@@ -1,13 +1,13 @@
 GIT
   remote: https://github.com/qinmingyuan/default_where.git
-  revision: bd6a1950ec0aea030cf741a38b58111a20d14b38
+  revision: 98bf013d5e4b6733b047c8c15e0f9c445f4f1984
   specs:
     default_where (2.3.0)
       activerecord (>= 4.0, <= 7.0)
 
 GIT
   remote: https://github.com/work-design/rails_com.git
-  revision: 061b45039cc66ffff0fb798c19717761897e451f
+  revision: 3af7acecca30116eb8f5cc8bd31ad4cc167ef83e
   specs:
     rails_com (1.2.9)
       acme-client
@@ -24,14 +24,14 @@ GIT
 
 GIT
   remote: https://github.com/work-design/rails_design.git
-  revision: 9dd45dbb2fe715bbe68c3502e3d198d3fdefa73a
+  revision: 7498ce9e8436d982113e60db21f996cfa2f3669a
   specs:
     rails_design (0.0.1)
       rails
 
 GIT
   remote: https://github.com/work-design/rails_extend.git
-  revision: a01f5bcfbe28b070f92ef4edefe781497cc69a23
+  revision: f339c960ec81768c1cc80190f0713f9766150082
   specs:
     rails_extend (1.0.0)
       rails (>= 5.0)
@@ -152,9 +152,8 @@ GEM
       activesupport (>= 5.0)
     http-2-next (0.5.0)
     http-form_data (2.3.0)
-    httpx (0.17.0)
+    httpx (0.18.0)
       http-2-next (>= 0.4.1)
-      timers
     i18n (1.8.10)
       concurrent-ruby (~> 1.0)
     io-console (0.5.9)
@@ -189,8 +188,6 @@ GEM
     nio4r (2.5.8)
     nokogiri (1.12.5)
       mini_portile2 (~> 2.6.1)
-      racc (~> 1.4)
-    nokogiri (1.12.5-x86_64-linux)
       racc (~> 1.4)
     pg (1.2.3)
     puma (5.5.0)
@@ -240,7 +237,6 @@ GEM
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
     thor (1.1.0)
-    timers (4.3.3)
     turbo-rails (0.8.1)
       rails (>= 6.0.0)
     tzinfo (2.0.4)
