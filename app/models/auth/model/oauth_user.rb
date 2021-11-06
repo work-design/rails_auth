@@ -38,6 +38,10 @@ module Auth
       UserCopyAvatarJob.perform_later(self)
     end
 
+    def info_blank?
+      attributes['name'].blank? && attributes['avatar_url'].blank?
+    end
+
     def sync_to_authorized_tokens
       authorized_tokens.update_all(identity: identity)
     end

@@ -82,6 +82,10 @@ module Auth
       OauthUser.options_i18n(:provider).values.map(&:to_s) - oauth_providers
     end
 
+    def info_blank?
+      oauth_users.map(&:info_blank?).include? true
+    end
+
     def invalid_authorized_token
       self.authorized_tokens.destroy
     end
