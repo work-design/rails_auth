@@ -83,7 +83,7 @@ module Auth
     end
 
     def info_blank?
-      oauth_users.map(&:info_blank?).include? true
+      oauth_users.map(&:info_blank?).all? true
     end
 
     def invalid_authorized_token
