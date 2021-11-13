@@ -54,7 +54,7 @@ module Auth
 
       return unless token
       @current_authorized_token = AuthorizedToken.find_by(token: token)
-      logger.debug "\e[35m  Login as Auth Token: #{@current_authorized_token.id}  \e[0m"
+      logger.debug "\e[35m  Login as Auth Token: #{@current_authorized_token&.id}  \e[0m"
       @current_authorized_token
     end
 
