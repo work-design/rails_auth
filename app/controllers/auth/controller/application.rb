@@ -53,8 +53,9 @@ module Auth
       token = params[:auth_token].presence || request.headers['Auth-Token'].presence || request.headers['Authorization'].to_s.split(' ').last.presence || session[:auth_token]
 
       return unless token
-      logger.debug "\e[35m  Login as Auth Token: #{token.id}  \e[0m"
       @current_authorized_token = AuthorizedToken.find_by(token: token)
+      logger.debug "\e[35m  Login as Auth Token: #{@current_authorized_token.id}  \e[0m"
+      @current_authorized_token
     end
 
     def store_location(path = nil)
