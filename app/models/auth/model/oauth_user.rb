@@ -34,8 +34,16 @@ module Auth
       after_save :sync_to_authorized_tokens, if: -> { saved_change_to_identity? }
     end
 
-    def sync_to_user
+    def sync_to_user_later
       UserCopyAvatarJob.perform_later(self)
+    end
+
+    def sync_to_user
+      if user
+        user.name ||= name
+        user.avatar_url ||= avatar_url
+        user.save
+      end
     end
 
     def info_blank?
