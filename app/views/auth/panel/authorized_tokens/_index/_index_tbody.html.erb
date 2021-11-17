@@ -3,9 +3,9 @@
   <p class="has-text-grey"><%= model.uid %></p>
   <p><%= model.token %></p>
   <p>
-    <time data-controller="time" class="has-text-grey"><%= model.created_at.to_s(:rfc822) %></time>
+    <time data-controller="time" class="has-text-grey"><%= model.created_at.to_s(:iso8601) %></time>
     <span>~</span>
-    <time data-controller="time" class="<%= model.expired? ? 'has-text-danger' : 'has-text-success' %>"><%= model.expire_at.to_s(:rfc822) %></time>
+    <time data-controller="time" class="<%= model.expired? ? 'has-text-danger' : 'has-text-success' %>"><%= model.expire_at.to_s(:iso8601) %></time>
   </p>
   <p><%= model.session_key %></p>
 </td>
