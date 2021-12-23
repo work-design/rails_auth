@@ -78,6 +78,8 @@ module Auth
       if avatar.present?
         avatar.url
       end
+    rescue
+      nil
     end
 
     def valid_providers
