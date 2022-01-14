@@ -41,7 +41,11 @@ Rails.application.routes.draw do
           patch 'user_tags' => :update_user_tags
         end
       end
-      resources :accounts
+      resources :accounts do
+        member do
+          delete :prune
+        end
+      end
       resources :oauth_users
       resources :authorized_tokens
       resources :apps
