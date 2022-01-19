@@ -13,7 +13,7 @@
   </div>
   <p class="has-text-grey"><%= model.identity %></p>
 </td>
-<td><time data-controller="time"><%= model.created_at.to_s(:iso8601) %></time></td>
+<td><time data-controller="time"><%= model.created_at.to_formatted_s(:iso8601) %></time></td>
 <td>
   <%= link_to model.user.id, { controller: 'users', action: 'show', id: model.user.id }, data: { turbo_frame: 'modal' }, text: true if model.user %>
 </td>

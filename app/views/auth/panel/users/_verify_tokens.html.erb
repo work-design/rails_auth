@@ -5,7 +5,7 @@
       <td class="six wide" style="overflow: scroll">
         <pre><%= vt.token %></pre>
       </td>
-      <td><time data-controller="time"><%= vt.expire_at.to_s(:iso8601) %></time></td>
+      <td><time data-controller="time"><%= vt.expire_at.to_formatted_s(:iso8601) %></time></td>
     </tr>
   <% end %>
 </table>
