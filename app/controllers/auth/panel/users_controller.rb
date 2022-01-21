@@ -61,6 +61,10 @@ module Auth
       q
     end
 
+    def user_params
+      params.fetch(:user, {}).permit(*user_permit_params)
+    end
+
     def user_permit_params
       [
         :name,
