@@ -1,7 +1,7 @@
 <td>
   <p><%= model.identity %></p>
   <p class="has-text-grey"><%= model.uid %></p>
-  <p><%= model.token %></p>
+  <p><code class="is-wrap"><%= model.token %></code></p>
   <p>
     <time data-controller="time" class="has-text-grey"><%= model.created_at.to_formatted_s(:iso8601) %></time>
     <span>~</span>
