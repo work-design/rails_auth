@@ -23,7 +23,7 @@
     <% unless model.confirmed %>
       <button data-controller="login" data-url="<%= url_for(action: 'token', id: model.id) %>" data-login-time-value="3" data-action="login#countDown" class="button is-link">发送验证码</button>
     <% end %>
-    <%= button_to({ action: 'destroy', id: model.id }, method: :delete, aria: { label: t('.destroy'), confirm: '删除后此账号无法用于登陆' }, class: 'button') do %>
+    <%= button_to({ action: 'destroy', id: model.id }, method: :delete, aria: { label: t('.destroy'), confirm: '删除后此账号无法用于登录' }, class: 'button') do %>
       <i class="fa-light fa-trash"></i>
     <% end unless model.last? %>
     <%= button_to({ action: 'select', id: model.id }, method: :put, aria: { label: t('.select') }, class: 'button') do %>
