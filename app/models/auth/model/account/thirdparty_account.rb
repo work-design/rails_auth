@@ -7,12 +7,11 @@ module Auth
 
       validates :identity, uniqueness: { scope: :source }
 
-      around_create :init_user
+      before_create :init_user
     end
 
     def init_user
       user || build_user
-      yield
       user.save
     end
 
