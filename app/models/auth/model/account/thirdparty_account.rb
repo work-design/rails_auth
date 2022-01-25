@@ -1,18 +1,18 @@
-module Auth::Model::Account::ThirdpartyAccount
-  extend ActiveSupport::Concern
+module Auth
+  module Model::Account::ThirdpartyAccount
+    extend ActiveSupport::Concern
 
-  included do
-    attribute :confirmed, :boolean, default: true
+    included do
+      attribute :confirmed, :boolean, default: true
 
-    validates :identity, uniqueness: { scope: :source }
-  end
+      validates :identity, uniqueness: { scope: :source }
 
-  def can_login?(params = {})
-    if user.nil?
-      join(params)
+      before_create :init_user
     end
 
-    user
-  end
+    def init_user
+      user || build_user
+    end
 
+  end
 end
