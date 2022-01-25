@@ -82,13 +82,6 @@ module Auth
       logger.debug "\e[35m  Login by account #{account.id} as user: #{account.user_id}  \e[0m"
     end
 
-    def login_by_oauth_user(oauth_user)
-      @current_account = oauth_user.account
-      set_login_var
-
-      logger.debug "\e[35m  Login by oauth user #{oauth_user.id} as user: #{@current_account&.user_id}  \e[0m"
-    end
-
     def login_by_token
       token = Auth::AuthorizedToken.find_by token: params[:auth_token]
       if token

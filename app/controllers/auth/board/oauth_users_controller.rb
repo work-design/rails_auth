@@ -13,7 +13,7 @@ module Auth
       @oauth_user.init_user
 
       if @oauth_user.save
-        login_by_oauth_user @oauth_user
+        login_by_account @oauth_user.account
         render json: { oauth_user: @oauth_user.as_json, user: @oauth_user.user.as_json }
       end
     end

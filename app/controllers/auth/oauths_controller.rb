@@ -15,7 +15,7 @@ module Auth
       @oauth_user.save
 
       if @oauth_user.user
-        login_by_oauth_user(@oauth_user)
+        login_by_account(@oauth_user.account)
         redirect_to session[:return_to] || RailsAuth.config.default_return_path
         session.delete :return_to
       else
