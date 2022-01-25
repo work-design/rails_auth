@@ -7,6 +7,8 @@ module Auth
 
       validates :identity, uniqueness: { scope: :source }
 
+      # belongs_to 的 autosave 是在 before_save 中定义的
+      # 
       after_validation :init_user
     end
 
