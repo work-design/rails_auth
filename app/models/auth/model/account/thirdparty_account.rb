@@ -12,7 +12,6 @@ module Auth
 
     def init_user
       user || build_user
-      logger.debug 'ddkdkdkdkdkdkdkdkd'
     end
 
   end
