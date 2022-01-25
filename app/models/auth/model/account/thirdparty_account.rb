@@ -12,7 +12,7 @@ module Auth
 
     def init_user
       user || build_user
-      user.save
+      puts 'ddkdkdkdkdkdkdkdkd'
     end
 
   end
