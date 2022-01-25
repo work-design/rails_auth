@@ -8,12 +8,11 @@ module Auth
       validates :identity, uniqueness: { scope: :source }
 
       before_create :init_user
-      before_save :init_user
     end
 
     def init_user
       user || build_user
-      puts 'ddkdkdkdkdkdkdkdkd'
+      logger.debug 'ddkdkdkdkdkdkdkdkd'
     end
 
   end
