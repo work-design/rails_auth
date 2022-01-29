@@ -46,7 +46,7 @@ module Auth
         render 'login_ok', locals: { return_to: session[:return_to] || RailsAuth.config.default_return_path, message: t('.success') }
         session.delete :return_to
       else
-        flash.now[:error] = @account.error_text
+        flash.now[:error] = @account.error_text.presence || @account.user.error_text
         render 'alert', locals: { message: flash.now[:error] }, status: :unauthorized
       end
     end
