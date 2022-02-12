@@ -42,7 +42,7 @@ GIT
 
 GIT
   remote: https://github.com/work-design/rails_vite.git
-  revision: cc6400247ec7529ccd4fee04b8d9e691af5e0301
+  revision: d55b4c49933bbbd5a515b8df9211d2c4c5dac262
   specs:
     rails_vite (0.0.1)
       rails
