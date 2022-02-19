@@ -18,7 +18,7 @@ module Auth
       else
         @code = 'authorized_token'
       end
-      auth_url = url_for({ controller: '/auth/sign', action: 'sign', form_id: params[:form_id], identity: params[:identity] })
+      auth_url = url_for(controller: '/auth/sign', action: 'sign', form_id: params[:form_id], identity: params[:identity])
 
       if request.format.html?
         render 'require_login', locals: { url: auth_url }, layout: 'application', status: 401
