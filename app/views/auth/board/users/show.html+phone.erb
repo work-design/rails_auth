@@ -1,16 +1,16 @@
-<%= link_to({ action: 'edit', item: 'name'}, class: 'weui-cell weui-cell_access') do %>
+<%= link_to({ action: 'edit', item: 'name' }, class: 'weui-cell weui-cell_access') do %>
   <div class="weui-cell__bd">
     <%= Auth::User.human_attribute_name(:name) %>
   </div>
   <div class="weui-cell__ft"><%= @user.name %></div>
 <% end %>
-<div class="weui-cell">
+<div class="weui-cell weui-cell_access">
   <div class="weui-cell__bd">
     <%= Auth::User.human_attribute_name(:accounts) %>
   </div>
   <div class="weui-cell__ft">
-    <% @user.accounts.each do |account| %>
+  <% @user.accounts.each do |account| %>
     <p><%= account.identity %></p>
-    <% end %>
+  <% end %>
   </div>
 </div>
