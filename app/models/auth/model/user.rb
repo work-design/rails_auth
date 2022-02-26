@@ -66,7 +66,7 @@ module Auth
       self
     end
 
-    def avatar_url
+    def avatar_urlx
       if avatar.attached?
         return avatar.url
       end
