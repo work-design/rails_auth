@@ -21,7 +21,7 @@ module Auth
       auth_url = url_for(controller: '/auth/sign', action: 'sign', form_id: params[:form_id], identity: params[:identity])
 
       if request.format.html?
-        render 'require_login', locals: { url: auth_url }, layout: 'application', status: 401
+        render 'require_login', locals: { url: auth_url }, layout: 'raw', status: 401
       else
         render 'require_login', locals: { url: auth_url }, status: 401
       end
