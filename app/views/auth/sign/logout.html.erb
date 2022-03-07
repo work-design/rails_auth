@@ -1,4 +1,1 @@
-<%= javascript_tag nonce: true do %>
-  Turbo.clearCache()
-  Turbo.visit('<%= root_url %>', { action: 'replace' })
-<% end %>
+<div data-controller="visit" data-visit-url-value="<%= root_url %>"></div>
