@@ -43,14 +43,20 @@ module Auth
 
     def current_account
       return @current_account if defined?(@current_account)
-      @current_account = current_authorized_token&.account
+
+      if params[:disposable_token].present?
+        @current_account = DisposableToken.find_by(token: params[:disposable_token])&.account
+      else
+        @current_account = current_authorized_token&.account
+      end
+
       logger.debug "\e[35m  Login as account: #{@current_account&.id}  \e[0m"
       @current_account
     end
 
     def current_authorized_token
       return @current_authorized_token if defined?(@current_authorized_token)
-      token = params[:auth_token].presence || request.headers['Auth-Token'].presence || request.headers['Authorization'].to_s.split(' ').last.presence || session[:auth_token]
+      token = request.headers['Authorization'].to_s.split(' ').last.presence || session[:auth_token]
 
       return unless token
       @current_authorized_token = AuthorizedToken.find_by(token: token)

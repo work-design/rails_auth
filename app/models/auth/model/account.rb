@@ -10,6 +10,7 @@ module Auth
 
       belongs_to :user, optional: true
 
+      has_one :disposable_token, foreign_key: :identity, primary_key: :identity, dependent: :delete
       has_many :authorized_tokens, foreign_key: :identity, primary_key: :identity, dependent: :delete_all
       has_many :verify_tokens, foreign_key: :identity, primary_key: :identity, dependent: :delete_all
       has_many :oauth_users, foreign_key: :identity, primary_key: :identity, inverse_of: :account
@@ -87,6 +88,11 @@ module Auth
 
     def auth_token
       authorized_token.token
+    end
+
+    def once_token
+      disposable_token || create_disposable_token
+      disposable_token.token
     end
 
     def reset_token
