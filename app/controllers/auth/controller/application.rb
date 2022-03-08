@@ -110,7 +110,7 @@ module Auth
       return unless defined?(@current_account) && @current_account
 
       token = @current_account.auth_token
-      headers['Auth-Token'] = token
+      headers['Authorization'] = token
       session[:auth_token] = token
       logger.debug "\e[35m  Set session Auth token: #{session[:auth_token]}  \e[0m"
     end
