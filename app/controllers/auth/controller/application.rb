@@ -56,7 +56,7 @@ module Auth
 
     def current_authorized_token
       return @current_authorized_token if defined?(@current_authorized_token)
-      token = request.headers['Authorization'].to_s.split(' ').last.presence || session[:auth_token]
+      token = params[:auth_token].presence || request.headers['Authorization'].to_s.split(' ').last.presence || session[:auth_token]
 
       return unless token
       @current_authorized_token = AuthorizedToken.find_by(token: token)
