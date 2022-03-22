@@ -1,5 +1,5 @@
 <h4 class="panel-heading has-text-centered"><%= t('.title') %></h4>
-<%= form_with scope: nil, url: { action: 'login' }, wrap: { all: nil, all_submit: nil, input: 'field control', submit: 'panel-block' }, offset: { submit: nil } do |f| %>
+<%= form_with scope: nil, url: { action: 'login' }, wrap: { input: 'field control', submit: 'panel-block' }, all: { normal: nil, submit: nil }, offset: { submit: nil } do |f| %>
   <div class="panel-block is-wrapped">
     <%= f.text_field :identity, value: params[:identity], placeholder: Auth::Account.human_attribute_name(:identity) %>
     <%= f.password_field :password, placeholder: Auth::User.human_attribute_name(:password), autocomplete: false %>

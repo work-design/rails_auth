@@ -2,7 +2,7 @@
 <div class="column is-6">
   <div class="panel" style="width: 300px;" id="auth_form">
     <h4 class="panel-heading has-text-centered"><%= t('.title') %></h4>
-    <%= form_with scope: nil, url: { controller: 'auth/sign', action: 'sign' }, wrap: { all: nil, all_submit: nil, input: 'control', submit: 'control' }, offset: { submit: nil }, class: 'panel-block is-flex-direction-column' do |f| %>
+    <%= form_with scope: nil, url: { controller: 'auth/sign', action: 'sign' }, wrap: { input: 'control', submit: 'control' }, all: { normal: nil, submit: nil }, offset: { submit: nil }, class: 'panel-block is-flex-direction-column' do |f| %>
       <%= f.text_field :identity, value: params[:identity], placeholder: Auth::Account.human_attribute_name(:identity), class: 'input' %>
       <%= f.submit t('.next'), class: 'button is-primary is-fullwidth' %>
     <% end %>

@@ -1,5 +1,5 @@
 <h4 class="panel-heading has-text-centered">请注册</h4>
-<%= form_with theme: nil, scope: nil, url: { action: 'login' }, wrap: { input: nil, all: nil, submit: 'panel-block' } do |f| %>
+<%= form_with theme: nil, scope: nil, url: { action: 'login' }, wrap: { submit: 'panel-block' } do |f| %>
   <div class="panel-block is-wrapped">
     <div class="field control">
       <%= f.text_field :identity, value: params[:identity], disabled: true, class: 'input' %>
