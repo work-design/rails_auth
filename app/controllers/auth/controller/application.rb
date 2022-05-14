@@ -50,8 +50,8 @@ module Auth
             dt = DisposableToken.lock(true).find(params[:disposable_token])
             dt.used_at = Time.current
             dt.save!
+            @current_account = dt.account
           end
-          @current_account = dt&.account
         rescue ActiveRecord::RecordNotFound => e
         end
       else

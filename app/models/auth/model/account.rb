@@ -92,7 +92,7 @@ module Auth
 
     def once_token
       disposable_token || create_disposable_token
-      disposable_token.token
+      disposable_token.id
     end
 
     def reset_token
