@@ -45,7 +45,15 @@ module Auth
       return @current_account if defined?(@current_account)
 
       if params[:disposable_token].present?
-        @current_account = DisposableToken.find_by(id: params[:disposable_token])&.account
+        begin
+          DisposableToken.transaction do
+            dt = DisposableToken.lock(true).find(params[:disposable_token])
+            dt.used_at = Time.current
+            dt.save!
+          end
+          @current_account = dt&.account
+        rescue ActiveRecord::RecordNotFound => e
+        end
       else
         @current_account = current_authorized_token&.account
       end
