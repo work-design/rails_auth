@@ -45,7 +45,7 @@ module Auth
       return @current_account if defined?(@current_account)
 
       if params[:disposable_token].present?
-        @current_account = DisposableToken.find_by(token: params[:disposable_token])&.account
+        @current_account = DisposableToken.find_by(id: params[:disposable_token])&.account
       else
         @current_account = current_authorized_token&.account
       end
