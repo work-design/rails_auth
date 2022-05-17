@@ -20,7 +20,6 @@ module Auth
       belongs_to :account, foreign_key: :identity, primary_key: :identity, optional: true
       belongs_to :oauth_user, foreign_key: :uid, primary_key: :uid, optional: true
       has_one :user, through: :account
-      has_many :members, class_name: 'Org::Member', foreign_key: :identity, primary_key: :identity
 
       scope :valid, -> { where('expire_at >= ?', Time.current).order(expire_at: :desc) }
       validates :token, presence: true
