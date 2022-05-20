@@ -53,6 +53,7 @@ module Auth
             @current_account = dt.account
           end
         rescue ActiveRecord::RecordNotFound => e
+          raise Com::DisposableTokenError
         end
       else
         @current_account = current_authorized_token&.account
