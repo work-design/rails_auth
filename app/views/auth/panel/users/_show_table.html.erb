@@ -16,7 +16,7 @@
 </tr>
 <tr>
   <td class="has-text-right"><%= Auth::User.human_attribute_name(:last_login_at) %></td>
-  <td><time data-controller="time"><%= @user.last_login_at.to_fs(:iso8601) if @user.last_login_at %></time></td>
+  <td><time data-controller="time"><%= @user.last_login_at&.to_fs(:iso8601) %></time></td>
 </tr>
 <tr>
   <td class="has-text-right"><%= Auth::User.human_attribute_name(:created_at) %></td>

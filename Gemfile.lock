@@ -7,7 +7,7 @@ GIT
 
 GIT
   remote: https://github.com/work-design/rails_com.git
-  revision: 34e187ff2d9e4ce4b5d9479dbdcb769196ad11cd
+  revision: b6c72e56596e81d8efdfa3eb5fe78f7e7c99260a
   specs:
     rails_com (1.3.0)
       acme-client
@@ -15,26 +15,23 @@ GIT
       closure_tree (>= 7.3)
       default_where (~> 2.2)
       http-form_data (~> 2.3)
-      httpx (~> 0.16)
+      httpx
       kaminari
       net-http
-      net-imap
-      net-pop
-      net-smtp
-      rails (>= 6.1)
+      rails (>= 7.0)
       rails_extend
       turbo-rails
 
 GIT
   remote: https://github.com/work-design/rails_design.git
-  revision: ffaa9e985f187d03af1a133024c9ebdf280e74f5
+  revision: 5bb92649f75d1be5671e0645aed92e3f22893fb6
   specs:
     rails_design (0.0.1)
       rails
 
 GIT
   remote: https://github.com/work-design/rails_extend.git
-  revision: 039966ec6d31aad5e8e60a0a1853ea16bd0963f8
+  revision: 4dd6986bf4c2397b1fb79a4f12d0bdefdef3849f
   specs:
     rails_extend (1.0.1)
       rails (>= 5.0)
@@ -199,8 +196,6 @@ GEM
     nokogiri (1.13.6)
       mini_portile2 (~> 2.8.0)
       racc (~> 1.4)
-    nokogiri (1.13.6-x86_64-linux)
-      racc (~> 1.4)
     pg (1.3.5)
     psych (4.0.4)
       stringio
@@ -248,8 +243,9 @@ GEM
     strscan (3.0.3)
     thor (1.2.1)
     timeout (0.2.0)
-    turbo-rails (1.0.1)
+    turbo-rails (1.1.1)
       actionpack (>= 6.0.0)
+      activejob (>= 6.0.0)
       railties (>= 6.0.0)
     tzinfo (2.0.4)
       concurrent-ruby (~> 1.0)
