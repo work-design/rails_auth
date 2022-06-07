@@ -4,9 +4,10 @@ module Auth
     extend ActiveSupport::Concern
 
     included do
-      helper_method :current_user, :current_account, :current_authorized_token
+      helper_method :current_user, :current_client, :current_account, :current_authorized_token
       after_action :set_auth_token
     end
+
 
     def require_login(return_to: nil)
       return if current_user
@@ -34,10 +35,25 @@ module Auth
       render 'require_authorized_token', status: 401
     end
 
+    def client_params
+      if current_client
+        { member_id: current_client.id }
+      else
+        { user_id: current_user.id }
+      end
+    end
+
+    def current_client
+      return @current_client if defined?(@current_client)
+      @current_client = current_authorized_token.member || Org::Member.first
+      logger.debug "\e[35m  Current Client: #{@current_client&.id}  \e[0m"
+      @current_client
+    end
+
     def current_user
-      return @current_user if @current_user
+      return @current_user if defined?(@current_user)
       @current_user = current_account&.user
-      logger.debug "\e[35m  Login as User: #{@current_user&.id}  \e[0m"
+      logger.debug "\e[35m  Current User: #{@current_user&.id}  \e[0m"
       @current_user
     end
 

@@ -16,6 +16,8 @@ module Auth
       attribute :appid, :string
       attribute :uid, :string
 
+      belongs_to :member, class_name: 'Org::Member', optional: true
+
       belongs_to :app, foreign_key: :appid, primary_key: :appid, optional: true
       belongs_to :account, foreign_key: :identity, primary_key: :identity, optional: true
       belongs_to :oauth_user, foreign_key: :uid, primary_key: :uid, optional: true
