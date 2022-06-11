@@ -45,7 +45,7 @@ module Auth
 
     def current_client
       return @current_client if defined?(@current_client)
-      @current_client = current_authorized_token.member || Org::Member.first
+      @current_client = current_authorized_token&.member
       logger.debug "\e[35m  Current Client: #{@current_client&.id}  \e[0m"
       @current_client
     end
