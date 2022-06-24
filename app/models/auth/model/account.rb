@@ -19,6 +19,10 @@ module Auth
       scope :confirmed, -> { where(confirmed: true) }
 
       validates :identity, presence: true, uniqueness: { scope: [:confirmed] }
+
+      # belongs_to 的 autosave 是在 before_save 中定义的
+      #
+      after_validation :init_user, if: -> { confirmed? && confirmed_changed? }
     end
 
     def last?
@@ -27,6 +31,10 @@ module Auth
 
     def can_login_by_password?
       confirmed && user && user.password_digest.present?
+    end
+
+    def init_user
+      user || build_user
     end
 
     def verify_token?(token)
