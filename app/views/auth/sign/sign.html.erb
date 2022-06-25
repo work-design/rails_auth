@@ -6,10 +6,14 @@
       <%= f.text_field :identity, value: params[:identity], placeholder: Auth::Account.human_attribute_name(:identity), required: true, class: 'input' %>
       <%= f.submit t('.next'), class: 'button is-primary is-fullwidth' %>
     <% end %>
-    <div class="panel-block has-background-white is-justify-content-center">
+    <div class="panel-block has-background-white is-justify-content-space-around">
       <%= link_to({ controller: 'wechat/wechat', action: 'login' }) do %>
         <i class="fa-brands fa-weixin has-text-success"></i>
         <span class="has-text-grey">微信扫码</span>
+      <% end if defined? RailsWechat %>
+      <%= link_to({ controller: 'wechat/qy_wechat', action: 'login' }) do %>
+        <i class="fa-brands fa-weixin has-text-primary"></i>
+        <span class="has-text-grey">企业微信</span>
       <% end if defined? RailsWechat %>
     </div>
   </div>
