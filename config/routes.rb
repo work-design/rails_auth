@@ -52,6 +52,7 @@ Rails.application.routes.draw do
     end
 
     namespace :my, defaults: { namespace: 'my' } do
+      root 'home#index'
       resource :user
     end
 
