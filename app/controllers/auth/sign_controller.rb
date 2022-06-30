@@ -2,6 +2,7 @@ module Auth
   class SignController < BaseController
     before_action :check_login, except: [:logout]
     skip_after_action :set_auth_token, only: [:logout]
+    before_action :set_oauth_user, only: [:bind]
 
     def sign
       if params[:identity]
@@ -15,6 +16,9 @@ module Auth
       else
         render 'sign'
       end
+    end
+
+    def bind
     end
 
     def code
@@ -79,6 +83,10 @@ module Auth
         q.merge! source: 'web'
       end
       q
+    end
+
+    def set_oauth_user
+      @oauth_user = OauthUser.find_by uid: params[:uid]
     end
 
     def check_login

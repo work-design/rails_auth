@@ -6,6 +6,7 @@ Rails.application.routes.draw do
       get 'sign/token' => :token
       post 'sign/mock' => :mock
       get 'sign/code' => :code
+      get :bind
       post :login
       get :logout
     end
