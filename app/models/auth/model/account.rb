@@ -48,28 +48,19 @@ module Auth
     end
 
     def can_login?(params = {})
-      if params[:token].present?
-        if verify_token?(params[:token])
-          user || build_user
-          user.assign_attributes params.slice(:name, :password, :password_confirmation, :invited_code)
-        else
-          return false
-        end
+      if params[:token].present? && verify_token?(params[:token])
+        init_user
+        user.assign_attributes params.slice(:name, :password, :password_confirmation, :invited_code)
+        user.save
+        return user
       end
 
-      if params[:password].present?
-        unless user.can_login?(params[:password])
-          return false
-        end
-      end
-      user.last_login_at = Time.current
-
-      self.class.transaction do
-        self.save!
-        user.save!
+      if params[:password].present? && user.can_login?(params[:password])
+        user.update last_login_at: Time.current
+        return user
       end
 
-      user
+      false
     end
 
     def xx
