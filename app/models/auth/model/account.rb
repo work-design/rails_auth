@@ -64,20 +64,9 @@ module Auth
       end
       user.last_login_at = Time.current
 
-      if params[:uid].present?
-        oauth_user = OauthUser.find_by uid: params[:uid]
-        if oauth_user
-          oauth_user.account = self
-          self.class.transaction do
-            self.save!
-            oauth_user.save!
-          end
-        end
-      else
-        self.class.transaction do
-          self.save!
-          user.save!
-        end
+      self.class.transaction do
+        self.save!
+        user.save!
       end
 
       user

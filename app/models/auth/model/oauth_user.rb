@@ -30,12 +30,35 @@ module Auth
       validates :provider, presence: true
       validates :uid, presence: true
 
-      after_save_commit :sync_to_user, if: -> { (saved_changes.keys & ['name', 'avatar_url']) && avatar_url.present? }
+      before_validation :init_account, if: -> { identity_changed? }
       after_save :sync_to_authorized_tokens, if: -> { saved_change_to_identity? }
+      after_save_commit :sync_to_user, if: -> { (saved_changes.keys & ['name', 'avatar_url']) && avatar_url.present? }
     end
 
     def sync_to_user_later
       UserCopyAvatarJob.perform_later(self)
+    end
+
+    def temp_identity
+      unionid || uid
+    end
+
+    def init_account
+      return if account
+      if !RegexpUtil.china_mobile?(identity)
+        build_account(type: 'Auth::ThirdpartyAccount')
+      else
+        temp_account = ::Auth::Account.find_by(identity: temp_identity)
+        if temp_account
+          temp_account.type = 'Auth::MobileAccount'
+          temp_account.identity = self.identity
+          temp_account.confirmed = true
+          temp_account.save
+          self.account = temp_account
+        else
+          build_account(type: 'Auth::MobileAccount', confirmed: true)
+        end
+      end
     end
 
     def sync_to_user
