@@ -2,7 +2,7 @@ module Auth
   class SignController < BaseController
     before_action :check_login, except: [:logout]
     skip_after_action :set_auth_token, only: [:logout]
-    before_action :set_oauth_user, only: [:bind]
+    before_action :set_oauth_user, only: [:bind, :direct]
 
     def sign
       if params[:identity]
@@ -18,9 +18,6 @@ module Auth
       end
     end
 
-    def bind
-    end
-
     def code
       @verify_token = VerifyToken.build_with_identity(params[:identity])
 
@@ -31,14 +28,13 @@ module Auth
       end
     end
 
-    def mock
-      @account = DeviceAccount.find_or_initialize_by(identity: params[:device_id])
+    def bind
+    end
 
-      if @account.can_login?(user_params)
-        login_by_account @account
-        render 'login_ok'
-      else
-        render 'new', locals: { model: @account }, status: :unprocessable_entity
+    def direct
+      @oauth_user.generate_account
+      if @oauth_user.save
+        login_by_account @oauth_user.account
       end
     end
 

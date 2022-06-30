@@ -51,7 +51,11 @@ module Auth
       if params[:token].present? && verify_token?(params[:token])
         init_user
         user.assign_attributes params.slice(:name, :password, :password_confirmation, :invited_code)
-        user.save
+        user.last_login_at = Time.current
+        self.class.transaction do
+          user.save!
+          self.save!
+        end
         return user
       end
 

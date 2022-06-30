@@ -19,6 +19,6 @@
   <%= f.submit t('.next'), wrap: { all: nil } %>
 <% end %>
 
-<%= button_to({}, class: 'weui-btn weui-btn_primary', style: 'margin-top: -90px') do %>
+<%= button_to({ action: 'direct' }, params: { uid: @oauth_user.uid }, class: 'weui-btn weui-btn_primary', style: 'margin-top: -90px') do %>
   <span>不绑定</span>
 <% end %>

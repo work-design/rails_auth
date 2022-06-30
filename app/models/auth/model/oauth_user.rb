@@ -43,10 +43,14 @@ module Auth
       unionid || uid
     end
 
+    def generate_account
+      self.identity = temp_identity
+    end
+
     def init_account
       return if account
       if !RegexpUtil.china_mobile?(identity)
-        build_account(type: 'Auth::ThirdpartyAccount')
+        build_account(type: 'Auth::ThirdpartyAccount', confirmed: true)
       else
         temp_account = ::Auth::Account.find_by(identity: temp_identity)
         if temp_account

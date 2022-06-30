@@ -3,10 +3,10 @@ Rails.application.routes.draw do
   namespace 'auth', defaults: { business: 'auth' } do
     controller :sign do
       match :sign, via: [:get, :post]
-      get 'sign/token' => :token
-      post 'sign/mock' => :mock
-      get 'sign/code' => :code
+      get :token
+      get :code
       get :bind
+      post :direct
       post :login
       get :logout
     end
