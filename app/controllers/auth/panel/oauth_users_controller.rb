@@ -11,7 +11,8 @@ module Auth
     private
     def oauth_user_permit_params
       [
-        :name
+        :name,
+        :remark
       ]
     end
 
