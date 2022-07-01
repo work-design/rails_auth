@@ -48,10 +48,6 @@ module Auth
       @current_authorized_token.update identity: @account.identity
     end
 
-    def destroy
-      @account.destroy
-    end
-
     private
     def set_account
       @account = current_user.accounts.find(params[:id])
