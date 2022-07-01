@@ -1,6 +1,13 @@
+<%= link_to({ controller: 'auth/board/accounts' }, class: 'weui-cell weui-cell_access') do %>
+  <div class="weui-cell__bd">
+    <i class="fa-solid fa-fw fa-users"></i>
+    <span><%= t('auth.board.accounts.index.title') %></span>
+  </div>
+  <div class="weui-cell__ft"></div>
+<% end %>
 <%= link_to({ controller: '/auth/sign', action: 'logout' }, class: 'weui-cell weui-cell_access') do %>
   <div class="weui-cell__bd">
-    <i class="fa-light fa-fw fa-right-from-bracket has-text-warning-dark"></i>
+    <i class="fa-solid fa-fw fa-right-from-bracket has-text-warning-dark"></i>
     <span><%= t('auth.sign.logout.title') %></span>
   </div>
   <div class="weui-cell__ft"></div>
