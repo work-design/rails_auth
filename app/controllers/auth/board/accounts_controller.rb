@@ -10,9 +10,6 @@ module Auth
       @account = Account.new
     end
 
-    def edit
-    end
-
     def create
       set_new_account
       @account.assign_attributes account_params
@@ -21,14 +18,6 @@ module Auth
         @verify_token = @account.verify_token
         @verify_token.send_out
       else
-        render :edit, locals: { model: @account }, status: :unprocessable_entity
-      end
-    end
-
-    def update
-      @account.assign_attributes(account_params)
-
-      unless @account.save
         render :edit, locals: { model: @account }, status: :unprocessable_entity
       end
     end
