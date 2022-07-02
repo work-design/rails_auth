@@ -9,7 +9,7 @@
   </td>
   <td>
     <% unless model.confirmed %>
-      <%= form_with url: { action: 'confirm', id: model.id }, wrap: { all: nil, input: 'field is-narrow', submit: nil }, origin: { offset: nil }, class: 'field is-horizontal' do |f| %>
+      <%= form_with url: { action: 'confirm', id: model.id }, wrap: { input: 'field is-narrow', submit: nil }, all: { submit: nil }, before_wrap: { submit: nil }, class: 'field is-horizontal' do |f| %>
         <div class="field-body">
           <%= f.text_field :token, class: 'input', placeholder: '验证码' %>
           <div class="field is-narrow">
