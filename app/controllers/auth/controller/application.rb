@@ -38,8 +38,10 @@ module Auth
     def client_params
       if current_client
         { member_id: current_client.id }
-      else
+      elsif current_user
         { user_id: current_user.id, member_id: nil }
+      else
+        { user_id: nil, member_id: nil }
       end
     end
 

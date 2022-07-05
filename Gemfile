@@ -5,8 +5,7 @@ gemspec
 gem 'rails'
 gem 'puma'
 gem 'pg'
-
-gem 'default_where', github: 'qinmingyuan/default_where'
+gem 'propshaft'
 
 gem 'rails_extend', github: 'work-design/rails_extend'
 gem 'rails_com', github: 'work-design/rails_com'
