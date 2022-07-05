@@ -39,7 +39,7 @@ module Auth
       if current_client
         { member_id: current_client.id }
       else
-        { user_id: current_user.id }
+        { user_id: current_user.id, member_id: nil }
       end
     end
 
