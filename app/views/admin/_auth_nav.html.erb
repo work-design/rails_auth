@@ -4,7 +4,7 @@
     <span><%= t('auth.admin.title') %></span>
     <i class="fa-solid dropdown"></i>
   </a>
-  <div class="menu-list">
+  <div class="menu-list" data-empty-target="content">
     <%= link_to t('auth.admin.oauth_users.index.title'), { controller: 'auth/admin/oauth_users' }, class: active_helper(controllers: 'oauth_users', active: 'is-active') %>
     <%= link_to t('auth.admin.user_tags.index.title'), { controller: 'auth/admin/user_tags' }, class: active_helper(controllers: ['user_tags', 'user_taggeds'], active: 'is-active') %>
   </div>

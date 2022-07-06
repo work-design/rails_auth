@@ -4,7 +4,7 @@
     <span><%= t('auth.panel.title') %></span>
     <i class="fa-solid dropdown"></i>
   </a>
-  <div class="menu-list">
+  <div class="menu-list" data-empty-target="content">
     <%# link_to 'User Panel', panel_panel_users_path, class: active_helper(paths: panel_panel_users_path) %>
     <%= link_to t('auth.panel.users.index.title'), { controller: 'auth/panel/users' }, class: active_helper(users: ['index', 'show'], active: 'is-active') %>
     <%= link_to t('auth.panel.accounts.index.title'), { controller: 'auth/panel/accounts' }, class: active_helper(controllers: 'accounts', active: 'is-active') %>
