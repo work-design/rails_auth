@@ -1,15 +1,15 @@
-<div class="<%= active_helper(modules: 'auth/panel', active: 'menu ex-accordion is-active', item: 'menu ex-accordion') %>" data-controller="menu">
-  <%= content_tag :div, class: 'menu-list' do %>
-    <%# link_to 'User Panel', panel_panel_users_path, class: active_helper(paths: panel_panel_users_path) %>
-    <%= link_to t('auth.panel.users.index.title'), { controller: 'auth/panel/users' }, class: active_helper(users: ['index', 'show'], active: 'is-active') %>
-    <%= link_to t('auth.panel.accounts.index.title'), { controller: 'auth/panel/accounts' }, class: active_helper(controllers: 'accounts', active: 'is-active') %>
-    <%= link_to t('auth.panel.oauth_users.index.title'), { controller: 'auth/panel/oauth_users' }, class: active_helper(controllers: 'oauth_users', active: 'is-active') %>
-    <%= link_to t('auth.panel.authorized_tokens.index.title'), { controller: 'auth/panel/authorized_tokens' }, class: active_helper(controllers: 'authorized_tokens', active: 'is-active') %>
-    <%= link_to t('auth.panel.apps.index.title'), { controller: 'auth/panel/apps' }, class: active_helper(controllers: 'apps', active: 'is-active') -%>
-  <% end %>
+<div class="<%= active_helper(modules: 'auth/panel', active: 'menu ex-accordion is-active', item: 'menu ex-accordion') %>" data-controller="menu empty">
   <a class="menu-label" data-action="menu#toggle">
     <i class="fa-solid fa-users fa-fw"></i>
     <span><%= t('auth.panel.title') %></span>
     <i class="fa-solid dropdown"></i>
   </a>
+  <div class="menu-list">
+    <%# link_to 'User Panel', panel_panel_users_path, class: active_helper(paths: panel_panel_users_path) %>
+    <%= link_to t('auth.panel.users.index.title'), { controller: 'auth/panel/users' }, class: active_helper(users: ['index', 'show'], active: 'is-active') %>
+    <%= link_to t('auth.panel.accounts.index.title'), { controller: 'auth/panel/accounts' }, class: active_helper(controllers: 'accounts', active: 'is-active') %>
+    <%= link_to t('auth.panel.oauth_users.index.title'), { controller: 'auth/panel/oauth_users' }, class: active_helper(controllers: 'oauth_users', active: 'is-active') %>
+    <%= link_to t('auth.panel.authorized_tokens.index.title'), { controller: 'auth/panel/authorized_tokens' }, class: active_helper(controllers: 'authorized_tokens', active: 'is-active') %>
+    <%= link_to t('auth.panel.apps.index.title'), { controller: 'auth/panel/apps' }, class: active_helper(controllers: 'apps', active: 'is-active') %>
+  </div>
 </div>
