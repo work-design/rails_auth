@@ -67,6 +67,7 @@ module Auth
         :uid,
         :device_id  # ios设备注册
       )
+      q[:identity].strip!
 
       if session[:return_to]
         r = URI.decode_www_form(URI(session[:return_to]).query.to_s).to_h
