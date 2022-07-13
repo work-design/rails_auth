@@ -23,6 +23,15 @@ module Auth
       # belongs_to 的 autosave 是在 before_save 中定义的
       #
       after_validation :init_user, if: -> { confirmed? && confirmed_changed? }
+      after_save_commit :sync_user_later, if: -> { saved_change_to_user_id? }
+    end
+
+    def sync_user_later
+      AccountSyncUserJob.perform_later(self)
+    end
+
+    def sync_user
+
     end
 
     def last?
