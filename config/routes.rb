@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  scope RailsExtend.default_routes_scope do
+  scope RailsCom.default_routes_scope do
     namespace 'auth', defaults: { business: 'auth' } do
       controller :sign do
         match :sign, via: [:get, :post]
