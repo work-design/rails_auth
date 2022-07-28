@@ -52,6 +52,7 @@ module Auth
     end
 
     def logout
+      current_authorized_token&.destroy
       session.delete :auth_token
     end
 
