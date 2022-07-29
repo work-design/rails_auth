@@ -34,7 +34,6 @@
   </p>
 <% end %>
 </td>
-<% if defined?(RailsRole) %>
 <td>
   <div class="tags">
     <% model.roles.pluck(:name).each do |role| %>
@@ -45,4 +44,3 @@
     <% end %>
   </div>
 </td>
-<% end %>
