@@ -2,7 +2,7 @@ module Auth
   class SignController < BaseController
     before_action :check_login, except: [:logout]
     skip_after_action :set_auth_token, only: [:logout]
-    before_action :set_oauth_user, only: [:bind, :direct, :bind_create]
+    before_action :set_oauth_user, only: [:bind, :direct, :bind_create, :sign]
     before_action :set_account, only: [:login, :token]
 
     def sign
@@ -54,7 +54,6 @@ module Auth
     def login
       if @account.can_login_by_password?(params[:password])
         login_by_account @account
-        bind_to_oauth_user if params[:uid]
 
         render 'login', locals: { return_to: session[:return_to] || RailsAuth.config.default_return_path, message: t('.success') }
         session.delete :return_to

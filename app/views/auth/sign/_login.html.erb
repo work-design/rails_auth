@@ -1,3 +1,11 @@
+<% if params[:uid] %>
+<div class="panel-block is-justify-content-center">
+  <span class="is-several">
+    <%= image_tag @oauth_user.avatar_url, class: 'image is-16x16' %>
+    <span><%= @oauth_user.name %></span>
+  </span>
+</div>
+<% end %>
 <h4 class="panel-heading has-text-centered"><%= t('.title') %></h4>
 <%= form_with scope: nil, url: { action: 'login' }, wrap: { input: 'field control', submit: 'panel-block has-background-white' }, all: { normal: nil, submit: nil }, before_wrap: { submit: nil } do |f| %>
   <% params.permit(:uid, :request_id).each do |key, value| %>
