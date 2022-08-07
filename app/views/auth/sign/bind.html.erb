@@ -2,19 +2,18 @@
 <div class="column is-6">
   <div class="panel" style="width: 300px" id="auth_form">
     <h4 class="panel-heading has-text-centered"><%= t('.title') %></h4>
+    <div class="panel-block is-justify-content-center">
+      <span class="is-several">
+        <%= image_tag @oauth_user.avatar_url, class: 'image is-16x16' %>
+        <span><%= @oauth_user.name %></span>
+      </span>
+    </div>
     <%= form_with scope: nil, url: { action: 'sign' }, wrap: { input: 'control', submit: 'control' }, all: { normal: nil, required: nil, submit: nil }, before_wrap: { submit: nil }, class: 'panel-block has-background-white is-flex-direction-column' do |f| %>
+      <% params.permit(:uid, :request_id).each do |key, value| %>
+        <%= f.hidden_field key, value: value %>
+      <% end %>
       <%= f.text_field :identity, value: params[:identity], placeholder: Auth::Account.human_attribute_name(:identity), required: true, class: 'input' %>
       <%= f.submit t('.next'), class: 'button is-primary is-fullwidth' %>
     <% end %>
-    <div class="panel-block has-background-white is-justify-content-space-around">
-      <%= link_to({ controller: 'wechat/wechat', action: 'login' }) do %>
-        <i class="fa-brands fa-weixin has-text-success"></i>
-        <span class="has-text-grey">微信扫码</span>
-      <% end if defined? RailsWechat %>
-      <%= link_to({ controller: 'wechat/qy_wechat', action: 'login' }) do %>
-        <i class="fa-brands fa-weixin has-text-primary"></i>
-        <span class="has-text-grey">企业微信</span>
-      <% end if defined? RailsWechat %>
-    </div>
   </div>
 </div>
