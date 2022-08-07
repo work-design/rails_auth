@@ -10,8 +10,8 @@
         <%= f.text_field :token, placeholder: Auth::VerifyToken.human_attribute_name(:token), autocomplete: false, class: 'input' %>
       </div>
       <div class="control" data-controller="common" id="sign_token">
-        <%= link_to({ action: 'code', identity: params[:identity] }, data: { action: 'common#link' }, class: 'button is-info') do %>
-          <span><%= t('.token') %></span>
+        <%= link_to({ action: 'code', identity: params[:identity] }, data: { controller: 'count-down', count_down_time_value: 60, action: 'common#link' }, disabled: true, class: 'button is-info') do %>
+          <span>重新发送</span>
         <% end %>
       </div>
     </div>
