@@ -1,7 +1,7 @@
 <% if params[:uid] %>
 <div class="panel-block is-justify-content-center">
   <span class="is-several">
-    <%= image_tag @oauth_user.avatar_url, class: 'image is-16x16' %>
+    <%= image_tag @oauth_user.avatar_url, class: 'image is-16x16' if @oauth_user.avatar_url.present? %>
     <span><%= @oauth_user.name %></span>
   </span>
 </div>
