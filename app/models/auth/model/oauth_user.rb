@@ -21,7 +21,7 @@ module Auth
       belongs_to :account, foreign_key: :identity, primary_key: :identity, inverse_of: :oauth_users, optional: true
 
       has_one :user, through: :account
-      has_many :authorized_tokens, foreign_key: :uid, primary_key: :uid, dependent: :delete_all
+      has_many :authorized_tokens, ->(o){ where(identity: o.identity) }, foreign_key: :uid, primary_key: :uid, dependent: :delete_all
       has_one :same_oauth_user, ->(o) { where.not(id: o.id).where.not(unionid: nil).where.not(identity: nil) }, class_name: self.name, foreign_key: :unionid, primary_key: :unionid
       has_many :same_oauth_users, ->(o) { where.not(id: o.id).where.not(unionid: nil) }, class_name: self.name, foreign_key: :unionid, primary_key: :unionid
 
@@ -94,6 +94,10 @@ module Auth
 
     def authorized_token
       authorized_tokens.valid.take || authorized_tokens.create
+    end
+
+    def auth_token
+      authorized_token.token
     end
 
     def generate_auth_token(**options)
