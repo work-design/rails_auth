@@ -46,7 +46,7 @@ module Auth
     def join
       @account = Account.build_with_identity(params[:identity])
 
-      if @account.can_login_by_token(params)
+      if @account.can_login_by_token?(params)
 
       end
     end
@@ -54,6 +54,7 @@ module Auth
     def login
       if @account.can_login_by_password?(params[:password])
         login_by_account @account
+        bind_to_oauth_user if params[:uid]
 
         render 'login', locals: { return_to: session[:return_to] || RailsAuth.config.default_return_path, message: t('.success') }
         session.delete :return_to
@@ -93,6 +94,10 @@ module Auth
       @account = Account.find_by(identity: params[:identity].strip)
     end
 
+    def set_oauth_user
+      @oauth_user = OauthUser.find_by uid: params[:uid]
+    end
+
     def password_params
       params.permit(:password)
     end
@@ -125,10 +130,6 @@ module Auth
         q.merge! source: 'web'
       end
       q
-    end
-
-    def set_oauth_user
-      @oauth_user = OauthUser.find_by uid: params[:uid]
     end
 
     def check_login
