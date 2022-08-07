@@ -42,6 +42,14 @@ module Auth
       @oauth_user.can_login?(login_params)
     end
 
+    def join
+      @account = Account.build_with_identity(params[:identity])
+
+      if @account.can_login_by_token(params)
+
+      end
+    end
+
     def login
       @account = Account.build_with_identity(params[:identity])
 
@@ -53,6 +61,10 @@ module Auth
         flash.now[:error] = @account.error_text.presence || @account.user.error_text
         render 'alert', locals: { message: flash.now[:error] }, status: :unauthorized
       end
+    end
+
+    def login_password
+
     end
 
     def logout

@@ -7,6 +7,7 @@ Rails.application.routes.draw do
         get :code
         get :bind
         post :direct
+        post :join
         post :login
         get :logout
       end
