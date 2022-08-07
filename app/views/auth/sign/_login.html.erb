@@ -5,7 +5,7 @@
     <%= f.password_field :password, placeholder: Auth::User.human_attribute_name(:password), autocomplete: false %>
   </div>
   <div class="has-text-right has-background-white" data-controller="common">
-    <%= link_to t('.token'), { controller: 'auth/sign', action: 'token', identity: params[:identity] }, data: { action: 'common#link' }, id: 'mobile_confirm', class: 'has-text-grey' %>
+    <%= link_to t('.token'), { controller: 'auth/sign', action: 'code_login', identity: params[:identity] }, data: { action: 'common#link' }, id: 'mobile_confirm', class: 'has-text-grey' %>
     <span>|</span>
     <%= link_to t('.forget'), { controller: 'auth/password', action: 'new' }, class: 'has-text-grey' %>
   </div>

@@ -3,12 +3,13 @@ Rails.application.routes.draw do
     namespace 'auth', defaults: { business: 'auth' } do
       controller :sign do
         match :sign, via: [:get, :post]
-        get :token
         get :code
+        get :code_login
         get :bind
         post :direct
         post :join
         post :login
+        post :token
         get :logout
       end
 

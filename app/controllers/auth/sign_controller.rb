@@ -3,7 +3,7 @@ module Auth
     before_action :check_login, except: [:logout]
     skip_after_action :set_auth_token, only: [:logout]
     before_action :set_oauth_user, only: [:bind, :direct, :bind_create]
-    before_action :set_account, only: [:login]
+    before_action :set_account, only: [:login, :token]
 
     def sign
       if params[:identity]
@@ -25,7 +25,15 @@ module Auth
       if @verify_token.send_out!
         render 'code', locals: { message: t('.sent') }
       else
-        render 'token', locals: { message: @verity_token.error_text }, status: :bad_request
+        render 'code_token', locals: { message: @verity_token.error_text }, status: :bad_request
+      end
+    end
+
+    def code_login
+      @verify_token = VerifyToken.build_with_identity(params[:identity])
+
+      if @verify_token.send_out!
+        render 'code_login', locals: { message: t('.sent') }
       end
     end
 
@@ -63,8 +71,16 @@ module Auth
       end
     end
 
-    def login_password
+    def token
+      if @account.can_login_by_token?(params[:token], **token_params)
+        login_by_account @account
 
+        render 'login', locals: { return_to: session[:return_to] || RailsAuth.config.default_return_path, message: t('.success') }
+        session.delete :return_to
+      else
+        flash.now[:error] = @account.error_text.presence || @account.user.error_text
+        render 'alert', locals: { message: flash.now[:error] }, status: :unauthorized
+      end
     end
 
     def logout
@@ -75,6 +91,14 @@ module Auth
     private
     def set_account
       @account = Account.find_by(identity: params[:identity].strip)
+    end
+
+    def password_params
+      params.permit(:password)
+    end
+
+    def token_params
+      params.permit(:token)
     end
 
     def login_params

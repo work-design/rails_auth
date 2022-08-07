@@ -45,7 +45,7 @@ module Auth
       user || build_user
     end
 
-    def can_login_by_token(token: , **params)
+    def can_login_by_token?(token, **params)
       check_token = self.verify_tokens.valid.find_by(token: token)
 
       if check_token
