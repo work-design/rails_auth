@@ -67,11 +67,7 @@ module Auth
     end
 
     def can_login_by_password?(password)
-      if user.can_login?(password)
-        user.last_login_at = Time.current
-        user.save
-        user
-      end
+      user.can_login?(password)
     end
 
     def xx

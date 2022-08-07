@@ -54,7 +54,8 @@ module Auth
     def login
       if @account.can_login_by_password?(params[:password])
         login_by_account @account
-        render 'login_ok', locals: { return_to: session[:return_to] || RailsAuth.config.default_return_path, message: t('.success') }
+
+        render 'login', locals: { return_to: session[:return_to] || RailsAuth.config.default_return_path, message: t('.success') }
         session.delete :return_to
       else
         flash.now[:error] = @account.error_text.presence || @account.user.error_text
@@ -73,7 +74,7 @@ module Auth
 
     private
     def set_account
-      Account.find_by(identity: params[:identity].strip)
+      @account = Account.find_by(identity: params[:identity].strip)
     end
 
     def login_params
