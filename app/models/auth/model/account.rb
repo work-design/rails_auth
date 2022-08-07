@@ -31,7 +31,6 @@ module Auth
     end
 
     def sync_user
-
     end
 
     def last?

@@ -41,7 +41,7 @@ module Auth
     def login
       @account = Account.build_with_identity(params[:identity])
 
-      if @account.can_login?(user_params)
+      if @account.can_login?(login_params)
         login_by_account @account
         render 'login_ok', locals: { return_to: session[:return_to] || RailsAuth.config.default_return_path, message: t('.success') }
         session.delete :return_to
@@ -57,7 +57,7 @@ module Auth
     end
 
     private
-    def user_params
+    def login_params
       q = params.permit(
         :name,
         :identity,
