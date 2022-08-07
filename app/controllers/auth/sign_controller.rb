@@ -2,7 +2,7 @@ module Auth
   class SignController < BaseController
     before_action :check_login, except: [:logout]
     skip_after_action :set_auth_token, only: [:logout]
-    before_action :set_oauth_user, only: [:bind, :direct]
+    before_action :set_oauth_user, only: [:bind, :direct, :bind_create]
 
     def sign
       if params[:identity]
@@ -36,6 +36,10 @@ module Auth
       if @oauth_user.save
         login_by_account @oauth_user.account
       end
+    end
+
+    def bind_create
+      @oauth_user.can_login?(login_params)
     end
 
     def login

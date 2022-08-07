@@ -45,34 +45,38 @@ module Auth
       user || build_user
     end
 
-    def verify_token?(token)
+    def can_login_by_token(token: , **params)
       check_token = self.verify_tokens.valid.find_by(token: token)
+
       if check_token
+        user || build_user
+        user.assign_attributes params.slice(:name, :password, :password_confirmation, :invited_code)
+        user.last_login_at = Time.current
         self.confirmed = true
+
+        self.class.transaction do
+          user.save!
+          self.save!
+        end
+
+        user
       else
         self.errors.add :base, :wrong_token
         false
       end
     end
 
-    def can_login?(params = {})
-      if params[:token].present? && verify_token?(params[:token])
-        init_user
-        user.assign_attributes params.slice(:name, :password, :password_confirmation, :invited_code)
+    def can_login_by_password?(password:, **params)
+      if user.can_login?(params[:password])
         user.last_login_at = Time.current
-        self.class.transaction do
-          user.save!
-          self.save!
-        end
-        return user
+        user.save
+        user
       end
 
-      if params[:password].present? && user.can_login?(params[:password])
-        user.update last_login_at: Time.current
-        return user
+      if params[:uid].present?
+        oauth_user = OauthUser.find_by uid: params[:uid]
+        oauth_user.identity = params[:identity]
       end
-
-      false
     end
 
     def xx

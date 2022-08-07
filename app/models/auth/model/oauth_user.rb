@@ -47,6 +47,11 @@ module Auth
       self.identity = temp_identity
     end
 
+    def can_login?(params)
+      self.identity = params[:identity]
+      init_account
+    end
+
     def init_account
       return if account
       if !RegexpUtil.china_mobile?(identity)
