@@ -37,7 +37,7 @@ module Auth
       user.accounts.where.not(id: self.id).empty?
     end
 
-    def can_login_by_password?
+    def should_login_by_password?
       confirmed && user && user.password_digest.present?
     end
 
@@ -66,16 +66,11 @@ module Auth
       end
     end
 
-    def can_login_by_password?(password:, **params)
-      if user.can_login?(params[:password])
+    def can_login_by_password?(password)
+      if user.can_login?(password)
         user.last_login_at = Time.current
         user.save
         user
-      end
-
-      if params[:uid].present?
-        oauth_user = OauthUser.find_by uid: params[:uid]
-        oauth_user.identity = params[:identity]
       end
     end
 

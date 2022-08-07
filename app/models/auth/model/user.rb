@@ -58,12 +58,14 @@ module Auth
         return false
       end
 
-      unless authenticate(password)
+      if authenticate(password)
+        self.last_login_at = Time.current
+        self.save
+        self
+      else
         errors.add :base, :wrong_name_or_password
-        return false
+        false
       end
-
-      self
     end
 
     def avatar_urlx

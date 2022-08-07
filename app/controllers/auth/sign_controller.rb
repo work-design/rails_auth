@@ -3,15 +3,16 @@ module Auth
     before_action :check_login, except: [:logout]
     skip_after_action :set_auth_token, only: [:logout]
     before_action :set_oauth_user, only: [:bind, :direct, :bind_create]
+    before_action :set_account, only: [:login]
 
     def sign
       if params[:identity]
         @account = Account.find_by(identity: params[:identity].strip)
 
-        if @account && @account.can_login_by_password?
-          render 'login'
+        if @account && @account.should_login_by_password?
+          render 'sign_login'
         else
-          render 'join'
+          render 'sign_join'
         end
       else
         render 'sign'
@@ -51,9 +52,7 @@ module Auth
     end
 
     def login
-      @account = Account.build_with_identity(params[:identity])
-
-      if @account.can_login?(login_params)
+      if @account.can_login_by_password?(params[:password])
         login_by_account @account
         render 'login_ok', locals: { return_to: session[:return_to] || RailsAuth.config.default_return_path, message: t('.success') }
         session.delete :return_to
@@ -73,6 +72,10 @@ module Auth
     end
 
     private
+    def set_account
+      Account.find_by(identity: params[:identity].strip)
+    end
+
     def login_params
       q = params.permit(
         :name,
