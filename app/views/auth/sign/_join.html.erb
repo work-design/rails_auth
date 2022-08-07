@@ -1,5 +1,8 @@
 <h4 class="panel-heading has-text-centered">请注册</h4>
-<%= form_with theme: nil, scope: nil, url: { action: 'login' }, wrap: { submit: 'panel-block has-background-white' } do |f| %>
+<%= form_with theme: nil, scope: nil, url: { action: 'join' }, wrap: { submit: 'panel-block has-background-white' } do |f| %>
+  <% params.permit(:uid, :request_id).each do |key, value| %>
+    <%= f.hidden_field key, value: value %>
+  <% end %>
   <div class="panel-block has-background-white is-wrapped">
     <div class="field control">
       <%= f.text_field :identity, value: params[:identity], disabled: true, class: 'input' %>
