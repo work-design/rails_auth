@@ -46,8 +46,14 @@ module Auth
     def join
       @account = Account.build_with_identity(params[:identity])
 
-      if @account.can_login_by_token?(params)
+      if @account.can_login_by_token?(params[:token], **login_params)
+        login_by_account @account
 
+        render 'login', locals: { return_to: session[:return_to] || RailsAuth.config.default_return_path, message: t('.success') }
+        session.delete :return_to
+      else
+        flash.now[:error] = @account.error_text.presence || @account.user.error_text
+        render 'alert', locals: { message: flash.now[:error] }, status: :unauthorized
       end
     end
 

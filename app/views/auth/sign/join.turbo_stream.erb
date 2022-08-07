@@ -1,0 +1,3 @@
+<%= turbo_stream.append 'body' do %>
+  <div data-controller="visit" data-visit-url-value="<%= session[:return_to].presence || root_url %>"></div>
+<% end %>
