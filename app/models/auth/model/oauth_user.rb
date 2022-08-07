@@ -50,10 +50,6 @@ module Auth
     def can_login?(params)
       self.identity = params[:identity]
       init_account
-      if params[:uid].present?
-        oauth_user = OauthUser.find_by uid: params[:uid]
-        oauth_user.identity = params[:identity]
-      end
     end
 
     def init_account
