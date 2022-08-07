@@ -4,11 +4,11 @@ Rails.application.routes.draw do
       controller :sign do
         match :sign, via: [:get, :post]
         get :code
-        get :code_login
         get :bind
         post :direct
         post :join
         post :login
+        get :token_login
         post :token
         get :logout
       end

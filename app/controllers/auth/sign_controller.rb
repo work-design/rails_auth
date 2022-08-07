@@ -29,14 +29,6 @@ module Auth
       end
     end
 
-    def code_login
-      @verify_token = VerifyToken.build_with_identity(params[:identity])
-
-      if @verify_token.send_out!
-        render 'code_login', locals: { message: t('.sent') }
-      end
-    end
-
     def bind
     end
 
@@ -68,6 +60,14 @@ module Auth
       else
         flash.now[:error] = @account.error_text.presence || @account.user.error_text
         render 'alert', locals: { message: flash.now[:error] }, status: :unauthorized
+      end
+    end
+
+    def token_login
+      @verify_token = VerifyToken.build_with_identity(params[:identity])
+
+      if @verify_token.send_out!
+        render 'token_login', locals: { message: t('.sent') }
       end
     end
 
