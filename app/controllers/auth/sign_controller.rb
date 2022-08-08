@@ -61,8 +61,10 @@ module Auth
       if @account.can_login_by_password?(params[:password])
         login_by_account @account
 
-        render 'login', locals: { url: url, return_to: session[:return_to] || RailsAuth.config.default_return_path, message: t('.success') }
-        session.delete :return_hash
+        render 'login', locals: { url: url_for(**session[:request_route]) || RailsAuth.config.default_return_path, message: t('.success') }
+        session.delete :request_route
+        session.delete :request_body
+        session.delete :request_method
       else
         flash.now[:error] = @account.error_text.presence || @account.user.error_text
         render 'alert', locals: { message: flash.now[:error] }, status: :unauthorized

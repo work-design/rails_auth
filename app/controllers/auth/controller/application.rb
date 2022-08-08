@@ -95,7 +95,9 @@ module Auth
       if path
         session[:return_to] = path
       else
-        session[:return_hash] = params.to_meta
+        session[:request_method] = request.method
+        session[:request_route] = request.path_parameters.merge(request.query_parameters).except(:business, :namespace)
+        session[:request_body] = request.request_parameters
       end
 
       return if session[:return_to].blank?
