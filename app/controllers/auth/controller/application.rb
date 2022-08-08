@@ -93,9 +93,9 @@ module Auth
       else
         session[:return_to] = request.referer
         session[:request_method] = request.method
-        session[:request_route] = request.path_parameters.merge(request.query_parameters).except(:business, :namespace)
         session[:request_body] = request.request_parameters
       end
+      session[:request_route] = request.path_parameters.merge(request.query_parameters).except(:business, :namespace)
 
       return if session[:return_to].blank?
       r_path = URI(session[:return_to]).path.delete_suffix('/')
