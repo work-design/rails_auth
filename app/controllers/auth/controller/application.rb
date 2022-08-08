@@ -19,7 +19,7 @@ module Auth
         @code = 'authorized_token'
       end
 
-      redirect_to url_for(controller: 'auth/sign', action: 'sign', identity: params[:identity])
+      redirect_to url_for(controller: '/auth/sign', action: 'sign', identity: params[:identity])
     end
 
     def require_authorized_token
