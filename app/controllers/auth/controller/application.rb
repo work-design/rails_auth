@@ -19,7 +19,7 @@ module Auth
       else
         @code = 'authorized_token'
       end
-      auth_url = url_for(controller: '/auth/sign', action: 'sign', form_id: params[:form_id], identity: params[:identity])
+      auth_url = url_for(controller: '/auth/sign', action: 'sign', identity: params[:identity])
 
       if request.format.html?
         render 'require_login', locals: { url: auth_url }, layout: 'raw', status: 401
@@ -94,10 +94,8 @@ module Auth
     def store_location(path = nil)
       if path
         session[:return_to] = path
-      elsif request.get?
-        session[:return_to] = request.url
       else
-        session[:return_to] = request.referer
+        session[:return_hash] = params.to_meta
       end
 
       return if session[:return_to].blank?
