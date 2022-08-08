@@ -8,7 +8,6 @@ module Auth
       after_action :set_auth_token
     end
 
-
     def require_login(return_to: nil)
       return if current_user
       store_location(return_to)
@@ -19,13 +18,8 @@ module Auth
       else
         @code = 'authorized_token'
       end
-      auth_url = url_for(controller: '/auth/sign', action: 'sign', identity: params[:identity])
 
-      if request.format.html?
-        render 'require_login', locals: { url: auth_url }, layout: 'raw', status: 401
-      else
-        render 'require_login', locals: { url: auth_url }, status: 401
-      end
+      redirect_to url_for(controller: 'auth/sign', action: 'sign', identity: params[:identity])
     end
 
     def require_authorized_token
@@ -94,7 +88,10 @@ module Auth
     def store_location(path = nil)
       if path
         session[:return_to] = path
+      elsif request.get?
+        session[:return_to] = request.url
       else
+        session[:return_to] = request.referer
         session[:request_method] = request.method
         session[:request_route] = request.path_parameters.merge(request.query_parameters).except(:business, :namespace)
         session[:request_body] = request.request_parameters
