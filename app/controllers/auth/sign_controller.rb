@@ -61,7 +61,7 @@ module Auth
       if @account.can_login_by_password?(params[:password])
         login_by_account @account
 
-        render 'login', locals: { url: url_for(**session[:request_route]) || RailsAuth.config.default_return_path, message: t('.success') }
+        render 'login', locals: { url: session[:request_route] ? url_for(**session[:request_route]) : RailsAuth.config.default_return_path, message: t('.success') }
         [:request_method, :request_route, :request_body].each(&->(i){ session.delete(i) })
       else
         flash.now[:error] = @account.error_text.presence || @account.user.error_text
@@ -81,7 +81,7 @@ module Auth
       if @account.can_login_by_token?(params[:token], **token_params)
         login_by_account @account
 
-        render 'login', locals: { url: url_for(**session[:request_route]) || RailsAuth.config.default_return_path, message: t('.success') }
+        render 'login', locals: { url: session[:request_route] ? url_for(**session[:request_route]) : RailsAuth.config.default_return_path, message: t('.success') }
         [:request_method, :request_route, :request_body].each(&->(i){ session.delete(i) })
       else
         flash.now[:error] = @account.error_text.presence || @account.user.error_text
