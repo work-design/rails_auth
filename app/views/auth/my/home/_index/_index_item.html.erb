@@ -6,18 +6,20 @@
   <div class="weui-cell__ft"></div>
 <% end %>
 
-<%= link_to({ controller: 'trade/my/carts', action: 'list' }, class: 'has-text-grey') do %>
-  <span class="has-text-grey has-text-weight-normal">切换</span>
-  <i class="fa-regular fa-angle-right pl-0"></i>
+<%= link_to({ controller: 'trade/my/carts', action: 'list' }, class: 'weui-cell weui-cell_access') do %>
+  <div class="weui-cell__bd">我的二维码</div>
+  <div class="weui-cell__ft">
+    <i class="fa-solid fa-qrcode"></i>
+  </div>
 <% end %>
 
-<%= link_to({ controller: '/auth/sign', action: 'logout' }, class: 'weui-cell weui-cell_access') do %>
-  <div class="weui-cell__bd">
-    <i class="fa-solid fa-fw fa-right-from-bracket has-text-warning-dark"></i>
-    <span><%= t('auth.sign.logout.title') %></span>
+<%= link_to({ controller: 'trade/my/carts', action: 'list' }, class: 'weui-cell weui-cell_access') do %>
+  <div class="weui-cell__bd"></div>
+  <div class="weui-cell__ft">
+    <span class="has-text-grey has-text-weight-normal">切换</span>
   </div>
-  <div class="weui-cell__ft"></div>
 <% end %>
+
 <div
   data-controller="mini-program"
   data-mini-program-url-value="/pages/print/config/index"
