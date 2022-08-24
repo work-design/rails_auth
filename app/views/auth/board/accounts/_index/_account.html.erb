@@ -2,9 +2,9 @@
   <td>
     <span><%= model.identity %></span>
     <% if model.confirmed %>
-      <i class="fa-light fa-check-circle has-text-success"></i>
+      <i class="fa-regular fa-check-circle has-text-success"></i>
     <% else %>
-      <i class="fa-light fa-question-circle has-text-warning"></i>
+      <i class="fa-regular fa-question-circle has-text-warning"></i>
     <% end %>
   </td>
   <td>
@@ -24,10 +24,10 @@
       <button data-controller="login" data-url="<%= url_for(action: 'token', id: model.id) %>" data-login-time-value="3" data-action="login#countDown" class="button is-link">发送验证码</button>
     <% end %>
     <%= button_to({ action: 'destroy', id: model.id }, method: :delete, aria: { label: t('.destroy'), confirm: '删除后此账号无法用于登录' }, class: 'button') do %>
-      <i class="fa-light fa-trash"></i>
+      <i class="fa-regular fa-trash"></i>
     <% end unless model.last? %>
     <%= button_to({ action: 'select', id: model.id }, method: :put, aria: { label: t('.select') }, class: 'button') do %>
-      <i class="fa-light fa-chevron-circle-right"></i>
+      <i class="fa-regular fa-chevron-circle-right"></i>
     <% end unless model == current_account %>
   </td>
 </tr>

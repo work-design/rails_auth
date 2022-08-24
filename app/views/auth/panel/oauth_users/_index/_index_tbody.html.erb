@@ -16,7 +16,7 @@
 <td><time data-controller="time"><%= model.created_at.to_fs(:iso8601) %></time></td>
 <td>
   <%= link_to({ controller: 'users', action: 'show', id: model.user.id }, data: { turbo_frame: 'modal' }, text: true) do %>
-    <i class="fa-light fa-user"></i>
+    <i class="fa-regular fa-user"></i>
     <span class="pl-1"><%= model.user.name %></span>
   <% end if model.user %>
 </td>

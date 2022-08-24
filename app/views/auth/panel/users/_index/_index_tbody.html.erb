@@ -23,7 +23,7 @@
 <% model.accounts.each do |account| %>
   <p>
     <%= link_to({ controller: 'accounts', user_id: model.id }, aria: { label: t('auth.panel.accounts.index.title') }) do %>
-      <i class="fa-light fa-portrait"></i>
+      <i class="fa-regular fa-portrait"></i>
     <% end %>
     <span><%= account.identity %></span>
     <span class="tags">
@@ -40,7 +40,7 @@
       <span class="tag"><%= role %></span>
     <% end %>
     <%= link_to({ controller: 'roled/admin/who_roles', action: 'show', who_type: model.class_name, who_id: model.id }, aria: { label: t('.role') }, data: { turbo_frame: 'modal' }, class: 'button is-small is-rounded is-light') do %>
-      <i class="fa-light fa-user-lock"></i>
+      <i class="fa-regular fa-user-lock"></i>
     <% end %>
   </div>
 </td>
