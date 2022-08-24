@@ -7,14 +7,18 @@
 <% end %>
 
 <%= link_to({ controller: 'profiled/my/profiles', action: 'qrcode' }, class: 'weui-cell weui-cell_access') do %>
-  <div class="weui-cell__bd"><%= t('profiled.my.profiles.qrcode.title') %></div>
-  <div class="weui-cell__ft">
-    <i class="fa-solid fa-qrcode"></i>
+  <div class="weui-cell__bd">
+    <i class="fa-solid fa-fw fa-qrcode"></i>
+    <span><%= t('profiled.my.profiles.qrcode.title') %></span>
   </div>
+  <div class="weui-cell__ft"></div>
 <% end %>
 
 <%= link_to({ controller: 'profiled/my/profiles', action: 'show' }, class: 'weui-cell weui-cell_access') do %>
-  <div class="weui-cell__bd"><%= t('profiled.my.profiles.show.title') %></div>
+  <div class="weui-cell__bd">
+    <i class="fa-solid fa-fw fa-user"></i>
+    <span><%= t('profiled.my.profiles.show.title') %></span>
+  </div>
   <div class="weui-cell__ft"></div>
 <% end %>
 
@@ -33,6 +37,7 @@
   class="weui-cell weui-cell_access"
 >
   <div class="weui-cell__bd">
+    <i class="fa-solid fa-fw fa-print"></i>
     <span><%= '设置打印机' %></span>
   </div>
   <div class="weui-cell__ft"></div>
