@@ -5,6 +5,12 @@
   </div>
   <div class="weui-cell__ft"></div>
 <% end %>
+
+<%= link_to({ controller: 'trade/my/carts', action: 'list' }, class: 'has-text-grey') do %>
+  <span class="has-text-grey has-text-weight-normal">切换</span>
+  <i class="fa-regular fa-angle-right pl-0"></i>
+<% end %>
+
 <%= link_to({ controller: '/auth/sign', action: 'logout' }, class: 'weui-cell weui-cell_access') do %>
   <div class="weui-cell__bd">
     <i class="fa-solid fa-fw fa-right-from-bracket has-text-warning-dark"></i>
