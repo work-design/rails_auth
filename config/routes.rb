@@ -36,6 +36,7 @@ Rails.application.routes.draw do
       end
 
       namespace :panel, defaults: { namespace: 'panel' } do
+        root 'home#index'
         resources :users do
           get :panel, on: :collection
           member do

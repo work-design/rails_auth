@@ -14,19 +14,6 @@ module Auth
     def panel
     end
 
-    def new
-      @user = User.new
-      @user.accounts.build
-    end
-
-    def create
-      @user = User.new(user_params)
-
-      unless @user.join(params)
-        render :new, locals: { model: @user }, status: :unprocessable_entity
-      end
-    end
-
     def edit_user_tags
       @user_tags = UserTag.default_where(default_params).page(params[:page])
     end
