@@ -38,7 +38,9 @@ Rails.application.routes.draw do
       namespace :panel, defaults: { namespace: 'panel' } do
         root 'home#index'
         resources :users do
-          get :panel, on: :collection
+          collection do
+            get :month
+          end
           member do
             post :mock
             get 'user_tags' => :edit_user_tags

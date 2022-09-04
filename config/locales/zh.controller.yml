@@ -64,6 +64,9 @@ zh:
           title: 更多
     panel:
       title: 用户管理
+      home:
+        index:
+          title: 用户概率
       authorized_tokens:
         index:
           title: 登录密钥

@@ -11,7 +11,20 @@ module Auth
       @users = User.with_attached_avatar.includes(:oauth_users, :accounts).default_where(q_params).page(params[:page])
     end
 
-    def panel
+    def month
+      q_params = {
+        #good_type: ['Ship::BoxHost', 'Ship::BoxSell']
+      }
+      x = Arel.sql("date_trunc('day', created_at, '#{Time.zone.tzinfo.identifier}')")
+
+      r =  User.where(q_params).group(x).order(x).count
+
+      result = []
+      r.each do |key, v|
+        result << { year: key.in_time_zone.to_fs(:date), value: v }
+      end
+
+      render json: result
     end
 
     def edit_user_tags
