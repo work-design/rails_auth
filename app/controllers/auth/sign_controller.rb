@@ -62,7 +62,7 @@ module Auth
         login_by_account @account
 
         render 'login', locals: { url: session[:request_route] ? url_for(**session[:request_route]) : (session[:return_to] || RailsAuth.config.default_return_path), message: t('.success') }
-        [:request_method, :request_route, :request_body].each(&->(i){ session.delete(i) })
+        [:request_method, :request_route, :request_body, :return_to].each(&->(i){ session.delete(i) })
       else
         flash.now[:error] = @account.error_text.presence || @account.user.error_text
         render 'alert', locals: { message: flash.now[:error] }, status: :unauthorized
@@ -82,7 +82,7 @@ module Auth
         login_by_account @account
 
         render 'login', locals: { url: session[:request_route] ? url_for(**session[:request_route]) : (session[:return_to] || RailsAuth.config.default_return_path), message: t('.success') }
-        [:request_method, :request_route, :request_body].each(&->(i){ session.delete(i) })
+        [:request_method, :request_route, :request_body, :return_to].each(&->(i){ session.delete(i) })
       else
         flash.now[:error] = @account.error_text.presence || @account.user.error_text
         render 'alert', locals: { message: flash.now[:error] }, status: :unauthorized
