@@ -17,16 +17,21 @@ module Auth
       attribute :uid, :string
 
       belongs_to :member, class_name: 'Org::Member', optional: true
+      belongs_to :app, class_name: 'Wechat::App', foreign_key: :appid, primary_key: :appid, optional: true
 
-      belongs_to :app, foreign_key: :appid, primary_key: :appid, optional: true
-      belongs_to :account, foreign_key: :identity, primary_key: :identity, optional: true
       belongs_to :oauth_user, foreign_key: :uid, primary_key: :uid, optional: true
+      belongs_to :account, foreign_key: :identity, primary_key: :identity, optional: true
       has_one :user, through: :account
 
       scope :valid, -> { where('expire_at >= ?', Time.current).order(expire_at: :desc) }
       validates :token, presence: true
 
       before_validation :update_token, if: -> { new_record? }
+      before_validation :sync_identity, if: -> { uid.present? && uid_changed? }
+    end
+
+    def sync_identity
+      self.identity ||= oauth_user.identity
     end
 
     def expired?(now = Time.current)
