@@ -10,7 +10,7 @@ module Auth
 
     def require_login(return_to: nil)
       return if current_user
-      store_location(return_to)
+      url = store_location(return_to)
       if current_authorized_token&.oauth_user
         @code = 'oauth_user'
       elsif current_authorized_token&.account
@@ -19,7 +19,11 @@ module Auth
         @code = 'authorized_token'
       end
 
-      redirect_to url_for(controller: '/auth/sign', action: 'sign', identity: params[:identity])
+      if request.variant.include?(:mini_program)
+        render 'require_program_login', locals: { url: url }
+      else
+        redirect_to url_for(controller: '/auth/sign', action: 'sign', identity: params[:identity])
+      end
     end
 
     def require_authorized_token
@@ -97,11 +101,11 @@ module Auth
       end
       session[:request_route] = request.path_parameters.merge(request.query_parameters).except(:business, :namespace)
 
-      return if session[:return_to].blank?
-      r_path = URI(session[:return_to]).path.delete_suffix('/')
-
+      r_path = URI(session[:return_to].to_s).path.delete_suffix('/')
       if RailsAuth.config.ignore_return_paths.include?(r_path)
         session[:return_to] = RailsAuth.config.default_return_path
+      else
+        session[:return_to]
       end
     end
 
