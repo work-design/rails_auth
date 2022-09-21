@@ -6,7 +6,8 @@
       <th><%= UserTagged.human_attribute_name(:user_id) %></th>
       <th>
         <%= link_to({ action: 'new', user_tag_id: @user_tag.id }, { class: 'button is-small is-link' }) do %>
-          <i class="fa-regular fa-plus"></i><span><%= t('.new') %></span>
+          <i class="fa-solid fa-plus"></i>
+          <span class="pl-1"><%= t('.new') %></span>
         <% end %>
       </th>
     </tr>

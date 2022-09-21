@@ -18,7 +18,8 @@
       <th><%= Auth::User.human_attribute_name(:oauth_users) %></th>
       <th>
         <%= link_to({ controller: 'auth/panel/users', action: 'new' }, data: { turbo_frame: 'modal', turbo_scroll: true }, class: 'button is-small is-link') do %>
-          <i class="fa-regular fa-plus"></i><span><%= t('.new') %></span>
+          <i class="fa-solid fa-plus"></i>
+          <span class="pl-1"><%= t('.new') %></span>
         <% end %>
       </th>
     </tr>
