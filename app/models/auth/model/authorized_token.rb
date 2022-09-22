@@ -64,7 +64,7 @@ module Auth
     # 采用 JWT 生成 token
     # 优点1： 通过 payload 记录部分数据，可以跟服务端数据对比，或者防止服务数据删除后验证。
     def generate_token
-      key = appid.presence || id.to_s  # todo generate key for more
+      key = appid.presence || id.presence || '123'  # todo generate key for more
       payload = {
         iss: identity,
         exp_float: expire_at.to_f,
