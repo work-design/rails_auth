@@ -6,10 +6,10 @@
         <i class="fa-solid fa-circle-info"></i>
       <% end %>
       <%= link_to({ controller: 'authorized_tokens', user_id: model.id }, aria: { label: t('auth.panel.authorized_tokens.index.title') }, class: 'button is-small is-rounded is-light') do %>
-        <i class="fa-regular fa-key"></i>
+        <i class="fa-solid fa-key"></i>
       <% end %>
       <%= link_to({ action: 'edit_user_tags', id: model.id }, aria: { label: t('.tag') }, class: 'button is-small is-rounded is-light') do %>
-        <i class="fa-regular fa-user-tag"></i>
+        <i class="fa-solid fa-user-tag"></i>
       <% end %>
       <%= link_to({ action: 'edit', id: model.id }, data: { turbo_frame: 'modal', turbo_scroll: true }, aria: { label: t('.edit') }, class: 'button is-small is-rounded is-light') do %>
         <i class="fa-solid fa-pencil"></i>
