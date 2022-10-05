@@ -40,7 +40,7 @@ module Auth
     end
 
     def temp_identity
-      unionid || uid
+      unionid.presence || uid
     end
 
     def generate_account
