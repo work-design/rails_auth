@@ -85,7 +85,8 @@ module Auth
 
       return unless token
       @current_authorized_token = AuthorizedToken.find_by(token: token)
-      logger.debug "\e[35m  Current Authorized Token: #{@current_authorized_token&.id}  \e[0m"
+      @current_authorized_token.destroy if @current_authorized_token.expired?
+      logger.debug "\e[35m  Current Authorized Token: #{@current_authorized_token&.id}, Destroyed: #{@current_authorized_token&.destroyed?}  \e[0m"
       @current_authorized_token
     end
 
