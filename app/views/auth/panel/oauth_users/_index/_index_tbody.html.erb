@@ -1,5 +1,8 @@
 <td>
-  <p><%= model.type_i18n %></p>
+  <p>
+    <span class="tag"><%= model.type_i18n %></span>
+    <span><%= model.app&.name %></span>
+  </p>
   <p><%= model.appid %></p>
 </td>
 <td>
