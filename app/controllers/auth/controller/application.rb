@@ -10,7 +10,7 @@ module Auth
 
     def require_login(return_to: nil)
       return if current_user
-      url = store_location(return_to)
+      return_hash = store_location(return_to)
       if current_authorized_token&.oauth_user
         @code = 'oauth_user'
       elsif current_authorized_token&.account
@@ -20,7 +20,7 @@ module Auth
       end
 
       if request.variant.include?(:mini_program)
-        render 'require_program_login', locals: { url: url }
+        render 'require_program_login', locals: { url: url_for(return_hash) }
       else
         redirect_to url_for(controller: '/auth/sign', action: 'sign', identity: params[:identity])
       end
