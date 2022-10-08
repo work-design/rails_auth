@@ -1,8 +1,8 @@
 <%= turbo_stream.append 'body' do %>
   <div
     data-controller="visit"
-    data-visit-method-value="<%= session[:request_method] %>"
-    data-visit-params-value="<%= session[:request_body].to_json %>"
+    data-visit-method-value="<%= session.delete(:request_method) %>"
+    data-visit-params-value="<%= session.delete(:request_body).to_json %>"
     data-visit-url-value="<%= url %>"
   >
   </div>

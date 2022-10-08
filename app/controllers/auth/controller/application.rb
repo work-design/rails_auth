@@ -90,23 +90,16 @@ module Auth
       @current_authorized_token
     end
 
-    def store_location(path = nil)
-      if path
-        session[:return_to] = path
-      elsif request.get?
-        session[:return_to] = request.url
+    def store_location(path_hash = {})
+      if path_hash.present?
+        session[:request_route] = path_hash
       else
-        session[:return_to] = request.referer
         session[:request_method] = request.method
         session[:request_body] = request.request_parameters
-      end
-      session[:request_route] = request.path_parameters.merge(request.query_parameters).except(:business, :namespace, 'auth_token')
-
-      r_path = URI(session[:return_to].to_s).path.delete_suffix('/')
-      if RailsAuth.config.ignore_return_paths.include?(r_path)
-        session[:return_to] = RailsAuth.config.default_return_path
-      else
-        session[:return_to]
+        session[:request_route] = request.path_parameters.merge(request.query_parameters).except(:business, :namespace, 'auth_token')
+        if request.method != 'GET'
+          session[:request_route].merge! return_url: Base64.urlsafe_encode64(request.referer, padding: false)
+        end
       end
     end
 
