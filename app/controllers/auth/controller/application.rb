@@ -100,7 +100,7 @@ module Auth
         session[:request_method] = request.method
         session[:request_body] = request.request_parameters
       end
-      session[:request_route] = request.path_parameters.merge(request.query_parameters).except(:business, :namespace)
+      session[:request_route] = request.path_parameters.merge(request.query_parameters).except(:business, :namespace, :auth_token)
 
       r_path = URI(session[:return_to].to_s).path.delete_suffix('/')
       if RailsAuth.config.ignore_return_paths.include?(r_path)
