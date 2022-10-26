@@ -1,23 +1,23 @@
 <%= link_to({ controller: 'auth/board/accounts' }, class: 'weui-cell weui-cell_access') do %>
   <div class="weui-cell__bd">
-    <i class="fa-solid fa-fw fa-users"></i>
-    <span><%= t('auth.board.accounts.index.title') %></span>
+    <i class="fa-solid fa-fw has-text-primary fa-users"></i>
+    <span class="pl-2 is-size-0_9"><%= t('auth.board.accounts.index.title') %></span>
   </div>
   <div class="weui-cell__ft"></div>
 <% end %>
 
 <%= link_to({ controller: 'profiled/my/profiles', action: 'qrcode' }, class: 'weui-cell weui-cell_access') do %>
   <div class="weui-cell__bd">
-    <i class="fa-solid fa-fw fa-qrcode"></i>
-    <span><%= t('profiled.my.profiles.qrcode.title') %></span>
+    <i class="fa-solid fa-fw has-text-primary fa-qrcode"></i>
+    <span class="pl-2 is-size-0_9"><%= t('profiled.my.profiles.qrcode.title') %></span>
   </div>
   <div class="weui-cell__ft"></div>
 <% end %>
 
 <%= link_to({ controller: 'profiled/my/profiles', action: 'show' }, class: 'weui-cell weui-cell_access') do %>
   <div class="weui-cell__bd">
-    <i class="fa-solid fa-fw fa-user"></i>
-    <span><%= t('profiled.my.profiles.show.title') %></span>
+    <i class="fa-solid fa-fw has-text-primary fa-user"></i>
+    <span class="pl-2 is-size-0_9"><%= t('profiled.my.profiles.show.title') %></span>
   </div>
   <div class="weui-cell__ft"></div>
 <% end %>
@@ -29,6 +29,15 @@
   </div>
 <% end %>
 
+<%= link_to({ controller: 'trade/my/wallet_templates' }, class: 'weui-cell weui-cell_access') do %>
+  <div class="weui-cell__bd">
+    <i class="fa-solid fa-fw has-text-primary fa-wallet"></i>
+    <span class="pl-2 is-size-0_9"><%= t('trade.my.wallet_templates.index.title') %></span>
+  </div>
+  <div class="weui-cell__ft"></div>
+<% end %>
+
+<% if request.variant.include?(:mini_program) %>
 <div
   data-controller="mini-program"
   data-mini-program-url-value="/pages/print/config/index"
@@ -42,3 +51,4 @@
   </div>
   <div class="weui-cell__ft"></div>
 </div>
+<% end %>
