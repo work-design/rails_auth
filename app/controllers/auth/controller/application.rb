@@ -26,6 +26,13 @@ module Auth
       end
     end
 
+    def current_user
+      return @current_user if defined?(@current_user)
+      @current_user = current_account&.user
+      logger.debug "\e[35m  Current User: #{@current_user&.id}  \e[0m"
+      @current_user
+    end
+
     def require_authorized_token
       return if current_authorized_token
       @code = 'authorized_token'
@@ -43,18 +50,29 @@ module Auth
       end
     end
 
+    def require_client(return_to: nil)
+      return if current_client
+      return_hash = store_location(return_to)
+      if current_authorized_token&.oauth_user
+        @code = 'oauth_user'
+      elsif current_authorized_token&.account
+        @code = 'account'
+      else
+        @code = 'authorized_token'
+      end
+
+      if request.variant.include?(:mini_program)
+        render 'require_program_login', locals: { url: url_for(return_hash) }
+      else
+        redirect_to url_for(controller: '/auth/sign', action: 'sign', identity: params[:identity])
+      end
+    end
+
     def current_client
       return @current_client if defined?(@current_client)
       @current_client = current_authorized_token&.member
       logger.debug "\e[35m  Current Client: #{@current_client&.id}  \e[0m"
       @current_client
-    end
-
-    def current_user
-      return @current_user if defined?(@current_user)
-      @current_user = current_account&.user
-      logger.debug "\e[35m  Current User: #{@current_user&.id}  \e[0m"
-      @current_user
     end
 
     def current_account
