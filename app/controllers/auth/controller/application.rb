@@ -8,7 +8,7 @@ module Auth
       after_action :set_auth_token
     end
 
-    def require_login(return_to: nil)
+    def require_user(return_to: nil)
       return if current_user
       return_hash = store_location(return_to)
       if current_authorized_token&.oauth_user
