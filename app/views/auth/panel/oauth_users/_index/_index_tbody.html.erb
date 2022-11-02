@@ -1,7 +1,7 @@
 <td>
   <p>
     <span class="tag"><%= model.type_i18n %></span>
-    <span><%= model.app&.name %></span>
+    <span><%= model.app&.name if model.respond_to?(:app) %></span>
   </p>
   <p><%= model.appid %></p>
 </td>
