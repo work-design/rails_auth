@@ -1,4 +1,7 @@
-<th><%= Auth::User.human_attribute_name(:name) %></th>
+<th>
+  <p><%= Auth::User.human_attribute_name(:name) %></p>
+  <p><%= Auth::User.human_attribute_name(:accounts) %></p>
+</th>
 <th>
   <p><%= Auth::User.human_attribute_name(:locale) %></p>
   <p><%= Auth::User.human_attribute_name(:timezone) %></p>
@@ -11,5 +14,4 @@
   <p><%= Auth::User.human_attribute_name(:last_login_ip) %></p>
 </th>
 <th><%= Auth::User.human_attribute_name(:disabled) %></th>
-<th><%= Auth::User.human_attribute_name(:accounts) %></th>
 <th>权限</th>

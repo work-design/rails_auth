@@ -3,6 +3,19 @@
     <%= image_tag model.avatar_url, class: 'image is-24x24' if model.avatar_url.present? %>
     <span><%= model.name %></span>
   <% end %>
+  <% model.accounts.each do |account| %>
+    <p class="has-text-grey mt-2">
+      <%= link_to({ controller: 'accounts', user_id: model.id }, aria: { label: t('auth.panel.accounts.index.title') }) do %>
+        <i class="fa-solid fa-portrait"></i>
+      <% end %>
+      <span><%= account.identity %></span>
+      <span class="tags">
+      <% account.oauth_users.each do |oauth_user| %>
+        <%= link_to oauth_user.type_i18n, { controller: 'oauth_users', identity: account.identity }, class: 'tag' %>
+      <% end %>
+      </span>
+    </p>
+  <% end %>
 </td>
 <td>
   <p><%= model.locale %></p>
@@ -18,21 +31,6 @@
     <%= f.check_box :disabled, data: { input_target: 'checkbox' }, id: nil, class: 'switch is-rounded' %>
     <label data-action="click->input#check"></label>
   <% end %>
-</td>
-<td>
-<% model.accounts.each do |account| %>
-  <p>
-    <%= link_to({ controller: 'accounts', user_id: model.id }, aria: { label: t('auth.panel.accounts.index.title') }) do %>
-      <i class="fa-solid fa-portrait"></i>
-    <% end %>
-    <span><%= account.identity %></span>
-    <span class="tags">
-      <% account.oauth_users.each do |oauth_user| %>
-        <%= link_to oauth_user.type_i18n, { controller: 'oauth_users', identity: account.identity }, class: 'tag' %>
-      <% end %>
-    </span>
-  </p>
-<% end %>
 </td>
 <td>
   <div class="tags">
