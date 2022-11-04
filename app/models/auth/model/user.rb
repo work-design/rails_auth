@@ -68,22 +68,6 @@ module Auth
       end
     end
 
-    def avatar_urlx
-      if avatar.attached?
-        return avatar.url
-      end
-
-      if super.present?
-        return super
-      end
-
-      if avatar.present?
-        avatar.url
-      end
-    rescue
-      nil
-    end
-
     def valid_providers
       OauthUser.options_i18n(:provider).values.map(&:to_s) - oauth_providers
     end
