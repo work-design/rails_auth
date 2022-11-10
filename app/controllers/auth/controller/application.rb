@@ -33,13 +33,6 @@ module Auth
       @current_user
     end
 
-    def require_authorized_token
-      return if current_authorized_token
-      @code = 'authorized_token'
-
-      render 'require_authorized_token', status: 401
-    end
-
     def client_params
       if current_client
         { member_id: current_client.id }
