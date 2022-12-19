@@ -8,7 +8,7 @@
       <%= link_to({ controller: 'accounts', user_id: model.id }, aria: { label: t('auth.panel.accounts.index.title') }) do %>
         <i class="fa-solid fa-portrait"></i>
       <% end %>
-      <span class="is-text" style="width: 6em"><%= account.identity %></span>
+      <span title="<%= account.identity %>" class="is-text" style="width: 6em"><%= account.identity %></span>
       <span class="tags">
       <% account.oauth_users.each do |oauth_user| %>
         <%= link_to oauth_user.type_i18n, { controller: 'oauth_users', identity: account.identity }, class: 'tag' %>
