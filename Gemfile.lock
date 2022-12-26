@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/work-design/rails_com.git
-  revision: db198d353aefe3d5f2fe521a9056a9788240be20
+  revision: 35e4ecfe6d2278c622cce9e407f5c3d9d557974a
   specs:
     rails_com (1.3.0)
       acme-client
@@ -17,14 +17,14 @@ GIT
 
 GIT
   remote: https://github.com/work-design/rails_design.git
-  revision: 3a2c57961f67712b628338e3bb69687027c8177b
+  revision: d9b8af61c1691548bce3c8e97bb8223d0300dae3
   specs:
     rails_design (0.0.1)
       rails
 
 GIT
   remote: https://github.com/work-design/rails_extend.git
-  revision: 58bb78046d012e81af45e66871b3740df91946a1
+  revision: 01e6eb57fdeff3df9ab79ad59186ef2d0d068e05
   specs:
     rails_extend (1.0.1)
       rails (>= 5.0)
@@ -134,7 +134,7 @@ GEM
       activesupport (>= 5.0)
     http-2-next (0.5.1)
     http-form_data (2.3.0)
-    httpx (0.22.0)
+    httpx (0.22.2)
       http-2-next (>= 0.4.1)
     i18n (1.12.0)
       concurrent-ruby (~> 1.0)
@@ -181,8 +181,6 @@ GEM
     nio4r (2.5.8)
     nokogiri (1.13.10)
       mini_portile2 (~> 2.8.0)
-      racc (~> 1.4)
-    nokogiri (1.13.10-x86_64-linux)
       racc (~> 1.4)
     pg (1.4.5)
     propshaft (0.6.4)
