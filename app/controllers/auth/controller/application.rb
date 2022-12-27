@@ -109,9 +109,18 @@ module Auth
         oauth_user = OauthUser.find_by uid: params[:uid]
         oauth_user.update identity: params[:identity]
       end
-      set_login_var
+      @current_user = @current_account.user
+      @current_authorized_token = @current_account.authorized_token
 
       logger.debug "\e[35m  Login by account #{account.id} as user: #{account.user_id}  \e[0m"
+    end
+
+    def login_by_oauth_user(oauth_user)
+      @current_account = oauth_user.account
+      @current_user = @current_account.user
+      @current_authorized_token = @current_account.authorized_token
+
+      logger.debug "\e[35m  Login by OauthUser #{oauth_user.id} as user: #{oauth_user.user&.id}  \e[0m"
     end
 
     def login_by_token
@@ -127,11 +136,6 @@ module Auth
     end
 
     private
-    def set_login_var
-      @current_user = @current_account.user
-      @current_authorized_token = @current_account.authorized_token
-    end
-
     def set_auth_token
       return unless defined?(@current_account) && @current_account
 
