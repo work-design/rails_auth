@@ -1,7 +1,7 @@
 module Auth
   class Board::OauthUsersController < Board::BaseController
     before_action :set_user
-    before_action :set_oauth_user, only: [:show, :edit, :update, :destroy]
+    before_action :set_oauth_user, only: [:show, :edit, :update, :destroy, :actions]
 
     def index
       @oauth_users = current_user.oauth_users
@@ -25,24 +25,6 @@ module Auth
       @oauth_user.save
 
       redirect_to board_root_url
-    end
-
-    def show
-    end
-
-    def edit
-    end
-
-    def update
-      @oauth_user.assign_attributes(oauth_user_params)
-
-      unless @oauth_user.save
-        render :edit, locals: { model: @oauth_user }, status: :unprocessable_entity
-      end
-    end
-
-    def destroy
-      @oauth_user.destroy
     end
 
     private

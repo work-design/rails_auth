@@ -1,0 +1,12 @@
+<td><%= model.type_i18n %></td>
+<td>
+  <div class="is-several">
+    <%= image_tag model.avatar_url, class: 'image is-24x24' if model.avatar_url %>
+    <span><%= model.name %></span>
+  </div>
+</td>
+<td><%= model.account&.identity %></td>
+<td>
+  <%= button_to t('.unbind'), { controller: 'auth/board/oauth_users', action: 'destroy', id: model.id }, method: :delete, data: { turbo_confirm: t('.confirm') }, class: 'button is-warning' %>
+  <%= button_to t('.update_token'), "/auth/#{model.provider}", class: 'button is-success' %>
+</td>

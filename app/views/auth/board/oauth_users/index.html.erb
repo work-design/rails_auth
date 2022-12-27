@@ -1,31 +1,6 @@
 <table class="table is-fullwidth">
   <tbody>
-  <% @oauth_users.each do |oauth_user| %>
-    <tr>
-      <td><%= oauth_user.type_i18n %></td>
-      <td>
-        <div class="is-several">
-          <%= image_tag oauth_user.avatar_url, class: 'image is-24x24' if oauth_user.avatar_url %>
-          <span><%= oauth_user.name %></span>
-        </div>
-      </td>
-      <td><%= oauth_user.account&.identity %></td>
-      <td>
-        <%= button_to t('.unbind'), { controller: 'auth/board/oauth_users', action: 'destroy', id: oauth_user.id }, method: :delete, data: { turbo_confirm: t('.confirm') }, class: 'button is-warning' %>
-        <%= button_to t('.update_token'), "/auth/#{oauth_user.provider}", class: 'button is-success' %>
-      </td>
-    </tr>
-  <% end %>
-  <% current_user.valid_providers.each do |provider| %>
-    <tr>
-      <td><%= provider %></td>
-      <td colspan="2"></td>
-      <td>
-        <%= button_to "/auth/#{provider}", data: { turbo: false }, class: 'button is-info' do %>
-          <span>绑定</span>
-        <% end %>
-      </td>
-    </tr>
-  <% end %>
+    <%= render partial: 'index_tbody', layout: 'index_tr', collection: @oauth_users, as: :model %>
+    <%# render partial: 'provider_tbody', collection: current_user.valid_providers, as: :model %>
   </tbody>
 </table>
