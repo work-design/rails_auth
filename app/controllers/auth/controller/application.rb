@@ -117,8 +117,8 @@ module Auth
 
     def login_by_oauth_user(oauth_user)
       @current_account = oauth_user.account
-      @current_user = @current_account.user
-      @current_authorized_token = @current_account.authorized_token
+      @current_user = oauth_user.user
+      @current_authorized_token = oauth_user.authorized_token
 
       logger.debug "\e[35m  Login by OauthUser #{oauth_user.id} as user: #{oauth_user.user&.id}  \e[0m"
     end
