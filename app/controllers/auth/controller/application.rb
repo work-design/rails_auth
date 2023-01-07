@@ -85,7 +85,10 @@ module Auth
 
       return unless token
       @current_authorized_token = AuthorizedToken.find_by(token: token)
-      @current_authorized_token.destroy if @current_authorized_token&.expired?
+      if @current_authorized_token&.expired?
+        @current_authorized_token.destroy
+        @current_authorized_token = current_account.authorized_token
+      end
       logger.debug "\e[35m  Current Authorized Token: #{@current_authorized_token&.id}, Destroyed: #{@current_authorized_token&.destroyed?}  \e[0m"
       @current_authorized_token
     end
@@ -137,11 +140,10 @@ module Auth
 
     private
     def set_auth_token
-      return unless defined?(@current_account) && @current_account
+      return unless defined?(@current_authorized_token) && @current_authorized_token
 
-      token = @current_account.auth_token
-      headers['Authorization'] = token
-      session[:auth_token] = token
+      headers['Authorization'] = @current_authorized_token.token
+      session[:auth_token] = @current_authorized_token.token
       logger.debug "\e[35m  Set session Auth token: #{session[:auth_token]}  \e[0m"
     end
 
