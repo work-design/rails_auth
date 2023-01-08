@@ -21,7 +21,7 @@ module Auth
       belongs_to :account, foreign_key: :identity, primary_key: :identity, optional: true
       has_one :user, through: :account
 
-      has_many :sames, ->(o) {}, class_name: self.name, primary_key: :identity, foreign_key: :identity
+      has_many :sames, ->(o) { where(o.filter_hash) }, class_name: self.name, primary_key: :identity, foreign_key: :identity
 
       scope :valid, -> { where('expire_at >= ?', Time.current).order(expire_at: :desc) }
 
@@ -30,8 +30,20 @@ module Auth
       after_save_commit :prune_used, if: -> { used_at.present? && saved_change_to_used_at? }
     end
 
-    def refresh
+    def filter_hash
+      {
+        uid: self.uid,
+        session_key: self.session_key,
+        session_id: self.session_id
+      }
+    end
 
+    def refresh
+      self.class.transaction do
+        r = sames.create!
+        self.destroy!
+        r
+      end
     end
 
     def init_expire_at

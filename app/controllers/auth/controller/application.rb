@@ -86,8 +86,7 @@ module Auth
       return unless token
       authorized_token = AuthorizedToken.find_by(id: token)
       if authorized_token&.expired?
-        authorized_token.destroy
-        @current_authorized_token = authorized_token.account.authorized_token
+        @current_authorized_token = authorized_token.refresh
       elsif authorized_token.nil?
         session.delete :auth_token
       else
