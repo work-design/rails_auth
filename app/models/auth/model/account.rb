@@ -10,10 +10,9 @@ module Auth
 
       belongs_to :user, optional: true
 
-      has_one :disposable_token, foreign_key: :identity, primary_key: :identity, dependent: :delete
-      has_many :authorized_tokens, foreign_key: :identity, primary_key: :identity, dependent: :delete_all
-      has_many :verify_tokens, foreign_key: :identity, primary_key: :identity, dependent: :delete_all
-      has_many :oauth_users, foreign_key: :identity, primary_key: :identity, inverse_of: :account
+      has_many :authorized_tokens, primary_key: :identity, foreign_key: :identity, dependent: :delete_all
+      has_many :verify_tokens, primary_key: :identity, foreign_key: :identity, dependent: :delete_all
+      has_many :oauth_users, primary_key: :identity, foreign_key: :identity, inverse_of: :account
 
       scope :without_user, -> { where(user_id: nil) }
       scope :confirmed, -> { where(confirmed: true) }

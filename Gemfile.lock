@@ -17,7 +17,7 @@ GIT
 
 GIT
   remote: https://github.com/work-design/rails_design.git
-  revision: 518219e73b1e8beb77d6ed0c8d4d6d672b677421
+  revision: 50b103f926b1cf6705ca2e26fc39516ae7560312
   specs:
     rails_design (0.0.1)
       rails
@@ -165,11 +165,11 @@ GEM
     marcel (1.0.2)
     method_source (1.0.0)
     mini_mime (1.1.2)
-    mini_portile2 (2.8.0)
-    minitest (5.16.3)
+    mini_portile2 (2.8.1)
+    minitest (5.17.0)
     net-http (0.3.2)
       uri
-    net-imap (0.3.3)
+    net-imap (0.3.4)
       date
       net-protocol
     net-pop (0.1.2)
@@ -182,6 +182,8 @@ GEM
     nokogiri (1.13.10)
       mini_portile2 (~> 2.8.0)
       racc (~> 1.4)
+    nokogiri (1.13.10-x86_64-linux)
+      racc (~> 1.4)
     pg (1.4.5)
     propshaft (0.6.4)
       actionpack (>= 7.0.0)
@@ -190,10 +192,10 @@ GEM
       railties (>= 7.0.0)
     psych (5.0.1)
       stringio
-    puma (6.0.1)
+    puma (6.0.2)
       nio4r (~> 2.0)
     racc (1.6.2)
-    rack (2.2.4)
+    rack (2.2.5)
     rack-test (2.0.2)
       rack (>= 1.3)
     rails (7.0.4)

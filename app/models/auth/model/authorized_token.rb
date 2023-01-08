@@ -4,7 +4,6 @@ module Auth
 
     included do
       attribute :id, :uuid
-      attribute :token, :string, index: { unique: true }
       attribute :identity, :string, index: true
       attribute :expire_at, :datetime
       attribute :session_key, :string, comment: '目前在小程序下用到'
@@ -12,25 +11,31 @@ module Auth
       attribute :mock_member, :boolean, default: false
       attribute :mock_user, :boolean, default: false
       attribute :business, :string
-      attribute :appid, :string
       attribute :uid, :string
       attribute :session_id, :string
       attribute :used_at, :datetime
 
-
       belongs_to :member, class_name: 'Org::Member', optional: true
-      belongs_to :app, class_name: 'Wechat::App', foreign_key: :appid, primary_key: :appid, optional: true
 
       belongs_to :oauth_user, foreign_key: :uid, primary_key: :uid, optional: true
       belongs_to :account, foreign_key: :identity, primary_key: :identity, optional: true
       has_one :user, through: :account
 
-      scope :valid, -> { where('expire_at >= ?', Time.current).order(expire_at: :desc) }
-      validates :token, presence: true
+      has_many :sames, ->(o) {}, class_name: self.name, primary_key: :identity, foreign_key: :identity
 
-      before_validation :update_token, if: -> { new_record? }
+      scope :valid, -> { where('expire_at >= ?', Time.current).order(expire_at: :desc) }
+
+      after_initialize :init_expire_at, if: :new_record?
       before_validation :sync_identity, if: -> { uid.present? && uid_changed? }
       after_save_commit :prune_used, if: -> { used_at.present? && saved_change_to_used_at? }
+    end
+
+    def refresh
+
+    end
+
+    def init_expire_at
+      self.expire_at = 1.weeks.since
     end
 
     def sync_identity
@@ -50,18 +55,6 @@ module Auth
       end
 
       true
-    end
-
-    def update_token
-      self.expire_at = 1.weeks.since
-      self.token = generatex_token
-      self
-    end
-
-    def update_token!
-      update_token
-      save
-      self
     end
 
     def prune_used

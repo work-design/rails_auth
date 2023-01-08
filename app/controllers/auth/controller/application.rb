@@ -62,8 +62,8 @@ module Auth
 
       if params[:disposable_token].present?
         begin
-          DisposableToken.transaction do
-            dt = DisposableToken.lock(true).find(params[:disposable_token])
+          AuthorizedToken.transaction do
+            dt = AuthorizedToken.lock(true).find(params[:disposable_token])
             dt.used_at = Time.current
             dt.save!
             @current_account = dt.account
@@ -84,7 +84,7 @@ module Auth
       token = params[:auth_token].presence || request.headers['Authorization'].to_s.split(' ').last.presence || session[:auth_token]
 
       return unless token
-      authorized_token = AuthorizedToken.find_by(token: token)
+      authorized_token = AuthorizedToken.find(token)
       if authorized_token&.expired?
         authorized_token.destroy
         @current_authorized_token = authorized_token.account.authorized_token
