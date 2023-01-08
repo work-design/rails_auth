@@ -11,14 +11,10 @@
   <td><%= @authorized_token.session_key %></td>
 </tr>
 <tr>
-  <td class="has-text-right"><%= Auth::AuthorizedToken.human_attribute_name(:oauth_user) %></td>
-  <td><%= @authorized_token.oauth_user %></td>
+  <td class="has-text-right"><%= Auth::AuthorizedToken.human_attribute_name(:uid) %></td>
+  <td><%= @authorized_token.uid %></td>
 </tr>
 <tr>
-  <td class="has-text-right"><%= Auth::AuthorizedToken.human_attribute_name(:account) %></td>
-  <td><%= @authorized_token.account %></td>
-</tr>
-<tr>
-  <td class="has-text-right"><%= Auth::AuthorizedToken.human_attribute_name(:user) %></td>
-  <td><%= @authorized_token.user %></td>
+  <td class="has-text-right"><%= Auth::AuthorizedToken.human_attribute_name(:identity) %></td>
+  <td><%= @authorized_token.identity %></td>
 </tr>
