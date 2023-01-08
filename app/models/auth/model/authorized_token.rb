@@ -13,7 +13,6 @@ module Auth
       attribute :business, :string
       attribute :uid, :string
       attribute :session_id, :string
-      attribute :used_at, :datetime
 
       belongs_to :member, class_name: 'Org::Member', optional: true
 
@@ -27,7 +26,6 @@ module Auth
 
       after_initialize :init_expire_at, if: :new_record?
       before_validation :sync_identity, if: -> { uid.present? && uid_changed? }
-      after_save_commit :prune_used, if: -> { used_at.present? && saved_change_to_used_at? }
     end
 
     def filter_hash
@@ -67,10 +65,6 @@ module Auth
       end
 
       true
-    end
-
-    def prune_used
-      DisposableTokenCleanJob.perform_later(self)
     end
 
   end

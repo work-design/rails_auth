@@ -62,12 +62,9 @@ module Auth
 
       if params[:disposable_token].present?
         begin
-          AuthorizedToken.transaction do
-            dt = AuthorizedToken.lock(true).find(params[:disposable_token])
-            dt.used_at = Time.current
-            dt.save!
-            @current_account = dt.account
-          end
+          dt = AuthorizedToken.find(params[:disposable_token])
+          @current_account = dt.account
+          @current_authorized_token = dt.refresh
         rescue ActiveRecord::RecordNotFound => e
           raise Com::DisposableTokenError
         end
