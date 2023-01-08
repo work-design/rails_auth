@@ -84,10 +84,12 @@ module Auth
       token = params[:auth_token].presence || request.headers['Authorization'].to_s.split(' ').last.presence || session[:auth_token]
 
       return unless token
-      @current_authorized_token = AuthorizedToken.find_by(token: token)
-      if @current_authorized_token&.expired?
-        @current_authorized_token.destroy
-        @current_authorized_token = current_account.authorized_token
+      authorized_token = AuthorizedToken.find_by(token: token)
+      if authorized_token&.expired?
+        authorized_token.destroy
+        @current_authorized_token = authorized_token.account.authorized_token
+      else
+        @current_authorized_token = authorized_token
       end
       logger.debug "\e[35m  Current Authorized Token: #{@current_authorized_token&.id}, Destroyed: #{@current_authorized_token&.destroyed?}  \e[0m"
       @current_authorized_token

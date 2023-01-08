@@ -1,10 +1,9 @@
-require 'jwt'
-# Usually used for access api request
 module Auth
   module Model::AuthorizedToken
     extend ActiveSupport::Concern
 
     included do
+      attribute :id, :uuid
       attribute :token, :string, index: { unique: true }
       attribute :identity, :string, index: true
       attribute :expire_at, :datetime
@@ -15,6 +14,9 @@ module Auth
       attribute :business, :string
       attribute :appid, :string
       attribute :uid, :string
+      attribute :session_id, :string
+      attribute :used_at, :datetime
+
 
       belongs_to :member, class_name: 'Org::Member', optional: true
       belongs_to :app, class_name: 'Wechat::App', foreign_key: :appid, primary_key: :appid, optional: true
@@ -28,6 +30,7 @@ module Auth
 
       before_validation :update_token, if: -> { new_record? }
       before_validation :sync_identity, if: -> { uid.present? && uid_changed? }
+      after_save_commit :prune_used, if: -> { used_at.present? && saved_change_to_used_at? }
     end
 
     def sync_identity
@@ -51,7 +54,7 @@ module Auth
 
     def update_token
       self.expire_at = 1.weeks.since
-      self.token = generate_token
+      self.token = generatex_token
       self
     end
 
@@ -61,17 +64,8 @@ module Auth
       self
     end
 
-    # 采用 JWT 生成 token
-    # 优点1： 通过 payload 记录部分数据，可以跟服务端数据对比，或者防止服务数据删除后验证。
-    def generate_token
-      key = appid.presence || id.presence || '123'  # todo generate key for more
-      payload = {
-        iss: identity,
-        exp_float: expire_at.to_f,
-        exp: expire_at.to_i  # should be int
-      }
-
-      JWT.encode(payload, key.to_s)
+    def prune_used
+      DisposableTokenCleanJob.perform_later(self)
     end
 
   end
