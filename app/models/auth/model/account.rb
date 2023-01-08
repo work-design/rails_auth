@@ -69,16 +69,15 @@ module Auth
     end
 
     def authorized_token
-      authorized_tokens.valid.take || authorized_tokens.create
+      authorized_tokens.find(&->(i){ i.expire_at.present? && i.expire_at > Time.current }) || authorized_tokens.create
     end
 
     def auth_token
-      authorized_token.token
+      authorized_token.id
     end
 
     def once_token
-      disposable_token || create_disposable_token
-      disposable_token.id
+      auth_token
     end
 
     def reset_token

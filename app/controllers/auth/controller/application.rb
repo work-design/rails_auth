@@ -84,10 +84,12 @@ module Auth
       token = params[:auth_token].presence || request.headers['Authorization'].to_s.split(' ').last.presence || session[:auth_token]
 
       return unless token
-      authorized_token = AuthorizedToken.find(token)
+      authorized_token = AuthorizedToken.find_by(id: token)
       if authorized_token&.expired?
         authorized_token.destroy
         @current_authorized_token = authorized_token.account.authorized_token
+      elsif authorized_token.nil?
+        session.delete :auth_token
       else
         @current_authorized_token = authorized_token
       end
@@ -144,8 +146,8 @@ module Auth
     def set_auth_token
       return unless defined?(@current_authorized_token) && @current_authorized_token
 
-      headers['Authorization'] = @current_authorized_token.token
-      session[:auth_token] = @current_authorized_token.token
+      headers['Authorization'] = @current_authorized_token.id
+      session[:auth_token] = @current_authorized_token.id
       logger.debug "\e[35m  Set session Auth token: #{session[:auth_token]}  \e[0m"
     end
 
