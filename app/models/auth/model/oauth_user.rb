@@ -97,7 +97,7 @@ module Auth
     end
 
     def auth_token
-      authorized_token.token
+      authorized_token.id
     end
 
     def refresh_token!
