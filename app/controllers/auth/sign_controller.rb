@@ -32,13 +32,6 @@ module Auth
     def bind
     end
 
-    def direct
-      @oauth_user.generate_account
-      if @oauth_user.save
-        login_by_oauth_user @oauth_user
-      end
-    end
-
     def bind_create
       @oauth_user.can_login?(login_params)
     end

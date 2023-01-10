@@ -47,6 +47,11 @@ module Auth
       self.identity = temp_identity
     end
 
+    def generate_account!
+      generate_account
+      save
+    end
+
     def can_login?(params)
       self.identity = params[:identity]
       init_account
