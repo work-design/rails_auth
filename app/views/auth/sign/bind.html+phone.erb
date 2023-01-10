@@ -18,7 +18,3 @@
   </div>
   <%= f.submit t('.next'), wrap: { all: nil } %>
 <% end %>
-
-<%= button_to({ action: 'direct' }, params: { uid: @oauth_user.uid }, form: { class: '' }, class: 'weui-btn weui-btn_primary', style: 'margin-top: -90px') do %>
-  <span class="has-text-warning">不绑定</span>
-<% end %>
