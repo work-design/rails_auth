@@ -69,7 +69,7 @@ module Auth
     end
 
     def authorized_token
-      authorized_tokens.find(&->(i){ i.expire_at.present? && i.expire_at > Time.current }) || authorized_tokens.create
+      authorized_tokens.find(&:effective?) || authorized_tokens.create
     end
 
     def auth_token
@@ -78,6 +78,10 @@ module Auth
 
     def once_token
       auth_token
+    end
+
+    def verify_token
+      verify_tokens.find(&:effective?) || verify_tokens.create
     end
 
     def reset_token

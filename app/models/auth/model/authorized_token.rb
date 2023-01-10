@@ -57,6 +57,10 @@ module Auth
       self.expire_at < now
     end
 
+    def effective?(now = Time.current)
+      expire_at.present? && expire_at > now
+    end
+
     def verify_token?(now = Time.current)
       return false if self.expire_at.blank?
       if now > self.expire_at
