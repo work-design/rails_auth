@@ -35,7 +35,7 @@ module Auth
     def direct
       @oauth_user.generate_account
       if @oauth_user.save
-        login_by_account @oauth_user.account
+        login_by_oauth_user @oauth_user
       end
     end
 

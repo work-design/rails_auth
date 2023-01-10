@@ -109,14 +109,7 @@ module Auth
     def login_by_account(account)
       @current_account = account
       @current_user = @current_account.user
-
-      if params[:uid]
-        oauth_user = OauthUser.find_by uid: params[:uid]
-        oauth_user.update identity: params[:identity]
-        @current_authorized_token = oauth_user.authorized_token
-      else
-        @current_authorized_token = @current_account.authorized_token
-      end
+      @current_authorized_token = @current_account.authorized_token
 
       logger.debug "\e[35m  Login by account #{account.id} as user: #{account.user_id}  \e[0m"
     end
