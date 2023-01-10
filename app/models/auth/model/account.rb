@@ -17,7 +17,7 @@ module Auth
       scope :without_user, -> { where(user_id: nil) }
       scope :confirmed, -> { where(confirmed: true) }
 
-      validates :identity, presence: true, uniqueness: { scope: [:confirmed] }
+      validates :identity, presence: true, uniqueness: { scope: [:confirmed, :user_id] }
 
       # belongs_to 的 autosave 是在 before_save 中定义的
       #
