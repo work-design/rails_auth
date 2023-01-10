@@ -2,6 +2,10 @@ module Auth
   module Model::Account::EmailAccount
     extend ActiveSupport::Concern
 
+    included do
+      has_many :verify_tokens, class_name: 'EmailToken', primary_key: :identity, foreign_key: :identity, dependent: :delete_all
+    end
+
     def reset_notice
       UserMailer.password_reset(self).deliver_later
     end

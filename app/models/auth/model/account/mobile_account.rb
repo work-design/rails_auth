@@ -2,6 +2,10 @@ module Auth
   module Model::Account::MobileAccount
     extend ActiveSupport::Concern
 
+    included do
+      has_many :verify_tokens, class_name: 'MobileToken', primary_key: :identity, foreign_key: :identity, dependent: :delete_all
+    end
+
     def reset_notice
       puts 'sends sms here'
     end
