@@ -15,6 +15,7 @@ module Auth
       has_many :oauth_users, primary_key: :identity, foreign_key: :identity, inverse_of: :account
 
       scope :without_user, -> { where(user_id: nil) }
+      scope :with_user, -> { where.not(user_id: nil) }
       scope :confirmed, -> { where(confirmed: true) }
 
       validates :identity, presence: true, uniqueness: { scope: [:user_id] }
@@ -26,10 +27,6 @@ module Auth
 
     def last?
       user.accounts.where.not(id: self.id).empty?
-    end
-
-    def should_login_by_password?
-      confirmed && user && user.password_digest.present?
     end
 
     def init_user

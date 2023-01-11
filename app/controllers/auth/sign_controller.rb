@@ -7,11 +7,12 @@ module Auth
 
     def sign
       if params[:identity]
-        @account = Account.find_by(identity: params[:identity].strip)
+        @account = Account.where(identity: params[:identity].strip).confirmed.with_user.take
 
-        if @account && @account.should_login_by_password?
+        if @account && @account.user && @account.user.password_digest.present?
           render 'sign_login'
         else
+          @account = Account.find_by(identity: params[:identity].strip)
           render 'sign_join'
         end
       else
