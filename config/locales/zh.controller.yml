@@ -52,6 +52,8 @@ zh:
           select: 切换
         edit_confirm:
           title: 验证
+        token_form:
+          title: 验证码
       oauth_users:
         index:
           title: 第三方登录
