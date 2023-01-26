@@ -49,6 +49,7 @@ module Auth
 
     def generate_account!
       generate_account
+      init_account
       save
     end
 
