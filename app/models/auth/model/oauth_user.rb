@@ -32,7 +32,7 @@ module Auth
 
       before_validation :init_account, if: -> { identity_changed? }
       after_save :sync_to_authorized_tokens, if: -> { saved_change_to_identity? }
-      after_save :sync_name_to_user, if: -> { saved_changed_to_name? }
+      after_save :sync_name_to_user, if: -> { saved_change_to_name? }
       after_save_commit :sync_avatar_to_user_later, if: -> { avatar_url.present? && saved_change_to_avatar_url? }
     end
 
