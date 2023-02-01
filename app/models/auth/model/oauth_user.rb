@@ -32,11 +32,8 @@ module Auth
 
       before_validation :init_account, if: -> { identity_changed? }
       after_save :sync_to_authorized_tokens, if: -> { saved_change_to_identity? }
-      after_save_commit :sync_to_user, if: -> { (saved_changes.keys & ['name', 'avatar_url']) && avatar_url.present? }
-    end
-
-    def sync_to_user_later
-      UserCopyAvatarJob.perform_later(self)
+      after_save :sync_name_to_user, if: -> { saved_changed_to_name? }
+      after_save_commit :sync_avatar_to_user_later, if: -> { avatar_url.present? && saved_change_to_avatar_url? }
     end
 
     def temp_identity
@@ -76,12 +73,19 @@ module Auth
       end
     end
 
-    def sync_to_user
-      if user
-        user.name ||= name
-        user.avatar_url ||= avatar_url
-        user.save
-      end
+    def sync_name_to_user
+      return unless user
+      user.name ||= name
+      user.save
+    end
+
+    def sync_avatar_to_user
+      return unless user
+      user.avatar.url_sync(avatar_url) unless user.avatar.attached?
+    end
+
+    def sync_avatar_to_user_later
+      UserCopyAvatarJob.perform_later(self)
     end
 
     def info_blank?

@@ -20,7 +20,6 @@ module Auth
       attribute :disabled, :boolean, default: false
       attribute :source, :string
       attribute :invited_code, :string
-      attribute :avatar_url, :string
 
       has_many :accounts, inverse_of: :user, dependent: :nullify
       has_many :verify_tokens, through: :accounts
