@@ -18,7 +18,7 @@ module Auth
       attribute :identity, :string, index: true
       index [:uid, :provider], unique: true
 
-      belongs_to :account, foreign_key: :identity, primary_key: :identity, inverse_of: :oauth_users, optional: true
+      belongs_to :account, -> { where(confirmed: true) }, foreign_key: :identity, primary_key: :identity, inverse_of: :oauth_users, optional: true
 
       has_one :user, through: :account
       has_many :authorized_tokens, ->(o) { where(appid: o.appid, identity: o.identity) }, primary_key: :uid, foreign_key: :uid, dependent: :delete_all
