@@ -7,6 +7,7 @@ module Auth
       attribute :identity, :string, index: true
       attribute :confirmed, :boolean, default: false
       attribute :source, :string
+      index [:identity, :confirmed]
 
       belongs_to :user, optional: true
 

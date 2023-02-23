@@ -17,7 +17,7 @@ module Auth
       belongs_to :member, class_name: 'Org::Member', optional: true
 
       belongs_to :oauth_user, foreign_key: :uid, primary_key: :uid, optional: true
-      belongs_to :account, foreign_key: :identity, primary_key: :identity, optional: true
+      belongs_to :account, -> { where(confirmed: true) }, foreign_key: :identity, primary_key: :identity, optional: true
       has_one :user, through: :account
 
       has_many :sames, ->(o) { where(o.filter_hash) }, class_name: self.name, primary_key: :identity, foreign_key: :identity
