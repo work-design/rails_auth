@@ -2,9 +2,13 @@
   <div class="weui-cell__bd"><%= yield %></div>
   <div class="weui-cell__ft">
     <% if model.confirmed %>
-      <i class="fa-regular fa-check-circle has-text-success"></i>
+      <div class="button is-borderless">
+        <i class="fa-solid fa-check-circle has-text-success"></i>
+      </div>
     <% else %>
-      <i class="fa-regular fa-question-circle has-text-warning"></i>
+      <div class="button is-borderless">
+        <i class="fa-solid fa-question-circle has-text-warning"></i>
+      </div>
     <% end %>
     <%= button_to({ action: 'actions', id: model.id }, class: 'button is-borderless') do %>
       <i class="fa-solid fa-lg fa-ellipsis-h"></i>
