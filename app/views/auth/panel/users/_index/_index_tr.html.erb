@@ -5,9 +5,6 @@
       <%= link_to({ action: 'show', id: model.id }, data: { turbo_frame: 'modal' }, aria: { label: t('.show') }, class: 'button is-small is-rounded is-light') do %>
         <i class="fa-solid fa-circle-info has-text-primary"></i>
       <% end %>
-      <%= link_to({ controller: 'authorized_tokens', user_id: model.id }, aria: { label: t('auth.panel.authorized_tokens.index.title') }, class: 'button is-small is-rounded is-light') do %>
-        <i class="fa-solid fa-key has-text-info"></i>
-      <% end %>
       <%= link_to({ action: 'edit_user_tags', id: model.id }, aria: { label: t('.tag') }, class: 'button is-small is-rounded is-light') do %>
         <i class="fa-solid fa-user-tag has-text-success"></i>
       <% end %>

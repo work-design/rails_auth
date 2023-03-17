@@ -24,6 +24,8 @@ module Auth
 
       scope :valid, -> { where('expire_at >= ?', Time.current).order(expire_at: :desc) }
 
+      validates :identity, presence: true
+
       after_initialize :init_expire_at, if: :new_record?
       before_validation :sync_identity, if: -> { uid.present? && uid_changed? }
     end

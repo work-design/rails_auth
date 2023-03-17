@@ -10,7 +10,7 @@ module Auth
     private
     def authorized_token_permit_params
       [
-        :token,
+        :identity,
         :expire_at,
         :session_key
       ]
