@@ -46,7 +46,9 @@ module Auth
 
     def generate_account!
       generate_account
-      init_account
+      account || init_account
+      account.user || account.build_user
+      account.user.assign_attributes(name: name)
       save
     end
 
@@ -56,7 +58,7 @@ module Auth
     end
 
     def init_account
-      return if account
+      return if account&.user
       if !RegexpUtil.china_mobile?(identity)
         build_account(type: 'Auth::ThirdpartyAccount', confirmed: true)
       else
