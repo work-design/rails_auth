@@ -1,4 +1,4 @@
-<%= link_to({ controller: 'auth/board/accounts' }, class: 'weui-cell weui-cell_access') do %>
+<%= link_to({ controller: 'auth/board/accounts' }, state: 'enter', class: 'weui-cell weui-cell_access') do %>
   <div class="weui-cell__bd">
     <i class="fa-solid fa-fw fa-users has-text-primary"></i>
     <span class="pl-1"><%= t('auth.board.accounts.index.title') %></span>
@@ -6,7 +6,7 @@
   <div class="weui-cell__ft"></div>
 <% end %>
 
-<%= link_to({ controller: 'auth/board/oauth_users' }, class: 'weui-cell weui-cell_access') do %>
+<%= link_to({ controller: 'auth/board/oauth_users' }, state: 'enter', class: 'weui-cell weui-cell_access') do %>
   <div class="weui-cell__bd">
     <i class="fa-brands fa-fw fa-weixin has-text-primary"></i>
     <span class="pl-1"><%= t('auth.board.oauth_users.index.title') %></span>
@@ -14,7 +14,7 @@
   <div class="weui-cell__ft"></div>
 <% end %>
 
-<%= link_to({ controller: 'profiled/my/profiles', action: 'qrcode' }, class: 'weui-cell weui-cell_access') do %>
+<%= link_to({ controller: 'profiled/my/profiles', action: 'qrcode' }, state: 'enter', class: 'weui-cell weui-cell_access') do %>
   <div class="weui-cell__bd">
     <i class="fa-solid fa-fw fa-qrcode has-text-primary"></i>
     <span class="pl-1"><%= t('profiled.my.profiles.qrcode.title') %></span>
@@ -22,7 +22,7 @@
   <div class="weui-cell__ft"></div>
 <% end %>
 
-<%= link_to({ controller: 'profiled/my/profiles', action: 'show' }, class: 'weui-cell weui-cell_access') do %>
+<%= link_to({ controller: 'profiled/my/profiles', action: 'show' }, state: 'enter', class: 'weui-cell weui-cell_access') do %>
   <div class="weui-cell__bd">
     <i class="fa-solid fa-fw fa-user has-text-primary"></i>
     <span class="pl-1"><%= t('profiled.my.profiles.show.title') %></span>
@@ -30,7 +30,7 @@
   <div class="weui-cell__ft"></div>
 <% end %>
 
-<%= link_to({ controller: 'trade/my/wallet_templates' }, class: 'weui-cell weui-cell_access') do %>
+<%= link_to({ controller: 'trade/my/wallet_templates' }, state: 'enter', class: 'weui-cell weui-cell_access') do %>
   <div class="weui-cell__bd">
     <i class="fa-solid fa-fw fa-wallet has-text-primary"></i>
     <span class="pl-1"><%= t('trade.my.wallet_templates.index.title') %></span>
