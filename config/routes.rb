@@ -62,6 +62,10 @@ Rails.application.routes.draw do
         resource :user
       end
 
+      namespace :our, defaults: { namespace: 'our' } do
+        root 'home#index'
+      end
+
       namespace :board, defaults: { namespace: 'board' } do
         resource :user
         resources :accounts do
