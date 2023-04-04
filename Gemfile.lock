@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/work-design/rails_com.git
-  revision: 45f190984c6db53330ea9512e9969cd181d432ce
+  revision: f403bbaf1ff8d84e1d71fa331c0c3b19f6a5ecfc
   specs:
     rails_com (1.3.0)
       acme-client
@@ -17,14 +17,14 @@ GIT
 
 GIT
   remote: https://github.com/work-design/rails_design.git
-  revision: 49e97e5108b2bb1e210626b5645994df7cd775d8
+  revision: d5be4bb1c346882eb15b2ca9c54da8f0fb27518f
   specs:
     rails_design (0.0.1)
       rails
 
 GIT
   remote: https://github.com/work-design/rails_extend.git
-  revision: cc370d45e3dfaa9d76429304596b0d68f54f98cf
+  revision: 7646017d4a32223e8c819f699a6bd8ea685b4b85
   specs:
     rails_extend (1.0.1)
       rails (>= 5.0)
@@ -118,7 +118,9 @@ GEM
     concurrent-ruby (1.2.2)
     crass (1.0.6)
     date (3.3.3)
-    debug (1.7.1)
+    debug (1.7.2)
+      irb (>= 1.5.0)
+      reline (>= 0.3.1)
     default_where (2.2.0)
       activerecord (>= 4.0.0)
     erubi (1.12.0)
@@ -136,6 +138,9 @@ GEM
       http-2-next (>= 0.4.1)
     i18n (1.12.0)
       concurrent-ruby (~> 1.0)
+    io-console (0.6.0)
+    irb (1.6.3)
+      reline (>= 0.3.0)
     kaminari (1.2.2)
       activesupport (>= 4.1.0)
       kaminari-actionview (= 1.2.2)
@@ -148,7 +153,7 @@ GEM
       activerecord
       kaminari-core (= 1.2.2)
     kaminari-core (1.2.2)
-    loofah (2.19.1)
+    loofah (2.20.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
     mail (2.8.1)
@@ -172,9 +177,11 @@ GEM
       timeout
     net-smtp (0.3.3)
       net-protocol
-    nio4r (2.5.8)
+    nio4r (2.5.9)
     nokogiri (1.14.2)
       mini_portile2 (~> 2.8.0)
+      racc (~> 1.4)
+    nokogiri (1.14.2-x86_64-linux)
       racc (~> 1.4)
     pg (1.4.6)
     propshaft (0.7.0)
@@ -184,7 +191,7 @@ GEM
       railties (>= 7.0.0)
     psych (5.1.0)
       stringio
-    puma (6.1.1)
+    puma (6.2.1)
       nio4r (~> 2.0)
     racc (1.6.2)
     rack (2.2.6.4)
@@ -219,6 +226,8 @@ GEM
     rake (13.0.6)
     rdoc (6.5.0)
       psych (>= 4.0.0)
+    reline (0.3.3)
+      io-console (~> 0.5)
     ruby2_keywords (0.0.5)
     sdoc (2.6.1)
       rdoc (>= 5.0)
