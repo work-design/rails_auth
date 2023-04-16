@@ -5,7 +5,7 @@
     <%= f.text_field :id, style: 'width: 36ch' %>
     <div class="field is-narrow">
       <%= f.submit %>
-      <%= link_to t('.clear'), filter_params(except: [:identity, :uid, 'token-like']), class: 'button is-light' %>
+      <%= link_to t('.clear'), filter_params(except: [:identity, :uid, :id]), class: 'button is-light' %>
     </div>
   </div>
 <% end %>
