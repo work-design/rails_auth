@@ -2,7 +2,7 @@
   <div class="field-body">
     <%= f.text_field :identity %>
     <%= f.text_field :uid %>
-    <%= f.text_field 'id-like' %>
+    <%= f.text_field :id, style: 'width: 36ch' %>
     <div class="field is-narrow">
       <%= f.submit %>
       <%= link_to t('.clear'), filter_params(except: [:identity, :uid, 'token-like']), class: 'button is-light' %>

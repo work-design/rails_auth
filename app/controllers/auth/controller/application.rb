@@ -47,7 +47,7 @@ module Auth
       return if current_client
       return_hash = store_location(return_to)
 
-      render 'require_client', locals: { url: url_for(return_hash) }
+      render 'require_client', layout: 'raw', locals: { url: url_for(return_hash) }
     end
 
     def current_client
