@@ -20,7 +20,7 @@ module Auth
       end
 
       if request.variant.include?(:mini_program)
-        render 'require_program_login', layout: 'raw', locals: { url: url_for(return_hash) }
+        render 'require_program_login', locals: { url: url_for(return_hash) }
       else
         render 'require_user', layout: 'raw', locals: { url: url_for(controller: '/auth/sign', action: 'sign', identity: params[:identity]) }
       end
