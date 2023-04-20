@@ -22,7 +22,7 @@ module Auth
       if request.variant.include?(:mini_program)
         render 'require_program_login', locals: { url: url_for(return_hash) }
       else
-        render 'require_user', layout: 'raw', locals: { url: url_for(controller: '/auth/sign', action: 'sign', identity: params[:identity]) }
+        render 'require_user', layout: 'raw', locals: { url: url_for(controller: '/wechat/wechat', action: 'login', identity: params[:identity]) }
       end
     end
 
