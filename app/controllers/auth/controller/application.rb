@@ -125,7 +125,7 @@ module Auth
 
     def login_by_corp_user(corp_user)
       @current_account = corp_user.account
-      @current_user = @current_account.user
+      @current_user = corp_user.user
       @current_authorized_token = corp_user.authorized_token
 
       logger.debug "\e[35m  Login by CorpUser #{corp_user.id} as user: #{@current_user&.id}  \e[0m"
