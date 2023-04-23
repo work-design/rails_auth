@@ -36,10 +36,8 @@ module Auth
       after_save_commit :sync_avatar_to_user_later, if: -> { avatar_url.present? && saved_change_to_avatar_url? }
     end
 
-    def generate_account!
+    def generate_account
       user || build_user
-      user.assign_attributes(name: name)
-      save
     end
 
     def can_login?(params)
