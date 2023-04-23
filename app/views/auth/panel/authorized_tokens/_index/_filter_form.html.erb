@@ -1,7 +1,7 @@
 <%= form_with theme: 'search', model: Auth::AuthorizedToken.new do |f| %>
   <div class="field-body">
     <%= f.text_field :identity %>
-    <%= f.text_field :uid %>
+    <%= f.text_field :uid, style: 'width: 28ch' %>
     <%= f.text_field :id, style: 'width: 36ch' %>
     <div class="field is-narrow">
       <%= f.submit %>
