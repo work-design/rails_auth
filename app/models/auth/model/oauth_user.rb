@@ -31,49 +31,19 @@ module Auth
       validates :provider, presence: true
       validates :uid, presence: true
 
-      before_validation :init_account, if: -> { identity_changed? }
       after_save :sync_to_authorized_tokens, if: -> { saved_change_to_identity? }
       after_save :sync_name_to_user, if: -> { saved_change_to_name? }
       after_save_commit :sync_avatar_to_user_later, if: -> { avatar_url.present? && saved_change_to_avatar_url? }
     end
 
-    def temp_identity
-      unionid.presence || uid
-    end
-
-    def generate_account
-      self.identity = temp_identity
-    end
-
     def generate_account!
-      generate_account
-      account || init_account
-      account.user || account.build_user
-      account.user.assign_attributes(name: name)
+      user || build_user
+      user.assign_attributes(name: name)
       save
     end
 
     def can_login?(params)
       self.identity = params[:identity]
-      init_account
-    end
-
-    def init_account
-      return if account&.user
-      if !RegexpUtil.china_mobile?(identity)
-        build_account(type: 'Auth::ThirdpartyAccount', confirmed: true)
-      else
-        temp_account = ::Auth::Account.find_by(identity: temp_identity)
-        if temp_account
-          temp_account.type = 'Auth::MobileAccount'
-          temp_account.identity = self.identity
-          temp_account.confirmed = true
-          temp_account.save
-          self.account = temp_account
-        else
-          build_account(type: 'Auth::MobileAccount', confirmed: true)
-        end
-      end
     end
 
     def sync_name_to_user
