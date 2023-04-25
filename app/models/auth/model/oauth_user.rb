@@ -30,16 +30,14 @@ module Auth
       validates :provider, presence: true
       validates :uid, presence: true
 
-      after_save :generate_account, if: -> { saved_change_to_identity? }
+      after_save :generate_account!, if: -> { saved_change_to_identity? }
       after_save :sync_to_authorized_tokens, if: -> { saved_change_to_identity? }
       after_save :sync_name_to_user, if: -> { name.present? && saved_change_to_name? }
       after_save_commit :sync_avatar_to_user_later, if: -> { avatar_url.present? && saved_change_to_avatar_url? }
     end
 
-    def generate_account
-      account || build_account(type: 'Auth::MobileAccount')
-      account.confirmed = true
-      account.save
+    def generate_account!
+      account || create_account(type: 'Auth::MobileAccount')
     end
 
     def can_login?(params)
