@@ -6,7 +6,6 @@ module Auth
       attribute :id, :uuid
       attribute :identity, :string, index: true
       attribute :expire_at, :datetime
-      attribute :session_key, :string, comment: '目前在小程序下用到'
       attribute :access_counter, :integer, default: 0
       attribute :mock_member, :boolean, default: false
       attribute :mock_user, :boolean, default: false
@@ -34,7 +33,6 @@ module Auth
     def filter_hash
       {
         uid: self.uid,
-        session_key: self.session_key,
         session_id: self.session_id
       }
     end
