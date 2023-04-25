@@ -1,8 +1,3 @@
-##
-# include this module to your User model
-#   class User < ApplicationRecord
-#     include Auth::Model::User
-#   end
 module Auth
   module Model::User
     extend ActiveSupport::Concern
