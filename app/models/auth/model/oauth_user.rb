@@ -22,7 +22,7 @@ module Auth
       belongs_to :user, optional: true
 
       has_many :authorized_tokens, ->(o) { where(appid: o.appid, identity: o.identity) }, primary_key: :uid, foreign_key: :uid, dependent: :delete_all
-      has_one :same_oauth_user, ->(o) { where.not(id: o.id).where.not(unionid: nil).where.not(identity: nil) }, class_name: self.name, foreign_key: :unionid, primary_key: :unionid
+      belongs_to :same_oauth_user, ->(o) { where.not(id: o.id) }, class_name: self.name, foreign_key: :unionid, primary_key: :unionid, optional: true
       has_many :same_oauth_users, ->(o) { where.not(id: o.id).where.not(unionid: nil) }, class_name: self.name, foreign_key: :unionid, primary_key: :unionid
 
       has_many :members, class_name: 'Org::Member', foreign_key: :identity, primary_key: :identity
