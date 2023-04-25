@@ -5,24 +5,29 @@
   <% end %>
   <% model.accounts.each do |account| %>
     <p class="has-text-grey mt-2">
-      <%= link_to({ controller: 'accounts', user_id: model.id }, aria: { label: t('auth.panel.accounts.index.title') }) do %>
-        <i class="fa-solid fa-portrait"></i>
-      <% end %>
-      <span title="<%= account.identity %>" class="is-text" style="width: 10em"><%= account.identity %></span>
-      <span class="tags">
-      <% account.oauth_users.each do |oauth_user| %>
-        <%= link_to oauth_user.type_i18n, { controller: 'oauth_users', identity: account.identity }, class: 'tag' %>
-      <% end %>
-      </span>
+    <%= link_to({ controller: 'accounts', user_id: model.id }, aria: { label: t('auth.panel.accounts.index.title') }) do %>
+      <i class="fa-solid fa-portrait"></i>
+      <span title="<%= account.identity %>" class="is-text"><%= account.identity %></span>
+    <% end %>
     </p>
   <% end %>
+</td>
+<td>
+<% model.oauth_users.each do |oauth_user| %>
+  <p>
+    <%= link_to({ controller: 'oauth_users', user_id: model.id }) do %>
+      <span class="tag"><%= oauth_user.type_i18n %></span>
+      <span><%= oauth_user.uid %></span>
+    <% end %>
+  </p>
+<% end %>
 </td>
 <td>
   <p><%= model.locale %></p>
   <p><%= model.timezone %></p>
 </td>
-<td><time data-controller="time"><%= model.created_at.to_fs(:iso8601) %></time></td>
 <td>
+  <p><time data-controller="time"><%= model.created_at.to_fs(:iso8601) %></time></p>
   <p><time data-controller="time"><%= model.last_login_at&.to_fs(:iso8601) %></time></p>
   <p><%= model.last_login_ip %></p>
 </td>
