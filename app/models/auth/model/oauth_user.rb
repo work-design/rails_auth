@@ -37,7 +37,9 @@ module Auth
     end
 
     def generate_account!
-      account || create_account(type: 'Auth::MobileAccount')
+      account || build_account(type: 'Auth::MobileAccount')
+      account.user_id = user_id
+      account.save
     end
 
     def can_login?(params)
