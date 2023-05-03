@@ -4,7 +4,7 @@ module Auth
     before_action :set_oauth_user, only: [:show, :edit, :update, :destroy, :actions]
 
     def index
-      @oauth_users = current_user.oauth_users
+      @oauth_users = current_user.oauth_users.includes(:app)
     end
 
     def create
