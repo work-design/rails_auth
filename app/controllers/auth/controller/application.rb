@@ -10,9 +10,8 @@ module Auth
 
     def require_user
       return if current_user
-      state = store_location
 
-      redirect_to url_for(controller: '/auth/sign', action: 'sign', identity: params[:identity], state: state)
+      redirect_to url_for(controller: '/auth/sign', action: 'sign', identity: params[:identity], state: urlsafe_encode64(destroyable: false))
     end
 
     def current_user
@@ -34,9 +33,8 @@ module Auth
 
     def require_client
       return if current_client
-      return_hash = store_location
 
-      render 'require_client', layout: 'raw', locals: { url: url_for(return_hash) }
+      render 'require_client', layout: 'raw', locals: { url: url_for(state: urlsafe_encode64(destroyable: false)) }
     end
 
     def current_client
@@ -81,19 +79,6 @@ module Auth
       end
       logger.debug "\e[35m  Current Authorized Token: #{@current_authorized_token&.id}, Destroyed: #{@current_authorized_token&.destroyed?}  \e[0m"
       @current_authorized_token
-    end
-
-    def store_location
-      if path_hash.present?
-        session[:request_route] = path_hash
-      else
-        session[:request_method] = request.method
-        session[:request_body] = request.request_parameters
-        session[:request_route] = request.path_parameters.merge(request.query_parameters).except(:business, :namespace, 'auth_token')
-        if request.method != 'GET'
-          session[:request_route].merge! return_url: Base64.urlsafe_encode64(request.referer, padding: false)
-        end
-      end
     end
 
     def login_by_account(account)

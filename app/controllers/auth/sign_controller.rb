@@ -129,8 +129,15 @@ module Auth
     end
 
     def render_login
-      render 'login', locals: { url: url_for(**(session[:request_route].presence || RailsAuth.config.default_return_hash)), message: t('.success') }
-      [:request_route].each(&->(i){ session.delete(i) })
+      state = Com::State.find_by(id: params[:state])
+      if state
+        state.update user_id: oauth_user.user_id, destroyable: true
+      end
+      if state
+        render 'state_visit', layout: 'raw', locals: { state: state, auth_token: current_authorized_token.id }, message: t('.success')
+      else
+        render 'visit', layout: 'raw', locals: { url:  url_for(RailsAuth.config.default_return_hash || { controller: '/home' }) }, message: t('.success')
+      end
     end
 
     def check_login
