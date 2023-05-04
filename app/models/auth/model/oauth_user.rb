@@ -30,6 +30,7 @@ module Auth
       validates :provider, presence: true
       validates :uid, presence: true
 
+      before_save :auto_link, if: -> { unionid.present? && unionid_changed? }
       after_save :generate_account!, if: -> { saved_change_to_identity? }
       after_save :sync_to_authorized_tokens, if: -> { saved_change_to_identity? }
       after_save :sync_name_to_user, if: -> { name.present? && saved_change_to_name? }
@@ -44,6 +45,17 @@ module Auth
 
     def can_login?(params)
       self.identity = params[:identity]
+    end
+
+    def init_user
+      if same_oauth_user
+        self.identity ||= same_oauth_user.identity
+        self.user_id ||= same_oauth_user.user_id
+        self.name ||= same_oauth_user.name
+        self.avatar_url ||= same_oauth_user.avatar_url
+      else
+        user || build_user
+      end
     end
 
     def sync_name_to_user
