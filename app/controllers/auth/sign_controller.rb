@@ -131,7 +131,7 @@ module Auth
     def render_login
       state = Com::State.find_by(id: params[:state])
       if state
-        state.update user_id: oauth_user.user_id, destroyable: true
+        state.update user_id: current_user.id, destroyable: true
       end
       if state
         render 'state_visit', layout: 'raw', locals: { state: state, auth_token: current_authorized_token.id }, message: t('.success')
