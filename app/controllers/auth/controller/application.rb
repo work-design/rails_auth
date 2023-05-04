@@ -8,22 +8,11 @@ module Auth
       after_action :set_auth_token
     end
 
-    def require_user(return_to: nil)
+    def require_user
       return if current_user
-      return_hash = store_location(return_to)
-      if current_authorized_token&.oauth_user
-        @code = 'oauth_user'
-      elsif current_authorized_token&.account
-        @code = 'account'
-      else
-        @code = 'authorized_token'
-      end
+      state = store_location
 
-      if request.variant.include?(:mini_program)
-        render 'require_program_login', locals: { url: url_for(return_hash) }
-      else
-        render 'require_user', layout: 'raw', locals: { url: url_for(controller: '/wechat/wechat', action: 'login', identity: params[:identity]) }
-      end
+      redirect_to url_for(controller: '/auth/sign', action: 'sign', identity: params[:identity], state: state)
     end
 
     def current_user
@@ -43,9 +32,9 @@ module Auth
       end
     end
 
-    def require_client(return_to: nil)
+    def require_client
       return if current_client
-      return_hash = store_location(return_to)
+      return_hash = store_location
 
       render 'require_client', layout: 'raw', locals: { url: url_for(return_hash) }
     end
@@ -94,7 +83,7 @@ module Auth
       @current_authorized_token
     end
 
-    def store_location(path_hash = {})
+    def store_location
       if path_hash.present?
         session[:request_route] = path_hash
       else
