@@ -56,6 +56,7 @@ module Auth
     end
 
     def auto_link
+      return unless same_oauth_user
       self.identity = identity.presence || same_oauth_user.identity
       self.user_id ||= same_oauth_user.user_id
       self.name ||= same_oauth_user.name
