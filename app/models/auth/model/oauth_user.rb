@@ -48,14 +48,18 @@ module Auth
     end
 
     def init_user
-      if same_oauth_user
-        self.identity ||= same_oauth_user.identity
-        self.user_id ||= same_oauth_user.user_id
-        self.name ||= same_oauth_user.name
-        self.avatar_url ||= same_oauth_user.avatar_url
+      if same_oauth_user&.user
+        auto_link
       else
         user || build_user
       end
+    end
+
+    def auto_link
+      self.identity = identity.presence || same_oauth_user.identity
+      self.user_id ||= same_oauth_user.user_id
+      self.name ||= same_oauth_user.name
+      self.avatar_url ||= same_oauth_user.avatar_url
     end
 
     def sync_name_to_user
