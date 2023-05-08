@@ -27,7 +27,7 @@ module Auth
     end
 
     def user
-      account&.user || oauth_user&.user
+      oauth_user&.user || account&.user
     end
 
     def filter_hash
