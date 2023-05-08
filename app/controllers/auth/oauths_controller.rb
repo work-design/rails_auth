@@ -5,7 +5,7 @@ module Auth
     def create
       type = 'Auth::' + (oauth_params[:provider].to_s + '_user').classify
 
-      @oauth_user = OauthUser.find_or_initialize_by(type: type, uid: oauth_params[:uid])
+      @oauth_user = current_user.oauth_users.find_or_initialize_by(type: type, uid: oauth_params[:uid])
       @oauth_user.assign_info(oauth_params)
 
       if @oauth_user.account.nil?
@@ -17,7 +17,6 @@ module Auth
       if @oauth_user.user
         login_by_account(@oauth_user.account)
         redirect_to session[:return_to] || RailsAuth.config.default_return_path
-        session.delete :return_to
       else
         subdomain = ActionDispatch::Http::URL.extract_subdomain session[:return_to].sub(/(http|https):\/\//, ''), 1
         redirect_to sign_url(uid: @oauth_user.uid, subdomain: subdomain)
