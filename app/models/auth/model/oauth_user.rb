@@ -18,14 +18,14 @@ module Auth
       attribute :identity, :string, index: true
       index [:uid, :provider], unique: true
 
+      has_many :members, class_name: 'Org::Member', primary_key: :user_id, foreign_key: :user_id
+
       belongs_to :account, -> { where(confirmed: true) }, foreign_key: :identity, primary_key: :identity, inverse_of: :oauth_users, optional: true
       belongs_to :user, optional: true
 
       has_many :authorized_tokens, ->(o) { where(appid: o.appid, identity: o.identity) }, primary_key: :uid, foreign_key: :uid, dependent: :delete_all
       belongs_to :same_oauth_user, ->(o) { where.not(id: o.id) }, class_name: self.name, foreign_key: :unionid, primary_key: :unionid, optional: true
       has_many :same_oauth_users, ->(o) { where.not(id: o.id).where.not(unionid: nil) }, class_name: self.name, foreign_key: :unionid, primary_key: :unionid
-
-      has_many :members, class_name: 'Org::Member', foreign_key: :identity, primary_key: :identity
 
       validates :provider, presence: true
       validates :uid, presence: true
