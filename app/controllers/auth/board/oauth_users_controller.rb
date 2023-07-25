@@ -21,7 +21,6 @@ module Auth
     def bind
       @oauth_user = OauthUser.find_by(uid: params[:uid])
       @oauth_user.account = current_account
-
       @oauth_user.save
 
       redirect_to board_root_url

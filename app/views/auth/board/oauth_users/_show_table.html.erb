@@ -1,0 +1,12 @@
+<tr>
+  <td class="has-text-right"><%= Auth::OauthUser.human_attribute_name(:uid) %></td>
+  <td><%= @oauth_user.uid %></td>
+</tr>
+<tr>
+  <td class="has-text-right"><%= Auth::OauthUser.human_attribute_name(:appid) %></td>
+  <td><%= @oauth_user.appid %></td>
+</tr>
+<tr>
+  <td class="has-text-right"><%= Auth::OauthUser.human_attribute_name(:identity) %></td>
+  <td><%= @oauth_user.identity %></td>
+</tr>
