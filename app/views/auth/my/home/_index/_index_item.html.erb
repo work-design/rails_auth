@@ -1,15 +1,14 @@
-<%= link_to({ controller: 'auth/board/accounts' }, state: 'enter', class: 'weui-cell weui-cell_access') do %>
+<%= link_to({ controller: 'accounts' }, state: 'enter', class: 'weui-cell weui-cell_access') do %>
   <div class="weui-cell__bd">
     <i class="fa-solid fa-fw fa-users has-text-primary"></i>
-    <span class="pl-1"><%= t('auth.board.accounts.index.title') %></span>
+    <span class="pl-1"><%= t('auth.my.accounts.index.title') %></span>
   </div>
   <div class="weui-cell__ft"></div>
 <% end %>
-
-<%= link_to({ controller: 'auth/board/oauth_users' }, state: 'enter', class: 'weui-cell weui-cell_access') do %>
+<%= link_to({ controller: 'oauth_users' }, state: 'enter', class: 'weui-cell weui-cell_access') do %>
   <div class="weui-cell__bd">
     <i class="fa-brands fa-fw fa-weixin has-text-primary"></i>
-    <span class="pl-1"><%= t('auth.board.oauth_users.index.title') %></span>
+    <span class="pl-1"><%= t('auth.my.oauth_users.index.title') %></span>
   </div>
   <div class="weui-cell__ft"></div>
 <% end %>

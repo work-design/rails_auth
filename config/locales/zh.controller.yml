@@ -45,6 +45,10 @@ zh:
           title: 编辑基本信息
         update:
           saved: 资料已保存！
+    my:
+      home:
+        index:
+          title: 更多
       accounts:
         index:
           title: 账号
@@ -61,11 +65,7 @@ zh:
           unbind: 解绑
           update_token: 重新绑定
         unbind:
-         title: 解绑
-    my:
-      home:
-        index:
-          title: 更多
+          title: 解绑
     panel:
       title: 用户管理
       home:

@@ -9,6 +9,8 @@ module Auth
       attribute :source, :string
       index [:identity, :confirmed]
 
+      belongs_to :organ, class_name: 'Org::Organ', optional: true
+
       belongs_to :user, optional: true
 
       has_many :authorized_tokens, primary_key: :identity, foreign_key: :identity, dependent: :delete_all

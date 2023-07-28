@@ -1,9 +1,9 @@
 module Auth
-  class Board::AccountsController < Board::BaseController
+  class My::AccountsController < My::BaseController
     before_action :set_account, only: [:edit, :update, :token, :confirm, :select, :destroy]
 
     def index
-      @accounts = current_user.accounts.order(id: :asc)
+      @accounts = current_user.accounts.default_where(default_params).order(id: :asc)
     end
 
     def new
@@ -62,10 +62,11 @@ module Auth
     end
 
     def account_params
-      params.require(:account).permit(
+      p = params.require(:account).permit(
         :identity,
         :confirmed
       )
+      p.merge! default_form_params
     end
 
   end

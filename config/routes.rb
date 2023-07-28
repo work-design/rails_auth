@@ -60,14 +60,6 @@ Rails.application.routes.draw do
       namespace :my, defaults: { namespace: 'my' } do
         root 'home#index'
         resource :user
-      end
-
-      namespace :our, defaults: { namespace: 'our' } do
-        root 'home#index'
-      end
-
-      namespace :board, defaults: { namespace: 'board' } do
-        resource :user
         resources :accounts do
           member do
             post :token
@@ -80,6 +72,14 @@ Rails.application.routes.draw do
             get :bind
           end
         end
+      end
+
+      namespace :our, defaults: { namespace: 'our' } do
+        root 'home#index'
+      end
+
+      namespace :board, defaults: { namespace: 'board' } do
+        resource :user
       end
     end
 
