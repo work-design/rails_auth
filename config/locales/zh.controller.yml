@@ -60,6 +60,8 @@ zh:
           bind: 绑定
           unbind: 解绑
           update_token: 重新绑定
+        unbind:
+         title: 解绑
     my:
       home:
         index:
