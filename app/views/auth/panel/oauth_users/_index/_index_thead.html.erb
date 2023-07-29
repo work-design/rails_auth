@@ -1,7 +1,9 @@
 <th>
   <p><%= Auth::OauthUser.human_attribute_name(:type) %></p>
-  <p><%= Auth::OauthUser.human_attribute_name(:appid) %></p>
 </th>
+<td>
+  <p><%= Auth::OauthUser.human_attribute_name(:appid) %></p>
+</td>
 <th>
   <p class="has-text-success"><%= Auth::OauthUser.human_attribute_name(:uid) %></p>
   <p class="has-text-grey"><%= Auth::OauthUser.human_attribute_name(:unionid) %></p>

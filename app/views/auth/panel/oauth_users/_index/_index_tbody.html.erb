@@ -1,9 +1,13 @@
 <td>
-  <p>
-    <span class="tag"><%= model.type_i18n %></span>
-    <span><%= model.app&.name if model.respond_to?(:app) %></span>
-  </p>
+  <span class="tag"><%= model.type_i18n %></span>
+</td>
+<td>
   <p><%= model.appid %></p>
+  <% if model.respond_to?(:app) %>
+    <span><%= model.app&.name %></span>
+  <% elsif model.respond_to?(:agency) %>
+    <span><%= model.agency&.name %></span>
+  <% end %>
 </td>
 <td>
   <p class="has-text-success"><%= model.uid %></p>
