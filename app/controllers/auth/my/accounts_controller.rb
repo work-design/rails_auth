@@ -3,7 +3,7 @@ module Auth
     before_action :set_account, only: [:edit, :update, :token, :confirm, :select, :destroy]
 
     def index
-      @accounts = current_user.accounts.default_where(default_params).order(id: :asc)
+      @accounts = current_user.accounts.order(id: :asc)
     end
 
     def new
