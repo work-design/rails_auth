@@ -3,10 +3,10 @@
 </td>
 <td>
   <p><%= model.appid %></p>
-  <% if model.respond_to?(:app) %>
-    <span><%= model.app&.name %></span>
+  <% if model.respond_to?(:app) && model.app %>
+    <span><%= model.app.name %></span>
   <% elsif model.respond_to?(:agency) %>
-    <span><%= model.agency&.name %></span>
+    <span><%= model.agency&.nick_name %></span>
   <% end %>
 </td>
 <td>
