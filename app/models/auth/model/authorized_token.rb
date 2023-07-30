@@ -15,8 +15,9 @@ module Auth
 
       belongs_to :member, class_name: 'Org::Member', optional: true
 
+      belongs_to :user, optional: true
       belongs_to :oauth_user, foreign_key: :uid, primary_key: :uid, optional: true
-      belongs_to :account, -> { where(confirmed: true) }, foreign_key: :identity, primary_key: :identity, optional: true
+      belongs_to :account, ->(o) { where(user_id: o.user_id, confirmed: true) }, foreign_key: :identity, primary_key: :identity, optional: true
 
       has_many :sames, ->(o) { where(o.filter_hash) }, class_name: self.name, primary_key: :identity, foreign_key: :identity
 
@@ -24,10 +25,6 @@ module Auth
 
       after_initialize :init_expire_at, if: :new_record?
       before_validation :sync_identity, if: -> { uid.present? && uid_changed? }
-    end
-
-    def user
-      oauth_user&.user || account&.user
     end
 
     def filter_hash

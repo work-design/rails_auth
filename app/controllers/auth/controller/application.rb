@@ -47,19 +47,7 @@ module Auth
 
     def current_account
       return @current_account if defined?(@current_account)
-
-      if params[:disposable_token].present?
-        begin
-          dt = AuthorizedToken.find(params[:disposable_token])
-          @current_account = dt.account
-          @current_authorized_token = dt.refresh
-        rescue ActiveRecord::RecordNotFound => e
-          raise Com::DisposableTokenError
-        end
-      else
-        @current_account = current_authorized_token&.account
-      end
-
+      @current_account = current_authorized_token&.account
       logger.debug "\e[35m  Login as account: #{@current_account&.id}  \e[0m"
       @current_account
     end
