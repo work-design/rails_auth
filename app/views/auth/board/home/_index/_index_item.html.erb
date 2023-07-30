@@ -5,10 +5,20 @@
   </div>
   <div class="weui-cell__ft"></div>
 <% end %>
-<%= link_to({ controller: 'oauth_users' }, state: 'enter', class: 'weui-cell weui-cell_access') do %>
-  <div class="weui-cell__bd">
-    <i class="fa-brands fa-fw fa-weixin has-text-primary"></i>
-    <span class="pl-1"><%= t('auth.board.oauth_users.index.title') %></span>
-  </div>
-  <div class="weui-cell__ft"></div>
+<% if true || request.variant.include?(:wechat) %>
+  <%= link_to({ controller: 'wechat/board/wechat_users' }, state: 'enter', class: 'weui-cell weui-cell_access') do %>
+    <div class="weui-cell__bd">
+      <i class="fa-brands fa-fw fa-weixin has-text-primary"></i>
+      <span class="pl-1"><%= t('wechat.board.wechat_users.index.title') %></span>
+    </div>
+    <div class="weui-cell__ft"></div>
+  <% end %>
+<% else %>
+  <%= link_to({ controller: 'oauth_users' }, state: 'enter', class: 'weui-cell weui-cell_access') do %>
+    <div class="weui-cell__bd">
+      <i class="fa-brands fa-fw fa-weixin has-text-primary"></i>
+      <span class="pl-1"><%= t('auth.board.oauth_users.index.title') %></span>
+    </div>
+    <div class="weui-cell__ft"></div>
+  <% end %>
 <% end %>
