@@ -1,5 +1,5 @@
 module Auth
-  class My::OauthUsersController < My::BaseController
+  class Board::OauthUsersController < Board::BaseController
     before_action :set_user
     before_action :set_oauth_user, only: [:show, :edit, :update, :destroy, :actions]
 

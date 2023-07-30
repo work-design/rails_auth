@@ -1,5 +1,5 @@
 module Auth
-  class My::AccountsController < My::BaseController
+  class Board::AccountsController < Board::BaseController
     before_action :set_account, only: [:edit, :update, :token, :confirm, :select, :destroy]
 
     def index
