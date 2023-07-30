@@ -13,7 +13,6 @@ module Auth
       attribute :uid, :string
       attribute :session_id, :string
 
-      belongs_to :organ, class_name: 'Org::Organ', optional: true
       belongs_to :member, class_name: 'Org::Member', optional: true
 
       belongs_to :oauth_user, foreign_key: :uid, primary_key: :uid, optional: true

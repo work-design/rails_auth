@@ -18,8 +18,6 @@ module Auth
       attribute :identity, :string, index: true
       index [:uid, :provider], unique: true
 
-      belongs_to :organ, class_name: 'Org::Organ', optional: true
-
       has_many :members, class_name: 'Org::Member', primary_key: :identity, foreign_key: :identity
 
       belongs_to :user, optional: true
