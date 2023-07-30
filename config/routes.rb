@@ -67,6 +67,7 @@ Rails.application.routes.draw do
       end
 
       namespace :board, defaults: { namespace: 'board' } do
+        root 'home#index'
         resource :user
         resources :accounts do
           member do

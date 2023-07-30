@@ -38,6 +38,9 @@ zh:
         title: 重置密码
     board:
       title: 用户
+      home:
+        index:
+          title: 更多
       users:
         show:
           title: 基本信息
