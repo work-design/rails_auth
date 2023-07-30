@@ -5,7 +5,7 @@
   </div>
   <div class="weui-cell__ft"></div>
 <% end %>
-<% if true || request.variant.include?(:wechat) %>
+<% if request.variant.include?(:wechat) %>
   <%= link_to({ controller: 'wechat/board/wechat_users' }, state: 'enter', class: 'weui-cell weui-cell_access') do %>
     <div class="weui-cell__bd">
       <i class="fa-brands fa-fw fa-weixin has-text-primary"></i>
