@@ -23,7 +23,7 @@ module Auth
       belongs_to :user, optional: true
       belongs_to :account, -> { where(confirmed: true) }, foreign_key: :identity, primary_key: :identity, inverse_of: :oauth_users, optional: true
 
-      has_many :authorized_tokens, ->(o) { where(appid: o.appid, user_id: o.user_id, identity: o.identity) }, primary_key: :uid, foreign_key: :uid, dependent: :delete_all
+      has_many :authorized_tokens, ->(o) { where(o.filter_hash) }, primary_key: :uid, foreign_key: :uid, dependent: :delete_all
       belongs_to :same_oauth_user, ->(o) { where.not(id: o.id) }, class_name: self.name, foreign_key: :unionid, primary_key: :unionid, optional: true
       has_many :same_oauth_users, class_name: self.name, primary_key: :unionid, foreign_key: :unionid
 
@@ -35,6 +35,14 @@ module Auth
       after_save :sync_to_authorized_tokens, if: -> { saved_change_to_identity? }
       after_save :sync_name_to_user, if: -> { name.present? && saved_change_to_name? }
       after_save_commit :sync_avatar_to_user_later, if: -> { avatar_url.present? && saved_change_to_avatar_url? }
+    end
+
+    def filter_hash
+      {
+        appid: appid,
+        user_id: user_id,
+        identity: identity
+      }.compact_blank
     end
 
     def generate_account!
