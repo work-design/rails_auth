@@ -18,8 +18,6 @@ module Auth
       attribute :identity, :string, index: true
       index [:uid, :provider], unique: true
 
-      has_many :members, class_name: 'Org::Member', primary_key: :identity, foreign_key: :identity
-
       belongs_to :user, optional: true
       belongs_to :account, -> { where(confirmed: true) }, foreign_key: :identity, primary_key: :identity, inverse_of: :oauth_users, optional: true
 
