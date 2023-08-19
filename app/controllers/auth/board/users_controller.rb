@@ -3,7 +3,7 @@ module Auth
     before_action :set_user
 
     def create
-      @user.assign_attribute user_params
+      @user.assign_attributes user_params
       @user.save
     end
 
