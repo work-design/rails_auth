@@ -1,16 +1,24 @@
-<%= link_to({ action: 'edit', item: 'name' }, class: 'weui-cell weui-cell_access') do %>
-  <div class="weui-cell__bd">
-    <%= Auth::User.human_attribute_name(:name) %>
-  </div>
-  <div class="weui-cell__ft"><%= @user.name %></div>
-<% end %>
-<div class="weui-cell">
-  <div class="weui-cell__bd">
-    <%= Auth::User.human_attribute_name(:accounts) %>
-  </div>
-  <div class="weui-cell__ft">
-  <% @user.accounts.each do |account| %>
-    <p><%= account.identity %></p>
-  <% end %>
+<%= render 'top_bar' %>
+
+<div class="weui-panel is-box">
+  <div class="weui-panel__bd">
+    <div class="weui-cells">
+      <%= link_to({ action: 'edit', item: 'name' }, class: 'weui-cell weui-cell_access') do %>
+        <div class="weui-cell__bd">
+          <%= Auth::User.human_attribute_name(:name) %>
+        </div>
+        <div class="weui-cell__ft"><%= @user.name %></div>
+      <% end %>
+      <div class="weui-cell">
+        <div class="weui-cell__bd">
+          <%= Auth::User.human_attribute_name(:accounts) %>
+        </div>
+        <div class="weui-cell__ft">
+        <% @user.accounts.each do |account| %>
+          <p><%= account.identity %></p>
+        <% end %>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
