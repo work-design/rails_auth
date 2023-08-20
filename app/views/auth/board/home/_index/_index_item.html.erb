@@ -3,8 +3,15 @@
     data-controller="mini-program"
     data-mini-program-nav-value="true"
     data-mini-program-url-value="/pages/profile/index"
+    data-action="click->mini-program#navTo"
     class="weui-cell weui-cell_access"
-  ><%= t('auth.board.users.show.title') %></div>
+  >
+    <div class="weui-cell__bd">
+      <i class="fa-solid fa-fw fa-user has-text-primary"></i>
+      <span><%= t('auth.board.users.show.title') %></span>
+    </div>
+    <div class="weui-cell__ft"></div>
+  </div>
 <% else %>
   <%= link_to({ controller: 'users', action: 'show' }, state: 'enter', class: 'weui-cell weui-cell_access') do %>
     <div class="weui-cell__bd">
