@@ -82,5 +82,9 @@ module Auth
       oauth_users.pluck(:provider).compact
     end
 
+    def avatar_url
+      avatar.url
+    end
+
   end
 end
