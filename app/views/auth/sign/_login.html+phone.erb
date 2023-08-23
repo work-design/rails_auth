@@ -3,7 +3,7 @@
     <div class="weui-cells__group weui-cells__group_form">
       <h4 class="weui-cells__title">请注册或登录</h4>
       <div class="weui-cells weui-cells_form">
-        <% params.permit(:uid, :request_id).each do |key, value| %>
+        <% params.permit(:uid, :state, :request_id).each do |key, value| %>
           <%= f.hidden_field key, value: value, autocomplete: false %>
         <% end %>
         <%= f.text_field :identity, value: params[:identity], placeholder: Auth::Account.human_attribute_name(:identity) %>
