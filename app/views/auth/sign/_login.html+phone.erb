@@ -7,7 +7,7 @@
           <%= f.hidden_field key, value: value, autocomplete: false %>
         <% end %>
         <%= f.text_field :identity, value: params[:identity], placeholder: Auth::Account.human_attribute_name(:identity) %>
-        <%= f.password_field :password, placeholder: Auth::User.human_attribute_name(:password), autocomplete: false %>
+        <%= f.password_field :password, placeholder: Auth::User.human_attribute_name(:password), autocomplete: false, autofocus: true %>
       </div>
     </div>
   </div>

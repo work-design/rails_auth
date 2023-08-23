@@ -134,7 +134,7 @@ module Auth
         state.update user_id: current_user.id, destroyable: true
       end
       if state
-        render 'state_visit', layout: 'raw', locals: { state: state, auth_token: current_authorized_token.id }, message: t('.success')
+        render 'state_visit', layout: 'raw', locals: { state: state }, message: t('.success')
       else
         render 'visit', layout: 'raw', locals: { url:  url_for(RailsAuth.config.default_return_hash || { controller: '/home' }) }, message: t('.success')
       end

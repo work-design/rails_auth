@@ -6,7 +6,7 @@
         <% params.permit(:uid, :request_id, :state).each do |key, value| %>
           <%= f.hidden_field key, value: value, autocomplete: false %>
         <% end %>
-        <%= f.text_field :identity, value: params[:identity], placeholder: '手机号或Email' %>
+        <%= f.text_field :identity, value: params[:identity], placeholder: '手机号或Email', autofocus: true %>
       </div>
     </div>
   </div>
