@@ -16,8 +16,7 @@ module Auth
         #good_type: ['Ship::BoxHost', 'Ship::BoxSell']
       }
       x = Arel.sql("date_trunc('day', created_at, '#{Time.zone.tzinfo.identifier}')")
-
-      r =  User.where(q_params).group(x).order(x).count
+      r = User.where(q_params).group(x).order(x).count
 
       result = []
       r.each do |key, v|
