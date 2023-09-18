@@ -3,7 +3,7 @@ module Auth
     extend ActiveSupport::Concern
 
     included do
-      normalizes :identity, with: -> (email) { email.strip.downcase }
+      #normalizes :identity, with: -> (email) { email.strip.downcase }
       has_many :verify_tokens, class_name: 'EmailToken', primary_key: :identity, foreign_key: :identity, dependent: :delete_all
     end
 
