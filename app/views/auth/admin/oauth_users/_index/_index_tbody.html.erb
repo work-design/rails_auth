@@ -8,4 +8,4 @@
   <%= model.name %>
 </td>
 <td><time data-controller="time"><%= model.created_at.to_fs(:iso8601) %></time></td>
-<td><%= link_to model.user_id, panel_user_path(model.user_id) if model.user_id %></td>
+<td><%# link_to model.user_id, panel_user_path(model.user_id) if model.user_id %></td>
