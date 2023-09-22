@@ -52,7 +52,11 @@ Rails.application.routes.draw do
             delete :prune
           end
         end
-        resources :oauth_users
+        resources :oauth_users do
+          collection do
+            get :month
+          end
+        end
         resources :authorized_tokens
         resources :apps
       end
