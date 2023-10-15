@@ -12,7 +12,7 @@
 <th>
   <p><%= Auth::User.human_attribute_name(:created_at) %></p>
   <p>
-    <%= link_to Auth::User.human_attribute_name(:last_login_at), filter_params('last_login_at-desc': 1, except: ['last_login_at-desc']) %>
+    <%= link_to Auth::User.human_attribute_name(:last_login_at), filter_params('last_login_at-desc': 1) %>
   </p>
   <p><%= Auth::User.human_attribute_name(:last_login_ip) %></p>
 </th>
