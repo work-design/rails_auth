@@ -1,4 +1,3 @@
-require 'jwt'
 module Auth
   module Controller::Application
     extend ActiveSupport::Concern
