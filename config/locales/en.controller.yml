@@ -2,6 +2,7 @@ en:
   auth:
     sign:
       sign:
+        title: Sign Up / In
         next: Next
     join:
       join:
