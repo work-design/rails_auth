@@ -1,1 +1,9 @@
-<div data-controller="visit cable" data-visit-url-value="<%= url_for(controller: current_organ.redirect_controller, action: current_organ.redirect_action) %>"></div>
+<% if defined?(current_organ) && current_organ %>
+  <div
+    data-controller="visit cable"
+    data-visit-url-value="<%= url_for(controller: current_organ.redirect_controller, action: current_organ.redirect_action) %>"
+  >
+  </div>
+<% else %>
+  <div data-controller="visit cable" data-visit-url-value="<%= url_for(controller: '/home') %>"></div>
+<% end %>
