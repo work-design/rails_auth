@@ -4,6 +4,7 @@ en:
       sign:
         title: Sign Up / In
         next: Next
+        save: Save
     join:
       join:
         login: Login
