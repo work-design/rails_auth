@@ -17,7 +17,7 @@
 <div class="panel-block has-background-white is-justify-content-right">
   <%= button_to t('.token'), { controller: 'auth/sign', action: 'token_login' }, params: { identity: params[:identity] }, id: 'mobile_confirm', class: 'has-text-grey' %>
   <span>|</span>
-  <%= link_to t('.forget'), { controller: 'auth/password', action: 'new' }, class: 'has-text-grey' %>
+  <%= button_to t('.forget'), { controller: 'auth/password', action: 'create' }, params: { identity: params[:identity] }, class: 'has-text-grey' %>
 </div>
 <div class="panel-block has-background-white">
   <%= submit_tag t('.save'), form: 'login_form', class: 'button is-primary is-fullwidth' %>
