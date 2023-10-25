@@ -46,9 +46,15 @@ en:
           title: User Info
     panel:
       title: Users Admin
+      home:
+        index:
+          title: Users Summary
       users:
         index:
           title: Users
+      accounts:
+        index:
+          title: Accounts
   user_mailer:
     email_token:
       title: 'You email verify code is:'
