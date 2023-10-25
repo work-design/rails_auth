@@ -36,6 +36,7 @@ PATH
     rails_auth (1.2.0)
       bcrypt (~> 3.1)
       rails_com (~> 1.2)
+      rotp
 
 GEM
   remote: https://rubygems.org/
@@ -263,6 +264,7 @@ GEM
       psych (>= 4.0.0)
     reline (0.3.9)
       io-console (~> 0.5)
+    rotp (6.3.0)
     ruby2_keywords (0.0.5)
     sdoc (2.6.1)
       rdoc (>= 5.0)
