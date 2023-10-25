@@ -8,7 +8,7 @@
       <%= link_to({ action: 'edit_user_tags', id: model.id }, aria: { label: t('.tag') }, class: 'button is-small is-rounded is-light') do %>
         <i class="fa-solid fa-user-tag has-text-success"></i>
       <% end %>
-      <%= link_to({ action: 'edit', id: model.id }, data: { turbo_frame: 'modal', turbo_scroll: true }, aria: { label: t('.edit') }, class: 'button is-small is-rounded is-light') do %>
+      <%= link_to({ action: 'edit', id: model.id }, data: { turbo_frame: 'modal', turbo_scroll: true }, aria: { label: t('.edit.title') }, class: 'button is-small is-rounded is-light') do %>
         <i class="fa-solid fa-pencil has-text-link"></i>
       <% end %>
       <%= button_to({ action: 'destroy', id: model.id }, method: :delete, aria: { label: t('.destroy') }, form: { data: { turbo_confirm: t('.confirm'), turbo_scroll: true } }, class: 'button is-small is-rounded is-light') do %>
