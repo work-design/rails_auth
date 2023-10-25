@@ -1,9 +1,10 @@
-<div class="three wide column">
-  <h4 class="ui block top attached centered header"><%= t('.title') %></h4>
-  <div class="ui bottom attached segment">
-    <%= form_with scope: nil, url: password_forget_url, local: true, on: { label: false, wrap_all: false, wrap_input: false } do |f| %>
-      <%= f.text_field :identity, placeholder: Account.human_attribute_name(:identity) %>
-      <%= f.submit t('.next'), class: 'ui fluid primary button' %>
+<div class="column"></div>
+<div class="column">
+  <div class="panel" style="width: 300px">
+    <h4 class="panel-heading has-text-centered"><%= t('.title') %></h4>
+    <%= form_with scope: nil, url: { action: 'create' }, wrap: { input: 'control', submit: 'control' }, all: { normal: nil, required: nil, submit: nil }, before_wrap: { submit: nil }, class: 'panel-block has-background-white is-flex-direction-column' do |f| %>
+      <%= f.text_field :identity, placeholder: Auth::Account.human_attribute_name(:identity) %>
+      <%= f.submit t('.next') %>
     <% end %>
   </div>
 </div>

@@ -23,6 +23,8 @@ en:
       login_token:
         sent: Validation code has been sent!
     password:
+      new:
+        next: Next
       create:
         header: Reset Password
         body: A link with reset token has been sent to
