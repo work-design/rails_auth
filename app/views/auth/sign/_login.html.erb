@@ -7,18 +7,18 @@
 </div>
 <% end %>
 <h4 class="panel-heading has-text-centered"><%= t('.title') %></h4>
-<%= form_with scope: nil, url: { action: 'login' }, wrap: { input: 'field control', submit: 'panel-block has-background-white' }, all: { normal: nil, submit: nil }, before_wrap: { submit: nil } do |f| %>
+<%= form_with scope: nil, url: { action: 'login' }, wrap: { input: 'field control' }, all: { normal: nil }, id: 'login_form', class: 'panel-block has-background-white is-wrapped' do |f| %>
   <% params.permit(:uid, :request_id).each do |key, value| %>
     <%= f.hidden_field key, value: value %>
   <% end %>
-  <div class="panel-block has-background-white is-wrapped">
-    <%= f.text_field :identity, value: params[:identity], placeholder: Auth::Account.human_attribute_name(:identity), readonly: true %>
-    <%= f.password_field :password, placeholder: Auth::User.human_attribute_name(:password), autocomplete: false %>
-  </div>
-  <div class="has-text-right has-background-white" data-controller="common">
-    <%= link_to t('.token'), { controller: 'auth/sign', action: 'token_login', identity: params[:identity] }, data: { action: 'common#link' }, id: 'mobile_confirm', class: 'has-text-grey' %>
-    <span>|</span>
-    <%= link_to t('.forget'), { controller: 'auth/password', action: 'new' }, class: 'has-text-grey' %>
-  </div>
-  <%= f.submit class: 'button is-primary is-fullwidth' %>
+  <%= f.text_field :identity, value: params[:identity], placeholder: Auth::Account.human_attribute_name(:identity), readonly: true %>
+  <%= f.password_field :password, placeholder: Auth::User.human_attribute_name(:password), autocomplete: false %>
 <% end %>
+<div class="panel-block has-background-white is-justify-content-right">
+  <%= button_to t('.token'), { controller: 'auth/sign', action: 'token_login' }, params: { identity: params[:identity] }, id: 'mobile_confirm', class: 'has-text-grey' %>
+  <span>|</span>
+  <%= link_to t('.forget'), { controller: 'auth/password', action: 'new' }, class: 'has-text-grey' %>
+</div>
+<div class="panel-block has-background-white">
+  <%= submit_tag t('.save'), form: 'login_form', class: 'button is-primary is-fullwidth' %>
+</div>

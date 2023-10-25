@@ -8,7 +8,7 @@ Rails.application.routes.draw do
         post :direct
         post :join
         post :login
-        get :token_login
+        post :token_login
         post :token
         get :logout
       end
