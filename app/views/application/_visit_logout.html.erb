@@ -1,7 +1,7 @@
-<% if defined?(current_organ) && current_organ %>
+<% if defined?(current_organ_domain) && current_organ_domain %>
   <div
     data-controller="visit cable"
-    data-visit-url-value="<%= url_for(controller: current_organ.redirect_controller, action: current_organ.redirect_action) %>"
+    data-visit-url-value="<%= url_for(controller: current_organ_domain.redirect_controller, action: current_organ_domain.redirect_action) %>"
   >
   </div>
 <% else %>
