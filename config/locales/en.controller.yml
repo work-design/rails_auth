@@ -5,6 +5,8 @@ en:
         title: Sign Up / In
         next: Next
         save: Save
+      logout:
+        title: Logout
     join:
       join:
         login: Login
