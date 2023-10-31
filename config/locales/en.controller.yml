@@ -55,7 +55,7 @@ en:
         index:
           title: User Tags
     panel:
-      title: Users Admin
+      title: Users
       home:
         index:
           title: Users Summary
