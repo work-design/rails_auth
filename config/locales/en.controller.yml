@@ -46,6 +46,8 @@ en:
       users:
         show:
           title: User Info
+        edit:
+          save: Update Profile
     admin:
       title: Users
       oauth_users:
