@@ -14,7 +14,7 @@ en:
         password: Password
         mobile: Please enter mobile number
         enter_password: Please enter password
-        repeat_password: Pleast repeat password
+        repeat_password: Please repeat password
         account: Account
         token: Confirm token
         get_token: Get Token
@@ -51,6 +51,9 @@ en:
       home:
         index:
           title: Users Summary
+      apps:
+        index:
+          title: Apps
       users:
         index:
           title: Users
