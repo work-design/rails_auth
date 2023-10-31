@@ -130,7 +130,7 @@ module Auth
 
     def render_login
       state = Com::State.find_by(id: params[:state])
-      if state && request.get?
+      if state&.get?
         state.update user_id: current_user.id, destroyable: true
         render 'state_visit_get', layout: 'raw', locals: { state: state }, message: t('.success')
       elsif state
