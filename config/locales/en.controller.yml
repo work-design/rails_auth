@@ -57,6 +57,12 @@ en:
       accounts:
         index:
           title: Accounts
+      oauth_users:
+        index:
+          title: Oauth Users
+      authorized_tokens:
+        index:
+          title: Authorized Tokens
   user_mailer:
     email_token:
       title: 'You email verify code is:'
