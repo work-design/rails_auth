@@ -46,6 +46,14 @@ en:
       users:
         show:
           title: User Info
+    admin:
+      title: Users
+      oauth_users:
+        index:
+          title: Oauth Users
+      user_tags:
+        index:
+          title: User Tags
     panel:
       title: Users Admin
       home:
