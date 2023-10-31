@@ -8,9 +8,7 @@
 <% end %>
 <h4 class="panel-heading has-text-centered"><%= t('.title') %></h4>
 <%= form_with scope: nil, url: { action: 'login' }, wrap: { input: 'field control' }, all: { normal: nil }, id: 'login_form', class: 'panel-block has-background-white is-wrapped' do |f| %>
-  <% params.permit(:uid, :request_id).each do |key, value| %>
-    <%= f.hidden_field key, value: value %>
-  <% end %>
+  <%= f.hidden_field :state, value: params[:state] %>
   <%= f.text_field :identity, value: params[:identity], placeholder: Auth::Account.human_attribute_name(:identity), readonly: true %>
   <%= f.password_field :password, placeholder: Auth::User.human_attribute_name(:password), autocomplete: false %>
 <% end %>

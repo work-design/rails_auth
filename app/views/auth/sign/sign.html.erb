@@ -3,6 +3,7 @@
   <div class="panel" style="width: 300px" id="auth_form">
     <h4 class="panel-heading has-text-centered"><%= t('.title') %></h4>
     <%= form_with scope: nil, url: { action: 'sign' }, wrap: { input: 'control', submit: 'control' }, all: { normal: nil, required: nil, submit: nil }, before_wrap: { submit: nil }, class: 'panel-block has-background-white is-flex-direction-column' do |f| %>
+      <%= f.hidden_field :state, value: params[:state] %>
       <%= f.text_field :identity, value: params[:identity], placeholder: Auth::Account.human_attribute_name(:identity), required: true, class: 'input' %>
       <%= f.submit t('.next'), class: 'button is-primary is-fullwidth' %>
     <% end %>
