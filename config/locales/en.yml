@@ -1,34 +1,9 @@
 en:
-  admin:
-    users:
-      index:
-      show:
-        back: Users List
-        show: User Info
   errors:
     messages:
       wrong_account: Incorrect account or password!
-      wrong_name_or_password:
+      wrong_name_or_password: Wrong Name Or Password
       wrong_token: Incorrect Token!
       token_password_blank: Your must provide password or token!
       acount_disable: Your account has been disabled!
       account_existed: Your account already existed, Please login or Reset password!
-  activerecord:
-    attributes:
-      user:
-        name: Name
-        email: Email
-        email_confirmed: Email Confirmed
-        mobile: Mobile
-        mobile_confirmed: Mobile Confirmed
-        last_login_at: Last Login At
-        last_login_ip: Last Login IP
-        disabled: Disabled
-        timezone: Timezone
-        locale: Locale
-        source: Source
-    enum:
-      user:
-        locale:
-          zh: 中文
-          en: English

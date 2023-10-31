@@ -67,6 +67,8 @@ en:
       users:
         index:
           title: Users
+        show:
+          title: User Info
       accounts:
         index:
           title: Accounts

@@ -2,18 +2,18 @@ en:
   activerecord:
     attributes:
       auth/user:
-        name: 姓名
         name-like: 姓名
-        last_login_at: 上次登录时间
-        last_login_ip: 上次登录IP
-        disabled: 限制登录
-        timezone: 时区
-        locale: 语言
-        source: 来源
         password: Password
-        password_confirmation: 确认密码
+        password_confirmation: Password Confirmation
         oauth_users: Oauth 用户
         accounts: 登录账号
+        name: Name
+        last_login_at: Last Login At
+        last_login_ip: Last Login IP
+        disabled: Disabled
+        timezone: Timezone
+        locale: Locale
+        source: Source
       user/accounts:
         identity: 手机号或邮箱
       auth/account:
