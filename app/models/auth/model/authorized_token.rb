@@ -7,13 +7,10 @@ module Auth
       attribute :identity, :string, index: true
       attribute :expire_at, :datetime
       attribute :access_counter, :integer, default: 0
-      attribute :mock_member, :boolean, default: false
       attribute :mock_user, :boolean, default: false
       attribute :business, :string
       attribute :uid, :string
       attribute :session_id, :string
-
-      belongs_to :member, class_name: 'Org::Member', optional: true
 
       belongs_to :user, optional: true
       belongs_to :oauth_user, foreign_key: :uid, primary_key: :uid, optional: true
