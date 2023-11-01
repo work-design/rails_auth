@@ -46,7 +46,7 @@ module Auth
         render_login
       else
         flash.now[:error] = @account.error_text.presence || @account.user.error_text
-        render 'alert', locals: { message: flash.now[:error] }, status: :unauthorized
+        render 'alert', status: :unauthorized
       end
     end
 
@@ -57,7 +57,7 @@ module Auth
         render_login
       else
         flash.now[:error] = @account.error_text.presence || @account.user.error_text
-        render 'alert', locals: { message: flash.now[:error] }, status: :unauthorized
+        render 'alert', status: :unauthorized
       end
     end
 
@@ -76,7 +76,7 @@ module Auth
         render_login
       else
         flash.now[:error] = @account.error_text.presence || @account.user.error_text
-        render 'alert', locals: { message: flash.now[:error] }, status: :unauthorized
+        render 'alert', status: :unauthorized
       end
     end
 
