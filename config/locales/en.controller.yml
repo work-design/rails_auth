@@ -4,7 +4,7 @@ en:
       sign:
         title: Sign Up / In
         next: Next
-        save: Save
+        save: Commit
       logout:
         title: Logout
     join:
