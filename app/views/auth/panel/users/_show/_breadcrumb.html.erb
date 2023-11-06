@@ -1,6 +1,2 @@
-<div class="breadcrumb has-succeeds-separator">
-  <ul>
-    <li><%= link_to t('auth.panel.users.index.title'), { controller: 'users' } %></li>
-    <li class="is-active"><%= @user.name %></li>
-  </ul>
-</div>
+<li><%= link_to t('.users.index.title'), { controller: 'users' } %></li>
+<li class="is-active"><%= @user.name %></li>
