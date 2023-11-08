@@ -12,9 +12,7 @@ module Auth
     end
 
     def month
-      q_params = {
-        #good_type: ['Ship::BoxHost', 'Ship::BoxSell']
-      }
+      q_params = {}
       x = Arel.sql("date_trunc('day', created_at, '#{Time.zone.tzinfo.identifier}')")
       r = User.where(q_params).group(x).order(x).count
 
