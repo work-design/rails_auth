@@ -2,7 +2,7 @@
   <a class="menu-label" data-action="menu#toggle">
     <i class="fa-solid fa-users fa-fw"></i>
     <span><%= t('auth.admin.title') %></span>
-    <i class="fa-solid dropdown"></i>
+    <i class="fa-solid fa-fw dropdown"></i>
   </a>
   <div class="menu-list" data-empty-target="content">
     <%= link_to t('auth.admin.oauth_users.index.title'), { controller: 'auth/admin/oauth_users' }, class: active_helper(controllers: 'oauth_users', active: 'is-active') %>

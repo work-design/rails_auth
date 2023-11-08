@@ -2,7 +2,7 @@
   <a class="menu-label" data-action="menu#toggle">
     <i class="fa-solid fa-users fa-fw"></i>
     <span><%= t('auth.panel.title') %></span>
-    <i class="fa-solid dropdown"></i>
+    <i class="fa-solid fa-fw dropdown"></i>
   </a>
   <div class="menu-list" data-empty-target="content">
     <%= link_to t('auth.panel.home.index.title'), { controller: 'auth/panel/home' }, class: active_helper(controllers: ['home']) %>
