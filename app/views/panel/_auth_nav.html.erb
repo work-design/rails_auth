@@ -5,11 +5,11 @@
     <i class="fa-solid fa-fw dropdown"></i>
   </a>
   <div class="menu-list" data-empty-target="content">
-    <%= link_to t('auth.panel.home.index.title'), { controller: 'auth/panel/home' }, class: active_helper(controllers: ['home']) %>
-    <%= link_to t('auth.panel.users.index.title'), { controller: 'auth/panel/users' }, class: active_helper(users: ['index', 'show'], active: 'is-active') %>
-    <%= link_to t('auth.panel.accounts.index.title'), { controller: 'auth/panel/accounts' }, class: active_helper(controllers: 'accounts', active: 'is-active') %>
-    <%= link_to t('auth.panel.oauth_users.index.title'), { controller: 'auth/panel/oauth_users' }, class: active_helper(controllers: 'oauth_users', active: 'is-active') %>
-    <%= link_to t('auth.panel.authorized_tokens.index.title'), { controller: 'auth/panel/authorized_tokens' }, class: active_helper(controllers: 'authorized_tokens', active: 'is-active') %>
-    <%= link_to t('auth.panel.apps.index.title'), { controller: 'auth/panel/apps' }, class: active_helper(controllers: 'apps', active: 'is-active') %>
+    <%= link_to t('auth.panel.home.index.title'), { controller: 'auth/panel/home' }, data: { turbo_frame: 'body', action: 'menu#enter' }, class: active_helper(controllers: ['home']) %>
+    <%= link_to t('auth.panel.users.index.title'), { controller: 'auth/panel/users' }, data: { turbo_frame: 'body', action: 'menu#enter' }, class: active_helper(users: ['index', 'show'], active: 'is-active') %>
+    <%= link_to t('auth.panel.accounts.index.title'), { controller: 'auth/panel/accounts' }, data: { turbo_frame: 'body', action: 'menu#enter' }, class: active_helper(controllers: 'accounts', active: 'is-active') %>
+    <%= link_to t('auth.panel.oauth_users.index.title'), { controller: 'auth/panel/oauth_users' }, data: { turbo_frame: 'body', action: 'menu#enter' }, class: active_helper(controllers: 'oauth_users', active: 'is-active') %>
+    <%= link_to t('auth.panel.authorized_tokens.index.title'), { controller: 'auth/panel/authorized_tokens' }, data: { turbo_frame: 'body', action: 'menu#enter' }, class: active_helper(controllers: 'authorized_tokens', active: 'is-active') %>
+    <%= link_to t('auth.panel.apps.index.title'), { controller: 'auth/panel/apps' }, data: { turbo_frame: 'body', action: 'menu#enter' }, class: active_helper(controllers: 'apps', active: 'is-active') %>
   </div>
 </div>
