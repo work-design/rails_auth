@@ -16,7 +16,7 @@ module Auth
 
       if @oauth_user.user
         login_by_account(@oauth_user.account)
-        redirect_to session[:return_to] || RailsAuth.config.default_return_path
+        redirect_to **RailsAuth.config.default_return_hash
       else
         subdomain = ActionDispatch::Http::URL.extract_subdomain session[:return_to].sub(/(http|https):\/\//, ''), 1
         redirect_to sign_url(uid: @oauth_user.uid, subdomain: subdomain)
