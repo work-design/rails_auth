@@ -7,10 +7,6 @@
   <td><%= @authorized_token.expire_at %></td>
 </tr>
 <tr>
-  <td class="has-text-right"><%= Auth::AuthorizedToken.human_attribute_name(:session_key) %></td>
-  <td><%= @authorized_token.session_key %></td>
-</tr>
-<tr>
   <td class="has-text-right"><%= Auth::AuthorizedToken.human_attribute_name(:uid) %></td>
   <td><%= @authorized_token.uid %></td>
 </tr>
