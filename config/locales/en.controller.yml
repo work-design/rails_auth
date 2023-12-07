@@ -2,11 +2,30 @@ en:
   auth:
     sign:
       sign:
-        title: Sign Up / In
-        next: Next
-        save: Commit
+        title: Login or Register
+        next: Continue
+        token: Send token
+        login: Login
+      bind:
+        title: Bind To My Own Account
+        next: Continue
+      join:
+        title: Join Us Now
+        subtitle: Start by creating your account
+        register: Register
+      login:
+        title: Login
+        forget: Forgot password?
+        join: Register
+        token: Login with a token
+        success: Login successfully
       logout:
         title: Logout
+      token:
+        title: Login With A Token
+        forget: Forgot password?
+        sent: Auth token has been sent
+        login: Login
     join:
       join:
         login: Login
@@ -28,9 +47,9 @@ en:
       new:
         next: Next
       create:
-        header: Reset Password
+        title: Reset Password
         body: A link with reset token has been sent to
-        home: Hme
+        back: Back to home page
     my:
       users:
         update:

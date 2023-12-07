@@ -2,11 +2,11 @@ en:
   activerecord:
     attributes:
       auth/user:
-        name-like: 姓名
+        name-like: Name
         password: Password
         password_confirmation: Password Confirmation
-        oauth_users: Oauth 用户
-        accounts: 登录账号
+        oauth_users: Oauth User
+        accounts: Accounts
         name: Name
         last_login_at: Last Login At
         last_login_ip: Last Login IP
@@ -15,16 +15,16 @@ en:
         locale: Locale
         source: Source
       user/accounts:
-        identity: 手机号或邮箱
+        identity: Mobile or Email
       auth/account:
-        user_id: 用户
-        identity: Email or Tel number
-        confirmed: 是否验证
-        primary: 是否主账号
+        user_id: User
+        identity: Email or Mobile number
+        confirmed: Confirmed
+        primary: Primary
       auth/verify_token:
-        identity: 账号
-        token: 验证码
+        identity: Mobile or Email
+        token: Token
       auth/user_tag:
-        user_taggeds_count: 用户数
+        user_taggeds_count: User Count
       auth/user_tagged:
         tagged_type: 用户类型
