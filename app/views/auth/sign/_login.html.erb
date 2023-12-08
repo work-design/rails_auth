@@ -1,22 +1,22 @@
 <% if params[:uid] %>
-<div class="panel-block is-justify-content-center">
+<div class="is-justify-content-center">
   <span class="is-several">
     <%= image_tag @oauth_user.avatar_url, class: 'image is-16x16' if @oauth_user.avatar_url.present? %>
     <span><%= @oauth_user.name %></span>
   </span>
 </div>
 <% end %>
-<h4 class="panel-heading has-text-centered"><%= t('.title') %></h4>
-<%= form_with scope: nil, url: { action: 'login' }, wrap: { input: 'field control' }, all: { normal: nil }, id: 'login_form', class: 'panel-block has-background-white is-wrapped' do |f| %>
+<h2 class="title is-2 has-text-primary mb-6"><%= t('.title') %></h2>
+<h6 class="subtitle is-6 mb-6">Welcome back to Zupply ERP.</h6>
+<%= form_with scope: nil, url: { action: 'login' }, wrap: { input: 'field control' }, all: { normal: nil }, id: 'login_form', class: 'block' do |f| %>
   <%= f.hidden_field :state, value: params[:state] %>
   <%= f.text_field :identity, value: params[:identity], placeholder: Auth::Account.human_attribute_name(:identity), readonly: true %>
   <%= f.password_field :password, placeholder: Auth::User.human_attribute_name(:password), autocomplete: false %>
 <% end %>
-<div class="panel-block has-background-white is-justify-content-right">
+<div>
   <%= button_to t('.token'), { controller: 'auth/sign', action: 'token_login' }, params: { identity: params[:identity] }, id: 'mobile_confirm', class: 'has-text-grey' %>
-  <span>|</span>
-  <%= button_to t('.forget'), { controller: 'auth/password', action: 'create' }, params: { identity: params[:identity] }, class: 'has-text-grey' %>
+  <%= button_to t('.forget'), { controller: 'auth/password', action: 'create' }, params: { identity: params[:identity] }, class: 'has-text-grey is-pulled-right' %>
 </div>
-<div class="panel-block has-background-white">
-  <%= submit_tag t('.save'), form: 'login_form', class: 'button is-primary is-fullwidth' %>
+<div>
+  <%= submit_tag t('.login'), form: 'login_form', class: 'button is-primary is-large mt-6' %>
 </div>

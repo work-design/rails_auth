@@ -1,21 +1,19 @@
-<div class="column is-6"></div>
-<div class="column is-6">
-  <div class="panel" style="width: 300px" id="auth_form">
-    <h4 class="panel-heading has-text-centered"><%= t('.title') %></h4>
-    <%= form_with scope: nil, url: { action: 'sign' }, wrap: { input: 'control', submit: 'control' }, all: { normal: nil, required: nil, submit: nil }, before_wrap: { submit: nil }, class: 'panel-block has-background-white is-flex-direction-column' do |f| %>
-      <%= f.hidden_field :state, value: params[:state] %>
-      <%= f.text_field :identity, value: params[:identity], placeholder: Auth::Account.human_attribute_name(:identity), required: true, class: 'input' %>
-      <%= f.submit t('.next'), class: 'button is-primary is-fullwidth' %>
-    <% end %>
-    <div class="panel-block has-background-white is-justify-content-space-around">
-      <%= link_to({ controller: 'wechat/wechat', action: 'login' }) do %>
-        <i class="fa-brands fa-weixin has-text-success"></i>
-        <span class="has-text-grey">微信扫码</span>
-      <% end if defined? RailsWechat %>
-      <%= link_to({ controller: 'wechat/qy_wechat', action: 'login' }) do %>
-        <i class="fa-brands fa-weixin has-text-primary"></i>
-        <span class="has-text-grey">企业微信</span>
-      <% end if defined? RailsWechat %>
-    </div>
+<div id="auth_form">
+  <h2 class="title is-2 has-text-primary mb-6"><%= t('.title') %></h2>
+  <h6 class="subtitle is-6 mb-6">Welcome to Zupply ERP.</h6>
+  <%= form_with scope: nil, url: { action: 'sign' }, wrap: { input: 'control', submit: 'control' }, all: { normal: nil, required: nil, submit: nil }, before_wrap: { submit: nil }, class: '' do |f| %>
+    <%= f.hidden_field :state, value: params[:state] %>
+    <%= f.text_field :identity, value: params[:identity], placeholder: Auth::Account.human_attribute_name(:identity), required: true, class: 'input' %>
+    <%= f.submit t('.next'), class: 'button is-primary is-large mt-6' %>
+  <% end %>
+  <div class="panel-block has-background-white is-justify-content-space-around">
+    <%= link_to({ controller: 'wechat/wechat', action: 'login' }) do %>
+      <i class="fa-brands fa-weixin has-text-success"></i>
+      <span class="has-text-grey">微信扫码</span>
+    <% end if defined? RailsWechat %>
+    <%= link_to({ controller: 'wechat/qy_wechat', action: 'login' }) do %>
+      <i class="fa-brands fa-weixin has-text-primary"></i>
+      <span class="has-text-grey">企业微信</span>
+    <% end if defined? RailsWechat %>
   </div>
 </div>

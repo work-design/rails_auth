@@ -1,6 +1,6 @@
-<h4 class="panel-heading has-text-centered">验证码登录</h4>
-<%= form_with theme: nil, scope: nil, url: { action: 'token' }, wrap: { submit: 'panel-block has-background-white' } do |f| %>
-  <div class="panel-block has-background-white is-wrapped">
+<h2 class="title is-2 has-text-primary mb-6"><%= t('.title') %></h2>
+<%= form_with theme: nil, scope: nil, url: { action: 'token' } do |f| %>
+  <div class="is-wrapped">
     <div class="field control">
       <%= f.text_field :identity, value: params[:identity], disabled: true, class: 'input' %>
       <%= f.hidden_field :identity, value: params[:identity], id: nil %>
@@ -16,5 +16,5 @@
       </div>
     </div>
   </div>
-  <%= f.submit '提交', class: 'button is-primary is-fullwidth' %>
+  <%= f.submit t('.login'), class: 'button is-primary is-large mt-6' %>
 <% end %>

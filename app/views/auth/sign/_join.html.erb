@@ -1,27 +1,26 @@
-<h4 class="panel-heading has-text-centered">请注册</h4>
-<%= form_with theme: nil, scope: nil, url: { action: 'join' }, wrap: { submit: 'panel-block has-background-white' } do |f| %>
+<h2 class="title is-2 has-text-primary mb-6"><%= t('.title') %></h2>
+<h6 class="subtitle is-6 mb-6"><%= t('.subtitle') %></h6>
+<%= form_with theme: nil, scope: nil, url: { action: 'join' } do |f| %>
   <%= f.hidden_field :state, value: params[:state] %>
-  <div class="panel-block has-background-white is-wrapped">
-    <div class="field control">
-      <%= f.text_field :identity, value: params[:identity], disabled: true, class: 'input' %>
-      <%= f.hidden_field :identity, value: params[:identity], id: nil %>
+  <div class="field control">
+    <%= f.text_field :identity, value: params[:identity], disabled: true, class: 'input' %>
+    <%= f.hidden_field :identity, value: params[:identity], id: nil %>
+  </div>
+  <div class="field control has-addons">
+    <div class="control is-expanded">
+      <%= f.text_field :token, placeholder: Auth::VerifyToken.human_attribute_name(:token), autocomplete: false, class: 'input' %>
     </div>
-    <div class="field control has-addons">
-      <div class="control is-expanded">
-        <%= f.text_field :token, placeholder: Auth::VerifyToken.human_attribute_name(:token), autocomplete: false, class: 'input' %>
-      </div>
-      <div class="control" data-controller="common" id="sign_token">
-        <%= link_to({ action: 'code', identity: params[:identity] }, data: { action: 'common#link' }, class: 'button is-info') do %>
-          <span><%= t('.token') %></span>
-        <% end %>
-      </div>
-    </div>
-    <div class="field control">
-      <%= f.password_field :password, placeholder: Auth::User.human_attribute_name(:password), autocomplete: false, class: 'input' %>
-    </div>
-    <div class="field control">
-      <%= f.password_field :password_confirmation, placeholder: Auth::User.human_attribute_name(:password_confirmation), autocomplete: false, class: 'input' %>
+    <div class="control" data-controller="common" id="sign_token">
+      <%= link_to({ action: 'code', identity: params[:identity] }, data: { action: 'common#link' }, class: 'button is-info') do %>
+        <span><%= t('.token') %></span>
+      <% end %>
     </div>
   </div>
-  <%= f.submit '提交', class: 'button is-primary is-fullwidth' %>
+  <div class="field control">
+    <%= f.password_field :password, placeholder: Auth::User.human_attribute_name(:password), autocomplete: false, class: 'input' %>
+  </div>
+  <div class="field control">
+    <%= f.password_field :password_confirmation, placeholder: Auth::User.human_attribute_name(:password_confirmation), autocomplete: false, class: 'input' %>
+  </div>
+  <%= f.submit t('.register'), class: 'button is-primary is-large mt-6' %>
 <% end %>

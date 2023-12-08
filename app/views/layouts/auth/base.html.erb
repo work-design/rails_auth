@@ -1,8 +1,16 @@
 <%= render layout: 'layouts/application_head' do %>
-  <%= render 'nav_bar' %>
-  <div id="alert"></div>
-  <main class="columns is-vcentered has-background-login">
-    <%= yield %>
-  </main>
-  <%= render 'footer' %>
+  <%#= render 'nav_bar' %>
+  <div class="columns is-gapless is-vcentered">
+    <div class="column is-relative is-8 is-hidden-mobile">
+      <div class="hero is-fullheight has-background-login">
+      </div>
+    </div>
+    <div class="column is-4 is-relative">
+      <div class="p-6">
+        <div id="alert"></div>
+        <%= yield %>
+      </div>
+    </div>
+  </div>
+  <%#= render 'footer' %>
 <% end %>
