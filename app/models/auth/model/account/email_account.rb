@@ -13,10 +13,9 @@ module Auth
 
     # 邮件发送的 reset_token
     def reset_token
-      authorized_token.token = SecureRandom.uuid
       authorized_token.expire_at = 10.minutes.since
       authorized_token.save
-      authorized_token.token
+      authorized_token.id
     end
 
   end
