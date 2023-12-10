@@ -1,16 +1,7 @@
 module Auth
   class My::UsersController < Board::UsersController
+    include Controller::My
     before_action :set_user
-
-    def update
-      @user.assign_attributes user_params
-
-      if @user.save
-        render 'create', locals: { return_to: params[:return_to].presence || my_user_path }
-      else
-        render :edit, locals: { model: current_user }, status: :unprocessable_entity
-      end
-    end
 
     def destroy
       @user.destroy
