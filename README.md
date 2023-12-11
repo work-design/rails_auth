@@ -23,6 +23,7 @@
 
 ## 模型：
 * User
+* Account
 * OauthUser
 * AuthorizedToken: 授权token
 * VerifyToken: 验证Token
