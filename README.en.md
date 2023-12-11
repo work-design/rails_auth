@@ -8,9 +8,7 @@ TheAuth is a Rails Engine for user authentication, more easy to use, more easy t
 There are so many gems about auth, I separated the engine from our projects because of:
 
 - more easy to understand and use, for example, `devise` is good, but difficult to override and config, it's unfriendly to fresh developers;
-
-- more easy to config, just normal rails controller model and views; 
-
+- more easy to config, just normal rails controller model and views;
 - used `ActiveModel::SecurePassword` which default included by rails, make so easy to deal with Password;
 
 ## How To Use
