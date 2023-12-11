@@ -23,7 +23,7 @@ class ApplicationController < ActionController::Base
 end
 ```
 
-#### Include in Model
+### Include in Model
 ```ruby
 class User < ApplicationRecord
   include RailsAuth::User
