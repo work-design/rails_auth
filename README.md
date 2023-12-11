@@ -46,6 +46,9 @@ end
 ```ruby
 # in controller
 current_user
+
+# in view with helper method
+current_user
 ```
 
 ## 许可证
