@@ -23,7 +23,7 @@
 
 ## 模型：
 * OauthUser
-* AccessToken 授权token
+* AuthorizedToken:授权token
 * VerifyToken 验证Token
 
 ```ruby
