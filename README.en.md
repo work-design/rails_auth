@@ -30,7 +30,7 @@ class User < ApplicationRecord
 end
 ```
 
-## The methods TheAuth provided：
+## methods RailsAuth provided：
 
 ```ruby
 # in controller
