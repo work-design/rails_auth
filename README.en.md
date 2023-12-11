@@ -26,7 +26,7 @@ end
 ### Include in Model
 ```ruby
 class User < ApplicationRecord
-  include RailsAuth::User
+  include Auth::Model::User
 end
 ```
 
