@@ -46,6 +46,8 @@ en:
     password:
       new:
         next: Next
+      edit:
+        title: Set New Password
       create:
         title: Reset Password
         body: A link with reset token has been sent to

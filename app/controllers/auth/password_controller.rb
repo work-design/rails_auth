@@ -56,7 +56,7 @@ module Auth
     end
 
     def update
-      reset_token = AuthorizedToken.find_by(token: params[:token])
+      reset_token = AuthorizedToken.find(params[:token])
       @user = reset_token.user
       @account = reset_token.account
 
