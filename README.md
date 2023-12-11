@@ -25,6 +25,7 @@
 * User
 * Account
 * OauthUser
+* App
 * AuthorizedToken: 授权token
 * VerifyToken: 验证Token
 
