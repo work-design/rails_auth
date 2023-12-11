@@ -10,7 +10,7 @@
 
 * [系列项目说明](https://github.com/work-design/home)
 * 使用`Rails`自带的`ActiveModel::SecurePassword`模块处理密码;
-* 使用`auth token`统一鉴权，兼容api和cookies, 服务端可控制 auth_token 失效；
+* 使用`auth_token`统一鉴权，兼容 api和cookies, 服务端可控制 auth_token 失效；
 * 架构:
   - 为合并用户提供了灵活的架构基础；
   - 支持多终端登录；
