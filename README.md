@@ -22,6 +22,7 @@
 ## 如何使用
 
 ## 模型：
+* User
 * OauthUser
 * AuthorizedToken: 授权token
 * VerifyToken: 验证Token
