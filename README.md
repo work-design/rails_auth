@@ -23,8 +23,8 @@
 
 ## 模型：
 * OauthUser
-* AuthorizedToken:授权token
-* VerifyToken 验证Token
+* AuthorizedToken: 授权token
+* VerifyToken: 验证Token
 
 ```ruby
 class ApplicationController < ActionController::Base
