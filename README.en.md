@@ -16,9 +16,9 @@ There are so many gems about auth, I separated the engine from our projects beca
 ## How To Use
 
 
-#### include in Controller
-```ruby
+#### Include in Controller
 
+```ruby
 # api
 class ApplicationController < ActionController::Base
   include RailsAuth::Application
