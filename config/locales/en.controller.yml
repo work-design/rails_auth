@@ -53,7 +53,10 @@ en:
         body: A link with reset token has been sent to
         back: Back to home page
     my:
+      title: Profile
       users:
+        show:
+          title: User Info
         update:
           saved: Saved!
     board:
