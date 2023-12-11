@@ -14,7 +14,7 @@ There are so many gems about auth, I separated the engine from our projects beca
 ## How To Use
 
 
-#### Include in Controller
+### Include in Controller
 
 ```ruby
 # api
