@@ -15,22 +15,6 @@ There are so many gems about auth, I separated the engine from our projects beca
 
 ## How To Use
 
-#### Config TheAuth
-
-add this under `config/initializers`
-
-```ruby
-TheAuth.configure do |config|
-end
-```
-
-#### Overwrite Routes
-
-add the in the file: `config/routes.rb`
-
-```ruby
-
-```
 
 #### include in Controller
 ```ruby
