@@ -15,7 +15,7 @@ module Auth
     end
 
     def edit
-      reset_token = AuthorizedToken.find_by(token: params[:token])
+      reset_token = AuthorizedToken.find(params[:token])
 
       if reset_token
         if reset_token.verify_token?
