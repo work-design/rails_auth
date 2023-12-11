@@ -19,7 +19,7 @@ There are so many gems about auth, I separated the engine from our projects beca
 ```ruby
 # api
 class ApplicationController < ActionController::Base
-  include RailsAuth::Application
+  include Auth::Controller::Application
 end
 ```
 
