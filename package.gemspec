@@ -1,12 +1,10 @@
 Gem::Specification.new do |s|
   s.name = 'rails_auth'
   s.version = '1.2.0'
-  s.authors = ['qinmingyuan']
+  s.authors = ['Mingyuan Qin']
   s.email = ['mingyuan0715@foxmail.com']
-  s.homepage = 'https://github.com/work-design/rails_auth'
   s.summary = 'understandable, simple auth logic for Rails'
   s.description = '更容易理解的auth'
-  s.license = 'MIT'
 
   s.files = Dir[
     '{app,config,db,lib}/**/*',
