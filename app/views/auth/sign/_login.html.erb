@@ -7,7 +7,7 @@
 </div>
 <% end %>
 <h2 class="title is-2 has-text-primary mb-6"><%= t('.title') %></h2>
-<h6 class="subtitle is-6 mb-6">Welcome back to Zupply ERP.</h6>
+<h6 class="subtitle is-6 mb-6">Welcome back to <%= t('site_name') %></h6>
 <%= form_with scope: nil, url: { action: 'login' }, wrap: { input: 'field control' }, all: { normal: nil }, id: 'login_form', class: 'block' do |f| %>
   <%= f.hidden_field :state, value: params[:state] %>
   <%= f.text_field :identity, value: params[:identity], placeholder: Auth::Account.human_attribute_name(:identity), readonly: true %>
