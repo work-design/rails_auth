@@ -11,6 +11,7 @@ module Auth
       attribute :business, :string
       attribute :uid, :string
       attribute :session_id, :string
+      attribute :online, :boolean
 
       belongs_to :user, optional: true
       belongs_to :oauth_user, foreign_key: :uid, primary_key: :uid, optional: true
