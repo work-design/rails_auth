@@ -8,7 +8,7 @@ module Auth
     end
 
     def config_user_tag
-      UserTag.find_by(tagging_type: self.class_name)
+      UserTag.find_by(tagging_type: self.base_class_name)
     end
 
     def xx
