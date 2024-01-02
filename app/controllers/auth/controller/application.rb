@@ -7,7 +7,7 @@ module Auth
       after_action :set_auth_token
     end
 
-    def require_user
+    def require_user(app = nil)
       return if current_user
 
       redirect_to url_for(controller: '/auth/sign', action: 'sign', identity: params[:identity], state: urlsafe_encode64(destroyable: false))
