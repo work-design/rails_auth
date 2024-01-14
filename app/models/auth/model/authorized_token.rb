@@ -88,6 +88,7 @@ module Auth
         puts payload, header
         self.uid = payload['uid']
         init_oauth_user
+        self.user = oauth_user.user
 
         payload, header = JWT.decode(jwt_token, Rails.configuration.x.appid, true, 'sub' => payload['sub'], verify_sub: true, verify_expiration: false)
         puts payload, header
@@ -97,9 +98,10 @@ module Auth
     end
 
     def init_oauth_user
-      o_user = Wechat::WechatUser.find_or_initialize_by(uid: uid)
-      o_user.init_user
-      o_user.save
+      oauth_user || build_oauth_user
+      oauth_user.init_user
+      oauth_user.save
+      oauth_user
     end
 
   end
