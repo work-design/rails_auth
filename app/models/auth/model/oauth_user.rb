@@ -106,6 +106,10 @@ module Auth
       authorized_token.id
     end
 
+    def auth_jwt_token
+      authorized_token.jwt_token
+    end
+
     def refresh_token!
       client = strategy
       token = OAuth2::AccessToken.new client, self.access_token, { expires_at: self.expires_at.to_i, refresh_token: self.refresh_token }

@@ -12,6 +12,7 @@ module Auth
       attribute :uid, :string
       attribute :session_id, :string
       attribute :online, :boolean
+      attribute :jwt_token, :string
 
       belongs_to :user, optional: true
       belongs_to :oauth_user, foreign_key: :uid, primary_key: :uid, optional: true
@@ -23,6 +24,7 @@ module Auth
 
       after_initialize :init_expire_at, if: :new_record?
       before_validation :sync_identity, if: -> { uid.present? && uid_changed? }
+      after_create :decode_from_jwt, if: -> { identity.blank? && uid.blank? }
     end
 
     def filter_hash
@@ -42,6 +44,7 @@ module Auth
 
     def init_expire_at
       self.expire_at = 1.weeks.since
+      self.jwt_token = generate_jwt_token
     end
 
     def sync_identity
@@ -65,6 +68,30 @@ module Auth
       end
 
       true
+    end
+
+    def generate_jwt_token
+      payload = {
+        iss: identity,
+        uid: uid,
+        exp_float: expire_at.to_f,
+        exp: expire_at.to_i  # should be int
+      }
+
+      JWT.encode(payload, appid)
+    end
+
+    # 应用在业务应用中
+    def decode_from_jwt
+      begin
+        payload, _ = JWT.decode(jwt_token, nil, false, verify_expiration: false)
+        puts payload
+
+        payload, _ = JWT.decode(jwt_token, Rails.configuration.x.appid, true, 'sub' => payload['sub'], verify_sub: true, verify_expiration: false)
+        puts payload
+      rescue => e
+        logger.debug e.full_message(highlight: true, order: :top)
+      end
     end
 
   end
