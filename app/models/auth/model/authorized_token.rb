@@ -84,12 +84,12 @@ module Auth
     # 应用在业务应用中
     def decode_from_jwt
       begin
-        payload, _ = JWT.decode(jwt_token, nil, false, verify_expiration: false)
+        payload, header = JWT.decode(jwt_token, nil, false, verify_expiration: false)
         puts payload, header
         self.uid = payload['uid']
         init_oauth_user
 
-        payload, _ = JWT.decode(jwt_token, Rails.configuration.x.appid, true, 'sub' => payload['sub'], verify_sub: true, verify_expiration: false)
+        payload, header = JWT.decode(jwt_token, Rails.configuration.x.appid, true, 'sub' => payload['sub'], verify_sub: true, verify_expiration: false)
         puts payload, header
       rescue => e
         logger.debug e.full_message(highlight: true, order: :top)
