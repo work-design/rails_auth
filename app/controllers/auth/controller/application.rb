@@ -8,14 +8,14 @@ module Auth
     end
 
     def require_user(app = nil)
-      return if current_user
       check_jwt_token if params[:auth_jwt_token]
+      return if current_user
 
       redirect_to url_for(controller: '/auth/sign', action: 'sign', identity: params[:identity], state: urlsafe_encode64(destroyable: false))
     end
 
     def check_jwt_token
-      AuthorizedToken.create(jwt_token: params[:auth_jwt_token])
+      @current_authorized_token = AuthorizedToken.create(jwt_token: params[:auth_jwt_token])
     end
 
     def current_user
