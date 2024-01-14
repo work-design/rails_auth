@@ -15,7 +15,7 @@ module Auth
     end
 
     def check_jwt_token
-      Auth::AuthorizedToken.create(jwt_token: params[:auth_jwt_token])
+      AuthorizedToken.create(jwt_token: params[:auth_jwt_token])
     end
 
     def current_user

@@ -1,3 +1,4 @@
+require 'jwt'
 module Auth
   module Model::AuthorizedToken
     extend ActiveSupport::Concern
