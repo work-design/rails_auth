@@ -97,7 +97,7 @@ module Auth
     end
 
     def init_oauth_user
-      o_user = OauthUser.find_or_initialize_by(uid: uid)
+      o_user = Wechat::WechatUser.find_or_initialize_by(uid: uid)
       o_user.init_user
       o_user.save
     end
