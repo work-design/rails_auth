@@ -16,6 +16,7 @@ module Auth
 
     def check_jwt_token
       @current_authorized_token = AuthorizedToken.find_or_create_by(jwt_token: params[:auth_jwt_token])
+      @current_user = current_authorized_token&.user
     end
 
     def current_user
