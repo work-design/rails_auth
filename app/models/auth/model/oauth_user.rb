@@ -107,7 +107,7 @@ module Auth
     end
 
     def auth_jwt_token
-      authorized_token.jwt_token
+      authorized_token.generate_jwt_token
     end
 
     def refresh_token!

@@ -44,7 +44,6 @@ module Auth
 
     def init_expire_at
       self.expire_at = 1.weeks.since
-      self.jwt_token = generate_jwt_token
     end
 
     def sync_identity
