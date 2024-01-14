@@ -25,7 +25,7 @@ module Auth
 
       after_initialize :init_expire_at, if: :new_record?
       before_validation :sync_identity, if: -> { uid.present? && uid_changed? }
-      after_create :decode_from_jwt, if: -> { identity.blank? && uid.blank? }
+      before_create :decode_from_jwt, if: -> { identity.blank? && uid.blank? }
     end
 
     def filter_hash
@@ -85,13 +85,21 @@ module Auth
     def decode_from_jwt
       begin
         payload, _ = JWT.decode(jwt_token, nil, false, verify_expiration: false)
-        puts payload
+        puts payload, header
+        self.uid = payload['uid']
+        init_oauth_user
 
         payload, _ = JWT.decode(jwt_token, Rails.configuration.x.appid, true, 'sub' => payload['sub'], verify_sub: true, verify_expiration: false)
-        puts payload
+        puts payload, header
       rescue => e
         logger.debug e.full_message(highlight: true, order: :top)
       end
+    end
+
+    def init_oauth_user
+      o_user = ProgramUser.find_or_initialize_by(uid: uid)
+      o_user.init_user
+      o_user.save
     end
 
   end
