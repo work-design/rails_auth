@@ -98,7 +98,7 @@ module Auth
     end
 
     def init_oauth_user
-      oauth_user || build_oauth_user
+      oauth_user || build_oauth_user(type: 'Wechat::WechatUser')
       oauth_user.init_user
       oauth_user.save
       oauth_user
