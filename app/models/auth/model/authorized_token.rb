@@ -1,4 +1,3 @@
-require 'jwt'
 module Auth
   module Model::AuthorizedToken
     extend ActiveSupport::Concern
@@ -13,7 +12,7 @@ module Auth
       attribute :uid, :string
       attribute :session_id, :string
       attribute :online, :boolean
-      attribute :jwt_token, :string
+      attribute :encrypted_token, :string
 
       belongs_to :user, optional: true
       belongs_to :oauth_user, foreign_key: :uid, primary_key: :uid, optional: true
@@ -78,23 +77,17 @@ module Auth
         exp: expire_at.to_i  # should be int
       }
 
-      JWT.encode(payload, appid)
+      crypt = ActiveSupport::MessageEncryptor.new(appid, cipher: 'aes-256-gcm', serializer: :json, urlsafe: true)
+      crypt.encrypt_and_sign(payload)
     end
 
     # 应用在业务应用中
     def decode_from_jwt
-      begin
-        payload, header = JWT.decode(jwt_token, nil, false, verify_expiration: false)
-        puts payload, header
-        self.uid = payload['uid']
-        init_oauth_user
-        self.user = oauth_user.user
-
-        payload, header = JWT.decode(jwt_token, Rails.configuration.x.appid, true, 'sub' => payload['sub'], verify_sub: true, verify_expiration: false)
-        puts payload, header
-      rescue => e
-        logger.debug e.full_message(highlight: true, order: :top)
-      end
+      crypt = ActiveSupport::MessageEncryptor.new(Rails.configuration.x.appid, cipher: 'aes-256-gcm', serializer: :json)
+      payload = crypt.decrypt_and_verify(token)
+      self.uid = payload['uid']
+      init_oauth_user
+      self.user = oauth_user.user
     end
 
     def init_oauth_user
