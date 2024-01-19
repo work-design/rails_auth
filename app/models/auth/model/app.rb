@@ -4,9 +4,14 @@ module Auth
 
     included do
       attribute :appid, :string, index: true
-      attribute :jwt_key, :string
+      attribute :key, :string
+
+      after_initialize :init_key, if: :new_record?
     end
 
+    def init_key
+      self.key = SecureRandom.alphanumeric(32)
+    end
 
   end
 end

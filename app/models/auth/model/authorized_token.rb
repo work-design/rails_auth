@@ -71,13 +71,11 @@ module Auth
 
     def generate_jwt_token
       payload = {
-        iss: identity,
-        uid: uid,
-        exp_float: expire_at.to_f,
-        exp: expire_at.to_i  # should be int
+        identity: identity,
+        uid: uid
       }
 
-      crypt = ActiveSupport::MessageEncryptor.new(appid, cipher: 'aes-256-gcm', serializer: :json, urlsafe: true)
+      crypt = ActiveSupport::MessageEncryptor.new(app.token, cipher: 'aes-256-gcm', serializer: :json, urlsafe: true)
       crypt.encrypt_and_sign(payload)
     end
 
