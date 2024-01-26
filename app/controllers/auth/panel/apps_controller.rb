@@ -5,7 +5,7 @@ module Auth
     def app_permit_params
       [
         :appid,
-        :jwt_key
+        :key
       ]
     end
 
