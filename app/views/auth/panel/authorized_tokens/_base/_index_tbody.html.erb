@@ -1,6 +1,9 @@
 <td>
   <p><strong><%= model.identity %></strong></p>
-  <p class="has-text-grey"><%= model.uid %></p>
+  <p class="has-text-grey">
+    <span><%= model.uid %></span>
+    <span class="tag"><%= model.appid %></span>
+  </p>
   <p><code class="is-wrap"><%= model.id %></code></p>
   <p>
     <time data-controller="time" class="has-text-grey"><%= model.created_at.to_fs(:iso8601) %></time>
