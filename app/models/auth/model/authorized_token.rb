@@ -85,6 +85,7 @@ module Auth
       payload = crypt.decrypt_and_verify(encrypted_token)
       logger.debug "----------#{payload}"
       self.uid = payload['uid']
+      self.identity = payload['identity']
       init_oauth_user
       self.user = oauth_user.user
     end
