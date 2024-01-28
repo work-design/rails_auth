@@ -82,7 +82,8 @@ module Auth
     # 应用在业务应用中
     def decode_from_jwt
       crypt = ActiveSupport::MessageEncryptor.new(Rails.configuration.x.appid, cipher: 'aes-256-gcm', serializer: :json)
-      payload = crypt.decrypt_and_verify(token)
+      payload = crypt.decrypt_and_verify(encrypted_token)
+      logger.debug "----------#{payload}"
       self.uid = payload['uid']
       init_oauth_user
       self.user = oauth_user.user
