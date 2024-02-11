@@ -21,6 +21,7 @@ module Auth
       has_many :sames, ->(o) { where(o.filter_hash) }, class_name: self.name, primary_key: :identity, foreign_key: :identity
 
       scope :valid, -> { where('expire_at >= ?', Time.current).order(expire_at: :desc) }
+      scope :invalid, -> { where('expire_at < ?', Time.current) }
 
       after_initialize :init_expire_at, if: :new_record?
       before_validation :sync_identity, if: -> { uid.present? && uid_changed? }
