@@ -2,7 +2,7 @@
 <div class="column is-6">
   <div class="panel" style="width: 300px" id="auth_form">
     <h4 class="panel-heading has-text-centered"><%= t('.title') %></h4>
-    <div class="panel-block is-justify-content-center">
+    <div class="panel-block justify-content-center">
       <span class="is-several">
         <%= image_tag @oauth_user.avatar_url, class: 'image is-16x16' if @oauth_user.avatar_url %>
         <span><%= @oauth_user.name %></span>
