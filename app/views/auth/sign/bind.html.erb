@@ -8,7 +8,7 @@
         <span><%= @oauth_user.name %></span>
       </span>
     </div>
-    <%= form_with scope: nil, url: { action: 'sign' }, wrap: { input: 'control', submit: 'control' }, all: { normal: nil, required: nil, submit: nil }, before_wrap: { submit: nil }, class: 'panel-block has-background-white is-flex-direction-column' do |f| %>
+    <%= form_with scope: nil, url: { action: 'sign' }, wrap: { input: 'control', submit: 'control' }, all: { normal: nil, required: nil, submit: nil }, before_wrap: { submit: nil }, class: 'panel-block has-background-white flex-direction-column' do |f| %>
       <% params.permit(:uid, :request_id).each do |key, value| %>
         <%= f.hidden_field key, value: value %>
       <% end %>
