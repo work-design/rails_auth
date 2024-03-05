@@ -5,7 +5,8 @@ module Auth
     def app_permit_params
       [
         :appid,
-        :key
+        :key,
+        :host
       ]
     end
 

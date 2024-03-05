@@ -13,8 +13,10 @@ module Auth
       attribute :session_id, :string
       attribute :online, :boolean
       attribute :encrypted_token, :string
+      attribute :auth_appid, :string
 
       belongs_to :user, optional: true
+      belongs_to :auth_app, class_name: 'App', foreign_key: :auth_appid, primary_key: :appid, optional: true
       belongs_to :oauth_user, foreign_key: :uid, primary_key: :uid, optional: true
       belongs_to :account, ->(o) { where(user_id: o.user_id, confirmed: true) }, foreign_key: :identity, primary_key: :identity, optional: true
 
@@ -76,7 +78,7 @@ module Auth
         uid: uid
       }
 
-      crypt = ActiveSupport::MessageEncryptor.new(app.token, cipher: 'aes-256-gcm', serializer: :json, urlsafe: true)
+      crypt = ActiveSupport::MessageEncryptor.new(auth_app.appid, cipher: 'aes-256-gcm', serializer: :json, urlsafe: true)
       crypt.encrypt_and_sign(payload)
     end
 

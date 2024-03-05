@@ -5,6 +5,9 @@ module Auth
     included do
       attribute :appid, :string, index: true
       attribute :key, :string
+      attribute :host, :string
+
+      validates :host, presence: true
 
       after_initialize :init_key, if: :new_record?
     end

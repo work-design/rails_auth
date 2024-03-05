@@ -3,6 +3,8 @@ module Auth
     extend ActiveSupport::Concern
 
     included do
+      attr_accessor :auth_appid
+
       attribute :type, :string
       attribute :provider, :string
       attribute :uid, :string
@@ -39,7 +41,8 @@ module Auth
       {
         appid: appid,
         user_id: user_id,
-        identity: identity
+        identity: identity,
+        auth_appid: auth_appid
       }.compact_blank
     end
 
