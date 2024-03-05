@@ -11,6 +11,14 @@
   <td><%= @authorized_token.uid %></td>
 </tr>
 <tr>
+  <td><%= Auth::AuthorizedToken.human_attribute_name(:appid) %></td>
+  <td><%= @authorized_token.appid %></td>
+</tr>
+<tr>
   <td><%= Auth::AuthorizedToken.human_attribute_name(:identity) %></td>
   <td><%= @authorized_token.identity %></td>
+</tr>
+<tr>
+  <td><%= Auth::AuthorizedToken.human_attribute_name(:auth_appid) %></td>
+  <td><%= @authorized_token.auth_appid %></td>
 </tr>

@@ -86,7 +86,7 @@ module Auth
     def decode_from_jwt(token: Rails.configuration.x.appid)
       crypt = ActiveSupport::MessageEncryptor.new(token, cipher: 'aes-256-gcm', serializer: :json)
       payload = crypt.decrypt_and_verify(encrypted_token)
-      logger.debug "----------#{payload}"
+      logger.debug "\e[35m  Decode From Token:#{payload}  \e[0m"
       self.uid = payload['uid']
       self.identity = payload['identity']
       init_oauth_user
