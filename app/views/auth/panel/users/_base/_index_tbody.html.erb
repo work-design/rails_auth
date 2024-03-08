@@ -16,7 +16,10 @@
 <% model.oauth_users.each do |oauth_user| %>
   <p>
     <%= link_to({ controller: 'oauth_users', user_id: model.id }) do %>
-      <span class="tag"><%= oauth_user.type_i18n %></span>
+      <span class="tags has-addons">
+        <span class="tag is-dark"><%= oauth_user.type_i18n %></span>
+        <span class="tag is-info"><%= oauth_user.app.name %></span>
+      </span>
       <span><%= oauth_user.uid %></span>
     <% end %>
   </p>
