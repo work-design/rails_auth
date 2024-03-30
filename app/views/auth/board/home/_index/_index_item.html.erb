@@ -4,44 +4,44 @@
     data-mini-program-nav-value="true"
     data-mini-program-url-value="/pages/profile/index"
     data-action="click->mini-program#navTo"
-    class="weui-cell weui-cell_access"
+    class="box-cell"
   >
-    <div class="weui-cell__bd">
+    <div class="box-cell-body">
       <i class="fa-solid fa-fw fa-user has-text-primary"></i>
       <span><%= t('auth.board.users.show.title') %></span>
     </div>
-    <div class="weui-cell__ft"></div>
+    <div class="fa-solid fa-chevron-right has-text-grey"></div>
   </div>
 <% else %>
-  <%= link_to({ controller: 'users', action: 'show' }, state: 'enter', class: 'weui-cell weui-cell_access') do %>
-    <div class="weui-cell__bd">
+  <%= link_to({ controller: 'users', action: 'show' }, state: 'enter', class: 'box-cell') do %>
+    <div class="box-cell-body">
       <i class="fa-solid fa-fw fa-user has-text-primary"></i>
       <span class="pl-1"><%= t('auth.board.users.show.title') %></span>
     </div>
-    <div class="weui-cell__ft"></div>
+    <div class="fa-solid fa-chevron-right has-text-grey"></div>
   <% end %>
 <% end %>
-<%= link_to({ controller: 'accounts' }, state: 'enter', class: 'weui-cell weui-cell_access') do %>
-  <div class="weui-cell__bd">
+<%= link_to({ controller: 'accounts' }, state: 'enter', class: 'box-cell') do %>
+  <div class="box-cell-body">
     <i class="fa-solid fa-fw fa-users has-text-primary"></i>
     <span class="pl-1"><%= t('auth.board.accounts.index.title') %></span>
   </div>
-  <div class="weui-cell__ft"></div>
+  <div class="fa-solid fa-chevron-right has-text-grey"></div>
 <% end %>
 <% if request.variant.include?(:wechat) %>
-  <%= link_to({ controller: 'wechat/board/wechat_users' }, state: 'enter', class: 'weui-cell weui-cell_access') do %>
-    <div class="weui-cell__bd">
+  <%= link_to({ controller: 'wechat/board/wechat_users' }, state: 'enter', class: 'box-cell') do %>
+    <div class="box-cell-body">
       <i class="fa-brands fa-fw fa-weixin has-text-primary"></i>
       <span class="pl-1"><%= t('wechat.board.wechat_users.index.title') %></span>
     </div>
-    <div class="weui-cell__ft"></div>
+    <div class="fa-solid fa-chevron-right has-text-grey"></div>
   <% end %>
 <% else %>
-  <%= link_to({ controller: 'oauth_users' }, state: 'enter', class: 'weui-cell weui-cell_access') do %>
-    <div class="weui-cell__bd">
+  <%= link_to({ controller: 'oauth_users' }, state: 'enter', class: 'box-cell') do %>
+    <div class="box-cell-body">
       <i class="fa-brands fa-fw fa-weixin has-text-primary"></i>
       <span class="pl-1"><%= t('auth.board.oauth_users.index.title') %></span>
     </div>
-    <div class="weui-cell__ft"></div>
+    <div class="fa-solid fa-chevron-right has-text-grey"></div>
   <% end %>
 <% end %>
