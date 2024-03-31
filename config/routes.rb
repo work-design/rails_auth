@@ -72,7 +72,9 @@ Rails.application.routes.draw do
 
       namespace :board, defaults: { namespace: 'board' } do
         root 'home#index'
-        resource :user
+        resource :user do
+          get :avatar
+        end
         resources :accounts do
           member do
             post :token
