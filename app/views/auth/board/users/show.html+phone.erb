@@ -1,6 +1,14 @@
 <%= render 'top_bar' %>
 
 <div class="box mx-3 p-0">
+  <div class="box-cell">
+    <div class="box-cell-body">
+      <%= Auth::User.human_attribute_name(:avatar) %>
+    </div>
+    <%= link_to({ action: 'edit', item: 'image' }, class: 'box-cell-footer') do %>
+      <%= image_tag @user.avatar, class: 'image is-64x64' if @user.avatar.attached? %>
+    <% end %>
+  </div>
   <%= link_to({ action: 'edit', item: 'name' }, class: 'box-cell') do %>
     <div class="box-cell-body">
       <%= Auth::User.human_attribute_name(:name) %>
