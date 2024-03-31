@@ -1,6 +1,6 @@
 <%= render 'top_bar' %>
 
-<div class="box mx-3">
+<div class="box mx-3 p-0">
   <%= link_to({ action: 'edit', item: 'name' }, class: 'box-cell') do %>
     <div class="box-cell-body">
       <%= Auth::User.human_attribute_name(:name) %>
@@ -11,7 +11,7 @@
     <div class="box-cell-body">
       <%= Auth::User.human_attribute_name(:accounts) %>
     </div>
-    <div class="box-cell-body">
+    <div class="box-cell-footer">
     <% @user.accounts.each do |account| %>
       <p><%= account.identity %></p>
     <% end %>
