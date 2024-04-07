@@ -1,22 +1,22 @@
-<tr>
-  <td><%= Auth::Account.human_attribute_name(:user_id) %></td>
-  <td><%= @account.user_id %></td>
-</tr>
-<tr>
-  <td><%= Auth::Account.human_attribute_name(:type) %></td>
-  <td><%= @account.type_i18n %></td>
-</tr>
-<tr>
-  <td><%= Auth::Account.human_attribute_name(:identity) %></td>
-  <td><%= @account.identity %></td>
-</tr>
-<tr>
-  <td><%= Auth::Account.human_attribute_name(:confirmed) %></td>
-  <td><%= @account.confirmed %></td>
-</tr>
-<tr>
-  <td><%= Auth::User.human_attribute_name(:verify_tokens) %></td>
+<div>
+  <dt><%= Auth::Account.human_attribute_name(:user_id) %></dt>
+  <dd><%= @account.user_id %></dd>
+</div>
+<div>
+  <dt><%= Auth::Account.human_attribute_name(:type) %></dt>
+  <dd><%= @account.type_i18n %></dd>
+</div>
+<div>
+  <dt><%= Auth::Account.human_attribute_name(:identity) %></dt>
+  <dd><%= @account.identity %></dd>
+</div>
+<div>
+  <dt><%= Auth::Account.human_attribute_name(:confirmed) %></dt>
+  <dd><%= @account.confirmed %></dd>
+</div>
+<div>
+  <dt><%= Auth::User.human_attribute_name(:verify_tokens) %></dt>
   <td>
     <%= render 'auth/panel/users/verify_tokens', target: @account %>
   </td>
-</tr>
+</div>
