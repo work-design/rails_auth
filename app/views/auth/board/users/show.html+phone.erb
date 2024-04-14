@@ -1,28 +1,24 @@
 <%= render 'top_bar' %>
 
-<div class="box mx-3 p-0">
-  <div class="box-cell">
-    <div class="box-cell-body">
-      <%= Auth::User.human_attribute_name(:avatar) %>
-    </div>
-    <%= link_to({ action: 'edit', item: 'image' }, class: 'box-cell-footer') do %>
-      <%= image_tag @user.avatar, class: 'image is-64x64' if @user.avatar.attached? %>
-    <% end %>
+<dl class="as-show is-box mx-3">
+  <div>
+    <dt><%= Auth::User.human_attribute_name(:avatar) %></dt>
+    <dd>
+      <%= link_to({ action: 'edit', item: 'image' }) do %>
+        <%= image_tag @user.avatar, class: 'image is-64x64' if @user.avatar.attached? %>
+      <% end %>
+    </dd>
   </div>
-  <%= link_to({ action: 'edit', item: 'name' }, class: 'box-cell') do %>
-    <div class="box-cell-body">
-      <%= Auth::User.human_attribute_name(:name) %>
-    </div>
-    <div><%= @user.name %></div>
+  <%= link_to({ action: 'edit', item: 'name' }) do %>
+    <dt><%= Auth::User.human_attribute_name(:name) %></dt>
+    <dd><%= @user.name %></dd>
   <% end %>
-  <div class="box-cell">
-    <div class="box-cell-body">
-      <%= Auth::User.human_attribute_name(:accounts) %>
-    </div>
-    <div class="box-cell-footer">
+  <div>
+    <dt><%= Auth::User.human_attribute_name(:accounts) %></dt>
+    <dd>
     <% @user.accounts.each do |account| %>
       <p><%= account.identity %></p>
     <% end %>
-    </div>
+    </dd>
   </div>
-</div>
+</dl>
