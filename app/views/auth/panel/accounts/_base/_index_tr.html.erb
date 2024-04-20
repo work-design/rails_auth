@@ -5,17 +5,21 @@
       <%= button_to({ action: 'show', id: model.id }, aria: { label: t('.show.title') }, class: 'button is-small is-rounded is-light') do %>
         <i class="fa-solid fa-circle-info has-text-info"></i>
       <% end %>
-      <%= link_to({ controller: 'authorized_tokens', identity: model.identity }, aria: { label: t('auth.panel.authorized_tokens.index.title') }, class: 'button is-small is-rounded is-light') do %>
-        <i class="fa-solid fa-key has-text-info"></i>
-      <% end %>
       <%= button_to({ action: 'edit', id: model.id }, data: { turbo_scroll: true }, aria: { label: t('.edit.title') }, class: 'button is-small is-rounded is-light') do %>
         <i class="fa-solid fa-pencil has-text-link"></i>
       <% end %>
       <%= button_to({ action: 'destroy', id: model.id }, method: :delete, aria: { label: t('.destroy.title') }, form: { data: { turbo_confirm: t('.destroy.confirm') } }, class: 'button is-small is-rounded is-light') do %>
         <i class="fa-solid fa-trash has-text-danger"></i>
       <% end %>
-      <%= button_to({ action: 'prune', id: model.id }, method: :delete, aria: { label: t('.prune.title') }, form: { data: { turbo_confirm: t('.prune.confirm') } }, class: 'button is-small is-rounded is-light') do %>
+    </div>
+    <div data-show-target="item" class="visibility-hidden">
+      <%= link_to({ controller: 'authorized_tokens', identity: model.identity }, class: 'button is-small is-rounded is-light') do %>
+        <i class="fa-solid fa-key has-text-info"></i>
+        <span class="pl-1"><%= t('.authorized_tokens.index.title') %></span>
+      <% end %>
+      <%= button_to({ action: 'prune', id: model.id }, method: :delete, form: { data: { turbo_confirm: t('.prune.confirm') } }, class: 'button is-small is-rounded is-light') do %>
         <i class="fa-solid fa-trash-can has-text-danger-dark"></i>
+        <span class="pl-1"><%= t('.prune.title') %></span>
       <% end %>
     </div>
   </td>
