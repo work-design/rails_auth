@@ -4,7 +4,7 @@
     <span class="is-text" style="width: 10em"><%= model.name %></span>
   <% end %>
   <% model.accounts.each do |account| %>
-    <p class="has-text-grey mt-2">
+    <p class="color-grey mt-2">
     <%= link_to({ controller: 'accounts', user_id: model.id }, aria: { label: t('auth.panel.accounts.index.title') }, class: 'is-several') do %>
       <i class="fa-solid fa-portrait"></i>
       <span title="<%= account.identity %>" class="is-text"><%= account.identity %></span>

@@ -8,12 +8,12 @@
   <% end %>
   <div class="panel-block has-background-white justify-content-space-around">
     <%= link_to({ controller: 'wechat/wechat', action: 'login' }) do %>
-      <i class="fa-brands fa-weixin has-text-success"></i>
-      <span class="has-text-grey">微信扫码</span>
+      <i class="fa-brands fa-weixin color-success"></i>
+      <span class="color-grey">微信扫码</span>
     <% end if defined? RailsWechat %>
     <%= link_to({ controller: 'wechat/qy_wechat', action: 'login' }) do %>
       <i class="fa-brands fa-weixin has-text-primary"></i>
-      <span class="has-text-grey">企业微信</span>
+      <span class="color-grey">企业微信</span>
     <% end if defined? RailsWechat %>
   </div>
 </div>

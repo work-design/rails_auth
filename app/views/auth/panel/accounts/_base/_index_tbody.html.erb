@@ -8,7 +8,7 @@
 <td><%= model.identity %></td>
 <td>
 <% if model.confirmed %>
-  <i class="fa-solid fa-check has-text-success"></i>
+  <i class="fa-solid fa-check color-success"></i>
 <% end %>
 </td>
 <td><time data-controller="time"><%= model.created_at.to_fs(:iso8601) %></time></td>
