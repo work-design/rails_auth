@@ -10,7 +10,7 @@
   <% end %>
 </td>
 <td>
-  <p class="color-success"><%= link_to model.uid, { controller: 'authorized_tokens', uid: model.uid } %></p>
+  <p class="color-success"><%= link_to model.uid, { controller: 'authorized_tokens', uid: model.uid }, class: 'has-text-mono' %></p>
   <p class="color-grey"><%= model.unionid %></p>
 </td>
 <td>
