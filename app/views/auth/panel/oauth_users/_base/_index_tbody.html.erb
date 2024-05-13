@@ -2,7 +2,7 @@
   <span class="tag"><%= model.type_i18n %></span>
 </td>
 <td>
-  <p><%= model.appid %></p>
+  <p class="has-text-mono"><%= model.appid %></p>
   <% if model.respond_to?(:app) && model.app %>
     <span><%= model.app.name %></span>
   <% elsif model.respond_to?(:agency) %>
