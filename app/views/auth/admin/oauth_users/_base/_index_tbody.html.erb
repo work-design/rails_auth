@@ -8,10 +8,9 @@
 <td>
   <div class="is-several">
     <%= image_tag model.avatar_url, class: 'image is-24x24' if model.avatar_url.present? %>
-    <%= model.name %>
+    <span><%= model.name %></span>
   </div>
 </td>
-<td><time data-controller="time" data-format="human"><%= model.created_at.to_fs(:iso8601) %></time></td>
 <td>
 <% if model.user_id %>
   <i class="fa-solid fa-check color-success"></i>
@@ -20,5 +19,10 @@
 <td>
 <% model.authorized_tokens.each do |at| %>
   <p class="<%= at.online ? 'color-success' : 'color-grey' %>"><%= at.id %></p>
+<% end %>
+</td>
+<td>
+<% model.contacts.where(organ_id: current_organ.id).each do |contact| %>
+  <p><%= contact.id %></p>
 <% end %>
 </td>
