@@ -18,6 +18,9 @@ module Auth
       attribute :refresh_token, :string
       attribute :extra, :json, default: {}
       attribute :identity, :string, index: true
+      attribute :online_at, :datetime
+      attribute :offline_at, :datetime
+
       index [:uid, :provider], unique: true
 
       belongs_to :user, optional: true
@@ -50,6 +53,10 @@ module Auth
       account || build_account(type: 'Auth::MobileAccount')
       account.user_id = user_id
       account.save
+    end
+
+    def online?
+      online_at.present? && offline_at.blank?
     end
 
     def can_login?(params)
