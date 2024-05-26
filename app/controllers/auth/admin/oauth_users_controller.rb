@@ -7,7 +7,7 @@ module Auth
       q_params.merge! appid: current_organ.apps.pluck(:appid) if current_organ.respond_to?(:apps)
       q_params.merge! params.permit(:user_id, :uid, :appid, :name)
 
-      @oauth_users = OauthUser.includes(:app, :authorized_tokens).default_where(q_params).order(id: :desc).page(params[:page])
+      @oauth_users = OauthUser.includes(:app, :authorized_tokens, :contacts).default_where(q_params).order(id: :desc).page(params[:page])
     end
 
     private
