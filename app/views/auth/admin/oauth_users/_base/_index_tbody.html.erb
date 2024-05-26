@@ -21,8 +21,3 @@
   <p class="<%= at.online ? 'color-success' : 'color-grey' %>"><%= at.id %></p>
 <% end %>
 </td>
-<td>
-<% model.contacts.where(organ_id: current_organ.id).each do |contact| %>
-  <p><%= contact.id %></p>
-<% end %>
-</td>
