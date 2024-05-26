@@ -8,7 +8,7 @@ module Auth
       }
       q_params.merge! user_filter_params
 
-      @users = User.with_attached_avatar.includes(:accounts, oauth_users: :app).default_where(q_params).page(params[:page])
+      @users = User.with_attached_avatar.includes(:accounts, :roles, oauth_users: :app).default_where(q_params).page(params[:page])
     end
 
     def month
