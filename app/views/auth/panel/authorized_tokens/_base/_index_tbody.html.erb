@@ -9,8 +9,12 @@
   </p>
 </td>
 <td>
-<% if model.online %>
+<% if model.online? %>
   <i class="fa-solid fa-circle color-success"></i>
+  <time data-controller="time" data-format="human"><%= model.online_at.to_fs(:iso8601) %></time>
+<% elsif model.offline_at.present? %>
+  <i class="fa-solid fa-circle color-grey"></i>
+  <time data-controller="time" data-format="human"><%= model.offline_at.to_fs(:iso8601) %></time>
 <% else %>
   <i class="fa-solid fa-circle color-grey"></i>
 <% end %>

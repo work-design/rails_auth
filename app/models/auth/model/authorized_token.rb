@@ -11,7 +11,8 @@ module Auth
       attribute :business, :string
       attribute :uid, :string
       attribute :session_id, :string
-      attribute :online, :boolean
+      attribute :online_at, :datetime
+      attribute :offline_at, :datetime
       attribute :encrypted_token, :string
       attribute :auth_appid, :string
 
@@ -35,6 +36,10 @@ module Auth
         uid: self.uid,
         session_id: self.session_id
       }
+    end
+
+    def online?
+      online_at.present? && offline_at.blank?
     end
 
     def refresh

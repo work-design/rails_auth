@@ -3,9 +3,13 @@ module Auth
 
     def index
       q_params = {}
-      q_params.merge! params.permit(:id, :uid, :appid, :identity, :online)
+      q_params.merge! params.permit(:id, :uid, :appid, :identity)
+      @authorized_tokens = AuthorizedToken.default_where(q_params)
+      if params[:online]
+        @authorized_tokens = @authorized_tokens.where.not(online_at: nil).where(offline_at: nil)
+      end
 
-      @authorized_tokens = AuthorizedToken.default_where(q_params).order(id: :desc).page(params[:page])
+      @authorized_tokens = @authorized_tokens.order(id: :desc).page(params[:page])
     end
 
     private
