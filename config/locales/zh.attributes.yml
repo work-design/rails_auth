@@ -14,6 +14,12 @@ zh:
         password_confirmation: 确认密码
         oauth_users: Oauth 用户
         accounts: 登录账号
+      auth/oauth_user:
+        online_at: 上线时间
+        offline_at: 离线时间
+      auth/authorized_token:
+        online_at: 上线时间
+        offline_at: 离线时间
       user/accounts:
         identity: 手机号或邮箱
       auth/account:
