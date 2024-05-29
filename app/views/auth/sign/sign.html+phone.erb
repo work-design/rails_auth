@@ -5,7 +5,7 @@
         <h4 class="weui-cells__title">注册或登录</h4>
         <div class="weui-cells weui-cells_form">
           <% params.permit(:uid, :request_id, :state).each do |key, value| %>
-            <%= f.hidden_field key, value: value, autocomplete: false %>
+            <%= f.hidden_field key, value: value, autocomplete: 'off' %>
           <% end %>
           <%= f.text_field :identity, value: params[:identity], placeholder: '手机号或Email', autofocus: true %>
         </div>

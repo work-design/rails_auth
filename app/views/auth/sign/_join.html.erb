@@ -8,7 +8,7 @@
   </div>
   <div class="field control has-addons">
     <div class="control is-expanded">
-      <%= f.text_field :token, placeholder: Auth::VerifyToken.human_attribute_name(:token), autocomplete: false, class: 'input' %>
+      <%= f.text_field :token, placeholder: Auth::VerifyToken.human_attribute_name(:token), autocomplete: 'off', class: 'input' %>
     </div>
     <div class="control" data-controller="common" id="sign_token">
       <%= link_to({ action: 'code', identity: params[:identity] }, data: { action: 'common#link' }, class: 'button is-info') do %>
@@ -17,10 +17,10 @@
     </div>
   </div>
   <div class="field control">
-    <%= f.password_field :password, placeholder: Auth::User.human_attribute_name(:password), autocomplete: false, class: 'input' %>
+    <%= f.password_field :password, placeholder: Auth::User.human_attribute_name(:password), autocomplete: 'off', class: 'input' %>
   </div>
   <div class="field control">
-    <%= f.password_field :password_confirmation, placeholder: Auth::User.human_attribute_name(:password_confirmation), autocomplete: false, class: 'input' %>
+    <%= f.password_field :password_confirmation, placeholder: Auth::User.human_attribute_name(:password_confirmation), autocomplete: 'off', class: 'input' %>
   </div>
   <%= f.submit t('.register'), class: 'button is-primary is-large mt-6' %>
 <% end %>

@@ -11,7 +11,7 @@
 <%= form_with scope: nil, url: { action: 'login' }, wrap: { input: 'field control' }, all: { normal: nil }, id: 'login_form', class: 'block' do |f| %>
   <%= f.hidden_field :state, value: params[:state] %>
   <%= f.text_field :identity, value: params[:identity], placeholder: Auth::Account.human_attribute_name(:identity), readonly: true %>
-  <%= f.password_field :password, placeholder: Auth::User.human_attribute_name(:password), autocomplete: false %>
+  <%= f.password_field :password, placeholder: Auth::User.human_attribute_name(:password), autocomplete: 'off' %>
 <% end %>
 <div>
   <%= button_to t('.token'), { controller: 'auth/sign', action: 'token_login' }, params: { identity: params[:identity] }, id: 'mobile_confirm', class: 'color-grey' %>

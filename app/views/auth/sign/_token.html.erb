@@ -7,7 +7,7 @@
     </div>
     <div class="field control has-addons">
       <div class="control is-expanded">
-        <%= f.text_field :token, placeholder: Auth::VerifyToken.human_attribute_name(:token), autocomplete: false, class: 'input' %>
+        <%= f.text_field :token, placeholder: Auth::VerifyToken.human_attribute_name(:token), autocomplete: 'off', class: 'input' %>
       </div>
       <div class="control" data-controller="common" id="sign_token">
         <%= link_to({ action: 'code', identity: params[:identity] }, data: { controller: 'count-down', count_down_time_value: 60, action: 'common#link' }, disabled: true, class: 'button is-info') do %>
