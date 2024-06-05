@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/work-design/rails_com.git
-  revision: 5aac4fda99f010e1ab50f7337b56a5399d772cdb
+  revision: 7a4080bbad75059a76add3a706f087126fb46186
   specs:
     rails_com (1.3.0)
       acme-client
@@ -11,13 +11,15 @@ GIT
       httpx
       kaminari
       money-rails (~> 1.15)
+      mutex_m
       net-http
+      ostruct
       rails (~> 7.0)
       turbo-rails
 
 GIT
   remote: https://github.com/work-design/rails_design.git
-  revision: bc8962742c3a545c46bf160f1f93e2b5a82b2f19
+  revision: a0d534c1adcdf227767c29f9b34100b318c6df71
   specs:
     rails_design (0.0.1)
       rails
@@ -110,8 +112,9 @@ GEM
       minitest (>= 5.1)
       mutex_m
       tzinfo (~> 2.0)
-    acts_as_list (1.1.0)
-      activerecord (>= 4.2)
+    acts_as_list (1.2.0)
+      activerecord (>= 6.1)
+      activesupport (>= 6.1)
     amazing_print (1.6.0)
     base64 (0.2.0)
     bcrypt (3.1.20)
@@ -197,6 +200,7 @@ GEM
     nokogiri (1.16.5)
       mini_portile2 (~> 2.8.2)
       racc (~> 1.4)
+    ostruct (0.6.0)
     pg (1.5.6)
     propshaft (0.9.0)
       actionpack (>= 7.0.0)
@@ -301,7 +305,7 @@ CHECKSUMS
   activerecord (7.1.3.3) sha256=3de333d49d84f7f03895de12f71e6e0a6e7df5fd9c80eea7e8b40ce04b4535c9
   activestorage (7.1.3.3) sha256=ba08fd11fea0ab0c72de6de3bb0f386feb8a45bfd969f630ba1da0ceaf02a142
   activesupport (7.1.3.3) sha256=f1147f1eedff05b7816b48d0aa89c912b83fed3f245d7ed3cf33a55ffbf3137d
-  acts_as_list (1.1.0) sha256=06d4c4de6a1014a58b0eb2c832f51b7593df6ae547199e510a392205c31bab61
+  acts_as_list (1.2.0)
   amazing_print (1.6.0) sha256=9903e93daadc15411c854239f8ca1ca6ce78be279ed99d43fec2bd3b0aa37397
   base64 (0.2.0) sha256=0f25e9b21a02a0cc0cea8ef92b2041035d39350946e8789c562b2d1a3da01507
   bcrypt (3.1.20) sha256=8410f8c7b3ed54a3c00cd2456bf13917d695117f033218e2483b2e40b0784099
@@ -347,6 +351,7 @@ CHECKSUMS
   net-smtp (0.5.0) sha256=5fc0415e6ea1cc0b3dfea7270438ec22b278ca8d524986a3ae4e5ae8d087b42a
   nio4r (2.7.3) sha256=54b94cdd4b8f9dc39aaad5f699e97afae13efb44f2b180a6e724df76105ff604
   nokogiri (1.16.5) sha256=ec36162c68984fa0a90a5c4ae7ab7759460639e716cc1ce75f34c3cb54158ad2
+  ostruct (0.6.0)
   pg (1.5.6) sha256=4bc3ad2438825eea68457373555e3fd4ea1a82027b8a6be98ef57c0d57292b1c
   propshaft (0.9.0) sha256=fe1d2e6368b1147f4de844a58bcd90a0d9d7bd2930aaf225c84d31c068346091
   psych (5.1.2) sha256=337322f58fc2bf24827d2b9bd5ab595f6a72971867d151bb39980060ea40a368
