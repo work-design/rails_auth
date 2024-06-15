@@ -14,6 +14,21 @@
       <i class="fa-solid fa-chevron-right"></i>
     </div>
   </div>
+  <div
+    data-controller="mini-program"
+    data-mini-program-nav-value="true"
+    data-mini-program-url-value="/pages/mobile/index"
+    data-action="click->mini-program#navTo"
+    class="media"
+  >
+    <div class="media-content">
+      <i class="fa-solid fa-fw fa-mobile has-text-primary"></i>
+      <span>手机号登录</span>
+    </div>
+    <div class="media-right">
+      <i class="fa-solid fa-chevron-right"></i>
+    </div>
+  </div>
 <% else %>
   <%= link_to({ controller: 'users', action: 'show' }, state: 'enter', class: 'media') do %>
     <div class="media-content">
