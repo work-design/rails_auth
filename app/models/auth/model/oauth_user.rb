@@ -24,6 +24,8 @@ module Auth
       index [:uid, :provider], unique: true
 
       belongs_to :user, optional: true
+      belongs_to :organ, class_name: 'Org::Organ', optional: true
+
       belongs_to :account, -> { where(confirmed: true) }, foreign_key: :identity, primary_key: :identity, inverse_of: :oauth_users, optional: true
 
       has_many :authorized_tokens, ->(o) { where(o.filter_hash) }, primary_key: :uid, foreign_key: :uid, dependent: :delete_all
