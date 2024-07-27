@@ -4,7 +4,7 @@
     <span class="is-text" style="width: 10em"><%= model.name %></span>
   <% end %>
   <% model.accounts.each do |account| %>
-    <p class="color-grey mt-2">
+    <p class="text-grey mt-2">
     <%= link_to({ controller: 'accounts', user_id: model.id }, aria: { label: t('auth.panel.accounts.index.title') }, class: 'is-several') do %>
       <i class="fa-solid fa-portrait"></i>
       <span title="<%= account.identity %>" class="is-text"><%= account.identity %></span>
@@ -20,7 +20,7 @@
         <span class="tag is-dark"><%= oauth_user.type_i18n %></span>
         <span class="tag is-info"><%= oauth_user.app.name %></span>
       </span>
-      <span class="has-text-mono"><%= oauth_user.uid %></span>
+      <span class="family-monospace"><%= oauth_user.uid %></span>
     <% end %>
   </p>
 <% end %>

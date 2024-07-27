@@ -3,15 +3,15 @@
   <td><%= image_tag current_user.avatar.variant(resize_to_limit: [200, 200]) %></td>
 </tr>
 <tr>
-  <td class="has-text-right"><%= User.human_attribute_name(:name) %></td>
+  <td class="text-right"><%= User.human_attribute_name(:name) %></td>
   <td><%= @user.name %></td>
 </tr>
 <tr>
-  <td class="has-text-right"><%= User.human_attribute_name(:email) %></td>
+  <td class="text-right"><%= User.human_attribute_name(:email) %></td>
   <td><%= @user.email %></td>
 </tr>
 <tr>
-  <td class="has-text-right"><%= User.human_attribute_name(:mobile) %></td>
+  <td class="text-right"><%= User.human_attribute_name(:mobile) %></td>
   <td><%= @user.mobile %></td>
 </tr>
 

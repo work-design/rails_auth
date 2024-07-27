@@ -1,6 +1,6 @@
 <%= link_to({ controller: 'board/accounts' }, state: 'enter', class: 'media') do %>
   <div class="media-content">
-    <i class="fa-solid fa-fw fa-users has-text-primary"></i>
+    <i class="fa-solid fa-fw fa-users text-primary"></i>
     <span class="pl-1"><%= t('auth.board.accounts.index.title') %></span>
   </div>
   <div class="media-right">
@@ -9,7 +9,7 @@
 <% end %>
 <%= link_to({ controller: 'board/oauth_users' }, state: 'enter', class: 'media') do %>
   <div class="media-content">
-    <i class="fa-brands fa-fw fa-weixin has-text-primary"></i>
+    <i class="fa-brands fa-fw fa-weixin text-primary"></i>
     <span class="pl-1"><%= t('auth.board.oauth_users.index.title') %></span>
   </div>
   <div class="media-right">
@@ -19,7 +19,7 @@
 
 <%= link_to({ controller: 'profiled/my/profiles', action: 'qrcode' }, state: 'enter', class: 'media') do %>
   <div class="media-content">
-    <i class="fa-solid fa-fw fa-qrcode has-text-primary"></i>
+    <i class="fa-solid fa-fw fa-qrcode text-primary"></i>
     <span class="pl-1"><%= t('profiled.my.profiles.qrcode.title') %></span>
   </div>
   <div class="media-right">
@@ -29,7 +29,7 @@
 
 <%= link_to({ controller: 'profiled/my/profiles', action: 'show' }, state: 'enter', class: 'media') do %>
   <div class="media-content">
-    <i class="fa-solid fa-fw fa-user has-text-primary"></i>
+    <i class="fa-solid fa-fw fa-user text-primary"></i>
     <span class="pl-1"><%= t('profiled.my.profiles.show.title') %></span>
   </div>
   <div class="media-right">
@@ -39,7 +39,7 @@
 
 <%= link_to({ controller: 'trade/my/wallet_templates' }, state: 'enter', class: 'media') do %>
   <div class="media-content">
-    <i class="fa-solid fa-fw fa-wallet has-text-primary"></i>
+    <i class="fa-solid fa-fw fa-wallet text-primary"></i>
     <span class="pl-1"><%= t('trade.my.wallet_templates.index.title') %></span>
   </div>
   <div class="media-right">
@@ -57,7 +57,7 @@
   class="media"
 >
   <div class="media-content">
-    <i class="fa-solid fa-fw fa-print has-text-primary"></i>
+    <i class="fa-solid fa-fw fa-print text-primary"></i>
     <span class="pl-1"><%= '设置打印机' %></span>
   </div>
   <div class="media-right">

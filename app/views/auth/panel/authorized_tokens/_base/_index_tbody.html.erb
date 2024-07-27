@@ -1,21 +1,21 @@
 <td>
   <p><strong><%= model.identity %></strong></p>
-  <p class="color-grey"><span><%= model.uid %></span></p>
+  <p class="text-grey"><span><%= model.uid %></span></p>
   <p><code class="is-wrap"><%= model.id %></code></p>
   <p>
-    <time data-controller="time" class="color-grey"><%= model.created_at.to_fs(:iso8601) %></time>
+    <time data-controller="time" class="text-grey"><%= model.created_at.to_fs(:iso8601) %></time>
     <span>~</span>
     <time data-controller="time" class="<%= model.expired? ? 'color-danger' : 'color-success' %>"><%= model.expire_at.to_fs(:iso8601) %></time>
   </p>
 </td>
 <td>
 <% if model.online? %>
-  <i class="fa-solid fa-circle color-success"></i>
+  <i class="fa-solid fa-circle text-success"></i>
   <time data-controller="time" data-format="human"><%= model.online_at.to_fs(:iso8601) %></time>
 <% elsif model.offline_at.present? %>
-  <i class="fa-solid fa-circle color-grey"></i>
+  <i class="fa-solid fa-circle text-grey"></i>
   <time data-controller="time" data-format="human"><%= model.offline_at.to_fs(:iso8601) %></time>
 <% else %>
-  <i class="fa-solid fa-circle color-grey"></i>
+  <i class="fa-solid fa-circle text-grey"></i>
 <% end %>
 </td>

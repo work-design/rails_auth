@@ -3,11 +3,11 @@
   <div class="media-right">
     <% if model.confirmed %>
       <div class="has-inline-centered" style="height: 37.5px">
-        <i class="fa-solid fa-check-circle color-success"></i>
+        <i class="fa-solid fa-check-circle text-success"></i>
       </div>
     <% else %>
       <div class="has-inline-centered" style="height: 37.5px">
-        <i class="fa-solid fa-question-circle has-text-warning"></i>
+        <i class="fa-solid fa-question-circle text-warning"></i>
       </div>
     <% end %>
     <%= button_to({ action: 'actions', id: model.id }, class: 'button is-borderless') do %>
