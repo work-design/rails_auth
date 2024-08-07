@@ -98,6 +98,9 @@ zh:
           title: 第三方应用
     admin:
       title: 用户管理
+      home:
+        index:
+          title: 用户管理
       oauth_users:
         index:
           title: 第三方登录

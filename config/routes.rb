@@ -24,6 +24,7 @@ Rails.application.routes.draw do
       resources :users, only: [:index, :show]
 
       namespace :admin, defaults: { namespace: 'admin' } do
+        root 'home#index'
         resources :oauth_users
         resources :user_tags do
           resources :user_taggeds do
