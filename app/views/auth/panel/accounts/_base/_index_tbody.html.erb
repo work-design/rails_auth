@@ -1,7 +1,7 @@
 <td>
-  <%= link_to({ controller: 'users', action: 'show', id: model.user_id }, data: { turbo_frame: 'modal', turbo_scroll: true }, text: true) do %>
+  <%= button_to({ controller: 'users', action: 'show', id: model.user_id }, text: true) do %>
     <i class="fa-solid fa-user"></i>
-    <span class="pl-1"><%= model.user.name %></span>
+    <span class="ml-1"><%= model.user.name %></span>
   <% end if model.user %>
 </td>
 <td><%= model.type_i18n %></td>
