@@ -10,7 +10,7 @@ Rails.application.routes.draw do
         post :login
         post :token_login
         post :token
-        get :logout
+        match :logout, via: [:get, :post]
       end
 
       scope :password, controller: :password, as: 'password' do
