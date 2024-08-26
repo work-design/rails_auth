@@ -61,9 +61,10 @@ zh:
       oauth_users:
         index:
           title: 第三方登录
-          bind: 绑定
-          unbind: 解绑
-          update_token: 重新绑定
+        bind:
+          title: 绑定
+        update_token:
+          title: 重新绑定
         unbind:
           title: 解绑
     my:
@@ -71,6 +72,12 @@ zh:
       home:
         index:
           title: 更多
+      users:
+        show:
+          title: 个人资料
+      oauth_users:
+        index:
+          title: 第三方登录
     panel:
       title: 用户管理
       home:
