@@ -10,10 +10,10 @@
     <div class="control is-expanded">
       <%= f.text_field :token, placeholder: Auth::VerifyToken.human_attribute_name(:token), autocomplete: 'off', class: 'input' %>
     </div>
-    <div class="control" data-controller="common" id="sign_token">
-      <%= link_to({ action: 'code', identity: params[:identity] }, data: { action: 'common#link' }, class: 'button is-info') do %>
+    <div class="control" id="sign_token">
+      <button type="button" data-controller="common" data-url="<%= url_for(action: 'code', identity: params[:identity]) %>" data-action="common#streamPost" class="button is-info">
         <span><%= t('.token') %></span>
-      <% end %>
+      </button>
     </div>
   </div>
   <div class="field control">

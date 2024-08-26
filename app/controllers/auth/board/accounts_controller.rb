@@ -62,11 +62,10 @@ module Auth
     end
 
     def account_params
-      p = params.require(:account).permit(
+      params.require(:account).permit(
         :identity,
         :confirmed
       )
-      p.merge! default_form_params
     end
 
   end
