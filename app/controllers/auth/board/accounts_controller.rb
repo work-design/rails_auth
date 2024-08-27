@@ -25,8 +25,6 @@ module Auth
     def token
       @verify_token = @account.verify_token
       @verify_token.send_out
-
-      head :no_content
     end
 
     def confirm

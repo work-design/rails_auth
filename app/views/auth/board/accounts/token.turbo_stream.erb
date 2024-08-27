@@ -1,0 +1,7 @@
+<%= turbo_stream.replace "token_#{@account.id}" do %>
+  <button id="token_<%= @account.id %>" type="button" data-url="<%= url_for(action: 'token', identity: @account.identity) %>" data-controller="common count-down" data-count-down-time-value="5" data-count-down-target="disabled" data-action="common#streamPost" disabled="disabled" class="button is-info">
+    <span>重新发送（</span>
+    <span data-count-down-target="count"></span>
+    <span>）</span>
+  </button>
+<% end %>
