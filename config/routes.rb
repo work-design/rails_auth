@@ -62,10 +62,6 @@ Rails.application.routes.draw do
         resources :apps
       end
 
-      namespace :my, defaults: { namespace: 'my' } do
-        root 'home#index'
-      end
-
       namespace :our, defaults: { namespace: 'our' } do
         root 'home#index'
       end
