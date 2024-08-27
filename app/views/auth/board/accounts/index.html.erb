@@ -1,7 +1,7 @@
 <table class="table is-fullwidth">
-  <tbody>
+  <tbody id="tbody">
   <%= render partial: 'account', collection: @accounts, as: :model %>
-  <tr>
+  <tr id="add_one">
     <td>
       <%= form_with url: { action: 'create' }, method: :post, id: 'add_account' %>
     </td>
