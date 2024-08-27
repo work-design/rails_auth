@@ -64,8 +64,6 @@ Rails.application.routes.draw do
 
       namespace :my, defaults: { namespace: 'my' } do
         root 'home#index'
-        resource :user
-        resources :oauth_users
       end
 
       namespace :our, defaults: { namespace: 'our' } do
