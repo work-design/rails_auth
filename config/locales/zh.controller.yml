@@ -44,9 +44,9 @@ zh:
           title: 更多
       users:
         show:
-          title: 基本信息
+          title: 个人资料
         edit:
-          title: 编辑基本信息
+          title: 编辑个人资料
         update:
           saved: 资料已保存！
       accounts:
@@ -67,17 +67,6 @@ zh:
           title: 重新绑定
         unbind:
           title: 解绑
-    my:
-      title: 用户中心
-      home:
-        index:
-          title: 更多
-      users:
-        show:
-          title: 个人资料
-      oauth_users:
-        index:
-          title: 第三方登录
     panel:
       title: 用户管理
       home:
