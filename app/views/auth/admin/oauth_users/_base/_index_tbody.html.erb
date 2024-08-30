@@ -18,6 +18,6 @@
 </td>
 <td>
 <% model.authorized_tokens.each do |at| %>
-  <p class="<%= at.online? ? 'color-success' : 'color-grey' %>"><%= at.id %></p>
+  <p class="<%= at.online? ? 'text-success' : 'text-grey' %>"><%= at.id %></p>
 <% end %>
 </td>
