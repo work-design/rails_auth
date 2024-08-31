@@ -11,7 +11,7 @@ module Auth
       check_jwt_token if params[:auth_jwt_token]
       return if current_user
 
-      redirect_to url_for(controller: '/auth/sign', action: 'sign', identity: params[:identity], state: urlsafe_encode64(destroyable: false))
+      redirect_to url_for(controller: '/auth/sign', action: 'sign', identity: params[:identity], state: state_enter(destroyable: false))
     end
 
     def check_jwt_token
@@ -39,7 +39,7 @@ module Auth
     def require_client
       return if current_client
 
-      render 'require_client', layout: 'raw', locals: { url: url_for(state: urlsafe_encode64(destroyable: false)) }
+      render 'require_client', layout: 'raw', locals: { url: url_for(state: state_enter(destroyable: false)) }
     end
 
     def current_client
