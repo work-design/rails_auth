@@ -33,11 +33,11 @@ module Auth
 
       if @user.persisted?
         login_as @user
-        render :create and return
+        render :create
       else
         if @user.join(user_params)
           login_as @user
-          render :create and return
+          render :create
         end
       end
     end
