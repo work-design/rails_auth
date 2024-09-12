@@ -79,7 +79,8 @@ zh:
         index:
           title: 用户列表
           role: 角色设置
-          tag: 用户标签
+        edit_user_tags:
+          title: 用户标签
       accounts:
         index:
           title: 账号

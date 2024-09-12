@@ -1,3 +1,1 @@
-<%= turbo_frame_tagged 'modal' do %>
-  <%= render 'user_tags_form' %>
-<% end %>>
+<%= turbo_stream.append 'body', partial: 'user_tags_form', layout: 'modal_form' %>

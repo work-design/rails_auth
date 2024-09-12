@@ -44,7 +44,7 @@ Rails.application.routes.draw do
           end
           member do
             post :mock
-            get 'user_tags' => :edit_user_tags
+            match :edit_user_tags, via: [:get, :post]
             patch 'user_tags' => :update_user_tags
           end
         end
