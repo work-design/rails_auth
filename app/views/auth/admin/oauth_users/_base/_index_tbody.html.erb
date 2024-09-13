@@ -21,3 +21,4 @@
   <p class="family-monospace <%= at.online? ? 'text-success' : 'text-grey' %>"><%= at.id %></p>
 <% end %>
 </td>
+<td><time data-controller="time"><%= model.created_at.to_fs(:iso8601) %></time></td>
