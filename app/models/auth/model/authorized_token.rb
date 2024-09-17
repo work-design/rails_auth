@@ -30,6 +30,11 @@ module Auth
       before_validation :sync_identity, if: -> { uid.present? && uid_changed? }
       before_create :decode_from_jwt, if: -> { identity.blank? && uid.blank? }
       after_save :sync_online_or_offline, if: -> { uid.present? && (saved_changes.keys & ['online_at', 'offline_at']).present? }
+      after_create_commit :clean_when_expired
+    end
+
+    def clean_when_expired
+      AuthorizedTokenCleanJob.set(wait_until: expire_at).perform_later(self)
     end
 
     def filter_hash
