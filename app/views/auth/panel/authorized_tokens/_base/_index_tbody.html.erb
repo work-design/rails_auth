@@ -2,9 +2,14 @@
   <p><strong><%= model.identity %></strong></p>
   <p class="text-grey"><span><%= model.uid %></span></p>
   <p><code class="is-wrap"><%= model.id %></code></p>
+</td>
+<td>
+  <p><%= model.user_id %></p>
+  <p><%= model.member_id %></p>
+</td>
+<td>
+  <p><time data-controller="time" class="text-grey"><%= model.created_at.to_fs(:iso8601) %></time></p>
   <p>
-    <time data-controller="time" class="text-grey"><%= model.created_at.to_fs(:iso8601) %></time>
-    <span>~</span>
     <time data-controller="time" class="<%= model.expired? ? 'text-danger' : 'text-success' %>"><%= model.expire_at.to_fs(:iso8601) %></time>
   </p>
 </td>
