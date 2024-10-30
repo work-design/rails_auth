@@ -53,6 +53,7 @@ Rails.application.routes.draw do
             delete :prune
           end
         end
+        resources :verify_tokens
         resources :oauth_users do
           collection do
             get :month

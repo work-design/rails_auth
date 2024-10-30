@@ -90,6 +90,9 @@ zh:
       oauth_users:
         index:
           title: 第三方登录
+      verify_tokens:
+        index:
+          title: 验证码
       apps:
         index:
           title: 第三方应用
