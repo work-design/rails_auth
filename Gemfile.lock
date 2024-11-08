@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/work-design/rails_com.git
-  revision: 256d9bf8dee602be145f21a39ea54b227bad3e1f
+  revision: 31d2c35134f0bd7c1eabfab2526526db0c0597d8
   specs:
     rails_com (1.3.0)
       acme-client
@@ -147,7 +147,7 @@ GEM
       raabro (~> 1.4)
     globalid (1.2.1)
       activesupport (>= 6.1)
-    http-2 (1.0.1)
+    http-2 (1.0.2)
     http-form_data (2.3.0)
     httpx (1.3.3)
       http-2 (>= 1.0.0)
@@ -212,7 +212,7 @@ GEM
       racc (~> 1.4)
     ostruct (0.6.0)
     pg (1.5.9)
-    positioning (0.3.0)
+    positioning (0.4.1)
       activerecord (>= 6.1)
       activesupport (>= 6.1)
     propshaft (1.1.0)
@@ -351,7 +351,7 @@ CHECKSUMS
   faraday-retry (2.2.1) sha256=4146fed14549c0580bf14591fca419a40717de0dd24f267a8ec2d9a728677608
   fugit (1.11.1) sha256=e89485e7be22226d8e9c6da411664d0660284b4b1c08cacb540f505907869868
   globalid (1.2.1) sha256=70bf76711871f843dbba72beb8613229a49429d1866828476f9c9d6ccc327ce9
-  http-2 (1.0.1) sha256=635ff7a115e3e16be82c90a56f5ebf6efb47a1d772fe8aefe5ddfb14a123857e
+  http-2 (1.0.2)
   http-form_data (2.3.0) sha256=cc4eeb1361d9876821e31d7b1cf0b68f1cf874b201d27903480479d86448a5f3
   httpx (1.3.3)
   i18n (1.14.6) sha256=dc229a74f5d181f09942dd60ab5d6e667f7392c4ee826f35096db36d1fe3614c
@@ -383,7 +383,7 @@ CHECKSUMS
   nokogiri (1.16.7-x86_64-linux) sha256=9e1e428641d5942af877c60b418c71163560e9feb4a5c4015f3230a8b86a40f6
   ostruct (0.6.0) sha256=3b1736c99f4d985de36bde1155be5e22aaf6e564b30ff9bd481e2ef7c2d9ba85
   pg (1.5.9) sha256=761efbdf73b66516f0c26fcbe6515dc7500c3f0aa1a1b853feae245433c64fdc
-  positioning (0.3.0) sha256=02842c823e1d7cf5b45f96f58f5ebe0d2f4232a8f0fc30b08478ea2613629e87
+  positioning (0.4.1)
   propshaft (1.1.0) sha256=d389361faf66aeb17e8d204828962c1e506edd14a1a17adb3fa475435c070f6b
   psych (5.1.2) sha256=337322f58fc2bf24827d2b9bd5ab595f6a72971867d151bb39980060ea40a368
   puma (6.4.3) sha256=24a4645c006811d83f2480057d1f54a96e7627b6b90e1c99b260b9dc630eb43e
