@@ -98,7 +98,12 @@ module Auth
         uid: uid
       }
 
-      crypt = ActiveSupport::MessageEncryptor.new(auth_app.appid, cipher: 'aes-256-gcm', serializer: :json, urlsafe: true)
+      crypt = ActiveSupport::MessageEncryptor.new(
+        auth_app.appid,
+        cipher: 'aes-256-gcm',
+        serializer: :json,
+        urlsafe: true
+      )
       crypt.encrypt_and_sign(payload)
     end
 
