@@ -69,10 +69,6 @@ module Auth
       AuthorizedTokenOnlineJob.perform_later(self)
     end
 
-    def trigger_online
-
-    end
-
     def sync_identity
       self.identity ||= oauth_user.identity
     end
