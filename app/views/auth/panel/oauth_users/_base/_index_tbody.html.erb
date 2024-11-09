@@ -10,8 +10,8 @@
   <% end %>
 </td>
 <td>
-  <p class="text-success"><%= link_to model.uid, { controller: 'authorized_tokens', uid: model.uid }, class: 'family-monospace' %></p>
-  <p class="text-grey family-monospace"><%= model.unionid %></p>
+  <p class="text-success family-monospace"><%= link_to model.uid, { uid: model.uid } %></p>
+  <p class="text-grey family-monospace"><%= link_to model.unionid, { unionid: model.unionid } %></p>
 </td>
 <td>
   <div class="is-several">
@@ -22,8 +22,11 @@
 </td>
 <td><time data-controller="time"><%= model.created_at.to_fs(:iso8601) %></time></td>
 <td>
+<% if model.user %>
   <%= button_to({ controller: 'users', action: 'show', id: model.user.id }, text: true) do %>
     <i class="fa-regular fa-user"></i>
     <span class="pl-1"><%= model.user.name %></span>
-  <% end if model.user %>
+  <% end %>
+  <p class="text-grey"><%= link_to model.user.name, { user_id: model.user_id } %></p>
+<% end %>
 </td>
