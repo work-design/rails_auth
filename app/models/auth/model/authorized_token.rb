@@ -66,7 +66,7 @@ module Auth
     end
 
     def online_job
-
+      AuthorizedTokenOnlineJob.perform_later(self)
     end
 
     def sync_identity
