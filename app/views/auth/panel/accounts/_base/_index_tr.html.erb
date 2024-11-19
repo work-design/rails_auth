@@ -15,11 +15,11 @@
     <div data-show-target="item" class="visibility-hidden">
       <%= link_to({ controller: 'authorized_tokens', identity: model.identity }, class: 'button is-small is-rounded is-light') do %>
         <i class="fa-solid fa-key text-info"></i>
-        <span class="pl-1"><%= t('.authorized_tokens.index.title') %></span>
+        <span class="ml-1"><%= t('.authorized_tokens.index.title') %></span>
       <% end %>
       <%= button_to({ action: 'prune', id: model.id }, method: :delete, form: { data: { turbo_confirm: t('.prune.confirm') } }, class: 'button is-small is-rounded is-light') do %>
         <i class="fa-solid fa-trash-can text-danger-dark"></i>
-        <span class="pl-1"><%= t('.prune.title') %></span>
+        <span class="ml-1"><%= t('.prune.title') %></span>
       <% end %>
     </div>
   </td>

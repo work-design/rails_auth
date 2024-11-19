@@ -25,7 +25,7 @@
 <% if model.user %>
   <%= button_to({ controller: 'users', action: 'show', id: model.user.id }, text: true) do %>
     <i class="fa-regular fa-user"></i>
-    <span class="pl-1"><%= model.user.name %></span>
+    <span class="ml-1"><%= model.user.name %></span>
   <% end %>
   <p class="text-grey"><%= link_to model.user.name, { user_id: model.user_id } %></p>
 <% end %>
