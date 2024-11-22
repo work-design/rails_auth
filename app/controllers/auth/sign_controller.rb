@@ -3,12 +3,11 @@ module Auth
     before_action :check_login, except: [:logout]
     skip_after_action :set_auth_token, only: [:logout]
     before_action :set_oauth_user, only: [:bind, :direct, :bind_create, :sign]
-    before_action :set_account, only: [:login, :token]
+    before_action :set_account, only: [:token]
+    before_action :set_confirmed_account, only: [:sign, :login], if: -> { params[:identity].present? }
 
     def sign
       if params[:identity]
-        @account = Account.where(identity: params[:identity].strip).confirmed.with_user.take
-
         if @account && @account.user && @account.user.password_digest.present?
           render 'sign_login'
         else
@@ -88,6 +87,10 @@ module Auth
     private
     def set_account
       @account = Account.find_by(identity: params[:identity].strip)
+    end
+
+    def set_confirmed_account
+      @account = Account.where(identity: params[:identity].strip).confirmed.with_user.take
     end
 
     def set_oauth_user
