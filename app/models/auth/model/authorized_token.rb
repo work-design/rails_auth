@@ -3,7 +3,9 @@ module Auth
     extend ActiveSupport::Concern
 
     included do
-      attribute :id, :uuid
+      if connection.adapter_name == 'PostgreSQL'
+        attribute :id, :uuid
+      end
       attribute :identity, :string, index: true
       attribute :expire_at, :datetime
       attribute :access_counter, :integer, default: 0
