@@ -11,7 +11,14 @@
       <%= f.text_field :token, placeholder: Auth::VerifyToken.human_attribute_name(:token), autocomplete: 'off', class: 'input' %>
     </div>
     <div class="control" id="sign_token">
-      <button type="button" data-controller="common" data-url="<%= url_for(action: 'code', identity: params[:identity]) %>" data-action="common#streamPost" class="button is-info">
+      <button
+        type="button"
+        data-controller="common"
+        data-common-url-value="<%= url_for(action: 'code') %>"
+        data-common-body-value="<%= { identity: params[:identity] }.to_json %>"
+        data-action="common#streamPost"
+        class="button is-info"
+      >
         <span><%= t('.token') %></span>
       </button>
     </div>
