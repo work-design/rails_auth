@@ -10,9 +10,17 @@
         <div class="weui-cell weui-cell_active weui-cell_vcode">
           <%= f.text_field :token, placeholder: Auth::VerifyToken.human_attribute_name(:token), all: { normal: nil } %>
           <div class="weui-cell__ft" data-controller="common" id="sign_token">
-            <%= link_to({ action: 'code', identity: params[:identity] }, data: { action: 'common#link' }, class: 'weui-btn weui-btn_default weui-vcode-btn') do %>
+            <button
+              type="button"
+              data-controller="common count-down"
+              data-count-down-time-value="60"
+              data-common-url-value="<%= url_for(action: 'code') %>"
+              data-common-body-value="<%= { identity: params[:identity] }.to_json %>"
+              data-action="common#streamPost"
+              class="button"
+            >
               <span><%= t('.token') %></span>
-            <% end %>
+            </button>
           </div>
         </div>
       </div>

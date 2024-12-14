@@ -21,7 +21,14 @@
   </td>
   <td>
     <% unless model.confirmed %>
-      <button id="token_<%= model.id %>" data-controller="common count-down" data-url="<%= url_for(action: 'token', id: model.id) %>" data-count-down-time-value="3" data-action="common#streamPost" class="button is-link">发送验证码</button>
+      <button
+        id="token_<%= model.id %>"
+        data-controller="common count-down"
+        data-common-url-value="<%= url_for(action: 'token', id: model.id) %>"
+        data-count-down-time-value="3"
+        data-action="common#streamPost"
+        class="button is-link"
+      >发送验证码</button>
     <% end %>
     <%= button_to({ action: 'destroy', id: model.id }, method: :delete, aria: { label: t('.destroy.title'), confirm: '删除后此账号无法用于登录' }, class: 'button') do %>
       <i class="fa-solid fa-trash text-danger"></i>

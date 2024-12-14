@@ -1,7 +1,7 @@
 <%= turbo_stream.update 'sign_token' do %>
-  <%= link_to({ action: 'code', identity: params[:identity] }, data: { controller: 'count-down', count_down_time_value: 60, action: 'common#link' }, disabled: true, class: 'weui-btn weui-btn_default weui-vcode-btn') do %>
+  <button data-controller="common count-down" data-count-down-time-value="60" data-common-url-value="<%= url_for(action: 'code', identity: params[:identity]) %>" class="button">
     <span>重新发送（</span>
     <span data-count-down-target="count"></span>
     <span>）</span>
-  <% end %>
+  </button>
 <% end %>
