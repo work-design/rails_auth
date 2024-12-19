@@ -39,7 +39,12 @@ module Auth
 
       if check_token
         user || build_user
-        user.assign_attributes params.slice('name', 'password', 'password_confirmation', 'invited_code') # 这里必须用 String 类型，因为params 转义过来的hash key 是字符
+        user.assign_attributes params.slice(
+          'name',
+          'password',
+          'password_confirmation',
+          'invited_code'
+        ) # 这里必须用 String 类型，因为params 转义过来的hash key 是字符
         user.last_login_at = Time.current
         self.confirmed = true
 

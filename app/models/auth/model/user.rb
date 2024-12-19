@@ -33,17 +33,6 @@ module Auth
       before_save :invalid_authorized_token, if: -> { password_digest_changed? }
     end
 
-    def join(params = {})
-      self.assign_attributes params.slice(
-        :name,
-        :email,
-        :mobile,
-        :password,
-        :password_confirmation
-      )
-      save
-    end
-
     ##
     # pass login params to this method;
     def can_login?(password)
