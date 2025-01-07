@@ -41,7 +41,7 @@
   <% end %>
 </td>
 <td>
-<% if model.role %>
-  <span class="tag"><%= model.role.name %></span>
+<% model.roles.each do |role| %>
+  <span class="tag"><%= role.name %></span>
 <% end %>
 </td>
