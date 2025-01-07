@@ -1,6 +1,6 @@
 module Auth
   class Panel::UsersController < Panel::BaseController
-    before_action :set_user, only: [:show, :edit, :update, :edit_user_tags, :destroy]
+    before_action :set_user, only: [:show, :edit, :update, :edit_user_tags, :edit_role, :destroy]
 
     def index
       q_params = {
@@ -8,7 +8,11 @@ module Auth
       }
       q_params.merge! user_filter_params
 
-      @users = User.with_attached_avatar.includes(:accounts, :roles, oauth_users: :app).default_where(q_params).page(params[:page])
+      @users = User.with_attached_avatar.includes(
+        :accounts,
+        :role,
+        oauth_users: :app
+      ).default_where(q_params).page(params[:page])
     end
 
     def month
@@ -26,6 +30,10 @@ module Auth
 
     def edit_user_tags
       @user_tags = UserTag.default_where(default_params).page(params[:page])
+    end
+
+    def edit_role
+      @roles = Roled::UserRole.all
     end
 
     def mock
@@ -68,6 +76,7 @@ module Auth
         :avatar,
         :password,
         :disabled,
+        :role_id,
         user_tag_ids: [],
         accounts_attributes: {}
       ]
