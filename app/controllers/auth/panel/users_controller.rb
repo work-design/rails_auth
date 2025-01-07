@@ -10,7 +10,7 @@ module Auth
 
       @users = User.with_attached_avatar.includes(
         :accounts,
-        :role,
+        :roles,
         oauth_users: :app
       ).default_where(q_params).page(params[:page])
     end
@@ -76,7 +76,7 @@ module Auth
         :avatar,
         :password,
         :disabled,
-        :role_id,
+        role_ids: [],
         user_tag_ids: [],
         accounts_attributes: {}
       ]
