@@ -45,6 +45,8 @@
     <% model.roles.pluck(:name).each do |role| %>
       <span class="tag"><%= role %></span>
     <% end %>
+  </div>
+  <div>
     <%= link_to({ controller: 'roled/panel/whos', action: 'edit', who_type: model.base_class_name, who_id: model.id }, aria: { label: t('roled.panel.whos.edit.title') }, data: { turbo_frame: 'modal' }, class: 'button is-small is-rounded is-light') do %>
       <i class="fa-solid fa-user-lock"></i>
     <% end %>
