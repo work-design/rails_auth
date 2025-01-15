@@ -2,9 +2,7 @@
   <p><%= Auth::User.human_attribute_name(:name) %></p>
   <p><%= Auth::User.human_attribute_name(:accounts) %></p>
 </th>
-<td>
-  <p><%= Auth::User.human_attribute_name(:oauth_users) %></p>
-</td>
+<th><%= Auth::User.human_attribute_name(:oauth_users) %></th>
 <th>
   <p><%= Auth::User.human_attribute_name(:locale) %></p>
   <p><%= Auth::User.human_attribute_name(:timezone) %></p>
