@@ -33,7 +33,7 @@ module Auth
     end
 
     def edit_role
-      @roles = Roled::UserRole.all
+      @roles = @user.visible_roles
     end
 
     def mock
