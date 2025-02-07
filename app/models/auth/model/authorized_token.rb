@@ -5,6 +5,8 @@ module Auth
     included do
       if connection.adapter_name == 'PostgreSQL'
         attribute :id, :uuid
+      else
+        attribute :id, :string, default: -> { SecureRandom.uuid_v7 }
       end
       attribute :identity, :string, index: true
       attribute :expire_at, :datetime
