@@ -5,7 +5,9 @@
   </div>
   <p>
     <span class="tag"><%= model.type_i18n %></span>
-    <span><%= model.app&.name %></span>
+    <% if model.respond_to?(:app) %>
+      <span><%= model.app&.name %></span>
+    <% end %>
   </p>
 </td>
 <td>
