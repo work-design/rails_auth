@@ -36,7 +36,7 @@ module Auth
       validates :uid, presence: true
 
       before_save :auto_link, if: -> { unionid.present? && unionid_changed? }
-      after_save :generate_account!, if: -> { saved_change_to_identity? }
+      before_save :init_account, if: -> { identity_changed? }
       after_save :sync_to_authorized_tokens, if: -> { saved_change_to_identity? }
       after_save :sync_name_to_user, if: -> { name.present? && saved_change_to_name? }
       after_save_commit :sync_avatar_to_user_later, if: -> { avatar_url.present? && saved_change_to_avatar_url? }
@@ -51,18 +51,16 @@ module Auth
       }.compact_blank
     end
 
-    def generate_account!
-      account || build_account(type: 'Auth::MobileAccount')
-      account.user_id = user_id
-      account.save
-    end
-
     def online?
       online_at.present? && offline_at.blank?
     end
 
     def can_login?(params)
       self.identity = params[:identity]
+    end
+
+    def init_account
+      account || build_account(type: 'Auth::MobileAccount', user_id: user_id)
     end
 
     def init_user
