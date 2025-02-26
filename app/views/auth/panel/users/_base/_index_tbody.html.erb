@@ -18,7 +18,7 @@
     <%= link_to({ controller: 'oauth_users', user_id: model.id }) do %>
       <span class="tags has-addons">
         <span class="tag is-dark"><%= oauth_user.type_i18n %></span>
-        <span class="tag is-info"><%= oauth_user.app.name %></span>
+        <span class="tag is-info"><%= oauth_user.app_name %></span>
       </span>
       <span class="family-monospace"><%= oauth_user.uid %></span>
     <% end %>
