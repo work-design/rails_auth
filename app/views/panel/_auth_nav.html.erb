@@ -1,14 +1,11 @@
 <div class="menu ex-accordion is-active">
-  <div class="menu-label">
+  <%= link_to({ controller: 'auth/panel/home' }, class: 'menu-label') do %>
     <div>
       <i class="fa-solid fa-fw fa-users"></i>
       <span><%= t('auth.panel.title') %></span>
     </div>
-    <%= link_to({ controller: 'auth/panel/home' }, aria: { label: '设置' }) do %>
-      <i class="fa-solid fa-cog"></i>
-    <% end %>
-  </div>
-  <div class="menu-list" data-empty-target="content">
+  <% end %>
+  <div class="menu-list">
     <%= link_to t('auth.panel.users.index.title'), { controller: 'auth/panel/users' }, data: { turbo_frame: 'body', action: 'menu#enter' }, class: active_helper(users: ['index', 'show'], active: 'is-active') %>
     <%= link_to t('auth.panel.accounts.index.title'), { controller: 'auth/panel/accounts' }, data: { turbo_frame: 'body', action: 'menu#enter' }, class: active_helper(controllers: 'accounts', active: 'is-active') %>
     <%= link_to t('auth.panel.oauth_users.index.title'), { controller: 'auth/panel/oauth_users' }, data: { turbo_frame: 'body', action: 'menu#enter' }, class: active_helper(controllers: 'oauth_users', active: 'is-active') %>
