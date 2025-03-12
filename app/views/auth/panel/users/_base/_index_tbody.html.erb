@@ -1,29 +1,23 @@
 <td>
-  <%= link_to({ action: 'show', id: model.id }, class: 'is-several') do %>
+  <%= link_to({ action: 'show', id: model.id }, class: 'has-block-left') do %>
     <%= image_tag model.avatar, class: 'image is-24x24' if model.avatar.attached? %>
     <span class="is-text" style="width: 10em"><%= model.name %></span>
   <% end %>
   <% model.accounts.each do |account| %>
-    <p class="text-grey mt-2">
-    <%= link_to({ controller: 'accounts', user_id: model.id }, aria: { label: t('auth.panel.accounts.index.title') }, class: 'is-several') do %>
+    <%= link_to({ controller: 'accounts', user_id: model.id }, class: 'has-block-left mt-2 text-grey') do %>
       <i class="fa-solid fa-portrait"></i>
       <span title="<%= account.identity %>" class="is-text"><%= account.identity %></span>
     <% end %>
-    </p>
   <% end %>
-</td>
-<td>
-<% model.oauth_users.each do |oauth_user| %>
-  <p>
-    <%= link_to({ controller: 'oauth_users', user_id: model.id }) do %>
-      <span class="tags has-addons">
+  <% model.oauth_users.each do |oauth_user| %>
+    <%= link_to({ controller: 'oauth_users', user_id: model.id }, class: 'has-block-left mt-2') do %>
+      <span class="tags has-addons display-inline-flex mb-0">
         <span class="tag is-dark"><%= oauth_user.type_i18n %></span>
         <span class="tag is-info"><%= oauth_user.app_name %></span>
       </span>
       <span class="family-monospace"><%= oauth_user.uid %></span>
     <% end %>
-  </p>
-<% end %>
+  <% end %>
 </td>
 <td>
   <p><%= model.locale %></p>
