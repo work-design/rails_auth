@@ -4,7 +4,6 @@ module Auth
 
     included do
       attr_accessor :auth_appid
-      attr_accessor :session_id
 
       attribute :type, :string
       attribute :provider, :string
@@ -110,7 +109,7 @@ module Auth
     end
 
     def authorized_token
-      authorized_tokens.find(&->(i){ i.effective? && i.session_id == session_id }) || authorized_tokens.create(session_id: session_id)
+      authorized_tokens.find(&->(i){ i.effective? }) || authorized_tokens.create
     end
 
     def auth_token
