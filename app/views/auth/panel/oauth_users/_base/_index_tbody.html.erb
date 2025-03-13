@@ -1,5 +1,5 @@
 <td>
-  <span class="tag"><%= model.type_i18n %></span>
+  <span class="tag <%= ['Wechat::PublicApp', 'Wechat::PublicAgency'].include?(model.type) ? 'is-info' : 'is-light' %>"><%= model.type_i18n %></span>
 </td>
 <td>
   <p class="family-monospace"><%= model.appid %></p>
