@@ -64,7 +64,7 @@ module Auth
     end
 
     def account_identities
-      confirmed_accounts.map(&:identity)
+      (confirmed_accounts.map(&:identity) + oauth_users.pluck(:identity).compact).uniq
     end
 
     def oauth_providers
