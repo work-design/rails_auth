@@ -38,6 +38,9 @@ Rails.application.routes.draw do
 
       namespace :panel, defaults: { namespace: 'panel' } do
         root 'home#index'
+        controller :home do
+          get :dashboard
+        end
         resources :users do
           collection do
             get :month
