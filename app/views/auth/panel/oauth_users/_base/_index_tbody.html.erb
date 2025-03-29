@@ -1,9 +1,9 @@
 <td>
-  <span class="tag <%= ['Wechat::ProgramUser'].include?(model.type) ? 'is-link' : 'is-info' %>"><%= model.type_i18n %></span>
-  <p class="family-monospace">
-    <span><%= model.app_name %></span>
-    <span><%= model.appid %></span>
-  </p>
+  <div class="tags has-addons">
+    <span class="tag <%= ['Wechat::ProgramUser'].include?(model.type) ? 'is-link' : 'is-info' %>"><%= model.type_i18n %></span>
+    <span class="tag is-primary"><%= model.app_name %></span>
+  </div>
+  <p class="family-monospace"><%= model.appid %></p>
 </td>
 <td>
   <p class="family-monospace"><%= link_to model.uid, { uid: model.uid }, class: 'text-success' %></p>
