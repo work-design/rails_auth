@@ -1,0 +1,17 @@
+<div class="fixed-grid has-6-cols">
+  <p></p>
+  <div class="grid">
+    <%= link_to({ action: 'dashboard' }, class: 'cell button is-fullwidth') do %>
+      <span><%= t('.dashboard.title') %></span>
+    <% end %>
+  </div>
+  <p></p>
+  <div class="grid">
+    <%= link_to({ controller: 'apps' }, class: 'cell button is-fullwidth') do %>
+      <span><%= t('.apps.index.title') %></span>
+    <% end %>
+    <%= link_to({ controller: 'authorized_tokens' }, class: 'cell button is-fullwidth') do %>
+      <span><%= t('.authorized_tokens.index.title') %></span>
+    <% end %>
+  </div>
+</div>
