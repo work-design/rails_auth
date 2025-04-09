@@ -7,6 +7,7 @@ module Auth
       after_action :set_auth_token
     end
 
+    private
     def require_user(app = nil)
       check_jwt_token if params[:auth_jwt_token]
       return if current_user
