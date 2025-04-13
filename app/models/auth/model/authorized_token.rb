@@ -75,6 +75,7 @@ module Auth
 
     def sync_identity
       self.identity ||= oauth_user.identity
+      self.user_id ||= account.user_id if account
     end
 
     def expired?(now = Time.current)
