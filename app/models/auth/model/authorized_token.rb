@@ -113,6 +113,7 @@ module Auth
 
     # 应用在业务应用中
     def decode_from_jwt(token: Rails.configuration.x.appid)
+      return unless encrypted_token
       crypt = ActiveSupport::MessageEncryptor.new(token, cipher: 'aes-256-gcm', serializer: :json)
       payload = crypt.decrypt_and_verify(encrypted_token)
       logger.debug "\e[35m  Decode From Token:#{payload}  \e[0m"
