@@ -23,9 +23,9 @@ module Auth
       belongs_to :user, optional: true
       belongs_to :auth_app, class_name: 'App', foreign_key: :auth_appid, primary_key: :appid, optional: true
       belongs_to :oauth_user, foreign_key: :uid, primary_key: :uid, optional: true
-      belongs_to :account, ->(o) { where(user_id: o.user_id, confirmed: true) }, foreign_key: :identity, primary_key: :identity, optional: true
+      belongs_to :account, -> { where(confirmed: true) }, foreign_key: :identity, primary_key: :identity, optional: true
 
-      has_many :sames, ->(o) { where(o.filter_hash) }, class_name: self.name, primary_key: :identity, foreign_key: :identity
+      has_many :sames, class_name: self.name, primary_key: [:identity, :uid, :session_id], foreign_key: [:identity, :uid, :session_id]
 
       scope :valid, -> { where('expire_at >= ?', Time.current).order(expire_at: :desc) }
       scope :expired, -> { where('expire_at < ?', Time.current) }
@@ -41,13 +41,6 @@ module Auth
 
     def clean_when_expired
       AuthorizedTokenCleanJob.set(wait_until: expire_at).perform_later(self)
-    end
-
-    def filter_hash
-      {
-        uid: self.uid,
-        session_id: self.session_id
-      }
     end
 
     def online?
