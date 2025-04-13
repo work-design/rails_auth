@@ -32,6 +32,7 @@ module Auth
 
       after_initialize :init_expire_at, if: :new_record?
       before_validation :sync_identity, if: -> { uid.present? && uid_changed? }
+      before_validation :sync_user_id, if: -> { identity.present? && identity_changed? }
       before_create :decode_from_jwt, if: -> { identity.blank? && uid.blank? }
       after_save :sync_online_or_offline, if: -> { uid.present? && (saved_changes.keys & ['online_at', 'offline_at']).present? }
       after_save_commit :online_job, if: -> { saved_change_to_online_at? }
@@ -75,6 +76,9 @@ module Auth
 
     def sync_identity
       self.identity ||= oauth_user.identity
+    end
+
+    def sync_user_id
       self.user_id ||= account.user_id if account
     end
 
