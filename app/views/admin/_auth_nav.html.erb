@@ -1,12 +1,12 @@
-<div class="menu ex-accordion is-active">
-  <div class="menu-label">
+<div class="menu-list">
+  <div class="menu-item">
     <div>
       <i class="fa-solid fa-fw fa-users"></i>
       <span><%= t('auth.admin.title') %></span>
     </div>
   </div>
-  <div class="menu-list" data-empty-target="content">
-    <%= link_to t('auth.admin.oauth_users.index.title'), { controller: 'auth/admin/oauth_users' }, class: active_helper(controllers: 'oauth_users', active: 'is-active') %>
-    <%= link_to t('auth.admin.user_tags.index.title'), { controller: 'auth/admin/user_tags' }, class: active_helper(controllers: ['user_tags', 'user_taggeds'], active: 'is-active') %>
+  <div class="menu-list pl-3">
+    <%= link_to t('auth.admin.oauth_users.index.title'), { controller: 'auth/admin/oauth_users' }, class: active_helper(controllers: 'oauth_users', item: 'menu-item', active: 'menu-item is-active') %>
+    <%= link_to t('auth.admin.user_tags.index.title'), { controller: 'auth/admin/user_tags' }, class: active_helper(controllers: ['user_tags', 'user_taggeds'], item: 'menu-item', active: 'menu-item is-active') %>
   </div>
 </div>
