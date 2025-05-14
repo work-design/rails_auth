@@ -1,6 +1,7 @@
 <%= f.text_field :name, required: true %>
 <%= f.fields :accounts do |ef| %>
   <%= ef.text_field :identity %>
+  <%= ef.hidden_field :confirmed, value: true %>
 <% end %>
 <%= render 'com/attachments/list_field', f: f, target: f.object.avatar %>
 <%= f.text_field :password %>

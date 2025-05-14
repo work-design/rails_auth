@@ -1,6 +1,7 @@
 module Auth
   class Panel::UsersController < Panel::BaseController
     before_action :set_user, only: [:show, :edit, :update, :edit_user_tags, :edit_role, :destroy]
+    before_action :set_new_user, only: [:new, :create]
 
     def index
       q_params = {
@@ -22,6 +23,10 @@ module Auth
       end
 
       render json: result
+    end
+
+    def new
+      @user.accounts.build
     end
 
     def edit_user_tags
@@ -49,6 +54,10 @@ module Auth
     private
     def set_user
       @user = User.find(params[:id])
+    end
+
+    def set_new_user
+      @user = User.new(user_params)
     end
 
     def user_filter_params
