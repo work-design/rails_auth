@@ -5,7 +5,7 @@
       <span><%= t('auth.admin.title') %></span>
     </div>
   </div>
-  <div class="menu-list pl-3">
+  <div class="pl-4">
     <%= link_to t('auth.admin.oauth_users.index.title'), { controller: 'auth/admin/oauth_users' }, class: active_helper(controllers: 'oauth_users', item: 'menu-item', active: 'menu-item is-active') %>
     <%= link_to t('auth.admin.user_tags.index.title'), { controller: 'auth/admin/user_tags' }, class: active_helper(controllers: ['user_tags', 'user_taggeds'], item: 'menu-item', active: 'menu-item is-active') %>
   </div>
