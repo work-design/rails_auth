@@ -21,7 +21,7 @@ module Auth
       attribute :online_at, :datetime
       attribute :offline_at, :datetime
 
-      index [:uid, :provider], unique: true
+      index [:uid, :type], unique: true
 
       belongs_to :user, optional: true
       belongs_to :organ, class_name: 'Org::Organ', optional: true
@@ -32,7 +32,6 @@ module Auth
       belongs_to :same_oauth_user, ->(o) { where.not(id: o.id) }, class_name: self.name, foreign_key: :unionid, primary_key: :unionid, optional: true
       has_many :same_oauth_users, class_name: self.name, primary_key: :unionid, foreign_key: :unionid
 
-      validates :provider, presence: true
       validates :uid, presence: true
 
       before_save :auto_link, if: -> { unionid.present? && unionid_changed? }
