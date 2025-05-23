@@ -10,6 +10,7 @@ module Auth
       attribute :uid, :string
       attribute :unionid, :string, index: true
       attribute :appid, :string
+      attribute :app_name, :string
       attribute :name, :string
       attribute :avatar_url, :string
       attribute :state, :string
