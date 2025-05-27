@@ -7,6 +7,7 @@ Rails.application.routes.draw do
         get :bind
         post :direct
         post :join
+        get :login_new
         post :login
         post :token_login
         post :token

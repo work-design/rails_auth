@@ -19,6 +19,9 @@ module Auth
       end
     end
 
+    def login_new
+    end
+
     def code
       @verify_token = VerifyToken.build_with_identity(params[:identity])
 
