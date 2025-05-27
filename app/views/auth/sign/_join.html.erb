@@ -26,7 +26,7 @@
   <div class="field control">
     <%= f.password_field :password, placeholder: Auth::User.human_attribute_name(:password), autocomplete: 'off', class: 'input' %>
   </div>
-  <div class="field control">
+  <div id="password_confirm" class="field control">
     <%= f.password_field :password_confirmation, placeholder: Auth::User.human_attribute_name(:password_confirmation), autocomplete: 'off', class: 'input' %>
   </div>
   <%= f.submit t('.register'), class: 'button is-primary is-large mt-6' %>
