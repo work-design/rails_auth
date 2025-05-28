@@ -9,6 +9,7 @@ Rails.application.routes.draw do
         post :join
         get 'login' => :login_new
         post :login
+        get 'token_login' => :token_login_new
         post :token_login
         post :token
         match :logout, via: [:get, :post]

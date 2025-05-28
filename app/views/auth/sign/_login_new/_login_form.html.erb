@@ -6,7 +6,7 @@
   <%= f.password_field :password, placeholder: Auth::User.human_attribute_name(:password) %>
 <% end %>
 <div>
-  <%= button_to t('auth.sign.token_login.title'), { controller: 'auth/sign', action: 'token_login' }, id: 'mobile_confirm', class: 'text-grey' %>
+  <%= link_to t('auth.sign.token_login.title'), { controller: 'auth/sign', action: 'token_login' }, id: 'mobile_confirm', class: 'text-grey' %>
   <%= link_to t('auth.password.create.title'), { controller: 'auth/password', action: 'new' }, class: 'text-grey is-pulled-right' %>
 </div>
 <div>
