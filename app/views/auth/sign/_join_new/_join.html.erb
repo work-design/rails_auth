@@ -14,8 +14,8 @@
         type="button"
         data-controller="common"
         data-common-url-value="<%= url_for(action: 'code') %>"
-        data-common-body-value="<%= { identity: params[:identity] }.to_json %>"
-        data-action="common#streamPost"
+        data-common-body-value="identity"
+        data-action="common#streamFormPost"
         class="button is-info"
       >
         <span><%= t('auth.sign.code.title') %></span>
