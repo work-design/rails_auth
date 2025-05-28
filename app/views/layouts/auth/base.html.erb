@@ -5,7 +5,9 @@
       <div class="background-login"></div>
     </div>
     <turbo-frame id="main" refresh="morph" data-turbo-action="advance" class="column is-4 p-6 has-column-centered has-animate-background">
-      <%= yield %>
+      <div class="is-fullwidth p-6">
+        <%= yield %>
+      </div>
     </turbo-frame>
   </main>
   <%= render 'footer' %>
