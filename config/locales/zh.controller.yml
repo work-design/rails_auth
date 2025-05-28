@@ -37,6 +37,8 @@ zh:
         title: 验证码登录
       token_login_new:
         title: 验证码登录
+      code:
+        title: 发送验证码
     password:
       new:
         title: 重置密码
