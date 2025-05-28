@@ -1,4 +1,4 @@
-<h2 class="title is-2 text-primary mb-6"><%= t('.title') %></h2>
+<h2 class="title is-2 text-centered text-primary mb-6"><%= t('.title') %></h2>
 <%= form_with theme: nil, scope: nil, url: { action: 'token' } do |f| %>
   <div class="field control">
     <%= f.text_field :identity, placeholder: Auth::Account.human_attribute_name(:identity), autofocus: true, class: 'input' %>

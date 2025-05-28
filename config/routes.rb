@@ -6,6 +6,7 @@ Rails.application.routes.draw do
         post :code
         get :bind
         post :direct
+        get 'join' => :join_new
         post :join
         get 'login' => :login_new
         post :login

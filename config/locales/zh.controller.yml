@@ -14,6 +14,9 @@ zh:
         title: 注册
         subtitle: 创建您的账户
         register: 注册
+      join_new:
+        title: 注册
+        subtitle: 创建您的账户
       login:
         title: 登录
         forget: 忘记密码？
@@ -31,6 +34,8 @@ zh:
         sent: 验证码已发送
         login: 登录
       token_login:
+        title: 验证码登录
+      token_login_new:
         title: 验证码登录
     password:
       new:
