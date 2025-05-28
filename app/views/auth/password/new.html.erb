@@ -1,4 +1,4 @@
-<div class="panel" style="width: 300px">
+<div class="panel mx-auto">
   <h4 class="panel-heading text-centered"><%= t('.title') %></h4>
   <%= form_with scope: nil, url: { action: 'create' }, wrap: { input: 'control', submit: 'control' }, all: { normal: nil, required: nil, submit: nil }, before_wrap: { submit: nil }, class: 'panel-block background-white flex-direction-column' do |f| %>
     <%= f.text_field :identity, placeholder: Auth::Account.human_attribute_name(:identity) %>
