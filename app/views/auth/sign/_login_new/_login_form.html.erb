@@ -6,8 +6,8 @@
   <%= f.password_field :password, placeholder: Auth::User.human_attribute_name(:password) %>
 <% end %>
 <div>
-  <%= button_to t('.token'), { controller: 'auth/sign', action: 'token_login' }, params: { identity: params[:identity] }, id: 'mobile_confirm', class: 'text-grey' %>
-  <%# button_to t('.forget'), { controller: 'auth/password', action: 'create' }, params: { identity: params[:identity] }, class: 'text-grey is-pulled-right' %>
+  <%= button_to t('auth.sign.token_login.title'), { controller: 'auth/sign', action: 'token_login' }, id: 'mobile_confirm', class: 'text-grey' %>
+  <%= link_to t('auth.password.create.title'), { controller: 'auth/password', action: 'new' }, class: 'text-grey is-pulled-right' %>
 </div>
 <div>
   <%= submit_tag t('.login'), form: 'login_form', class: 'button is-primary is-large mt-6' %>

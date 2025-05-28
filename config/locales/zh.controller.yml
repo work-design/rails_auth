@@ -30,6 +30,8 @@ zh:
         forget: 忘记密码？
         sent: 验证码已发送
         login: 登录
+      token_login:
+        title: 验证码登录
     password:
       new:
         title: 重置密码

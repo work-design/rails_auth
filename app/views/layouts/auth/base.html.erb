@@ -1,15 +1,15 @@
 <%= render layout: 'layouts/application_head' do %>
   <%= render 'nav_bar' %>
-  <turbo-frame id="main" refresh="morph" data-turbo-action="advance">
+  <div>
     <div class="columns is-gapless is-vcentered mb-0">
       <div class="column is-relative is-8 display-none-mobile">
         <div class="hero is-fullheight background-login">
         </div>
       </div>
-      <div class="column is-4 is-relative">
+      <turbo-frame id="main" refresh="morph" data-turbo-action="advance" class="column is-4 is-relative">
         <%= yield %>
-      </div>
+      </turbo-frame>
     </div>
-  </turbo-frame>
+  </div>
   <%= render 'footer' %>
 <% end %>
