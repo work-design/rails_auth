@@ -38,7 +38,6 @@ zh:
         next: 下一步
       create:
         title: 重置密码
-        body: 包含重置密码链接的信息已发往：
         back: 返回首页
       edit:
         title: 重置密码

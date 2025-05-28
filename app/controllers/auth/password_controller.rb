@@ -6,11 +6,8 @@ module Auth
 
     def create
       @account = Account.find_by(identity: params[:identity])
-      @identity = params[:identity]
       if @account
         @account.reset_notice
-      else
-        render 'create_err', status: :unprocessable_entity
       end
     end
 
