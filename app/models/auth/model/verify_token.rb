@@ -11,6 +11,7 @@ module Auth
       attribute :expire_at, :datetime
       attribute :identity, :string, index: true
       attribute :access_counter, :integer, default: 0
+      attribute :uuid, :string, default: SecureRandom.uuid
 
       belongs_to :account, foreign_key: :identity, primary_key: :identity, optional: true
 

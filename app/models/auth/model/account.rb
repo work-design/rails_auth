@@ -34,7 +34,7 @@ module Auth
       user || build_user
     end
 
-    def can_login_by_token?(**params)
+    def can_login_by_token?(params)
       user || build_user
       user.assign_attributes params.slice(
         'name',

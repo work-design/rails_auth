@@ -48,9 +48,10 @@ module Auth
     end
 
     def join
-      #@account = Account.build_with_identity(params[:identity])
+      @verify_token = VerifyToken.find_by(uuid: params[:uuid])
+      @account = Account.build_with_identity(@verify_token.identity)
 
-      if @verify_token.can_login_by_token?(**login_params)
+      if @account.can_login_by_token?(login_params)
         login_by_account @account
 
         render_login
