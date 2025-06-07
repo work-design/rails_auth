@@ -10,18 +10,13 @@
     <div class="control" id="sign_token">
       <button
         type="button"
+        data-controller="common"
         data-common-url-value="<%= url_for(action: 'code') %>"
-        data-common-body-value="<%= { identity: params[:identity] }.to_json %>"
-        data-controller="common count-down"
-        data-count-down-time-value="60"
-        data-count-down-target="disabled"
-        data-action="common#streamPost"
-        disabled="disabled"
+        data-common-body-value="identity"
+        data-action="common#streamFormPost"
         class="button is-info"
       >
-        <span>重新发送（</span>
-        <span data-count-down-target="count"></span>
-        <span>）</span>
+        <span><%= t('auth.sign.code.title') %></span>
       </button>
     </div>
   </div>
