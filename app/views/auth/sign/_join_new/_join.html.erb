@@ -1,9 +1,9 @@
 <h2 class="title is-2 text-centered text-primary mb-4"><%= t('.title') %></h2>
 <h6 class="subtitle text-centered is-6 mb-4"><%= t('.subtitle') %></h6>
-<%= form_with theme: nil, scope: nil, url: { action: 'password' } do |f| %>
+<%= form_with theme: nil, scope: nil, url: { action: 'password' }, id: 'join_form' do |f| %>
   <%= f.hidden_field :state, value: params[:state] %>
   <div class="field control">
-    <%= f.text_field :identity, placeholder: Auth::Account.human_attribute_name(:identity), autofocus: true, class: 'input' %>
+    <%= f.text_field :identity, placeholder: Auth::Account.human_attribute_name(:identity), autofocus: true, autocomplete: 'off', class: 'input' %>
   </div>
   <div class="field control has-addons">
     <div class="control is-expanded">
