@@ -49,7 +49,7 @@ module Auth
     end
 
     def login
-      if @account.can_login_by_password?(params[:password])
+      if @account&.can_login_by_password?(params[:password])
         login_by_account @account
 
         render_login
