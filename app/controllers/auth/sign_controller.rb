@@ -4,6 +4,7 @@ module Auth
     skip_after_action :set_auth_token, only: [:logout]
     before_action :set_oauth_user, only: [:bind, :direct, :bind_create, :sign]
     before_action :set_confirmed_account, only: [:sign, :login], if: -> { params[:identity].present? }
+    before_action :set_verify_token, only: [:join, :password, :token]
 
     def sign
       if params[:identity]
@@ -38,10 +39,18 @@ module Auth
       @oauth_user.can_login?(login_params)
     end
 
-    def join
-      @account = Account.build_with_identity(params[:identity])
+    def password
+      if @verify_token
+        render :password
+      else
+        render :password_wrong
+      end
+    end
 
-      if @account.can_login_by_token?(params[:token], **login_params)
+    def join
+      #@account = Account.build_with_identity(params[:identity])
+
+      if @verify_token.can_login_by_token?(**login_params)
         login_by_account @account
 
         render_login
@@ -74,7 +83,6 @@ module Auth
     end
 
     def token
-      @verify_token = VerifyToken.valid.find_by(identity: params[:identity].strip, token: params[:token])
       if @verify_token.account && @verify_token.account.user
         #login_by_account @account
 
@@ -90,6 +98,10 @@ module Auth
     end
 
     private
+    def set_verify_token
+      @verify_token = VerifyToken.valid.find_by(identity: params[:identity].strip, token: params[:token])
+    end
+
     def set_confirmed_account
       @account = Account.where(identity: params[:identity].strip).confirmed.with_user.take
     end
