@@ -34,30 +34,23 @@ module Auth
       user || build_user
     end
 
-    def can_login_by_token?(token, **params)
-      check_token = self.verify_tokens.valid.find_by(token: token)
+    def can_login_by_token?(**params)
+      user || build_user
+      user.assign_attributes params.slice(
+        'name',
+        'password',
+        'password_confirmation',
+        'invited_code'
+      ) # 这里必须用 String 类型，因为params 转义过来的hash key 是字符
+      user.last_login_at = Time.current
+      self.confirmed = true
 
-      if check_token
-        user || build_user
-        user.assign_attributes params.slice(
-          'name',
-          'password',
-          'password_confirmation',
-          'invited_code'
-        ) # 这里必须用 String 类型，因为params 转义过来的hash key 是字符
-        user.last_login_at = Time.current
-        self.confirmed = true
-
-        self.class.transaction do
-          user.save!
-          self.save!
-        end
-
-        user
-      else
-        self.errors.add :base, :wrong_token
-        false
+      self.class.transaction do
+        user.save!
+        self.save!
       end
+
+      user
     end
 
     def can_login_by_password?(password)
