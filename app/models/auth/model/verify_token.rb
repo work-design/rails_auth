@@ -23,10 +23,6 @@ module Auth
       after_create_commit :clean_when_expired
     end
 
-    def can_login_by_token?(token, **params)
-      account || build_account
-    end
-
     def clean_when_expired
       VerifyTokenCleanJob.set(wait_until: expire_at).perform_later(self)
     end

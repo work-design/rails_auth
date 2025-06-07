@@ -3,7 +3,6 @@ module Auth
     before_action :check_login, except: [:logout]
     skip_after_action :set_auth_token, only: [:logout]
     before_action :set_oauth_user, only: [:bind, :direct, :bind_create, :sign]
-    before_action :set_verify_token, only: [:token]
     before_action :set_confirmed_account, only: [:sign, :login], if: -> { params[:identity].present? }
 
     def sign
@@ -75,10 +74,10 @@ module Auth
     end
 
     def token
-      if @verify_token.can_login_by_token?(**token_params)
-        login_by_account @account
+      @verify_token = VerifyToken.valid.find_by(identity: params[:identity].strip, token: params[:token])
+      if @verify_token.account && @verify_token.account.user
+        #login_by_account @account
 
-        render_login
       else
         flash.now[:error] = @account.error_text.presence || @account.user.error_text
         render 'alert', status: :unauthorized
@@ -91,10 +90,6 @@ module Auth
     end
 
     private
-    def set_verify_token
-      @verify_token = VerifyToken.valid.find_by(identity: params[:identity].strip, token: params[:token])
-    end
-
     def set_confirmed_account
       @account = Account.where(identity: params[:identity].strip).confirmed.with_user.take
     end
@@ -105,10 +100,6 @@ module Auth
 
     def password_params
       params.permit(:password)
-    end
-
-    def token_params
-      params.permit(:token)
     end
 
     def login_params
