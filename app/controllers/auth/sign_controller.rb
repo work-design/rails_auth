@@ -4,7 +4,7 @@ module Auth
     skip_after_action :set_auth_token, only: [:logout]
     before_action :set_oauth_user, only: [:bind, :direct, :bind_create, :sign]
     before_action :set_confirmed_account, only: [:sign, :login], if: -> { params[:identity].present? }
-    before_action :set_verify_token, only: [:join, :password, :token]
+    before_action :set_verify_token, only: [:password, :token]
 
     def sign
       if params[:identity]
@@ -118,15 +118,12 @@ module Auth
     def login_params
       q = params.permit(
         :name,
-        :identity,
         :password,
         :password_confirmation,
-        :token,
         :invited_code,
         :uid,
         :device_id  # ios设备注册
       )
-      q[:identity].strip!
 
       if session[:return_to]
         r = URI.decode_www_form(URI(session[:return_to]).query.to_s).to_h
