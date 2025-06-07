@@ -2,7 +2,6 @@ Rails.application.routes.draw do
   scope RailsCom.default_routes_scope do
     namespace 'auth', defaults: { business: 'auth' } do
       controller :sign do
-        match :sign, via: [:get, :post]
         post :code
         get :bind
         post :direct

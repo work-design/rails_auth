@@ -2,22 +2,9 @@ module Auth
   class SignController < BaseController
     before_action :check_login, except: [:logout]
     skip_after_action :set_auth_token, only: [:logout]
-    before_action :set_oauth_user, only: [:bind, :direct, :bind_create, :sign]
-    before_action :set_confirmed_account, only: [:sign, :login], if: -> { params[:identity].present? }
+    before_action :set_oauth_user, only: [:bind, :direct, :bind_create]
+    before_action :set_confirmed_account, only: [:login], if: -> { params[:identity].present? }
     before_action :set_verify_token, only: [:password, :token]
-
-    def sign
-      if params[:identity]
-        if @account && @account.user && @account.user.password_digest.present?
-          render 'sign_login'
-        else
-          @account = Account.find_by(identity: params[:identity].strip)
-          render 'sign_join'
-        end
-      else
-        render 'sign'
-      end
-    end
 
     def login_new
     end
