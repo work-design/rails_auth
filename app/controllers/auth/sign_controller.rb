@@ -75,7 +75,7 @@ module Auth
     end
 
     def token
-      if @verify_token.can_login_by_token?(params[:token], **token_params)
+      if @verify_token.can_login_by_token?(**token_params)
         login_by_account @account
 
         render_login
