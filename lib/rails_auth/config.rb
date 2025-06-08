@@ -7,7 +7,10 @@ module RailsAuth #:nodoc:
     config.default_return_hash = {
       controller: '/home'
     }
-    config.default_home_path = '/my'
+    config.default_home_path = '/'
+    config.default_return = ->(user) {
+      '/'
+    }
   end
 
 end

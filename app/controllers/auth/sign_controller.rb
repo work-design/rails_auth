@@ -133,7 +133,8 @@ module Auth
       elsif state
         render 'state_visit', layout: 'raw', locals: { state: state }, message: t('.success')
       else
-        render 'visit', layout: 'raw', locals: { url:  url_for(RailsAuth.config.default_return_hash || { controller: '/home' }) }, message: t('.success')
+        url = RailsAuth.config.default_return.call(@account.user)
+        render 'visit', layout: 'raw', locals: { url:  url }, message: t('.success')
       end
     end
 

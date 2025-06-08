@@ -1,9 +1,9 @@
-<table class="table is-fullwidth">
+<table class="table as-boxed is-fullwidth">
   <thead>
   <tr>
     <th>
-      <%= form_with url: { action: 'update' }, method: :patch, multipart: true, id: 'edit_user' %>
-      <%= link_to t('.back'), { controller: 'users', action: 'show' }, class: 'button' %>
+      <%= form_with url: { action: 'update' }, method: :patch, multipart: true, id: 'edit_user' do %>
+      <% end %>
     </th>
     <th></th>
   </tr>
