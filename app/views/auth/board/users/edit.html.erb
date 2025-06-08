@@ -1,34 +1,22 @@
-<table class="table as-boxed is-fullwidth">
-  <thead>
-  <tr>
-    <th>
-      <%= form_with url: { action: 'update' }, method: :patch, multipart: true, id: 'edit_user' do %>
-      <% end %>
-    </th>
-    <th></th>
-  </tr>
-  </thead>
-  <tbody>
-  <tr>
-    <td></td>
-    <td>
+<%= form_with url: { action: 'update' }, method: :patch, multipart: true, id: 'edit_user' do %>
+<% end %>
+<dl class="as-show as-boxed is-fullwidth">
+  <div>
+    <dt></dt>
+    <dd>
       <%= file_field_tag 'user[avatar]', direct_upload: true, form: 'edit_user' %>
-    </td>
-  </tr>
-  <tr>
-    <td><%= Auth::User.human_attribute_name(:name) %></td>
-    <td>
+    </dd>
+  </div>
+  <div>
+    <dt><%= Auth::User.human_attribute_name(:name) %></dt>
+    <dd>
       <%= text_field_tag 'user[name]', current_user.name, form: 'edit_user', class: 'input' %>
-    </td>
-  </tr>
-  <tr>
-    <td></td>
-    <td>
+    </dd>
+  </div>
+  <div>
+    <dt></dt>
+    <dd>
       <%= submit_tag t('.save'), form: 'edit_user', class: 'button is-primary' %>
-    </td>
-  </tr>
-  </tbody>
-</table>
-
-
-
+    </dd>
+  </div>
+</dl>
