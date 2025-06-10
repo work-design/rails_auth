@@ -13,7 +13,7 @@ module Auth
     end
 
     def user_params
-      params.fetch(:user, {}).permit(
+      p = params.fetch(:user, {}).permit(
         :name,
         :bio,
         :avatar,
@@ -21,6 +21,11 @@ module Auth
         :plate_number,
         :timezone
       )
+      p.merge! user_extra_params
+    end
+
+    def user_extra_params
+      defined?(super) ? super : {}
     end
 
   end
