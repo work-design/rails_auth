@@ -54,7 +54,11 @@ module Auth
 
         render_login
       else
-        flash.now[:error] = @account.error_text.presence || @account.user.error_text
+        if @account
+          flash.now[:error] = @account.error_text.presence || @account.user.error_text
+        else
+          flash.now[:error] = '账号密码错误'
+        end
         render 'alert', status: :unauthorized
       end
     end
