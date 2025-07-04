@@ -1,5 +1,4 @@
-<h2 class="title is-2 text-centered text-primary mb-4"><%= t('.title') %></h2>
-<h6 class="subtitle text-centered is-6 mb-6">欢迎使用<%= t('site_name') %></h6>
+<h2 class="title is-2 text-centered text-primary mb-6"><%= t('site_name') %></h2>
 <%= form_with scope: nil, url: { action: 'login' }, wrap: { input: 'field control' }, all: { normal: nil }, id: 'login_form', class: 'block' do |f| %>
   <%= f.hidden_field :state, value: params[:state] %>
   <%= f.text_field :identity, placeholder: Auth::Account.human_attribute_name(:identity), id: nil, autofocus: true %>
