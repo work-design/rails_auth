@@ -75,8 +75,10 @@ module Auth
     end
 
     def token
-      if @verify_token&.account && @verify_token.account&.user
-        login_by_account @verify_token.account
+      @account = @verify_token&.account
+      if @account && @account&.user
+        login_by_account @account
+        render_login
       else
         flash.now[:error] = '你的账号还未注册'
         render 'alert', status: :unauthorized
