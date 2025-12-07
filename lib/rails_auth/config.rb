@@ -1,16 +1,12 @@
-require 'active_support/configurable'
-
 module RailsAuth #:nodoc:
-  include ActiveSupport::Configurable
+  mattr_accessor :config, default: ActiveSupport::OrderedOptions.new
 
-  configure do |config|
-    config.default_return_hash = {
-      controller: '/home'
-    }
-    config.default_home_path = '/'
-    config.default_return = ->(user) {
-      '/'
-    }
-  end
+  config.default_return_hash = {
+    controller: '/home'
+  }
+  config.default_home_path = '/'
+  config.default_return = ->(user) {
+    '/'
+  }
 
 end
